@@ -117,7 +117,7 @@ const MotusAX = () => {
       </section>
 
       {/* Key Features Section - RedTouch PRO Style with Purple/Indigo Colors */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 via-background to-purple-50/30 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-purple-50 via-background to-purple-50/30 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl animate-float"></div>
@@ -134,69 +134,72 @@ const MotusAX = () => {
               </p>
             </div>
 
-            {/* Device with Features Around It */}
+            {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
-              <div className="grid grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-                {/* LEFT SIDE - 2 Feature Cards */}
-                <div className="col-span-12 lg:col-span-3 space-y-6 flex flex-col">
+                {/* LEFT SIDE - First 2 Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(25%)'}}>
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
-                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-purple-500/30 animate-slide-up h-[160px]"
-                      style={{animationDelay: `${index * 300}ms`}}
+                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-purple-50/50 backdrop-blur-sm border-2 border-purple-100 hover:border-purple-300 animate-slide-up"
+                      style={{animationDelay: `${index * 200}ms`}}
                     >
-                      <CardContent className="p-4 h-full flex flex-col justify-center">
-                        <div className="flex items-start gap-3 h-full">
-                          <div className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                             <feature.icon className="w-6 h-6 text-purple-600 group-hover:text-indigo-600 transition-colors" />
                           </div>
-                          <div className="flex-1 flex flex-col justify-center">
-                            <h3 className="text-base font-bold text-primary mb-2 group-hover:text-purple-600 transition-colors leading-tight">{feature.title}</h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                          <div className="flex-1">
+                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-purple-600 transition-colors">{feature.title}</h3>
+                            <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
                           </div>
                         </div>
+                        {/* Animated border bottom */}
+                        <div className="mt-3 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </CardContent>
                     </Card>
                   ))}
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="col-span-12 lg:col-span-6 text-center">
+                <div className="lg:col-span-6 text-center">
                   <div className="relative inline-block animate-slide-up delay-300">
                     <img
                       src="/deka3.png"
                       alt="Motus AX - Das ultimative Haarentfernungsgerät"
-                      className="w-full max-w-lg mx-auto object-contain drop-shadow-2xl"
+                      className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent rounded-full blur-3xl"></div>
 
-                    {/* Floating sparkle effects around device */}
-                    <div className="absolute top-6 right-6 w-2 h-2 bg-purple-400 rounded-full animate-pulse opacity-60"></div>
-                    <div className="absolute bottom-8 left-8 w-1 h-1 bg-indigo-500 rounded-full animate-bounce delay-1000 opacity-40"></div>
-                    <div className="absolute top-1/3 left-6 w-1 h-1 bg-purple-300 rounded-full animate-ping delay-500 opacity-50"></div>
-                    <div className="absolute bottom-1/3 right-8 w-1 h-1 bg-indigo-600 rounded-full animate-pulse delay-700 opacity-60"></div>
+                    {/* Floating tech particles */}
+                    <div className="absolute top-10 right-10 w-3 h-3 bg-purple-400 rounded-full animate-pulse opacity-70"></div>
+                    <div className="absolute bottom-12 left-12 w-2 h-2 bg-indigo-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
+                    <div className="absolute top-1/3 left-8 w-1 h-1 bg-purple-300 rounded-full animate-ping delay-500 opacity-80"></div>
+                    <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-indigo-600 rounded-full animate-pulse delay-700 opacity-75"></div>
                   </div>
                 </div>
 
-                {/* RIGHT SIDE - 2 Feature Cards */}
-                <div className="col-span-12 lg:col-span-3 space-y-6 lg:pl-2 flex flex-col">
+                {/* RIGHT SIDE - Remaining Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}
-                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-purple-500/30 animate-slide-up h-[160px]"
-                      style={{animationDelay: `${(index + 2) * 300}ms`}}
+                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-purple-50/50 backdrop-blur-sm border-2 border-purple-100 hover:border-purple-300 animate-slide-up"
+                      style={{animationDelay: `${(index + 2) * 200}ms`}}
                     >
-                      <CardContent className="p-4 h-full flex flex-col justify-center">
-                        <div className="flex items-start gap-3 h-full">
-                          <div className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                             <feature.icon className="w-6 h-6 text-purple-600 group-hover:text-indigo-600 transition-colors" />
                           </div>
-                          <div className="flex-1 flex flex-col justify-center">
-                            <h3 className="text-base font-bold text-primary mb-2 group-hover:text-purple-600 transition-colors leading-tight">{feature.title}</h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
+                          <div className="flex-1">
+                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-purple-600 transition-colors">{feature.title}</h3>
+                            <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
                           </div>
                         </div>
+                        {/* Animated border bottom */}
+                        <div className="mt-3 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                       </CardContent>
                     </Card>
                   ))}

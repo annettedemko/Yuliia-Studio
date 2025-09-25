@@ -61,7 +61,7 @@ const Physiq360 = () => {
                   alt="PHYSIQ 360"
                   className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
                   style={{
-                    transform: 'scale(1.0)',
+                    transform: 'scale(1.15)',
                     objectPosition: 'center'
                   }}
                 />
@@ -129,73 +129,79 @@ const Physiq360 = () => {
               <p className="text-xl text-muted-foreground">Innovative Technologie für einzigartige Körperkonturierung</p>
             </div>
 
-            <div className="grid grid-cols-12 gap-8 items-center">
+            {/* Cards Around Device Layout */}
+            <div className="relative max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-              {/* LEFT SIDE - 3 Feature Cards */}
-              <div className="col-span-12 lg:col-span-3 space-y-6 flex flex-col">
-                {keyFeatures.slice(0, 3).map((feature, index) => (
-                  <Card
-                    key={index}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-orange-300 animate-slide-up h-[160px]"
-                    style={{animationDelay: `${index * 300}ms`}}
-                  >
-                    <CardContent className="p-4 h-full flex flex-col justify-center">
-                      <div className="flex items-start gap-3 h-full">
-                        <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                          <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                {/* LEFT SIDE - First 2-3 Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(20%)'}}>
+                  {keyFeatures.slice(0, 3).map((feature, index) => (
+                    <Card
+                      key={index}
+                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
+                      style={{animationDelay: `${index * 200}ms`}}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
+                            <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                          </div>
                         </div>
-                        <div className="flex-1 flex flex-col justify-center">
-                          <h3 className="text-base font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors leading-tight">{feature.title}</h3>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* CENTER - Device Image */}
-              <div className="col-span-12 lg:col-span-6 text-center">
-                <div className="relative inline-block animate-slide-up delay-300">
-                  <img
-                    src="/deka4.png"
-                    alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
-                    className="w-full max-w-lg mx-auto object-contain drop-shadow-2xl"
-                    style={{ transform: 'scale(0.86)' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-3xl"></div>
-
-                  {/* Floating sparkle effects around device */}
-                  <div className="absolute top-6 right-6 w-2 h-2 bg-orange-400 rounded-full animate-pulse opacity-60"></div>
-                  <div className="absolute bottom-8 left-8 w-1 h-1 bg-amber-500 rounded-full animate-bounce delay-1000 opacity-40"></div>
-                  <div className="absolute top-1/3 left-6 w-1 h-1 bg-orange-300 rounded-full animate-ping delay-500 opacity-50"></div>
-                  <div className="absolute bottom-1/3 right-8 w-1 h-1 bg-amber-600 rounded-full animate-pulse delay-700 opacity-60"></div>
+                        {/* Animated border bottom */}
+                        <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
-              </div>
 
-              {/* RIGHT SIDE - 2 Feature Cards */}
-              <div className="col-span-12 lg:col-span-3 space-y-6 flex flex-col lg:pl-2">
-                {keyFeatures.slice(3, 5).map((feature, index) => (
-                  <Card
-                    key={index + 3}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-orange-300 animate-slide-up h-[160px]"
-                    style={{animationDelay: `${(index + 3) * 300}ms`}}
-                  >
-                    <CardContent className="p-4 h-full flex flex-col justify-center">
-                      <div className="flex items-start gap-3 h-full">
-                        <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                          <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
-                        </div>
-                        <div className="flex-1 flex flex-col justify-center">
-                          <h3 className="text-base font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors leading-tight">{feature.title}</h3>
-                          <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                {/* CENTER - Device Image */}
+                <div className="lg:col-span-6 text-center">
+                  <div className="relative inline-block animate-slide-up delay-300">
+                    <img
+                      src="/deka4.png"
+                      alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
+                      className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                      style={{transform: 'scale(0.8)'}}
+                    />
 
+                    {/* Floating tech particles */}
+                    <div className="absolute top-10 right-10 w-3 h-3 bg-orange-400 rounded-full animate-pulse opacity-70"></div>
+                    <div className="absolute bottom-12 left-12 w-2 h-2 bg-amber-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
+                    <div className="absolute top-1/3 left-8 w-1 h-1 bg-orange-300 rounded-full animate-ping delay-500 opacity-80"></div>
+                    <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-amber-600 rounded-full animate-pulse delay-700 opacity-75"></div>
+                  </div>
+                </div>
+
+                {/* RIGHT SIDE - Remaining Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-20%)'}}>
+                  {keyFeatures.slice(3, 5).map((feature, index) => (
+                    <Card
+                      key={index + 3}
+                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
+                      style={{animationDelay: `${(index + 3) * 200}ms`}}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
+                            <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                          </div>
+                        </div>
+                        {/* Animated border bottom */}
+                        <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

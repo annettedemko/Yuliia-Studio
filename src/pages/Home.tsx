@@ -20,9 +20,9 @@ const Home = () => {
       <section
         className="relative h-[60vh] flex items-center justify-center text-white overflow-hidden"
         style={{
-          backgroundImage: `url(/H1.jpg)`,
+          backgroundImage: `url(/22.png)`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center -20%',
+          backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
         }}
       >
@@ -125,7 +125,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/H2.jpg"
+                      src="/H1.jpg"
                       alt="Preise"
                       className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />

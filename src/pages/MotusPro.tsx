@@ -160,74 +160,74 @@ const MotusPro = () => {
               </p>
             </div>
 
-            {/* Device with Features Around It */}
-            <div className="relative max-w-7xl mx-auto">
-              <div className="grid grid-cols-12 gap-8 items-center">
-
-                {/* LEFT SIDE - 3 Feature Cards */}
-                <div className="col-span-12 lg:col-span-3 space-y-6 flex flex-col">
-                  {keyFeatures.slice(0, 3).map((feature, index) => (
-                    <Card
-                      key={index}
-                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-green-500/30 animate-slide-up h-[160px]"
-                      style={{animationDelay: `${index * 300}ms`}}
-                    >
-                      <CardContent className="p-4 h-full flex flex-col justify-center">
-                        <div className="flex items-start gap-3 h-full">
-                          <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                            <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
-                          </div>
-                          <div className="flex-1 flex flex-col justify-center">
-                            <h3 className="text-base font-bold text-primary mb-2 group-hover:text-green-600 transition-colors leading-tight">{feature.title}</h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                          </div>
+            {/* Cards Around Device Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* LEFT SIDE - First 3 cards */}
+              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(25%)'}}>
+                {keyFeatures.slice(0, 3).map((feature, index) => (
+                  <Card
+                    key={index}
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-green-50/50 backdrop-blur-sm border-2 border-green-100 hover:border-green-300 animate-slide-up"
+                    style={{animationDelay: `${index * 200}ms`}}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* CENTER - Device Image */}
-                <div className="col-span-12 lg:col-span-6 text-center">
-                  <div className="relative inline-block animate-slide-up delay-300">
-                    <img
-                      src="/deka1.png"
-                      alt="Motus PRO - Das ultimative Haarentfernungsgerät"
-                      className="w-full max-w-lg mx-auto object-contain drop-shadow-2xl"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-green-500/20 to-transparent rounded-full blur-3xl"></div>
-
-                    {/* Floating sparkle effects around device */}
-                    <div className="absolute top-6 right-6 w-2 h-2 bg-green-400 rounded-full animate-pulse opacity-60"></div>
-                    <div className="absolute bottom-8 left-8 w-1 h-1 bg-emerald-500 rounded-full animate-bounce delay-1000 opacity-40"></div>
-                    <div className="absolute top-1/3 left-6 w-1 h-1 bg-green-300 rounded-full animate-ping delay-500 opacity-50"></div>
-                    <div className="absolute bottom-1/3 right-8 w-1 h-1 bg-emerald-600 rounded-full animate-pulse delay-700 opacity-60"></div>
-                  </div>
-                </div>
-
-                {/* RIGHT SIDE - 3 Feature Cards (moved 10% closer to center) */}
-                <div className="col-span-12 lg:col-span-3 space-y-6 lg:pl-2 flex flex-col">
-                  {keyFeatures.slice(3, 6).map((feature, index) => (
-                    <Card
-                      key={index + 3}
-                      className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-white/90 backdrop-blur-sm border-2 border-transparent hover:border-green-500/30 animate-slide-up h-[160px]"
-                      style={{animationDelay: `${(index + 3) * 300}ms`}}
-                    >
-                      <CardContent className="p-4 h-full flex flex-col justify-center">
-                        <div className="flex items-start gap-3 h-full">
-                          <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                            <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
-                          </div>
-                          <div className="flex-1 flex flex-col justify-center">
-                            <h3 className="text-base font-bold text-primary mb-2 group-hover:text-green-600 transition-colors leading-tight">{feature.title}</h3>
-                            <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
-                          </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-green-600 transition-colors">{feature.title}</h3>
+                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                      </div>
+                      {/* Animated border bottom */}
+                      <div className="mt-3 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
 
+              {/* CENTER - Device Image */}
+              <div className="lg:col-span-6 text-center">
+                <div className="relative inline-block animate-slide-up delay-300">
+                  <img
+                    src="/deka1.png"
+                    alt="Motus PRO - Das ultimative Haarentfernungsgerät"
+                    className="w-full max-w-sm mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                    style={{transform: 'scale(0.7)'}}
+                  />
+
+                  {/* Floating tech particles */}
+                  <div className="absolute top-10 right-10 w-3 h-3 bg-green-400 rounded-full animate-pulse opacity-70"></div>
+                  <div className="absolute bottom-12 left-12 w-2 h-2 bg-emerald-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
+                  <div className="absolute top-1/3 left-8 w-1 h-1 bg-green-300 rounded-full animate-ping delay-500 opacity-80"></div>
+                  <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-emerald-600 rounded-full animate-pulse delay-700 opacity-75"></div>
+                </div>
+              </div>
+
+              {/* RIGHT SIDE - Remaining 3 cards */}
+              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
+                {keyFeatures.slice(3, 6).map((feature, index) => (
+                  <Card
+                    key={index + 3}
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-green-50/50 backdrop-blur-sm border-2 border-green-100 hover:border-green-300 animate-slide-up"
+                    style={{animationDelay: `${(index + 3) * 200}ms`}}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-green-600 transition-colors">{feature.title}</h3>
+                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                        </div>
+                      </div>
+                      {/* Animated border bottom */}
+                      <div className="mt-3 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
 
@@ -239,7 +239,7 @@ const MotusPro = () => {
                   alt="Motus PRO Handstück"
                   className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
                   style={{
-                    transform: 'scale(0.85)',
+                    transform: 'scale(1.0)',
                     objectPosition: 'center'
                   }}
                 />
