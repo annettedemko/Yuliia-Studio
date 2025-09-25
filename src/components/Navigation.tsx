@@ -61,6 +61,7 @@ const Navigation = () => {
             />
             {/* DEKA Logo - на всех DEKA страницах */}
             {(location.pathname === '/deka' ||
+              location.pathname === '/DEKA' ||
               location.pathname === '/deka-day' ||
               location.pathname === '/kopie-deka-day-anna' ||
               location.pathname === '/deka-geraeteverkauf' ||
