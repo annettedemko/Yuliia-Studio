@@ -66,7 +66,7 @@ const About = () => {
             <div className="flex gap-4">
               <div className="flex-1">
                 <img
-                  src="/IMG1.JPG"
+                  src="/IMG1.jpg"
                   alt="Yuliia Cheporska - Kosmetikerin"
                   className="w-full h-96 object-cover rounded-lg shadow-elegant"
                 />

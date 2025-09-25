@@ -23,8 +23,19 @@ export interface AdminUser {
   lastLogin?: string;
 }
 
+export interface Event {
+  id: string;
+  title: string;
+  date: string; // YYYY-MM-DD format
+  time?: string;
+  location: string;
+  address: string;
+  description?: string;
+}
+
 export interface ContentData {
   prices: ServicePrice[];
   subscriptions: SubscriptionPackage[];
+  events: Event[];
   lastUpdated: string;
 }

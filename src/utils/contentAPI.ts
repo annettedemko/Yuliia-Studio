@@ -1,4 +1,4 @@
-import { ContentData, ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { ContentData, ServicePrice, SubscriptionPackage, Event } from '@/types/admin';
 
 const CONTENT_KEY = 'yuliia_content_data';
 
@@ -108,6 +108,44 @@ const defaultContentData: ContentData = {
       popular: false
     }
   ],
+  events: [
+    {
+      id: '1',
+      title: 'DEKA Beauty Congress',
+      date: '2025-10-15',
+      time: '14:00-18:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
+    },
+    {
+      id: '2',
+      title: 'DEKA Beauty Day',
+      date: '2025-11-20',
+      time: '10:00-16:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Intensive Schulungen und Hands-On Erfahrungen mit DEKA Geräten'
+    },
+    {
+      id: '3',
+      title: 'Exclusive DEKA Workshop',
+      date: '2025-12-10',
+      time: '13:00-17:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Premium Workshop für Geschäftsentwicklung und Geräteschulung'
+    },
+    {
+      id: '4',
+      title: 'DEKA New Year Event',
+      date: '2026-01-25',
+      time: '15:00-19:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Neujahrs-Event mit Präsentation der DEKA Neuheiten 2026'
+    }
+  ],
   lastUpdated: new Date().toISOString()
 };
 
@@ -119,8 +157,31 @@ export const initializeContentData = () => {
 };
 
 export const getContentData = (): ContentData => {
-  const data = localStorage.getItem(CONTENT_KEY);
-  return data ? JSON.parse(data) : defaultContentData;
+  try {
+    const data = localStorage.getItem(CONTENT_KEY);
+    if (!data) {
+      return defaultContentData;
+    }
+    const parsed = JSON.parse(data);
+    // Ensure events array exists
+    if (!parsed.events || !Array.isArray(parsed.events)) {
+      parsed.events = [];
+    }
+    // Ensure other required properties exist
+    if (!parsed.prices || !Array.isArray(parsed.prices)) {
+      parsed.prices = defaultContentData.prices;
+    }
+    if (!parsed.subscriptions || !Array.isArray(parsed.subscriptions)) {
+      parsed.subscriptions = defaultContentData.subscriptions;
+    }
+    if (!parsed.lastUpdated) {
+      parsed.lastUpdated = new Date().toISOString();
+    }
+    return parsed;
+  } catch (error) {
+    console.error('Error parsing content data:', error);
+    return defaultContentData;
+  }
 };
 
 export const updateContentData = (data: ContentData) => {
@@ -190,4 +251,62 @@ export const deleteSubscription = (id: string): boolean => {
   data.subscriptions.splice(index, 1);
   updateContentData(data);
   return true;
+};
+
+// CRUD operations for events
+export const createEvent = (event: Omit<Event, 'id'>): Event => {
+  const data = getContentData();
+  const newEvent: Event = {
+    ...event,
+    id: Date.now().toString()
+  };
+  data.events.push(newEvent);
+  updateContentData(data);
+  return newEvent;
+};
+
+export const updateEvent = (id: string, updates: Partial<Event>): Event | null => {
+  const data = getContentData();
+  const index = data.events.findIndex(e => e.id === id);
+  if (index === -1) return null;
+
+  data.events[index] = { ...data.events[index], ...updates };
+  updateContentData(data);
+  return data.events[index];
+};
+
+export const deleteEvent = (id: string): boolean => {
+  const data = getContentData();
+  const index = data.events.findIndex(e => e.id === id);
+  if (index === -1) return false;
+
+  data.events.splice(index, 1);
+  updateContentData(data);
+  return true;
+};
+
+// Get upcoming events (not past)
+export const getUpcomingEvents = (): Event[] => {
+  const data = getContentData();
+  if (!data || !data.events || !Array.isArray(data.events)) {
+    return [];
+  }
+  const today = new Date().toISOString().split('T')[0];
+  return data.events.filter(event => event.date >= today);
+};
+
+// Clean up past events automatically
+export const cleanupPastEvents = (): void => {
+  const data = getContentData();
+  if (!data || !data.events || !Array.isArray(data.events)) {
+    return;
+  }
+  const today = new Date().toISOString().split('T')[0];
+  const originalCount = data.events.length;
+
+  data.events = data.events.filter(event => event.date >= today);
+
+  if (data.events.length !== originalCount) {
+    updateContentData(data);
+  }
 };

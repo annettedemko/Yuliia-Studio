@@ -19,7 +19,8 @@ import {
   X,
   DollarSign,
   Package,
-  Clock
+  Clock,
+  Calendar
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,16 +33,20 @@ import {
   updateSubscription,
   createSubscription,
   deleteSubscription,
+  createEvent,
+  updateEvent,
+  deleteEvent,
   initializeContentData
 } from '@/utils/contentAPI';
-import { ContentData, ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { ContentData, ServicePrice, SubscriptionPackage, Event } from '@/types/admin';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [contentData, setContentData] = useState<ContentData | null>(null);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
-  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | null>(null);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
+  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
 
   useEffect(() => {
@@ -101,6 +106,24 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleSaveEvent = (event: Event) => {
+    if (editingEvent) {
+      updateEvent(event.id, event);
+    } else {
+      createEvent(event);
+    }
+    setEditingEvent(null);
+    setIsCreating(null);
+    loadData();
+  };
+
+  const handleDeleteEvent = (id: string) => {
+    if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
+      deleteEvent(id);
+      loadData();
+    }
+  };
+
   const categoryNames = {
     alexandrit: 'Alexandrit Laser',
     dioden: 'Dioden Laser',
@@ -141,7 +164,7 @@ const AdminDashboard = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardContent className="flex items-center p-6">
               <div className="flex items-center">
@@ -150,7 +173,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm text-muted-foreground">Preise</p>
-                  <p className="text-2xl font-bold">{contentData.prices.length}</p>
+                  <p className="text-2xl font-bold">{contentData.prices?.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -164,7 +187,21 @@ const AdminDashboard = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm text-muted-foreground">Abonnements</p>
-                  <p className="text-2xl font-bold">{contentData.subscriptions.length}</p>
+                  <p className="text-2xl font-bold">{contentData.subscriptions?.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="flex items-center p-6">
+              <div className="flex items-center">
+                <div className="bg-blue-500/20 p-3 rounded-full">
+                  <Calendar className="w-6 h-6 text-blue-500" />
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm text-muted-foreground">Veranstaltungen</p>
+                  <p className="text-2xl font-bold">{contentData.events?.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -179,7 +216,7 @@ const AdminDashboard = () => {
                 <div className="ml-4">
                   <p className="text-sm text-muted-foreground">Zuletzt aktualisiert</p>
                   <p className="text-sm">
-                    {new Date(contentData.lastUpdated).toLocaleDateString('de-DE')}
+                    {contentData.lastUpdated ? new Date(contentData.lastUpdated).toLocaleDateString('de-DE') : 'Nie'}
                   </p>
                 </div>
               </div>
@@ -214,7 +251,7 @@ const AdminDashboard = () => {
                 <div key={category} className="border rounded-lg p-4">
                   <h3 className="font-semibold mb-3">{name}</h3>
                   <div className="grid gap-2">
-                    {contentData.prices
+                    {(contentData.prices || [])
                       .filter(p => p.category === category)
                       .map(price => (
                         <div key={price.id} className="flex items-center justify-between bg-gray-50 p-3 rounded">
@@ -285,7 +322,7 @@ const AdminDashboard = () => {
             )}
 
             <div className="grid gap-4">
-              {contentData.subscriptions.map(subscription => (
+              {(contentData.subscriptions || []).map(subscription => (
                 <div key={subscription.id} className="border rounded-lg p-4">
                   {editingSubscription?.id === subscription.id ? (
                     <SubscriptionEditor
@@ -336,6 +373,86 @@ const AdminDashboard = () => {
                             <li key={index}>{feature}</li>
                           ))}
                         </ul>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Events Management */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Veranstaltungen verwalten</CardTitle>
+              <Button
+                onClick={() => setIsCreating('event')}
+                disabled={isCreating === 'event'}
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Neue Veranstaltung
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isCreating === 'event' && (
+              <div className="mb-4">
+                <EventEditor
+                  onSave={handleSaveEvent}
+                  onCancel={() => setIsCreating(null)}
+                />
+              </div>
+            )}
+
+            <div className="space-y-4">
+              {(contentData.events || []).map((event) => (
+                <div key={event.id} className="border p-4 rounded-lg">
+                  {editingEvent?.id === event.id ? (
+                    <EventEditor
+                      event={editingEvent}
+                      onSave={handleSaveEvent}
+                      onCancel={() => setEditingEvent(null)}
+                    />
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h4 className="font-semibold text-lg">{event.title}</h4>
+                          <p className="text-muted-foreground">
+                            {new Date(event.date).toLocaleDateString('de-DE', {
+                              day: '2-digit',
+                              month: '2-digit',
+                              year: 'numeric'
+                            })}
+                            {event.time && ` • ${event.time}`}
+                          </p>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            {event.location} - {event.address}
+                          </p>
+                          {event.description && (
+                            <p className="text-sm text-muted-foreground mt-2">{event.description}</p>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEditingEvent(event)}
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteEvent(event.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
                       </div>
                     </>
                   )}
@@ -536,6 +653,110 @@ const SubscriptionEditor = ({
           onChange={(e) => setFeaturesText(e.target.value)}
           rows={4}
           required
+        />
+      </div>
+
+      <div className="flex gap-2">
+        <Button type="submit" size="sm">
+          <Save className="w-4 h-4 mr-2" />
+          Speichern
+        </Button>
+        <Button type="button" variant="outline" size="sm" onClick={onCancel}>
+          <X className="w-4 h-4 mr-2" />
+          Abbrechen
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+// Event Editor Component
+const EventEditor = ({
+  event,
+  onSave,
+  onCancel
+}: {
+  event?: Event;
+  onSave: (event: Event) => void;
+  onCancel: () => void;
+}) => {
+  const [formData, setFormData] = useState<Event>(
+    event || {
+      id: '',
+      title: '',
+      date: '',
+      time: '',
+      location: '',
+      address: '',
+      description: ''
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSave(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="title">Titel</Label>
+          <Input
+            id="title"
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="date">Datum</Label>
+          <Input
+            id="date"
+            type="date"
+            value={formData.date}
+            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="time">Zeit (optional)</Label>
+          <Input
+            id="time"
+            value={formData.time || ''}
+            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+            placeholder="z.B. 18-19.10"
+          />
+        </div>
+        <div>
+          <Label htmlFor="location">Ort</Label>
+          <Input
+            id="location"
+            value={formData.location}
+            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <Label htmlFor="address">Adresse</Label>
+        <Input
+          id="address"
+          value={formData.address}
+          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+          required
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="description">Beschreibung (optional)</Label>
+        <Textarea
+          id="description"
+          value={formData.description || ''}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          rows={3}
+          placeholder="Zusätzliche Informationen zur Veranstaltung"
         />
       </div>
 

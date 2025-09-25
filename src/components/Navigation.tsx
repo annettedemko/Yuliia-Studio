@@ -55,12 +55,15 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src="/logo2.JPG"
+              src="/logo2.jpg"
               alt="Yuliia Cheporska Studio"
               className="h-14 w-auto"
             />
             {/* DEKA Logo - на всех DEKA страницах */}
-            {(location.pathname === '/deka-geraeteverkauf' ||
+            {(location.pathname === '/deka' ||
+              location.pathname === '/deka-day' ||
+              location.pathname === '/kopie-deka-day-anna' ||
+              location.pathname === '/deka-geraeteverkauf' ||
               location.pathname === '/physiq360' ||
               location.pathname === '/redtouch-pro' ||
               location.pathname === '/motus-ax' ||

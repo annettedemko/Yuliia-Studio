@@ -23,6 +23,8 @@ import Pricing from "./pages/Pricing";
 import Deka from "./pages/Deka";
 import DekaDay from "./pages/DekaDay";
 import KopieDekaDayAnna from "./pages/KopieDekaDayAnna";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
@@ -63,8 +65,12 @@ const App = () => (
           <Route path="/again-cos" element={<AgainCos />} />
           <Route path="/preise" element={<Pricing />} />
           <Route path="/deka" element={<Deka />} />
+          <Route path="/DEKA" element={<Deka />} />
           <Route path="/deka-day" element={<DekaDay />} />
           <Route path="/kopie-deka-day-anna" element={<KopieDekaDayAnna />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
           <Route path="*" element={<NotFound />} />
