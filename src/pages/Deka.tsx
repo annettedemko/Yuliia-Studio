@@ -3,10 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getUpcomingEvents, cleanupPastEvents, initializeContentData } from '@/utils/contentAPI';
-import { Event } from '@/types/admin';
 
 const Deka = () => {
   const [formData, setFormData] = useState({
@@ -17,17 +15,45 @@ const Deka = () => {
     selectedEvent: ''
   });
 
-  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
-
-  useEffect(() => {
-    // Clean up past events and load upcoming ones
-    console.log('Deka page - loading events');
-    initializeContentData();
-    cleanupPastEvents();
-    const events = getUpcomingEvents();
-    console.log('Loaded events:', events);
-    setUpcomingEvents(events);
-  }, []);
+  // Static events data
+  const upcomingEvents = [
+    {
+      id: '1',
+      title: 'DEKA Beauty Day',
+      date: '2025-10-05',
+      time: '18:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
+    },
+    {
+      id: '2',
+      title: 'BEAUTY FORUM Festival 2025',
+      date: '2025-10-18',
+      time: '10:00–17:00',
+      location: 'Messe München',
+      address: 'Am Messesee 2, 81829 München',
+      description: 'Besuchen Sie den DEKA-Stand – innovative Lösungen für Haarentfernung, Hautverjüngung und Körperformung: Motus AX, Again COS, Motus PRO, PHYSIQ 360 und RedTouch PRO'
+    },
+    {
+      id: '3',
+      title: 'DEKA Beauty Day',
+      date: '2025-11-09',
+      time: '18:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
+    },
+    {
+      id: '4',
+      title: 'DEKA Beauty Day',
+      date: '2025-12-17',
+      time: '18:00',
+      location: 'Yuliia Cheporska Studio',
+      address: 'Elsässer Straße 33, 81667 München',
+      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
+    }
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -78,22 +104,22 @@ const Deka = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
         {/* Background with DEKA Devices */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-16">
           <div className="grid grid-cols-3 md:grid-cols-5 gap-4 h-full w-full p-8 items-center justify-items-center">
             <div className="animate-float-1">
-              <img src="/deka1.png" alt="Motus PRO" className="w-24 md:w-32 h-auto opacity-60 hover:opacity-80 transition-opacity duration-500" />
+              <img src="/deka1.png" alt="Motus PRO" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
             <div className="animate-float-2">
-              <img src="/deka2.png" alt="RedTouch PRO" className="w-24 md:w-32 h-auto opacity-60 hover:opacity-80 transition-opacity duration-500" />
+              <img src="/deka2.png" alt="RedTouch PRO" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
             <div className="animate-float-3 col-span-1 md:col-span-1">
-              <img src="/deka3.png" alt="Motus AX" className="w-28 md:w-36 h-auto opacity-70 hover:opacity-90 transition-opacity duration-500" />
+              <img src="/deka3.png" alt="Motus AX" className="w-36 md:w-48 h-auto opacity-90 hover:opacity-90 transition-opacity duration-500" />
             </div>
             <div className="animate-float-4">
-              <img src="/deka4.png" alt="PHYSIQ 360" className="w-24 md:w-32 h-auto opacity-60 hover:opacity-80 transition-opacity duration-500" />
+              <img src="/deka4.png" alt="PHYSIQ 360" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
             <div className="animate-float-5">
-              <img src="/deka5.png" alt="Again cos" className="w-24 md:w-32 h-auto opacity-60 hover:opacity-80 transition-opacity duration-500" />
+              <img src="/deka5.png" alt="Again cos" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
           </div>
         </div>
@@ -243,6 +269,25 @@ const Deka = () => {
             </p>
           </div>
 
+          {/* Photo Gallery */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+            {[
+              { src: '/IMG1.jpg', alt: 'DEKA Beauty Event 1' },
+              { src: '/IMG3.jpg', alt: 'DEKA Beauty Event 2' },
+              { src: '/IMG4.jpg', alt: 'DEKA Beauty Event 3' },
+              { src: '/sert.jpg', alt: 'DEKA Zertifikat' }
+            ].map((image, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            ))}
+          </div>
+
           {upcomingEvents.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {upcomingEvents.map((event, index) => (
@@ -269,7 +314,14 @@ const Deka = () => {
                           <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
                           <div>
                             <p className="font-medium">{event.location}</p>
-                            <p className="text-sm">{event.address}</p>
+                            <a
+                              href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm hover:text-rose-gold transition-colors underline"
+                            >
+                              {event.address}
+                            </a>
                           </div>
                         </div>
                         {event.description && (

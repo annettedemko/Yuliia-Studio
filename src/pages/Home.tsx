@@ -20,9 +20,9 @@ const Home = () => {
       <section
         className="relative h-[60vh] flex items-center justify-center text-white overflow-hidden"
         style={{
-          backgroundImage: `url(/22.png)`,
+          backgroundImage: `url(/H1.jpg)`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center -20%',
           backgroundAttachment: 'fixed',
         }}
       >
@@ -57,7 +57,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">Unsere Leistungen</h2>

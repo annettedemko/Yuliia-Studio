@@ -132,7 +132,7 @@ const RedTouchPro = () => {
                   alt="RedTouch PRO"
                   className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
                   style={{
-                    transform: 'scale(0.85)',
+                    transform: 'scale(1.0)',
                     objectPosition: 'center'
                   }}
                 />

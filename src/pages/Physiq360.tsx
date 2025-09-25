@@ -61,7 +61,7 @@ const Physiq360 = () => {
                   alt="PHYSIQ 360"
                   className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
                   style={{
-                    transform: 'scale(0.75)',
+                    transform: 'scale(1.0)',
                     objectPosition: 'center'
                   }}
                 />

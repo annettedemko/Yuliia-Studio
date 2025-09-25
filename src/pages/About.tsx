@@ -71,7 +71,7 @@ const About = () => {
                   className="w-full h-96 object-cover rounded-lg shadow-elegant"
                 />
               </div>
-              <div className="flex-1 mt-8">
+              <div className="flex-1 mt-2">
                 <img
                   src="/10.jpg"
                   alt="Studio Atmosphäre"
@@ -172,9 +172,9 @@ const About = () => {
                 { src: '/uns2.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 2' },
                 { src: '/uns3.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 3' },
                 { src: '/uns4.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 4' },
-                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 5' }
+                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 5', className: 'mt-4' }
               ].map((image, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+                <div key={index} className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ${image.className || ''}`}>
                   <img
                     src={image.src}
                     alt={image.alt}
