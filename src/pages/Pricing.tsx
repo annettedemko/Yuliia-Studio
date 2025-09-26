@@ -2,17 +2,32 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Check, Zap, Sparkles, Heart, Hand, Instagram } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { getContentData, initializeContentData } from '@/utils/contentAPI';
-import { ContentData } from '@/types/admin';
+import { pricesService, subscriptionsService } from '@/services/contentService';
+import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 
 const Pricing = () => {
-  const [contentData, setContentData] = useState<ContentData | null>(null);
+  const [prices, setPrices] = useState<ServicePrice[]>([]);
+  const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Initialize and load content data
-    initializeContentData();
-    const data = getContentData();
-    setContentData(data);
+    const loadData = async () => {
+      try {
+        const [pricesData, subscriptionsData] = await Promise.all([
+          pricesService.getAll(),
+          subscriptionsService.getAll()
+        ]);
+
+        setPrices(pricesData);
+        setSubscriptions(subscriptionsData);
+      } catch (error) {
+        console.error('Error loading pricing data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
 
     // Handle anchor scrolling when component loads
     const hash = window.location.hash;
@@ -26,17 +41,17 @@ const Pricing = () => {
     }
   }, []);
 
-  if (!contentData) {
+  if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Laden...</div>;
   }
 
   // Filter prices by category
-  const alexandritPrices = contentData.prices.filter(p => p.category === 'alexandrit');
-  const diodenPrices = contentData.prices.filter(p => p.category === 'dioden');
-  const icoonePrices = contentData.prices.filter(p => p.category === 'icoone');
-  const manicurePrices = contentData.prices.filter(p => p.category === 'manicure');
-  const pedicurePrices = contentData.prices.filter(p => p.category === 'pedicure');
-  const subscriptionPackages = contentData.subscriptions;
+  const alexandritPrices = prices.filter(p => p.category === 'alexandrit');
+  const diodenPrices = prices.filter(p => p.category === 'dioden');
+  const icoonePrices = prices.filter(p => p.category === 'icoone');
+  const manicurePrices = prices.filter(p => p.category === 'manicure');
+  const pedicurePrices = prices.filter(p => p.category === 'pedicure');
+  const subscriptionPackages = subscriptions;
 
   const PriceCard = ({ title, prices, icon: Icon, color = "rose-gold" }) => (
     <Card className="hover:shadow-card transition-all duration-300">

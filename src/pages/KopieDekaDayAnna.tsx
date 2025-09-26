@@ -2,9 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin, AlertCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { eventsService } from '@/services/contentService';
 
 const KopieDekaDayAnna = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +17,25 @@ const KopieDekaDayAnna = () => {
     selectedEvent: ''
   });
 
-  // Static events data
-  const upcomingEvents = [
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const { submitForm, isSubmitting, submitSuccess, submitError } = useFormSubmission('kopie-deka-day-anna');
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const events = await eventsService.getUpcoming();
+        setUpcomingEvents(events);
+      } catch (error) {
+        console.error('Error loading events:', error);
+        setUpcomingEvents([]);
+      }
+    };
+
+    loadEvents();
+  }, []);
+
+  // Fallback events data if Supabase is not available
+  const fallbackEvents = [
     {
       id: '1',
       title: 'DEKA Beauty Day',
@@ -63,10 +82,21 @@ const KopieDekaDayAnna = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement Google Sheets integration
-    console.log('Form submitted:', formData);
+
+    await submitForm(formData);
+
+    if (!submitError) {
+      // Reset form on success
+      setFormData({
+        vorname: '',
+        name: '',
+        email: '',
+        telefon: '',
+        selectedEvent: ''
+      });
+    }
   };
 
   const benefits = [
@@ -458,11 +488,30 @@ const KopieDekaDayAnna = () => {
                     </div>
                   </div>
 
+                  {submitSuccess && (
+                    <div className="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg mb-4">
+                      <div className="flex items-center">
+                        <Check className="w-5 h-5 mr-2" />
+                        <span>Ihre Anmeldung wurde erfolgreich versendet!</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg mb-4">
+                      <div className="flex items-center">
+                        <AlertCircle className="w-5 h-5 mr-2" />
+                        <span>Fehler: {submitError}</span>
+                      </div>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Jetzt Registrieren
+                    {isSubmitting ? 'Wird gesendet...' : 'Jetzt Registrieren'}
                   </Button>
                 </form>
               </CardContent>

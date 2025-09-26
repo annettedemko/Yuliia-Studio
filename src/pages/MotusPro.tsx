@@ -143,7 +143,7 @@ const MotusPro = () => {
       </section>
 
       {/* Key Features Section - RedTouch PRO Style with Green/Emerald Colors */}
-      <section id="features" className="py-20 bg-gradient-to-br from-green-50 via-background to-green-50/30 relative overflow-hidden">
+      <section id="features" className="py-20 bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-100/50 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-green-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl animate-float"></div>
@@ -163,7 +163,7 @@ const MotusPro = () => {
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(25%)'}}>
+              <div className="lg:col-span-3 space-y-6">
                 {keyFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -206,7 +206,7 @@ const MotusPro = () => {
               </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
+              <div className="lg:col-span-3 space-y-6">
                 {keyFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
@@ -237,34 +237,40 @@ const MotusPro = () => {
                 <img
                   src="/deka1.1.jpeg"
                   alt="Motus PRO Handstück"
-                  className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
+                  className="w-full h-64 object-cover rounded-lg shadow-lg"
                   style={{
                     transform: 'scale(1.0)',
                     objectPosition: 'center'
                   }}
                 />
-                <h4 className="font-semibold text-primary mb-2">Moveo-Handstück</h4>
-                <p className="text-sm text-muted-foreground">Innovative Saphir-Spitze für präzise Energieübertragung</p>
+                <div className="mt-4">
+                  <h4 className="text-lg font-bold text-primary mb-3">Moveo-Handstück</h4>
+                  <p className="text-sm text-muted-foreground">Innovative Saphir-Spitze für präzise Energieübertragung</p>
+                </div>
               </div>
 
               <div className="text-center">
                 <img
                   src="/deka1.2.jpeg"
                   alt="Motus PRO Display"
-                  className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
+                  className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
-                <h4 className="font-semibold text-primary mb-2">15,6″ Touchscreen</h4>
-                <p className="text-sm text-muted-foreground">180° schwenkbares Display mit intuitiver Benutzeroberfläche</p>
+                <div className="mt-4">
+                  <h4 className="text-lg font-bold text-primary mb-3">15,6″ Touchscreen</h4>
+                  <p className="text-sm text-muted-foreground">180° schwenkbares Display mit intuitiver Benutzeroberfläche</p>
+                </div>
               </div>
 
               <div className="text-center">
                 <img
                   src="/deka1.3.jpeg"
                   alt="Motus PRO System"
-                  className="w-full h-64 object-cover rounded-lg shadow-lg mb-4"
+                  className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
-                <h4 className="font-semibold text-primary mb-2">Kompaktes Design</h4>
-                <p className="text-sm text-muted-foreground">Modernes System für das professionelle Beauty-Studio</p>
+                <div className="mt-4">
+                  <h4 className="text-lg font-bold text-primary mb-3">Kompaktes Design</h4>
+                  <p className="text-sm text-muted-foreground">Modernes System für das professionelle Beauty-Studio</p>
+                </div>
               </div>
             </div>
           </div>
@@ -272,28 +278,34 @@ const MotusPro = () => {
       </section>
 
       {/* Technical Features Section */}
-      <section className="py-16 bg-accent/20">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-400/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl animate-bounce delay-1000"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-6">Technische Features</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
-              <p className="text-xl text-muted-foreground">
+              <h2 className="text-4xl font-bold text-white mb-6">Technische Features</h2>
+              <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-blue-300 to-cyan-400 mx-auto animate-gradient mb-6"></div>
+              <p className="text-xl text-blue-100">
                 Fünf Schlüsseltechnologien für optimale Behandlungsergebnisse
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {technicalFeatures.map((feature, index) => (
-                <Card key={index} className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-slide-up" style={{animationDelay: `${index * 150}ms`}}>
+                <Card key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:-translate-y-2 hover:bg-white/15 animate-slide-up" style={{animationDelay: `${index * 150}ms`}}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                      <div className="bg-gradient-to-br from-cyan-400 to-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold shadow-lg">
                         {feature.number}
                       </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-primary mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                        <p className="text-blue-100 leading-relaxed">{feature.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -305,8 +317,14 @@ const MotusPro = () => {
       </section>
 
       {/* Moveo Technology Section */}
-      <section className="py-16 bg-gradient-to-r from-slate-900 to-blue-900 text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-10 right-10 w-48 h-48 bg-amber-400/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+          <div className="absolute bottom-10 left-10 w-64 h-64 bg-yellow-400/20 rounded-full blur-3xl animate-float delay-1000"></div>
+          <div className="absolute top-1/3 right-1/3 w-36 h-36 bg-orange-400/20 rounded-full blur-2xl animate-bounce delay-700"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
               <h2 className="text-4xl font-bold mb-6">Die Moveo-Technologie</h2>
@@ -350,18 +368,30 @@ const MotusPro = () => {
               </div>
 
               <div className="animate-slide-up delay-300">
-                <div className="relative">
-                  <img
-                    src="/deka1.png"
-                    alt="Motus PRO Moveo-Technologie"
-                    className="w-full object-contain rounded-xl shadow-2xl border-4 border-white/20"
-                  />
-                  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl blur-xl"></div>
-                  <div className="absolute top-4 left-4">
-                    <div className="bg-cyan-500/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <span className="text-white font-semibold text-sm flex items-center">
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        Moveo-Technologie
+                <div className="relative group">
+                  {/* Luxury background effects */}
+                  <div className="absolute -inset-8 bg-gradient-to-r from-gold-400/20 via-amber-300/20 to-gold-400/20 rounded-2xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-200/30 to-yellow-200/30 rounded-xl blur-xl"></div>
+
+                  {/* Premium frame */}
+                  <div className="relative bg-gradient-to-br from-amber-50 via-white to-amber-50 p-4 rounded-xl shadow-2xl border-4 border-gradient-to-r border-amber-300/50">
+                    <img
+                      src="/deka1.png"
+                      alt="Motus PRO Moveo-Technologie"
+                      className="w-full object-contain rounded-lg shadow-xl group-hover:scale-105 transition-transform duration-700"
+                      style={{transform: 'scale(0.47)', margin: 'auto'}}
+                    />
+
+                    {/* Luxury shine effect */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+                  </div>
+
+                  {/* Premium badge - positioned on the image */}
+                  <div className="absolute top-8 left-8 z-20">
+                    <div className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-amber-300/50">
+                      <span className="text-white font-bold text-xs flex items-center">
+                        <Sparkles className="w-3 h-3 mr-1" />
+                        Premium Technologie
                       </span>
                     </div>
                   </div>
@@ -373,8 +403,14 @@ const MotusPro = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-green-800 via-emerald-700 to-teal-800 text-white relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 right-20 w-44 h-44 bg-emerald-400/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-52 h-52 bg-teal-400/30 rounded-full blur-3xl animate-float delay-500"></div>
+          <div className="absolute top-2/3 right-1/3 w-28 h-28 bg-green-400/30 rounded-full blur-2xl animate-bounce delay-300"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
             <h2 className="text-4xl font-bold mb-6">Jetzt Motus PRO erleben</h2>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">

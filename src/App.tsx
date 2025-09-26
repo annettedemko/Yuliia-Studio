@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -23,8 +24,7 @@ import Pricing from "./pages/Pricing";
 import Deka from "./pages/Deka";
 import DekaDay from "./pages/DekaDay";
 import KopieDekaDayAnna from "./pages/KopieDekaDayAnna";
-import AdminLogin from "./pages/AdminLogin";
-import AdminDashboard from "./pages/AdminDashboard";
+import { Admin } from "./pages/Admin";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
@@ -33,7 +33,8 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
       <Helmet>
         <html lang="de" />
         <title>Yuliia Cheporska Studio – iCoone, Alexandrite Laser München, Александритовый Лазер Мюнхен</title>
@@ -68,16 +69,15 @@ const App = () => (
           <Route path="/DEKA" element={<Deka />} />
           <Route path="/deka-day" element={<DekaDay />} />
           <Route path="/kopie-deka-day-anna" element={<KopieDekaDayAnna />} />
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </TooltipProvider>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 

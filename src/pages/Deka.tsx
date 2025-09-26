@@ -2,9 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin, AlertCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useFormSubmission } from '@/hooks/useFormSubmission';
+import { eventsService } from '@/services/contentService';
 
 const Deka = () => {
   const [formData, setFormData] = useState({
@@ -15,45 +17,22 @@ const Deka = () => {
     selectedEvent: ''
   });
 
-  // Static events data
-  const upcomingEvents = [
-    {
-      id: '1',
-      title: 'DEKA Beauty Day',
-      date: '2025-10-05',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    },
-    {
-      id: '2',
-      title: 'BEAUTY FORUM Festival 2025',
-      date: '2025-10-18',
-      time: '10:00–17:00',
-      location: 'Messe München',
-      address: 'Am Messesee 2, 81829 München',
-      description: 'Besuchen Sie den DEKA-Stand – innovative Lösungen für Haarentfernung, Hautverjüngung und Körperformung: Motus AX, Again COS, Motus PRO, PHYSIQ 360 und RedTouch PRO'
-    },
-    {
-      id: '3',
-      title: 'DEKA Beauty Day',
-      date: '2025-11-09',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    },
-    {
-      id: '4',
-      title: 'DEKA Beauty Day',
-      date: '2025-12-17',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    }
-  ];
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const { submitForm, isSubmitting, submitSuccess, submitError } = useFormSubmission('deka');
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const events = await eventsService.getUpcoming();
+        setUpcomingEvents(events);
+      } catch (error) {
+        console.error('Error loading events:', error);
+        setUpcomingEvents([]);
+      }
+    };
+
+    loadEvents();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -63,10 +42,21 @@ const Deka = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement Google Sheets integration
-    console.log('Form submitted:', formData);
+
+    await submitForm(formData);
+
+    if (!submitError) {
+      // Reset form on success
+      setFormData({
+        vorname: '',
+        name: '',
+        email: '',
+        telefon: '',
+        selectedEvent: ''
+      });
+    }
   };
 
   const benefits = [
@@ -458,11 +448,30 @@ const Deka = () => {
                     </div>
                   </div>
 
+                  {submitSuccess && (
+                    <div className="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg mb-4">
+                      <div className="flex items-center">
+                        <Check className="w-5 h-5 mr-2" />
+                        <span>Ihre Anmeldung wurde erfolgreich versendet!</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg mb-4">
+                      <div className="flex items-center">
+                        <AlertCircle className="w-5 h-5 mr-2" />
+                        <span>Fehler: {submitError}</span>
+                      </div>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Jetzt Registrieren
+                    {isSubmitting ? 'Wird gesendet...' : 'Jetzt Registrieren'}
                   </Button>
                 </form>
               </CardContent>

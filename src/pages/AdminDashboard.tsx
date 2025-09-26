@@ -33,19 +33,25 @@ import {
   updateSubscription,
   createSubscription,
   deleteSubscription,
-  createEvent,
-  updateEvent,
-  deleteEvent,
   initializeContentData
 } from '@/utils/contentAPI';
+import {
+  getEvents,
+  createEvent as createSupabaseEvent,
+  updateEvent as updateSupabaseEvent,
+  deleteEvent as deleteSupabaseEvent,
+  migrateCSVEventsToSupabase
+} from '@/utils/supabaseEventsAPI';
+import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
 import { ContentData, ServicePrice, SubscriptionPackage, Event } from '@/types/admin';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [contentData, setContentData] = useState<ContentData | null>(null);
+  const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
-  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
+  const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
   const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
 
@@ -60,9 +66,13 @@ const AdminDashboard = () => {
     loadData();
   }, [navigate]);
 
-  const loadData = () => {
+  const loadData = async () => {
     const data = getContentData();
     setContentData(data);
+
+    // Load events from Supabase
+    const events = await getEvents();
+    setSupabaseEvents(events);
   };
 
   const handleLogout = () => {
@@ -106,20 +116,27 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleSaveEvent = (event: Event) => {
-    if (editingEvent) {
-      updateEvent(event.id, event);
+  const handleSaveEvent = async (event: SupabaseEvent) => {
+    if (editingEvent && editingEvent.id) {
+      await updateSupabaseEvent(editingEvent.id, event);
     } else {
-      createEvent(event);
+      await createSupabaseEvent(event);
     }
     setEditingEvent(null);
     setIsCreating(null);
     loadData();
   };
 
-  const handleDeleteEvent = (id: string) => {
+  const handleDeleteEvent = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
-      deleteEvent(id);
+      await deleteSupabaseEvent(id);
+      loadData();
+    }
+  };
+
+  const handleMigrateCSVEvents = async () => {
+    if (confirm('Möchten Sie die CSV-Events in Supabase migrieren? Dies wird alle vorhandenen Events ersetzen.')) {
+      await migrateCSVEventsToSupabase();
       loadData();
     }
   };
@@ -201,7 +218,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm text-muted-foreground">Veranstaltungen</p>
-                  <p className="text-2xl font-bold">{contentData.events?.length || 0}</p>
+                  <p className="text-2xl font-bold">{supabaseEvents.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -387,15 +404,25 @@ const AdminDashboard = () => {
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle>Veranstaltungen verwalten</CardTitle>
-              <Button
-                onClick={() => setIsCreating('event')}
-                disabled={isCreating === 'event'}
-                size="sm"
-                className="flex items-center gap-2"
-              >
-                <Plus className="w-4 h-4" />
-                Neue Veranstaltung
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  onClick={handleMigrateCSVEvents}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  CSV Migrieren
+                </Button>
+                <Button
+                  onClick={() => setIsCreating('event')}
+                  disabled={isCreating === 'event'}
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <Plus className="w-4 h-4" />
+                  Neue Veranstaltung
+                </Button>
+              </div>
             </div>
           </CardHeader>
           <CardContent>
@@ -409,7 +436,7 @@ const AdminDashboard = () => {
             )}
 
             <div className="space-y-4">
-              {(contentData.events || []).map((event) => (
+              {supabaseEvents.map((event) => (
                 <div key={event.id} className="border p-4 rounded-lg">
                   {editingEvent?.id === event.id ? (
                     <EventEditor
@@ -423,7 +450,7 @@ const AdminDashboard = () => {
                         <div>
                           <h4 className="font-semibold text-lg">{event.title}</h4>
                           <p className="text-muted-foreground">
-                            {new Date(event.date).toLocaleDateString('de-DE', {
+                            {event.date && new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
                               month: '2-digit',
                               year: 'numeric'
@@ -676,13 +703,19 @@ const EventEditor = ({
   onSave,
   onCancel
 }: {
-  event?: Event;
-  onSave: (event: Event) => void;
+  event?: SupabaseEvent;
+  onSave: (event: Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at' | 'is_published'>) => void;
   onCancel: () => void;
 }) => {
-  const [formData, setFormData] = useState<Event>(
-    event || {
-      id: '',
+  const [formData, setFormData] = useState<Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at' | 'is_published'>>(
+    event ? {
+      title: event.title,
+      date: event.date || '',
+      time: event.time || '',
+      location: event.location || '',
+      address: event.address || '',
+      description: event.description || ''
+    } : {
       title: '',
       date: '',
       time: '',

@@ -1,0 +1,4 @@
+name,price,period,treatments,frequency,features,popular
+Silber,300€,"pro Monat","72 Behandlungen","2x pro Woche","{Flexible Terminbuchung, Alle Standardbehandlungen, Kostenlose Beratung, Individuelle Behandlungspläne}",false
+Gold,400€,"pro Monat","106 Behandlungen","3x pro Woche","{Prioritätsbuchung, Alle Premium-Behandlungen, Kostenlose Beratung, Rabatt auf Zusatzleistungen, Flexible Pausenregelung}",true
+Platin,500€,"pro Monat","150 Behandlungen","4x pro Woche","{VIP-Service, Alle Behandlungen inklusive, Persönliche Betreuung, Kostenlose Zusatzleistungen, Flexible Termingestaltung, Exklusive Angebote}",false
