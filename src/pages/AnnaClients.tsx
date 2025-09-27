@@ -74,8 +74,10 @@ const AnnaClients = () => {
 
   const loadClients = async () => {
     setLoading(true);
+    console.log('Loading Anna clients...');
     try {
       const data = await getAnnaClients();
+      console.log('Loaded clients:', data);
       setClients(data);
     } catch (error) {
       console.error('Error loading clients:', error);
@@ -90,15 +92,22 @@ const AnnaClients = () => {
   };
 
   const handleSaveClient = async (clientData: Omit<AnnaClientInsert, 'id' | 'created_at'>) => {
+    console.log('Saving client data:', clientData);
     try {
+      let result;
       if (editingClient) {
-        await updateAnnaClient(editingClient.id, clientData);
+        console.log('Updating existing client:', editingClient.id);
+        result = await updateAnnaClient(editingClient.id, clientData);
       } else {
-        await createAnnaClient(clientData);
+        console.log('Creating new client...');
+        result = await createAnnaClient(clientData);
+        console.log('Create result:', result);
       }
       setEditingClient(null);
       setIsCreating(false);
+      console.log('Reloading clients...');
       await loadClients();
+      console.log('Clients reloaded successfully');
     } catch (error) {
       console.error('Error saving client:', error);
       alert('Fehler beim Speichern des Kunden');

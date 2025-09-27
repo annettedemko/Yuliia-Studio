@@ -12,16 +12,18 @@ type NataliaClientUpdate = Database['public']['Tables']['natalia_clients']['Upda
 // Anna Clients API
 export const getAnnaClients = async (): Promise<AnnaClient[]> => {
   try {
+    console.log('Fetching Anna clients from Supabase...');
     const { data, error } = await supabase
       .from('anna_clients')
       .select('*')
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Error fetching Anna clients:', error);
+      console.error('Supabase error fetching Anna clients:', error);
       throw error;
     }
 
+    console.log('Successfully fetched Anna clients:', data);
     return data || [];
   } catch (error) {
     console.error('Error in getAnnaClients:', error);
@@ -31,6 +33,7 @@ export const getAnnaClients = async (): Promise<AnnaClient[]> => {
 
 export const createAnnaClient = async (client: Omit<AnnaClientInsert, 'id' | 'created_at'>): Promise<AnnaClient | null> => {
   try {
+    console.log('Creating Anna client in Supabase:', client);
     const { data, error } = await supabase
       .from('anna_clients')
       .insert([client])
@@ -38,10 +41,11 @@ export const createAnnaClient = async (client: Omit<AnnaClientInsert, 'id' | 'cr
       .single();
 
     if (error) {
-      console.error('Error creating Anna client:', error);
+      console.error('Supabase error creating Anna client:', error);
       throw error;
     }
 
+    console.log('Successfully created Anna client:', data);
     return data;
   } catch (error) {
     console.error('Error in createAnnaClient:', error);
