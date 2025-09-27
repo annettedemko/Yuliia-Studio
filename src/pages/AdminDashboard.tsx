@@ -20,11 +20,12 @@ import {
   DollarSign,
   Package,
   Clock,
-  Calendar
+  Calendar,
+  Users
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated, logout, getCurrentUser } from '@/utils/adminAuth';
+import { isAuthenticated, logout, getCurrentUser, getCurrentUserRole } from '@/utils/adminAuth';
 import {
   getContentData,
   updatePrice,
@@ -57,6 +58,7 @@ const AdminDashboard = () => {
   const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
   const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
     const initializeAdmin = async () => {
@@ -65,8 +67,24 @@ const AdminDashboard = () => {
         return;
       }
 
+      const user = getCurrentUser();
+      const role = getCurrentUserRole();
+
+      // Role-based redirection
+      if (role === 'anna') {
+        navigate('/admin/anna-clients');
+        return;
+      } else if (role === 'natalia') {
+        navigate('/admin/natalia-clients');
+        return;
+      } else if (role !== 'admin') {
+        navigate('/admin/login');
+        return;
+      }
+
       initializeContentData();
-      setCurrentUser(getCurrentUser());
+      setCurrentUser(user);
+      setUserRole(role);
       await loadData();
     };
 
@@ -535,6 +553,41 @@ const AdminDashboard = () => {
 
         {/* Form Submissions Management */}
         <FormSubmissionsManager />
+
+        {/* Client Management Links for Admin */}
+        {userRole === 'admin' && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>Kundenverwaltung</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-16"
+                  onClick={() => navigate('/admin/anna-clients')}
+                >
+                  <Users className="w-6 h-6 text-rose-gold" />
+                  <div className="text-left">
+                    <div className="font-semibold">Anna's Kunden</div>
+                    <div className="text-sm text-muted-foreground">Kundenverwaltung für Anna</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-16"
+                  onClick={() => navigate('/admin/natalia-clients')}
+                >
+                  <Users className="w-6 h-6 text-purple-500" />
+                  <div className="text-left">
+                    <div className="font-semibold">Natalia's Kunden</div>
+                    <div className="text-sm text-muted-foreground">Kundenverwaltung für Natalia</div>
+                  </div>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ export interface SubscriptionPackage {
 export interface AdminUser {
   username: string;
   password: string;
+  role: 'admin' | 'anna' | 'natalia';
   lastLogin?: string;
 }
 
@@ -31,6 +32,17 @@ export interface Event {
   location: string;
   address: string;
   description?: string;
+}
+
+export interface Client {
+  id: string;
+  phone: string;
+  email: string | null;
+  full_name: string;
+  instagram: string | null;
+  warming_level: string | null;
+  user_id: string | null;
+  created_at: string;
 }
 
 export interface ContentData {

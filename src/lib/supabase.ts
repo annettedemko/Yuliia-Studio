@@ -187,6 +187,70 @@ export type Database = {
           updated_at?: string
         }
       }
+      anna_clients: {
+        Row: {
+          id: string
+          phone: string
+          email: string | null
+          full_name: string
+          instagram: string | null
+          warming_level: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          phone: string
+          email?: string | null
+          full_name: string
+          instagram?: string | null
+          warming_level?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          phone?: string
+          email?: string | null
+          full_name?: string
+          instagram?: string | null
+          warming_level?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+      }
+      natalia_clients: {
+        Row: {
+          id: string
+          phone: string
+          email: string | null
+          full_name: string
+          instagram: string | null
+          warming_level: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          phone: string
+          email?: string | null
+          full_name: string
+          instagram?: string | null
+          warming_level?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          phone?: string
+          email?: string | null
+          full_name?: string
+          instagram?: string | null
+          warming_level?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+      }
     }
   }
 }

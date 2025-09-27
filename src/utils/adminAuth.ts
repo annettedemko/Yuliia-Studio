@@ -3,16 +3,29 @@ import { AdminUser } from '@/types/admin';
 const ADMIN_KEY = 'yuliia_admin_session';
 const ADMIN_USERS_KEY = 'yuliia_admin_users';
 
-// Default admin user (in production, this should be in a secure backend)
-const defaultAdmin: AdminUser = {
-  username: 'admin',
-  password: 'YuliiaCheporska2024!', // Should be hashed in production
-};
+// Default admin users (in production, this should be in a secure backend)
+const defaultUsers: AdminUser[] = [
+  {
+    username: 'admin',
+    password: 'YuliiaCheporska2024!', // Should be hashed in production
+    role: 'admin'
+  },
+  {
+    username: 'anna@beauty.com',
+    password: 'Anna2024!', // Should be hashed in production
+    role: 'anna'
+  },
+  {
+    username: 'natalia@beauty.com',
+    password: 'Natalia2024!', // Should be hashed in production
+    role: 'natalia'
+  }
+];
 
 export const initializeAdmin = () => {
   const existingUsers = localStorage.getItem(ADMIN_USERS_KEY);
   if (!existingUsers) {
-    localStorage.setItem(ADMIN_USERS_KEY, JSON.stringify([defaultAdmin]));
+    localStorage.setItem(ADMIN_USERS_KEY, JSON.stringify(defaultUsers));
   }
 };
 
@@ -23,6 +36,7 @@ export const login = (username: string, password: string): boolean => {
   if (user) {
     const session = {
       username: user.username,
+      role: user.role,
       loginTime: Date.now(),
       expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
     };
@@ -65,9 +79,21 @@ export const getCurrentUser = (): string | null => {
   }
 };
 
+export const getCurrentUserRole = (): 'admin' | 'anna' | 'natalia' | null => {
+  const session = localStorage.getItem(ADMIN_KEY);
+  if (!session) return null;
+
+  try {
+    const parsed = JSON.parse(session);
+    return Date.now() < parsed.expiresAt ? parsed.role : null;
+  } catch {
+    return null;
+  }
+};
+
 const getAdminUsers = (): AdminUser[] => {
   const users = localStorage.getItem(ADMIN_USERS_KEY);
-  return users ? JSON.parse(users) : [defaultAdmin];
+  return users ? JSON.parse(users) : defaultUsers;
 };
 
 const updateAdminUser = (updatedUser: AdminUser) => {
