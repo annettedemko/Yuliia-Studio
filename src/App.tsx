@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -24,7 +25,8 @@ import Pricing from "./pages/Pricing";
 import Deka from "./pages/Deka";
 import DekaDay from "./pages/DekaDay";
 import KopieDekaDayAnna from "./pages/KopieDekaDayAnna";
-import { Admin } from "./pages/Admin";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminLogin from "./pages/AdminLogin";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
@@ -34,7 +36,8 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
       <Helmet>
         <html lang="de" />
         <title>Yuliia Cheporska Studio – iCoone, Alexandrite Laser München, Александритовый Лазер Мюнхен</title>
@@ -69,14 +72,16 @@ const App = () => (
           <Route path="/DEKA" element={<Deka />} />
           <Route path="/deka-day" element={<DekaDay />} />
           <Route path="/kopie-deka-day-anna" element={<KopieDekaDayAnna />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-      </TooltipProvider>
+        </TooltipProvider>
+      </LanguageProvider>
     </AuthProvider>
   </QueryClientProvider>
 );

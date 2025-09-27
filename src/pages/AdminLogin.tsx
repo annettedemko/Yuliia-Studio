@@ -21,7 +21,7 @@ const AdminLogin = () => {
     try {
       const success = login(credentials.username, credentials.password);
       if (success) {
-        navigate('/admin/dashboard');
+        navigate('/admin');
       } else {
         setError('Ungültige Anmeldedaten');
       }

@@ -7,8 +7,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { eventsService } from '@/services/contentService';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Deka = () => {
+  const { t, language } = useLanguage();
+
   const [formData, setFormData] = useState({
     vorname: '',
     name: '',
@@ -62,31 +65,31 @@ const Deka = () => {
   const benefits = [
     {
       icon: Users,
-      title: 'Neue Kundschaft gewinnen',
-      description: 'Innovative Behandlungen wirken wie ein Magnet für moderne Kunden'
+      titleKey: 'benefits.growth',
+      descriptionKey: 'benefits.growth.desc'
     },
     {
       icon: TrendingUp,
-      title: 'Bestehende Kunden langfristig binden',
-      description: 'Beeindruckende Resultate sorgen dafür, dass sie immer wiederkommen'
+      titleKey: 'benefits.retention',
+      descriptionKey: 'benefits.retention.desc'
     },
     {
       icon: Star,
-      title: 'Umsatz deutlich steigern',
-      description: 'Jedes Gerät ist ein Werkzeug für regelmäßige Einnahmen'
+      titleKey: 'benefits.income',
+      descriptionKey: 'benefits.income.desc'
     },
     {
       icon: Shield,
-      title: 'Mit Sicherheit arbeiten',
-      description: 'Zertifizierte, geprüfte und bewährte Technologie'
+      titleKey: 'benefits.safety',
+      descriptionKey: 'benefits.safety.desc'
     }
   ];
 
   const congressFeatures = [
-    'die Geräte selbst testen und ihre Einzigartigkeit erleben',
-    'spannende Präsentationen hören und umfassende Informationen erhalten',
-    'konkrete Tipps bekommen, wie Sie ein eigenes Studio eröffnen',
-    'erfahren, wie Sie Geräte clever leasen und ab dem ersten Tag Gewinn erzielen'
+    'congress.features.test',
+    'congress.features.presentations',
+    'congress.features.learning',
+    'congress.features.networking'
   ];
 
   return (
@@ -135,17 +138,17 @@ const Deka = () => {
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-rose-gold to-white bg-clip-text text-transparent animate-shimmer">
-                Beauty Congress
+                {t('deka.hero.title')}
               </span>
             </h1>
 
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-rose-gold mb-8 animate-fade-in-up delay-300">
-              Ihr Schritt in die Zukunft
+              {t('deka.hero.subtitle')}
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-500">
-              Erleben Sie die revolutionäre DEKA Technologie hautnah.<br/>
-              <span className="text-rose-gold font-medium">Innovation • Sicherheit • Erfolg</span>
+              {t('deka.hero.description')}<br/>
+              <span className="text-rose-gold font-medium">{t('deka.hero.features')}</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-700">
@@ -157,7 +160,7 @@ const Deka = () => {
                   registrationSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Jetzt Registrieren
+                {t('deka.hero.button')}
               </Button>
               <Button
                 variant="outline"
@@ -168,7 +171,7 @@ const Deka = () => {
                   benefitsSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                Mehr erfahren
+                {t('deka.hero.button2')}
               </Button>
             </div>
           </div>
@@ -187,7 +190,7 @@ const Deka = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h3 className="text-3xl font-bold text-center text-primary mb-4">
-              Warum sind diese Geräte für Sie unverzichtbar?
+              {t('benefits.title')}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
@@ -199,8 +202,8 @@ const Deka = () => {
                         <benefit.icon className="w-6 h-6 text-rose-gold" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary mb-2">{benefit.title}</h4>
-                        <p className="text-muted-foreground">{benefit.description}</p>
+                        <h4 className="font-semibold text-primary mb-2">{t(benefit.titleKey)}</h4>
+                        <p className="text-muted-foreground">{t(benefit.descriptionKey)}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -216,32 +219,31 @@ const Deka = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-center text-primary mb-8">
-              Auf dem Deka Beauty Congress können Sie:
+              {t('congress.title')}
             </h3>
 
             <div className="space-y-4">
-              {congressFeatures.map((feature, index) => (
+              {congressFeatures.map((featureKey, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <Check className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                  <p className="text-lg text-foreground">{feature}</p>
+                  <p className="text-lg text-foreground">{t(featureKey)}</p>
                 </div>
               ))}
             </div>
 
             <div className="mt-12 p-8 bg-gradient-to-r from-rose-gold/10 to-primary/10 rounded-lg">
               <h4 className="text-2xl font-bold text-primary mb-4 text-center">
-                Deka – das sind nicht einfach Geräte. Das ist Ihr Wachstumspartner.
+                {t('congress.partner.title')}
               </h4>
               <p className="text-lg text-center text-muted-foreground mb-6">
-                Jede Anschaffung ist eine Investition, die Tag für Tag für Sie arbeitet und
-                sich schneller auszahlt, als Sie denken.
+                {t('congress.partner.description')}
               </p>
               <div className="text-center">
                 <p className="text-xl font-semibold text-rose-gold mb-2">
-                  🌸 Deka Beauty Congress – weil Ihre Kundschaft das Beste verdient und Ihr Business mehr Erfolg!
+                  {t('congress.partner.highlight')}
                 </p>
                 <p className="text-lg text-primary font-medium">
-                  Seien Sie dabei und werden Sie Teil der Zukunft der apparativen Kosmetik.
+                  {t('congress.partner.cta')}
                 </p>
               </div>
             </div>
@@ -253,9 +255,9 @@ const Deka = () => {
       <section className="py-16 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h3 className="text-3xl font-bold text-primary mb-4">Kommende Veranstaltungen</h3>
+            <h3 className="text-3xl font-bold text-primary mb-4">{t('events.upcoming.title')}</h3>
             <p className="text-lg text-muted-foreground">
-              Besuchen Sie unsere exklusiven Beauty Events und erleben Sie die Deka Technologie hautnah
+              {t('events.upcoming.subtitle')}
             </p>
           </div>
 
@@ -325,7 +327,7 @@ const Deka = () => {
             </div>
           ) : (
             <div className="text-center text-muted-foreground">
-              <p>Aktuell sind keine Veranstaltungen geplant. Schauen Sie bald wieder vorbei!</p>
+              <p>{t('events.no-events')}</p>
             </div>
           )}
         </div>
@@ -338,7 +340,7 @@ const Deka = () => {
             <Card className="shadow-xl">
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-bold text-primary">
-                  Registrieren
+                  {t('registration.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8">
@@ -346,7 +348,7 @@ const Deka = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="vorname" className="text-base font-medium">
-                        Vorname:
+                        {t('form.firstname')}:
                       </Label>
                       <Input
                         id="vorname"
@@ -360,7 +362,7 @@ const Deka = () => {
                     </div>
                     <div>
                       <Label htmlFor="name" className="text-base font-medium">
-                        Name:
+                        {t('form.lastname')}:
                       </Label>
                       <Input
                         id="name"
@@ -376,7 +378,7 @@ const Deka = () => {
 
                   <div>
                     <Label htmlFor="email" className="text-base font-medium">
-                      E-Mail:
+                      {t('form.email')}:
                     </Label>
                     <Input
                       id="email"
@@ -391,7 +393,7 @@ const Deka = () => {
 
                   <div>
                     <Label htmlFor="telefon" className="text-base font-medium">
-                      Telefon:
+                      {t('form.phone')}:
                     </Label>
                     <Input
                       id="telefon"
@@ -407,7 +409,7 @@ const Deka = () => {
                   {upcomingEvents.length > 0 && (
                     <div>
                       <Label htmlFor="selectedEvent" className="text-base font-medium">
-                        Veranstaltung auswählen:
+                        {t('events.select-event')}
                       </Label>
                       <select
                         id="selectedEvent"
@@ -417,7 +419,7 @@ const Deka = () => {
                         className="w-full mt-2 px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-rose-gold focus:border-rose-gold"
                         required
                       >
-                        <option value="">Bitte wählen Sie eine Veranstaltung</option>
+                        <option value="">{t('events.select-placeholder')}</option>
                         {upcomingEvents.map((event) => (
                           <option key={event.id} value={event.id}>
                             {event.title} - {new Date(event.date).toLocaleDateString('de-DE', {
@@ -433,17 +435,17 @@ const Deka = () => {
 
                   <div>
                     <Label className="text-base font-medium block mb-2">
-                      Anti-Roboter-Verifizierung
+                      {t('form.captcha.title')}
                     </Label>
                     <div className="border border-border rounded-lg p-4 bg-accent/20">
                       <div className="flex items-center gap-3">
                         <input type="checkbox" id="captcha" className="w-4 h-4" required />
                         <label htmlFor="captcha" className="text-sm">
-                          Hier klicken
+                          {t('form.captcha.click')}
                         </label>
                       </div>
                       <p className="text-xs text-muted-foreground mt-2">
-                        FriendlyCaptcha
+                        {t('form.captcha.provider')}
                       </p>
                     </div>
                   </div>
@@ -452,7 +454,7 @@ const Deka = () => {
                     <div className="bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg mb-4">
                       <div className="flex items-center">
                         <Check className="w-5 h-5 mr-2" />
-                        <span>Ihre Anmeldung wurde erfolgreich versendet!</span>
+                        <span>{t('form.success')}</span>
                       </div>
                     </div>
                   )}
@@ -461,7 +463,7 @@ const Deka = () => {
                     <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg mb-4">
                       <div className="flex items-center">
                         <AlertCircle className="w-5 h-5 mr-2" />
-                        <span>Fehler: {submitError}</span>
+                        <span>{t('form.error')} {submitError}</span>
                       </div>
                     </div>
                   )}
@@ -471,7 +473,7 @@ const Deka = () => {
                     disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? 'Wird gesendet...' : 'Jetzt Registrieren'}
+                    {isSubmitting ? t('ui.submitting') : t('form.submit')}
                   </Button>
                 </form>
               </CardContent>
@@ -485,8 +487,8 @@ const Deka = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-primary mb-2">Deka Geräte</h3>
-              <p className="text-muted-foreground">Professionelle Technologie für Ihren Erfolg</p>
+              <h3 className="text-2xl font-bold text-primary mb-2">{t('devices.title')}</h3>
+              <p className="text-muted-foreground">{t('devices.subtitle')}</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

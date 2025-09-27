@@ -222,7 +222,7 @@ const AgainCos = () => {
       </section>
 
       {/* Technical Features Section - Redesigned */}
-      <section className="py-20 bg-gradient-to-br from-teal-900 via-cyan-900 to-blue-900 relative overflow-hidden">
+      <section className="py-12 bg-gradient-to-br from-teal-900 via-cyan-900 to-blue-900 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-32 h-32 bg-teal-400 rounded-full blur-3xl animate-pulse"></div>
@@ -292,7 +292,7 @@ const AgainCos = () => {
       </section>
 
       {/* Additional Features Showcase */}
-      <section className="py-16 bg-gradient-to-br from-teal-50 to-cyan-50">
+      <section className="py-12 bg-gradient-to-br from-teal-50 to-cyan-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -309,7 +309,7 @@ const AgainCos = () => {
                     alt="Again cos System Detail"
                     className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-teal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <h4 className="font-bold text-lg">System Features</h4>
                     <p className="text-sm text-teal-100">Modernste Technologie</p>
@@ -324,7 +324,7 @@ const AgainCos = () => {
                     alt="Again cos Anwendung Detail"
                     className="w-full h-[300px] object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/80 via-cyan-900/40 to-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <h4 className="font-bold text-lg">Behandlung</h4>
                     <p className="text-sm text-cyan-100">Professionelle Anwendung</p>
@@ -337,7 +337,7 @@ const AgainCos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden">
+      <section className="py-10 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden" style={{transform: 'translateY(-5%)'}}>
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
@@ -376,7 +376,7 @@ const AgainCos = () => {
             </Button>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-white/20">
+          <div className="mt-6 pt-6 border-t border-white/20">
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
@@ -392,7 +392,7 @@ const AgainCos = () => {
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-4">
               <a
                 href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
                 target="_blank"

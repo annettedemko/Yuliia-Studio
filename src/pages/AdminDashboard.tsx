@@ -39,11 +39,14 @@ import {
   getEvents,
   createEvent as createSupabaseEvent,
   updateEvent as updateSupabaseEvent,
-  deleteEvent as deleteSupabaseEvent,
-  migrateCSVEventsToSupabase
+  deleteEvent as deleteSupabaseEvent
 } from '@/utils/supabaseEventsAPI';
+import { debugEventsTable, checkEventDataTypes } from '@/utils/debugEvents';
+import { migrateEventsFromCSV } from '@/utils/migrateEventsFromCSV';
+import { testSupabaseConnection } from '@/utils/testSupabaseConnection';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
-import { ContentData, ServicePrice, SubscriptionPackage, Event } from '@/types/admin';
+import { ContentData, ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -56,22 +59,29 @@ const AdminDashboard = () => {
   const [currentUser, setCurrentUser] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate('/admin/login');
-      return;
-    }
+    const initializeAdmin = async () => {
+      if (!isAuthenticated()) {
+        navigate('/admin/login');
+        return;
+      }
 
-    initializeContentData();
-    setCurrentUser(getCurrentUser());
-    loadData();
+      initializeContentData();
+      setCurrentUser(getCurrentUser());
+      await loadData();
+    };
+
+    initializeAdmin();
   }, [navigate]);
 
   const loadData = async () => {
+    console.log('Loading data...');
     const data = getContentData();
     setContentData(data);
 
     // Load events from Supabase
+    console.log('Loading events from Supabase...');
     const events = await getEvents();
+    console.log('Events loaded:', events);
     setSupabaseEvents(events);
   };
 
@@ -80,7 +90,7 @@ const AdminDashboard = () => {
     navigate('/admin/login');
   };
 
-  const handleSavePrice = (price: ServicePrice) => {
+  const handleSavePrice = async (price: ServicePrice) => {
     if (editingPrice) {
       updatePrice(price.id, price);
     } else {
@@ -88,17 +98,17 @@ const AdminDashboard = () => {
     }
     setEditingPrice(null);
     setIsCreating(null);
-    loadData();
+    await loadData();
   };
 
-  const handleDeletePrice = (id: string) => {
+  const handleDeletePrice = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie diesen Preis löschen möchten?')) {
       deletePrice(id);
-      loadData();
+      await loadData();
     }
   };
 
-  const handleSaveSubscription = (subscription: SubscriptionPackage) => {
+  const handleSaveSubscription = async (subscription: SubscriptionPackage) => {
     if (editingSubscription) {
       updateSubscription(subscription.id, subscription);
     } else {
@@ -106,13 +116,13 @@ const AdminDashboard = () => {
     }
     setEditingSubscription(null);
     setIsCreating(null);
-    loadData();
+    await loadData();
   };
 
-  const handleDeleteSubscription = (id: string) => {
+  const handleDeleteSubscription = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?')) {
       deleteSubscription(id);
-      loadData();
+      await loadData();
     }
   };
 
@@ -124,20 +134,34 @@ const AdminDashboard = () => {
     }
     setEditingEvent(null);
     setIsCreating(null);
-    loadData();
+    await loadData();
   };
 
   const handleDeleteEvent = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
       await deleteSupabaseEvent(id);
-      loadData();
+      await loadData();
     }
   };
 
   const handleMigrateCSVEvents = async () => {
-    if (confirm('Möchten Sie die CSV-Events in Supabase migrieren? Dies wird alle vorhandenen Events ersetzen.')) {
-      await migrateCSVEventsToSupabase();
-      loadData();
+    if (confirm('Möchten Sie die Events aus form_submisssions.csv in Supabase migrieren? Dies wird alle vorhandenen Events ersetzen.')) {
+      console.log('Starting migration process...');
+      try {
+        const result = await migrateEventsFromCSV();
+        console.log('Migration result:', result);
+        if (result.success) {
+          alert(result.message);
+          console.log('Reloading data...');
+          await loadData();
+          console.log('Data reloaded');
+        } else {
+          alert(`Fehler: ${result.message}`);
+        }
+      } catch (error) {
+        console.error('Migration process error:', error);
+        alert(`Unerwarteter Fehler: ${error}`);
+      }
     }
   };
 
@@ -406,12 +430,32 @@ const AdminDashboard = () => {
               <CardTitle>Veranstaltungen verwalten</CardTitle>
               <div className="flex gap-2">
                 <Button
+                  onClick={() => testSupabaseConnection()}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  Test Supabase
+                </Button>
+                <Button
                   onClick={handleMigrateCSVEvents}
                   variant="outline"
                   size="sm"
                   className="flex items-center gap-2"
                 >
-                  CSV Migrieren
+                  Events aus CSV migrieren
+                </Button>
+                <Button
+                  onClick={async () => {
+                    console.log('=== RUNNING EVENTS DEBUG ===');
+                    checkEventDataTypes();
+                    await debugEventsTable();
+                  }}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2 bg-orange-50 border-orange-200 text-orange-700 hover:bg-orange-100"
+                >
+                  🔍 Debug Events
                 </Button>
                 <Button
                   onClick={() => setIsCreating('event')}
@@ -488,6 +532,9 @@ const AdminDashboard = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Form Submissions Management */}
+        <FormSubmissionsManager />
       </div>
     </div>
   );

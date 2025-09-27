@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -149,6 +150,7 @@ const Navigation = () => {
                 </div>
               )}
             </div>
+            <LanguageSwitcher />
             <Button
               variant="outline"
               size="sm"

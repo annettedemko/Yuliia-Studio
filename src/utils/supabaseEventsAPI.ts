@@ -5,41 +5,50 @@ export type Event = Database['public']['Tables']['events']['Row'];
 export type CreateEvent = Database['public']['Tables']['events']['Insert'];
 export type UpdateEvent = Database['public']['Tables']['events']['Update'];
 
-// Get all events
+// Get all events (published only)
 export const getEvents = async (): Promise<Event[]> => {
+  console.log('getEvents: Fetching published events from Supabase...');
   const { data, error } = await supabase
     .from('events')
     .select('*')
+    .eq('is_published', true)
     .order('date', { ascending: true });
 
   if (error) {
-    console.error('Error fetching events:', error);
+    console.error('getEvents: Error fetching events:', error);
+    console.error('getEvents: Error details:', JSON.stringify(error, null, 2));
     return [];
   }
 
+  console.log('getEvents: Raw data from Supabase:', data);
+  console.log('getEvents: Returning events:', data || []);
   return data || [];
 };
 
-// Get upcoming events (not past)
+// Get upcoming events (not past, published only)
 export const getUpcomingEvents = async (): Promise<Event[]> => {
   const today = new Date().toISOString().split('T')[0];
+  console.log('getUpcomingEvents: Today date string:', today);
 
   const { data, error } = await supabase
     .from('events')
     .select('*')
+    .eq('is_published', true)
     .gte('date', today)
     .order('date', { ascending: true });
 
   if (error) {
     console.error('Error fetching upcoming events:', error);
+    console.error('Error details:', JSON.stringify(error, null, 2));
     return [];
   }
 
+  console.log('getUpcomingEvents: Found events:', data?.length || 0);
   return data || [];
 };
 
 // Create new event
-export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' | 'updated_at'>): Promise<Event | null> => {
+export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' | 'updated_at' | 'user_id'>): Promise<Event | null> => {
   const { data, error } = await supabase
     .from('events')
     .insert({
@@ -47,7 +56,7 @@ export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' |
       is_published: true
     })
     .select()
-    .single();
+    .maybeSingle();
 
   if (error) {
     console.error('Error creating event:', error);
@@ -130,15 +139,26 @@ export const migrateCSVEventsToSupabase = async (): Promise<void> => {
   ];
 
   try {
-    // First, clear existing events to avoid duplicates
-    await supabase.from('events').delete().neq('id', '');
-
-    // Insert CSV events
+    // Check if each event exists before inserting
     for (const event of csvEvents) {
-      await createEvent(event);
+      // Check if event with same title and date already exists
+      const { data: existingEvent } = await supabase
+        .from('events')
+        .select('id')
+        .eq('title', event.title)
+        .eq('date', event.date)
+        .maybeSingle();
+
+      // Only insert if event doesn't exist
+      if (!existingEvent) {
+        console.log(`Inserting new event: ${event.title} on ${event.date}`);
+        await createEvent(event);
+      } else {
+        console.log(`Event already exists: ${event.title} on ${event.date}`);
+      }
     }
 
-    console.log('CSV events migrated to Supabase successfully');
+    console.log('CSV events migration completed successfully');
   } catch (error) {
     console.error('Error migrating CSV events:', error);
   }
