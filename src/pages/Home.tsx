@@ -23,7 +23,7 @@ const Home = () => {
           backgroundImage: `url(/22.png)`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent"></div>
 
         {/* Animated particles - hidden on mobile for performance */}
         <div className="absolute inset-0 overflow-hidden hidden sm:block">
@@ -54,11 +54,11 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 bg-gradient-to-b from-transparent via-white/80 to-white relative" style={{transform: 'translateY(-10%)', zIndex: 10}}>
+      <section className="py-8 sm:py-12 bg-gradient-to-b from-white/90 to-white relative">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold text-primary mb-4">Unsere Leistungen</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">Unsere Leistungen</h2>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Entdecken Sie unser vielfältiges Angebot an professionellen Beauty- und Wellnessbehandlungen
             </p>
           </div>
@@ -150,19 +150,19 @@ const Home = () => {
         <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float delay-1000"></div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8 animate-slide-up">
-            <h2 className="text-4xl font-bold gradient-text mb-4">
+          <div className="text-center mb-6 sm:mb-8 animate-slide-up">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-4">
               Abonnement Pakete
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
-            <p className="text-xl text-muted-foreground animate-slide-up delay-300">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground animate-slide-up delay-300 px-4">
               Wählen Sie das passende Paket für Ihre Icoone Laser Massage Behandlungen
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
             <Card className="hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-300">
-              <CardContent className="p-8 text-center relative overflow-hidden">
+              <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold text-muted-foreground mb-2">Silber</h3>
@@ -181,10 +181,10 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-rose-gold shadow-2xl shadow-rose-gold/30 hover:shadow-elegant transition-all duration-500 scale-105 hover:scale-110 card-tilt relative overflow-visible animate-slide-up delay-500 mt-4">
+            <Card className="border-rose-gold shadow-2xl shadow-rose-gold/30 hover:shadow-elegant transition-all duration-500 md:scale-105 hover:scale-110 card-tilt relative overflow-visible animate-slide-up delay-500 md:mt-4">
               <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5"></div>
               <div className="absolute top-0 right-0 w-20 h-20 bg-rose-gold/20 rounded-full blur-xl"></div>
-              <CardContent className="p-8 pt-12 text-center relative z-10">
+              <CardContent className="p-4 sm:p-6 md:p-8 pt-8 sm:pt-10 md:pt-12 text-center relative z-10">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-rose-gold text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
                   BELIEBT
                 </div>
@@ -204,7 +204,7 @@ const Home = () => {
             </Card>
 
             <Card className="hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-700">
-              <CardContent className="p-8 text-center relative overflow-hidden">
+              <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-100/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold text-primary mb-2">Platin</h3>
