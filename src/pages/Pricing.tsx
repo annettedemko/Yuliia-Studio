@@ -5,6 +5,66 @@ import { useEffect, useState } from 'react';
 import { pricesService, subscriptionsService } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 
+// Fallback data
+const fallbackPrices: ServicePrice[] = [
+  // Alexandrit Laser
+  { id: '1', service: 'Oberlippe', price: '50€', category: 'alexandrit' },
+  { id: '2', service: 'Kinn', price: '50€', category: 'alexandrit' },
+  { id: '3', service: 'Achseln', price: '80€', category: 'alexandrit' },
+  { id: '4', service: 'Beine komplett', price: '250€', category: 'alexandrit' },
+  { id: '5', service: 'Bikinizone', price: '120€', category: 'alexandrit' },
+
+  // Dioden Laser
+  { id: '6', service: 'Oberlippe', price: '40€', category: 'dioden' },
+  { id: '7', service: 'Kinn', price: '40€', category: 'dioden' },
+  { id: '8', service: 'Achseln', price: '60€', category: 'dioden' },
+
+  // Icoone
+  { id: '9', service: 'Einzelbehandlung', price: '80€', category: 'icoone' },
+  { id: '10', service: '5er Paket', price: '350€', category: 'icoone' },
+
+  // Maniküre
+  { id: '11', service: 'Klassische Maniküre', price: '35€', category: 'manicure' },
+  { id: '12', service: 'Gel-Lackierung', price: '25€', category: 'manicure' },
+
+  // Pediküre
+  { id: '13', service: 'Klassische Pediküre', price: '45€', category: 'pedicure' },
+  { id: '14', service: 'Wellness Pediküre', price: '55€', category: 'pedicure' }
+];
+
+const fallbackSubscriptions: SubscriptionPackage[] = [
+  {
+    id: '1',
+    name: 'Silber',
+    price: '300€',
+    period: 'pro Monat',
+    treatments: '72 Behandlungen',
+    frequency: '2x pro Woche',
+    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Keine Bindung'],
+    popular: false
+  },
+  {
+    id: '2',
+    name: 'Gold',
+    price: '400€',
+    period: 'pro Monat',
+    treatments: '106 Behandlungen',
+    frequency: '3x pro Woche',
+    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Priorität bei Terminen', 'Keine Bindung'],
+    popular: true
+  },
+  {
+    id: '3',
+    name: 'Platin',
+    price: '500€',
+    period: 'pro Monat',
+    treatments: '144 Behandlungen',
+    frequency: '4x pro Woche',
+    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Priorität bei Terminen', 'Keine Bindung', 'Zusatzleistungen'],
+    popular: false
+  }
+];
+
 const Pricing = () => {
   const [prices, setPrices] = useState<ServicePrice[]>([]);
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
@@ -18,10 +78,14 @@ const Pricing = () => {
           subscriptionsService.getAll()
         ]);
 
-        setPrices(pricesData);
-        setSubscriptions(subscriptionsData);
+        // Use fallback data if no data from Supabase
+        setPrices(pricesData.length > 0 ? pricesData : fallbackPrices);
+        setSubscriptions(subscriptionsData.length > 0 ? subscriptionsData : fallbackSubscriptions);
       } catch (error) {
         console.error('Error loading pricing data:', error);
+        // Use fallback data on error
+        setPrices(fallbackPrices);
+        setSubscriptions(fallbackSubscriptions);
       } finally {
         setLoading(false);
       }
@@ -156,18 +220,16 @@ const Pricing = () => {
                     ))}
                   </ul>
                   
-                  <Button 
-                    className={`w-full ${
-                      pkg.popular 
-                        ? 'bg-rose-gold hover:bg-rose-gold-dark text-white' 
+                  <a
+                    href="tel:+4915206067810"
+                    className={`w-full inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors ${
+                      pkg.popular
+                        ? 'bg-rose-gold hover:bg-rose-gold-dark text-white'
                         : 'bg-primary hover:bg-primary/90 text-white'
                     }`}
-                    asChild
                   >
-                    <a href="tel:+4915206067810">
-                      Jetzt buchen
-                    </a>
-                  </Button>
+                    Jetzt buchen
+                  </a>
                 </CardContent>
               </Card>
             ))}
@@ -305,26 +367,19 @@ const Pricing = () => {
             Wir finden gemeinsam die beste Lösung für Ihre Wünsche.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-white text-black hover:bg-white/90"
-              asChild
+            <a
+              href="tel:+4915206067810"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-md font-medium text-black bg-white hover:bg-white/90 transition-colors"
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                Jetzt Termin vereinbaren
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-black bg-white hover:bg-white/90"
-              asChild
+              <Phone className="w-5 h-5 mr-2" />
+              Jetzt Termin vereinbaren
+            </a>
+            <a
+              href="mailto:cheporska.studio@mnet-online.de"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-md font-medium text-black bg-white border border-white hover:bg-white/90 transition-colors"
             >
-              <a href="mailto:cheporska.studio@mnet-online.de">
-                Kostenlose Beratung
-              </a>
-            </Button>
+              Kostenlose Beratung
+            </a>
           </div>
 
           <div className="text-center mt-8">
