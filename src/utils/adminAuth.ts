@@ -24,8 +24,23 @@ const defaultUsers: AdminUser[] = [
 
 export const initializeAdmin = () => {
   const existingUsers = localStorage.getItem(ADMIN_USERS_KEY);
-  if (!existingUsers) {
+  console.log('InitializeAdmin called. Existing users in localStorage:', existingUsers);
+
+  // Проверяем если есть старая структура без роли - обновляем
+  if (existingUsers) {
+    const parsedUsers = JSON.parse(existingUsers);
+    const hasRoles = parsedUsers.every((user: any) => user.role !== undefined);
+
+    if (!hasRoles) {
+      console.log('Old user structure detected, updating to new structure with roles');
+      localStorage.setItem(ADMIN_USERS_KEY, JSON.stringify(defaultUsers));
+      console.log('Updated users saved to localStorage:', defaultUsers);
+    } else {
+      console.log('Users already exist with correct structure');
+    }
+  } else {
     localStorage.setItem(ADMIN_USERS_KEY, JSON.stringify(defaultUsers));
+    console.log('Default users saved to localStorage:', defaultUsers);
   }
 };
 
@@ -48,6 +63,7 @@ export const login = (username: string, password: string): boolean => {
 
     return true;
   }
+
   return false;
 };
 

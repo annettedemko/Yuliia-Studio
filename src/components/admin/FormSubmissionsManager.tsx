@@ -149,7 +149,7 @@ export function FormSubmissionsManager() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Anfragen verwalten</CardTitle>
+          <CardTitle>Управление заявками</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">Lade Anfragen...</div>
@@ -162,7 +162,7 @@ export function FormSubmissionsManager() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          Anfragen verwalten
+          Управление заявками
           <Button
             variant="outline"
             size="sm"

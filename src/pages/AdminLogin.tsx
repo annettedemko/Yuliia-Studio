@@ -3,15 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Lock, User } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '@/utils/adminAuth';
+import { login, initializeAdmin } from '@/utils/adminAuth';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Инициализируем админов при загрузке компонента
+    initializeAdmin();
+    console.log('Admin users initialized');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,6 +26,7 @@ const AdminLogin = () => {
 
     try {
       const success = login(credentials.username, credentials.password);
+
       if (success) {
         navigate('/admin');
       } else {

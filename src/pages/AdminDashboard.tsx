@@ -21,7 +21,8 @@ import {
   Package,
   Clock,
   Calendar,
-  Users
+  Users,
+  FileText
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -222,60 +223,122 @@ const AdminDashboard = () => {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
-            <CardContent className="flex items-center p-6">
+        {/* Navigation Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('prices-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
               <div className="flex items-center">
-                <div className="bg-rose-gold/20 p-3 rounded-full">
-                  <DollarSign className="w-6 h-6 text-rose-gold" />
+                <div className="bg-rose-gold/20 p-2 rounded-full">
+                  <DollarSign className="w-5 h-5 text-rose-gold" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm text-muted-foreground">Preise</p>
-                  <p className="text-2xl font-bold">{contentData.prices?.length || 0}</p>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Preise</p>
+                  <p className="text-xl font-bold">{contentData.prices?.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('subscriptions-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-primary/20 p-2 rounded-full">
+                  <Package className="w-5 h-5 text-primary" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Abonnements</p>
+                  <p className="text-xl font-bold">{contentData.subscriptions?.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('events-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-blue-500/20 p-2 rounded-full">
+                  <Calendar className="w-5 h-5 text-blue-500" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">События</p>
+                  <p className="text-xl font-bold">{supabaseEvents.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('forms-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-green-500/20 p-2 rounded-full">
+                  <FileText className="w-5 h-5 text-green-500" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Заявки</p>
+                  <p className="text-xl font-bold">
+                    <span className="text-sm">Управление</span>
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('clients-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-purple-500/20 p-2 rounded-full">
+                  <Users className="w-5 h-5 text-purple-500" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Клиенты</p>
+                  <p className="text-xl font-bold">
+                    <span className="text-sm">Управление</span>
+                  </p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="flex items-center p-6">
+            <CardContent className="flex items-center p-4">
               <div className="flex items-center">
-                <div className="bg-primary/20 p-3 rounded-full">
-                  <Package className="w-6 h-6 text-primary" />
+                <div className="bg-accent/20 p-2 rounded-full">
+                  <Clock className="w-5 h-5 text-accent-foreground" />
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm text-muted-foreground">Abonnements</p>
-                  <p className="text-2xl font-bold">{contentData.subscriptions?.length || 0}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="flex items-center p-6">
-              <div className="flex items-center">
-                <div className="bg-blue-500/20 p-3 rounded-full">
-                  <Calendar className="w-6 h-6 text-blue-500" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-muted-foreground">Veranstaltungen</p>
-                  <p className="text-2xl font-bold">{supabaseEvents.length || 0}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="flex items-center p-6">
-              <div className="flex items-center">
-                <div className="bg-accent/20 p-3 rounded-full">
-                  <Clock className="w-6 h-6 text-accent-foreground" />
-                </div>
-                <div className="ml-4">
-                  <p className="text-sm text-muted-foreground">Zuletzt aktualisiert</p>
-                  <p className="text-sm">
-                    {contentData.lastUpdated ? new Date(contentData.lastUpdated).toLocaleDateString('de-DE') : 'Nie'}
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Обновлено</p>
+                  <p className="text-xs">
+                    {contentData.lastUpdated ? new Date(contentData.lastUpdated).toLocaleDateString('ru-RU') : 'Никогда'}
                   </p>
                 </div>
               </div>
@@ -284,7 +347,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Prices Management */}
-        <Card className="mb-8">
+        <Card className="mb-8" id="prices-section">
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle>Preise verwalten</CardTitle>
@@ -359,7 +422,7 @@ const AdminDashboard = () => {
         </Card>
 
         {/* Subscriptions Management */}
-        <Card>
+        <Card className="mb-8" id="subscriptions-section">
           <CardHeader>
             <div className="flex justify-between items-center">
               <CardTitle>Abonnements verwalten</CardTitle>
@@ -442,39 +505,11 @@ const AdminDashboard = () => {
         </Card>
 
         {/* Events Management */}
-        <Card className="mb-8">
+        <Card className="mb-8" id="events-section">
           <CardHeader>
             <div className="flex justify-between items-center">
-              <CardTitle>Veranstaltungen verwalten</CardTitle>
+              <CardTitle>Управление событиями</CardTitle>
               <div className="flex gap-2">
-                <Button
-                  onClick={() => testSupabaseConnection()}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
-                >
-                  Test Supabase
-                </Button>
-                <Button
-                  onClick={handleMigrateCSVEvents}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2"
-                >
-                  Events aus CSV migrieren
-                </Button>
-                <Button
-                  onClick={async () => {
-                    console.log('=== RUNNING EVENTS DEBUG ===');
-                    checkEventDataTypes();
-                    await debugEventsTable();
-                  }}
-                  variant="outline"
-                  size="sm"
-                  className="flex items-center gap-2 bg-orange-50 border-orange-200 text-orange-700 hover:bg-orange-100"
-                >
-                  🔍 Debug Events
-                </Button>
                 <Button
                   onClick={() => setIsCreating('event')}
                   disabled={isCreating === 'event'}
@@ -482,7 +517,7 @@ const AdminDashboard = () => {
                   className="flex items-center gap-2"
                 >
                   <Plus className="w-4 h-4" />
-                  Neue Veranstaltung
+                  Новое событие
                 </Button>
               </div>
             </div>
@@ -552,13 +587,15 @@ const AdminDashboard = () => {
         </Card>
 
         {/* Form Submissions Management */}
-        <FormSubmissionsManager />
+        <div id="forms-section">
+          <FormSubmissionsManager />
+        </div>
 
         {/* Client Management Links for Admin */}
         {userRole === 'admin' && (
-          <Card className="mb-8">
+          <Card className="mb-8" id="clients-section">
             <CardHeader>
-              <CardTitle>Kundenverwaltung</CardTitle>
+              <CardTitle>Управление клиентами</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
