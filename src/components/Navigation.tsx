@@ -150,40 +150,46 @@ const Navigation = () => {
                 </div>
               )}
             </div>
-            <LanguageSwitcher />
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-gradient-hero text-white border-none hover:opacity-90"
-              asChild
-            >
-              <a href="tel:+4915206067810">
-                <Phone className="w-4 h-4 mr-2" />
-                Kontakt / Termin buchen
-              </a>
-            </Button>
+            <div className="hidden md:flex items-center space-x-4">
+              <LanguageSwitcher />
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-gradient-hero text-white border-none hover:opacity-90"
+                asChild
+              >
+                <a href="tel:+4915206067810">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Kontakt / Termin buchen
+                </a>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden py-6 border-t bg-background/95 backdrop-blur-md">
+            <div className="flex flex-col space-y-6 px-4">
+
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-rose-gold",
-                    isActive(item.href) ? "text-rose-gold" : "text-foreground"
+                    "text-base font-medium transition-colors hover:text-rose-gold py-2 px-4 rounded-lg text-center",
+                    isActive(item.href) ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
@@ -192,27 +198,27 @@ const Navigation = () => {
               ))}
 
               {/* DEKA Geräte Section for Mobile */}
-              <div className="border-t border-gray-200 pt-4 mt-4">
+              <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
                   to="/deka-geraeteverkauf"
                   className={cn(
-                    "text-sm font-medium transition-colors hover:text-rose-gold block mb-2",
+                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
                     (isActive('/deka-geraeteverkauf') ||
                      dekaDevices.some(device => isActive(device.href)))
-                      ? "text-rose-gold" : "text-foreground"
+                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
                   DEKA Geräte
                 </Link>
-                <div className="ml-4 flex flex-col space-y-2">
+                <div className="flex flex-col space-y-3 pl-4">
                   {dekaDevices.map((device) => (
                     <Link
                       key={device.href}
                       to={device.href}
                       className={cn(
-                        "text-sm transition-colors hover:text-rose-gold",
-                        isActive(device.href) ? "text-rose-gold" : "text-muted-foreground"
+                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
+                        isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
                       )}
                       onClick={() => setIsOpen(false)}
                     >
@@ -221,14 +227,16 @@ const Navigation = () => {
                   ))}
                 </div>
               </div>
+
+              {/* Contact Button - Make it larger and more prominent */}
               <Button
                 variant="outline"
-                size="sm"
-                className="bg-gradient-hero text-white border-none w-fit"
+                size="lg"
+                className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium mt-6"
                 asChild
               >
                 <a href="tel:+4915206067810">
-                  <Phone className="w-4 h-4 mr-2" />
+                  <Phone className="w-5 h-5 mr-2" />
                   Kontakt / Termin buchen
                 </a>
               </Button>

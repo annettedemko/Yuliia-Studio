@@ -134,7 +134,7 @@ const DekaDay = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-800">
+      <section className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-800">
         {/* Background with DEKA Devices */}
         <div className="absolute inset-0 opacity-12">
           <div className="grid grid-cols-3 md:grid-cols-5 gap-6 h-full w-full p-8 items-center justify-items-center">

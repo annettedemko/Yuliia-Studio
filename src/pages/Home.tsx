@@ -18,39 +18,36 @@ const Home = () => {
       
       {/* Hero Section */}
       <section
-        className="relative h-[70vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-fixed sm:bg-fixed"
         style={{
           backgroundImage: `url(/22.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 via-transparent to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
 
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Animated particles - hidden on mobile for performance */}
+        <div className="absolute inset-0 overflow-hidden hidden sm:block">
           <div className="absolute top-20 left-10 w-2 h-2 bg-rose-gold/30 rounded-full animate-pulse"></div>
           <div className="absolute top-40 right-20 w-3 h-3 bg-white/20 rounded-full animate-bounce delay-1000"></div>
           <div className="absolute bottom-20 left-20 w-2 h-2 bg-rose-gold/40 rounded-full animate-ping delay-500"></div>
           <div className="absolute bottom-40 right-10 w-1 h-1 bg-white/30 rounded-full animate-pulse delay-700"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-slide-up">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12 animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-slide-up leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
               Der Vollkommenheit sind keine Grenzen gesetzt.
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 animate-slide-up delay-300">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 animate-slide-up delay-300 leading-relaxed">
             Professionelle Kosmetik- und Laserbehandlungen in München
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-lg px-8 py-6 animate-slide-up delay-500"
+            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
             onClick={scrollToContact}
           >
-            <Phone className="w-5 h-5 mr-2" />
+            <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Termin buchen
           </Button>
         </div>
@@ -66,7 +63,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <Link to="/services">
               <Card className="group hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -75,7 +72,7 @@ const Home = () => {
                     <img
                       src="/19.png"
                       alt="Leistungen"
-                      className="w-full h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
                       style={{
                         objectPosition: '50% 5%',
                         transform: 'scale(1.0)'
@@ -105,7 +102,7 @@ const Home = () => {
                   <img
                     src="/20.png"
                     alt="Jahresabonnement"
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
                   <div className="absolute bottom-4 left-4 text-white">
@@ -127,7 +124,7 @@ const Home = () => {
                     <img
                       src="/H1.jpg"
                       alt="Preise"
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 text-white">
