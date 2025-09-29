@@ -16,12 +16,16 @@ export function FormSubmissionsManager() {
   }, [])
 
   const loadSubmissions = async () => {
+    console.log('FormSubmissionsManager: Starting to load submissions...');
     setLoading(true)
     try {
+      console.log('FormSubmissionsManager: Calling formService.getAllSubmissions()...');
       const data = await formService.getAllSubmissions()
+      console.log('FormSubmissionsManager: Received data:', data);
       setSubmissions(data)
+      console.log('FormSubmissionsManager: State set complete');
     } catch (error) {
-      console.error('Error loading submissions:', error)
+      console.error('FormSubmissionsManager: Error loading submissions:', error)
     } finally {
       setLoading(false)
     }
@@ -63,8 +67,21 @@ export function FormSubmissionsManager() {
         return 'DEKA Day'
       case 'kopie-deka-day-anna':
         return 'DEKA Day (Anna)'
+      case 'home':
+        return 'Hauptseite'
+      case 'services':
+        return 'Services'
+      case 'preis':
+        return 'Preise'
+      case 'laser-haarentfernung-muenchen':
+        return 'Laser Haarentfernung'
+      case 'icoone-laser':
+        return 'Icoone Laser'
+      case 'manikuere-pedikuere':
+        return 'Maniküre & Pediküre'
       default:
-        return page
+        // Capitalize first letter and replace dashes with spaces
+        return page.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
     }
   }
 
@@ -79,67 +96,84 @@ export function FormSubmissionsManager() {
       )
     }
 
+    // Group submissions by page
+    const submissionsByPage = ownerSubmissions.reduce((acc, submission) => {
+      const page = submission.page
+      if (!acc[page]) {
+        acc[page] = []
+      }
+      acc[page].push(submission)
+      return acc
+    }, {} as Record<string, FormSubmission[]>)
+
     return (
-      <div className="space-y-4">
-        {ownerSubmissions.map((submission) => (
-          <Card key={submission.id} className="hover:shadow-md transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-lg">{submission.name}</CardTitle>
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline">
-                    {getPageLabel(submission.page)}
-                  </Badge>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => deleteSubmission(submission.id)}
-                    className="text-red-600 hover:text-red-700"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-              <div className="text-sm text-gray-500 flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                {formatDate(submission.created_at)}
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-gray-400" />
-                  <a
-                    href={`tel:${submission.phone}`}
-                    className="text-blue-600 hover:text-blue-700"
-                  >
-                    {submission.phone}
-                  </a>
-                </div>
-
-                {submission.email && (
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-gray-400" />
-                    <a
-                      href={`mailto:${submission.email}`}
-                      className="text-blue-600 hover:text-blue-700"
-                    >
-                      {submission.email}
-                    </a>
-                  </div>
-                )}
-
-                {submission.message && (
-                  <div className="mt-3">
-                    <div className="text-sm font-medium text-gray-700 mb-1">Nachricht:</div>
-                    <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
-                      {submission.message}
+      <div className="space-y-6">
+        {Object.entries(submissionsByPage).map(([page, pageSubmissions]) => (
+          <div key={page} className="space-y-3">
+            <div className="flex items-center gap-2 pb-2 border-b">
+              <h3 className="font-semibold text-gray-700">{getPageLabel(page)}</h3>
+              <Badge variant="secondary">{pageSubmissions.length}</Badge>
+            </div>
+            <div className="space-y-3 ml-4">
+              {pageSubmissions.map((submission) => (
+                <Card key={submission.id} className="hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">{submission.name}</CardTitle>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => deleteSubmission(submission.id)}
+                          className="text-red-600 hover:text-red-700"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            </CardContent>
-          </Card>
+                    <div className="text-sm text-gray-500 flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {formatDate(submission.created_at)}
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-4 h-4 text-gray-400" />
+                        <a
+                          href={`tel:${submission.phone}`}
+                          className="text-blue-600 hover:text-blue-700"
+                        >
+                          {submission.phone}
+                        </a>
+                      </div>
+
+                      {submission.email && (
+                        <div className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-gray-400" />
+                          <a
+                            href={`mailto:${submission.email}`}
+                            className="text-blue-600 hover:text-blue-700"
+                          >
+                            {submission.email}
+                          </a>
+                        </div>
+                      )}
+
+                      {submission.message && (
+                        <div className="mt-3">
+                          <div className="text-sm font-medium text-gray-700 mb-1">Nachricht:</div>
+                          <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
+                            {submission.message}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     )

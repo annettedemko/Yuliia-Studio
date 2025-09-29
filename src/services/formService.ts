@@ -6,7 +6,7 @@ export interface FormSubmission {
   phone: string
   email?: string | null
   message?: string | null
-  page: 'deka' | 'deka-day' | 'kopie-deka-day-anna'
+  page: string
   owner: 'Others' | 'NATALIA' | 'ANNA'
   created_at: string
 }
@@ -16,19 +16,23 @@ export interface FormSubmissionCreate {
   phone: string
   email?: string
   message?: string
-  page: 'deka' | 'deka-day' | 'kopie-deka-day-anna'
+  page: string
 }
 
-// Mapping pages to owners
-const pageToOwnerMap: Record<FormSubmissionCreate['page'], FormSubmission['owner']> = {
-  'deka': 'Others',
-  'deka-day': 'NATALIA',
-  'kopie-deka-day-anna': 'ANNA'
+// Mapping pages to owners - dynamic function
+const getOwnerFromPage = (page: string): FormSubmission['owner'] => {
+  if (page.includes('anna')) {
+    return 'ANNA'
+  }
+  if (page.includes('natalia') || page === 'deka-day') {
+    return 'NATALIA'
+  }
+  return 'Others'
 }
 
 export const formService = {
   async submitForm(submission: FormSubmissionCreate): Promise<FormSubmission | null> {
-    const owner = pageToOwnerMap[submission.page]
+    const owner = getOwnerFromPage(submission.page)
 
     const { data, error } = await supabase
       .from('form_submissions')
@@ -52,10 +56,14 @@ export const formService = {
   },
 
   async getAllSubmissions(): Promise<FormSubmission[]> {
+    console.log('formService.getAllSubmissions: Starting to fetch submissions...');
+
     const { data, error } = await supabase
       .from('form_submissions')
       .select('*')
       .order('created_at', { ascending: false })
+
+    console.log('formService.getAllSubmissions: Supabase response:', { data, error });
 
     if (error) {
       console.error('Error fetching form submissions:', error)

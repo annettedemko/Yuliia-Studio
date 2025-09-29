@@ -1,0 +1,36 @@
+schemaname,tablename,policyname,cmd,roles,permissive,qual,with_check
+public,profiles,self_or_admin_select_profiles,SELECT,{authenticated},PERMISSIVE,((( SELECT auth.uid() AS uid) = id) OR is_admin(( SELECT auth.uid() AS uid))),
+public,profiles,admin_mod_profiles,ALL,{authenticated},PERMISSIVE,is_admin(( SELECT auth.uid() AS uid)),is_admin(( SELECT auth.uid() AS uid))
+public,form_submissions,Allow read for authenticated users,SELECT,{authenticated},PERMISSIVE,true,
+public,form_submissions,Allow insert for all,INSERT,"{anon,authenticated}",PERMISSIVE,,true
+public,form_submissions,Allow inserts from website forms,INSERT,{anon},PERMISSIVE,,true
+public,form_submissions,Allow read for authenticated,SELECT,{authenticated},PERMISSIVE,true,
+public,form_submissions,Allow delete for authenticated,DELETE,{authenticated},PERMISSIVE,true,
+public,form_submissions,allow all select,SELECT,"{anon,authenticated}",PERMISSIVE,true,
+public,form_submissions,allow all insert,INSERT,"{anon,authenticated}",PERMISSIVE,,true
+public,form_submissions,allow all update,UPDATE,"{anon,authenticated}",PERMISSIVE,true,true
+public,form_submissions,allow all delete,DELETE,"{anon,authenticated}",PERMISSIVE,true,
+public,events,anon_select_published_events,SELECT,{anon},PERMISSIVE,(is_published = true),
+public,events,auth_select_published_events,SELECT,{authenticated},PERMISSIVE,((is_published = true) OR ( SELECT is_admin_v2() AS is_admin_v2)),
+public,form_submissions,anon_insert_form_submissions,INSERT,{anon},PERMISSIVE,,true
+public,anna_clients,anna_clients_access,ALL,{authenticated},PERMISSIVE,"((auth.uid() = user_id) OR (EXISTS ( SELECT 1
+   FROM auth.users u
+  WHERE ((u.id = auth.uid()) AND ((u.raw_user_meta_data ->> 'role'::text) = 'admin'::text)))))","((auth.uid() = user_id) OR (EXISTS ( SELECT 1
+   FROM auth.users u
+  WHERE ((u.id = auth.uid()) AND ((u.raw_user_meta_data ->> 'role'::text) = 'admin'::text)))))"
+public,natalia_clients,natalia_clients_access,ALL,{authenticated},PERMISSIVE,"((auth.uid() = user_id) OR (EXISTS ( SELECT 1
+   FROM auth.users u
+  WHERE ((u.id = auth.uid()) AND ((u.raw_user_meta_data ->> 'role'::text) = 'admin'::text)))))","((auth.uid() = user_id) OR (EXISTS ( SELECT 1
+   FROM auth.users u
+  WHERE ((u.id = auth.uid()) AND ((u.raw_user_meta_data ->> 'role'::text) = 'admin'::text)))))"
+public,events,admin_all_events_v2,ALL,{authenticated},PERMISSIVE,( SELECT is_admin_v2() AS is_admin_v2),( SELECT is_admin_v2() AS is_admin_v2)
+public,form_submissions,admin_select_form_submissions,SELECT,{authenticated},PERMISSIVE,( SELECT is_admin_v2() AS is_admin_v2),
+public,form_submissions,admin_delete_form_submissions,DELETE,{authenticated},PERMISSIVE,( SELECT is_admin_v2() AS is_admin_v2),
+public,anna_clients,anna_owner_all,ALL,{authenticated},PERMISSIVE,((( SELECT auth.uid() AS uid) = user_id) OR ( SELECT is_admin_v2() AS is_admin_v2)),((( SELECT auth.uid() AS uid) = user_id) OR ( SELECT is_admin_v2() AS is_admin_v2))
+public,natalia_clients,natalia_owner_all,ALL,{authenticated},PERMISSIVE,((( SELECT auth.uid() AS uid) = user_id) OR ( SELECT is_admin_v2() AS is_admin_v2)),((( SELECT auth.uid() AS uid) = user_id) OR ( SELECT is_admin_v2() AS is_admin_v2))
+public,prices,authenticated_select_prices,SELECT,{authenticated},PERMISSIVE,true,
+public,prices,admin_all_prices,ALL,{authenticated},PERMISSIVE,is_admin(auth.uid()),is_admin(auth.uid())
+public,subscriptions,authenticated_select_subscriptions,SELECT,{authenticated},PERMISSIVE,true,
+public,subscriptions,admin_all_subscriptions,ALL,{authenticated},PERMISSIVE,is_admin(auth.uid()),is_admin(auth.uid())
+public,subscriptions,anon_select_subscriptions,SELECT,{anon},PERMISSIVE,true,
+public,prices,anon_select_prices,SELECT,{anon},PERMISSIVE,true,
