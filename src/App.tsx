@@ -69,7 +69,7 @@ const App = () => (
               <Route path="/motus-ax" element={<MotusAX />} />
               <Route path="/physiq360" element={<Physiq360 />} />
               <Route path="/again-cos" element={<AgainCos />} />
-              <Route path="/preise" element={<Pricing />} />
+              <Route path="/preis" element={<Pricing />} />
               <Route path="/deka" element={<Deka />} />
               <Route path="/DEKA" element={<Deka />} />
               <Route path="/deka-day" element={<DekaDay />} />

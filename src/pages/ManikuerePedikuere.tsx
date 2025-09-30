@@ -175,7 +175,7 @@ const ManikuerePedikuere = () => {
                       className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                       asChild
                     >
-                      <Link to="/preise">
+                      <Link to="/preis">
                         Alle Preise ansehen
                       </Link>
                     </Button>
@@ -226,7 +226,7 @@ const ManikuerePedikuere = () => {
                       className="border-primary text-primary hover:bg-primary hover:text-white"
                       asChild
                     >
-                      <Link to="/preise">
+                      <Link to="/preis">
                         Alle Preise ansehen
                       </Link>
                     </Button>

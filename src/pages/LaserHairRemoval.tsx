@@ -66,7 +66,7 @@ const LaserHairRemoval = () => {
               className="border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
-              <Link to="/preise#laser-haarentfernung">
+              <Link to="/preis#laser-haarentfernung">
                 Preise ansehen
               </Link>
             </Button>
@@ -485,7 +485,7 @@ const LaserHairRemoval = () => {
               className="bg-gradient-hero text-white border-none shadow-rose mr-4"
               asChild
             >
-              <Link to="/preise">
+              <Link to="/preis">
                 Alle Preise ansehen
               </Link>
             </Button>

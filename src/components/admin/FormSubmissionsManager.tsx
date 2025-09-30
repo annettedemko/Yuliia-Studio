@@ -50,7 +50,7 @@ export function FormSubmissionsManager() {
   }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString('de-DE', {
+    return new Date(dateString).toLocaleDateString('de-DE', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -61,12 +61,14 @@ export function FormSubmissionsManager() {
 
   const getPageLabel = (page: string) => {
     switch (page) {
-      case 'deka':
-        return 'DEKA Hauptseite'
       case 'deka-day':
         return 'DEKA Day'
       case 'kopie-deka-day-anna':
-        return 'DEKA Day (Anna)'
+        return 'DEKA Day Anna'
+      case 'deka':
+        return 'DEKA'
+      case 'about':
+        return 'Über uns'
       case 'home':
         return 'Hauptseite'
       case 'services':

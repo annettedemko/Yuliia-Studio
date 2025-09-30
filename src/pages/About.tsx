@@ -3,10 +3,28 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram } from 'lucide-react';
+import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, Calendar, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { eventsService } from '@/services/contentService';
 // Изображения загружаются из папки public
 
 const About = () => {
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const events = await eventsService.getUpcoming();
+        setUpcomingEvents(events);
+      } catch (error) {
+        console.error('Error loading events:', error);
+        setUpcomingEvents([]);
+      }
+    };
+
+    loadEvents();
+  }, []);
+
   const scrollToContact = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -187,6 +205,54 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Events Section */}
+      {upcomingEvents.length > 0 && (
+        <section className="py-12 bg-accent/10">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold text-primary mb-4">Kommende Veranstaltungen</h2>
+              <p className="text-xl text-muted-foreground">
+                Entdecken Sie unsere bevorstehenden Events und Termine
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {upcomingEvents.map((event, index) => (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Calendar className="w-5 h-5 text-primary" />
+                      <span className="text-lg font-semibold text-primary">{event.title}</span>
+                    </div>
+
+                    {event.date && (
+                      <div className="flex items-center gap-2 mb-2">
+                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-muted-foreground">
+                          {new Date(event.date).toLocaleDateString('de-DE')}
+                          {event.time && ` um ${event.time}`}
+                        </span>
+                      </div>
+                    )}
+
+                    {event.location && (
+                      <div className="flex items-center gap-2 mb-3">
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-muted-foreground">{event.location}</span>
+                      </div>
+                    )}
+
+                    {event.description && (
+                      <p className="text-muted-foreground text-sm">{event.description}</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Contact Form */}
       <section id="contact-form" className="py-12 bg-accent/20">

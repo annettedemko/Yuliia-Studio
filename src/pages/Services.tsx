@@ -32,8 +32,7 @@ const Services = () => {
 
           {/* Motus AX Alexandrit-Laser */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/laser-haarentfernung-muenchen" className="block hover:scale-[1.02] transition-transform duration-300">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/17.png" alt="Motus AX Alexandrit-Laser" className="w-full h-full object-cover" />
@@ -52,7 +51,7 @@ const Services = () => {
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preise#laser-haarentfernung">
+                      <Link to="/preis#laser-haarentfernung">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -63,13 +62,11 @@ const Services = () => {
                 </div>
               </div>
               </Card>
-            </Link>
           </div>
 
           {/* M-Tech Diodenlaser */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/laser-haarentfernung-muenchen" className="block hover:scale-[1.02] transition-transform duration-300">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/2.jpeg" alt="M-Tech Diodenlaser"
@@ -100,7 +97,7 @@ const Services = () => {
                   </div>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preise#laser-haarentfernung">
+                      <Link to="/preis#laser-haarentfernung">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -111,13 +108,11 @@ const Services = () => {
                 </div>
               </div>
             </Card>
-            </Link>
           </div>
 
           {/* Icoone Laser Section */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/icoone-laser" className="block hover:scale-[1.02] transition-transform duration-300">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/3.jpeg" alt="Icoone Laser"
@@ -141,7 +136,7 @@ const Services = () => {
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preise#icoone-laser">
+                      <Link to="/preis#icoone-laser">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -152,7 +147,6 @@ const Services = () => {
                 </div>
               </div>
             </Card>
-          </Link>
         </div>
 
         </div>
@@ -162,8 +156,7 @@ const Services = () => {
       <section className="py-6 bg-white mt-[-2%]">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <Link to="/manikuere-pedikuere" className="block hover:scale-[1.02] transition-transform duration-300">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                   <div className="p-8 flex flex-col justify-center">
                     <h3 className="text-3xl font-bold text-primary mb-4">Maniküre & Pediküre</h3>
@@ -173,7 +166,7 @@ const Services = () => {
                     </p>
                     <div className="flex gap-3">
                       <Button asChild className="bg-gradient-hero text-white">
-                        <Link to="/preise#manikuere-pedikuere">
+                        <Link to="/preis#manikuere-pedikuere">
                           Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       </Button>
@@ -193,7 +186,6 @@ const Services = () => {
                   </div>
                 </div>
               </Card>
-            </Link>
           </div>
         </div>
       </section>

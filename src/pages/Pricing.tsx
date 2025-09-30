@@ -13,15 +13,23 @@ const Pricing = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
+        console.log('🟡 Начинаем загрузку данных...');
+        console.log('🟡 Supabase URL:', import.meta.env.VITE_SUPABASE_URL);
+
         const [pricesData, subscriptionsData] = await Promise.all([
           pricesService.getAll(),
           subscriptionsService.getAll()
         ]);
 
+        console.log('🟢 Загружено цен:', pricesData.length);
+        console.log('🟢 Загружено подписок:', subscriptionsData.length);
+        console.log('🟢 Цены:', pricesData);
+        console.log('🟢 Подписки:', subscriptionsData);
+
         setPrices(pricesData);
         setSubscriptions(subscriptionsData);
       } catch (error) {
-        console.error('Error loading pricing data:', error);
+        console.error('🔴 Ошибка загрузки данных:', error);
       } finally {
         setLoading(false);
       }

@@ -15,7 +15,7 @@ const Navigation = () => {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'Über uns' },
     { href: '/services', label: 'Leistungen' },
-    { href: '/preise', label: 'Preise' },
+    { href: '/preis', label: 'Preise' },
   ];
 
   const dekaDevices = [
