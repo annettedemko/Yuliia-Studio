@@ -85,3 +85,22 @@ INSERT INTO public.events (title, date, time, location, address, description) VA
 ('BEAUTY FORUM Festival 2025', '2025-10-18', '10:00–17:00', 'Messe München', 'Am Messesee 2, 81829 München', 'Besuchen Sie den DEKA-Stand'),
 ('DEKA Beauty Day', '2025-11-09', '18:00', 'Yuliia Cheporska Studio', 'Elsässer Straße 33, 81667 München', 'Exklusive Präsentation der neuesten DEKA Technologien'),
 ('DEKA Beauty Day', '2025-12-17', '18:00', 'Yuliia Cheporska Studio', 'Elsässer Straße 33, 81667 München', 'Exklusive Präsentation der neuesten DEKA Technologien');
+
+-- Простая таблица для админов
+CREATE TABLE IF NOT EXISTS public.admin_users (
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    email text UNIQUE NOT NULL,
+    password text NOT NULL,
+    role text DEFAULT 'admin',
+    created_at timestamptz DEFAULT now()
+);
+
+-- Отключаем RLS
+ALTER TABLE public.admin_users DISABLE ROW LEVEL SECURITY;
+GRANT ALL ON public.admin_users TO anon, authenticated, service_role;
+
+-- Добавляем простых админов
+INSERT INTO public.admin_users (email, password, role) VALUES
+('admin@beauty.com', 'Admin2024!', 'admin'),
+('anna@beauty.com', 'Anna2024!', 'anna'),
+('natalia@beauty.com', 'Natalia2024!', 'natalia');

@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Lock, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { authService } from '@/services/authService';
+import { simpleAuthService } from '@/services/simpleAuthService';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -14,14 +14,12 @@ const AdminLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is already authenticated
-    const checkAuth = async () => {
-      const user = await authService.getCurrentUser();
-      if (user) {
-        navigate('/admin');
-      }
-    };
-    checkAuth();
+    // Проверяем если пользователь уже авторизован
+    const user = simpleAuthService.getCurrentUser();
+    if (user) {
+      console.log('🟢 AdminLogin: Пользователь уже авторизован, перенаправление');
+      navigate('/admin');
+    }
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,16 +27,21 @@ const AdminLogin = () => {
     setLoading(true);
     setError('');
 
+    console.log('🟡 AdminLogin: Попытка входа с', credentials.email);
+
     try {
-      const { user, error: signInError } = await authService.signIn(credentials.email, credentials.password);
+      const { user, error: signInError } = await simpleAuthService.login(credentials.email, credentials.password);
 
       if (signInError) {
-        setError('Ungültige Anmeldedaten');
+        console.log('🔴 AdminLogin: Ошибка входа:', signInError);
+        setError(signInError);
       } else if (user) {
+        console.log('🟢 AdminLogin: Успешный вход:', user);
         navigate('/admin');
       }
     } catch (err) {
-      setError('Anmeldefehler aufgetreten');
+      console.error('🔴 AdminLogin: Исключение:', err);
+      setError('Ошибка входа');
     } finally {
       setLoading(false);
     }

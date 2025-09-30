@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated, logout, getCurrentUser, getCurrentUserRole } from '@/utils/adminAuth';
+import { simpleAuthService } from '@/services/simpleAuthService';
 import {
   getContentData,
   updatePrice,
@@ -63,29 +63,30 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const initializeAdmin = async () => {
-      if (!isAuthenticated()) {
+      const user = simpleAuthService.getCurrentUser();
+
+      if (!user) {
         navigate('/admin/login');
         return;
       }
 
-      const user = getCurrentUser();
-      const role = getCurrentUserRole();
+      console.log('🟢 AdminDashboard: Пользователь авторизован:', user);
 
       // Role-based redirection
-      if (role === 'anna') {
+      if (user.role === 'anna') {
         navigate('/admin/anna-clients');
         return;
-      } else if (role === 'natalia') {
+      } else if (user.role === 'natalia') {
         navigate('/admin/natalia-clients');
         return;
-      } else if (role !== 'admin') {
+      } else if (user.role !== 'admin') {
         navigate('/admin/login');
         return;
       }
 
       initializeContentData();
-      setCurrentUser(user);
-      setUserRole(role);
+      setCurrentUser(user.email);
+      setUserRole(user.role);
       await loadData();
     };
 
@@ -105,7 +106,7 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = () => {
-    logout();
+    simpleAuthService.logout();
     navigate('/admin/login');
   };
 

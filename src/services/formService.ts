@@ -34,6 +34,14 @@ export const formService = {
   async submitForm(submission: FormSubmissionCreate): Promise<FormSubmission | null> {
     const owner = getOwnerFromPage(submission.page)
 
+    console.log('🟡 FormService: Попытка отправки формы:', {
+      name: submission.name,
+      phone: submission.phone,
+      email: submission.email,
+      page: submission.page,
+      owner: owner
+    });
+
     const { data, error } = await supabase
       .from('form_submissions')
       .insert({
@@ -47,11 +55,14 @@ export const formService = {
       .select()
       .single()
 
+    console.log('🟡 FormService: Ответ от Supabase:', { data, error });
+
     if (error) {
-      console.error('Error submitting form:', error)
+      console.error('🔴 FormService: Ошибка отправки формы:', error)
       return null
     }
 
+    console.log('🟢 FormService: Форма отправлена успешно:', data);
     return data as FormSubmission
   },
 
