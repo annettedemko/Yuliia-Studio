@@ -17,6 +17,7 @@ import IcooneLaser from "./pages/IcooneLaser";
 import ManikuerePedikuere from "./pages/ManikuerePedikuere";
 import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
 import RedTouchPro from "./pages/RedTouchPro";
+import RedTouchProService from "./pages/RedTouchProService";
 import MotusPro from "./pages/MotusPro";
 import MotusAX from "./pages/MotusAX";
 import Physiq360 from "./pages/Physiq360";
@@ -65,6 +66,7 @@ const App = () => (
               <Route path="/manikuere-pedikuere" element={<ManikuerePedikuere />} />
               <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
               <Route path="/redtouch-pro" element={<RedTouchPro />} />
+              <Route path="/redtouchpro" element={<RedTouchProService />} />
               <Route path="/motus-pro" element={<MotusPro />} />
               <Route path="/motus-ax" element={<MotusAX />} />
               <Route path="/physiq360" element={<Physiq360 />} />

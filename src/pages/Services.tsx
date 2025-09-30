@@ -151,7 +151,7 @@ const Services = () => {
 
           {/* RedTouchPro Section */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/redtouch-pro" className="block">
+            <Link to="/redtouchpro" className="block">
               <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
@@ -184,14 +184,18 @@ const Services = () => {
                     </ul>
                   </div>
                   <div className="flex gap-3">
-                    <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preis#redtouchpro">
-                        Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
-                    <Button variant="outline" asChild>
-                      <Link to="/redtouch-pro">Mehr erfahren</Link>
-                    </Button>
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <Button asChild className="bg-gradient-hero text-white">
+                        <Link to="/preis#redtouchpro">
+                          Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
+                      </Button>
+                    </div>
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <Button variant="outline" asChild>
+                        <Link to="/redtouchpro">Mehr erfahren</Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
