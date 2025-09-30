@@ -267,7 +267,7 @@ const Home = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
+      <section className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
         {/* Floating geometric elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-6 h-6 border-2 border-rose-gold/30 rotate-45 animate-float"></div>
@@ -327,7 +327,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
+      <section id="contact" className="py-8 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
         {/* Dynamic floating elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>
