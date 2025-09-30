@@ -45,7 +45,7 @@ const Impressum = () => {
                     <h3 className="text-xl font-bold text-primary mb-4">Kontakt</h3>
                     <div className="space-y-2 text-muted-foreground">
                       <p><strong>Telefon:</strong> <a href="tel:+4915206067810" className="text-rose-gold hover:underline">+49 152 06067810</a></p>
-                      <p><strong>E-Mail:</strong> <a href="mailto:cheporska.studio@mnet-online.de" className="text-rose-gold hover:underline">cheporska.studio@mnet-online.de</a></p>
+                      <p><strong>E-Mail:</strong> <a href="mailto:Yulachip@icloud.com" className="text-rose-gold hover:underline">Yulachip@icloud.com</a></p>
                     </div>
                   </div>
 

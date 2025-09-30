@@ -60,7 +60,7 @@ const Datenschutz = () => {
                         </a><br/>
                         Deutschland</p>
                         <p><strong>Telefon:</strong> +49 152 06067810<br/>
-                        <strong>E-Mail:</strong> cheporska.studio@mnet-online.de</p>
+                        <strong>E-Mail:</strong> Yulachip@icloud.com</p>
                       </div>
                       <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
                     </div>

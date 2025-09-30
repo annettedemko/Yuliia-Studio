@@ -44,10 +44,10 @@ const Footer = () => {
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-2 text-rose-gold" />
                 <a 
-                  href="mailto:cheporska.studio@mnet-online.de" 
+                  href="mailto:Yulachip@icloud.com" 
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
                 >
-                  cheporska.studio@mnet-online.de
+                  Yulachip@icloud.com
                 </a>
               </div>
             </div>

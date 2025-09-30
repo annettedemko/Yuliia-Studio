@@ -399,8 +399,8 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-primary">E-Mail</h3>
-                  <a href="mailto:cheporska.studio@mnet-online.de" className="text-muted-foreground hover:text-rose-gold transition-colors hover:scale-105 inline-block">
-                    cheporska.studio@mnet-online.de
+                  <a href="mailto:Yulachip@icloud.com" className="text-muted-foreground hover:text-rose-gold transition-colors hover:scale-105 inline-block">
+                    Yulachip@icloud.com
                   </a>
                 </div>
               </div>
@@ -455,7 +455,7 @@ const Home = () => {
                       className="w-full border-rose-gold/50 text-primary hover:bg-rose-gold hover:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
                       asChild
                     >
-                      <a href="mailto:cheporska.studio@mnet-online.de">
+                      <a href="mailto:Yulachip@icloud.com">
                         <Mail className="w-5 h-5 mr-2" />
                         E-Mail schreiben
                       </a>

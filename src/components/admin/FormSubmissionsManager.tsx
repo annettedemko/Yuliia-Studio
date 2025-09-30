@@ -5,30 +5,55 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Trash2, Phone, Mail, Calendar, MapPin } from 'lucide-react'
 import { formService, type FormSubmission } from '@/services/formService'
+import { eventsService } from '@/services/contentService'
 
 export function FormSubmissionsManager() {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([])
+  const [events, setEvents] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'Others' | 'NATALIA' | 'ANNA'>('Others')
 
   useEffect(() => {
-    loadSubmissions()
+    loadData()
   }, [])
 
-  const loadSubmissions = async () => {
-    console.log('FormSubmissionsManager: Starting to load submissions...');
+  const loadData = async () => {
+    console.log('FormSubmissionsManager: Starting to load data...');
     setLoading(true)
     try {
-      console.log('FormSubmissionsManager: Calling formService.getAllSubmissions()...');
-      const data = await formService.getAllSubmissions()
-      console.log('FormSubmissionsManager: Received data:', data);
-      setSubmissions(data)
-      console.log('FormSubmissionsManager: State set complete');
+      const [submissionsData, eventsData] = await Promise.all([
+        formService.getAllSubmissions(),
+        eventsService.getAll()
+      ])
+
+      console.log('FormSubmissionsManager: Received submissions:', submissionsData.length);
+      console.log('FormSubmissionsManager: Received events:', eventsData.length);
+
+      setSubmissions(submissionsData)
+      setEvents(eventsData)
     } catch (error) {
-      console.error('FormSubmissionsManager: Error loading submissions:', error)
+      console.error('FormSubmissionsManager: Error loading data:', error)
     } finally {
       setLoading(false)
     }
+  }
+
+  // Helper function to get event info from message
+  const getEventInfo = (message: string | null) => {
+    if (!message || !message.includes('Veranstaltung:')) return null
+
+    const eventId = message.replace('Veranstaltung: ', '').trim()
+    const event = events.find(e => e.id === eventId)
+
+    if (event) {
+      return {
+        title: event.title,
+        date: event.date,
+        time: event.time
+      }
+    }
+
+    return null
   }
 
   const deleteSubmission = async (id: string) => {
@@ -98,7 +123,16 @@ export function FormSubmissionsManager() {
       )
     }
 
-    // Group submissions by page
+    // Helper function to get event date for sorting
+    const getEventDate = (submission: FormSubmission) => {
+      const eventInfo = getEventInfo(submission.message)
+      if (eventInfo && eventInfo.date) {
+        return new Date(eventInfo.date)
+      }
+      return new Date(submission.created_at) // fallback to submission date
+    }
+
+    // Group submissions by page and sort each group by event date
     const submissionsByPage = ownerSubmissions.reduce((acc, submission) => {
       const page = submission.page
       if (!acc[page]) {
@@ -107,6 +141,15 @@ export function FormSubmissionsManager() {
       acc[page].push(submission)
       return acc
     }, {} as Record<string, FormSubmission[]>)
+
+    // Sort submissions within each page by event date
+    Object.keys(submissionsByPage).forEach(page => {
+      submissionsByPage[page].sort((a, b) => {
+        const dateA = getEventDate(a)
+        const dateB = getEventDate(b)
+        return dateA.getTime() - dateB.getTime() // ascending order
+      })
+    })
 
     return (
       <div className="space-y-6">
@@ -164,10 +207,34 @@ export function FormSubmissionsManager() {
 
                       {submission.message && (
                         <div className="mt-3">
-                          <div className="text-sm font-medium text-gray-700 mb-1">Nachricht:</div>
-                          <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
-                            {submission.message}
-                          </div>
+                          {(() => {
+                            const eventInfo = getEventInfo(submission.message)
+                            if (eventInfo) {
+                              return (
+                                <div>
+                                  <div className="text-sm font-medium text-gray-700 mb-1">Gewählte Veranstaltung:</div>
+                                  <div className="text-sm bg-blue-50 p-3 rounded border-l-4 border-blue-400">
+                                    <div className="flex items-center gap-2 font-medium text-blue-900">
+                                      <Calendar className="w-4 h-4" />
+                                      {eventInfo.title}
+                                    </div>
+                                    <div className="text-blue-700 mt-1">
+                                      {eventInfo.date} • {eventInfo.time}
+                                    </div>
+                                  </div>
+                                </div>
+                              )
+                            } else {
+                              return (
+                                <div>
+                                  <div className="text-sm font-medium text-gray-700 mb-1">Nachricht:</div>
+                                  <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
+                                    {submission.message}
+                                  </div>
+                                </div>
+                              )
+                            }
+                          })()}
                         </div>
                       )}
                     </div>
@@ -202,7 +269,7 @@ export function FormSubmissionsManager() {
           <Button
             variant="outline"
             size="sm"
-            onClick={loadSubmissions}
+            onClick={loadData}
           >
             Aktualisieren
           </Button>

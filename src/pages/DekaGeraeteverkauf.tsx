@@ -315,7 +315,7 @@ const DekaGeraeteverkauf = () => {
                         className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                         asChild
                       >
-                        <a href="mailto:cheporska.studio@mnet-online.de" onClick={(e) => e.stopPropagation()}>
+                        <a href="mailto:Yulachip@icloud.com" onClick={(e) => e.stopPropagation()}>
                           <Mail className="w-4 h-4 mr-2" />
                           Angebot anfordern
                         </a>
@@ -363,7 +363,7 @@ const DekaGeraeteverkauf = () => {
               className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
               asChild
             >
-              <a href="mailto:cheporska.studio@mnet-online.de">
+              <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 ml-2" />
                 E-Mail senden
               </a>

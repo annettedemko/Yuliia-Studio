@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Heart, Hand, Instagram } from 'lucide-react';
+import { ArrowRight, Zap, Heart, Hand, Instagram, Waves } from 'lucide-react';
 
 const Services = () => {
   return (
@@ -147,6 +147,56 @@ const Services = () => {
                 </div>
               </div>
             </Card>
+        </div>
+
+          {/* RedTouchPro Section */}
+          <div className="max-w-5xl mx-auto mb-6">
+            <Link to="/redtouch-pro" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+              <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+                <div className="relative">
+                  <img src="/deka2.png" alt="RedTouchPro"
+                    className="w-full h-full object-cover"
+                    style={{ transform: 'scale(0.50) translateY(-57%) translateX(-5%)', objectPosition: 'center' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                      <Waves className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-8 flex flex-col justify-center ml-[-8%] translate-y-[-25%]">
+                  <h3 className="text-3xl font-bold text-primary mb-4">
+                    RedTouchPro – Innovative Hautstraffung
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Revolutionary 675nm Laser-Technologie für effektive Hautverjüngung und Kollagenproduktion.
+                    Sichere und schmerzfreie Behandlung für alle Hauttypen.
+                  </p>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-primary mb-2">Behandlungsgebiete:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Gesicht und Hals</li>
+                      <li>• Dekolleté und Körper</li>
+                      <li>• Hände und Unterarme</li>
+                      <li>• Spezielle Körperzonen</li>
+                    </ul>
+                  </div>
+                  <div className="flex gap-3">
+                    <Button asChild className="bg-gradient-hero text-white">
+                      <Link to="/preis#redtouchpro">
+                        Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button variant="outline" asChild>
+                      <Link to="/redtouch-pro">Mehr erfahren</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+            </Link>
         </div>
 
         </div>
