@@ -11,7 +11,7 @@ export function FormSubmissionsManager() {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([])
   const [events, setEvents] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<'Others' | 'NATALIA' | 'ANNA'>('Others')
+  const [activeTab, setActiveTab] = useState<'Yulia' | 'Natalia' | 'Anna' | 'Lera' | 'Liudmila'>('Yulia')
 
   useEffect(() => {
     loadData()
@@ -42,9 +42,20 @@ export function FormSubmissionsManager() {
   const getEventInfo = (message: string | null) => {
     if (!message || !message.includes('Veranstaltung:')) return null
 
+    // Parse new format: "Veranstaltung: DEKA Beauty Day am 2025-10-05 um 18:00"
+    const match = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{4}-\d{2}-\d{2})\s+um\s+(.+)/)
+    if (match) {
+      const [, title, date, time] = match
+      return {
+        title: title.trim(),
+        date: date.trim(),
+        time: time.trim()
+      }
+    }
+
+    // Fallback to old format - try to find event by ID
     const eventId = message.replace('Veranstaltung: ', '').trim()
     const event = events.find(e => e.id === eventId)
-
     if (event) {
       return {
         title: event.title,
@@ -57,7 +68,7 @@ export function FormSubmissionsManager() {
   }
 
   const deleteSubmission = async (id: string) => {
-    if (!confirm('Möchten Sie diese Anfrage wirklich löschen?')) {
+    if (!confirm('Вы действительно хотите удалить эту заявку?')) {
       return
     }
 
@@ -66,7 +77,7 @@ export function FormSubmissionsManager() {
       setSubmissions(prev => prev.filter(s => s.id !== id))
     } catch (error) {
       console.error('Error deleting submission:', error)
-      alert('Fehler beim Löschen der Anfrage')
+      alert('Ошибка при удалении заявки')
     }
   }
 
@@ -88,6 +99,12 @@ export function FormSubmissionsManager() {
     switch (page) {
       case 'deka-day':
         return 'DEKA Day'
+      case 'deka-anna':
+        return 'DEKA Anna'
+      case 'deka-lera':
+        return 'DEKA Lera'
+      case 'deka-liudmila':
+        return 'DEKA Liudmila'
       case 'kopie-deka-day-anna':
         return 'DEKA Day Anna'
       case 'deka':
@@ -118,7 +135,7 @@ export function FormSubmissionsManager() {
     if (ownerSubmissions.length === 0) {
       return (
         <div className="text-center py-8 text-gray-500">
-          Keine Anfragen vorhanden
+          Нет заявок
         </div>
       )
     }
@@ -132,35 +149,51 @@ export function FormSubmissionsManager() {
       return new Date(submission.created_at) // fallback to submission date
     }
 
-    // Group submissions by page and sort each group by event date
-    const submissionsByPage = ownerSubmissions.reduce((acc, submission) => {
-      const page = submission.page
-      if (!acc[page]) {
-        acc[page] = []
+    // Group submissions by event date first, then by page
+    const submissionsByEventDate = ownerSubmissions.reduce((acc, submission) => {
+      const eventInfo = getEventInfo(submission.message)
+      let groupKey: string
+
+      if (eventInfo && eventInfo.date) {
+        // Format: "2025-10-05: DEKA Beauty Day (18:00)"
+        groupKey = `${eventInfo.date}: ${eventInfo.title} (${eventInfo.time})`
+      } else {
+        // For submissions without event info, group by submission date
+        const submissionDate = new Date(submission.created_at).toLocaleDateString('de-DE')
+        groupKey = `${submissionDate}: Общие заявки`
       }
-      acc[page].push(submission)
+
+      if (!acc[groupKey]) {
+        acc[groupKey] = []
+      }
+      acc[groupKey].push(submission)
       return acc
     }, {} as Record<string, FormSubmission[]>)
 
-    // Sort submissions within each page by event date
-    Object.keys(submissionsByPage).forEach(page => {
-      submissionsByPage[page].sort((a, b) => {
-        const dateA = getEventDate(a)
-        const dateB = getEventDate(b)
-        return dateA.getTime() - dateB.getTime() // ascending order
+    // Sort each group by submission time and sort groups by date
+    const sortedGroups = Object.entries(submissionsByEventDate)
+      .sort(([keyA], [keyB]) => {
+        // Extract dates from keys for sorting
+        const dateA = keyA.split(':')[0]
+        const dateB = keyB.split(':')[0]
+        return new Date(dateA).getTime() - new Date(dateB).getTime()
       })
-    })
+      .map(([groupKey, submissions]) => [
+        groupKey,
+        submissions.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
+      ])
 
     return (
       <div className="space-y-6">
-        {Object.entries(submissionsByPage).map(([page, pageSubmissions]) => (
-          <div key={page} className="space-y-3">
-            <div className="flex items-center gap-2 pb-2 border-b">
-              <h3 className="font-semibold text-gray-700">{getPageLabel(page)}</h3>
-              <Badge variant="secondary">{pageSubmissions.length}</Badge>
+        {sortedGroups.map(([eventGroup, groupSubmissions]) => (
+          <div key={eventGroup} className="space-y-3">
+            <div className="flex items-center gap-2 pb-2 border-b border-blue-200 bg-blue-50 p-3 rounded-lg">
+              <Calendar className="w-5 h-5 text-blue-600" />
+              <h3 className="font-semibold text-blue-800">{eventGroup}</h3>
+              <Badge variant="default" className="bg-blue-600">{groupSubmissions.length}</Badge>
             </div>
             <div className="space-y-3 ml-4">
-              {pageSubmissions.map((submission) => (
+              {groupSubmissions.map((submission) => (
                 <Card key={submission.id} className="hover:shadow-md transition-shadow">
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
@@ -176,9 +209,14 @@ export function FormSubmissionsManager() {
                         </Button>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-500 flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {formatDate(submission.created_at)}
+                    <div className="text-sm text-gray-500 flex items-center justify-between">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {formatDate(submission.created_at)}
+                      </div>
+                      <Badge variant="outline" className="text-xs">
+                        {getPageLabel(submission.page)}
+                      </Badge>
                     </div>
                   </CardHeader>
                   <CardContent>
@@ -212,7 +250,7 @@ export function FormSubmissionsManager() {
                             if (eventInfo) {
                               return (
                                 <div>
-                                  <div className="text-sm font-medium text-gray-700 mb-1">Gewählte Veranstaltung:</div>
+                                  <div className="text-sm font-medium text-gray-700 mb-1">Выбранное мероприятие:</div>
                                   <div className="text-sm bg-blue-50 p-3 rounded border-l-4 border-blue-400">
                                     <div className="flex items-center gap-2 font-medium text-blue-900">
                                       <Calendar className="w-4 h-4" />
@@ -227,7 +265,7 @@ export function FormSubmissionsManager() {
                             } else {
                               return (
                                 <div>
-                                  <div className="text-sm font-medium text-gray-700 mb-1">Nachricht:</div>
+                                  <div className="text-sm font-medium text-gray-700 mb-1">Сообщение:</div>
                                   <div className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
                                     {submission.message}
                                   </div>
@@ -255,7 +293,7 @@ export function FormSubmissionsManager() {
           <CardTitle>Управление заявками</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-8">Lade Anfragen...</div>
+          <div className="text-center py-8">Загрузка заявок...</div>
         </CardContent>
       </Card>
     )
@@ -271,49 +309,73 @@ export function FormSubmissionsManager() {
             size="sm"
             onClick={loadData}
           >
-            Aktualisieren
+            Обновить
           </Button>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as any)}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="Others" className="relative">
-              Others
-              {getSubmissionsByOwner('Others').length > 0 && (
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="Yulia" className="relative">
+              Юлия
+              {getSubmissionsByOwner('Yulia').length > 0 && (
                 <Badge variant="secondary" className="ml-2 text-xs">
-                  {getSubmissionsByOwner('Others').length}
+                  {getSubmissionsByOwner('Yulia').length}
                 </Badge>
               )}
             </TabsTrigger>
-            <TabsTrigger value="NATALIA" className="relative">
-              NATALIA
-              {getSubmissionsByOwner('NATALIA').length > 0 && (
+            <TabsTrigger value="Natalia" className="relative">
+              Наталья
+              {getSubmissionsByOwner('Natalia').length > 0 && (
                 <Badge variant="secondary" className="ml-2 text-xs">
-                  {getSubmissionsByOwner('NATALIA').length}
+                  {getSubmissionsByOwner('Natalia').length}
                 </Badge>
               )}
             </TabsTrigger>
-            <TabsTrigger value="ANNA" className="relative">
-              ANNA
-              {getSubmissionsByOwner('ANNA').length > 0 && (
+            <TabsTrigger value="Anna" className="relative">
+              Анна
+              {getSubmissionsByOwner('Anna').length > 0 && (
                 <Badge variant="secondary" className="ml-2 text-xs">
-                  {getSubmissionsByOwner('ANNA').length}
+                  {getSubmissionsByOwner('Anna').length}
+                </Badge>
+              )}
+            </TabsTrigger>
+            <TabsTrigger value="Lera" className="relative">
+              Лера
+              {getSubmissionsByOwner('Lera').length > 0 && (
+                <Badge variant="secondary" className="ml-2 text-xs">
+                  {getSubmissionsByOwner('Lera').length}
+                </Badge>
+              )}
+            </TabsTrigger>
+            <TabsTrigger value="Liudmila" className="relative">
+              Людмила
+              {getSubmissionsByOwner('Liudmila').length > 0 && (
+                <Badge variant="secondary" className="ml-2 text-xs">
+                  {getSubmissionsByOwner('Liudmila').length}
                 </Badge>
               )}
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="Others" className="mt-4">
-            <SubmissionsList owner="Others" />
+          <TabsContent value="Yulia" className="mt-4">
+            <SubmissionsList owner="Yulia" />
           </TabsContent>
 
-          <TabsContent value="NATALIA" className="mt-4">
-            <SubmissionsList owner="NATALIA" />
+          <TabsContent value="Natalia" className="mt-4">
+            <SubmissionsList owner="Natalia" />
           </TabsContent>
 
-          <TabsContent value="ANNA" className="mt-4">
-            <SubmissionsList owner="ANNA" />
+          <TabsContent value="Anna" className="mt-4">
+            <SubmissionsList owner="Anna" />
+          </TabsContent>
+
+          <TabsContent value="Lera" className="mt-4">
+            <SubmissionsList owner="Lera" />
+          </TabsContent>
+
+          <TabsContent value="Liudmila" className="mt-4">
+            <SubmissionsList owner="Liudmila" />
           </TabsContent>
         </Tabs>
       </CardContent>

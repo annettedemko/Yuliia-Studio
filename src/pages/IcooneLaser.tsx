@@ -88,7 +88,7 @@ const IcooneLaser = () => {
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
               asChild
             >
-              <a href="tel:+4915206067810">
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                 <Phone className="w-5 h-5 mr-2" />
                 Beratungstermin vereinbaren
               </a>

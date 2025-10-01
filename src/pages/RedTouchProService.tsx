@@ -82,49 +82,24 @@ const RedTouchProService = () => {
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
-      <section className="py-12 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl bg-white">
-              <div className="relative overflow-hidden">
-                <img
-                  src="/deka2.png"
-                  alt="RedTouchPro"
-                  className="w-full h-full object-cover"
-                  style={{ transform: 'scale(0.50) translateY(-57%) translateX(-5%)', objectPosition: 'center' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                    <Waves className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="mb-6">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6">
-                    RedTouchPro
-                  </h1>
-                  <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-6">
-                    Innovative 675nm Laser-Technologie für revolutionäre Hautstraffung und Kollagenproduktion.
-                    Die Zukunft der schmerzfreien Hautverjüngung.
-                  </p>
-                </div>
-
-                <div className="flex justify-start">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-hero text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
-                  >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      Jetzt Termin vereinbaren
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
+      <section
+        className="relative pt-24 pb-16"
+        style={{
+          backgroundImage: `url(/deka2.4.png)`,
+          backgroundSize: '60%',
+          backgroundPosition: '20% center'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 via-black/30 to-white"></div>
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h1 className="text-6xl font-bold text-white mb-8">
+              RedTouchPro
+            </h1>
+            <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Innovative 675nm Laser-Technologie für revolutionäre Hautstraffung und Kollagenproduktion.
+              Die Zukunft der schmerzfreien Hautverjüngung.
+            </p>
           </div>
         </div>
       </section>

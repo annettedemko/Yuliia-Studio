@@ -55,7 +55,7 @@ const LaserHairRemoval = () => {
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
               asChild
             >
-              <a href="tel:+4915206067810">
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                 <Phone className="w-5 h-5 mr-2" />
                 Beratungstermin vereinbaren
               </a>
@@ -495,7 +495,7 @@ const LaserHairRemoval = () => {
               variant="outline"
               asChild
             >
-              <a href="tel:+4915206067810">
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                 Kostenlose Beratung
               </a>
             </Button>

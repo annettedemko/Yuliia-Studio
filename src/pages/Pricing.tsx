@@ -239,7 +239,7 @@ const Pricing = () => {
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
                         asChild
                       >
-                        <a href="tel:+4915206067810">
+                        <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                           Jetzt buchen
                         </a>
                       </Button>
@@ -349,7 +349,7 @@ const Pricing = () => {
               className="bg-white text-black hover:bg-white/90"
               asChild
             >
-              <a href="tel:+4915206067810">
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                 <Phone className="w-5 h-5 mr-2" />
                 Jetzt Termin vereinbaren
               </a>

@@ -45,9 +45,8 @@ const Home = () => {
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
-            onClick={scrollToContact}
+            onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
           >
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Termin buchen
           </Button>
         </div>
@@ -443,9 +442,9 @@ const Home = () => {
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
                       asChild
                     >
-                      <a href="tel:+4915206067810">
+                      <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                         <Phone className="w-5 h-5 mr-2 animate-bounce" />
-                        Anrufen
+                        Termin buchen
                       </a>
                     </Button>
 

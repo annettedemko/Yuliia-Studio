@@ -28,15 +28,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { simpleAuthService } from '@/services/simpleAuthService';
 import {
-  getContentData,
-  updatePrice,
-  createPrice,
-  deletePrice,
-  updateSubscription,
-  createSubscription,
-  deleteSubscription,
-  initializeContentData
-} from '@/utils/contentAPI';
+  pricesService,
+  subscriptionsService,
+  categoriesService,
+  eventsService
+} from '@/services/contentService';
+import type { PriceCategory } from '@/services/contentService';
 import {
   getEvents,
   createEvent as createSupabaseEvent,
@@ -47,12 +44,14 @@ import { debugEventsTable, checkEventDataTypes } from '@/utils/debugEvents';
 import { migrateEventsFromCSV } from '@/utils/migrateEventsFromCSV';
 import { testSupabaseConnection } from '@/utils/testSupabaseConnection';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
-import { ContentData, ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
-  const [contentData, setContentData] = useState<ContentData | null>(null);
+  const [prices, setPrices] = useState<ServicePrice[]>([]);
+  const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
+  const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
@@ -60,6 +59,7 @@ const AdminDashboard = () => {
   const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const initializeAdmin = async () => {
@@ -79,12 +79,20 @@ const AdminDashboard = () => {
       } else if (user.role === 'natalia') {
         navigate('/admin/natalia-clients');
         return;
+      } else if (user.role === 'yulia') {
+        navigate('/admin/yulia-clients');
+        return;
+      } else if (user.role === 'lera') {
+        navigate('/admin/lera-clients');
+        return;
+      } else if (user.role === 'liudmila') {
+        navigate('/admin/liudmila-clients');
+        return;
       } else if (user.role !== 'admin') {
         navigate('/admin/login');
         return;
       }
 
-      initializeContentData();
       setCurrentUser(user.email);
       setUserRole(user.role);
       await loadData();
@@ -94,15 +102,32 @@ const AdminDashboard = () => {
   }, [navigate]);
 
   const loadData = async () => {
-    console.log('Loading data...');
-    const data = getContentData();
-    setContentData(data);
+    setLoading(true);
+    console.log('Loading data from Supabase...');
 
-    // Load events from Supabase
-    console.log('Loading events from Supabase...');
-    const events = await getEvents();
-    console.log('Events loaded:', events);
-    setSupabaseEvents(events);
+    try {
+      // Load all data from Supabase
+      const [pricesData, subscriptionsData, categoriesData, eventsData] = await Promise.all([
+        pricesService.getAll(),
+        subscriptionsService.getAll(),
+        categoriesService.getAll(),
+        getEvents()
+      ]);
+
+      console.log('Loaded prices:', pricesData);
+      console.log('Loaded subscriptions:', subscriptionsData);
+      console.log('Loaded categories:', categoriesData);
+      console.log('Loaded events:', eventsData);
+
+      setPrices(pricesData);
+      setSubscriptions(subscriptionsData);
+      setCategories(categoriesData);
+      setSupabaseEvents(eventsData);
+    } catch (error) {
+      console.error('Error loading data:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleLogout = () => {
@@ -111,38 +136,58 @@ const AdminDashboard = () => {
   };
 
   const handleSavePrice = async (price: ServicePrice) => {
-    if (editingPrice) {
-      updatePrice(price.id, price);
-    } else {
-      createPrice(price);
+    try {
+      if (editingPrice) {
+        await pricesService.update(price.id, price);
+      } else {
+        await pricesService.create(price);
+      }
+      setEditingPrice(null);
+      setIsCreating(null);
+      await loadData();
+    } catch (error) {
+      console.error('Error saving price:', error);
+      alert('Fehler beim Speichern des Preises');
     }
-    setEditingPrice(null);
-    setIsCreating(null);
-    await loadData();
   };
 
   const handleDeletePrice = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie diesen Preis löschen möchten?')) {
-      deletePrice(id);
-      await loadData();
+      try {
+        await pricesService.delete(id);
+        await loadData();
+      } catch (error) {
+        console.error('Error deleting price:', error);
+        alert('Fehler beim Löschen des Preises');
+      }
     }
   };
 
   const handleSaveSubscription = async (subscription: SubscriptionPackage) => {
-    if (editingSubscription) {
-      updateSubscription(subscription.id, subscription);
-    } else {
-      createSubscription(subscription);
+    try {
+      if (editingSubscription) {
+        await subscriptionsService.update(subscription.id, subscription);
+      } else {
+        await subscriptionsService.create(subscription);
+      }
+      setEditingSubscription(null);
+      setIsCreating(null);
+      await loadData();
+    } catch (error) {
+      console.error('Error saving subscription:', error);
+      alert('Fehler beim Speichern des Abonnements');
     }
-    setEditingSubscription(null);
-    setIsCreating(null);
-    await loadData();
   };
 
   const handleDeleteSubscription = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?')) {
-      deleteSubscription(id);
-      await loadData();
+      try {
+        await subscriptionsService.delete(id);
+        await loadData();
+      } catch (error) {
+        console.error('Error deleting subscription:', error);
+        alert('Fehler beim Löschen des Abonnements');
+      }
     }
   };
 
@@ -189,12 +234,13 @@ const AdminDashboard = () => {
     alexandrit: 'Alexandrit Laser',
     dioden: 'Dioden Laser',
     icoone: 'Icoone Laser',
+    redtouchpro: 'RedTouchPro',
     manicure: 'Maniküre',
     pedicure: 'Pediküre'
   };
 
-  if (!contentData) {
-    return <div className="min-h-screen flex items-center justify-center">Laden...</div>;
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Загрузка...</div>;
   }
 
   return (
@@ -205,10 +251,10 @@ const AdminDashboard = () => {
           <div className="flex justify-between items-center py-4">
             <div>
               <h1 className="text-2xl font-bold text-primary">
-                Yuliia Cheporska Studio - Admin Panel
+                Yuliia Cheporska Studio - Панель управления
               </h1>
               <p className="text-sm text-muted-foreground">
-                Angemeldet als: {currentUser}
+                Авторизован как: {currentUser}
               </p>
             </div>
             <Button
@@ -217,7 +263,7 @@ const AdminDashboard = () => {
               className="flex items-center gap-2"
             >
               <LogOut className="w-4 h-4" />
-              Abmelden
+              Выйти
             </Button>
           </div>
         </div>
@@ -239,8 +285,8 @@ const AdminDashboard = () => {
                   <DollarSign className="w-5 h-5 text-rose-gold" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-xs text-muted-foreground">Preise</p>
-                  <p className="text-xl font-bold">{contentData.prices?.length || 0}</p>
+                  <p className="text-xs text-muted-foreground">Цены</p>
+                  <p className="text-xl font-bold">{prices.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -259,8 +305,8 @@ const AdminDashboard = () => {
                   <Package className="w-5 h-5 text-primary" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-xs text-muted-foreground">Abonnements</p>
-                  <p className="text-xl font-bold">{contentData.subscriptions?.length || 0}</p>
+                  <p className="text-xs text-muted-foreground">Подписки</p>
+                  <p className="text-xl font-bold">{subscriptions.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -339,7 +385,7 @@ const AdminDashboard = () => {
                 <div className="ml-3">
                   <p className="text-xs text-muted-foreground">Обновлено</p>
                   <p className="text-xs">
-                    {contentData.lastUpdated ? new Date(contentData.lastUpdated).toLocaleDateString('ru-RU') : 'Никогда'}
+                    {new Date().toLocaleDateString('ru-RU')}
                   </p>
                 </div>
               </div>
@@ -351,19 +397,20 @@ const AdminDashboard = () => {
         <Card className="mb-8" id="prices-section">
           <CardHeader>
             <div className="flex justify-between items-center">
-              <CardTitle>Preise verwalten</CardTitle>
+              <CardTitle>Управление ценами</CardTitle>
               <Button
                 onClick={() => setIsCreating('price')}
                 className="flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
-                Neuer Preis
+                Новая цена
               </Button>
             </div>
           </CardHeader>
           <CardContent>
             {isCreating === 'price' && (
               <PriceEditor
+                categories={categories}
                 onSave={handleSavePrice}
                 onCancel={() => setIsCreating(null)}
               />
@@ -374,13 +421,14 @@ const AdminDashboard = () => {
                 <div key={category} className="border rounded-lg p-4">
                   <h3 className="font-semibold mb-3">{name}</h3>
                   <div className="grid gap-2">
-                    {(contentData.prices || [])
+                    {prices
                       .filter(p => p.category === category)
                       .map(price => (
                         <div key={price.id} className="flex items-center justify-between bg-gray-50 p-3 rounded">
                           {editingPrice?.id === price.id ? (
                             <PriceEditor
                               price={editingPrice}
+                              categories={categories}
                               onSave={handleSavePrice}
                               onCancel={() => setEditingPrice(null)}
                             />
@@ -426,13 +474,13 @@ const AdminDashboard = () => {
         <Card className="mb-8" id="subscriptions-section">
           <CardHeader>
             <div className="flex justify-between items-center">
-              <CardTitle>Abonnements verwalten</CardTitle>
+              <CardTitle>Управление подписками</CardTitle>
               <Button
                 onClick={() => setIsCreating('subscription')}
                 className="flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
-                Neues Abonnement
+                Новая подписка
               </Button>
             </div>
           </CardHeader>
@@ -445,7 +493,7 @@ const AdminDashboard = () => {
             )}
 
             <div className="grid gap-4">
-              {(contentData.subscriptions || []).map(subscription => (
+              {subscriptions.map(subscription => (
                 <div key={subscription.id} className="border rounded-lg p-4">
                   {editingSubscription?.id === subscription.id ? (
                     <SubscriptionEditor
@@ -599,16 +647,16 @@ const AdminDashboard = () => {
               <CardTitle>Управление клиентами</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <Button
                   variant="outline"
                   className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/anna-clients')}
+                  onClick={() => navigate('/admin/yulia-clients')}
                 >
-                  <Users className="w-6 h-6 text-rose-gold" />
+                  <Users className="w-6 h-6 text-blue-500" />
                   <div className="text-left">
-                    <div className="font-semibold">Anna's Kunden</div>
-                    <div className="text-sm text-muted-foreground">Kundenverwaltung für Anna</div>
+                    <div className="font-semibold">Клиенты Юлии</div>
+                    <div className="text-sm text-muted-foreground">Управление клиентами Юлии</div>
                   </div>
                 </Button>
                 <Button
@@ -618,8 +666,41 @@ const AdminDashboard = () => {
                 >
                   <Users className="w-6 h-6 text-purple-500" />
                   <div className="text-left">
-                    <div className="font-semibold">Natalia's Kunden</div>
-                    <div className="text-sm text-muted-foreground">Kundenverwaltung für Natalia</div>
+                    <div className="font-semibold">Клиенты Натальи</div>
+                    <div className="text-sm text-muted-foreground">Управление клиентами Натальи</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-16"
+                  onClick={() => navigate('/admin/anna-clients')}
+                >
+                  <Users className="w-6 h-6 text-rose-gold" />
+                  <div className="text-left">
+                    <div className="font-semibold">Клиенты Анны</div>
+                    <div className="text-sm text-muted-foreground">Управление клиентами Анны</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-16"
+                  onClick={() => navigate('/admin/lera-clients')}
+                >
+                  <Users className="w-6 h-6 text-green-500" />
+                  <div className="text-left">
+                    <div className="font-semibold">Клиенты Леры</div>
+                    <div className="text-sm text-muted-foreground">Управление клиентами Леры</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex items-center gap-2 h-16"
+                  onClick={() => navigate('/admin/liudmila-clients')}
+                >
+                  <Users className="w-6 h-6 text-orange-500" />
+                  <div className="text-left">
+                    <div className="font-semibold">Клиенты Людмилы</div>
+                    <div className="text-sm text-muted-foreground">Управление клиентами Людмилы</div>
                   </div>
                 </Button>
               </div>
@@ -634,10 +715,12 @@ const AdminDashboard = () => {
 // Price Editor Component
 const PriceEditor = ({
   price,
+  categories,
   onSave,
   onCancel
 }: {
   price?: ServicePrice;
+  categories: PriceCategory[];
   onSave: (price: ServicePrice) => void;
   onCancel: () => void;
 }) => {
@@ -687,11 +770,11 @@ const PriceEditor = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="alexandrit">Alexandrit Laser</SelectItem>
-              <SelectItem value="dioden">Dioden Laser</SelectItem>
-              <SelectItem value="icoone">Icoone Laser</SelectItem>
-              <SelectItem value="manicure">Maniküre</SelectItem>
-              <SelectItem value="pedicure">Pediküre</SelectItem>
+              {categories.map(category => (
+                <SelectItem key={category.id} value={category.code}>
+                  {category.name}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>

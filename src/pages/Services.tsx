@@ -253,7 +253,7 @@ const Services = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-black hover:bg-white/90" asChild>
-              <a href="tel:+4915206067810">Jetzt Termin vereinbaren</a>
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">Jetzt Termin vereinbaren</a>
             </Button>
             <a
               href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"

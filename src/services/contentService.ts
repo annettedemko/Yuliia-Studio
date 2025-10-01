@@ -108,12 +108,24 @@ export const pricesService = {
   },
 
   async create(price: Omit<ServicePrice, 'id'>): Promise<ServicePrice | null> {
+    // Find category_id by category code
+    const { data: categoryData } = await supabase
+      .from('price_categories')
+      .select('id')
+      .eq('code', price.category)
+      .single()
+
+    if (!categoryData) {
+      console.error('Category not found:', price.category)
+      return null
+    }
+
     const { data, error } = await supabase
       .from('prices')
       .insert({
         service: price.service,
         price: price.price,
-        category: price.category,
+        category_id: categoryData.id,
         note: price.note || null,
         order_index: 0
       })
@@ -135,14 +147,36 @@ export const pricesService = {
   },
 
   async update(id: string, updates: Partial<ServicePrice>): Promise<ServicePrice | null> {
+    let category_id = undefined
+
+    // If category is being updated, find the category_id
+    if (updates.category) {
+      const { data: categoryData } = await supabase
+        .from('price_categories')
+        .select('id')
+        .eq('code', updates.category)
+        .single()
+
+      if (!categoryData) {
+        console.error('Category not found:', updates.category)
+        return null
+      }
+      category_id = categoryData.id
+    }
+
+    const updateData: any = {
+      service: updates.service,
+      price: updates.price,
+      note: updates.note || null
+    }
+
+    if (category_id) {
+      updateData.category_id = category_id
+    }
+
     const { data, error } = await supabase
       .from('prices')
-      .update({
-        service: updates.service,
-        price: updates.price,
-        category: updates.category,
-        note: updates.note || null
-      })
+      .update(updateData)
       .eq('id', id)
       .select()
       .single()

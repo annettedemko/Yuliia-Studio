@@ -7,7 +7,7 @@ export interface FormSubmission {
   email?: string | null
   message?: string | null
   page: string
-  owner: 'Others' | 'NATALIA' | 'ANNA'
+  owner: 'Yulia' | 'Natalia' | 'Anna' | 'Lera' | 'Liudmila'
   created_at: string
 }
 
@@ -21,13 +21,20 @@ export interface FormSubmissionCreate {
 
 // Mapping pages to owners - dynamic function
 const getOwnerFromPage = (page: string): FormSubmission['owner'] => {
-  if (page.includes('anna')) {
-    return 'ANNA'
+  if (page.includes('anna') || page === 'deka-anna') {
+    return 'Anna'
   }
   if (page.includes('natalia') || page === 'deka-day') {
-    return 'NATALIA'
+    return 'Natalia'
   }
-  return 'Others'
+  if (page.includes('lera') || page === 'deka-lera') {
+    return 'Lera'
+  }
+  if (page.includes('liudmila') || page === 'deka-liudmila') {
+    return 'Liudmila'
+  }
+  // Default for 'deka' and other pages goes to Yulia
+  return 'Yulia'
 }
 
 export const formService = {
@@ -120,12 +127,15 @@ export const formService = {
 
     if (error) {
       console.error('Error fetching submissions count:', error)
-      return { Others: 0, NATALIA: 0, ANNA: 0 }
+      return { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
     }
 
-    const counts = { Others: 0, NATALIA: 0, ANNA: 0 }
+    const counts = { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
     data.forEach(item => {
-      counts[item.owner as FormSubmission['owner']]++
+      const owner = item.owner as FormSubmission['owner']
+      if (owner in counts) {
+        counts[owner]++
+      }
     })
 
     return counts

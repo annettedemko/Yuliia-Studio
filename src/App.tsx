@@ -25,11 +25,16 @@ import AgainCos from "./pages/AgainCos";
 import Pricing from "./pages/Pricing";
 import Deka from "./pages/Deka";
 import DekaDay from "./pages/DekaDay";
-import KopieDekaDayAnna from "./pages/KopieDekaDayAnna";
+import DekaAnna from "./pages/DekaAnna";
+import DekaLera from "./pages/DekaLera";
+import DekaLiudmila from "./pages/DekaLiudmila";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import YuliaClients from "./pages/YuliaClients";
 import AnnaClients from "./pages/AnnaClients";
 import NataliaClients from "./pages/NataliaClients";
+import LeraClients from "./pages/LeraClients";
+import LiudmilaClients from "./pages/LiudmilaClients";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
@@ -75,11 +80,16 @@ const App = () => (
               <Route path="/deka" element={<Deka />} />
               <Route path="/DEKA" element={<Deka />} />
               <Route path="/deka-day" element={<DekaDay />} />
-              <Route path="/kopie-deka-day-anna" element={<KopieDekaDayAnna />} />
+              <Route path="/deka-anna" element={<DekaAnna />} />
+              <Route path="/deka-lera" element={<DekaLera />} />
+              <Route path="/deka-liudmila" element={<DekaLiudmila />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/yulia-clients" element={<YuliaClients />} />
               <Route path="/admin/anna-clients" element={<AnnaClients />} />
               <Route path="/admin/natalia-clients" element={<NataliaClients />} />
+              <Route path="/admin/lera-clients" element={<LeraClients />} />
+              <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
               <Route path="*" element={<NotFound />} />
