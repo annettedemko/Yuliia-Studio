@@ -65,6 +65,8 @@ export const categoriesService = {
 // Prices service
 export const pricesService = {
   async getAll(): Promise<ServicePrice[]> {
+    console.log('🔍 Prices: Начинаем запрос к таблице prices...');
+
     // Простой запрос без joins для совместимости с продакшн БД
     const { data, error } = await supabase
       .from('prices')
@@ -72,10 +74,21 @@ export const pricesService = {
       .eq('is_published', true)
       .order('order_index', { ascending: true })
 
+    console.log('🔍 Prices: Ответ от Supabase:', { data: data?.length, error });
+
     if (error) {
-      console.error('Error fetching prices:', error)
+      console.error('🔴 Error fetching prices:', error)
+      console.error('🔴 Error details:', error.message, error.details, error.hint, error.code);
       return []
     }
+
+    if (!data || data.length === 0) {
+      console.warn('⚠️ Prices: Таблица пустая или нет опубликованных цен');
+      return []
+    }
+
+    console.log('🟢 Prices: Найдено записей:', data.length);
+    console.log('🟢 Prices: Первая запись:', data[0]);
 
     return data.map(item => ({
       id: item.id,

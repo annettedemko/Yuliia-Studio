@@ -14,21 +14,7 @@
 Скопировать и выполнить этот SQL скрипт:
 
 ```sql
--- Отключаем RLS для публичных таблиц
-ALTER TABLE public.prices DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.subscriptions DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.events DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.price_categories DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.form_submissions DISABLE ROW LEVEL SECURITY;
-
--- Предоставляем доступ для анонимных пользователей
-GRANT SELECT ON public.prices TO anon, authenticated, service_role;
-GRANT SELECT ON public.subscriptions TO anon, authenticated, service_role;
-GRANT SELECT ON public.events TO anon, authenticated, service_role;
-GRANT SELECT ON public.price_categories TO anon, authenticated, service_role;
-GRANT SELECT, INSERT ON public.form_submissions TO anon, authenticated, service_role;
-```
-
+абонимн
 ### Шаг 3: Проверить результат
 После выполнения команд сайт должен сразу заработать. Проверьте:
 - https://yuliia-studio.vercel.app/preis
