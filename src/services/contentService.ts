@@ -65,12 +65,10 @@ export const categoriesService = {
 // Prices service
 export const pricesService = {
   async getAll(): Promise<ServicePrice[]> {
+    // Простой запрос без joins для совместимости с продакшн БД
     const { data, error } = await supabase
       .from('prices')
-      .select(`
-        *,
-        price_categories!inner(code, name)
-      `)
+      .select('*')
       .eq('is_published', true)
       .order('order_index', { ascending: true })
 
@@ -83,7 +81,7 @@ export const pricesService = {
       id: item.id,
       service: item.service,
       price: item.price,
-      category: item.price_categories?.code as ServicePrice['category'],
+      category: item.category as ServicePrice['category'],
       note: item.note || undefined
     }))
   },
