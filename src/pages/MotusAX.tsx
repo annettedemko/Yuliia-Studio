@@ -336,7 +336,7 @@ const MotusAX = () => {
               className="border-white text-white bg-transparent hover:bg-white hover:text-purple-900 text-lg px-8 py-4"
               asChild
             >
-              <a href="mailto:cheporska.studio@mnet-online.de">
+              <a href="mailto:Yulachip@icloud.com">
                 <ArrowRight className="w-5 h-5 ml-2" />
                 E-Mail senden
               </a>

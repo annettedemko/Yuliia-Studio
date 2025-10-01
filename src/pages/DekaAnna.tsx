@@ -9,7 +9,7 @@ import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { eventsService } from '@/services/contentService';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const KopieDekaDayAnna = () => {
+const DekaAnna = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
     vorname: '',
@@ -20,7 +20,7 @@ const KopieDekaDayAnna = () => {
   });
 
   const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const { submitForm, isSubmitting, submitSuccess, submitError } = useFormSubmission('kopie-deka-day-anna');
+  const { submitForm, isSubmitting, submitSuccess, submitError } = useFormSubmission('deka-anna');
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -84,13 +84,24 @@ const KopieDekaDayAnna = () => {
     }));
   };
 
+  // Combine events data - use upcomingEvents if available, fallback otherwise
+  const eventsToShow = upcomingEvents.length > 0 ? upcomingEvents : fallbackEvents;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await submitForm(formData);
+    const eventDetails = eventsToShow.find(event => event.id === formData.selectedEvent);
+    const eventInfo = eventDetails ? `Veranstaltung: ${eventDetails.title} am ${eventDetails.date} um ${eventDetails.time}` : '';
+
+    // Prepare form data for the hook - it expects the raw form data and will process it
+    const submissionData = {
+      ...formData,
+      selectedEvent: eventInfo // Pass the event info as the selectedEvent message
+    };
+
+    await submitForm(submissionData);
 
     if (!submitError) {
-      // Reset form on success
       setFormData({
         vorname: '',
         name: '',
@@ -445,7 +456,7 @@ const KopieDekaDayAnna = () => {
                     />
                   </div>
 
-                  {upcomingEvents.length > 0 && (
+                  {eventsToShow.length > 0 && (
                     <div>
                       <Label htmlFor="selectedEvent" className="text-base font-medium">
                         {t('events.select-event')}
@@ -459,7 +470,7 @@ const KopieDekaDayAnna = () => {
                         required
                       >
                         <option value="">{t('events.select-placeholder')}</option>
-                        {upcomingEvents.map((event) => (
+                        {eventsToShow.map((event) => (
                           <option key={event.id} value={event.id}>
                             {event.title} - {new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
@@ -557,6 +568,6 @@ const KopieDekaDayAnna = () => {
   );
 };
 
-export default KopieDekaDayAnna;
+export default DekaAnna;
 
 

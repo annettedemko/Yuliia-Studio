@@ -128,7 +128,7 @@ const ManikuerePedikuere = () => {
             className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
             asChild
           >
-            <a href="tel:+4915206067810">
+            <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
               <Phone className="w-5 h-5 mr-2" />
               Termin vereinbaren
             </a>
@@ -175,7 +175,7 @@ const ManikuerePedikuere = () => {
                       className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                       asChild
                     >
-                      <Link to="/preise">
+                      <Link to="/preis">
                         Alle Preise ansehen
                       </Link>
                     </Button>
@@ -226,7 +226,7 @@ const ManikuerePedikuere = () => {
                       className="border-primary text-primary hover:bg-primary hover:text-white"
                       asChild
                     >
-                      <Link to="/preise">
+                      <Link to="/preis">
                         Alle Preise ansehen
                       </Link>
                     </Button>
@@ -468,7 +468,7 @@ const ManikuerePedikuere = () => {
                 className="bg-white text-primary hover:bg-white/90"
                 asChild
               >
-                <a href="tel:+4915206067810">
+                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                   Jetzt Termin buchen
                 </a>
               </Button>

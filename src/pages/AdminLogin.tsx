@@ -2,42 +2,51 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Lock, User } from 'lucide-react';
+import { Lock, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login, initializeAdmin } from '@/utils/adminAuth';
+import { simpleAuthService } from '@/services/simpleAuthService';
 
 const AdminLogin = () => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Инициализируем админов при загрузке компонента
-    initializeAdmin();
-    console.log('Admin users initialized');
-  }, []);
+    // Проверяем если пользователь уже авторизован
+    const user = simpleAuthService.getCurrentUser();
+    if (user) {
+      console.log('🟢 AdminLogin: Пользователь уже авторизован, перенаправление');
+      navigate('/admin');
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
 
-    try {
-      const success = login(credentials.username, credentials.password);
+    console.log('🟡 AdminLogin: Попытка входа с', credentials.email);
 
-      if (success) {
+    try {
+      const { user, error: signInError } = await simpleAuthService.login(credentials.email, credentials.password);
+
+      if (signInError) {
+        console.log('🔴 AdminLogin: Ошибка входа:', signInError);
+        setError(signInError);
+      } else if (user) {
+        console.log('🟢 AdminLogin: Успешный вход:', user);
         navigate('/admin');
-      } else {
-        setError('Ungültige Anmeldedaten');
       }
     } catch (err) {
-      setError('Anmeldefehler aufgetreten');
+      console.error('🔴 AdminLogin: Исключение:', err);
+      setError('Ошибка входа');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-rose-gold/5 to-accent/10">
@@ -57,16 +66,16 @@ const AdminLogin = () => {
           <CardContent className="space-y-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="username" className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
-                  Benutzername
+                <Label htmlFor="email" className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  E-Mail
                 </Label>
                 <Input
-                  id="username"
-                  type="text"
-                  value={credentials.username}
+                  id="email"
+                  type="email"
+                  value={credentials.email}
                   onChange={(e) =>
-                    setCredentials({ ...credentials, username: e.target.value })
+                    setCredentials({ ...credentials, email: e.target.value })
                   }
                   className="mt-2"
                   required
@@ -108,9 +117,10 @@ const AdminLogin = () => {
             </form>
 
             <div className="text-xs text-center text-muted-foreground bg-accent/20 p-3 rounded-md">
-              <p className="font-medium">Standard Anmeldedaten:</p>
-              <p>Benutzername: admin</p>
-              <p>Passwort: YuliiaCheporska2024!</p>
+              <p className="font-medium">🔐 Zugangsdaten:</p>
+              <p><strong>Admin:</strong> admin@beauty.com / Admin2024!</p>
+              <p><strong>Anna:</strong> anna@beauty.com / Anna2024!</p>
+              <p><strong>Natalia:</strong> natalia@beauty.com / Natalia2024!</p>
             </div>
           </CardContent>
         </Card>

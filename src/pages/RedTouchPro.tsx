@@ -571,57 +571,27 @@ const RedTouchPro = () => {
 
       {/* CTA Section */}
       <section className="py-8 bg-gradient-to-r from-blue-600 to-primary text-white" style={{marginTop: '-30px'}}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <h2 className="text-4xl font-bold mb-6">Jetzt beraten lassen</h2>
-            <p className="text-xl mb-8 text-white/90 leading-relaxed">
-              Entdecken Sie die revolutionäre RedTouch PRO Technologie für Ihr Studio.
-              Kontaktieren Sie uns für eine individuelle Beratung und Demonstration.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4"
-                asChild
-              >
-                <a href="tel:+4915206067810">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Sofort anrufen
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
-                asChild
-              >
-                <a href="mailto:info@yuliia-studio.de">
-                  <Mail className="w-5 h-5 mr-2" />
-                  Angebot anfordern
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
-                asChild
-              >
-                <Link to="/deka-geraeteverkauf">
-                  <ArrowRight className="w-5 h-5 mr-2" />
-                  Weitere DEKA Geräte
-                </Link>
-              </Button>
-            </div>
-
-            <div className="mt-8 pt-8 border-t border-white/20">
-              <p className="text-white/80 text-sm">
-                Als offizieller DEKA Vertriebspartner bieten wir Ihnen umfassende Beratung,
-                Schulungen und 24 Monate Garantie über den Asclepion Webclub.
-              </p>
-            </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6 animate-slide-up">
+            Interessiert am RedTouch PRO?
+          </h2>
+          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto animate-slide-up delay-200">
+            Entdecken Sie die revolutionäre RedTouch PRO Technologie für Ihr Studio.
+            Vereinbaren Sie jetzt einen Beratungstermin!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
+              <a href="tel:+4915206067810">
+                <Phone className="w-5 h-5 mr-2" />
+                Beratung vereinbaren
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+              <a href="mailto:Yulachip@icloud.com">
+                <Mail className="w-5 h-5 mr-2" />
+                E-Mail senden
+              </a>
+            </Button>
           </div>
         </div>
       </section>

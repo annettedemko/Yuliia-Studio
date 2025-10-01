@@ -6,8 +6,8 @@ export interface FormSubmission {
   phone: string
   email?: string | null
   message?: string | null
-  page: 'deka' | 'deka-day' | 'kopie-deka-day-anna'
-  owner: 'Others' | 'NATALIA' | 'ANNA'
+  page: string
+  owner: 'Yulia' | 'Natalia' | 'Anna' | 'Lera' | 'Liudmila'
   created_at: string
 }
 
@@ -16,19 +16,38 @@ export interface FormSubmissionCreate {
   phone: string
   email?: string
   message?: string
-  page: 'deka' | 'deka-day' | 'kopie-deka-day-anna'
+  page: string
 }
 
-// Mapping pages to owners
-const pageToOwnerMap: Record<FormSubmissionCreate['page'], FormSubmission['owner']> = {
-  'deka': 'Others',
-  'deka-day': 'NATALIA',
-  'kopie-deka-day-anna': 'ANNA'
+// Mapping pages to owners - dynamic function
+const getOwnerFromPage = (page: string): FormSubmission['owner'] => {
+  if (page.includes('anna') || page === 'deka-anna') {
+    return 'Anna'
+  }
+  if (page.includes('natalia') || page === 'deka-day') {
+    return 'Natalia'
+  }
+  if (page.includes('lera') || page === 'deka-lera') {
+    return 'Lera'
+  }
+  if (page.includes('liudmila') || page === 'deka-liudmila') {
+    return 'Liudmila'
+  }
+  // Default for 'deka' and other pages goes to Yulia
+  return 'Yulia'
 }
 
 export const formService = {
   async submitForm(submission: FormSubmissionCreate): Promise<FormSubmission | null> {
-    const owner = pageToOwnerMap[submission.page]
+    const owner = getOwnerFromPage(submission.page)
+
+    console.log('🟡 FormService: Попытка отправки формы:', {
+      name: submission.name,
+      phone: submission.phone,
+      email: submission.email,
+      page: submission.page,
+      owner: owner
+    });
 
     const { data, error } = await supabase
       .from('form_submissions')
@@ -43,19 +62,26 @@ export const formService = {
       .select()
       .single()
 
+    console.log('🟡 FormService: Ответ от Supabase:', { data, error });
+
     if (error) {
-      console.error('Error submitting form:', error)
+      console.error('🔴 FormService: Ошибка отправки формы:', error)
       return null
     }
 
+    console.log('🟢 FormService: Форма отправлена успешно:', data);
     return data as FormSubmission
   },
 
   async getAllSubmissions(): Promise<FormSubmission[]> {
+    console.log('formService.getAllSubmissions: Starting to fetch submissions...');
+
     const { data, error } = await supabase
       .from('form_submissions')
       .select('*')
       .order('created_at', { ascending: false })
+
+    console.log('formService.getAllSubmissions: Supabase response:', { data, error });
 
     if (error) {
       console.error('Error fetching form submissions:', error)
@@ -101,12 +127,15 @@ export const formService = {
 
     if (error) {
       console.error('Error fetching submissions count:', error)
-      return { Others: 0, NATALIA: 0, ANNA: 0 }
+      return { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
     }
 
-    const counts = { Others: 0, NATALIA: 0, ANNA: 0 }
+    const counts = { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
     data.forEach(item => {
-      counts[item.owner as FormSubmission['owner']]++
+      const owner = item.owner as FormSubmission['owner']
+      if (owner in counts) {
+        counts[owner]++
+      }
     })
 
     return counts

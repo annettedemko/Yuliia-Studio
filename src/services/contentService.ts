@@ -1,12 +1,76 @@
 import { supabase } from '@/lib/supabase'
 import type { ServicePrice, SubscriptionPackage, Event } from '@/types/admin'
 
+// Price category interface
+export interface PriceCategory {
+  id: string
+  code: string
+  name: string
+  description?: string
+  icon?: string
+  color?: string
+  order_index: number
+  is_published: boolean
+}
+
+// Categories service
+export const categoriesService = {
+  async getAll(): Promise<PriceCategory[]> {
+    const { data, error } = await supabase
+      .from('price_categories')
+      .select('*')
+      .eq('is_published', true)
+      .order('order_index', { ascending: true })
+
+    if (error) {
+      console.error('Error fetching categories:', error)
+      return []
+    }
+
+    return data as PriceCategory[]
+  },
+
+  async create(category: Omit<PriceCategory, 'id'>): Promise<PriceCategory | null> {
+    const { data, error } = await supabase
+      .from('price_categories')
+      .insert(category)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating category:', error)
+      return null
+    }
+
+    return data as PriceCategory
+  },
+
+  async update(id: string, updates: Partial<PriceCategory>): Promise<PriceCategory | null> {
+    const { data, error } = await supabase
+      .from('price_categories')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating category:', error)
+      return null
+    }
+
+    return data as PriceCategory
+  }
+}
+
 // Prices service
 export const pricesService = {
   async getAll(): Promise<ServicePrice[]> {
     const { data, error } = await supabase
       .from('prices')
-      .select('*')
+      .select(`
+        *,
+        price_categories!inner(code, name)
+      `)
       .eq('is_published', true)
       .order('order_index', { ascending: true })
 
@@ -19,18 +83,49 @@ export const pricesService = {
       id: item.id,
       service: item.service,
       price: item.price,
-      category: item.category as ServicePrice['category'],
+      category: item.price_categories?.code as ServicePrice['category'],
       note: item.note || undefined
     }))
   },
 
+  async getAllWithCategories() {
+    const { data, error } = await supabase
+      .from('prices')
+      .select(`
+        *,
+        price_categories!inner(*)
+      `)
+      .eq('is_published', true)
+      .eq('price_categories.is_published', true)
+      .order('price_categories.order_index', { ascending: true })
+
+    if (error) {
+      console.error('Error fetching prices with categories:', error)
+      return []
+    }
+
+    return data
+  },
+
   async create(price: Omit<ServicePrice, 'id'>): Promise<ServicePrice | null> {
+    // Find category_id by category code
+    const { data: categoryData } = await supabase
+      .from('price_categories')
+      .select('id')
+      .eq('code', price.category)
+      .single()
+
+    if (!categoryData) {
+      console.error('Category not found:', price.category)
+      return null
+    }
+
     const { data, error } = await supabase
       .from('prices')
       .insert({
         service: price.service,
         price: price.price,
-        category: price.category,
+        category_id: categoryData.id,
         note: price.note || null,
         order_index: 0
       })
@@ -52,14 +147,36 @@ export const pricesService = {
   },
 
   async update(id: string, updates: Partial<ServicePrice>): Promise<ServicePrice | null> {
+    let category_id = undefined
+
+    // If category is being updated, find the category_id
+    if (updates.category) {
+      const { data: categoryData } = await supabase
+        .from('price_categories')
+        .select('id')
+        .eq('code', updates.category)
+        .single()
+
+      if (!categoryData) {
+        console.error('Category not found:', updates.category)
+        return null
+      }
+      category_id = categoryData.id
+    }
+
+    const updateData: any = {
+      service: updates.service,
+      price: updates.price,
+      note: updates.note || null
+    }
+
+    if (category_id) {
+      updateData.category_id = category_id
+    }
+
     const { data, error } = await supabase
       .from('prices')
-      .update({
-        service: updates.service,
-        price: updates.price,
-        category: updates.category,
-        note: updates.note || null
-      })
+      .update(updateData)
       .eq('id', id)
       .select()
       .single()

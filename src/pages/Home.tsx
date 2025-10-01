@@ -23,7 +23,7 @@ const Home = () => {
           backgroundImage: `url(/22.png)`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
 
         {/* Animated particles - hidden on mobile for performance */}
         <div className="absolute inset-0 overflow-hidden hidden sm:block">
@@ -45,9 +45,8 @@ const Home = () => {
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
-            onClick={scrollToContact}
+            onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
           >
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Termin buchen
           </Button>
         </div>
@@ -117,7 +116,7 @@ const Home = () => {
               </CardContent>
             </Card>
 
-            <Link to="/preise">
+            <Link to="/preis">
               <Card className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer">
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
@@ -144,7 +143,7 @@ const Home = () => {
       </section>
 
       {/* Subscription Packages */}
-      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-16%)'}}>
+      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
         {/* Floating decorative elements */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/10 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float delay-1000"></div>
@@ -161,11 +160,11 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-            <Card className="hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-300">
+            <Card className="hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-300 border-gray-400 border-2">
               <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-muted-foreground mb-2">Silber</h3>
+                  <h3 className="text-2xl font-bold text-gray-500 mb-2">Silber</h3>
                   <div className="text-4xl font-bold text-primary mb-4">
                     300€<span className="text-lg font-normal">/Monat</span>
                   </div>
@@ -174,21 +173,21 @@ const Home = () => {
                     <li>2x pro Woche</li>
                     <li>Flexible Terminbuchung</li>
                   </ul>
-                  <Button className="w-full bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-black border border-gray-400 hover:scale-105 transition-all duration-300" asChild>
-                    <a href="tel:+4915206067810">Termin buchen</a>
+                  <Button className="w-full bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400 hover:scale-105 transition-all duration-300 shadow-lg" asChild>
+                    <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-rose-gold shadow-2xl shadow-rose-gold/30 hover:shadow-elegant transition-all duration-500 md:scale-105 hover:scale-110 card-tilt relative overflow-visible animate-slide-up delay-500 md:mt-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5"></div>
-              <div className="absolute top-0 right-0 w-20 h-20 bg-rose-gold/20 rounded-full blur-xl"></div>
+            <Card className="border-yellow-500 border-2 shadow-2xl shadow-yellow-500/30 hover:shadow-elegant transition-all duration-500 md:scale-105 hover:scale-110 card-tilt relative overflow-visible animate-slide-up delay-500 md:mt-4">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-yellow-600/5"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl"></div>
               <CardContent className="p-4 sm:p-6 md:p-8 pt-8 sm:pt-10 md:pt-12 text-center relative z-10">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-rose-gold text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
                   BELIEBT
                 </div>
-                <h3 className="text-2xl font-bold text-rose-gold mb-2">Gold</h3>
+                <h3 className="text-2xl font-bold text-yellow-600 mb-2">Gold</h3>
                 <div className="text-4xl font-bold text-primary mb-4">
                   400€<span className="text-lg font-normal">/Monat</span>
                 </div>
@@ -197,17 +196,17 @@ const Home = () => {
                   <li>3x pro Woche</li>
                   <li>Prioritätsbuchung</li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white animate-glow hover:scale-105 transition-all duration-300" asChild>
-                  <a href="tel:+4915206067810">Termin buchen</a>
+                <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow hover:scale-105 transition-all duration-300 shadow-lg" asChild>
+                  <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-700">
+            <Card className="hover:shadow-2xl hover:shadow-slate-600/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-700 border-slate-600 border-2">
               <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-100/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-600/10 to-slate-800/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-primary mb-2">Platin</h3>
+                  <h3 className="text-2xl font-bold text-slate-700 mb-2">Platin</h3>
                   <div className="text-4xl font-bold text-primary mb-4">
                     500€<span className="text-lg font-normal">/Monat</span>
                   </div>
@@ -216,8 +215,8 @@ const Home = () => {
                     <li>4x pro Woche</li>
                     <li>Premium Service</li>
                   </ul>
-                  <Button className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-primary text-white hover:scale-105 transition-all duration-300" asChild>
-                    <a href="tel:+4915206067810">Termin buchen</a>
+                  <Button className="w-full bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900 text-white hover:scale-105 transition-all duration-300 shadow-lg border border-slate-500" asChild>
+                    <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
                   </Button>
                 </div>
               </CardContent>
@@ -227,7 +226,7 @@ const Home = () => {
       </section>
 
       {/* Working Hours Section */}
-      <section className="py-10 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-16%)'}}>
+      <section className="py-10 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/5 rounded-full animate-pulse"></div>
@@ -235,7 +234,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-r from-rose-gold/10 to-primary/10 rounded-full animate-float"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10" style={{transform: 'translateY(-16%)'}}>
+        <div className="container mx-auto px-4 relative z-10" style={{transform: 'translateY(-6%)'}}>
           <div className="text-center mb-8 animate-slide-up">
             <h2 className="text-4xl font-bold gradient-text mb-4">Öffnungszeiten</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient"></div>
@@ -267,7 +266,7 @@ const Home = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-16%)'}}>
+      <section className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
         {/* Floating geometric elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-6 h-6 border-2 border-rose-gold/30 rotate-45 animate-float"></div>
@@ -327,7 +326,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-16%)'}}>
+      <section id="contact" className="py-8 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
         {/* Dynamic floating elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>
@@ -399,8 +398,8 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-primary">E-Mail</h3>
-                  <a href="mailto:cheporska.studio@mnet-online.de" className="text-muted-foreground hover:text-rose-gold transition-colors hover:scale-105 inline-block">
-                    cheporska.studio@mnet-online.de
+                  <a href="mailto:Yulachip@icloud.com" className="text-muted-foreground hover:text-rose-gold transition-colors hover:scale-105 inline-block">
+                    Yulachip@icloud.com
                   </a>
                 </div>
               </div>
@@ -443,9 +442,9 @@ const Home = () => {
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
                       asChild
                     >
-                      <a href="tel:+4915206067810">
+                      <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                         <Phone className="w-5 h-5 mr-2 animate-bounce" />
-                        Anrufen
+                        Termin buchen
                       </a>
                     </Button>
 
@@ -455,7 +454,7 @@ const Home = () => {
                       className="w-full border-rose-gold/50 text-primary hover:bg-rose-gold hover:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
                       asChild
                     >
-                      <a href="mailto:cheporska.studio@mnet-online.de">
+                      <a href="mailto:Yulachip@icloud.com">
                         <Mail className="w-5 h-5 mr-2" />
                         E-Mail schreiben
                       </a>

@@ -11,41 +11,41 @@ export interface AuthUser {
 class AuthService {
   async signIn(email: string, password: string): Promise<{ user: AuthUser | null, error: string | null }> {
     try {
+      console.log('AuthService: Attempting login with email:', email);
+
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
 
+      console.log('AuthService: Supabase auth response:', { data, error });
+
       if (error) {
-        return { user: null, error: error.message }
+        console.error('AuthService: Supabase auth error:', error);
+        return { user: null, error: 'Ungültige Anmeldedaten' }
       }
 
       if (!data.user) {
-        return { user: null, error: 'No user returned' }
+        return { user: null, error: 'Kein Benutzer gefunden' }
       }
 
-      // Get user profile information
-      const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('role, full_name')
-        .eq('id', data.user.id)
-        .single()
-
-      if (profileError) {
-        console.error('Error fetching user profile:', profileError)
-        // Still allow login even if profile fetch fails
-      }
+      // Get role from user metadata (since we're using Supabase auth with roles in metadata)
+      const metaRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role;
+      console.log('User metadata role:', metaRole);
+      console.log('User email:', data.user.email);
+      console.log('User ID:', data.user.id);
 
       const authUser: AuthUser = {
         id: data.user.id,
         email: data.user.email || '',
-        role: profile?.role || 'viewer',
-        full_name: profile?.full_name || undefined
+        role: metaRole || 'viewer',
+        full_name: data.user.user_metadata?.full_name || data.user.raw_user_meta_data?.full_name || undefined
       }
 
       return { user: authUser, error: null }
     } catch (error) {
-      return { user: null, error: 'Authentication failed' }
+      console.error('AuthService: Caught exception during sign in:', error);
+      return { user: null, error: 'Anmeldefehler' }
     }
   }
 
@@ -66,23 +66,14 @@ class AuthService {
         return null
       }
 
-      // Get user profile information
-      const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('role, full_name')
-        .eq('id', user.id)
-        .single()
-
-      if (profileError) {
-        console.error('Error fetching user profile:', profileError)
-        return null
-      }
+      // Get role from user metadata (same as in signIn method)
+      const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
 
       return {
         id: user.id,
         email: user.email || '',
-        role: profile?.role || 'viewer',
-        full_name: profile?.full_name || undefined
+        role: metaRole || 'viewer',
+        full_name: user.user_metadata?.full_name || undefined
       }
     } catch (error) {
       console.error('Error getting current user:', error)

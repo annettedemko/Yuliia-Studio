@@ -1,91 +1,37 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Check, Zap, Sparkles, Heart, Hand, Instagram } from 'lucide-react';
+import { Phone, Check, Zap, Sparkles, Heart, Hand, Instagram, Waves } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { pricesService, subscriptionsService } from '@/services/contentService';
+import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
-
-// Fallback data
-const fallbackPrices: ServicePrice[] = [
-  // Alexandrit Laser
-  { id: '1', service: 'Oberlippe', price: '50€', category: 'alexandrit' },
-  { id: '2', service: 'Kinn', price: '50€', category: 'alexandrit' },
-  { id: '3', service: 'Achseln', price: '80€', category: 'alexandrit' },
-  { id: '4', service: 'Beine komplett', price: '250€', category: 'alexandrit' },
-  { id: '5', service: 'Bikinizone', price: '120€', category: 'alexandrit' },
-
-  // Dioden Laser
-  { id: '6', service: 'Oberlippe', price: '40€', category: 'dioden' },
-  { id: '7', service: 'Kinn', price: '40€', category: 'dioden' },
-  { id: '8', service: 'Achseln', price: '60€', category: 'dioden' },
-
-  // Icoone
-  { id: '9', service: 'Einzelbehandlung', price: '80€', category: 'icoone' },
-  { id: '10', service: '5er Paket', price: '350€', category: 'icoone' },
-
-  // Maniküre
-  { id: '11', service: 'Klassische Maniküre', price: '35€', category: 'manicure' },
-  { id: '12', service: 'Gel-Lackierung', price: '25€', category: 'manicure' },
-
-  // Pediküre
-  { id: '13', service: 'Klassische Pediküre', price: '45€', category: 'pedicure' },
-  { id: '14', service: 'Wellness Pediküre', price: '55€', category: 'pedicure' }
-];
-
-const fallbackSubscriptions: SubscriptionPackage[] = [
-  {
-    id: '1',
-    name: 'Silber',
-    price: '300€',
-    period: 'pro Monat',
-    treatments: '72 Behandlungen',
-    frequency: '2x pro Woche',
-    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Keine Bindung'],
-    popular: false
-  },
-  {
-    id: '2',
-    name: 'Gold',
-    price: '400€',
-    period: 'pro Monat',
-    treatments: '106 Behandlungen',
-    frequency: '3x pro Woche',
-    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Priorität bei Terminen', 'Keine Bindung'],
-    popular: true
-  },
-  {
-    id: '3',
-    name: 'Platin',
-    price: '500€',
-    period: 'pro Monat',
-    treatments: '144 Behandlungen',
-    frequency: '4x pro Woche',
-    features: ['Flexible Terminbuchung', 'Kostenlose Beratung', 'Priorität bei Terminen', 'Keine Bindung', 'Zusatzleistungen'],
-    popular: false
-  }
-];
 
 const Pricing = () => {
   const [prices, setPrices] = useState<ServicePrice[]>([]);
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
+  const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [pricesData, subscriptionsData] = await Promise.all([
+        console.log('🟡 Начинаем загрузку данных...');
+        console.log('🟡 Supabase URL:', import.meta.env.VITE_SUPABASE_URL);
+
+        const [pricesData, subscriptionsData, categoriesData] = await Promise.all([
           pricesService.getAll(),
-          subscriptionsService.getAll()
+          subscriptionsService.getAll(),
+          categoriesService.getAll()
         ]);
 
-        // Use fallback data if no data from Supabase
-        setPrices(pricesData.length > 0 ? pricesData : fallbackPrices);
-        setSubscriptions(subscriptionsData.length > 0 ? subscriptionsData : fallbackSubscriptions);
+        console.log('🟢 Загружено цен:', pricesData.length);
+        console.log('🟢 Загружено подписок:', subscriptionsData.length);
+        console.log('🟢 Загружено категорий:', categoriesData.length);
+
+        setPrices(pricesData);
+        setSubscriptions(subscriptionsData);
+        setCategories(categoriesData);
       } catch (error) {
-        console.error('Error loading pricing data:', error);
-        // Use fallback data on error
-        setPrices(fallbackPrices);
-        setSubscriptions(fallbackSubscriptions);
+        console.error('🔴 Ошибка загрузки данных:', error);
       } finally {
         setLoading(false);
       }
@@ -109,12 +55,32 @@ const Pricing = () => {
     return <div className="min-h-screen flex items-center justify-center">Laden...</div>;
   }
 
-  // Filter prices by category
-  const alexandritPrices = prices.filter(p => p.category === 'alexandrit');
-  const diodenPrices = prices.filter(p => p.category === 'dioden');
-  const icoonePrices = prices.filter(p => p.category === 'icoone');
-  const manicurePrices = prices.filter(p => p.category === 'manicure');
-  const pedicurePrices = prices.filter(p => p.category === 'pedicure');
+  // Helper function to sort prices by numeric value
+  const sortByPrice = (priceArray: ServicePrice[]) => {
+    return [...priceArray].sort((a, b) => parseInt(a.price) - parseInt(b.price));
+  };
+
+  // Helper function to get icon component by name
+  const getIconComponent = (iconName?: string) => {
+    const iconMap: Record<string, any> = {
+      'Zap': Zap,
+      'Sparkles': Sparkles,
+      'Heart': Heart,
+      'Hand': Hand,
+      'Waves': Waves
+    };
+    return iconMap[iconName || 'Heart'] || Heart;
+  };
+
+  // Group prices by category and sort within each category
+  const pricesByCategory = categories.map(category => {
+    const categoryPrices = prices.filter(p => p.category === category.code);
+    return {
+      category,
+      prices: sortByPrice(categoryPrices)
+    };
+  }).filter(group => group.prices.length > 0);
+
   const subscriptionPackages = subscriptions;
 
   const PriceCard = ({ title, prices, icon: Icon, color = "rose-gold" }) => (
@@ -135,7 +101,7 @@ const Pricing = () => {
                 <span className="text-foreground">{item.service}</span>
                 {item.note && <div className="text-sm text-muted-foreground">{item.note}</div>}
               </div>
-              <span className="font-semibold text-primary">{item.price}</span>
+              <span className="font-semibold text-primary">{item.price}€</span>
             </div>
           ))}
         </div>
@@ -178,139 +144,150 @@ const Pricing = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {subscriptionPackages.map((pkg, index) => (
-              <Card 
-                key={index} 
-                className={`relative hover:shadow-elegant transition-all duration-300 ${
-                  pkg.popular ? 'border-rose-gold shadow-rose scale-105' : ''
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-rose-gold text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Beliebt
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+            {subscriptionPackages.map((pkg, index) => {
+              // Определяем цветовую схему в зависимости от названия пакета
+              let cardStyles = '';
+              let titleStyles = '';
+              let buttonStyles = '';
+              let isPopular = false;
+
+              if (pkg.name === 'Silber') {
+                cardStyles = 'border-gray-400 border-2 hover:shadow-2xl hover:shadow-gray-500/20';
+                titleStyles = 'text-gray-500';
+                buttonStyles = 'bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400';
+              } else if (pkg.name === 'Gold') {
+                cardStyles = 'border-yellow-500 border-2 shadow-2xl shadow-yellow-500/30 md:scale-105 hover:scale-110';
+                titleStyles = 'text-yellow-600';
+                buttonStyles = 'bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow';
+                isPopular = true;
+              } else if (pkg.name === 'Platin') {
+                cardStyles = 'border-slate-600 border-2 hover:shadow-2xl hover:shadow-slate-600/20';
+                titleStyles = 'text-slate-700';
+                buttonStyles = 'bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900 text-white border border-slate-500';
+              } else {
+                // Fallback для других названий
+                cardStyles = pkg.popular ? 'border-rose-gold shadow-rose scale-105' : '';
+                titleStyles = pkg.popular ? 'text-rose-gold' : 'text-primary';
+                buttonStyles = pkg.popular
+                  ? 'bg-rose-gold hover:bg-rose-gold-dark text-white'
+                  : 'bg-primary hover:bg-primary/90 text-white';
+                isPopular = pkg.popular;
+              }
+
+              return (
+                <Card
+                  key={index}
+                  className={`relative hover:shadow-elegant transition-all duration-500 hover:-translate-y-3 card-tilt ${cardStyles}`}
+                >
+                  {isPopular && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                        BELIEBT
+                      </div>
                     </div>
-                  </div>
+                  )}
+
+                  <CardContent className={`p-4 sm:p-6 md:p-8 text-center relative overflow-hidden ${isPopular ? 'pt-8 sm:pt-10 md:pt-12' : ''}`}>
+                    {/* Декоративные элементы для Gold */}
+                    {pkg.name === 'Gold' && (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-yellow-600/5"></div>
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl"></div>
+                      </>
+                    )}
+
+                    {/* Декоративные элементы для других карточек */}
+                    {pkg.name === 'Silber' && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                    )}
+
+                    {pkg.name === 'Platin' && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-600/10 to-slate-800/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+                    )}
+
+                    <div className="relative z-10">
+                      <h3 className={`text-2xl font-bold mb-2 ${titleStyles}`}>
+                        {pkg.name}
+                      </h3>
+
+                      <div className="mb-6">
+                        <div className="text-4xl font-bold text-primary mb-1">
+                          {pkg.price}
+                        </div>
+                        <div className="text-muted-foreground">{pkg.period}</div>
+                        <div className="text-sm text-muted-foreground mt-2">
+                          {pkg.treatments} • {pkg.frequency}
+                        </div>
+                      </div>
+
+                      <ul className="space-y-3 mb-6">
+                        {pkg.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-center text-sm">
+                            <Check className={`w-4 h-4 mr-3 flex-shrink-0 ${
+                              pkg.name === 'Gold' ? 'text-yellow-500' :
+                              pkg.name === 'Silber' ? 'text-gray-500' :
+                              pkg.name === 'Platin' ? 'text-slate-600' :
+                              'text-rose-gold'
+                            }`} />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Button
+                        className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
+                        asChild
+                      >
+                        <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                          Jetzt buchen
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Dynamic Price Sections */}
+      {pricesByCategory.map((categoryGroup, index) => {
+        const Icon = getIconComponent(categoryGroup.category.icon);
+        const isEven = index % 2 === 0;
+        const bgClass = isEven ? 'bg-background' : 'bg-accent/20';
+
+        return (
+          <section
+            key={categoryGroup.category.id}
+            id={categoryGroup.category.code}
+            className={`py-12 ${bgClass} scroll-mt-20`}
+          >
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-10">
+                <h2 className="text-4xl font-bold text-primary mb-4">
+                  {categoryGroup.category.name}
+                </h2>
+                {categoryGroup.category.description && (
+                  <p className="text-xl text-muted-foreground">
+                    {categoryGroup.category.description}
+                  </p>
                 )}
-                
-                <CardContent className="p-8 text-center">
-                  <h3 className={`text-2xl font-bold mb-2 ${
-                    pkg.popular ? 'text-rose-gold' : 'text-primary'
-                  }`}>
-                    {pkg.name}
-                  </h3>
-                  
-                  <div className="mb-6">
-                    <div className="text-4xl font-bold text-primary mb-1">
-                      {pkg.price}
-                    </div>
-                    <div className="text-muted-foreground">{pkg.period}</div>
-                    <div className="text-sm text-muted-foreground mt-2">
-                      {pkg.treatments} • {pkg.frequency}
-                    </div>
-                  </div>
-                  
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm">
-                        <Check className="w-4 h-4 text-rose-gold mr-3 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <a
-                    href="tel:+4915206067810"
-                    className={`w-full inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-colors ${
-                      pkg.popular
-                        ? 'bg-rose-gold hover:bg-rose-gold-dark text-white'
-                        : 'bg-primary hover:bg-primary/90 text-white'
-                    }`}
-                  >
-                    Jetzt buchen
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
 
-      {/* Icoone Laser Prices */}
-      <section id="icoone-laser" className="py-12 bg-accent/20 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Icoone Laser</h2>
-            <p className="text-xl text-muted-foreground">
-              Body Contouring und Hautstraffung mit innovativer Technologie
-            </p>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <PriceCard
-              title="IcooneLaser Body Contouring"
-              prices={icoonePrices}
-              icon={Heart}
-              color="rose-gold"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Laser Treatment Prices */}
-      <section id="laser-haarentfernung" className="py-12 bg-background scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Laser-Haarentfernung</h2>
-            <p className="text-xl text-muted-foreground">
-              Professionelle Laser-Behandlungen mit modernster Technologie
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <PriceCard
-              title="Alexandrit Laser Motus AX"
-              prices={alexandritPrices}
-              icon={Zap}
-              color="rose-gold"
-            />
-            <PriceCard
-              title="M-Tech Diodenlaser"
-              prices={diodenPrices}
-              icon={Sparkles}
-              color="primary"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Manicure & Pedicure Prices */}
-      <section id="manikuere-pedikuere" className="py-12 bg-accent/20 scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Maniküre & Pediküre</h2>
-            <p className="text-xl text-muted-foreground">
-              Professionelle Hand- und Fußpflege für gepflegte Nägel
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <PriceCard 
-              title="Maniküre" 
-              prices={manicurePrices} 
-              icon={Hand}
-              color="rose-gold"
-            />
-            <PriceCard 
-              title="Pediküre" 
-              prices={pedicurePrices} 
-              icon={Heart}
-              color="primary"
-            />
-          </div>
-        </div>
-      </section>
+              <div className="max-w-4xl mx-auto">
+                <PriceCard
+                  title={categoryGroup.category.name}
+                  prices={categoryGroup.prices}
+                  icon={Icon}
+                  color={categoryGroup.category.color || 'rose-gold'}
+                />
+              </div>
+            </div>
+          </section>
+        );
+      })}
 
       {/* Important Information */}
       <section className="py-12 bg-background">
@@ -367,19 +344,26 @@ const Pricing = () => {
             Wir finden gemeinsam die beste Lösung für Ihre Wünsche.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:+4915206067810"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md font-medium text-black bg-white hover:bg-white/90 transition-colors"
+            <Button
+              size="lg"
+              className="bg-white text-black hover:bg-white/90"
+              asChild
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Jetzt Termin vereinbaren
-            </a>
-            <a
-              href="mailto:cheporska.studio@mnet-online.de"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-md font-medium text-black bg-white border border-white hover:bg-white/90 transition-colors"
+              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                <Phone className="w-5 h-5 mr-2" />
+                Jetzt Termin vereinbaren
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-black bg-white hover:bg-white/90"
+              asChild
             >
-              Kostenlose Beratung
-            </a>
+              <a href="mailto:Yulachip@icloud.com">
+                Kostenlose Beratung
+              </a>
+            </Button>
           </div>
 
           <div className="text-center mt-8">

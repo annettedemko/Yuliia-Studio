@@ -7,6 +7,7 @@ import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram } from 'luci
 // Изображения загружаются из папки public
 
 const About = () => {
+
   const scrollToContact = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -76,6 +77,7 @@ const About = () => {
                   src="/10.jpg"
                   alt="Studio Atmosphäre"
                   className="w-full h-80 object-cover rounded-lg shadow-elegant"
+                  style={{ objectPosition: 'center 12%' }}
                 />
               </div>
             </div>
@@ -168,11 +170,16 @@ const About = () => {
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
+                { src: '/s1.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 1' },
+                { src: '/s2.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 2' },
+                { src: '/s3.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 3' },
+                { src: '/s4.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 4' },
+                { src: '/s5.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 5' },
                 { src: '/uns1.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 1' },
                 { src: '/uns2.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 2' },
                 { src: '/uns3.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 3' },
                 { src: '/uns4.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 4' },
-                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 5', className: 'mt-4' }
+                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 5' }
               ].map((image, index) => (
                 <div key={index} className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ${image.className || ''}`}>
                   <img
@@ -187,6 +194,7 @@ const About = () => {
           </div>
         </div>
       </section>
+
 
       {/* Contact Form */}
       <section id="contact-form" className="py-12 bg-accent/20">
