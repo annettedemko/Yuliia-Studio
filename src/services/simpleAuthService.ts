@@ -13,25 +13,26 @@ class SimpleAuthService {
     try {
       console.log('🟡 SimpleAuth: Пытаемся войти с email:', email);
 
-      // Простой запрос к нашей таблице admin_users
-      const { data, error } = await supabase
-        .from('admin_users')
-        .select('*')
-        .eq('email', email)
-        .eq('password', password)
-        .single()
+      // Используем стандартную Supabase аутентификацию
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
 
       console.log('🟡 SimpleAuth: Ответ:', { data, error });
 
-      if (error || !data) {
+      if (error || !data.user) {
         console.log('🔴 SimpleAuth: Неверные данные');
         return { user: null, error: 'Неверный email или пароль' }
       }
 
+      // Получаем роль из метаданных пользователя
+      const userRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role || 'viewer';
+
       this.currentUser = {
-        id: data.id,
-        email: data.email,
-        role: data.role
+        id: data.user.id,
+        email: data.user.email || '',
+        role: userRole
       }
 
       // Сохраняем в localStorage
@@ -46,9 +47,12 @@ class SimpleAuthService {
     }
   }
 
-  logout() {
+  async logout() {
     this.currentUser = null
     localStorage.removeItem('simpleAuth')
+
+    // Также выходим из Supabase auth
+    await supabase.auth.signOut()
   }
 
   getCurrentUser(): SimpleAuthUser | null {
