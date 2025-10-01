@@ -23,3 +23,44 @@ dist-ssr
 *.sln
 *.sw?
 .env.local
+
+# Temporary and development files
+ВРЕМЕННОЕ_РЕШЕНИЕ.md
+README_SETUP.md
+FINAL_SETUP.md
+SETUP_LOCAL_DB.md
+ПРОСТОЙ_ЗАПУСК.md
+SUPABASE_SETUP.md
+
+# Temporary SQL files (keep only migrations)
+/*.sql
+!/supabase/migrations/*.sql
+!/supabase/incremental_migrations/*.sql
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+*~
+
+# OS generated files
+Thumbs.db
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# IDEs
+*.swp
+*.swo
+*~.nib
+.Spotlight-V100
+.Trashes
