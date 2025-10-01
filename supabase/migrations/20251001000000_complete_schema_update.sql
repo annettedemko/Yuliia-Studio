@@ -1,15 +1,55 @@
 -- Complete schema update for multi-user admin system
 -- This migration includes all schema changes needed for the application
 
--- 1. Update form_owner enum to include all users
-ALTER TYPE public.form_owner ADD VALUE IF NOT EXISTS 'Yulia';
-ALTER TYPE public.form_owner ADD VALUE IF NOT EXISTS 'Natalia';
-ALTER TYPE public.form_owner ADD VALUE IF NOT EXISTS 'Anna';
-ALTER TYPE public.form_owner ADD VALUE IF NOT EXISTS 'Lera';
-ALTER TYPE public.form_owner ADD VALUE IF NOT EXISTS 'Liudmila';
+-- 1. Create form_owner enum if it doesn't exist, or update existing one
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'form_owner') THEN
+        CREATE TYPE public.form_owner AS ENUM ('Others', 'NATALIA', 'ANNA', 'Yulia', 'Natalia', 'Anna', 'Lera', 'Liudmila');
+    ELSE
+        -- Add new values to existing enum (will skip if already exist)
+        BEGIN
+            ALTER TYPE public.form_owner ADD VALUE 'Yulia';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+        BEGIN
+            ALTER TYPE public.form_owner ADD VALUE 'Natalia';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+        BEGIN
+            ALTER TYPE public.form_owner ADD VALUE 'Anna';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+        BEGIN
+            ALTER TYPE public.form_owner ADD VALUE 'Lera';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+        BEGIN
+            ALTER TYPE public.form_owner ADD VALUE 'Liudmila';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+    END IF;
+END $$;
 
--- 2. Update price_category enum to include all categories
-ALTER TYPE public.price_category ADD VALUE IF NOT EXISTS 'redtouchpro';
+-- 2. Create price_category enum if it doesn't exist, or update existing one
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'price_category') THEN
+        CREATE TYPE public.price_category AS ENUM ('alexandrit', 'dioden', 'icoone', 'manicure', 'pedicure', 'redtouchpro');
+    ELSE
+        -- Add redtouchpro to existing enum (will skip if already exists)
+        BEGIN
+            ALTER TYPE public.price_category ADD VALUE 'redtouchpro';
+        EXCEPTION WHEN duplicate_object THEN
+            NULL; -- Value already exists, ignore
+        END;
+    END IF;
+END $$;
 
 -- 3. Create admin_users table for simple authentication
 CREATE TABLE IF NOT EXISTS public.admin_users (
@@ -134,31 +174,118 @@ UPDATE public.prices SET category_id = (
     SELECT id FROM public.price_categories WHERE code = prices.category::text
 ) WHERE category_id IS NULL;
 
--- 9. Disable RLS for all tables to allow public access
-ALTER TABLE public.admin_users DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.anna_clients DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.natalia_clients DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.yulia_clients DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.lera_clients DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.liudmila_clients DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.price_categories DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.prices DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.subscriptions DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.events DISABLE ROW LEVEL SECURITY;
-ALTER TABLE public.form_submissions DISABLE ROW LEVEL SECURITY;
+-- 9. Create missing core tables if they don't exist
 
--- 10. Grant permissions
-GRANT ALL ON public.admin_users TO anon, authenticated, service_role;
-GRANT ALL ON public.anna_clients TO anon, authenticated, service_role;
-GRANT ALL ON public.natalia_clients TO anon, authenticated, service_role;
-GRANT ALL ON public.yulia_clients TO anon, authenticated, service_role;
-GRANT ALL ON public.lera_clients TO anon, authenticated, service_role;
-GRANT ALL ON public.liudmila_clients TO anon, authenticated, service_role;
-GRANT ALL ON public.price_categories TO anon, authenticated, service_role;
-GRANT ALL ON public.prices TO anon, authenticated, service_role;
-GRANT ALL ON public.subscriptions TO anon, authenticated, service_role;
-GRANT ALL ON public.events TO anon, authenticated, service_role;
-GRANT ALL ON public.form_submissions TO anon, authenticated, service_role;
+-- Create form_submissions table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.form_submissions (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    name text NOT NULL,
+    phone text NOT NULL,
+    email text,
+    message text,
+    page text NOT NULL,
+    owner public.form_owner DEFAULT 'Others'::public.form_owner NOT NULL,
+    created_at timestamptz DEFAULT now()
+);
+
+-- Create events table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.events (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    title text NOT NULL,
+    date date,
+    time text,
+    location text,
+    address text,
+    description text,
+    is_published boolean DEFAULT true NOT NULL,
+    created_at timestamptz DEFAULT now() NOT NULL,
+    updated_at timestamptz DEFAULT now() NOT NULL,
+    user_id uuid
+);
+
+-- Create prices table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.prices (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    service text NOT NULL,
+    price text NOT NULL,
+    category public.price_category NOT NULL,
+    note text,
+    order_index integer DEFAULT 0 NOT NULL,
+    is_published boolean DEFAULT true NOT NULL,
+    created_at timestamptz DEFAULT now() NOT NULL,
+    updated_at timestamptz DEFAULT now() NOT NULL
+);
+
+-- Create subscriptions table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.subscriptions (
+    id uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY,
+    name text NOT NULL,
+    price text NOT NULL,
+    period text,
+    treatments text,
+    frequency text,
+    features text[] DEFAULT ARRAY[]::text[],
+    popular boolean DEFAULT false NOT NULL,
+    order_index integer DEFAULT 0 NOT NULL,
+    is_published boolean DEFAULT true NOT NULL,
+    created_at timestamptz DEFAULT now() NOT NULL,
+    updated_at timestamptz DEFAULT now() NOT NULL
+);
+
+-- 10. Enable RLS first, then disable it for all tables to allow public access
+DO $$
+DECLARE
+    tbl_name text;
+    tables_to_process text[] := ARRAY['admin_users', 'anna_clients', 'natalia_clients', 'yulia_clients', 'lera_clients', 'liudmila_clients', 'price_categories', 'prices', 'subscriptions', 'events', 'form_submissions'];
+BEGIN
+    FOREACH tbl_name IN ARRAY tables_to_process
+    LOOP
+        IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = tbl_name AND table_schema = 'public') THEN
+            -- First enable RLS if not already enabled
+            EXECUTE format('ALTER TABLE public.%I ENABLE ROW LEVEL SECURITY', tbl_name);
+            -- Then disable it for our use case
+            EXECUTE format('ALTER TABLE public.%I DISABLE ROW LEVEL SECURITY', tbl_name);
+        END IF;
+    END LOOP;
+END $$;
+
+-- 11. Grant permissions (only if tables exist)
+DO $$
+BEGIN
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'admin_users') THEN
+        GRANT ALL ON public.admin_users TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'anna_clients') THEN
+        GRANT ALL ON public.anna_clients TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'natalia_clients') THEN
+        GRANT ALL ON public.natalia_clients TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'yulia_clients') THEN
+        GRANT ALL ON public.yulia_clients TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'lera_clients') THEN
+        GRANT ALL ON public.lera_clients TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'liudmila_clients') THEN
+        GRANT ALL ON public.liudmila_clients TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'price_categories') THEN
+        GRANT ALL ON public.price_categories TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'prices') THEN
+        GRANT ALL ON public.prices TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'subscriptions') THEN
+        GRANT ALL ON public.subscriptions TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'events') THEN
+        GRANT ALL ON public.events TO anon, authenticated, service_role;
+    END IF;
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'form_submissions') THEN
+        GRANT ALL ON public.form_submissions TO anon, authenticated, service_role;
+    END IF;
+END $$;
 
 -- 11. Insert RedTouchPro prices
 INSERT INTO public.prices (service, price, category) VALUES

@@ -183,42 +183,78 @@ export const deleteNataliaClient = async (id: string): Promise<boolean> => {
 };
 
 // Generic helper functions
-export const getClientsByRole = async (role: 'anna' | 'natalia'): Promise<AnnaClient[] | NataliaClient[]> => {
-  if (role === 'anna') {
-    return await getAnnaClients();
-  } else {
-    return await getNataliaClients();
+export const getClientsByRole = async (role: 'anna' | 'natalia' | 'yulia' | 'lera' | 'liudmila'): Promise<AnnaClient[] | NataliaClient[] | YuliaClient[] | LeraClient[] | LiudmilaClient[]> => {
+  switch (role) {
+    case 'anna':
+      return await getAnnaClients();
+    case 'natalia':
+      return await getNataliaClients();
+    case 'yulia':
+      return await getYuliaClients();
+    case 'lera':
+      return await getLeraClients();
+    case 'liudmila':
+      return await getLiudmilaClients();
+    default:
+      return [];
   }
 };
 
 export const createClientByRole = async (
-  role: 'anna' | 'natalia',
+  role: 'anna' | 'natalia' | 'yulia' | 'lera' | 'liudmila',
   client: Omit<AnnaClientInsert, 'id' | 'created_at'>
-): Promise<AnnaClient | NataliaClient | null> => {
-  if (role === 'anna') {
-    return await createAnnaClient(client);
-  } else {
-    return await createNataliaClient(client);
+): Promise<AnnaClient | NataliaClient | YuliaClient | LeraClient | LiudmilaClient | null> => {
+  switch (role) {
+    case 'anna':
+      return await createAnnaClient(client);
+    case 'natalia':
+      return await createNataliaClient(client);
+    case 'yulia':
+      return await createYuliaClient(client);
+    case 'lera':
+      return await createLeraClient(client);
+    case 'liudmila':
+      return await createLiudmilaClient(client);
+    default:
+      return null;
   }
 };
 
 export const updateClientByRole = async (
-  role: 'anna' | 'natalia',
+  role: 'anna' | 'natalia' | 'yulia' | 'lera' | 'liudmila',
   id: string,
-  updates: AnnaClientUpdate | NataliaClientUpdate
-): Promise<AnnaClient | NataliaClient | null> => {
-  if (role === 'anna') {
-    return await updateAnnaClient(id, updates);
-  } else {
-    return await updateNataliaClient(id, updates);
+  updates: AnnaClientUpdate | NataliaClientUpdate | YuliaClientUpdate | LeraClientUpdate | LiudmilaClientUpdate
+): Promise<AnnaClient | NataliaClient | YuliaClient | LeraClient | LiudmilaClient | null> => {
+  switch (role) {
+    case 'anna':
+      return await updateAnnaClient(id, updates);
+    case 'natalia':
+      return await updateNataliaClient(id, updates);
+    case 'yulia':
+      return await updateYuliaClient(id, updates);
+    case 'lera':
+      return await updateLeraClient(id, updates);
+    case 'liudmila':
+      return await updateLiudmilaClient(id, updates);
+    default:
+      return null;
   }
 };
 
-export const deleteClientByRole = async (role: 'anna' | 'natalia', id: string): Promise<boolean> => {
-  if (role === 'anna') {
-    return await deleteAnnaClient(id);
-  } else {
-    return await deleteNataliaClient(id);
+export const deleteClientByRole = async (role: 'anna' | 'natalia' | 'yulia' | 'lera' | 'liudmila', id: string): Promise<boolean> => {
+  switch (role) {
+    case 'anna':
+      return await deleteAnnaClient(id);
+    case 'natalia':
+      return await deleteNataliaClient(id);
+    case 'yulia':
+      return await deleteYuliaClient(id);
+    case 'lera':
+      return await deleteLeraClient(id);
+    case 'liudmila':
+      return await deleteLiudmilaClient(id);
+    default:
+      return false;
   }
 };
 

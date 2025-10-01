@@ -3,7 +3,7 @@ export interface ServicePrice {
   service: string;
   price: string;
   note?: string;
-  category: 'alexandrit' | 'dioden' | 'icoone' | 'manicure' | 'pedicure';
+  category: 'alexandrit' | 'dioden' | 'icoone' | 'manicure' | 'pedicure' | 'redtouchpro';
 }
 
 export interface SubscriptionPackage {
@@ -20,7 +20,7 @@ export interface SubscriptionPackage {
 export interface AdminUser {
   username: string;
   password: string;
-  role: 'admin' | 'anna' | 'natalia';
+  role: 'admin' | 'anna' | 'natalia' | 'yulia' | 'lera' | 'liudmila';
   lastLogin?: string;
 }
 
