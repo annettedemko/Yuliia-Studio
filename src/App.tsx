@@ -48,14 +48,16 @@ const App = () => (
         <TooltipProvider>
           <Helmet>
             <html lang="de" />
-            <title>Yuliia Cheporska Studio – iCoone, Alexandrite Laser München, Александритовый Лазер Мюнхен</title>
-            <meta name="description" content="Dauerhafte Alexandrite Laser Haarentfernung, iCoone Laser München, Maniküre und Pediküre. Александритовый лазер, удаление волос в Мюнхене. Elsässer Str. 33." />
+            <title>Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro, Maniküre, Pediküre</title>
+            <meta name="description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Elsässer Str. 33. Александритовый лазер Мюнхен." />
             <meta name="author" content="Yuliia Cheporska Studio" />
-            <meta name="keywords" content="iCoone München, Alexandrite Laser München, Александритовый Лазер Мюнхен, Laser Haarentfernung München, Kosmetik München" />
-            <meta property="og:title" content="iCoone & Alexandrite Laser München – Yuliia Cheporska Studio" />
-            <meta property="og:description" content="Professionelle iCoone und Alexandrite Laser Behandlungen in München. Александритовый лазер эпиляция Мюнхен." />
+            <meta name="keywords" content="Laser Haarentfernung München, Alexandrit Laser München, Diodenlaser München, iCoone München, RedTouchPro München, Maniküre München, Pediküre München, DEKA München, Kosmetikstudio München, Александритовый лазер Мюнхен, эпиляция Мюнхен" />
+            <meta property="og:title" content="Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro" />
+            <meta property="og:description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Александритовый лазер." />
             <meta property="og:type" content="website" />
             <meta property="og:image" content="https://yuliia-studio.vercel.app/logo2.jpg" />
+            <meta property="og:url" content="https://yuliia-studio.vercel.app/" />
+            <meta property="og:locale" content="de_DE" />
           </Helmet>
           <Toaster />
           <Sonner />
