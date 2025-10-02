@@ -1,69 +1,78 @@
-# Yuliia Cheporska Beauty Studio
+# Yuliia Cheporska Studio
 
-Профессиональный веб-сайт студии красоты с многопользовательской админ панелью и интеграцией с системой записи Dikidi.
+Professional beauty studio website offering laser hair removal, iCoone treatments, manicure, and pedicure services in Munich.
 
-## 🏢 О проекте
+## 🌐 Live Website
 
-Современный веб-сайт для студии красоты Yuliia Cheporska в Мюнхене, специализирующейся на:
-- Лазерной эпиляции (Alexandrit & Diodenlaser)
-- Icoone Laser массаже
-- Maniküre & Pediküre
-- DEKA оборудовании и услугах
+**Production:** [yuliia-studio.vercel.app](https://yuliia-studio.vercel.app)
 
-## ✨ Ключевые возможности
+## 🛠️ Tech Stack
 
-### 🎯 Клиентская часть
-- **Современный дизайн** с адаптивной версткой
-- **Интеграция с Dikidi** для онлайн записи на услуги
-- **Многоязычные элементы** (немецкий/русский)
-- **Страницы оборудования** без кнопок записи
-- **DEKA регистрационные формы** для мероприятий
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS + shadcn/ui
+- **Backend:** Supabase (PostgreSQL + Auth + RLS)
+- **Deployment:** Vercel
 
-### 🔧 Админ панель
-- **5-пользовательская система** (Юлия, Наталья, Анна, Лера, Людмила)
-- **Полная русификация** интерфейса
-- **Управление заявками** с сортировкой по дате мероприятий
-- **CRM система** для клиентов с уровнем прогрева
-- **Управление событиями** и ценами
+## 📦 Installation
 
-## 🚀 Технологии
+```bash
+# Install dependencies
+npm install
 
-- **Frontend**: React 18 + TypeScript + Vite
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Backend**: Supabase (PostgreSQL)
-- **Deployment**: Vercel
-- **Booking System**: Dikidi integration
-- **Admin panel** for content management
-- **Client management system** for Anna and Natalia
-- **Event management**
-- **Pricing and subscription management**
-- **Form submissions handling**
+# Start local development
+npm run dev
 
-## Technologies Used
+# Start local Supabase
+npx supabase start
 
-- **Vite** - Build tool
-- **TypeScript** - Type safety
-- **React** - UI framework
-- **Tailwind CSS** - Styling
-- **shadcn/ui** - UI components
-- **Supabase** - Backend and database
-- **React Router** - Navigation
+# Build for production
+npm run build
+```
 
-## Getting Started
+## 🔧 Environment Variables
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start development server: `npm run dev`
-4. Build for production: `npm run build`
+Create `.env.local` file:
 
-## Admin Access
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-- **Admin**: `admin` / `YuliiaCheporska2024!`
-- **Anna**: `anna@beauty.com` / `Anna2024!`
-- **Natalia**: `natalia@beauty.com` / `Natalia2024!`
+## 🗂️ Project Structure
 
-## Contact
+```
+src/
+├── components/      # Reusable UI components
+├── pages/          # Page components (routing)
+├── services/       # API services (Supabase)
+├── lib/            # Utilities and configurations
+└── types/          # TypeScript type definitions
 
-Yuliia Cheporska Beauty Studio
+supabase/
+├── migrations/     # Database migrations
+└── seed/          # Seed data (CSV)
+```
+
+## 📝 Features
+
+- ✅ Multi-language support (German/Russian)
+- ✅ Admin dashboard for content management
+- ✅ Event registration forms
+- ✅ Dynamic pricing with categories
+- ✅ Client management system
+- ✅ Subscription packages
+- ✅ SEO optimized
+
+## 🚀 Deployment
+
+The project automatically deploys to Vercel on push to `main` branch.
+
+## 📞 Contact
+
+**Yuliia Cheporska Studio**
 Elsässer Str. 33, Munich
 Phone: +49 152 0606 7810
+
+## 📄 License
+
+© 2025 Yuliia Cheporska Studio. All rights reserved.

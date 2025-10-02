@@ -55,7 +55,7 @@ const App = () => (
             <meta property="og:title" content="iCoone & Alexandrite Laser München – Yuliia Cheporska Studio" />
             <meta property="og:description" content="Professionelle iCoone und Alexandrite Laser Behandlungen in München. Александритовый лазер эпиляция Мюнхен." />
             <meta property="og:type" content="website" />
-            <meta property="og:image" content="/logo2.JPG" />
+            <meta property="og:image" content="https://yuliia-studio.vercel.app/logo2.jpg" />
           </Helmet>
           <Toaster />
           <Sonner />
