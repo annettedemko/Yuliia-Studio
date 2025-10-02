@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -155,12 +155,23 @@ const Navigation = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-gradient-hero text-white border-none hover:opacity-90"
+                className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white transition-colors"
                 asChild
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-4 h-4 mr-2" />
-                  Kontakt / Termin buchen
+                  Anrufen
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-gradient-hero text-white border-none hover:opacity-90"
+                asChild
+              >
+                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Termin buchen
                 </a>
               </Button>
             </div>
@@ -228,18 +239,31 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* Contact Button - Make it larger and more prominent */}
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium mt-6"
-                asChild
-              >
-                <a href="tel:+4915206067810">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Kontakt / Termin buchen
-                </a>
-              </Button>
+              {/* Contact Buttons - Make them larger and more prominent */}
+              <div className="flex flex-col space-y-3 mt-6">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white w-full py-4 text-base font-medium transition-colors"
+                  asChild
+                >
+                  <a href="tel:+4915206067810">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Anrufen
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
+                  asChild
+                >
+                  <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Termin buchen
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         )}

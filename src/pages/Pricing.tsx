@@ -282,7 +282,6 @@ const Pricing = () => {
                     asChild
                   >
                     <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                      <Phone className="w-5 h-5 mr-2" />
                       Jetzt buchen
                     </a>
                   </Button>
@@ -354,7 +353,6 @@ const Pricing = () => {
               asChild
             >
               <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                <Phone className="w-5 h-5 mr-2" />
                 Jetzt Termin vereinbaren
               </a>
             </Button>
