@@ -57,7 +57,11 @@ const Pricing = () => {
 
   // Helper function to sort prices by numeric value
   const sortByPrice = (priceArray: ServicePrice[]) => {
-    return [...priceArray].sort((a, b) => parseInt(a.price) - parseInt(b.price));
+    return [...priceArray].sort((a, b) => {
+      const priceA = typeof a.price === 'string' ? parseFloat(a.price) : a.price;
+      const priceB = typeof b.price === 'string' ? parseFloat(b.price) : b.price;
+      return priceA - priceB;
+    });
   };
 
   // Helper function to get icon component by name
