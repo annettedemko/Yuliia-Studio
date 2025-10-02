@@ -30,6 +30,17 @@ const Pricing = () => {
         setPrices(pricesData);
         setSubscriptions(subscriptionsData);
         setCategories(categoriesData);
+
+        // Handle anchor scrolling after data is loaded
+        const hash = window.location.hash;
+        if (hash) {
+          setTimeout(() => {
+            const element = document.querySelector(hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 300);
+        }
       } catch (error) {
         console.error('🔴 Ошибка загрузки данных:', error);
       } finally {
@@ -38,17 +49,6 @@ const Pricing = () => {
     };
 
     loadData();
-
-    // Handle anchor scrolling when component loads
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
   }, []);
 
   if (loading) {

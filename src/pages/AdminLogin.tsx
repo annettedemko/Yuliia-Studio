@@ -115,13 +115,6 @@ const AdminLogin = () => {
                 {loading ? 'Anmeldung...' : 'Anmelden'}
               </Button>
             </form>
-
-            <div className="text-xs text-center text-muted-foreground bg-accent/20 p-3 rounded-md">
-              <p className="font-medium">🔐 Zugangsdaten:</p>
-              <p><strong>Admin:</strong> admin@beauty.com / Admin2024!</p>
-              <p><strong>Anna:</strong> anna@beauty.com / Anna2024!</p>
-              <p><strong>Natalia:</strong> natalia@beauty.com / Natalia2024!</p>
-            </div>
           </CardContent>
         </Card>
       </div>
