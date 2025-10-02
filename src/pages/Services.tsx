@@ -51,7 +51,7 @@ const Services = () => {
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preis#laser-haarentfernung">
+                      <Link to="/preis#alexandrit">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -97,7 +97,7 @@ const Services = () => {
                   </div>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preis#laser-haarentfernung">
+                      <Link to="/preis#dioden">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -136,7 +136,7 @@ const Services = () => {
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/preis#icoone-laser">
+                      <Link to="/preis#icoone">
                         Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
@@ -220,7 +220,7 @@ const Services = () => {
                     </p>
                     <div className="flex gap-3">
                       <Button asChild className="bg-gradient-hero text-white">
-                        <Link to="/preis#manikuere-pedikuere">
+                        <Link to="/preis#manicure">
                           Preise ansehen <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       </Button>

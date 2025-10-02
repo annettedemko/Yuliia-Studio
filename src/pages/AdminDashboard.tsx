@@ -436,7 +436,7 @@ const AdminDashboard = () => {
                             <>
                               <div>
                                 <span className="font-medium">{price.service}</span>
-                                <span className="ml-4 text-rose-gold font-semibold">{price.price}</span>
+                                <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
                                 {price.note && (
                                   <span className="ml-2 text-sm text-muted-foreground">
                                     {price.note}

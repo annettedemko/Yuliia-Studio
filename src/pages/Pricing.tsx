@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Check, Zap, Sparkles, Heart, Hand, Instagram, Waves } from 'lucide-react';
+import { Phone, Zap, Sparkles, Heart, Hand, Instagram, Waves } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
@@ -211,7 +211,7 @@ const Pricing = () => {
                         {pkg.name}
                       </h3>
 
-                      <div className="mb-6">
+                      <div className="mb-8">
                         <div className="text-4xl font-bold text-primary mb-1">
                           {pkg.price}
                         </div>
@@ -220,20 +220,6 @@ const Pricing = () => {
                           {pkg.treatments} • {pkg.frequency}
                         </div>
                       </div>
-
-                      <ul className="space-y-3 mb-6">
-                        {pkg.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
-                            <Check className={`w-4 h-4 mr-3 flex-shrink-0 ${
-                              pkg.name === 'Gold' ? 'text-yellow-500' :
-                              pkg.name === 'Silber' ? 'text-gray-500' :
-                              pkg.name === 'Platin' ? 'text-slate-600' :
-                              'text-rose-gold'
-                            }`} />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
 
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
@@ -283,6 +269,20 @@ const Pricing = () => {
                   icon={Icon}
                   color={categoryGroup.category.color || 'rose-gold'}
                 />
+
+                {/* Кнопка бронирования после каждого блока цен */}
+                <div className="text-center mt-8">
+                  <Button
+                    size="lg"
+                    className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    asChild
+                  >
+                    <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                      <Phone className="w-5 h-5 mr-2" />
+                      Jetzt buchen
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </section>

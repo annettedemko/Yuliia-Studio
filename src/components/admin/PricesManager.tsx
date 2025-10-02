@@ -261,7 +261,7 @@ export function PricesManager() {
                         )}
                       </div>
                       <div className="flex items-center gap-3">
-                        <div className="font-semibold text-primary">{price.price}</div>
+                        <div className="font-semibold text-primary">{price.price}€</div>
                         <div className="flex gap-1">
                           <Button
                             variant="ghost"

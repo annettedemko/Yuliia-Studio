@@ -162,7 +162,7 @@ const ManikuerePedikuere = () => {
                             <Clock className="w-4 h-4 mr-1" />
                             {service.duration}
                           </span>
-                          <span className="text-lg font-bold text-rose-gold">{service.price}</span>
+                          <span className="text-lg font-bold text-rose-gold">{service.price}€</span>
                         </div>
                       </div>
                     </div>
@@ -213,7 +213,7 @@ const ManikuerePedikuere = () => {
                             <Clock className="w-4 h-4 mr-1" />
                             {service.duration}
                           </span>
-                          <span className="text-lg font-bold text-primary">{service.price}</span>
+                          <span className="text-lg font-bold text-primary">{service.price}€</span>
                         </div>
                       </div>
                     </div>
