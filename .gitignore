@@ -64,3 +64,5 @@ Icon?
 *~.nib
 .Spotlight-V100
 .Trashes
+venv/
+*.py
