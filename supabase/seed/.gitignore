@@ -1,0 +1,3 @@
+# Ignore all seed data files - they contain sensitive business information
+*
+!.gitignore
