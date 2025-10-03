@@ -2,10 +2,44 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram } from 'lucide-react';
+import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
+import { setPageMeta, setJsonLd } from '@/seo/seo';
 // Изображения загружаются из папки public
 
 const LaserHairRemoval = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Dauerhafte Laser-Haarentfernung in München-Haidhausen',
+      description: 'Professionelle Laser-Haarentfernung in München-Haidhausen mit Alexandrit (755 nm) & Diodenlaser. Schonend, effektiv, nachhaltig. Nur 5 Min. vom Ostbahnhof. Jetzt Termin buchen!'
+    });
+
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: window.location.origin
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: `${window.location.origin}/services`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Laser-Haarentfernung',
+          item: window.location.href
+        }
+      ]
+    });
+  }, []);
+
   const faqItems = [
     {
       question: 'Wie viele Sitzungen sind erforderlich?',
@@ -44,21 +78,23 @@ const LaserHairRemoval = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Dauerhafte Haarentfernung mit Alexandrit & Diodenlaser
+            Dauerhafte Laser-Haarentfernung in München-Haidhausen
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90">
-            Laser-Haarentfernung in München – Sanft & Effektiv
+          <p className="text-xl md:text-2xl mb-4 text-white/95">
+            Glatt. Schonend. Nachhaltig.
+          </p>
+          <p className="text-lg md:text-xl mb-8 text-white/90">
+            Im Yuliia Cheporska Studio in München-Haidhausen bieten wir professionelle Laser-Haarentfernung
+            mit Alexandrit- und Diodenlaser – individuell abgestimmt auf Haut- und Haartyp.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
-              asChild
+              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                <Phone className="w-5 h-5 mr-2" />
-                Beratungstermin vereinbaren
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              Jetzt Termin für Laser-Haarentfernung buchen
             </Button>
             <Button
               size="lg"
@@ -471,17 +507,66 @@ const LaserHairRemoval = () => {
         </div>
       </section>
 
+      {/* Why Us Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+              Warum Laser-Haarentfernung im Yuliia Cheporska Studio?
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Modernste Laser-Technologie (Alexandrit 755 nm & Diodenlaser)
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Individuelle Beratung und Behandlungsplanung
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Erfahrene, zertifizierte Behandlerinnen mit über 5 Jahren Erfahrung
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Höchste Hygienestandards und Sicherheitsprotokolle
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Transparente Preise ohne versteckte Kosten
+                </p>
+              </div>
+              <div className="flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                <p className="text-lg text-muted-foreground">
+                  Zentrale Lage in München-Haidhausen, nur 5 Min. vom Ostbahnhof
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing CTA */}
-      <section className="py-12">
+      <section className="py-12 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-primary mb-6">Preise Laser-Haarentfernung</h2>
             <p className="text-xl text-muted-foreground mb-8">
               Transparent und fair - entdecken Sie unsere Preise für alle Behandlungsbereiche
             </p>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               className="bg-gradient-hero text-white border-none shadow-rose mr-4"
               asChild
             >
@@ -489,15 +574,13 @@ const LaserHairRemoval = () => {
                 Alle Preise ansehen
               </Link>
             </Button>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               variant="outline"
-              asChild
+              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                Kostenlose Beratung
-              </a>
+              Kostenlose Beratung
             </Button>
           </div>
         </div>
@@ -613,6 +696,25 @@ const LaserHairRemoval = () => {
             >
               <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Links */}
+      <section className="py-8 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
+            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
+              Alle Behandlungen im Überblick
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
+              Preise
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
+              Kontakt
+            </Link>
           </div>
         </div>
       </section>
