@@ -204,23 +204,28 @@ const Physiq360 = () => {
               </div>
 
               {/* Fifth card centered below */}
-              <div className="mt-8 max-w-md mx-auto animate-slide-up" style={{animationDelay: '800ms'}}>
-                <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                        <keyFeatures[4].icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{keyFeatures[4].title}</h3>
-                        <p className="text-xs text-muted-foreground leading-tight">{keyFeatures[4].description}</p>
-                      </div>
-                    </div>
-                    {/* Animated border bottom */}
-                    <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                  </CardContent>
-                </Card>
-              </div>
+              {keyFeatures[4] && (() => {
+                const FifthIcon = keyFeatures[4].icon;
+                return (
+                  <div className="mt-8 max-w-md mx-auto animate-slide-up" style={{animationDelay: '800ms'}}>
+                    <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300">
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                            <FifthIcon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{keyFeatures[4].title}</h3>
+                            <p className="text-xs text-muted-foreground leading-tight">{keyFeatures[4].description}</p>
+                          </div>
+                        </div>
+                        {/* Animated border bottom */}
+                        <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>
