@@ -131,10 +131,10 @@ const Physiq360 = () => {
 
             {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
+              {/* Desktop & Tablet: 3-column grid */}
+              <div className="hidden lg:grid lg:grid-cols-12 gap-6 items-stretch">
                 {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-3 flex flex-col justify-center space-y-6">
+                <div className="lg:col-span-3 flex flex-col justify-start gap-6">
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
@@ -159,12 +159,12 @@ const Physiq360 = () => {
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="lg:col-span-6 flex items-center justify-center">
-                  <div className="relative inline-block animate-slide-up delay-300">
+                <div className="lg:col-span-6 flex items-start justify-center pt-0">
+                  <div className="relative inline-block animate-slide-up delay-300 max-w-[400px]">
                     <img
                       src="/deka4.png"
                       alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
-                      className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                      className="w-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
                       style={{transform: 'scale(0.8)'}}
                     />
 
@@ -177,7 +177,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* RIGHT SIDE - Next 2 Cards */}
-                <div className="lg:col-span-3 flex flex-col justify-center space-y-6">
+                <div className="lg:col-span-3 flex flex-col justify-start gap-6">
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}
@@ -200,10 +200,45 @@ const Physiq360 = () => {
                     </Card>
                   ))}
                 </div>
-
               </div>
 
-              {/* Fifth card centered below */}
+              {/* Mobile: Vertical Stack */}
+              <div className="lg:hidden flex flex-col items-center gap-6">
+                {/* Device Image First on Mobile */}
+                <div className="w-full max-w-sm animate-slide-up delay-300">
+                  <img
+                    src="/deka4.png"
+                    alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
+                    className="w-full object-contain drop-shadow-2xl"
+                    style={{transform: 'scale(0.9)'}}
+                  />
+                </div>
+
+                {/* All Cards Below on Mobile */}
+                {keyFeatures.slice(0, 4).map((feature, index) => (
+                  <Card
+                    key={index}
+                    className="w-full group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
+                    style={{animationDelay: `${index * 200}ms`}}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
+                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                        </div>
+                      </div>
+                      {/* Animated border bottom */}
+                      <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Fifth card centered below (both mobile and desktop) */}
               {keyFeatures[4] && (() => {
                 const FifthIcon = keyFeatures[4].icon;
                 return (
