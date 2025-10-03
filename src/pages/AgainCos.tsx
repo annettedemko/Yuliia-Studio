@@ -337,11 +337,11 @@ const AgainCos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-10 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden" style={{transform: 'translateY(-5%)'}}>
+      <section className="py-16 bg-gradient-to-br from-[#5a2d2a] via-[#4a1d1a] to-[#5a2d2a] text-white relative overflow-hidden mb-0">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-orange-300/10 rounded-full blur-xl animate-float delay-1000"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-rose-gold/10 rounded-full blur-xl animate-float delay-1000"></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -355,7 +355,7 @@ const AgainCos = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-orange-900 hover:bg-white/90 text-lg px-8 py-4"
+              className="bg-white text-[#5a2d2a] hover:bg-white/90 text-lg px-8 py-4"
               asChild
             >
               <a href="tel:+4915206067810">
@@ -366,7 +366,7 @@ const AgainCos = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white bg-transparent hover:bg-white hover:text-orange-900 text-lg px-8 py-4"
+              className="border-white text-white bg-transparent hover:bg-white hover:text-[#5a2d2a] text-lg px-8 py-4"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">
