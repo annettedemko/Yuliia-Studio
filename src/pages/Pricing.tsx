@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Zap, Sparkles, Heart, Hand, Instagram, Waves } from 'lucide-react';
+import { Phone, Zap, Sparkles, Heart, Hand, Instagram, Waves, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 
@@ -74,6 +75,19 @@ const Pricing = () => {
       'Waves': Waves
     };
     return iconMap[iconName || 'Heart'] || Heart;
+  };
+
+  // Helper function to map category codes to landing page URLs
+  const getCategoryLandingPage = (categoryCode: string): string => {
+    const categoryMap: Record<string, string> = {
+      'alexandrit': '/laser-haarentfernung-muenchen',
+      'dioden': '/laser-haarentfernung-muenchen',
+      'icoone': '/icoone-laser-muenchen',
+      'redtouchpro': '/redtouch-laser-muenchen',
+      'manicure': '/manikuere-pedikuere-muenchen',
+      'pedicure': '/manikuere-pedikuere-muenchen'
+    };
+    return categoryMap[categoryCode] || '/services';
   };
 
   // Group prices by category and sort within each category
@@ -227,11 +241,9 @@ const Pricing = () => {
 
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
-                        asChild
+                        onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                       >
-                        <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                          Jetzt buchen
-                        </a>
+                        Jetzt buchen
                       </Button>
                     </div>
                   </CardContent>
@@ -274,16 +286,24 @@ const Pricing = () => {
                   color={categoryGroup.category.color || 'rose-gold'}
                 />
 
-                {/* Кнопка бронирования после каждого блока цен */}
-                <div className="text-center mt-8">
+                {/* Кнопки бронирования и "Mehr Infos" после каждого блока цен */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                   <Button
                     size="lg"
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                  >
+                    Jetzt buchen
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
                     asChild
                   >
-                    <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                      Jetzt buchen
-                    </a>
+                    <Link to={getCategoryLandingPage(categoryGroup.category.code)}>
+                      Mehr Infos <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </div>
               </div>
