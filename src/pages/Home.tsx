@@ -425,7 +425,7 @@ const Home = () => {
             </Card>
           </div>
 
-          <div className="max-w-4xl mx-auto animate-slide-up delay-500">
+          <div className="max-w-4xl mx-auto animate-slide-up delay-500 mt-8">
             <div className="relative group">
               {/* Decorative frame */}
               <div className="absolute -inset-4 bg-gradient-to-r from-rose-gold/20 via-primary/20 to-rose-gold/20 rounded-2xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
