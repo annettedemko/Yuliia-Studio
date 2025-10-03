@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MapPin, Mail, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { setPageMeta } from '@/seo/seo';
 // Изображения загружаются из папки public
 
 const Home = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Yuliia Cheporska Studio | Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Nägel – München',
+      description: 'Studio in München-Haidhausen (Elsässer Str. 33). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Termin online buchen.'
+    });
+  }, []);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -36,11 +45,11 @@ const Home = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12 animate-fade-in">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-slide-up leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
-              Der Vollkommenheit sind keine Grenzen gesetzt.
+              Yuliia Cheporska Studio – München-Haidhausen
             </span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 animate-slide-up delay-300 leading-relaxed">
-            Professionelle Kosmetik- und Laserbehandlungen in München
+            Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone® sowie Maniküre & Pediküre – 5–7 Min. vom Ostbahnhof (Elsässer Straße 33).
           </p>
           <Button
             size="lg"
@@ -56,21 +65,18 @@ const Home = () => {
       <section className="py-8 sm:py-12 bg-gradient-to-b from-white/90 to-white relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">Unsere Leistungen</h2>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              Entdecken Sie unser vielfältiges Angebot an professionellen Beauty- und Wellnessbehandlungen
-            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">Leistungen in unserem Kosmetikstudio München</h2>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <Link to="/services">
-              <Card className="group hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 cursor-pointer relative overflow-hidden">
+
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <Link to="/laser-haarentfernung-muenchen" className="group">
+              <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/19.png"
-                      alt="Leistungen"
+                      alt="Laser-Haarentfernung München"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
                       style={{
                         objectPosition: '50% 5%',
@@ -80,59 +86,87 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
-                      <h3 className="text-xl font-bold">Leistungen</h3>
+                      <h3 className="text-xl font-bold">Laser-Haarentfernung</h3>
                     </div>
                   </div>
                   <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      Laser Haarentfernung, Icoone Laser, professionelle Kosmetikbehandlungen
+                      Langanhaltende Reduktion in mehreren Sitzungen; wir arbeiten mit Alexandrit (755 nm) & Diodenlaser (Multi-WL) und wählen je Termin passend zu Haut & Haar.
                     </p>
                   </div>
                 </CardContent>
               </Card>
             </Link>
 
-            <Card
-              className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-              onClick={scrollToSubscriptions}
-            >
-              <CardContent className="p-0">
-                <div className="relative overflow-hidden rounded-t-lg">
-                  <img
-                    src="/20.png"
-                    alt="Jahresabonnement"
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold">Jahresabonnement</h3>
+            <Link to="/redtouch-laser-muenchen" className="group">
+              <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-0 relative z-10">
+                  <div className="relative overflow-hidden rounded-t-lg">
+                    <img
+                      src="/20.png"
+                      alt="RedTouch 675 nm München"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
+                      <h3 className="text-xl font-bold">RedTouch 675 nm</h3>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-muted-foreground">
-                    Sparen Sie mit unseren attraktiven Jahresabonnements für regelmäßige Behandlungen
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      Hautbild & Pigment – nicht-ablatives Verfahren mit gezielter Kollagen-Ansprache; meist kurze Sitzungen und geringe Ausfallzeit (Eignung individuell).
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Link to="/preis">
-              <Card className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-0">
+            <Link to="/icoone-laser-muenchen" className="group">
+              <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/H1.jpg"
-                      alt="Preise"
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                      alt="Icoone®️-Behandlungen München"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-xl font-bold">Preise</h3>
+                    <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
+                      <h3 className="text-xl font-bold">Icoone®️-Behandlungen</h3>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <p className="text-muted-foreground">
-                      Transparente Preisgestaltung für alle unsere Dienstleistungen
+                  <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      Mechanisch stimulierte Anwendungen für Bindegewebe; angenehm und planbar.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/manikuere-pedikuere-muenchen" className="group">
+              <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <CardContent className="p-0 relative z-10">
+                  <div className="relative overflow-hidden rounded-t-lg">
+                    <img
+                      src="/19.png"
+                      alt="Maniküre & Pediküre München"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
+                      <h3 className="text-xl font-bold">Maniküre & Pediküre</h3>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      Präzise Pflege, saubere Form, Hygiene; Lack/Gel nach Wunsch.
                     </p>
                   </div>
                 </CardContent>
@@ -151,7 +185,7 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-6 sm:mb-8 animate-slide-up">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-4">
-              Abonnement Pakete
+              Abonnement Pakete für Icoone Laser Behandlung
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground animate-slide-up delay-300 px-4">
@@ -173,8 +207,11 @@ const Home = () => {
                     <li>2x pro Woche</li>
                     <li>Flexible Terminbuchung</li>
                   </ul>
-                  <Button className="w-full bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400 hover:scale-105 transition-all duration-300 shadow-lg" asChild>
-                    <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
+                  <Button
+                    className="w-full bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400 hover:scale-105 transition-all duration-300 shadow-lg"
+                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                  >
+                    Termin buchen
                   </Button>
                 </div>
               </CardContent>
@@ -196,8 +233,11 @@ const Home = () => {
                   <li>3x pro Woche</li>
                   <li>Prioritätsbuchung</li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow hover:scale-105 transition-all duration-300 shadow-lg" asChild>
-                  <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
+                <Button
+                  className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow hover:scale-105 transition-all duration-300 shadow-lg"
+                  onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                >
+                  Termin buchen
                 </Button>
               </CardContent>
             </Card>
@@ -215,8 +255,11 @@ const Home = () => {
                     <li>4x pro Woche</li>
                     <li>Premium Service</li>
                   </ul>
-                  <Button className="w-full bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900 text-white hover:scale-105 transition-all duration-300 shadow-lg border border-slate-500" asChild>
-                    <a href="https://beauty.dikidi.net/#widget=185505">Termin buchen</a>
+                  <Button
+                    className="w-full bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900 text-white hover:scale-105 transition-all duration-300 shadow-lg border border-slate-500"
+                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                  >
+                    Termin buchen
                   </Button>
                 </div>
               </CardContent>
@@ -278,16 +321,12 @@ const Home = () => {
           <div className="text-center mb-8 animate-slide-up">
             <h2 className="text-4xl font-bold gradient-text mb-4">So finden Sie uns</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
-            <p className="text-xl text-muted-foreground animate-slide-up delay-300">
-              <a
-                href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-rose-gold transition-colors"
-              >
-                Elsässer Straße 33, 81667 München
-              </a>
-            </p>
+            <div className="max-w-2xl mx-auto text-left space-y-2 text-base sm:text-lg text-muted-foreground px-4">
+              <p>Elsässer Straße 33, 81667 München-Haidhausen</p>
+              <p>Ostbahnhof/Orleansplatz 5–7 Min.</p>
+              <p>ÖPNV: S-Bahn München Ost, U5 Ostbahnhof, Tram/Bus Orleansplatz</p>
+              <p>Parken: Nebenstraßen & Parkhaus Ostbahnhof</p>
+            </div>
           </div>
 
           <div className="max-w-4xl mx-auto animate-slide-up delay-500">
@@ -307,7 +346,7 @@ const Home = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Yuliia Cheporska Studio Location"
+                  title="Kosmetikstudio München Haidhausen – Karte / Anfahrt"
                   className="transition-all duration-500 hover:saturate-110"
                 ></iframe>
               </div>
@@ -440,24 +479,20 @@ const Home = () => {
                     <Button
                       size="lg"
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
-                      asChild
+                      onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                     >
-                      <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                        <Phone className="w-5 h-5 mr-2 animate-bounce" />
-                        Termin buchen
-                      </a>
+                      <Phone className="w-5 h-5 mr-2 animate-bounce" />
+                      Termin buchen
                     </Button>
 
                     <Button
                       size="lg"
                       variant="outline"
                       className="w-full border-rose-gold/50 text-primary hover:bg-rose-gold hover:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
-                      asChild
+                      onClick={() => window.location.href = 'mailto:Yulachip@icloud.com'}
                     >
-                      <a href="mailto:Yulachip@icloud.com">
-                        <Mail className="w-5 h-5 mr-2" />
-                        E-Mail schreiben
-                      </a>
+                      <Mail className="w-5 h-5 mr-2" />
+                      E-Mail schreiben
                     </Button>
                   </div>
 
