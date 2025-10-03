@@ -1,10 +1,43 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Phone, Scissors, Palette } from 'lucide-react';
+import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Phone, Scissors, Palette, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
+import { setPageMeta, setJsonLd } from '@/seo/seo';
 // Изображения загружаются из папки public
 
 const ManikuerePedikuere = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Maniküre & Pediküre München-Haidhausen – Kosmetikstudio nahe Ostbahnhof',
+      description: 'Klassische Maniküre, Pediküre, Shellac/Gel im Yuliia Cheporska Studio (Elsässer Str. 33). Hygiene & Präzision. Termin in Haidhausen buchen.'
+    });
+
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: window.location.origin
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: `${window.location.origin}/services`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Maniküre & Pediküre München',
+          item: window.location.href
+        }
+      ]
+    });
+  }, []);
   const manicureServices = [
     {
       icon: Hand,
@@ -113,15 +146,14 @@ const ManikuerePedikuere = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-white/30 via-white/60 to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Maniküre & Pediküre
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Maniküre & Pediküre in München-Haidhausen – Kosmetikstudio nahe Ostbahnhof
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-white/95">
-            Professionelle Hand- und Fußpflege in München
+            Professionelle Hand- und Fußpflege im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Verwöhnen Sie Ihre Hände und Füße mit unseren professionellen Behandlungen.
-            Von klassischer Pflege bis hin zu modernen Gel-Techniken.
+            Klassische Maniküre, Pediküre, Shellac/Gel und Nail Art – hygienisch, präzise und in entspannter Atmosphäre.
           </p>
           <Button
             size="lg"
@@ -133,6 +165,75 @@ const ManikuerePedikuere = () => {
               Termin vereinbaren
             </a>
           </Button>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+              Leistungen
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Klassische Maniküre & Pediküre</h3>
+                      <p className="text-muted-foreground">
+                        Formgebung, Nagelhautpflege, Hornhautentfernung – präzise und hygienisch.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Shellac/Gel-Nägel</h3>
+                      <p className="text-muted-foreground">
+                        Langanhaltende Gel-Lackierung mit großer Farbauswahl – bis zu 3 Wochen Haltbarkeit.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Nagelverlängerung & -verstärkung</h3>
+                      <p className="text-muted-foreground">
+                        Gel oder Acryl in verschiedenen Formen – individuell angepasst.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Nail Art & Design</h3>
+                      <p className="text-muted-foreground">
+                        Kreative Designs, French, Ombré, Glitzer – Ihre Nägel werden zum Kunstwerk.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -535,6 +636,25 @@ const ManikuerePedikuere = () => {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Links */}
+      <section className="py-8 bg-accent/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
+            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
+              Alle Behandlungen im Überblick
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
+              Preise
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
+              Kontakt
+            </Link>
           </div>
         </div>
       </section>

@@ -19,8 +19,41 @@ import {
   Instagram,
   Waves
 } from 'lucide-react';
+import { useEffect } from 'react';
+import { setPageMeta, setJsonLd } from '@/seo/seo';
 
 const RedTouchProService = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'RedTouch®️ Laser München-Haidhausen – Hautverjüngung & Pigment',
+      description: 'RedTouch®️ 675 nm im Yuliia Cheporska Studio (Elsässer Str. 33). Hautbild verbessern, Pigment reduzieren, geringe Ausfallzeit. Termin online buchen.'
+    });
+
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: window.location.origin
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: `${window.location.origin}/services`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'RedTouch Laser München',
+          item: window.location.href
+        }
+      ]
+    });
+  }, []);
   const deviceFeatures = [
     {
       icon: Sparkles,
@@ -93,19 +126,90 @@ const RedTouchProService = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 via-black/30 to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-6xl font-bold text-white mb-8">
-              RedTouchPro
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+              RedTouch®️ Laserbehandlung in München-Haidhausen – Hautverjüngung & Pigmentkorrektur
             </h1>
-            <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-              Innovative 675nm Laser-Technologie für revolutionäre Hautstraffung und Kollagenproduktion.
-              Die Zukunft der schmerzfreien Hautverjüngung.
+            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
+              Professionelle RedTouch®️ 675 nm Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
+            </p>
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Innovative Laser-Technologie für Hautbild-Verbesserung, Pigmentkorrektur und Kollagenproduktion – mit geringer Ausfallzeit.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+              Vorteile von RedTouch®️ in München-Haidhausen
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">675 nm Wellenlänge</h3>
+                      <p className="text-muted-foreground">
+                        Gezielte Kollagen-Ansprache für Hautverjüngung und Straffung – besonders effektiv bei Pigment und feinen Linien.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Geringe Ausfallzeit</h3>
+                      <p className="text-muted-foreground">
+                        Nicht-ablativ: keine Abtragung der Haut, meist schnelle Rückkehr zum Alltag.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Für verschiedene Hauttypen</h3>
+                      <p className="text-muted-foreground">
+                        Individuelle Behandlungsplanung nach Hauttyp und Behandlungsziel.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Zentrale Lage in Haidhausen</h3>
+                      <p className="text-muted-foreground">
+                        Bequem erreichbar nahe Ostbahnhof – ideal für Berufstätige in München.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-primary mb-4">Revolutionary Laser Technology</h2>
@@ -118,7 +222,7 @@ const RedTouchProService = () => {
             <div>
               <img
                 src="/deka2.2.jpeg"
-                alt="RedTouchPro Device"
+                alt="RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hauptgerät"
                 className="w-full h-auto rounded-lg shadow-elegant"
               />
             </div>
@@ -155,14 +259,14 @@ const RedTouchProService = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {[
-              { src: '/r1.jpg', alt: 'RedTouchPro Ergebnis 1' },
-              { src: '/r2.jpg', alt: 'RedTouchPro Ergebnis 2' },
-              { src: '/r3.jpg', alt: 'RedTouchPro Ergebnis 3' },
-              { src: '/r4.jpg', alt: 'RedTouchPro Ergebnis 4' },
-              { src: '/r5.jpg', alt: 'RedTouchPro Ergebnis 5' },
-              { src: '/r6.jpg', alt: 'RedTouchPro Ergebnis 6' },
-              { src: '/r7.jpg', alt: 'RedTouchPro Ergebnis 7' },
-              { src: '/r8.jpg', alt: 'RedTouchPro Ergebnis 8' }
+              { src: '/r1.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsergebnis 1' },
+              { src: '/r2.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsergebnis 2' },
+              { src: '/r3.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Pigmentkorrektur' },
+              { src: '/r4.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hautverjüngung' },
+              { src: '/r5.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Kollagen-Stimulation' },
+              { src: '/r6.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Vorher-Nachher' },
+              { src: '/r7.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsdetail' },
+              { src: '/r8.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Ergebnis Detail' }
             ].map((image, index) => (
               <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                 <img
@@ -286,6 +390,25 @@ const RedTouchProService = () => {
             >
               <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Links */}
+      <section className="py-8 bg-accent/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
+            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
+              Alle Behandlungen im Überblick
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
+              Preise
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
+              Kontakt
+            </Link>
           </div>
         </div>
       </section>

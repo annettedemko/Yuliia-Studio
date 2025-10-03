@@ -1,9 +1,42 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Phone, Instagram } from 'lucide-react';
+import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Phone, Instagram, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
+import { setPageMeta, setJsonLd } from '@/seo/seo';
 
 const IcooneLaser = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Icoone®️ Behandlung München-Haidhausen – Hautstraffung & Lymphdrainage',
+      description: 'Icoone®️ im Yuliia Cheporska Studio, Elsässer Str. 33 (Haidhausen). Straffere Haut, Cellulite-Reduktion, Lymphdrainage. Termin online buchen.'
+    });
+
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: window.location.origin
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: `${window.location.origin}/services`
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Icoone Laser München',
+          item: window.location.href
+        }
+      ]
+    });
+  }, []);
   const benefits = [
     {
       icon: Target,
@@ -72,15 +105,15 @@ const IcooneLaser = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Icoone Laser
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Icoone®️ Behandlung in München-Haidhausen – Hautstraffung & Cellulite-Reduktion
           </h1>
-          <p className="text-xl md:text-2xl mb-4 text-white/95">
-            Body Contouring & Hautpflege
+          <p className="text-lg md:text-xl mb-4 text-white/95">
+            Professionelle Icoone®️ Laser-Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
             Innovative Kombination aus Vakuummassage und Laser für Hautstraffung,
-            Cellulite-Reduktion und Verbesserung der Hautqualität.
+            Cellulite-Reduktion, Lymphdrainage und Verbesserung der Hautqualität.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -107,6 +140,75 @@ const IcooneLaser = () => {
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+              Vorteile von Icoone®️ in München-Haidhausen
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Hautstraffung & Cellulite-Reduktion</h3>
+                      <p className="text-muted-foreground">
+                        Gezielte Verbesserung der Hautelastizität, Reduzierung von Orangenhaut und straffere Körperkonturen.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Lymphdrainage & Entgiftung</h3>
+                      <p className="text-muted-foreground">
+                        Förderung des Lymphflusses, Unterstützung der Entschlackung und Entgiftung des Gewebes.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Schmerzfrei & Entspannend</h3>
+                      <p className="text-muted-foreground">
+                        Angenehme Behandlung ohne Ausfallzeiten – ideal für Berufstätige in München.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-bold text-primary mb-2">Professionelle Beratung</h3>
+                      <p className="text-muted-foreground">
+                        Individuelle Analyse und maßgeschneiderte Behandlungsplanung im Herzen von Haidhausen.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -122,7 +224,7 @@ const IcooneLaser = () => {
               <div className="space-y-4">
                 <img
                   src="/3.jpeg"
-                  alt="Icoone Laser Behandlung"
+                  alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Hauptgerät"
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
                   style={{
                     transform: 'scale(0.8)',
@@ -132,7 +234,7 @@ const IcooneLaser = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <img
                     src="/3.9.jpg"
-                    alt="Icoone Technologie Detail 1"
+                    alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlungsraum"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
                       transform: 'scale(0.85)',
@@ -141,7 +243,7 @@ const IcooneLaser = () => {
                   />
                   <img
                     src="/3.10.jpg"
-                    alt="Icoone Technologie Detail 2"
+                    alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Handstück Detail"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
                       transform: 'scale(0.85)',
@@ -199,18 +301,18 @@ const IcooneLaser = () => {
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {[
-                { src: '/3.1.jpg', alt: 'Icoone Laser Behandlung 1' },
-                { src: '/3.2.jpg', alt: 'Icoone Laser Behandlung 2' },
-                { src: '/3.3.jpg', alt: 'Icoone Laser Behandlung 3' },
-                { src: '/3.4.jpg', alt: 'Icoone Laser Behandlung 4' },
-                { src: '/3.5.jpg', alt: 'Icoone Laser Behandlung 5' },
-                { src: '/3.7.jpg', alt: 'Icoone Laser Behandlung 7' },
-                { src: '/3.8.jpg', alt: 'Icoone Laser Behandlung 8' },
-                { src: '/3.9.jpg', alt: 'Icoone Laser Behandlung 9' },
-                { src: '/3.10.jpg', alt: 'Icoone Laser Behandlung 10' },
-                { src: '/3.11.jpg', alt: 'Icoone Laser Behandlung 11' },
-                { src: '/3.13.jpg', alt: 'Icoone Laser Behandlung 13' },
-                { src: '/3.14.jpg', alt: 'Icoone Laser Behandlung 14' }
+                { src: '/3.1.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlungsergebnis 1' },
+                { src: '/3.2.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlungsergebnis 2' },
+                { src: '/3.3.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Körperkonturierung' },
+                { src: '/3.4.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Hautstraffung' },
+                { src: '/3.5.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Cellulite-Behandlung' },
+                { src: '/3.7.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Vorher-Nachher' },
+                { src: '/3.8.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlungsablauf' },
+                { src: '/3.9.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Studio Ansicht' },
+                { src: '/3.10.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Gerät Detail' },
+                { src: '/3.11.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Anwendung' },
+                { src: '/3.13.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Ergebnis Detail' },
+                { src: '/3.14.jpg', alt: 'Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlung Detail' }
               ].map((image, index) => (
                 <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                   <img
@@ -237,6 +339,26 @@ const IcooneLaser = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer Links */}
+      <section className="py-8 bg-accent/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
+            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
+              Alle Behandlungen im Überblick
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
+              Preise
+            </Link>
+            <span className="text-muted-foreground">•</span>
+            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
+              Kontakt
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };

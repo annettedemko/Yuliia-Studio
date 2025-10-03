@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -14,15 +14,12 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import LaserHairRemoval from "./pages/LaserHairRemoval";
 import IcooneLaser from "./pages/IcooneLaser";
-import IcooneLaserMuenchen from "./pages/IcooneLaserMuenchen";
 import ManikuerePedikuere from "./pages/ManikuerePedikuere";
-import ManikuerePedikuereMuenchen from "./pages/ManikuerePedikuereMuenchen";
 import MassagenMuenchen from "./pages/MassagenMuenchen";
 import HautberatungMuenchen from "./pages/HautberatungMuenchen";
 import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
 import RedTouchPro from "./pages/RedTouchPro";
 import RedTouchProService from "./pages/RedTouchProService";
-import RedTouchLaser from "./pages/RedTouchLaser";
 import MotusPro from "./pages/MotusPro";
 import MotusAX from "./pages/MotusAX";
 import Physiq360 from "./pages/Physiq360";
@@ -74,16 +71,19 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
-              <Route path="/icoone-laser" element={<IcooneLaser />} />
-              <Route path="/icoone-laser-muenchen" element={<IcooneLaserMuenchen />} />
-              <Route path="/manikuere-pedikuere" element={<ManikuerePedikuere />} />
-              <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuereMuenchen />} />
+              {/* New SEO-friendly URLs */}
+              <Route path="/icoone-laser-muenchen" element={<IcooneLaser />} />
+              <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
+              <Route path="/redtouch-laser-muenchen" element={<RedTouchProService />} />
+              {/* Redirects from old URLs */}
+              <Route path="/icoone-laser" element={<Navigate to="/icoone-laser-muenchen" replace />} />
+              <Route path="/manikuere-pedikuere" element={<Navigate to="/manikuere-pedikuere-muenchen" replace />} />
+              <Route path="/redtouchpro" element={<Navigate to="/redtouch-laser-muenchen" replace />} />
+              {/* Other pages */}
               <Route path="/massagen-muenchen" element={<MassagenMuenchen />} />
               <Route path="/hautberatung-muenchen" element={<HautberatungMuenchen />} />
               <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
               <Route path="/redtouch-pro" element={<RedTouchPro />} />
-              <Route path="/redtouchpro" element={<RedTouchProService />} />
-              <Route path="/redtouch-laser-muenchen" element={<RedTouchLaser />} />
               <Route path="/motus-pro" element={<MotusPro />} />
               <Route path="/motus-ax" element={<MotusAX />} />
               <Route path="/physiq360" element={<Physiq360 />} />

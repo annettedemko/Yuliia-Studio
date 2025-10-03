@@ -4,6 +4,11 @@
   "framework": null,
   "devCommand": "npm run dev",
   "installCommand": "npm install",
+  "redirects": [
+    { "source": "/icoone-laser", "destination": "/icoone-laser-muenchen", "permanent": true },
+    { "source": "/redtouchpro", "destination": "/redtouch-laser-muenchen", "permanent": true },
+    { "source": "/manikuere-pedikuere", "destination": "/manikuere-pedikuere-muenchen", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
