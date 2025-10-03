@@ -131,11 +131,11 @@ const Physiq360 = () => {
 
             {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-                {/* LEFT SIDE - First 2-3 Cards */}
+                {/* LEFT SIDE - First 2 Cards */}
                 <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(20%)'}}>
-                  {keyFeatures.slice(0, 3).map((feature, index) => (
+                  {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
                       className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
@@ -159,7 +159,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="lg:col-span-6 text-center">
+                <div className="lg:col-span-6 text-center flex items-center justify-center">
                   <div className="relative inline-block animate-slide-up delay-300">
                     <img
                       src="/deka4.png"
@@ -176,13 +176,13 @@ const Physiq360 = () => {
                   </div>
                 </div>
 
-                {/* RIGHT SIDE - Remaining Cards */}
+                {/* RIGHT SIDE - Next 2 Cards */}
                 <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-20%)'}}>
-                  {keyFeatures.slice(3, 5).map((feature, index) => (
+                  {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
-                      key={index + 3}
+                      key={index + 2}
                       className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
-                      style={{animationDelay: `${(index + 3) * 200}ms`}}
+                      style={{animationDelay: `${(index + 2) * 200}ms`}}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-center gap-3">
@@ -201,6 +201,25 @@ const Physiq360 = () => {
                   ))}
                 </div>
 
+              </div>
+
+              {/* Fifth card centered below */}
+              <div className="mt-8 max-w-md mx-auto animate-slide-up" style={{animationDelay: '800ms'}}>
+                <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                        <keyFeatures[4].icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{keyFeatures[4].title}</h3>
+                        <p className="text-xs text-muted-foreground leading-tight">{keyFeatures[4].description}</p>
+                      </div>
+                    </div>
+                    {/* Animated border bottom */}
+                    <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
