@@ -19,7 +19,7 @@ const RedTouchLaser = () => {
         {
           '@type': 'ListItem',
           position: 1,
-          name': 'Home',
+          name: 'Home',
           item: window.location.origin
         },
         {
