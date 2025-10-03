@@ -7,8 +7,24 @@ All colors MUST be HSL for proper theming.
 */
 
 @layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   :root {

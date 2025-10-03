@@ -65,48 +65,52 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <ScrollToTop />
-            <Navigation />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
-              {/* New SEO-friendly URLs */}
-              <Route path="/icoone-laser-muenchen" element={<IcooneLaser />} />
-              <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
-              <Route path="/redtouch-laser-muenchen" element={<RedTouchProService />} />
-              {/* Redirects from old URLs */}
-              <Route path="/icoone-laser" element={<Navigate to="/icoone-laser-muenchen" replace />} />
-              <Route path="/manikuere-pedikuere" element={<Navigate to="/manikuere-pedikuere-muenchen" replace />} />
-              <Route path="/redtouchpro" element={<Navigate to="/redtouch-laser-muenchen" replace />} />
-              {/* Other pages */}
-              <Route path="/massagen-muenchen" element={<MassagenMuenchen />} />
-              <Route path="/hautberatung-muenchen" element={<HautberatungMuenchen />} />
-              <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
-              <Route path="/redtouch-pro" element={<RedTouchPro />} />
-              <Route path="/motus-pro" element={<MotusPro />} />
-              <Route path="/motus-ax" element={<MotusAX />} />
-              <Route path="/physiq360" element={<Physiq360 />} />
-              <Route path="/again-cos" element={<AgainCos />} />
-              <Route path="/preis" element={<Pricing />} />
-              <Route path="/deka" element={<Deka />} />
-              <Route path="/DEKA" element={<Deka />} />
-              <Route path="/deka-day" element={<DekaDay />} />
-              <Route path="/deka-anna" element={<DekaAnna />} />
-              <Route path="/deka-lera" element={<DekaLera />} />
-              <Route path="/deka-liudmila" element={<DekaLiudmila />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin/yulia-clients" element={<YuliaClients />} />
-              <Route path="/admin/anna-clients" element={<AnnaClients />} />
-              <Route path="/admin/natalia-clients" element={<NataliaClients />} />
-              <Route path="/admin/lera-clients" element={<LeraClients />} />
-              <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
-              <Route path="/impressum" element={<Impressum />} />
-              <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            <Footer />
+            <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+              <Navigation />
+              <main style={{ flex: 1 }}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
+                  {/* New SEO-friendly URLs */}
+                  <Route path="/icoone-laser-muenchen" element={<IcooneLaser />} />
+                  <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
+                  <Route path="/redtouch-laser-muenchen" element={<RedTouchProService />} />
+                  {/* Redirects from old URLs */}
+                  <Route path="/icoone-laser" element={<Navigate to="/icoone-laser-muenchen" replace />} />
+                  <Route path="/manikuere-pedikuere" element={<Navigate to="/manikuere-pedikuere-muenchen" replace />} />
+                  <Route path="/redtouchpro" element={<Navigate to="/redtouch-laser-muenchen" replace />} />
+                  {/* Other pages */}
+                  <Route path="/massagen-muenchen" element={<MassagenMuenchen />} />
+                  <Route path="/hautberatung-muenchen" element={<HautberatungMuenchen />} />
+                  <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
+                  <Route path="/redtouch-pro" element={<RedTouchPro />} />
+                  <Route path="/motus-pro" element={<MotusPro />} />
+                  <Route path="/motus-ax" element={<MotusAX />} />
+                  <Route path="/physiq360" element={<Physiq360 />} />
+                  <Route path="/again-cos" element={<AgainCos />} />
+                  <Route path="/preis" element={<Pricing />} />
+                  <Route path="/deka" element={<Deka />} />
+                  <Route path="/DEKA" element={<Deka />} />
+                  <Route path="/deka-day" element={<DekaDay />} />
+                  <Route path="/deka-anna" element={<DekaAnna />} />
+                  <Route path="/deka-lera" element={<DekaLera />} />
+                  <Route path="/deka-liudmila" element={<DekaLiudmila />} />
+                  <Route path="/admin" element={<AdminDashboard />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route path="/admin/yulia-clients" element={<YuliaClients />} />
+                  <Route path="/admin/anna-clients" element={<AnnaClients />} />
+                  <Route path="/admin/natalia-clients" element={<NataliaClients />} />
+                  <Route path="/admin/lera-clients" element={<LeraClients />} />
+                  <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
+                  <Route path="/impressum" element={<Impressum />} />
+                  <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>
