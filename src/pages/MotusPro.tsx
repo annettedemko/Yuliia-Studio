@@ -367,14 +367,24 @@ const MotusPro = () => {
                 </Card>
               </div>
 
-              <div className="animate-slide-up delay-300">
-                <div className="relative group">
+              <div className="animate-slide-up delay-300 flex justify-center">
+                <div className="relative group max-w-sm mx-auto">
                   {/* Luxury background effects */}
-                  <div className="absolute -inset-8 bg-gradient-to-r from-gold-400/20 via-amber-300/20 to-gold-400/20 rounded-2xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-200/30 to-yellow-200/30 rounded-xl blur-xl"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-gold-400/20 via-amber-300/20 to-gold-400/20 rounded-2xl blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -inset-2 bg-gradient-to-r from-amber-200/30 to-yellow-200/30 rounded-xl blur-xl"></div>
 
-                  {/* Premium frame */}
-                  <div className="relative bg-gradient-to-br from-amber-50 via-white to-amber-50 p-4 rounded-xl shadow-2xl border-4 border-gradient-to-r border-amber-300/50">
+                  {/* Premium frame - reduced size */}
+                  <div className="relative bg-gradient-to-br from-amber-50 via-white to-amber-50 p-3 rounded-xl shadow-2xl border-4 border-gradient-to-r border-amber-300/50">
+                    {/* Premium badge - attached to card */}
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-amber-300/50">
+                        <span className="text-white font-bold text-xs flex items-center whitespace-nowrap">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          Premium Technologie
+                        </span>
+                      </div>
+                    </div>
+
                     <img
                       src="/deka1.png"
                       alt="Motus PRO Moveo-Technologie"
@@ -384,16 +394,6 @@ const MotusPro = () => {
 
                     {/* Luxury shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
-                  </div>
-
-                  {/* Premium badge - positioned on the image */}
-                  <div className="absolute top-8 left-8 z-20">
-                    <div className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-amber-300/50">
-                      <span className="text-white font-bold text-xs flex items-center">
-                        <Sparkles className="w-3 h-3 mr-1" />
-                        Premium Technologie
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
