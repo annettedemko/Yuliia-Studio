@@ -14,10 +14,15 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import LaserHairRemoval from "./pages/LaserHairRemoval";
 import IcooneLaser from "./pages/IcooneLaser";
+import IcooneLaserMuenchen from "./pages/IcooneLaserMuenchen";
 import ManikuerePedikuere from "./pages/ManikuerePedikuere";
+import ManikuerePedikuereMuenchen from "./pages/ManikuerePedikuereMuenchen";
+import MassagenMuenchen from "./pages/MassagenMuenchen";
+import HautberatungMuenchen from "./pages/HautberatungMuenchen";
 import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
 import RedTouchPro from "./pages/RedTouchPro";
 import RedTouchProService from "./pages/RedTouchProService";
+import RedTouchLaser from "./pages/RedTouchLaser";
 import MotusPro from "./pages/MotusPro";
 import MotusAX from "./pages/MotusAX";
 import Physiq360 from "./pages/Physiq360";
@@ -70,10 +75,15 @@ const App = () => (
               <Route path="/services" element={<Services />} />
               <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
               <Route path="/icoone-laser" element={<IcooneLaser />} />
+              <Route path="/icoone-laser-muenchen" element={<IcooneLaserMuenchen />} />
               <Route path="/manikuere-pedikuere" element={<ManikuerePedikuere />} />
+              <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuereMuenchen />} />
+              <Route path="/massagen-muenchen" element={<MassagenMuenchen />} />
+              <Route path="/hautberatung-muenchen" element={<HautberatungMuenchen />} />
               <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
               <Route path="/redtouch-pro" element={<RedTouchPro />} />
               <Route path="/redtouchpro" element={<RedTouchProService />} />
+              <Route path="/redtouch-laser-muenchen" element={<RedTouchLaser />} />
               <Route path="/motus-pro" element={<MotusPro />} />
               <Route path="/motus-ax" element={<MotusAX />} />
               <Route path="/physiq360" element={<Physiq360 />} />
