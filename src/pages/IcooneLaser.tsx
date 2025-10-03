@@ -227,7 +227,7 @@ const IcooneLaser = () => {
                   alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Hauptgerät"
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
                   style={{
-                    transform: 'scale(0.8)',
+                    transform: 'scale(0.6)',
                     objectPosition: 'center'
                   }}
                 />
