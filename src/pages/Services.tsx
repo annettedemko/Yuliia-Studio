@@ -51,7 +51,8 @@ const Services = () => {
 
           {/* Motus AX Alexandrit-Laser */}
           <div className="max-w-5xl mx-auto mb-6">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
+            <Link to="/laser-haarentfernung-muenchen" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/17.png" alt="Motus AX Alexandrit-Laser" className="w-full h-full object-cover" />
@@ -81,11 +82,13 @@ const Services = () => {
                 </div>
               </div>
               </Card>
+            </Link>
           </div>
 
           {/* M-Tech Diodenlaser */}
           <div className="max-w-5xl mx-auto mb-6">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
+            <Link to="/laser-haarentfernung-muenchen" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/2.jpeg" alt="M-Tech Diodenlaser"
@@ -127,11 +130,13 @@ const Services = () => {
                 </div>
               </div>
             </Card>
+            </Link>
           </div>
 
           {/* Icoone Laser Section */}
           <div className="max-w-5xl mx-auto mb-6">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
+            <Link to="/icoone-laser-muenchen" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/3.jpeg" alt="Icoone Laser"
@@ -166,11 +171,13 @@ const Services = () => {
                 </div>
               </div>
             </Card>
+            </Link>
         </div>
 
           {/* RedTouchPro Section */}
           <div className="max-w-5xl mx-auto mb-6">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
+            <Link to="/redtouch-laser-muenchen" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative">
                   <img src="/deka2.png" alt="RedTouchPro"
@@ -214,6 +221,7 @@ const Services = () => {
                 </div>
               </div>
             </Card>
+            </Link>
         </div>
 
         </div>
@@ -223,7 +231,8 @@ const Services = () => {
       <section className="py-6 bg-white mt-[-2%]">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300">
+            <Link to="/manikuere-pedikuere-muenchen" className="block">
+              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                   <div className="p-8 flex flex-col justify-center">
                     <h3 className="text-3xl font-bold text-primary mb-4">Maniküre & Pediküre</h3>
@@ -253,6 +262,7 @@ const Services = () => {
                   </div>
                 </div>
               </Card>
+            </Link>
           </div>
         </div>
       </section>

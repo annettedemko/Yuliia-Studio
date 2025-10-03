@@ -2,11 +2,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MapPin, Mail, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { subscriptionsService } from '@/services/contentService';
+import type { SubscriptionPackage } from '@/types/admin';
 // Изображения загружаются из папки public
 
 const Home = () => {
+  const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
+  const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
   useEffect(() => {
     setPageMeta({
       title: 'Yuliia Cheporska Studio | Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Nägel – München',
@@ -43,6 +47,20 @@ const Home = () => {
       ],
       priceRange: '€€'
     });
+
+    // Load subscriptions
+    const loadSubscriptions = async () => {
+      try {
+        const data = await subscriptionsService.getAll();
+        setSubscriptions(data);
+      } catch (error) {
+        console.error('Error loading subscriptions:', error);
+      } finally {
+        setLoadingSubscriptions(false);
+      }
+    };
+
+    loadSubscriptions();
   }, []);
 
   const scrollToContact = () => {
@@ -106,7 +124,7 @@ const Home = () => {
                 <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/19.png"
+                      src="/20.png"
                       alt="Laser-Haarentfernung München"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
                       style={{
@@ -135,7 +153,7 @@ const Home = () => {
                 <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/20.png"
+                      src="/deka2.2.jpeg"
                       alt="RedTouch 675 nm München"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -160,7 +178,7 @@ const Home = () => {
                 <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/H1.jpg"
+                      src="/3.4.jpg"
                       alt="Icoone®️-Behandlungen München"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -185,7 +203,7 @@ const Home = () => {
                 <CardContent className="p-0 relative z-10">
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/19.png"
+                      src="/11.jpg"
                       alt="Maniküre & Pediküre München"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
@@ -203,6 +221,19 @@ const Home = () => {
                 </CardContent>
               </Card>
             </Link>
+          </div>
+
+          {/* Button to Prices */}
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              asChild
+              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/preis">
+                Alle Preise ansehen
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -224,77 +255,80 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-            <Card className="hover:shadow-2xl hover:shadow-gray-500/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-300 border-gray-400 border-2">
-              <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100/50 to-gray-200/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-gray-500 mb-2">Silber</h3>
-                  <div className="text-4xl font-bold text-primary mb-4">
-                    300€<span className="text-lg font-normal">/Monat</span>
-                  </div>
-                  <ul className="space-y-2 text-muted-foreground mb-6">
-                    <li>72 Behandlungen</li>
-                    <li>2x pro Woche</li>
-                    <li>Flexible Terminbuchung</li>
-                  </ul>
-                  <Button
-                    className="w-full bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400 hover:scale-105 transition-all duration-300 shadow-lg"
-                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
-                  >
-                    Termin buchen
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+          {loadingSubscriptions ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">Laden...</p>
+            </div>
+          ) : subscriptions.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">Keine Pakete verfügbar</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+              {subscriptions.map((pkg, index) => {
+                const isPopular = pkg.is_popular;
+                const tierColors = {
+                  'Silber': { border: 'border-gray-400', shadow: 'hover:shadow-gray-500/20', gradient: 'from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500', text: 'text-gray-500', bgGradient: 'from-gray-100/50 to-gray-200/30' },
+                  'Gold': { border: 'border-yellow-500', shadow: 'shadow-yellow-500/30 hover:shadow-elegant', gradient: 'from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700', text: 'text-yellow-600', bgGradient: 'from-yellow-400/10 via-transparent to-yellow-600/5' },
+                  'Platin': { border: 'border-slate-600', shadow: 'hover:shadow-slate-600/20', gradient: 'from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900', text: 'text-slate-700', bgGradient: 'from-slate-600/10 to-slate-800/30' }
+                };
+                const colors = tierColors[pkg.name] || tierColors['Gold'];
 
-            <Card className="border-yellow-500 border-2 shadow-2xl shadow-yellow-500/30 hover:shadow-elegant transition-all duration-500 md:scale-105 hover:scale-110 card-tilt relative overflow-visible animate-slide-up delay-500 md:mt-4">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 via-transparent to-yellow-600/5"></div>
-              <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl"></div>
-              <CardContent className="p-4 sm:p-6 md:p-8 pt-8 sm:pt-10 md:pt-12 text-center relative z-10">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                  BELIEBT
-                </div>
-                <h3 className="text-2xl font-bold text-yellow-600 mb-2">Gold</h3>
-                <div className="text-4xl font-bold text-primary mb-4">
-                  400€<span className="text-lg font-normal">/Monat</span>
-                </div>
-                <ul className="space-y-2 text-muted-foreground mb-6">
-                  <li>106 Behandlungen</li>
-                  <li>3x pro Woche</li>
-                  <li>Prioritätsbuchung</li>
-                </ul>
-                <Button
-                  className="w-full bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow hover:scale-105 transition-all duration-300 shadow-lg"
-                  onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
-                >
-                  Termin buchen
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-2xl hover:shadow-slate-600/20 transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up delay-700 border-slate-600 border-2">
-              <CardContent className="p-4 sm:p-6 md:p-8 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-600/10 to-slate-800/30 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative z-10">
-                  <h3 className="text-2xl font-bold text-slate-700 mb-2">Platin</h3>
-                  <div className="text-4xl font-bold text-primary mb-4">
-                    500€<span className="text-lg font-normal">/Monat</span>
-                  </div>
-                  <ul className="space-y-2 text-muted-foreground mb-6">
-                    <li>150 Behandlungen</li>
-                    <li>4x pro Woche</li>
-                    <li>Premium Service</li>
-                  </ul>
-                  <Button
-                    className="w-full bg-gradient-to-r from-slate-600 to-slate-800 hover:from-slate-700 hover:to-slate-900 text-white hover:scale-105 transition-all duration-300 shadow-lg border border-slate-500"
-                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                return (
+                  <Card
+                    key={pkg.id}
+                    className={`${colors.border} border-2 ${colors.shadow} hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 card-tilt animate-slide-up ${isPopular ? 'md:scale-105 hover:scale-110 relative overflow-visible md:mt-4' : ''}`}
                   >
-                    Termin buchen
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                    {isPopular && (
+                      <>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.bgGradient}`}></div>
+                        {pkg.name === 'Gold' && <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-500/20 rounded-full blur-xl"></div>}
+                      </>
+                    )}
+                    <CardContent className={`p-4 sm:p-6 md:p-8 ${isPopular ? 'pt-8 sm:pt-10 md:pt-12' : ''} text-center relative ${!isPopular ? 'overflow-hidden' : 'z-10'}`}>
+                      {!isPopular && (
+                        <div className={`absolute inset-0 bg-gradient-to-br ${colors.bgGradient} opacity-0 hover:opacity-100 transition-opacity duration-500`}></div>
+                      )}
+                      {isPopular && (
+                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                          BELIEBT
+                        </div>
+                      )}
+                      <div className="relative z-10">
+                        <h3 className={`text-2xl font-bold ${colors.text} mb-2`}>{pkg.name}</h3>
+                        <div className="text-4xl font-bold text-primary mb-4">
+                          {pkg.price}€<span className="text-lg font-normal">/Monat</span>
+                        </div>
+                        <ul className="space-y-2 text-muted-foreground mb-6">
+                          {pkg.features?.map((feature, i) => (
+                            <li key={i}>{feature}</li>
+                          ))}
+                        </ul>
+                        <Button
+                          className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
+                          onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                        >
+                          Termin buchen
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Button to Prices */}
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              asChild
+              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/preis">
+                Alle Preise ansehen
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -352,12 +386,42 @@ const Home = () => {
           <div className="text-center mb-8 animate-slide-up">
             <h2 className="text-4xl font-bold gradient-text mb-4">So finden Sie uns</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
-            <div className="max-w-2xl mx-auto text-left space-y-2 text-base sm:text-lg text-muted-foreground px-4">
-              <p>Elsässer Straße 33, 81667 München-Haidhausen</p>
-              <p>Ostbahnhof/Orleansplatz 5–7 Min.</p>
-              <p>ÖPNV: S-Bahn München Ost, U5 Ostbahnhof, Tram/Bus Orleansplatz</p>
-              <p>Parken: Nebenstraßen & Parkhaus Ostbahnhof</p>
-            </div>
+
+            <Card className="max-w-3xl mx-auto glass-effect border-rose-gold/20 hover:shadow-rose transition-all duration-300">
+              <CardContent className="p-6 sm:p-8 space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-rose-gold/20 p-3 rounded-full flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-rose-gold" />
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-bold text-primary text-lg mb-2">Adresse</h3>
+                    <p className="text-muted-foreground">Elsässer Straße 33<br />81667 München-Haidhausen</p>
+                  </div>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/20 p-3 rounded-full flex-shrink-0">
+                      <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div className="text-left">
+                      <h3 className="font-bold text-primary text-lg mb-2">Anfahrt</h3>
+                      <p className="text-muted-foreground mb-2">
+                        <span className="font-semibold">Zu Fuß:</span> 5–7 Min. vom Ostbahnhof/Orleansplatz
+                      </p>
+                      <p className="text-muted-foreground mb-2">
+                        <span className="font-semibold">ÖPNV:</span> S-Bahn München Ost, U5 Ostbahnhof, Tram/Bus Orleansplatz
+                      </p>
+                      <p className="text-muted-foreground">
+                        <span className="font-semibold">Parken:</span> Nebenstraßen & Parkhaus Ostbahnhof
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="max-w-4xl mx-auto animate-slide-up delay-500">
