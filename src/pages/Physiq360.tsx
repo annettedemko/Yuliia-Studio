@@ -131,10 +131,10 @@ const Physiq360 = () => {
 
             {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
                 {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(20%)'}}>
+                <div className="lg:col-span-3 flex flex-col justify-center space-y-6">
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
@@ -159,7 +159,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="lg:col-span-6 text-center flex items-center justify-center">
+                <div className="lg:col-span-6 flex items-center justify-center">
                   <div className="relative inline-block animate-slide-up delay-300">
                     <img
                       src="/deka4.png"
@@ -177,7 +177,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* RIGHT SIDE - Next 2 Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-20%)'}}>
+                <div className="lg:col-span-3 flex flex-col justify-center space-y-6">
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}
