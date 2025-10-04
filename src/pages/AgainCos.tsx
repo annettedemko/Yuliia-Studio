@@ -256,15 +256,6 @@ const AgainCos = () => {
                     objectPosition: 'center'
                   }}
                 />
-                <div className="absolute -inset-4 bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-3xl blur-xl"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-teal-500/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-white font-semibold text-sm flex items-center">
-                      <Star className="w-4 h-4 mr-2" />
-                      Advanced Technology
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
 

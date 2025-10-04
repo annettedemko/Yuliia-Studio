@@ -3,7 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram } from 'lucide-react';
+import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 // Изображения загружаются из папки public
 
 const About = () => {
@@ -13,34 +14,39 @@ const About = () => {
   };
 
   const services = [
-    'Professionelle Maniküre & Pediküre',
-    'Laser-Haarentfernung (Alexandrit & Dioden)',
-    'Icoone Laser Behandlungen',
-    'Entspannende Massagen',
-    'Individuelle Hautberatung',
-    'Kosmetische Beratung'
+    { name: 'Laser-Haarentfernung (Alexandrit & Dioden)', link: '/laser-haarentfernung-muenchen' },
+    { name: 'Icoone Laser Behandlungen', link: '/icoone-laser-muenchen' },
+    { name: 'RedTouchPro Laser-Behandlungen', link: '/redtouch-laser-muenchen' },
+    { name: 'Professionelle Maniküre & Pediküre', link: '/manikuere-pedikuere-muenchen' },
+    { name: 'DEKA Geräte & Technologien', link: '/deka-geraeteverkauf' },
+    { name: 'Individuelle Kosmetikberatung', link: '/services' }
   ];
 
   const advantages = [
     {
       icon: Award,
-      title: 'Langjährige Erfahrung',
-      description: 'Über 5 Jahre Expertise in der Kosmetikbranche'
+      title: 'Über 5 Jahre Erfahrung als Kosmetikerin',
+      description: 'Langjährige Expertise in professionellen Beauty-Behandlungen'
     },
     {
       icon: Shield,
-      title: 'Höchste Qualitätsstandards',
-      description: 'Zertifizierte Geräte und sterile Arbeitsumgebung'
+      title: 'Zertifizierte Laser- und Kosmetikgeräte',
+      description: 'Modernste Technologie mit höchsten Sicherheitsstandards'
     },
     {
       icon: Users,
-      title: 'Individuelle Betreuung',
-      description: 'Persönliche Behandlung nach Ihren Wünschen'
+      title: 'Individuelle, persönliche Beratung',
+      description: 'Jede Behandlung wird auf Ihre Bedürfnisse abgestimmt'
     },
     {
       icon: Clock,
-      title: 'Flexible Terminzeiten',
-      description: 'Termine auch am Abend und Wochenende möglich'
+      title: 'Flexible Terminzeiten (auch abends & am Wochenende)',
+      description: 'Termine passend zu Ihrem Zeitplan'
+    },
+    {
+      icon: MapPin,
+      title: 'Zentrale Lage in München-Haidhausen (5 Min. vom Ostbahnhof)',
+      description: 'Elsässer Straße 33, perfekte Anbindung mit ÖPNV'
     }
   ];
 
@@ -52,8 +58,12 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-5xl font-bold text-primary mb-6">Über uns</h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Willkommen bei Yuliia Cheporska Studio – Ihrem Experten für professionelle Kosmetik- und Wellnessbehandlungen in München
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
+              Willkommen im Yuliia Cheporska Studio – Ihrem Kosmetikstudio in München-Haidhausen.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto flex items-center justify-center gap-2">
+              <MapPin className="w-5 h-5 text-rose-gold" />
+              Elsässer Straße 33 – nur 5–7 Minuten vom Ostbahnhof entfernt
             </p>
           </div>
         </div>
@@ -84,7 +94,7 @@ const About = () => {
 
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-primary mb-6">
-                Herzlich willkommen in unserem Studio!
+                Herzlich willkommen in unserem Kosmetikstudio in München!
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Mein Name ist Yuliia Cheporska und ich freue mich, Sie in meinem Kosmetikstudio in München begrüßen zu dürfen. Mit über 5 Jahren Erfahrung in der Beauty-Branche biete ich Ihnen professionelle Behandlungen in entspannter und vertrauensvoller Atmosphäre.
@@ -113,19 +123,19 @@ const About = () => {
       <section className="py-10 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Unsere Dienstleistungen</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4">Welche Kosmetikbehandlungen bietet Yuliia Cheporska Studio?</h2>
             <p className="text-xl text-muted-foreground">
-              Ein umfassendes Angebot für Ihre Schönheit und Ihr Wohlbefinden
+              Professionelle Beauty-Behandlungen in München-Haidhausen
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0" />
-                  <span className="text-lg text-foreground">{service}</span>
-                </div>
+                <Link key={index} to={service.link} className="flex items-center space-x-3 hover:bg-rose-gold/5 p-3 rounded-lg transition-colors group">
+                  <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span className="text-lg text-foreground group-hover:text-rose-gold transition-colors">{service.name}</span>
+                </Link>
               ))}
             </div>
           </div>
@@ -136,13 +146,13 @@ const About = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Warum sollten Sie uns wählen?</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4">Warum Kundinnen uns in München vertrauen</h2>
             <p className="text-xl text-muted-foreground">
               Unsere Vorteile im Überblick
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {advantages.map((advantage, index) => (
               <Card key={index} className="text-center hover:shadow-card transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-8">
@@ -163,23 +173,23 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">Unser Studio</h2>
+              <h2 className="text-4xl font-bold text-primary mb-4">Moderne Studio-Atmosphäre im Herzen von München-Haidhausen</h2>
               <p className="text-xl text-muted-foreground">Entdecken Sie unsere moderne und einladende Atmosphäre</p>
             </div>
 
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { src: '/s1.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 1' },
-                { src: '/s2.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 2' },
-                { src: '/s3.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 3' },
-                { src: '/s4.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 4' },
-                { src: '/s5.jpg', alt: 'Yuliia Cheporska Studio Atmosphäre 5' },
-                { src: '/uns1.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 1' },
-                { src: '/uns2.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 2' },
-                { src: '/uns3.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 3' },
-                { src: '/uns4.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 4' },
-                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio Innenansicht 5' }
+                { src: '/s1.jpg', alt: 'Kosmetikstudio München Haidhausen – Empfangsbereich' },
+                { src: '/s2.jpg', alt: 'Kosmetikstudio München Haidhausen – Behandlungsraum Laser' },
+                { src: '/s3.jpg', alt: 'Kosmetikstudio München Haidhausen – Wartebereich' },
+                { src: '/s4.jpg', alt: 'Kosmetikstudio München Haidhausen – Maniküre Bereich' },
+                { src: '/s5.jpg', alt: 'Kosmetikstudio München Haidhausen – Pediküre Station' },
+                { src: '/uns1.jpg', alt: 'Yuliia Cheporska Studio München – Innenansicht Eingang' },
+                { src: '/uns2.jpg', alt: 'Yuliia Cheporska Studio München – DEKA Laser Geräte' },
+                { src: '/uns3.jpg', alt: 'Yuliia Cheporska Studio München – Behandlungsliege' },
+                { src: '/uns4.jpg', alt: 'Yuliia Cheporska Studio München – Kosmetikgeräte' },
+                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio München – Relaxbereich' }
               ].map((image, index) => (
                 <div key={index} className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ${image.className || ''}`}>
                   <img

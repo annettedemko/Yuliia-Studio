@@ -53,18 +53,24 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Legal Links */}
+          {/* Links */}
           <div>
-            <h4 className="font-semibold mb-4">Rechtliches</h4>
-            <div className="flex space-x-4">
-              <Link 
-                to="/impressum" 
+            <h4 className="font-semibold mb-4">Links</h4>
+            <div className="flex flex-col space-y-2">
+              <Link
+                to="/kontakt"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                Kontakt & Anfahrt
+              </Link>
+              <Link
+                to="/impressum"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 Impressum
               </Link>
-              <Link 
-                to="/datenschutzerklaerung" 
+              <Link
+                to="/datenschutzerklaerung"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 Datenschutz

@@ -37,6 +37,7 @@ import LeraClients from "./pages/LeraClients";
 import LiudmilaClients from "./pages/LiudmilaClients";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
+import Kontakt from "./pages/Kontakt";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -100,6 +101,7 @@ const App = () => (
                   <Route path="/admin/natalia-clients" element={<NataliaClients />} />
                   <Route path="/admin/lera-clients" element={<LeraClients />} />
                   <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
+                  <Route path="/kontakt" element={<Kontakt />} />
                   <Route path="/impressum" element={<Impressum />} />
                   <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
                   <Route path="*" element={<NotFound />} />

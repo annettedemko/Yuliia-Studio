@@ -114,7 +114,7 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-background to-orange-50/30 relative overflow-hidden">
+      <section className="py-20 bg-orange-50 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
@@ -206,9 +206,8 @@ const Physiq360 = () => {
           </div>
         </div>
       </section>
-
       {/* STEP Technology Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-50 to-amber-50">
+      <section className="py-16 bg-orange-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -287,7 +286,7 @@ const Physiq360 = () => {
 
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden mb-0">
+      <section className="py-16 bg-gradient-to-br from-orange-100 to-peach-100 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
@@ -295,17 +294,17 @@ const Physiq360 = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-4xl font-bold mb-6 text-primary">
             Bereit für revolutionäre Körperkonturierung?
           </h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
             Erleben Sie die innovative PHYSIQ 360 Technologie in unserem Studio. Vereinbaren Sie noch heute Ihren Beratungstermin.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-orange-900 hover:bg-white/90 text-lg px-8 py-4"
+              className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4"
               asChild
             >
               <a href="tel:+4915206067810">
@@ -316,7 +315,7 @@ const Physiq360 = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white bg-transparent hover:bg-white hover:text-orange-900 text-lg px-8 py-4"
+              className="border-primary text-primary bg-transparent hover:bg-primary hover:text-white text-lg px-8 py-4"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">
@@ -326,19 +325,19 @@ const Physiq360 = () => {
             </Button>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-white/20">
+          <div className="mt-8 pt-8 border-t border-primary/20">
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
-                <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">DEKA Zertifiziert</p>
+                <Award className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
+                <p className="text-sm text-primary">DEKA Zertifiziert</p>
               </div>
               <div className="text-center">
-                <Shield className="w-8 h-8 text-green-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">Sicher & Effektiv</p>
+                <Shield className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                <p className="text-sm text-primary">Sicher & Effektiv</p>
               </div>
               <div className="text-center">
                 <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
-                <p className="text-sm text-white/80">Premium Qualität</p>
+                <p className="text-sm text-primary">Premium Qualität</p>
               </div>
             </div>
 
