@@ -51,7 +51,7 @@ const Physiq360 = () => {
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
-      <section className="py-20 bg-accent/20">
+      <section className="py-20 bg-gradient-to-b from-orange-50/30 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl bg-white">
@@ -114,7 +114,7 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-background to-orange-50/30 relative overflow-hidden">
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
@@ -132,9 +132,9 @@ const Physiq360 = () => {
             {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
               {/* Desktop & Tablet: 3-column grid */}
-              <div className="hidden lg:grid lg:grid-cols-12 gap-6 items-stretch">
+              <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
                 {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-3 flex flex-col justify-start gap-6">
+                <div className="lg:col-span-4 flex flex-col justify-start gap-6">
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
@@ -159,8 +159,8 @@ const Physiq360 = () => {
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="lg:col-span-6 flex items-start justify-center pt-0">
-                  <div className="relative inline-block animate-slide-up delay-300 max-w-[400px]">
+                <div className="lg:col-span-4 flex items-start justify-center pt-0">
+                  <div className="relative inline-block animate-slide-up delay-300 w-full max-w-[350px]">
                     <img
                       src="/deka4.png"
                       alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
@@ -177,7 +177,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* RIGHT SIDE - Next 2 Cards */}
-                <div className="lg:col-span-3 flex flex-col justify-start gap-6">
+                <div className="lg:col-span-4 flex flex-col justify-start gap-6">
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}
@@ -346,7 +346,7 @@ const Physiq360 = () => {
 
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden mb-0">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
