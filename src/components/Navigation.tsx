@@ -52,13 +52,13 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-2">
             <img
               src="/logo2.jpg"
               alt="Yuliia Cheporska Studio"
-              className="h-14 w-auto"
+              className="h-10 w-auto"
             />
             {/* DEKA Logo - на всех DEKA страницах */}
             {(location.pathname === '/deka' ||
@@ -71,11 +71,11 @@ const Navigation = () => {
               location.pathname === '/motus-ax' ||
               location.pathname === '/motus-pro' ||
               location.pathname === '/again-cos') && (
-              <div className="border border-primary rounded-lg p-2 bg-white/5 backdrop-blur-sm">
+              <div className="border border-primary rounded-lg p-1.5 bg-white/5 backdrop-blur-sm">
                 <img
                   src="/DEKA logo.png"
                   alt="DEKA Logo"
-                  className="h-10 w-auto"
+                  className="h-7 w-auto"
                   style={{
                     filter: 'brightness(1.2) saturate(1.1)',
                   }}
@@ -85,7 +85,7 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -150,28 +150,28 @@ const Navigation = () => {
                 </div>
               )}
             </div>
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-2">
               <LanguageSwitcher />
               <Button
                 variant="outline"
                 size="sm"
-                className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white transition-colors"
+                className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white transition-colors h-8 px-3 text-xs"
                 asChild
               >
                 <a href="tel:+4915206067810">
-                  <Phone className="w-4 h-4 mr-2" />
+                  <Phone className="w-3 h-3 mr-1" />
                   Anrufen
                 </a>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="bg-gradient-hero text-white border-none hover:opacity-90"
+                className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Termin buchen
+                  <Calendar className="w-3 h-3 mr-1" />
+                  Termin
                 </a>
               </Button>
             </div>
