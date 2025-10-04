@@ -15,8 +15,6 @@ import Services from "./pages/Services";
 import LaserHairRemoval from "./pages/LaserHairRemoval";
 import IcooneLaser from "./pages/IcooneLaser";
 import ManikuerePedikuere from "./pages/ManikuerePedikuere";
-import MassagenMuenchen from "./pages/MassagenMuenchen";
-import HautberatungMuenchen from "./pages/HautberatungMuenchen";
 import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
 import RedTouchPro from "./pages/RedTouchPro";
 import RedTouchProService from "./pages/RedTouchProService";
@@ -82,8 +80,6 @@ const App = () => (
                   <Route path="/manikuere-pedikuere" element={<Navigate to="/manikuere-pedikuere-muenchen" replace />} />
                   <Route path="/redtouchpro" element={<Navigate to="/redtouch-laser-muenchen" replace />} />
                   {/* Other pages */}
-                  <Route path="/massagen-muenchen" element={<MassagenMuenchen />} />
-                  <Route path="/hautberatung-muenchen" element={<HautberatungMuenchen />} />
                   <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
                   <Route path="/redtouch-pro" element={<RedTouchPro />} />
                   <Route path="/motus-pro" element={<MotusPro />} />

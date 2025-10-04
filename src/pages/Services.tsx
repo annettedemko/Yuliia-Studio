@@ -346,22 +346,6 @@ const Services = () => {
                   </div>
                 </Card>
               </Link>
-              <Link to="/massagen-muenchen" className="group">
-                <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">Wellness-Massagen</span>
-                    <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Card>
-              </Link>
-              <Link to="/hautberatung-muenchen" className="group">
-                <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">Hautberatung</span>
-                    <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Card>
-              </Link>
             </div>
           </div>
         </div>
