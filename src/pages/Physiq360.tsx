@@ -114,8 +114,8 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="pt-20 pb-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
+      <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-orange-300/10 rounded-full blur-lg animate-bounce delay-1000"></div>
@@ -262,14 +262,9 @@ const Physiq360 = () => {
                 );
               })()}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* STEP Technology Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-50 to-amber-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+            {/* STEP Technology Content - Now part of same section */}
+            <div className="mt-24 max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-primary mb-6">Exklusive STEP-Technologie</h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -343,7 +338,6 @@ const Physiq360 = () => {
           </div>
         </div>
       </section>
-
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden mb-0">
