@@ -114,7 +114,7 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="pt-20 pb-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
