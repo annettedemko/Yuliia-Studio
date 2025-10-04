@@ -51,7 +51,7 @@ const Physiq360 = () => {
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-orange-50/30 to-white">
+      <section className="py-20 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl bg-white">
@@ -114,8 +114,8 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="py-20 bg-gradient-to-b from-white via-orange-50/30 to-amber-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+      <section className="py-20 bg-gradient-to-br from-orange-50 via-background to-orange-50/30 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-orange-300/10 rounded-full blur-lg animate-bounce delay-1000"></div>
@@ -131,11 +131,11 @@ const Physiq360 = () => {
 
             {/* Cards Around Device Layout */}
             <div className="relative max-w-7xl mx-auto">
-              {/* Desktop & Tablet: 3-column grid */}
-              <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
-                {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-4 flex flex-col justify-start gap-6">
-                  {keyFeatures.slice(0, 2).map((feature, index) => (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+                {/* LEFT SIDE - First 2-3 Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(20%)'}}>
+                  {keyFeatures.slice(0, 3).map((feature, index) => (
                     <Card
                       key={index}
                       className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
@@ -159,12 +159,12 @@ const Physiq360 = () => {
                 </div>
 
                 {/* CENTER - Device Image */}
-                <div className="lg:col-span-4 flex items-start justify-center pt-0">
-                  <div className="relative inline-block animate-slide-up delay-300 w-full max-w-[350px]">
+                <div className="lg:col-span-6 text-center">
+                  <div className="relative inline-block animate-slide-up delay-300">
                     <img
                       src="/deka4.png"
                       alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
-                      className="w-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                      className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
                       style={{transform: 'scale(0.8)'}}
                     />
 
@@ -176,13 +176,13 @@ const Physiq360 = () => {
                   </div>
                 </div>
 
-                {/* RIGHT SIDE - Next 2 Cards */}
-                <div className="lg:col-span-4 flex flex-col justify-start gap-6">
-                  {keyFeatures.slice(2, 4).map((feature, index) => (
+                {/* RIGHT SIDE - Remaining Cards */}
+                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-20%)'}}>
+                  {keyFeatures.slice(3, 5).map((feature, index) => (
                     <Card
-                      key={index + 2}
+                      key={index + 3}
                       className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
-                      style={{animationDelay: `${(index + 2) * 200}ms`}}
+                      style={{animationDelay: `${(index + 3) * 200}ms`}}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-center gap-3">
@@ -200,71 +200,17 @@ const Physiq360 = () => {
                     </Card>
                   ))}
                 </div>
+
               </div>
-
-              {/* Mobile: Vertical Stack */}
-              <div className="lg:hidden flex flex-col items-center gap-6">
-                {/* Device Image First on Mobile */}
-                <div className="w-full max-w-sm animate-slide-up delay-300">
-                  <img
-                    src="/deka4.png"
-                    alt="PHYSIQ 360 - Das ultimative Körperkonturierungsgerät"
-                    className="w-full object-contain drop-shadow-2xl"
-                    style={{transform: 'scale(0.9)'}}
-                  />
-                </div>
-
-                {/* All Cards Below on Mobile */}
-                {keyFeatures.slice(0, 4).map((feature, index) => (
-                  <Card
-                    key={index}
-                    className="w-full group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300 animate-slide-up"
-                    style={{animationDelay: `${index * 200}ms`}}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                          <feature.icon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{feature.title}</h3>
-                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
-                        </div>
-                      </div>
-                      {/* Animated border bottom */}
-                      <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Fifth card centered below (both mobile and desktop) */}
-              {keyFeatures[4] && (() => {
-                const FifthIcon = keyFeatures[4].icon;
-                return (
-                  <div className="mt-8 max-w-md mx-auto animate-slide-up" style={{animationDelay: '800ms'}}>
-                    <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-orange-50/50 backdrop-blur-sm border-2 border-orange-100 hover:border-orange-300">
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                            <FifthIcon className="w-6 h-6 text-orange-600 group-hover:text-amber-600 transition-colors" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-orange-600 transition-colors">{keyFeatures[4].title}</h3>
-                            <p className="text-xs text-muted-foreground leading-tight">{keyFeatures[4].description}</p>
-                          </div>
-                        </div>
-                        {/* Animated border bottom */}
-                        <div className="mt-3 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                );
-              })()}
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* STEP Technology Content - Now part of same section */}
-            <div className="mt-24 max-w-6xl mx-auto">
+      {/* STEP Technology Section */}
+      <section className="py-16 bg-gradient-to-br from-orange-50 to-amber-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-primary mb-6">Exklusive STEP-Technologie</h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -335,10 +281,10 @@ const Physiq360 = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             </div>
-            </div>
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-orange-900 via-amber-900 to-orange-900 text-white relative overflow-hidden mb-0">
