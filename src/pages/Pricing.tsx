@@ -90,8 +90,28 @@ const Pricing = () => {
     return categoryMap[categoryCode] || '/services';
   };
 
+  // Custom order for categories
+  const categoryOrder = ['icoone', 'manicure', 'pedicure', 'redtouchpro', 'alexandrit', 'dioden'];
+
+  // Sort categories by custom order
+  const sortedCategories = [...categories].sort((a, b) => {
+    const indexA = categoryOrder.indexOf(a.code);
+    const indexB = categoryOrder.indexOf(b.code);
+
+    // If both are in the custom order, sort by that order
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    }
+    // If only A is in custom order, it comes first
+    if (indexA !== -1) return -1;
+    // If only B is in custom order, it comes first
+    if (indexB !== -1) return 1;
+    // If neither is in custom order, maintain original order
+    return 0;
+  });
+
   // Group prices by category and sort within each category
-  const pricesByCategory = categories.map(category => {
+  const pricesByCategory = sortedCategories.map(category => {
     const categoryPrices = prices.filter(p => p.category === category.code);
     return {
       category,
@@ -119,7 +139,7 @@ const Pricing = () => {
                 <span className="text-foreground">{item.service}</span>
                 {item.note && <div className="text-sm text-muted-foreground">{item.note}</div>}
               </div>
-              <span className="font-semibold text-primary">{item.price}€</span>
+              <span className="font-semibold text-primary">{item.price}</span>
             </div>
           ))}
         </div>

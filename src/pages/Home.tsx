@@ -297,14 +297,9 @@ const Home = () => {
                       )}
                       <div className="relative z-10">
                         <h3 className={`text-2xl font-bold ${colors.text} mb-2`}>{pkg.name}</h3>
-                        <div className="text-4xl font-bold text-primary mb-4">
-                          {pkg.price}€<span className="text-lg font-normal">/Monat</span>
+                        <div className="text-4xl font-bold text-primary mb-6">
+                          {pkg.price}<span className="text-lg font-normal">/Monat</span>
                         </div>
-                        <ul className="space-y-2 text-muted-foreground mb-6">
-                          {pkg.features?.map((feature, i) => (
-                            <li key={i}>{feature}</li>
-                          ))}
-                        </ul>
                         <Button
                           className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
                           onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
