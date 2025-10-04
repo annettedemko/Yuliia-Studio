@@ -8,7 +8,7 @@ const Datenschutz = () => {
       <section className="pt-24 pb-16 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-primary mb-6">Datenschutzerklärung</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Datenschutzerklärung</h1>
             <p className="text-xl text-muted-foreground">
               Informationen zum Schutz Ihrer persönlichen Daten
             </p>
@@ -24,7 +24,7 @@ const Datenschutz = () => {
               <CardContent className="p-8 prose prose-lg max-w-none">
                 <div className="space-y-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">1. Datenschutz auf einen Blick</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">1. Datenschutz auf einen Blick</h2>
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Allgemeine Hinweise</h3>
                     <div className="space-y-4 text-muted-foreground">
@@ -43,7 +43,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">2. Verantwortliche Stelle</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">2. Verantwortliche Stelle</h2>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
                       <div className="bg-accent/20 p-4 rounded-lg">
@@ -67,7 +67,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">3. Ihre Rechte</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">3. Ihre Rechte</h2>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
                       
@@ -76,7 +76,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">4. Datenerfassung auf unserer Website</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">4. Datenerfassung auf unserer Website</h2>
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Server-Log-Dateien</h3>
                     <div className="space-y-4 text-muted-foreground">
@@ -110,7 +110,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">5. Soziale Medien</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">5. Soziale Medien</h2>
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Instagram Plugin</h3>
                     <div className="space-y-4 text-muted-foreground">
@@ -123,7 +123,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">6. Plugins und Tools</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">6. Plugins und Tools</h2>
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Google Maps</h3>
                     <div className="space-y-4 text-muted-foreground">
@@ -136,7 +136,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">7. Eigene Dienste</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">7. Eigene Dienste</h2>
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Terminbuchung und Kundenverwaltung</h3>
                     <div className="space-y-4 text-muted-foreground">
@@ -154,7 +154,7 @@ const Datenschutz = () => {
                   </div>
 
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">8. Auftragsverarbeitung</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">8. Auftragsverarbeitung</h2>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Wir haben zu einem oder mehreren der oben genannten Zwecke Verträge über Auftragsverarbeitung mit folgenden Anbietern geschlossen:</p>
                       <ul className="list-disc list-inside ml-4 space-y-1">

@@ -137,7 +137,7 @@ const ManikuerePedikuere = () => {
 
       {/* Hero Section */}
       <section
-        className="relative h-[70vh] flex items-center justify-center text-white"
+        className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
         style={{
           backgroundImage: `url(/11.jpg)`,
           backgroundSize: 'cover',
@@ -146,7 +146,7 @@ const ManikuerePedikuere = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-white/30 via-white/60 to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
             Maniküre & Pediküre in München-Haidhausen – Kosmetikstudio nahe Ostbahnhof
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-white/95">
@@ -172,7 +172,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               Leistungen
             </h2>
 
@@ -242,7 +242,7 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-primary mb-6">Maniküre-Leistungen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Maniküre-Leistungen</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Professionelle Handpflege für gepflegte und schöne Nägel in entspannter Atmosphäre
               </p>
@@ -293,7 +293,7 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-primary mb-6">Pediküre-Leistungen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Pediküre-Leistungen</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Entspannende Fußpflege für gesunde und gepflegte Füße
               </p>
@@ -343,7 +343,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Warum Yuliia Cheporska Studio?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Warum Yuliia Cheporska Studio?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Галерея изображений маникюра */}
@@ -408,7 +408,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {processSteps.map((process, index) => (
@@ -429,7 +429,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Pflege-Tipps für zu Hause</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Pflege-Tipps für zu Hause</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
@@ -506,7 +506,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Unsere Pediküre-Arbeiten</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Unsere Pediküre-Arbeiten</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
@@ -557,7 +557,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Verwöhnen Sie Ihre Hände und Füße</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Verwöhnen Sie Ihre Hände und Füße</h2>
             <p className="text-xl mb-8 text-white/90">
               Buchen Sie jetzt Ihren Termin und erleben Sie professionelle Hand- und Fußpflege
               in entspannter Atmosphäre.
@@ -597,7 +597,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Was unsere Kunden sagen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Was unsere Kunden sagen</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>

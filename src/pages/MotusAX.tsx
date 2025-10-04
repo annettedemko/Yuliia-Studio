@@ -51,7 +51,7 @@ const MotusAX = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="py-20 bg-accent/20">
@@ -88,7 +88,7 @@ const MotusAX = () => {
                 </div>
 
                 <div className="mb-6 mt-8">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 animate-slide-up">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                       Motus AX
                     </span>
@@ -127,7 +127,7 @@ const MotusAX = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up" style={{ marginTop: '1rem' }}>
-              <h2 className="text-5xl font-bold gradient-text mb-6">Hauptvorteile des Motus AX</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptvorteile des Motus AX</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Revolutionäre Alexandrit-Laser Technologie für maximale Effizienz und Sicherheit
@@ -139,7 +139,7 @@ const MotusAX = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
                 {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(25%)'}}>
+                <div className="lg:col-span-3 space-y-6 lg:translate-x-1/4">
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
@@ -181,7 +181,7 @@ const MotusAX = () => {
                 </div>
 
                 {/* RIGHT SIDE - Remaining Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
+                <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}
@@ -215,7 +215,7 @@ const MotusAX = () => {
       <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-6">Technische Features</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Technische Features</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Innovative Technologien für optimale Behandlungsergebnisse
             </p>
@@ -251,7 +251,7 @@ const MotusAX = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div>
-                <h2 className="text-4xl font-bold text-primary mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
                   Die Moveo-Technologie: Effiziente Energie für maximale Ergebnisse
                 </h2>
                 <div className="prose prose-lg text-muted-foreground">
@@ -312,7 +312,7 @@ const MotusAX = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Bereit für die neueste Laser-Technologie?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">

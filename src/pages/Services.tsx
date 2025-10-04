@@ -20,7 +20,7 @@ const Services = () => {
       <section className="py-6 bg-gradient-to-b from-accent/10 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-0">
-            <h1 className="text-5xl font-bold text-primary mb-4">Unsere Behandlungen im Überblick – Kosmetik & Beauty in München-Haidhausen</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Unsere Behandlungen im Überblick – Kosmetik & Beauty in München-Haidhausen</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
               Im Yuliia Cheporska Studio in München-Haidhausen finden Sie ein vielseitiges Angebot an Kosmetik-, Wellness- und Beauty-Behandlungen.
             </p>
@@ -38,7 +38,7 @@ const Services = () => {
       <section className="py-6 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
-            <h2 className="text-4xl font-bold text-primary mb-2">Laser-Haarentfernung in München</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">Laser-Haarentfernung in München</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
               Modernste Laser-Technologien für dauerhafte und schonende Haarentfernung
             </p>
@@ -52,9 +52,9 @@ const Services = () => {
           {/* Motus AX Alexandrit-Laser */}
           <div className="max-w-5xl mx-auto mb-6">
             <Link to="/laser-haarentfernung-muenchen" className="block">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div className="relative">
+                <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/17.png" alt="Motus AX Alexandrit-Laser" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
@@ -88,9 +88,9 @@ const Services = () => {
           {/* M-Tech Diodenlaser */}
           <div className="max-w-5xl mx-auto mb-6">
             <Link to="/laser-haarentfernung-muenchen" className="block">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div className="relative">
+                <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/2.jpeg" alt="M-Tech Diodenlaser"
                     className="w-full h-full object-cover"
                     style={{ transform: 'scale(0.93)', objectPosition: 'center' }}
@@ -136,9 +136,9 @@ const Services = () => {
           {/* Icoone Laser Section */}
           <div className="max-w-5xl mx-auto mb-6">
             <Link to="/icoone-laser-muenchen" className="block">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div className="relative">
+                <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/3.jpeg" alt="Icoone Laser"
                     className="w-full h-full object-cover"
                     style={{ transform: 'scale(0.85)', objectPosition: 'center' }}
@@ -177,9 +177,9 @@ const Services = () => {
           {/* RedTouchPro Section */}
           <div className="max-w-5xl mx-auto mb-6">
             <Link to="/redtouch-laser-muenchen" className="block">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div className="relative">
+                <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/deka2.png" alt="RedTouchPro"
                     className="w-full h-full object-cover"
                     style={{ transform: 'scale(0.50) translateY(-57%) translateX(-5%)', objectPosition: 'center' }}
@@ -232,7 +232,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <Link to="/manikuere-pedikuere-muenchen" className="block">
-              <Card className="overflow-hidden h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+              <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                   <div className="p-8 flex flex-col justify-center">
                     <h3 className="text-3xl font-bold text-primary mb-4">Maniküre & Pediküre</h3>
@@ -251,7 +251,7 @@ const Services = () => {
                       </Button>
                     </div>
                   </div>
-                  <div className="relative">
+                  <div className="relative h-64 md:h-80 lg:h-full">
                     <img src="/23.png" alt="Maniküre & Pediküre" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                     <div className="absolute top-4 right-4">
@@ -271,7 +271,7 @@ const Services = () => {
       <section className="py-12 bg-gradient-to-b from-white to-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary mb-8 text-center">Warum Yuliia Cheporska Studio in München?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8 text-center">Warum Yuliia Cheporska Studio in München?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
@@ -312,7 +312,7 @@ const Services = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-primary mb-6 text-center">Alle Behandlungen im Detail</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Alle Behandlungen im Detail</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Link to="/laser-haarentfernung-muenchen" className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -354,7 +354,7 @@ const Services = () => {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Bereit für Ihre Traumbehandlung?</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Bereit für Ihre Traumbehandlung?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
           </p>

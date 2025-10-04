@@ -8,7 +8,7 @@ const Impressum = () => {
       <section className="pt-24 pb-16 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-primary mb-6">Impressum</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Impressum</h1>
             <p className="text-xl text-muted-foreground">
               Rechtliche Informationen nach § 5 TMG
             </p>
@@ -24,7 +24,7 @@ const Impressum = () => {
               <CardContent className="p-8 prose prose-lg max-w-none">
                 <div className="space-y-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-primary mb-4">Angaben gemäß § 5 TMG</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">Angaben gemäß § 5 TMG</h2>
                     <div className="space-y-2 text-muted-foreground">
                       <p><strong>Yuliia Cheporska Studio</strong></p>
                       <p>Inhaberin: Yuliia Cheporska</p>

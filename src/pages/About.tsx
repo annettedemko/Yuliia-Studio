@@ -57,7 +57,7 @@ const About = () => {
       <section className="pt-16 pb-10 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-5xl font-bold text-primary mb-6">Über uns</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Über uns</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
               Willkommen im Yuliia Cheporska Studio – Ihrem Kosmetikstudio in München-Haidhausen.
             </p>
@@ -93,7 +93,7 @@ const About = () => {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-primary mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6">
                 Herzlich willkommen in unserem Kosmetikstudio in München!
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -123,7 +123,7 @@ const About = () => {
       <section className="py-10 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Welche Kosmetikbehandlungen bietet Yuliia Cheporska Studio?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Welche Kosmetikbehandlungen bietet Yuliia Cheporska Studio?</h2>
             <p className="text-xl text-muted-foreground">
               Professionelle Beauty-Behandlungen in München-Haidhausen
             </p>
@@ -146,7 +146,7 @@ const About = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Warum Kundinnen uns in München vertrauen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Warum Kundinnen uns in München vertrauen</h2>
             <p className="text-xl text-muted-foreground">
               Unsere Vorteile im Überblick
             </p>
@@ -173,7 +173,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">Moderne Studio-Atmosphäre im Herzen von München-Haidhausen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Moderne Studio-Atmosphäre im Herzen von München-Haidhausen</h2>
               <p className="text-xl text-muted-foreground">Entdecken Sie unsere moderne und einladende Atmosphäre</p>
             </div>
 
@@ -211,7 +211,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-4xl font-bold text-primary mb-4">Kontaktieren Sie uns</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Kontaktieren Sie uns</h2>
               <p className="text-xl text-muted-foreground">
                 Haben Sie Fragen oder möchten einen Termin vereinbaren? Schreiben Sie uns!
               </p>

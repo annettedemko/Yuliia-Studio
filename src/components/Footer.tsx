@@ -6,7 +6,7 @@ const Footer = () => {
   const isHomePage = location.pathname === '/';
 
   return (
-    <footer className="bg-primary text-primary-foreground" style={isHomePage ? {transform: 'translateY(-20%)'} : {}}>
+    <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'md:-translate-y-[20%]' : ''}`}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Studio Info */}

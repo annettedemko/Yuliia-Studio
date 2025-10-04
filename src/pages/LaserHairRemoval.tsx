@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle } from 'lucide-react';
+import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 // Изображения загружаются из папки public
@@ -68,7 +68,7 @@ const LaserHairRemoval = () => {
       
       {/* Hero Section */}
       <section
-        className="relative h-[70vh] flex items-center justify-center text-white"
+        className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
         style={{
           backgroundImage: `url(/HERO3.1.png)`,
           backgroundSize: 'cover',
@@ -77,7 +77,7 @@ const LaserHairRemoval = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
             Dauerhafte Laser-Haarentfernung in München-Haidhausen
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-white/95">
@@ -115,7 +115,7 @@ const LaserHairRemoval = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-primary mb-6">Modernste Laser-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Modernste Laser-Technologie</h2>
               <p className="text-xl text-muted-foreground">
                 Wir verwenden ausschließlich zertifizierte, hochmoderne Laser-Systeme für optimale Ergebnisse
               </p>
@@ -128,7 +128,7 @@ const LaserHairRemoval = () => {
                   <div className="relative">
                     <img
                       src="/17.png"
-                      alt="Alexandrit Laser"
+                      alt="Alexandrit Laser München"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
@@ -175,7 +175,7 @@ const LaserHairRemoval = () => {
                   <div className="relative">
                     <img
                       src="/19.png"
-                      alt="Diodenlaser"
+                      alt="Diodenlaser Haarentfernung München"
                       className="w-full h-full object-cover"
                       style={{
                         transform: 'scale(1.0)',
@@ -192,6 +192,16 @@ const LaserHairRemoval = () => {
                 </div>
               </Card>
             </div>
+
+            {/* Comparison Link */}
+            <div className="text-center mt-8">
+              <Link to="/alexandrit-gegen-diodenlaser">
+                <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all">
+                  <span className="font-semibold">Mehr zur Technik: Alexandrit vs. Diodenlaser – Unterschiede & Einsatz</span>
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -200,7 +210,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-8">Warum sind mehrere Sitzungen erforderlich?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">Warum sind mehrere Sitzungen erforderlich?</h2>
             <div className="text-center mb-12">
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Das Haarwachstum erfolgt in verschiedenen Phasen. Der Laser kann nur Haare in der aktiven Wachstumsphase (Anagenphase) effektiv behandeln.
@@ -265,7 +275,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
             
             <div className="space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -310,7 +320,7 @@ const LaserHairRemoval = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Für wen ist die Laser-Haarentfernung geeignet?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Für wen ist die Laser-Haarentfernung geeignet?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10">
               <Card>
@@ -319,7 +329,7 @@ const LaserHairRemoval = () => {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Dunkle Haare auf heller bis mittlerer Haut
+                      Effektiv für alle Hauttypen (I bis VI) und verschiedene Haarfarben dank Alexandrit- und Diodenlaser
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
@@ -489,7 +499,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">Häufig gestellte Fragen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Häufig gestellte Fragen</h2>
             
             <Accordion type="single" collapsible className="space-y-4">
               {faqItems.map((item, index) => (
@@ -511,7 +521,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               Warum Laser-Haarentfernung im Yuliia Cheporska Studio?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -560,7 +570,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-primary mb-6">Preise Laser-Haarentfernung</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Preise Laser-Haarentfernung</h2>
             <p className="text-xl text-muted-foreground mb-8">
               Transparent und fair - entdecken Sie unsere Preise für alle Behandlungsbereiche
             </p>
@@ -590,7 +600,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">So finden Sie uns</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">So finden Sie uns</h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div className="space-y-8">
@@ -662,7 +672,7 @@ const LaserHairRemoval = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-primary mb-10">Kundenstimmen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-10">Kundenstimmen</h2>
             
             <Card className="max-w-2xl mx-auto">
               <CardContent className="p-8">

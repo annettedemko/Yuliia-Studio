@@ -96,7 +96,7 @@ const IcooneLaser = () => {
     <div className="min-h-screen pt-16">
 
       <section
-        className="relative h-[70vh] flex items-center justify-center text-white"
+        className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
         style={{
           backgroundImage: `url(/3.6.jpg)`,
           backgroundSize: 'cover',
@@ -105,7 +105,7 @@ const IcooneLaser = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
             Icoone®️ Behandlung in München-Haidhausen – Hautstraffung & Cellulite-Reduktion
           </h1>
           <p className="text-lg md:text-xl mb-4 text-white/95">
@@ -144,7 +144,7 @@ const IcooneLaser = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               Vorteile von Icoone®️ in München-Haidhausen
             </h2>
 
@@ -213,7 +213,7 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-4xl font-bold text-primary mb-6">Was ist Icoone Laser?</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Was ist Icoone Laser?</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Icoone ist eine revolutionäre Technologie, die Vakuummassage mit Laserbehandlung kombiniert,
                 um optimale Ergebnisse in der Körperkonturierung und Hautverbesserung zu erzielen.
@@ -294,7 +294,7 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">Behandlungsbeispiele & Ergebnisse</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsbeispiele & Ergebnisse</h2>
               <p className="text-xl text-muted-foreground">Sehen Sie die beeindruckenden Ergebnisse unserer Icoone Laser Behandlungen</p>
             </div>
 

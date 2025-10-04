@@ -61,7 +61,7 @@ const AgainCos = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="py-20 bg-accent/20">
@@ -98,7 +98,7 @@ const AgainCos = () => {
                 </div>
 
                 <div className="mb-6 mt-8">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 animate-slide-up">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">
                       Again cos
                     </span>
@@ -137,7 +137,7 @@ const AgainCos = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-5xl font-bold gradient-text mb-6">Hauptvorteile des Again cos</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptvorteile des Again cos</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Modernste Alexandrit-Laser-Technologie für professionelle Haarentfernung
@@ -147,7 +147,7 @@ const AgainCos = () => {
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 lg:col-start-1 space-y-6" style={{transform: 'translateX(25%)'}}>
+              <div className="lg:col-span-3 lg:col-start-1 space-y-6 lg:translate-x-1/4">
                 {keyFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -193,7 +193,7 @@ const AgainCos = () => {
               </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
+              <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
                 {keyFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
@@ -233,7 +233,7 @@ const AgainCos = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-5xl font-bold text-white mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
                 <span className="bg-gradient-to-r from-teal-300 to-cyan-300 bg-clip-text text-transparent">
                   Technische Features
                 </span>
@@ -336,7 +336,7 @@ const AgainCos = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Bereit für professionelle Haarentfernung?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">

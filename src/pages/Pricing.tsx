@@ -162,7 +162,7 @@ const Pricing = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-5xl font-bold text-white mb-6">Preise</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Preise</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Transparente und faire Preise für alle unsere Dienstleistungen.
               Professionelle Qualität zu attraktiven Konditionen.
@@ -176,7 +176,7 @@ const Pricing = () => {
       <section id="abonnements" className="pt-4 pb-12 bg-background scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-4">Jahresabonnements Icoone Laser</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Jahresabonnements Icoone Laser</h2>
             <p className="text-xl text-muted-foreground">
               Sparen Sie mit unseren flexiblen Abonnement-Modellen
             </p>
@@ -288,7 +288,7 @@ const Pricing = () => {
           >
             <div className="container mx-auto px-4">
               <div className="text-center mb-10">
-                <h2 className="text-4xl font-bold text-primary mb-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                   {categoryGroup.category.name}
                 </h2>
                 {categoryGroup.category.description && (
@@ -379,7 +379,7 @@ const Pricing = () => {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Bereit für Ihre Behandlung?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">

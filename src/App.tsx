@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import LaserHairRemoval from "./pages/LaserHairRemoval";
+import AlexandritVsDiodenlaser from "./pages/AlexandritVsDiodenlaser";
 import IcooneLaser from "./pages/IcooneLaser";
 import ManikuerePedikuere from "./pages/ManikuerePedikuere";
 import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
@@ -72,6 +73,7 @@ const App = () => (
                   <Route path="/about" element={<About />} />
                   <Route path="/services" element={<Services />} />
                   <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
+                  <Route path="/alexandrit-gegen-diodenlaser" element={<AlexandritVsDiodenlaser />} />
                   {/* New SEO-friendly URLs */}
                   <Route path="/icoone-laser-muenchen" element={<IcooneLaser />} />
                   <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />

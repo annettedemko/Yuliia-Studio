@@ -186,13 +186,13 @@ const DekaAnna = () => {
               />
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white via-emerald-200 to-white bg-clip-text text-transparent animate-shimmer">
                 {t('anna.hero.title')}
               </span>
             </h1>
 
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-emerald-300 mb-8 animate-fade-in-up delay-300">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-emerald-300 mb-8 animate-fade-in-up delay-300">
               {t('anna.hero.subtitle')}
             </h2>
 

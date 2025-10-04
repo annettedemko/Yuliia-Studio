@@ -119,7 +119,7 @@ const RedTouchPro = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="py-12 bg-accent/20">
@@ -156,7 +156,7 @@ const RedTouchPro = () => {
                 </div>
 
                 <div className="mb-6 mt-8">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 animate-slide-up">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                       RedTouch PRO
                     </span>
@@ -195,7 +195,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 animate-slide-up">
-              <h2 className="text-5xl font-bold gradient-text mb-6">Revolutionäre Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Revolutionäre Technologie</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Entdecken Sie die bahnbrechende 675 nm Technologie mit integriertem Scanner und modernster Benutzeroberfläche
@@ -205,7 +205,7 @@ const RedTouchPro = () => {
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" style={{marginBottom: '-40px'}}>
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(25%) translateY(7%)'}}>
+              <div className="lg:col-span-3 space-y-6 lg:translate-x-1/4" style={{transform: window.innerWidth >= 1024 ? 'translateY(7%)' : 'translateY(0)'}}>
                 {deviceFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -248,7 +248,7 @@ const RedTouchPro = () => {
               </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-25%)'}}>
+              <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
                 {deviceFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
@@ -281,7 +281,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-6">Wissenschaftliche Analyse</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Wissenschaftliche Analyse</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">Van Gieson-Färbetechnik zeigt revolutionäre Ergebnisse</p>
             </div>
@@ -375,7 +375,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-6">RedTouch PRO Gerät</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">RedTouch PRO Gerät</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">
                 Professionelle DEKA Technologie für Hautverjüngung
@@ -462,7 +462,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-4">Vorteile des RedTouch PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Vorteile des RedTouch PRO</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
@@ -488,7 +488,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-4">Anwendungsbereiche</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Anwendungsbereiche</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-muted-foreground">
                 Vielseitige Behandlungsmöglichkeiten für alle Hauttypen
@@ -514,7 +514,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-4">Design & Ergonomie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Design & Ergonomie</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
@@ -572,7 +572,7 @@ const RedTouchPro = () => {
       {/* CTA Section */}
       <section className="py-8 bg-gradient-to-r from-blue-600 to-primary text-white" style={{marginTop: '-30px'}}>
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6 animate-slide-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
             Interessiert am RedTouch PRO?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto animate-slide-up delay-200">

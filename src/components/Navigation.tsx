@@ -8,15 +8,24 @@ import LanguageSwitcher from './LanguageSwitcher';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dekaDropdownOpen, setDekaDropdownOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const servicesDropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'Über uns' },
-    { href: '/services', label: 'Leistungen' },
     { href: '/preis', label: 'Preise' },
     { href: '/kontakt', label: 'Kontakt' },
+  ];
+
+  const services = [
+    { href: '/laser-haarentfernung-muenchen', label: 'Laser Haarentfernung' },
+    { href: '/alexandrit-gegen-diodenlaser', label: 'Alexandrit vs. Diodenlaser' },
+    { href: '/icoone-laser-muenchen', label: 'Icoone Laser' },
+    { href: '/redtouch-laser-muenchen', label: 'RedTouchPro' },
+    { href: '/manikuere-pedikuere-muenchen', label: 'Maniküre & Pediküre' },
   ];
 
   const dekaDevices = [
@@ -37,13 +46,29 @@ const Navigation = () => {
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setDekaDropdownOpen(false);
-    }, 1000); // 1 секунда задержки
+    }, 300); // 300ms задержки
+  };
+
+  const handleServicesDropdownEnter = () => {
+    if (servicesDropdownTimeoutRef.current) {
+      clearTimeout(servicesDropdownTimeoutRef.current);
+    }
+    setServicesDropdownOpen(true);
+  };
+
+  const handleServicesDropdownLeave = () => {
+    servicesDropdownTimeoutRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 300); // 300ms задержки
   };
 
   useEffect(() => {
     return () => {
       if (dropdownTimeoutRef.current) {
         clearTimeout(dropdownTimeoutRef.current);
+      }
+      if (servicesDropdownTimeoutRef.current) {
+        clearTimeout(servicesDropdownTimeoutRef.current);
       }
     };
   }, []);
@@ -99,6 +124,58 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
+
+            {/* Leistungen Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleServicesDropdownEnter}
+              onMouseLeave={handleServicesDropdownLeave}
+            >
+              <Link
+                to="/services"
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
+                  (isActive('/services') ||
+                   services.some(service => isActive(service.href)))
+                    ? "text-rose-gold" : "text-foreground"
+                )}
+              >
+                Leistungen
+                <ChevronDown className={cn(
+                  "w-4 h-4 transition-transform duration-200",
+                  servicesDropdownOpen ? "rotate-180" : ""
+                )} />
+              </Link>
+
+              {/* Dropdown Menu */}
+              {servicesDropdownOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                  onMouseEnter={handleServicesDropdownEnter}
+                  onMouseLeave={handleServicesDropdownLeave}
+                >
+                  <Link
+                    to="/services"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
+                  >
+                    Alle Leistungen
+                  </Link>
+                  <div className="border-t border-gray-100 my-1"></div>
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      to={service.href}
+                      className={cn(
+                        "block px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
+                        isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
+                      )}
+                    >
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* DEKA Geräte Dropdown */}
             <div
@@ -208,6 +285,37 @@ const Navigation = () => {
                   {item.label}
                 </Link>
               ))}
+
+              {/* Leistungen Section for Mobile */}
+              <div className="border-t border-gray-200 pt-6 mt-4">
+                <Link
+                  to="/services"
+                  className={cn(
+                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
+                    (isActive('/services') ||
+                     services.some(service => isActive(service.href)))
+                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Leistungen
+                </Link>
+                <div className="flex flex-col space-y-3 pl-4">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      to={service.href}
+                      className={cn(
+                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
+                        isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
               {/* DEKA Geräte Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">

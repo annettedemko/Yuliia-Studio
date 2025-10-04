@@ -48,7 +48,7 @@ const Physiq360 = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="py-20 bg-accent/20">
@@ -85,7 +85,7 @@ const Physiq360 = () => {
                 </div>
 
                 <div className="mb-6 mt-8">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 animate-slide-up">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
                       PHYSIQ 360
                     </span>
@@ -124,7 +124,7 @@ const Physiq360 = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-4xl font-bold gradient-text mb-6">Revolutionäre PHYSIQ 360 Features</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Revolutionäre PHYSIQ 360 Features</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">Innovative Technologie für einzigartige Körperkonturierung</p>
             </div>
@@ -134,7 +134,7 @@ const Physiq360 = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
                 {/* LEFT SIDE - First 2-3 Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(20%)'}}>
+                <div className="lg:col-span-3 space-y-6 lg:translate-x-[20%]">
                   {keyFeatures.slice(0, 3).map((feature, index) => (
                     <Card
                       key={index}
@@ -177,7 +177,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* RIGHT SIDE - Remaining Cards */}
-                <div className="lg:col-span-3 space-y-6" style={{transform: 'translateX(-20%)'}}>
+                <div className="lg:col-span-3 space-y-6 lg:-translate-x-[20%]">
                   {keyFeatures.slice(3, 5).map((feature, index) => (
                     <Card
                       key={index + 3}
@@ -211,7 +211,7 @@ const Physiq360 = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-primary mb-6">Exklusive STEP-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Exklusive STEP-Technologie</h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
                 Die exklusive STEP-Technologie (Sequential Thermal & Electrical Pulse) ermöglicht die sequenzielle
                 Anwendung von EMS und LZR in einer einzigen Sitzung. Durch die gezielte Anpassung der Energiearten
@@ -294,7 +294,7 @@ const Physiq360 = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6 text-primary">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-primary">
             Bereit für revolutionäre Körperkonturierung?
           </h2>
           <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">

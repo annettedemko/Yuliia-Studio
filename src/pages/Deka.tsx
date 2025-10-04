@@ -142,7 +142,7 @@ const Deka = () => {
               </span>
             </h1>
 
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-semibold text-rose-gold mb-6 sm:mb-8 animate-fade-in-up delay-300 leading-tight">
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-rose-gold mb-6 sm:mb-8 animate-fade-in-up delay-300 leading-tight">
               {t('deka.hero.subtitle')}
             </h2>
 

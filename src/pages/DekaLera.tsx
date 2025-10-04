@@ -106,7 +106,7 @@ const DekaLera = () => {
                 ← Zurück zur Hauptseite
               </Link>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
               DEKA Beauty Events - Лера
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -173,7 +173,7 @@ const DekaLera = () => {
 
             {/* Benefits */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-primary">Warum Sie teilnehmen sollten:</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-primary">Warum Sie teilnehmen sollten:</h2>
 
               <div className="grid gap-4">
                 <div className="flex items-start">

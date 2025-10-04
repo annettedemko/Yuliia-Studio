@@ -128,7 +128,7 @@ const DekaGeraeteverkauf = () => {
 
       {/* Hero Section */}
       <section
-        className="relative h-[80vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-[60vh] md:min-h-[70vh] lg:h-[80vh] flex items-center justify-center text-white overflow-hidden"
         style={{
           backgroundImage: `url(/DEKA.png)`,
           backgroundSize: 'cover',
@@ -148,7 +148,7 @@ const DekaGeraeteverkauf = () => {
 
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4 animate-slide-up">
 
-          <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white drop-shadow-lg">
             DEKA Geräteverkauf
           </h1>
 
@@ -188,7 +188,7 @@ const DekaGeraeteverkauf = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
             <div className="animate-slide-up">
-              <h2 className="text-4xl font-bold text-primary mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
                 Präzision, Sicherheit und Exzellenz für Ihr Studio
               </h2>
 
@@ -209,7 +209,7 @@ const DekaGeraeteverkauf = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-primary mb-6">DEKA Qualitätsversprechen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">DEKA Qualitätsversprechen</h2>
               <p className="text-xl text-muted-foreground">
                 Vier Säulen unserer Exzellenz
               </p>
@@ -240,7 +240,7 @@ const DekaGeraeteverkauf = () => {
       <section id="devices" className="py-20 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-5xl font-bold gradient-text mb-6">Unsere DEKA Geräte</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Unsere DEKA Geräte</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Entdecken Sie unsere hochwertigen DEKA Lasergeräte für professionelle Beauty-Anwendungen
             </p>
@@ -339,7 +339,7 @@ const DekaGeraeteverkauf = () => {
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Bereit für DEKA Technologie?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">

@@ -126,7 +126,7 @@ const RedTouchProService = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 via-black/30 to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
               RedTouch®️ Laserbehandlung in München-Haidhausen – Hautverjüngung & Pigmentkorrektur
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
@@ -143,7 +143,7 @@ const RedTouchProService = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-primary text-center mb-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               Vorteile von RedTouch®️ in München-Haidhausen
             </h2>
 
@@ -212,7 +212,7 @@ const RedTouchProService = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Revolutionary Laser Technology</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Revolutionary Laser Technology</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Das RedTouchPro System nutzt eine einzigartige 675nm Wellenlänge für optimale Kollagenstimulation
             </p>
@@ -251,7 +251,7 @@ const RedTouchProService = () => {
       <section className="py-16 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Behandlungsergebnisse</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsergebnisse</h2>
             <p className="text-xl text-muted-foreground">
               Überzeugen Sie sich von den beeindruckenden Ergebnissen unserer RedTouchPro Behandlungen
             </p>
@@ -285,7 +285,7 @@ const RedTouchProService = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">RedTouchPro Gerät</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">RedTouchPro Gerät</h2>
             <p className="text-xl text-muted-foreground">
               Technische Exzellenz in jedem Detail
             </p>
@@ -312,7 +312,7 @@ const RedTouchProService = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-primary mb-4">Behandlungsgebiete</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsgebiete</h2>
               <p className="text-xl text-muted-foreground">
                 Vielseitige Anwendungsmöglichkeiten für optimale Ergebnisse
               </p>
@@ -350,7 +350,7 @@ const RedTouchProService = () => {
       {/* CTA Section */}
       <section className="py-16 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Bereit für Ihre RedTouchPro Behandlung?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">

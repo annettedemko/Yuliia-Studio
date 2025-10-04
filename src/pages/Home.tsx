@@ -347,7 +347,7 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10" style={{transform: 'translateY(-6%)'}}>
           <div className="text-center mb-8 animate-slide-up">
-            <h2 className="text-4xl font-bold gradient-text mb-4">Öffnungszeiten</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Öffnungszeiten</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient"></div>
           </div>
 
@@ -387,7 +387,7 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 animate-slide-up">
-            <h2 className="text-4xl font-bold gradient-text mb-4">So finden Sie uns</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">So finden Sie uns</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
 
             <Card className="max-w-3xl mx-auto glass-effect border-rose-gold/20 hover:shadow-rose transition-all duration-300">
@@ -474,7 +474,7 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-6 animate-slide-up">
-            <h2 className="text-4xl font-bold gradient-text mb-4">Kontakt</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Kontakt</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient mb-6"></div>
             <p className="text-xl text-muted-foreground animate-slide-up delay-300">
               Vereinbaren Sie noch heute Ihren Termin

@@ -114,7 +114,7 @@ const MotusPro = () => {
                   />
                 </div>
                 <div className="mb-6 mt-8">
-                  <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-4 animate-slide-up">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
                       Motus PRO
                     </span>
@@ -153,7 +153,7 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-5xl font-bold gradient-text mb-6">Hauptmerkmale des Motus PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptmerkmale des Motus PRO</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Innovative Technologie für maximale Effizienz und Komfort
@@ -288,7 +288,7 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-4xl font-bold text-white mb-6">Technische Features</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Technische Features</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-blue-300 to-cyan-400 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-blue-100">
                 Fünf Schlüsseltechnologien für optimale Behandlungsergebnisse
@@ -327,7 +327,7 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-4xl font-bold mb-6">Die Moveo-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Die Moveo-Technologie</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6"></div>
               <p className="text-xl text-blue-100">Gesteigerte Effizienz für maximale Ergebnisse</p>
             </div>
@@ -412,7 +412,7 @@ const MotusPro = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <h2 className="text-4xl font-bold mb-6">Jetzt Motus PRO erleben</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Jetzt Motus PRO erleben</h2>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
               Entdecken Sie die revolutionäre Motus PRO Technologie für Ihr Beauty-Studio.
               Kontaktieren Sie uns für eine individuelle Beratung und Demonstration.
