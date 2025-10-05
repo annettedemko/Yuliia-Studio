@@ -175,19 +175,23 @@ const RedTouchPro = () => {
                 </div>
 
                 <div className="space-y-6 relative z-10">
-                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full border border-white/30 shadow-xl">
-                    <Star className="w-4 h-4 text-yellow-300" />
-                    <span className="text-sm font-semibold text-white">Premium Hautverjüngung</span>
-                    <Star className="w-4 h-4 text-yellow-300" />
+                  <div className="inline-flex items-center gap-2 bg-red-600/90 backdrop-blur-sm px-6 py-3 rounded-full border border-white/50 shadow-2xl">
+                    <Star className="w-5 h-5 text-yellow-300" />
+                    <span className="text-base font-bold text-white">Premium Hautverjüngung</span>
+                    <Star className="w-5 h-5 text-yellow-300" />
                   </div>
 
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                    <span className="bg-gradient-to-r from-white via-pink-100 to-rose-100 bg-clip-text text-transparent drop-shadow-2xl">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight" style={{
+                    textShadow: '0 0 40px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.9), 0 8px 40px rgba(0,0,0,0.7)'
+                  }}>
+                    <span className="text-white">
                       RedTouch PRO
                     </span>
                   </h1>
 
-                  <p className="text-2xl md:text-3xl font-medium text-white/95 drop-shadow-lg">
+                  <p className="text-2xl md:text-3xl font-semibold text-white bg-black/30 backdrop-blur-sm inline-block px-6 py-3 rounded-lg" style={{
+                    textShadow: '0 2px 10px rgba(0,0,0,0.8)'
+                  }}>
                     Innovative Hautverjüngung mit Laser
                   </p>
 
@@ -219,26 +223,26 @@ const RedTouchPro = () => {
 
                 {/* Feature badges */}
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-black/50 transition-all shadow-xl">
                     <div className="flex items-center gap-3">
-                      <div className="bg-red-500/30 p-2 rounded-lg">
+                      <div className="bg-red-600 p-2 rounded-lg shadow-lg">
                         <Target className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/70">Wellenlänge</p>
-                        <p className="font-bold text-white">675 nm</p>
+                        <p className="text-xs text-white/90 font-medium">Wellenlänge</p>
+                        <p className="font-bold text-white text-lg">675 nm</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all">
+                  <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 border border-white/40 hover:bg-black/50 transition-all shadow-xl">
                     <div className="flex items-center gap-3">
-                      <div className="bg-pink-500/30 p-2 rounded-lg">
+                      <div className="bg-pink-600 p-2 rounded-lg shadow-lg">
                         <Shield className="w-5 h-5 text-white" />
                       </div>
                       <div>
-                        <p className="text-xs text-white/70">Technologie</p>
-                        <p className="font-bold text-white">DEKA PRO</p>
+                        <p className="text-xs text-white/90 font-medium">Technologie</p>
+                        <p className="font-bold text-white text-lg">DEKA PRO</p>
                       </div>
                     </div>
                   </div>
