@@ -364,6 +364,11 @@ const ManikuerePedikuere = () => {
                     alt="Maniküre 3"
                     className="w-full h-40 object-cover rounded-lg shadow-lg"
                   />
+                  <img
+                    src="/25.jpg"
+                    alt="Maniküre Design"
+                    className="w-full h-32 object-cover rounded-lg shadow-lg"
+                  />
                 </div>
                 <div className="space-y-4 mt-8">
                   <img
@@ -377,9 +382,19 @@ const ManikuerePedikuere = () => {
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
                   <img
+                    src="/26.jpg"
+                    alt="Nail Art"
+                    className="w-full h-40 object-cover rounded-lg shadow-lg"
+                  />
+                  <img
                     src="/14.jpg"
                     alt="Maniküre 6"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
+                  />
+                  <img
+                    src="/27.jpg"
+                    alt="Gel Nägel"
+                    className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/15.jpg"
@@ -636,25 +651,6 @@ const ManikuerePedikuere = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Links */}
-      <section className="py-8 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
-            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
-              Alle Behandlungen im Überblick
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
-              Preise
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
-              Kontakt
-            </Link>
           </div>
         </div>
       </section>

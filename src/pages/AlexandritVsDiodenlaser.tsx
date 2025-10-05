@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Phone, CheckCircle, Info, Zap, Shield, Sparkles, Target, Award, Star } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { Link } from 'react-router-dom';
 
 const AlexandritVsDiodenlaser = () => {
   useEffect(() => {
@@ -70,14 +71,26 @@ const AlexandritVsDiodenlaser = () => {
             Ein verständlicher Ratgeber: Wir erklären, wie beide Systeme funktionieren, wo ihre Stärken liegen und wie wir in der Praxis die passende Methode auswählen.
           </p>
 
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105"
-            onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
-          >
-            <Phone className="w-5 h-5 mr-2" />
-            Jetzt Beratung buchen
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Jetzt Beratung buchen
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
+              asChild
+            >
+              <Link to="/preis">
+                Preise ansehen
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -210,7 +223,7 @@ const AlexandritVsDiodenlaser = () => {
             <div className="mb-10 relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all"></div>
               <img
-                src="/18.jpeg"
+                src="/19.png"
                 alt="Laser Haarentfernung Technologie München"
                 className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl relative z-10 border-4 border-white"
               />
@@ -325,12 +338,13 @@ const AlexandritVsDiodenlaser = () => {
             {/* Device Images */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="group hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-yellow-500/50 overflow-hidden">
-                <div className="relative">
+                <div className="relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <img
                     src="/deka3.1.jpeg"
                     alt="Alexandrit Laser München - Motus AX"
                     className="w-full h-64 object-cover"
+                    style={{ transform: 'scale(1.35)' }}
                   />
                   <div className="absolute top-4 right-4">
                     <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">ALEXANDRIT</span>
@@ -352,6 +366,7 @@ const AlexandritVsDiodenlaser = () => {
                     src="/19.png"
                     alt="Diodenlaser Haarentfernung München - M-Tech"
                     className="w-full h-64 object-cover"
+                    style={{ objectPosition: 'center 10%' }}
                   />
                   <div className="absolute top-4 right-4">
                     <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">DIODENLASER</span>

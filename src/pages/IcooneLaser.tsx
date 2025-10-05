@@ -109,11 +109,10 @@ const IcooneLaser = () => {
             Icoone®️ Behandlung in München-Haidhausen – Hautstraffung & Cellulite-Reduktion
           </h1>
           <p className="text-lg md:text-xl mb-4 text-white/95">
-            Professionelle Icoone®️ Laser-Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
+            Professionelle Icoone Laser Behandlung München
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Innovative Kombination aus Vakuummassage und Laser für Hautstraffung,
-            Cellulite-Reduktion, Lymphdrainage und Verbesserung der Hautqualität.
+            Erleben Sie die revolutionäre Kombination aus Vakuummassage und Laserbehandlung für optimale Hautstraffung und Körperkonturierung in unserem Studio in München-Haidhausen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -336,25 +335,6 @@ const IcooneLaser = () => {
               Erleben Sie die revolutionäre Kombination aus Vakuummassage und Laserbehandlung für
               optimale Hautstraffung und Körperkonturierung in unserem Studio.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Links */}
-      <section className="py-8 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
-            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
-              Alle Behandlungen im Überblick
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
-              Preise
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
-              Kontakt
-            </Link>
           </div>
         </div>
       </section>

@@ -123,7 +123,7 @@ const RedTouchProService = () => {
           backgroundPosition: '20% center'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 via-black/30 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 via-transparent to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
@@ -360,7 +360,7 @@ const RedTouchProService = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-white/90"
+              className="bg-gradient-to-r from-rose-gold to-pink-500 text-white hover:shadow-xl hover:scale-105 transition-all"
               asChild
             >
               <a href="tel:+4915206067810">
@@ -371,44 +371,13 @@ const RedTouchProService = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-black bg-white hover:bg-white/90"
+              className="border-white/80 text-white hover:bg-white/10 backdrop-blur-sm"
               asChild
             >
               <Link to="/preis#redtouchpro">
                 Preise ansehen
               </Link>
             </Button>
-          </div>
-
-          <div className="text-center mt-8">
-            <a
-              href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
-              title="Instagram"
-            >
-              <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Links */}
-      <section className="py-8 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
-            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
-              Alle Behandlungen im Überblick
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
-              Preise
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
-              Kontakt
-            </Link>
           </div>
         </div>
       </section>

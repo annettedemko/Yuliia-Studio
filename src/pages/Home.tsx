@@ -240,7 +240,7 @@ const Home = () => {
       </section>
 
       {/* Subscription Packages */}
-      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
+      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden -mt-12 md:-mt-16">
         {/* Floating decorative elements */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/10 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float delay-1000"></div>
@@ -337,7 +337,7 @@ const Home = () => {
       </section>
 
       {/* Working Hours Section */}
-      <section className="py-10 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-6%)'}}>
+      <section className="py-10 bg-transparent relative overflow-hidden -mt-12 md:-mt-16">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/5 rounded-full animate-pulse"></div>
@@ -345,7 +345,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-r from-rose-gold/10 to-primary/10 rounded-full animate-float"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10" style={{transform: 'translateY(-6%)'}}>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 animate-slide-up">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Öffnungszeiten</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient"></div>
@@ -377,7 +377,7 @@ const Home = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
+      <section className="py-12 bg-transparent relative overflow-hidden -mt-16 md:-mt-24">
         {/* Floating geometric elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-6 h-6 border-2 border-rose-gold/30 rotate-45 animate-float"></div>
@@ -463,7 +463,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-transparent relative overflow-hidden" style={{transform: 'translateY(-9%)'}}>
+      <section id="contact" className="py-8 bg-transparent relative overflow-hidden -mt-16 md:-mt-24">
         {/* Dynamic floating elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>

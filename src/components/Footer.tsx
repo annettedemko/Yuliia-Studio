@@ -1,18 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
-    <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'md:-translate-y-[20%]' : ''}`}>
+    <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'md:-mt-24' : ''}`}>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Studio Info */}
           <div>
             <h3 className="text-xl font-bold mb-4">Yuliia Cheporska Studio</h3>
-            <p className="text-primary-foreground/80 mb-4">
+            <p className="text-primary-foreground/80 text-sm">
               Professionelle Kosmetik-, Laser- und Wellnessbehandlungen in München
             </p>
           </div>
@@ -21,8 +21,8 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Kontakt</h4>
             <div className="space-y-3">
-              <div className="flex items-center">
-                <MapPin className="w-4 h-4 mr-2 text-rose-gold" />
+              <div className="flex items-start">
+                <MapPin className="w-4 h-4 mr-2 mt-0.5 text-rose-gold flex-shrink-0" />
                 <a
                   href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
                   target="_blank"
@@ -33,29 +33,78 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-rose-gold" />
-                <a 
-                  href="tel:+4915206067810" 
+                <Phone className="w-4 h-4 mr-2 text-rose-gold flex-shrink-0" />
+                <a
+                  href="tel:+4915206067810"
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
                 >
                   +49 152 06067810
                 </a>
               </div>
               <div className="flex items-center">
-                <Mail className="w-4 h-4 mr-2 text-rose-gold" />
-                <a 
-                  href="mailto:Yulachip@icloud.com" 
+                <Mail className="w-4 h-4 mr-2 text-rose-gold flex-shrink-0" />
+                <a
+                  href="mailto:Yulachip@icloud.com"
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
                 >
                   Yulachip@icloud.com
                 </a>
               </div>
+              <div className="flex items-center gap-3 mt-4">
+                <a
+                  href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-full transition-all duration-300 hover:scale-110"
+                  title="Instagram"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4 text-white" />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Links */}
+          {/* Leistungen */}
           <div>
-            <h4 className="font-semibold mb-4">Links</h4>
+            <h4 className="font-semibold mb-4">Leistungen</h4>
+            <div className="flex flex-col space-y-2">
+              <Link
+                to="/laser-haarentfernung-muenchen"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                Laser-Haarentfernung
+              </Link>
+              <Link
+                to="/icoone-laser-muenchen"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                Icoone Laser
+              </Link>
+              <Link
+                to="/redtouch-laser-muenchen"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                RedTouch Laser
+              </Link>
+              <Link
+                to="/manikuere-pedikuere-muenchen"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                Maniküre & Pediküre
+              </Link>
+              <Link
+                to="/services"
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors font-medium"
+              >
+                Alle Behandlungen
+              </Link>
+            </div>
+          </div>
+
+          {/* Rechtliches */}
+          <div>
+            <h4 className="font-semibold mb-4">Rechtliches</h4>
             <div className="flex flex-col space-y-2">
               <Link
                 to="/kontakt"

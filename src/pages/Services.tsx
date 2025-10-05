@@ -93,7 +93,6 @@ const Services = () => {
                 <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/2.jpeg" alt="M-Tech Diodenlaser"
                     className="w-full h-full object-cover"
-                    style={{ transform: 'scale(0.93)', objectPosition: 'center' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
@@ -102,7 +101,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center ml-[-8%] translate-y-[-18%]">
+                <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-18%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">M-Tech Diodenlaser</h3>
                   <p className="text-muted-foreground mb-4">
                     Der M-Tech Diodenlaser ist ein innovatives Gerät für professionelle Haarentfernung, das fortschrittliche
@@ -150,7 +149,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center ml-[-8%] translate-y-[-15%]">
+                <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-15%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">
                     Icoone Laser – Body Contouring & Hautpflege
                   </h3>
@@ -181,8 +180,8 @@ const Services = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/deka2.png" alt="RedTouchPro"
-                    className="w-full h-full object-cover"
-                    style={{ transform: 'scale(0.50) translateY(-57%) translateX(-5%)', objectPosition: 'center' }}
+                    className="w-full h-full object-contain"
+                    style={{ objectPosition: 'center' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
@@ -191,7 +190,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center ml-[-8%] translate-y-[-25%]">
+                <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-25%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">
                     RedTouchPro – Innovative Hautstraffung
                   </h3>

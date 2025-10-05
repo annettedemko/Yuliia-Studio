@@ -147,7 +147,7 @@ const AgainCos = () => {
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 lg:col-start-1 space-y-6 lg:translate-x-1/4">
+              <div className="lg:col-span-3 lg:col-start-1 space-y-6">
                 {keyFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -193,7 +193,7 @@ const AgainCos = () => {
               </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
-              <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
+              <div className="lg:col-span-3 space-y-6">
                 {keyFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}

@@ -1,9 +1,31 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Users, Shield, Clock, Target, Award, Star, Phone, Instagram, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap, Users, Shield, Clock, Target, Award, Star, Phone, Instagram, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 
 const Physiq360 = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const beforeAfterImages = [
+    { id: 1, src: '/34.jpg', alt: 'PHYSIQ 360 Ergebnis 1' },
+    { id: 2, src: '/35.jpg', alt: 'PHYSIQ 360 Ergebnis 2' },
+    { id: 3, src: '/36.jpg', alt: 'PHYSIQ 360 Ergebnis 3' },
+    { id: 4, src: '/37.jpg', alt: 'PHYSIQ 360 Ergebnis 4' },
+    { id: 5, src: '/38.jpg', alt: 'PHYSIQ 360 Ergebnis 5' },
+    { id: 6, src: '/39.jpg', alt: 'PHYSIQ 360 Ergebnis 6' },
+    { id: 7, src: '/40.jpg', alt: 'PHYSIQ 360 Ergebnis 7' },
+    { id: 8, src: '/41.jpg', alt: 'PHYSIQ 360 Ergebnis 8' },
+    { id: 9, src: '/42.jpg', alt: 'PHYSIQ 360 Ergebnis 9' },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % beforeAfterImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + beforeAfterImages.length) % beforeAfterImages.length);
+  };
   const keyFeatures = [
     {
       icon: Sparkles,
@@ -114,7 +136,7 @@ const Physiq360 = () => {
       </section>
 
       {/* Revolutionary Features Section */}
-      <section className="py-20 bg-orange-50 relative overflow-hidden">
+      <section className="py-20 bg-orange-50 relative overflow-hidden mt-20">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl animate-float"></div>
@@ -134,7 +156,7 @@ const Physiq360 = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
                 {/* LEFT SIDE - First 2-3 Cards */}
-                <div className="lg:col-span-3 space-y-6 lg:translate-x-[20%]">
+                <div className="lg:col-span-3 space-y-6">
                   {keyFeatures.slice(0, 3).map((feature, index) => (
                     <Card
                       key={index}
@@ -177,7 +199,7 @@ const Physiq360 = () => {
                 </div>
 
                 {/* RIGHT SIDE - Remaining Cards */}
-                <div className="lg:col-span-3 space-y-6 lg:-translate-x-[20%]">
+                <div className="lg:col-span-3 space-y-6">
                   {keyFeatures.slice(3, 5).map((feature, index) => (
                     <Card
                       key={index + 3}
@@ -284,6 +306,103 @@ const Physiq360 = () => {
         </div>
       </section>
 
+      {/* Before/After Results Gallery */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-rose-gold/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12 animate-slide-up">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
+                <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                  Behandlungsergebnisse
+                </span>
+              </h2>
+              <div className="w-32 h-1 bg-gradient-to-r from-primary via-rose-gold to-primary mx-auto mb-6"></div>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Sehen Sie die beeindruckenden Ergebnisse unserer PHYSIQ 360 Behandlungen
+              </p>
+            </div>
+
+            {/* Slider */}
+            <div className="relative">
+              <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-white">
+                {beforeAfterImages.map((image, index) => (
+                  <div
+                    key={image.id}
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-contain p-4"
+                    />
+                  </div>
+                ))}
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group z-10"
+                  aria-label="Vorheriges Bild"
+                >
+                  <ChevronLeft className="w-6 h-6 text-primary group-hover:text-rose-gold" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group z-10"
+                  aria-label="Nächstes Bild"
+                >
+                  <ChevronRight className="w-6 h-6 text-primary group-hover:text-rose-gold" />
+                </button>
+              </div>
+
+              {/* Dots Navigation */}
+              <div className="flex justify-center gap-2 mt-6">
+                {beforeAfterImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide
+                        ? 'bg-rose-gold w-8'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Bild ${index + 1} anzeigen`}
+                  />
+                ))}
+              </div>
+
+              {/* Counter */}
+              <div className="text-center mt-4">
+                <span className="text-sm text-muted-foreground">
+                  {currentSlide + 1} / {beforeAfterImages.length}
+                </span>
+              </div>
+            </div>
+
+            {/* Info Card */}
+            <Card className="mt-12 border-2 border-gray-200 bg-white/80 backdrop-blur-sm">
+              <CardContent className="p-6 text-center">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Sparkles className="w-5 h-5 text-rose-gold" />
+                  <h3 className="font-bold text-primary text-lg">Individuelle Ergebnisse</h3>
+                  <Sparkles className="w-5 h-5 text-rose-gold" />
+                </div>
+                <p className="text-muted-foreground">
+                  Die Ergebnisse können je nach individuellem Körpertyp, Lebensstil und Anzahl der Behandlungen variieren.
+                  Wir beraten Sie gerne persönlich über realistische Erwartungen für Ihre Behandlung.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-orange-100 to-peach-100 relative overflow-hidden">

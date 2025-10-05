@@ -196,9 +196,9 @@ const LaserHairRemoval = () => {
             {/* Comparison Link */}
             <div className="text-center mt-8">
               <Link to="/alexandrit-gegen-diodenlaser">
-                <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all">
-                  <span className="font-semibold">Mehr zur Technik: Alexandrit vs. Diodenlaser – Unterschiede & Einsatz</span>
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all w-full sm:w-auto">
+                  <span className="font-semibold text-sm sm:text-base">Mehr zur Technik: Alexandrit vs. Diodenlaser – Unterschiede & Einsatz</span>
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 </Button>
               </Link>
             </div>
@@ -696,36 +696,6 @@ const LaserHairRemoval = () => {
             </Card>
           </div>
 
-          <div className="text-center mt-8">
-            <a
-              href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
-              title="Instagram"
-            >
-              <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer Links */}
-      <section className="py-8 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 text-center">
-            <Link to="/services" className="text-primary hover:text-rose-gold transition-colors">
-              Alle Behandlungen im Überblick
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/preis" className="text-primary hover:text-rose-gold transition-colors">
-              Preise
-            </Link>
-            <span className="text-muted-foreground">•</span>
-            <Link to="/kontakt" className="text-primary hover:text-rose-gold transition-colors">
-              Kontakt
-            </Link>
-          </div>
         </div>
       </section>
 

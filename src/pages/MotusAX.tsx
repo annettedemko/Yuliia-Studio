@@ -139,7 +139,7 @@ const MotusAX = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
                 {/* LEFT SIDE - First 2 Cards */}
-                <div className="lg:col-span-3 space-y-6 lg:translate-x-1/4">
+                <div className="lg:col-span-3 space-y-6">
                   {keyFeatures.slice(0, 2).map((feature, index) => (
                     <Card
                       key={index}
@@ -181,7 +181,7 @@ const MotusAX = () => {
                 </div>
 
                 {/* RIGHT SIDE - Remaining Cards */}
-                <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
+                <div className="lg:col-span-3 space-y-6">
                   {keyFeatures.slice(2, 4).map((feature, index) => (
                     <Card
                       key={index + 2}

@@ -122,61 +122,189 @@ const RedTouchPro = () => {
     <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
-      <section className="py-12 bg-accent/20">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-red-950 to-rose-950"></div>
+
+        {/* Top darkening overlay - 30% darker */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"></div>
+
+        {/* Decorative animated gradient orbs - muted */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-red-500/15 to-pink-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-pink-500/15 to-rose-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-rose-500/10 to-red-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+
+        {/* Floating particles - muted */}
+        <div className="absolute top-20 left-20 w-2 h-2 bg-white/20 rounded-full animate-bounce"></div>
+        <div className="absolute top-40 right-32 w-3 h-3 bg-pink-300/20 rounded-full animate-bounce delay-500"></div>
+        <div className="absolute bottom-32 left-40 w-2 h-2 bg-rose-300/20 rounded-full animate-bounce delay-1000"></div>
+        <div className="absolute bottom-20 right-20 w-2 h-2 bg-red-300/20 rounded-full animate-bounce delay-700"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl bg-white">
-              <div className="relative overflow-hidden">
-                <img
-                  src="/deka2.png"
-                  alt="RedTouch PRO"
-                  className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
-                  style={{
-                    transform: 'scale(1.0)',
-                    objectPosition: 'center'
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+              {/* Left side - Image */}
+              <div className="relative group animate-slide-up">
+                <div className="absolute -inset-4 bg-gradient-to-r from-red-500/40 via-pink-500/40 to-rose-500/40 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10">
+                  <img
+                    src="/deka2.png"
+                    alt="RedTouch PRO"
+                    className="w-full h-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute top-6 left-6">
+                    <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-full shadow-2xl border border-red-200">
+                      <span className="text-red-600 font-bold text-sm flex items-center gap-2">
+                        <Sparkles className="w-4 h-4" />
+                        DEKA Technology
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center relative">
-                <div className="absolute top-4 right-4">
+
+              {/* Right side - Content */}
+              <div className="text-white space-y-8 animate-slide-up delay-300">
+                <div className="absolute top-0 right-0 opacity-20">
                   <img
                     src="/DEKA logo.png"
                     alt="DEKA Logo"
-                    className="h-12 md:h-14 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                    style={{
-                      filter: 'brightness(1.2) saturate(1.1)',
-                    }}
+                    className="h-24 md:h-32 w-auto"
                   />
                 </div>
 
-                <div className="mb-6 mt-8">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
-                    <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                <div className="space-y-6 relative z-10">
+                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full border border-white/30 shadow-xl">
+                    <Star className="w-4 h-4 text-yellow-300" />
+                    <span className="text-sm font-semibold text-white">Premium Hautverjüngung</span>
+                    <Star className="w-4 h-4 text-yellow-300" />
+                  </div>
+
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-white via-pink-100 to-rose-100 bg-clip-text text-transparent drop-shadow-2xl">
                       RedTouch PRO
                     </span>
                   </h1>
-                  <p className="text-xl md:text-2xl text-blue-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
+
+                  <p className="text-2xl md:text-3xl font-medium text-white/95 drop-shadow-lg">
                     Innovative Hautverjüngung mit Laser
                   </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <Button
+                      size="lg"
+                      className="group bg-white text-red-600 hover:bg-white/95 shadow-2xl hover:shadow-white/50 text-lg px-10 py-7 hover:scale-105 transition-all duration-300 font-bold"
+                      asChild
+                    >
+                      <a href="tel:+4915206067810" className="flex items-center gap-3">
+                        <Phone className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                        Beratung vereinbaren
+                      </a>
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 border-white/80 text-white hover:bg-white/20 backdrop-blur-sm text-lg px-10 py-7 hover:scale-105 transition-all duration-300 font-semibold shadow-xl"
+                      asChild
+                    >
+                      <a href="#technology" className="flex items-center gap-3">
+                        <Sparkles className="w-6 h-6" />
+                        Mehr erfahren
+                      </a>
+                    </Button>
+                  </div>
                 </div>
 
-                <div className="flex justify-start animate-slide-up" style={{animationDelay: '400ms'}}>
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
-                  >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      Beratung vereinbaren
-                    </a>
-                  </Button>
+                {/* Feature badges */}
+                <div className="grid grid-cols-2 gap-4 pt-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-red-500/30 p-2 rounded-lg">
+                        <Target className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-white/70">Wellenlänge</p>
+                        <p className="font-bold text-white">675 nm</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/15 transition-all">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-pink-500/30 p-2 rounded-lg">
+                        <Shield className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-white/70">Technologie</p>
+                        <p className="font-bold text-white">DEKA PRO</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+      </section>
+
+      {/* RedTouch Gallery Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-10 animate-slide-up">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">RedTouch PRO im Detail</h2>
+              <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Main Device Image */}
+              <div className="md:col-span-2 relative group animate-slide-up">
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <img
+                    src="/deka2.png"
+                    alt="RedTouch PRO - Professionelles Hautverjüngungsgerät"
+                    className="w-full h-[500px] object-contain bg-gradient-to-br from-blue-50 to-white p-8 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                      <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Side Images */}
+              <div className="space-y-8">
+                {/* Logo Image */}
+                <div className="relative group animate-slide-up delay-200">
+                  <div className="relative overflow-hidden rounded-2xl shadow-xl bg-white p-6">
+                    <img
+                      src="/deka2.4.png"
+                      alt="RedTouch Logo"
+                      className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Detail Image */}
+                <div className="relative group animate-slide-up delay-300">
+                  <div className="relative overflow-hidden rounded-2xl shadow-xl">
+                    <img
+                      src="/deka2.3.jpeg"
+                      alt="RedTouch PRO - Technologie Detail"
+                      className="w-full h-[200px] object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p className="text-white text-sm font-medium">675 nm Wellenlänge</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -205,7 +333,7 @@ const RedTouchPro = () => {
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" style={{marginBottom: '-40px'}}>
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 space-y-6 lg:translate-x-1/4" style={{transform: window.innerWidth >= 1024 ? 'translateY(7%)' : 'translateY(0)'}}>
+              <div className="lg:col-span-3 space-y-6" style={{transform: window.innerWidth >= 1024 ? 'translateY(7%)' : 'translateY(0)'}}>
                 {deviceFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -248,7 +376,7 @@ const RedTouchPro = () => {
               </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
-              <div className="lg:col-span-3 space-y-6 lg:-translate-x-1/4">
+              <div className="lg:col-span-3 space-y-6">
                 {deviceFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
@@ -488,10 +616,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Anwendungsbereiche</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Behandlungsgebiete & Anwendungsbereiche in München</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-muted-foreground">
-                Vielseitige Behandlungsmöglichkeiten für alle Hauttypen
+                Im Yuliia Studio in München Haidhausen setzen wir RedTouch®️ gezielt in folgenden Zonen ein:
               </p>
             </div>
 
