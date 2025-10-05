@@ -123,7 +123,7 @@ const RedTouchProService = () => {
           backgroundPosition: '20% center'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 via-transparent to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
@@ -219,9 +219,16 @@ const RedTouchProService = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="space-y-6">
+              <div className="flex justify-center mb-6">
+                <img
+                  src="/deka2.4.png"
+                  alt="RedTouch PRO Logo"
+                  className="h-20 w-auto"
+                />
+              </div>
               <img
-                src="/deka2.2.jpeg"
+                src="/deka2.png"
                 alt="RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hauptgerät"
                 className="w-full h-auto rounded-lg shadow-elegant"
               />
