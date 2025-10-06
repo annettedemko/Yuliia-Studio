@@ -5,12 +5,19 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Pricing = () => {
+  const { language, t } = useLanguage();
   const [prices, setPrices] = useState<ServicePrice[]>([]);
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Helper: get translated text with fallback
+  const getTranslated = (de: string, ru?: string) => {
+    return language === 'ru' && ru ? ru : de;
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -53,7 +60,7 @@ const Pricing = () => {
   }, []);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Laden...</div>;
+    return <div className="min-h-screen flex items-center justify-center">{t('pricing.loading')}</div>;
   }
 
   // Helper function to sort prices by numeric value
@@ -136,8 +143,8 @@ const Pricing = () => {
           {prices.map((item, index) => (
             <div key={index} className="flex justify-between items-center py-2 border-b border-border/50 last:border-0">
               <div>
-                <span className="text-foreground">{item.service}</span>
-                {item.note && <div className="text-sm text-muted-foreground">{item.note}</div>}
+                <span className="text-foreground">{getTranslated(item.service, item.service_ru)}</span>
+                {item.note && <div className="text-sm text-muted-foreground">{getTranslated(item.note, item.note_ru)}</div>}
               </div>
               <span className="font-semibold text-primary">{item.price}</span>
             </div>
@@ -162,10 +169,9 @@ const Pricing = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Preise</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">{t('pricing.hero.title')}</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Transparente und faire Preise für alle unsere Dienstleistungen.
-              Professionelle Qualität zu attraktiven Konditionen.
+              {t('pricing.hero.subtitle')}
             </p>
           </div>
 
@@ -176,9 +182,9 @@ const Pricing = () => {
       <section id="abonnements" className="pt-4 pb-12 bg-background scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Jahresabonnements Icoone Laser</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('pricing.subscriptions.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Sparen Sie mit unseren flexiblen Abonnement-Modellen
+              {t('pricing.subscriptions.subtitle')}
             </p>
           </div>
           
@@ -221,7 +227,7 @@ const Pricing = () => {
                   {isPopular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                       <div className="bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                        BELIEBT
+                        {t('pricing.subscriptions.popular')}
                       </div>
                     </div>
                   )}
@@ -253,9 +259,9 @@ const Pricing = () => {
                         <div className="text-4xl font-bold text-primary mb-1">
                           {pkg.price}
                         </div>
-                        <div className="text-muted-foreground">{pkg.period}</div>
+                        <div className="text-muted-foreground">{getTranslated(pkg.period, pkg.period_ru)}</div>
                         <div className="text-sm text-muted-foreground mt-2">
-                          {pkg.treatments} • {pkg.frequency}
+                          {getTranslated(pkg.treatments, pkg.treatments_ru)} • {getTranslated(pkg.frequency, pkg.frequency_ru)}
                         </div>
                       </div>
 
@@ -263,7 +269,7 @@ const Pricing = () => {
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
                         onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                       >
-                        Jetzt buchen
+                        {t('pricing.button.book')}
                       </Button>
                     </div>
                   </CardContent>
@@ -289,11 +295,11 @@ const Pricing = () => {
             <div className="container mx-auto px-4">
               <div className="text-center mb-10">
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                  {categoryGroup.category.name}
+                  {getTranslated(categoryGroup.category.name, categoryGroup.category.name_ru)}
                 </h2>
                 {categoryGroup.category.description && (
                   <p className="text-xl text-muted-foreground">
-                    {categoryGroup.category.description}
+                    {getTranslated(categoryGroup.category.description, categoryGroup.category.description_ru)}
                   </p>
                 )}
               </div>
@@ -313,7 +319,7 @@ const Pricing = () => {
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
                     onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                   >
-                    Jetzt buchen
+                    {t('pricing.button.book')}
                   </Button>
                   <Button
                     size="lg"
@@ -322,7 +328,7 @@ const Pricing = () => {
                     asChild
                   >
                     <Link to={getCategoryLandingPage(categoryGroup.category.code)}>
-                      Mehr Infos <ArrowRight className="w-4 h-4 ml-2" />
+                      {t('pricing.button.more-info')} <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
                 </div>
@@ -339,35 +345,34 @@ const Pricing = () => {
             <Card>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-primary mb-6 text-center">
-                  Wichtige Informationen
+                  {t('pricing.info.title')}
                 </h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h4 className="font-semibold text-primary mb-3">Zahlungsmodalitäten</h4>
+                    <h4 className="font-semibold text-primary mb-3">{t('pricing.info.payment.title')}</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Barzahlung vor Ort</li>
-                      <li>• EC-Karte und Kreditkarte</li>
-                      <li>• Ratenzahlung bei Paketen möglich</li>
-                      <li>• Jahresabonnements monatlich abbuchbar</li>
+                      <li>• {t('pricing.info.payment.cash')}</li>
+                      <li>• {t('pricing.info.payment.card')}</li>
+                      <li>• {t('pricing.info.payment.installment')}</li>
+                      <li>• {t('pricing.info.payment.subscription')}</li>
                     </ul>
                   </div>
-                  
+
                   <div>
-                    <h4 className="font-semibold text-primary mb-3">Stornierungsbedingungen</h4>
+                    <h4 className="font-semibold text-primary mb-3">{t('pricing.info.cancellation.title')}</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Kostenlose Stornierung bis 24h vorher</li>
-                      <li>• Bei kurzfristiger Absage 50% der Kosten</li>
-                      <li>• Flexibilität bei Abonnements</li>
-                      <li>• Terminverschiebung jederzeit möglich</li>
+                      <li>• {t('pricing.info.cancellation.free')}</li>
+                      <li>• {t('pricing.info.cancellation.short')}</li>
+                      <li>• {t('pricing.info.cancellation.flexible')}</li>
+                      <li>• {t('pricing.info.cancellation.reschedule')}</li>
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 p-4 bg-accent/30 rounded-lg">
                   <p className="text-sm text-muted-foreground text-center">
-                    <strong>Hinweis:</strong> Alle Preise verstehen sich inklusive gesetzlicher Mehrwertsteuer. 
-                    Individuelle Behandlungspläne und Sonderkonditionen auf Anfrage möglich.
+                    <strong>{t('pricing.info.note.title')}</strong> {t('pricing.info.note.text')}
                   </p>
                 </div>
               </CardContent>
@@ -380,11 +385,10 @@ const Pricing = () => {
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für Ihre Behandlung?
+            {t('pricing.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Vereinbaren Sie jetzt einen Beratungstermin und lassen Sie sich individuell beraten. 
-            Wir finden gemeinsam die beste Lösung für Ihre Wünsche.
+            {t('pricing.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -393,7 +397,7 @@ const Pricing = () => {
               asChild
             >
               <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                Jetzt Termin vereinbaren
+                {t('pricing.cta.book')}
               </a>
             </Button>
             <Button
@@ -403,7 +407,7 @@ const Pricing = () => {
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">
-                Kostenlose Beratung
+                {t('pricing.cta.consult')}
               </a>
             </Button>
           </div>

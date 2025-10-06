@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Phone, Scissors, Palette, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 // Изображения загружаются из папки public
 
 const ManikuerePedikuere = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
       title: 'Maniküre & Pediküre München-Haidhausen – Kosmetikstudio nahe Ostbahnhof',
@@ -41,94 +43,94 @@ const ManikuerePedikuere = () => {
   const manicureServices = [
     {
       icon: Hand,
-      title: 'Klassische Maniküre',
-      description: 'Professionelle Nagelpflege mit Formgebung, Nagelhautpflege und Politur',
+      title: t('nails.manicure.classic.title'),
+      description: t('nails.manicure.classic.desc'),
       duration: '45-60 Min.',
-      price: 'ab 35€'
+      price: `${t('nails.from')} 35€`
     },
     {
       icon: Sparkles,
-      title: 'Gel-Maniküre',
-      description: 'Langanhaltende Gel-Lackierung mit bis zu 3 Wochen Haltbarkeit',
+      title: t('nails.manicure.gel.title'),
+      description: t('nails.manicure.gel.desc'),
       duration: '60-75 Min.',
-      price: 'ab 45€'
+      price: `${t('nails.from')} 45€`
     },
     {
       icon: Scissors,
-      title: 'Nagelverlängerung',
-      description: 'Professionelle Verlängerung mit Gel oder Acryl in gewünschter Form',
+      title: t('nails.manicure.extension.title'),
+      description: t('nails.manicure.extension.desc'),
       duration: '90-120 Min.',
-      price: 'ab 60€'
+      price: `${t('nails.from')} 60€`
     },
     {
       icon: Palette,
-      title: 'Nail Art & Design',
-      description: 'Kreative Nagelgestaltung mit individuellen Designs und Motiven',
+      title: t('nails.manicure.art.title'),
+      description: t('nails.manicure.art.desc'),
       duration: '15-30 Min.',
-      price: 'ab 10€'
+      price: `${t('nails.from')} 10€`
     }
   ];
 
   const pedicureServices = [
     {
       icon: Heart,
-      title: 'Medizinische Pediküre',
-      description: 'Therapeutische Fußpflege mit Hornhautentfernung und Nagelpflege',
+      title: t('nails.pedicure.medical.title'),
+      description: t('nails.pedicure.medical.desc'),
       duration: '60-75 Min.',
-      price: 'ab 45€'
+      price: `${t('nails.from')} 45€`
     },
     {
       icon: Sparkles,
-      title: 'Wellness-Pediküre',
-      description: 'Entspannende Fußbehandlung mit Peeling, Massage und Pflege',
+      title: t('nails.pedicure.wellness.title'),
+      description: t('nails.pedicure.wellness.desc'),
       duration: '75-90 Min.',
-      price: 'ab 55€'
+      price: `${t('nails.from')} 55€`
     },
     {
       icon: Hand,
-      title: 'Gel-Pediküre',
-      description: 'Professionelle Gel-Lackierung für langanhaltende Ergebnisse',
+      title: t('nails.pedicure.gel.title'),
+      description: t('nails.pedicure.gel.desc'),
       duration: '45-60 Min.',
-      price: 'ab 40€'
+      price: `${t('nails.from')} 40€`
     },
     {
       icon: Heart,
-      title: 'Spa-Pediküre',
-      description: 'Luxuriöse Fußbehandlung mit entspannender Massage und Maske',
+      title: t('nails.pedicure.spa.title'),
+      description: t('nails.pedicure.spa.desc'),
       duration: '90-105 Min.',
-      price: 'ab 65€'
+      price: `${t('nails.from')} 65€`
     }
   ];
 
   const benefits = [
-    'Professionelle Nagelpflege und -gestaltung',
-    'Verwendung hochwertiger Markenprodukte',
-    'Sterilisierte Instrumente und hygienische Arbeitsweise',
-    'Individuelle Beratung und Farbauswahl',
-    'Entspannte Atmosphäre für Wohlbefinden',
-    'Fachkundige Behandlung von Nagelproblemen'
+    t('nails.benefits.item1'),
+    t('nails.benefits.item2'),
+    t('nails.benefits.item3'),
+    t('nails.benefits.item4'),
+    t('nails.benefits.item5'),
+    t('nails.benefits.item6')
   ];
 
   const processSteps = [
     {
       step: 1,
-      title: 'Beratung',
-      description: 'Analyse der Nägel und Besprech­ung Ihrer Wünsche'
+      title: t('nails.process.step1.title'),
+      description: t('nails.process.step1.desc')
     },
     {
       step: 2,
-      title: 'Vorbereitung',
-      description: 'Entfernung alter Lackreste und Reinigung'
+      title: t('nails.process.step2.title'),
+      description: t('nails.process.step2.desc')
     },
     {
       step: 3,
-      title: 'Pflege',
-      description: 'Nagelhautpflege, Formgebung und Behandlung'
+      title: t('nails.process.step3.title'),
+      description: t('nails.process.step3.desc')
     },
     {
       step: 4,
-      title: 'Finish',
-      description: 'Lackierung, Design und abschließende Pflege'
+      title: t('nails.process.step4.title'),
+      description: t('nails.process.step4.desc')
     }
   ];
 
@@ -147,13 +149,13 @@ const ManikuerePedikuere = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-white/30 via-white/60 to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Maniküre & Pediküre in München-Haidhausen – Kosmetikstudio nahe Ostbahnhof
+            {t('nails.hero.title')}
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-white/95">
-            Professionelle Hand- und Fußpflege im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
+            {t('nails.hero.subtitle')}
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Klassische Maniküre, Pediküre, Shellac/Gel und Nail Art – hygienisch, präzise und in entspannter Atmosphäre.
+            {t('nails.hero.description')}
           </p>
           <Button
             size="lg"
@@ -162,7 +164,7 @@ const ManikuerePedikuere = () => {
           >
             <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
               <Phone className="w-5 h-5 mr-2" />
-              Termin vereinbaren
+              {t('nails.hero.button')}
             </a>
           </Button>
         </div>
@@ -173,7 +175,7 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Leistungen
+              {t('nails.services.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -182,9 +184,9 @@ const ManikuerePedikuere = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Klassische Maniküre & Pediküre</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('nails.services.classic.title')}</h3>
                       <p className="text-muted-foreground">
-                        Formgebung, Nagelhautpflege, Hornhautentfernung – präzise und hygienisch.
+                        {t('nails.services.classic.desc')}
                       </p>
                     </div>
                   </div>
@@ -196,9 +198,9 @@ const ManikuerePedikuere = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Shellac/Gel-Nägel</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('nails.services.gel.title')}</h3>
                       <p className="text-muted-foreground">
-                        Langanhaltende Gel-Lackierung mit großer Farbauswahl – bis zu 3 Wochen Haltbarkeit.
+                        {t('nails.services.gel.desc')}
                       </p>
                     </div>
                   </div>
@@ -210,9 +212,9 @@ const ManikuerePedikuere = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Nagelverlängerung & -verstärkung</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('nails.services.extension.title')}</h3>
                       <p className="text-muted-foreground">
-                        Gel oder Acryl in verschiedenen Formen – individuell angepasst.
+                        {t('nails.services.extension.desc')}
                       </p>
                     </div>
                   </div>
@@ -224,9 +226,9 @@ const ManikuerePedikuere = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Nail Art & Design</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('nails.services.art.title')}</h3>
                       <p className="text-muted-foreground">
-                        Kreative Designs, French, Ombré, Glitzer – Ihre Nägel werden zum Kunstwerk.
+                        {t('nails.services.art.desc')}
                       </p>
                     </div>
                   </div>

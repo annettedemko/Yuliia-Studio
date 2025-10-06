@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 // Изображения загружаются из папки public
 
 const LaserHairRemoval = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
       title: 'Dauerhafte Laser-Haarentfernung in München-Haidhausen',
@@ -78,14 +80,13 @@ const LaserHairRemoval = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Dauerhafte Laser-Haarentfernung in München-Haidhausen
+            {t('laser.hero.title')}
           </h1>
           <p className="text-xl md:text-2xl mb-4 text-white/95">
-            Glatt. Schonend. Nachhaltig.
+            {t('laser.hero.tagline')}
           </p>
           <p className="text-lg md:text-xl mb-8 text-white/90">
-            Im Yuliia Cheporska Studio in München-Haidhausen bieten wir professionelle Laser-Haarentfernung
-            mit Alexandrit- und Diodenlaser – individuell abgestimmt auf Haut- und Haartyp.
+            {t('laser.hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -94,7 +95,7 @@ const LaserHairRemoval = () => {
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
               <Phone className="w-5 h-5 mr-2" />
-              Jetzt Termin für Laser-Haarentfernung buchen
+              {t('laser.hero.button')}
             </Button>
             <Button
               size="lg"
@@ -103,7 +104,7 @@ const LaserHairRemoval = () => {
               asChild
             >
               <Link to="/preis#laser-haarentfernung">
-                Preise ansehen
+                {t('service.button.prices')}
               </Link>
             </Button>
           </div>
@@ -115,9 +116,9 @@ const LaserHairRemoval = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Modernste Laser-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('laser.tech.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Wir verwenden ausschließlich zertifizierte, hochmoderne Laser-Systeme für optimale Ergebnisse
+                {t('laser.tech.subtitle')}
               </p>
             </div>
             
@@ -139,10 +140,9 @@ const LaserHairRemoval = () => {
                     </div>
                   </div>
                   <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-primary mb-4">Alexandrit Laser</h3>
+                    <h3 className="text-2xl font-bold text-primary mb-4">{t('laser.alexandrit.title')}</h3>
                     <p className="text-muted-foreground mb-4">
-                      Der Alexandrit-Laser ist der Goldstandard für die Haarentfernung bei hellen bis mittleren Hauttypen.
-                      Mit seiner 755nm Wellenlänge erreicht er optimale Ergebnisse.
+                      {t('laser.alexandrit.desc')}
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>• Besonders effektiv bei dunklen Haaren</li>

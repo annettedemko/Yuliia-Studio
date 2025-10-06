@@ -4,8 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, ChevronDown, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [dekaDropdownOpen, setDekaDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -14,26 +16,26 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'Über uns' },
-    { href: '/preis', label: 'Preise' },
-    { href: '/kontakt', label: 'Kontakt' },
+    { href: '/', labelKey: 'nav.home' },
+    { href: '/about', labelKey: 'nav.about' },
+    { href: '/preis', labelKey: 'nav.pricing' },
+    { href: '/kontakt', labelKey: 'nav.contact' },
   ];
 
   const services = [
-    { href: '/laser-haarentfernung-muenchen', label: 'Laser Haarentfernung' },
-    { href: '/alexandrit-gegen-diodenlaser', label: 'Alexandrit vs. Diodenlaser' },
-    { href: '/icoone-laser-muenchen', label: 'Icoone Laser' },
-    { href: '/redtouch-laser-muenchen', label: 'RedTouchPro' },
-    { href: '/manikuere-pedikuere-muenchen', label: 'Maniküre & Pediküre' },
+    { href: '/laser-haarentfernung-muenchen', labelKey: 'nav.services.laser' },
+    { href: '/alexandrit-gegen-diodenlaser', labelKey: 'nav.services.alexandrit-vs-diode' },
+    { href: '/icoone-laser-muenchen', labelKey: 'nav.services.icoone' },
+    { href: '/redtouch-laser-muenchen', labelKey: 'nav.services.redtouch' },
+    { href: '/manikuere-pedikuere-muenchen', labelKey: 'nav.services.nails' },
   ];
 
   const dekaDevices = [
-    { href: '/physiq360', label: 'Physiq 360' },
-    { href: '/motus-ax', label: 'Motus AX' },
-    { href: '/motus-pro', label: 'Motus PRO' },
-    { href: '/redtouch-pro', label: 'RedTouch PRO' },
-    { href: '/again-cos', label: 'Again Cos' },
+    { href: '/physiq360', labelKey: 'nav.deka.physiq' },
+    { href: '/motus-ax', labelKey: 'nav.deka.motus-ax' },
+    { href: '/motus-pro', labelKey: 'nav.deka.motus-pro' },
+    { href: '/redtouch-pro', labelKey: 'nav.deka.redtouch' },
+    { href: '/again-cos', labelKey: 'nav.deka.again' },
   ];
 
   const handleDropdownEnter = () => {
@@ -121,7 +123,7 @@ const Navigation = () => {
                   isActive(item.href) ? "text-rose-gold" : "text-foreground"
                 )}
               >
-                {item.label}
+                {t(item.labelKey)}
               </Link>
             ))}
 
@@ -140,7 +142,7 @@ const Navigation = () => {
                     ? "text-rose-gold" : "text-foreground"
                 )}
               >
-                Leistungen
+                {t('nav.services')}
                 <ChevronDown className={cn(
                   "w-4 h-4 transition-transform duration-200",
                   servicesDropdownOpen ? "rotate-180" : ""
@@ -158,7 +160,7 @@ const Navigation = () => {
                     to="/services"
                     className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
                   >
-                    Alle Leistungen
+                    {t('nav.services.all')}
                   </Link>
                   <div className="border-t border-gray-100 my-1"></div>
                   {services.map((service) => (
@@ -170,7 +172,7 @@ const Navigation = () => {
                         isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
                       )}
                     >
-                      {service.label}
+                      {t(service.labelKey)}
                     </Link>
                   ))}
                 </div>
@@ -192,7 +194,7 @@ const Navigation = () => {
                     ? "text-rose-gold" : "text-foreground"
                 )}
               >
-                DEKA Geräte
+                {t('nav.deka')}
                 <ChevronDown className={cn(
                   "w-4 h-4 transition-transform duration-200",
                   dekaDropdownOpen ? "rotate-180" : ""
@@ -210,7 +212,7 @@ const Navigation = () => {
                     to="/deka-geraeteverkauf"
                     className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
                   >
-                    Alle DEKA Geräte
+                    {t('nav.deka.all')}
                   </Link>
                   <div className="border-t border-gray-100 my-1"></div>
                   {dekaDevices.map((device) => (
@@ -222,7 +224,7 @@ const Navigation = () => {
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
                       )}
                     >
-                      {device.label}
+                      {t(device.labelKey)}
                     </Link>
                   ))}
                 </div>
@@ -238,7 +240,7 @@ const Navigation = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-3 h-3 mr-1" />
-                  Anrufen
+                  {t('nav.button.call')}
                 </a>
               </Button>
               <Button
@@ -249,7 +251,7 @@ const Navigation = () => {
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                   <Calendar className="w-3 h-3 mr-1" />
-                  Termin
+                  {t('nav.button.appointment')}
                 </a>
               </Button>
             </div>
@@ -282,7 +284,7 @@ const Navigation = () => {
                   )}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               ))}
 
@@ -298,7 +300,7 @@ const Navigation = () => {
                   )}
                   onClick={() => setIsOpen(false)}
                 >
-                  Leistungen
+                  {t('nav.services')}
                 </Link>
                 <div className="flex flex-col space-y-3 pl-4">
                   {services.map((service) => (
@@ -311,7 +313,7 @@ const Navigation = () => {
                       )}
                       onClick={() => setIsOpen(false)}
                     >
-                      {service.label}
+                      {t(service.labelKey)}
                     </Link>
                   ))}
                 </div>
@@ -329,7 +331,7 @@ const Navigation = () => {
                   )}
                   onClick={() => setIsOpen(false)}
                 >
-                  DEKA Geräte
+                  {t('nav.deka')}
                 </Link>
                 <div className="flex flex-col space-y-3 pl-4">
                   {dekaDevices.map((device) => (
@@ -342,7 +344,7 @@ const Navigation = () => {
                       )}
                       onClick={() => setIsOpen(false)}
                     >
-                      {device.label}
+                      {t(device.labelKey)}
                     </Link>
                   ))}
                 </div>
@@ -358,7 +360,7 @@ const Navigation = () => {
                 >
                   <a href="tel:+4915206067810">
                     <Phone className="w-5 h-5 mr-2" />
-                    Anrufen
+                    {t('nav.button.call')}
                   </a>
                 </Button>
                 <Button
@@ -369,7 +371,7 @@ const Navigation = () => {
                 >
                   <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                     <Calendar className="w-5 h-5 mr-2" />
-                    Termin buchen
+                    {t('nav.button.book-appointment')}
                   </a>
                 </Button>
               </div>

@@ -2,51 +2,53 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Clock, Shield, Target, Award, Star, Phone, Instagram } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const MotusAX = () => {
+  const { t } = useLanguage();
   const keyFeatures = [
     {
       icon: Target,
-      title: "Für alle Haut- und Haartypen",
-      description: "Dank der innovativen Alexandrit-Lasertechnologie ist der Motus AX sicher und effektiv für alle Hauttypen (I bis VI) und Haare (außer bei weißem, grauem und rotem Haar)."
+      title: t('motusax.features.universal.title'),
+      description: t('motusax.features.universal.desc')
     },
     {
       icon: Clock,
-      title: "Schnelligkeit und Komfort",
-      description: "Das Multipass-Verfahren ermöglicht die Behandlung großer Flächen in wenigen Minuten – ideal für den effizienten Einsatz im Studioalltag."
+      title: t('motusax.features.speed.title'),
+      description: t('motusax.features.speed.desc')
     },
     {
       icon: Zap,
-      title: "Moveo-Technologie",
-      description: "Die einzigartige Moveo-Technologie ermöglicht 100 % Energieabsorption und minimiert Energieverluste, wodurch jede Behandlung sicher, komfortabel und besonders effizient wird."
+      title: t('motusax.features.moveo.title'),
+      description: t('motusax.features.moveo.desc')
     },
     {
       icon: Shield,
-      title: "Integrierte Hautkühlung",
-      description: "Die Kontakthautkühlung und Moveo-Technologie sorgen für eine allmähliche Erwärmung, was eine sanfte Behandlung und minimale Nebenwirkungen garantiert."
+      title: t('motusax.features.cooling.title'),
+      description: t('motusax.features.cooling.desc')
     }
   ];
 
   const technicalFeatures = [
     {
       number: "1",
-      title: "Alexandrit-Laser 755 nm",
-      description: "Der Alexandrit-Laser mit einer Wellenlänge von 755 nm bietet eine optimale Melaninabsorption, hohe Spitzenleistungen und kurze Pulslängen, wodurch präzise und effektive Ergebnisse bei allen Haut- und Haartypen erzielt werden."
+      title: t('motusax.technical.alexandrit.title'),
+      description: t('motusax.technical.alexandrit.desc')
     },
     {
       number: "2",
-      title: "Moveo-Handstück mit Saphirspitze",
-      description: "Das Moveo-Handstück mit einer innovativen Saphirspitze sorgt für eine direkte Energieübertragung auf die Haut, reduziert reflektierte Energieverluste und gewährleistet so maximale Effizienz und Sicherheit."
+      title: t('motusax.technical.handpiece.title'),
+      description: t('motusax.technical.handpiece.desc')
     },
     {
       number: "3",
-      title: "Integriertes Kühlsystem",
-      description: "Das integrierte Kühlsystem schützt die Haut während der Behandlung, minimiert das Risiko von Nebenwirkungen und erhöht gleichzeitig den Komfort für den Kunden."
+      title: t('motusax.technical.cooling-system.title'),
+      description: t('motusax.technical.cooling-system.desc')
     },
     {
       number: "4",
-      title: "Flexible Spotgrößen",
-      description: "Mit Spotgrößen zwischen 10 und 20 mm ermöglicht der Motus AX flexible Anpassungen, um sowohl kleine als auch große Behandlungsareale präzise und effizient abzudecken."
+      title: t('motusax.technical.spotsize.title'),
+      description: t('motusax.technical.spotsize.desc')
     }
   ];
 
@@ -90,11 +92,11 @@ const MotusAX = () => {
                 <div className="mb-6 mt-8">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
                     <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                      Motus AX
+                      {t('motusax.hero.title')}
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-purple-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Die neue Ära der Haarentfernung
+                    {t('motusax.hero.subtitle')}
                   </p>
                 </div>
 
@@ -106,7 +108,7 @@ const MotusAX = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Beratung vereinbaren
+                      {t('motusax.hero.button')}
                     </a>
                   </Button>
                 </div>
@@ -127,10 +129,10 @@ const MotusAX = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up" style={{ marginTop: '1rem' }}>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptvorteile des Motus AX</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('motusax.features.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Revolutionäre Alexandrit-Laser Technologie für maximale Effizienz und Sicherheit
+                {t('motusax.features.subtitle')}
               </p>
             </div>
 
@@ -215,9 +217,9 @@ const MotusAX = () => {
       <section className="py-16 bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Technische Features</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('motusax.technical.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Innovative Technologien für optimale Behandlungsergebnisse
+              {t('motusax.technical.subtitle')}
             </p>
           </div>
 
@@ -252,17 +254,17 @@ const MotusAX = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
-                  Die Moveo-Technologie: Effiziente Energie für maximale Ergebnisse
+                  {t('motusax.moveo.title')}
                 </h2>
                 <div className="prose prose-lg text-muted-foreground">
                   <p className="mb-4">
-                    Das Moveo-Handstück von DEKA revolutioniert die Laserbehandlung, indem es dank einer innovativen Saphir-Spitze Energieverluste minimiert und die Laserenergie präzise auf die Haut überträgt – selbst bei besonders hellen Hauttypen.
+                    {t('motusax.moveo.p1')}
                   </p>
                   <p className="mb-4">
-                    Die intelligente Software erkennt das Handstück automatisch und bietet eine schnelle Auswahl der Behandlungsparameter für alle Haut- und Haartypen. Ein integrierter Speicher zeigt die abgegebene Energie an, und ein akustisches Signal informiert, wenn der Behandlungsbereich vollständig ist.
+                    {t('motusax.moveo.p2')}
                   </p>
                   <p className="font-semibold text-purple-600">
-                    So lassen sich Hautareale von 10 x 10 cm in nur 25 Sekunden effizient behandeln. Nach einer kurzen Schulung ist das System für das gesamte Behandlungsteam einsatzbereit.
+                    {t('motusax.moveo.p3')}
                   </p>
                 </div>
               </div>
@@ -313,10 +315,10 @@ const MotusAX = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für die neueste Laser-Technologie?
+            {t('motusax.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Erleben Sie die revolutionäre Motus AX Technologie in unserem Studio. Vereinbaren Sie noch heute Ihren Beratungstermin.
+            {t('motusax.cta.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -327,7 +329,7 @@ const MotusAX = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt beraten lassen
+                {t('motusax.cta.phone')}
               </a>
             </Button>
             <Button
@@ -338,7 +340,7 @@ const MotusAX = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <ArrowRight className="w-5 h-5 ml-2" />
-                E-Mail senden
+                {t('motusax.cta.email')}
               </a>
             </Button>
           </div>
@@ -347,15 +349,15 @@ const MotusAX = () => {
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">DEKA Zertifiziert</p>
+                <p className="text-sm text-white/80">{t('motusax.cta.certified')}</p>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 text-green-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">Sicher & Effektiv</p>
+                <p className="text-sm text-white/80">{t('motusax.cta.safe')}</p>
               </div>
               <div className="text-center">
                 <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
-                <p className="text-sm text-white/80">Premium Qualität</p>
+                <p className="text-sm text-white/80">{t('motusax.cta.premium')}</p>
               </div>
             </div>
 

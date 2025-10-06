@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Instagram, Waves, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     setPageMeta({
       title: 'Unsere Behandlungen im Überblick – Kosmetik & Beauty in München-Haidhausen',
@@ -20,15 +23,15 @@ const Services = () => {
       <section className="py-6 bg-gradient-to-b from-accent/10 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-0">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">Unsere Behandlungen im Überblick – Kosmetik & Beauty in München-Haidhausen</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('services.hero.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
-              Im Yuliia Cheporska Studio in München-Haidhausen finden Sie ein vielseitiges Angebot an Kosmetik-, Wellness- und Beauty-Behandlungen.
+              {t('services.hero.subtitle')}
             </p>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
-              Ob dauerhafte Haarentfernung, innovative Hautbehandlungen oder entspannende Massagen – hier erhalten Sie einen Überblick.
+              {t('services.hero.description')}
             </p>
             <p className="text-lg text-primary max-w-3xl mx-auto font-medium">
-              👉 Klicken Sie auf die jeweilige Behandlung, um alle Details und Preise zu sehen.
+              {t('services.hero.cta')}
             </p>
           </div>
         </div>
@@ -38,13 +41,13 @@ const Services = () => {
       <section className="py-6 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">Laser-Haarentfernung in München</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2">{t('services.laser.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-              Modernste Laser-Technologien für dauerhafte und schonende Haarentfernung
+              {t('services.laser.subtitle')}
             </p>
             <Button asChild className="bg-gradient-hero text-white mb-6">
               <Link to="/laser-haarentfernung-muenchen">
-                Mehr zur Laser-Haarentfernung in München <ArrowRight className="w-4 h-4 ml-2" />
+                {t('services.laser.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
           </div>
@@ -64,19 +67,18 @@ const Services = () => {
                   </div>
                 </div>
                 <div className="p-8 flex flex-col justify-center ml-[-8%]">
-                  <h3 className="text-3xl font-bold text-primary mb-4">Motus AX Alexandrit-Laser</h3>
+                  <h3 className="text-3xl font-bold text-primary mb-4">{t('services.motus.title')}</h3>
                   <p className="text-muted-foreground mb-6">
-                    Modernste Alexandrit-Laser-Technologie für effektive und schmerzarme Haarentfernung.
-                    Besonders geeignet für alle Hauttypen und Haarfarben.
+                    {t('services.motus.description')}
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/laser-haarentfernung-muenchen">
-                        Mehr zur Laser-Haarentfernung <ArrowRight className="w-4 h-4 ml-2" />
+                        {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#alexandrit">Preise ansehen</Link>
+                      <Link to="/preis#alexandrit">{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -102,28 +104,27 @@ const Services = () => {
                   </div>
                 </div>
                 <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-18%]">
-                  <h3 className="text-3xl font-bold text-primary mb-4">M-Tech Diodenlaser</h3>
+                  <h3 className="text-3xl font-bold text-primary mb-4">{t('services.diode.title')}</h3>
                   <p className="text-muted-foreground mb-4">
-                    Der M-Tech Diodenlaser ist ein innovatives Gerät für professionelle Haarentfernung, das fortschrittliche
-                    Technologien und höchste Effizienz vereint. Perfekt für alle Haut- und Haartypen mit schmerzfreien und sicheren Behandlungen.
+                    {t('services.diode.description')}
                   </p>
                   <div className="mb-4">
-                    <h4 className="font-semibold text-primary mb-2">Hauptvorteile:</h4>
+                    <h4 className="font-semibold text-primary mb-2">{t('services.diode.benefits.title')}</h4>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Hohe Effizienz mit langanhaltenden Ergebnissen</li>
-                      <li>• Kühlsystem für sichere Anwendung</li>
-                      <li>• Schnelle Behandlung großer Hautflächen</li>
-                      <li>• Für alle Haut- und Haartypen geeignet</li>
+                      <li>• {t('services.diode.benefits.efficiency')}</li>
+                      <li>• {t('services.diode.benefits.cooling')}</li>
+                      <li>• {t('services.diode.benefits.fast')}</li>
+                      <li>• {t('services.diode.benefits.universal')}</li>
                     </ul>
                   </div>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/laser-haarentfernung-muenchen">
-                        Mehr zur Laser-Haarentfernung <ArrowRight className="w-4 h-4 ml-2" />
+                        {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#dioden">Preise ansehen</Link>
+                      <Link to="/preis#dioden">{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -151,20 +152,19 @@ const Services = () => {
                 </div>
                 <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-15%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">
-                    Icoone Laser – Body Contouring & Hautpflege
+                    {t('services.icoone.title')}
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    Innovative Kombination aus Vakuummassage und Laser für Hautstraffung,
-                    Cellulite-Reduktion und Verbesserung der Hautqualität.
+                    {t('services.icoone.description')}
                   </p>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/icoone-laser-muenchen">
-                        Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                        {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#icoone">Preise ansehen</Link>
+                      <Link to="/preis#icoone">{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -192,29 +192,28 @@ const Services = () => {
                 </div>
                 <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%] translate-y-0 lg:translate-y-[-25%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">
-                    RedTouchPro – Innovative Hautstraffung
+                    {t('services.redtouch.title')}
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    Revolutionary 675nm Laser-Technologie für effektive Hautverjüngung und Kollagenproduktion.
-                    Sichere und schmerzfreie Behandlung für alle Hauttypen.
+                    {t('services.redtouch.description')}
                   </p>
                   <div className="mb-4">
-                    <h4 className="font-semibold text-primary mb-2">Behandlungsgebiete:</h4>
+                    <h4 className="font-semibold text-primary mb-2">{t('services.redtouch.areas.title')}</h4>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Gesicht und Hals</li>
-                      <li>• Dekolleté und Körper</li>
-                      <li>• Hände und Unterarme</li>
-                      <li>• Spezielle Körperzonen</li>
+                      <li>• {t('services.redtouch.areas.face')}</li>
+                      <li>• {t('services.redtouch.areas.decollete')}</li>
+                      <li>• {t('services.redtouch.areas.hands')}</li>
+                      <li>• {t('services.redtouch.areas.special')}</li>
                     </ul>
                   </div>
                   <div className="flex gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/redtouch-laser-muenchen">
-                        Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                        {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#redtouchpro">Preise ansehen</Link>
+                      <Link to="/preis#redtouchpro">{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -234,19 +233,18 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                   <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-primary mb-4">Maniküre & Pediküre</h3>
+                    <h3 className="text-3xl font-bold text-primary mb-4">{t('services.nails.title')}</h3>
                     <p className="text-muted-foreground mb-6">
-                      Verwöhnen Sie Ihre Hände und Füße mit unseren professionellen Behandlungen.
-                      Von klassischer Pflege bis hin zu modernen Gel-Techniken.
+                      {t('services.nails.description')}
                     </p>
                     <div className="flex gap-3">
                       <Button asChild className="bg-gradient-hero text-white">
                         <Link to="/manikuere-pedikuere-muenchen">
-                          Mehr erfahren <ArrowRight className="w-4 h-4 ml-2" />
+                          {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       </Button>
                       <Button variant="outline" asChild>
-                        <Link to="/preis#manicure">Preise ansehen</Link>
+                        <Link to="/preis#manicure">{t('services.motus.view-prices')}</Link>
                       </Button>
                     </div>
                   </div>
@@ -270,36 +268,36 @@ const Services = () => {
       <section className="py-12 bg-gradient-to-b from-white to-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8 text-center">Warum Yuliia Cheporska Studio in München?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-8 text-center">{t('services.why-us.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-lg text-muted-foreground">Über 5 Jahre Erfahrung in der Beauty-Branche</p>
+                  <p className="text-lg text-muted-foreground">{t('services.why-us.experience')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-lg text-muted-foreground">Zertifizierte Geräte & höchste Hygienestandards</p>
+                  <p className="text-lg text-muted-foreground">{t('services.why-us.certified')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-lg text-muted-foreground">Individuelle Beratung & persönliche Betreuung</p>
+                  <p className="text-lg text-muted-foreground">{t('services.why-us.individual')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-lg text-muted-foreground">Flexible Termine, auch abends & am Wochenende</p>
+                  <p className="text-lg text-muted-foreground">{t('services.why-us.flexible')}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3 md:col-span-2">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-lg text-muted-foreground">Zentrale Lage in München-Haidhausen, nur 5 Min. vom Ostbahnhof</p>
+                  <p className="text-lg text-muted-foreground">{t('services.why-us.location')}</p>
                 </div>
               </div>
             </div>
@@ -311,12 +309,12 @@ const Services = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6 text-center">Alle Behandlungen im Detail</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6 text-center">{t('services.all.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Link to="/laser-haarentfernung-muenchen" className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">Laser-Haarentfernung</span>
+                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.laser')}</span>
                     <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Card>
@@ -324,7 +322,7 @@ const Services = () => {
               <Link to="/redtouch-laser-muenchen" className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">RedTouch Laser</span>
+                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.redtouch')}</span>
                     <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Card>
@@ -332,7 +330,7 @@ const Services = () => {
               <Link to="/icoone-laser-muenchen" className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">Icoone Behandlungen</span>
+                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.icoone')}</span>
                     <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Card>
@@ -340,7 +338,7 @@ const Services = () => {
               <Link to="/manikuere-pedikuere-muenchen" className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">Maniküre & Pediküre</span>
+                    <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.nails')}</span>
                     <ArrowRight className="w-5 h-5 text-rose-gold group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Card>
@@ -353,9 +351,9 @@ const Services = () => {
       {/* CTA Section */}
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Bereit für Ihre Traumbehandlung?</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('services.cta.title')}</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Lassen Sie sich von unserem Expertenteam beraten und finden Sie die perfekte Behandlung für Ihre Bedürfnisse.
+            {t('services.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -363,7 +361,7 @@ const Services = () => {
               className="bg-white text-black hover:bg-white/90"
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              Jetzt Termin vereinbaren
+              {t('services.cta.book')}
             </Button>
             <a
               href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"

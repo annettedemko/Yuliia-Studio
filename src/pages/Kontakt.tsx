@@ -4,8 +4,11 @@ import { MapPin, Phone, Mail, Clock, Train, Car, Instagram, Calendar, MessageCir
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Kontakt = () => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     setPageMeta({
       title: 'Kontakt – Yuliia Cheporska Studio München-Haidhausen | Elsässer Str. 33',
@@ -59,9 +62,9 @@ const Kontakt = () => {
       <section className="py-16 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Kontakt – Yuliia Cheporska Studio München-Haidhausen</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">{t('kontakt.hero.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Besuchen Sie uns im Herzen von München-Haidhausen – nur 5–7 Minuten vom Ostbahnhof entfernt
+              {t('kontakt.hero.subtitle')}
             </p>
           </div>
         </div>
@@ -78,16 +81,16 @@ const Kontakt = () => {
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-8 h-8 text-rose-gold" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Adresse</h3>
-                <p className="text-muted-foreground mb-2">Elsässer Straße 33</p>
-                <p className="text-muted-foreground mb-4">81667 München-Haidhausen</p>
+                <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.address.title')}</h3>
+                <p className="text-muted-foreground mb-2">{t('kontakt.address.street')}</p>
+                <p className="text-muted-foreground mb-4">{t('kontakt.address.city')}</p>
                 <a
                   href="https://maps.google.com/?q=Elsässer+Straße+33,+81667+München"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-rose-gold hover:underline text-sm"
                 >
-                  In Google Maps öffnen →
+                  {t('kontakt.address.maps')}
                 </a>
               </CardContent>
             </Card>
@@ -98,7 +101,7 @@ const Kontakt = () => {
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Phone className="w-8 h-8 text-rose-gold" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Telefon & WhatsApp</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.phone.title')}</h3>
                 <p className="text-muted-foreground mb-2">
                   <a href="tel:+4915206067810" className="hover:text-rose-gold transition-colors">
                     +49 152 06067810
@@ -111,7 +114,7 @@ const Kontakt = () => {
                   className="inline-flex items-center text-sm text-green-600 hover:text-green-700 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4 mr-1" />
-                  WhatsApp schreiben
+                  {t('kontakt.whatsapp')}
                 </a>
               </CardContent>
             </Card>
@@ -122,7 +125,7 @@ const Kontakt = () => {
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send className="w-8 h-8 text-rose-gold" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Telegram & Email</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.telegram.title')}</h3>
                 <a
                   href="https://t.me/+4915206067810"
                   target="_blank"
@@ -130,7 +133,7 @@ const Kontakt = () => {
                   className="block text-sm text-blue-600 hover:text-blue-700 transition-colors mb-2"
                 >
                   <Send className="w-4 h-4 inline mr-1" />
-                  Telegram öffnen
+                  {t('kontakt.telegram.open')}
                 </a>
                 <a
                   href="mailto:Yulachip@icloud.com"
@@ -148,10 +151,10 @@ const Kontakt = () => {
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="w-8 h-8 text-rose-gold" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Öffnungszeiten</h3>
-                <p className="text-muted-foreground mb-1">Mo–Fr: 10:00–20:00 Uhr</p>
-                <p className="text-muted-foreground mb-1">Sa: 10:00–18:00 Uhr</p>
-                <p className="text-muted-foreground">So: Nach Vereinbarung</p>
+                <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.hours.title')}</h3>
+                <p className="text-muted-foreground mb-1">{t('kontakt.hours.weekdays')}</p>
+                <p className="text-muted-foreground mb-1">{t('kontakt.hours.saturday')}</p>
+                <p className="text-muted-foreground">{t('kontakt.hours.sunday')}</p>
               </CardContent>
             </Card>
 
@@ -163,7 +166,7 @@ const Kontakt = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">So finden Sie uns</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">{t('kontakt.map.title')}</h2>
 
             {/* Google Maps Embed */}
             <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
@@ -190,19 +193,19 @@ const Kontakt = () => {
                       <Train className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-primary mb-3">Mit ÖPNV</h3>
+                      <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.transport.public.title')}</h3>
                       <ul className="space-y-2 text-muted-foreground">
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>S-Bahn:</strong> Ostbahnhof (S1, S2, S4, S6, S8) – 5–7 Min. Fußweg</span>
+                          <span>{t('kontakt.transport.public.sbahn')}</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>Tram:</strong> Linie 19 (Haltestelle Orleansplatz)</span>
+                          <span>{t('kontakt.transport.public.tram')}</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>Bus:</strong> Linie 145 (Haltestelle Ostbahnhof)</span>
+                          <span>{t('kontakt.transport.public.bus')}</span>
                         </li>
                       </ul>
                     </div>
@@ -218,19 +221,19 @@ const Kontakt = () => {
                       <Car className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-primary mb-3">Mit dem Auto</h3>
+                      <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.transport.car.title')}</h3>
                       <ul className="space-y-2 text-muted-foreground">
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>Parken:</strong> Kostenlose Parkplätze in der Elsässer Straße (begrenzt)</span>
+                          <span>{t('kontakt.transport.car.parking')}</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>Parkhaus:</strong> Orleansplatz Tiefgarage (2–3 Min. Fußweg)</span>
+                          <span>{t('kontakt.transport.car.parkhouse')}</span>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span><strong>Anfahrt:</strong> Über Rosenheimer Straße oder Haidhausener Straße</span>
+                          <span>{t('kontakt.transport.car.directions')}</span>
                         </li>
                       </ul>
                     </div>
@@ -247,9 +250,9 @@ const Kontakt = () => {
       <section className="py-16 bg-gradient-to-br from-primary via-primary-dark to-primary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Bereit für Ihre Behandlung?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('kontakt.cta.title')}</h2>
             <p className="text-xl mb-8 text-white/90">
-              Entdecken Sie unser vollständiges Angebot an professionellen Beauty-Behandlungen
+              {t('kontakt.cta.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -259,7 +262,7 @@ const Kontakt = () => {
                 onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
               >
                 <Calendar className="w-5 h-5 mr-2" />
-                Online Termin buchen
+                {t('kontakt.cta.book')}
               </Button>
               <Button
                 size="lg"
@@ -268,7 +271,7 @@ const Kontakt = () => {
                 asChild
               >
                 <Link to="/services">
-                  Alle Behandlungen ansehen
+                  {t('kontakt.cta.services')}
                 </Link>
               </Button>
               <Button
@@ -278,14 +281,14 @@ const Kontakt = () => {
                 asChild
               >
                 <Link to="/preis">
-                  Preise ansehen
+                  {t('kontakt.cta.prices')}
                 </Link>
               </Button>
             </div>
 
             {/* Social Media */}
             <div className="flex justify-center items-center gap-4 mt-8">
-              <p className="text-white/80">Folgen Sie uns:</p>
+              <p className="text-white/80">{t('kontakt.cta.follow')}</p>
               <a
                 href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
                 target="_blank"

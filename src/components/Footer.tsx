@@ -1,7 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -13,13 +15,13 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Yuliia Cheporska Studio</h3>
             <p className="text-primary-foreground/80 text-sm">
-              Professionelle Kosmetik-, Laser- und Wellnessbehandlungen in München
+              {t('footer.studio.description')}
             </p>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Kontakt</h4>
+            <h4 className="font-semibold mb-4">{t('footer.contact.title')}</h4>
             <div className="space-y-3">
               <div className="flex items-start">
                 <MapPin className="w-4 h-4 mr-2 mt-0.5 text-rose-gold flex-shrink-0" />
@@ -67,69 +69,69 @@ const Footer = () => {
 
           {/* Leistungen */}
           <div>
-            <h4 className="font-semibold mb-4">Leistungen</h4>
+            <h4 className="font-semibold mb-4">{t('footer.services.title')}</h4>
             <div className="flex flex-col space-y-2">
               <Link
                 to="/laser-haarentfernung-muenchen"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Laser-Haarentfernung
+                {t('footer.services.laser')}
               </Link>
               <Link
                 to="/icoone-laser-muenchen"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Icoone Laser
+                {t('footer.services.icoone')}
               </Link>
               <Link
                 to="/redtouch-laser-muenchen"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                RedTouch Laser
+                {t('footer.services.redtouch')}
               </Link>
               <Link
                 to="/manikuere-pedikuere-muenchen"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Maniküre & Pediküre
+                {t('footer.services.nails')}
               </Link>
               <Link
                 to="/services"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors font-medium"
               >
-                Alle Behandlungen
+                {t('footer.services.all')}
               </Link>
             </div>
           </div>
 
           {/* Rechtliches */}
           <div>
-            <h4 className="font-semibold mb-4">Rechtliches</h4>
+            <h4 className="font-semibold mb-4">{t('footer.legal.title')}</h4>
             <div className="flex flex-col space-y-2">
               <Link
                 to="/kontakt"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Kontakt & Anfahrt
+                {t('footer.legal.contact')}
               </Link>
               <Link
                 to="/impressum"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Impressum
+                {t('footer.legal.imprint')}
               </Link>
               <Link
                 to="/datenschutzerklaerung"
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
-                Datenschutz
+                {t('footer.legal.privacy')}
               </Link>
             </div>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
-          © 2024 Yuliia Cheporska Studio. Alle Rechte vorbehalten.
+          {t('footer.copyright')}
         </div>
       </div>
     </footer>

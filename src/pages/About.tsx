@@ -5,48 +5,50 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 // Изображения загружаются из папки public
 
 const About = () => {
+  const { t } = useLanguage();
 
   const scrollToContact = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const services = [
-    { name: 'Laser-Haarentfernung (Alexandrit & Dioden)', link: '/laser-haarentfernung-muenchen' },
-    { name: 'Icoone Laser Behandlungen', link: '/icoone-laser-muenchen' },
-    { name: 'RedTouchPro Laser-Behandlungen', link: '/redtouch-laser-muenchen' },
-    { name: 'Professionelle Maniküre & Pediküre', link: '/manikuere-pedikuere-muenchen' },
-    { name: 'DEKA Geräte & Technologien', link: '/deka-geraeteverkauf' },
-    { name: 'Individuelle Kosmetikberatung', link: '/services' }
+    { nameKey: 'about.services.laser', link: '/laser-haarentfernung-muenchen' },
+    { nameKey: 'about.services.icoone', link: '/icoone-laser-muenchen' },
+    { nameKey: 'about.services.redtouch', link: '/redtouch-laser-muenchen' },
+    { nameKey: 'about.services.nails', link: '/manikuere-pedikuere-muenchen' },
+    { nameKey: 'about.services.deka', link: '/deka-geraeteverkauf' },
+    { nameKey: 'about.services.consultation', link: '/services' }
   ];
 
   const advantages = [
     {
       icon: Award,
-      title: 'Über 5 Jahre Erfahrung als Kosmetikerin',
-      description: 'Langjährige Expertise in professionellen Beauty-Behandlungen'
+      titleKey: 'about.advantages.experience',
+      descriptionKey: 'about.advantages.experience-desc'
     },
     {
       icon: Shield,
-      title: 'Zertifizierte Laser- und Kosmetikgeräte',
-      description: 'Modernste Technologie mit höchsten Sicherheitsstandards'
+      titleKey: 'about.advantages.certified',
+      descriptionKey: 'about.advantages.certified-desc'
     },
     {
       icon: Users,
-      title: 'Individuelle, persönliche Beratung',
-      description: 'Jede Behandlung wird auf Ihre Bedürfnisse abgestimmt'
+      titleKey: 'about.advantages.individual',
+      descriptionKey: 'about.advantages.individual-desc'
     },
     {
       icon: Clock,
-      title: 'Flexible Terminzeiten (auch abends & am Wochenende)',
-      description: 'Termine passend zu Ihrem Zeitplan'
+      titleKey: 'about.advantages.flexible',
+      descriptionKey: 'about.advantages.flexible-desc'
     },
     {
       icon: MapPin,
-      title: 'Zentrale Lage in München-Haidhausen (5 Min. vom Ostbahnhof)',
-      description: 'Elsässer Straße 33, perfekte Anbindung mit ÖPNV'
+      titleKey: 'about.advantages.location',
+      descriptionKey: 'about.advantages.location-desc'
     }
   ];
 
@@ -57,13 +59,13 @@ const About = () => {
       <section className="pt-16 pb-10 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">Über uns</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">{t('about.hero.title')}</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
-              Willkommen im Yuliia Cheporska Studio – Ihrem Kosmetikstudio in München-Haidhausen.
+              {t('about.hero.subtitle')}
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto flex items-center justify-center gap-2">
               <MapPin className="w-5 h-5 text-rose-gold" />
-              Elsässer Straße 33 – nur 5–7 Minuten vom Ostbahnhof entfernt
+              {t('about.hero.location')}
             </p>
           </div>
         </div>
@@ -94,16 +96,16 @@ const About = () => {
 
             <div className="space-y-6">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6">
-                Herzlich willkommen in unserem Kosmetikstudio in München!
+                {t('about.main.title')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Mein Name ist Yuliia Cheporska und ich freue mich, Sie in meinem Kosmetikstudio in München begrüßen zu dürfen. Mit über 5 Jahren Erfahrung in der Beauty-Branche biete ich Ihnen professionelle Behandlungen in entspannter und vertrauensvoller Atmosphäre.
+                {t('about.main.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Unser Studio ist darauf spezialisiert, Ihnen mit modernster Technik und individueller Beratung zu einem neuen Wohlgefühl zu verhelfen. Jede Behandlung wird sorgfältig auf Ihre Bedürfnisse abgestimmt.
+                {t('about.main.p2')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Vertrauen Sie auf unsere Expertise und lassen Sie sich von unserer Leidenschaft für Schönheit und Wohlbefinden begeistern.
+                {t('about.main.p3')}
               </p>
 
               <Button
@@ -112,7 +114,7 @@ const About = () => {
                 onClick={scrollToContact}
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Termin buchen
+                {t('about.main.button')}
               </Button>
             </div>
           </div>
@@ -123,9 +125,9 @@ const About = () => {
       <section className="py-10 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Welche Kosmetikbehandlungen bietet Yuliia Cheporska Studio?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.services.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Professionelle Beauty-Behandlungen in München-Haidhausen
+              {t('about.services.subtitle')}
             </p>
           </div>
 
@@ -134,7 +136,7 @@ const About = () => {
               {services.map((service, index) => (
                 <Link key={index} to={service.link} className="flex items-center space-x-3 hover:bg-rose-gold/5 p-3 rounded-lg transition-colors group">
                   <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-lg text-foreground group-hover:text-rose-gold transition-colors">{service.name}</span>
+                  <span className="text-lg text-foreground group-hover:text-rose-gold transition-colors">{t(service.nameKey)}</span>
                 </Link>
               ))}
             </div>
@@ -146,9 +148,9 @@ const About = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Warum Kundinnen uns in München vertrauen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.advantages.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Unsere Vorteile im Überblick
+              {t('about.advantages.subtitle')}
             </p>
           </div>
 
@@ -159,8 +161,8 @@ const About = () => {
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <advantage.icon className="w-8 h-8 text-rose-gold" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-3">{advantage.title}</h3>
-                  <p className="text-muted-foreground">{advantage.description}</p>
+                  <h3 className="text-xl font-bold text-primary mb-3">{t(advantage.titleKey)}</h3>
+                  <p className="text-muted-foreground">{t(advantage.descriptionKey)}</p>
                 </CardContent>
               </Card>
             ))}
@@ -173,8 +175,8 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Moderne Studio-Atmosphäre im Herzen von München-Haidhausen</h2>
-              <p className="text-xl text-muted-foreground">Entdecken Sie unsere moderne und einladende Atmosphäre</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.gallery.title')}</h2>
+              <p className="text-xl text-muted-foreground">{t('about.gallery.subtitle')}</p>
             </div>
 
             {/* Image Gallery Grid */}
@@ -211,65 +213,65 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Kontaktieren Sie uns</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.contact.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Haben Sie Fragen oder möchten einen Termin vereinbaren? Schreiben Sie uns!
+                {t('about.contact.subtitle')}
               </p>
             </div>
-            
+
             <Card>
               <CardContent className="p-8">
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="name">Name *</Label>
-                      <Input 
-                        id="name" 
-                        type="text" 
-                        placeholder="Ihr vollständiger Name"
-                        required 
+                      <Label htmlFor="name">{t('about.form.name')} *</Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        placeholder={t('about.form.name-placeholder')}
+                        required
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Telefonnummer *</Label>
-                      <Input 
-                        id="phone" 
-                        type="tel" 
-                        placeholder="+49 xxx xxx xxxx"
-                        required 
+                      <Label htmlFor="phone">{t('about.form.phone')} *</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder={t('about.form.phone-placeholder')}
+                        required
                       />
                     </div>
                   </div>
-                  
+
                   <div>
-                    <Label htmlFor="email">E-Mail-Adresse</Label>
-                    <Input 
-                      id="email" 
-                      type="email" 
-                      placeholder="ihre@email.de"
+                    <Label htmlFor="email">{t('about.form.email')}</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder={t('about.form.email-placeholder')}
                     />
                   </div>
-                  
+
                   <div>
-                    <Label htmlFor="message">Nachricht *</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Beschreiben Sie Ihren Wunschtermin oder stellen Sie Ihre Fragen..."
+                    <Label htmlFor="message">{t('about.form.message')} *</Label>
+                    <Textarea
+                      id="message"
+                      placeholder={t('about.form.message-placeholder')}
                       className="min-h-[120px]"
                       required
                     />
                   </div>
-                  
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full bg-gradient-hero text-white border-none shadow-rose"
                   >
-                    Nachricht senden
+                    {t('about.form.submit')}
                   </Button>
-                  
+
                   <p className="text-sm text-muted-foreground text-center mb-4">
-                    * Pflichtfelder. Ihre Daten werden vertraulich behandelt.
+                    {t('about.form.required')}
                   </p>
 
                   <div className="text-center">

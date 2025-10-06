@@ -6,7 +6,9 @@ export interface PriceCategory {
   id: string
   code: string
   name: string
+  name_ru?: string
   description?: string
+  description_ru?: string
   icon?: string
   color?: string
   order_index: number
@@ -93,9 +95,11 @@ export const pricesService = {
     return data.map(item => ({
       id: item.id,
       service: item.service,
+      service_ru: item.service_ru || undefined,
       price: item.price,
       category: item.category as ServicePrice['category'],
-      note: item.note || undefined
+      note: item.note || undefined,
+      note_ru: item.note_ru || undefined
     }))
   },
 
@@ -254,8 +258,11 @@ export const subscriptionsService = {
       name: item.name,
       price: item.price,
       period: item.period || undefined,
+      period_ru: item.period_ru || undefined,
       treatments: item.treatments || undefined,
+      treatments_ru: item.treatments_ru || undefined,
       frequency: item.frequency || undefined,
+      frequency_ru: item.frequency_ru || undefined,
       features: item.features || [],
       popular: item.popular
     }))
@@ -359,11 +366,13 @@ export const eventsService = {
     return data.map(item => ({
       id: item.id,
       title: item.title,
+      title_ru: item.title_ru || undefined,
       date: item.date || '',
       time: item.time || undefined,
       location: item.location || undefined,
       address: item.address || undefined,
-      description: item.description || undefined
+      description: item.description || undefined,
+      description_ru: item.description_ru || undefined
     }))
   },
 
@@ -384,11 +393,13 @@ export const eventsService = {
     return data.map(item => ({
       id: item.id,
       title: item.title,
+      title_ru: item.title_ru || undefined,
       date: item.date || '',
       time: item.time || undefined,
       location: item.location || undefined,
       address: item.address || undefined,
-      description: item.description || undefined
+      description: item.description || undefined,
+      description_ru: item.description_ru || undefined
     }))
   },
 

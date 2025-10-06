@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { subscriptionsService } from '@/services/contentService';
 import type { SubscriptionPackage } from '@/types/admin';
+import { useLanguage } from '@/contexts/LanguageContext';
 // Изображения загружаются из папки public
 
 const Home = () => {
+  const { t } = useLanguage();
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
   useEffect(() => {
@@ -94,18 +96,18 @@ const Home = () => {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12 animate-fade-in">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-slide-up leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
-              Yuliia Cheporska Studio – München-Haidhausen
+              {t('home.hero.title')}
             </span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 animate-slide-up delay-300 leading-relaxed">
-            Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone® sowie Maniküre & Pediküre – 5–7 Min. vom Ostbahnhof (Elsässer Straße 33).
+            {t('home.hero.subtitle')}
           </p>
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
             onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
           >
-            Termin buchen
+            {t('home.hero.button')}
           </Button>
         </div>
       </section>
@@ -114,7 +116,7 @@ const Home = () => {
       <section className="py-8 sm:py-12 bg-gradient-to-b from-white/90 to-white relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">Leistungen in unserem Kosmetikstudio München</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">{t('home.services.title')}</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -135,12 +137,12 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
-                      <h3 className="text-xl font-bold">Laser-Haarentfernung</h3>
+                      <h3 className="text-xl font-bold">{t('home.services.laser.title')}</h3>
                     </div>
                   </div>
                   <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      Langanhaltende Reduktion in mehreren Sitzungen; wir arbeiten mit Alexandrit (755 nm) & Diodenlaser (Multi-WL) und wählen je Termin passend zu Haut & Haar.
+                      {t('home.services.laser.description')}
                     </p>
                   </div>
                 </CardContent>
@@ -160,12 +162,12 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
-                      <h3 className="text-xl font-bold">RedTouch 675 nm</h3>
+                      <h3 className="text-xl font-bold">{t('home.services.redtouch.title')}</h3>
                     </div>
                   </div>
                   <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      Hautbild & Pigment – nicht-ablatives Verfahren mit gezielter Kollagen-Ansprache; meist kurze Sitzungen und geringe Ausfallzeit (Eignung individuell).
+                      {t('home.services.redtouch.description')}
                     </p>
                   </div>
                 </CardContent>
@@ -186,12 +188,12 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
-                      <h3 className="text-xl font-bold">Icoone®️-Behandlungen</h3>
+                      <h3 className="text-xl font-bold">{t('home.services.icoone.title')}</h3>
                     </div>
                   </div>
                   <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      Mechanisch stimulierte Anwendungen für Bindegewebe; angenehm und planbar.
+                      {t('home.services.icoone.description')}
                     </p>
                   </div>
                 </CardContent>
@@ -211,12 +213,12 @@ const Home = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="absolute bottom-4 left-4 text-white transform group-hover:translate-x-1 transition-transform duration-300">
-                      <h3 className="text-xl font-bold">Maniküre & Pediküre</h3>
+                      <h3 className="text-xl font-bold">{t('home.services.nails.title')}</h3>
                     </div>
                   </div>
                   <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                      Präzise Pflege, saubere Form, Hygiene; Lack/Gel nach Wunsch.
+                      {t('home.services.nails.description')}
                     </p>
                   </div>
                 </CardContent>
@@ -248,21 +250,21 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-6 sm:mb-8 animate-slide-up">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-4">
-              Abonnement Pakete für Icoone Laser Behandlung
+              {t('home.subscriptions.title')}
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground animate-slide-up delay-300 px-4">
-              Wählen Sie das passende Paket für Ihre Icoone Laser Massage Behandlungen
+              {t('home.subscriptions.subtitle')}
             </p>
           </div>
 
           {loadingSubscriptions ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">Laden...</p>
+              <p className="text-muted-foreground">{t('home.subscriptions.loading')}</p>
             </div>
           ) : subscriptions.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">Keine Pakete verfügbar</p>
+              <p className="text-muted-foreground">{t('home.subscriptions.no-packages')}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
@@ -292,14 +294,14 @@ const Home = () => {
                       )}
                       {isPopular && (
                         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
-                          BELIEBT
+                          {t('home.subscriptions.popular')}
                         </div>
                       )}
                       <div className="relative z-10">
                         <h3 className={`text-2xl font-bold ${colors.text} mb-2`}>{pkg.name}</h3>
                         <div className="mb-6">
                           <div className="text-4xl font-bold text-primary mb-1">
-                            {pkg.price}<span className="text-lg font-normal">/Monat</span>
+                            {pkg.price}<span className="text-lg font-normal">{t('home.subscriptions.per-month')}</span>
                           </div>
                           {pkg.treatments && pkg.frequency && (
                             <div className="text-sm text-muted-foreground mt-2">
@@ -311,7 +313,7 @@ const Home = () => {
                           className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
                           onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                         >
-                          Termin buchen
+                          {t('home.hero.button')}
                         </Button>
                       </div>
                     </CardContent>
@@ -329,7 +331,7 @@ const Home = () => {
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <Link to="/preis">
-                Alle Preise ansehen
+                {t('home.services.view-prices')}
               </Link>
             </Button>
           </div>
@@ -347,7 +349,7 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Öffnungszeiten</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.hours.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient"></div>
           </div>
 
@@ -359,12 +361,12 @@ const Home = () => {
 
                 <div className="space-y-6">
                   <div className="flex justify-between items-center p-4 rounded-lg bg-gradient-to-r from-rose-gold/10 to-transparent hover:from-rose-gold/20 transition-all duration-300">
-                    <span className="font-medium text-foreground">Montag - Samstag</span>
-                    <span className="text-rose-gold font-semibold animate-pulse">10:00 - 20:00</span>
+                    <span className="font-medium text-foreground">{t('home.hours.weekdays')}</span>
+                    <span className="text-rose-gold font-semibold animate-pulse">{t('home.hours.weekdays-time')}</span>
                   </div>
                   <div className="flex justify-between items-center p-4 rounded-lg bg-gradient-to-r from-gray-100/50 to-transparent">
-                    <span className="font-medium text-foreground">Sonntag</span>
-                    <span className="text-muted-foreground">Geschlossen</span>
+                    <span className="font-medium text-foreground">{t('home.hours.sunday')}</span>
+                    <span className="text-muted-foreground">{t('home.hours.closed')}</span>
                   </div>
                 </div>
 
@@ -387,7 +389,7 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-8 animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">So finden Sie uns</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.map.title')}</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
 
             <Card className="max-w-3xl mx-auto glass-effect border-rose-gold/20 hover:shadow-rose transition-all duration-300">
@@ -397,8 +399,8 @@ const Home = () => {
                     <MapPin className="w-6 h-6 text-rose-gold" />
                   </div>
                   <div className="text-left">
-                    <h3 className="font-bold text-primary text-lg mb-2">Adresse</h3>
-                    <p className="text-muted-foreground">Elsässer Straße 33<br />81667 München-Haidhausen</p>
+                    <h3 className="font-bold text-primary text-lg mb-2">{t('home.map.address-title')}</h3>
+                    <p className="text-muted-foreground">{t('home.map.address').split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}</p>
                   </div>
                 </div>
 
@@ -410,15 +412,15 @@ const Home = () => {
                       </svg>
                     </div>
                     <div className="text-left">
-                      <h3 className="font-bold text-primary text-lg mb-2">Anfahrt</h3>
+                      <h3 className="font-bold text-primary text-lg mb-2">{t('home.map.directions-title')}</h3>
                       <p className="text-muted-foreground mb-2">
-                        <span className="font-semibold">Zu Fuß:</span> 5–7 Min. vom Ostbahnhof/Orleansplatz
+                        <span className="font-semibold">{t('home.map.walking')}</span> {t('home.map.walking-desc')}
                       </p>
                       <p className="text-muted-foreground mb-2">
-                        <span className="font-semibold">ÖPNV:</span> S-Bahn München Ost, U5 Ostbahnhof, Tram/Bus Orleansplatz
+                        <span className="font-semibold">{t('home.map.public')}</span> {t('home.map.public-desc')}
                       </p>
                       <p className="text-muted-foreground">
-                        <span className="font-semibold">Parken:</span> Nebenstraßen & Parkhaus Ostbahnhof
+                        <span className="font-semibold">{t('home.map.parking')}</span> {t('home.map.parking-desc')}
                       </p>
                     </div>
                   </div>
@@ -474,10 +476,10 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-6 animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Kontakt</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.contact.title')}</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient mb-6"></div>
             <p className="text-xl text-muted-foreground animate-slide-up delay-300">
-              Vereinbaren Sie noch heute Ihren Termin
+              {t('home.contact.subtitle')}
             </p>
           </div>
 
@@ -489,7 +491,7 @@ const Home = () => {
                   <Phone className="w-6 h-6 text-rose-gold group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-primary">Telefon</h3>
+                  <h3 className="font-semibold text-primary">{t('home.contact.phone')}</h3>
                   <a href="tel:+4915206067810" className="text-muted-foreground hover:text-rose-gold transition-colors text-lg hover:scale-105 inline-block">
                     +49 152 06067810
                   </a>
@@ -534,7 +536,7 @@ const Home = () => {
                   <Mail className="w-6 h-6 text-rose-gold group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-primary">E-Mail</h3>
+                  <h3 className="font-semibold text-primary">{t('home.contact.email')}</h3>
                   <a href="mailto:Yulachip@icloud.com" className="text-muted-foreground hover:text-rose-gold transition-colors hover:scale-105 inline-block">
                     Yulachip@icloud.com
                   </a>
@@ -546,7 +548,7 @@ const Home = () => {
                   <MapPin className="w-6 h-6 text-rose-gold group-hover:scale-110 transition-transform" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-primary">Adresse</h3>
+                  <h3 className="font-semibold text-primary">{t('home.contact.address')}</h3>
                   <a
                     href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
                     target="_blank"
@@ -572,7 +574,7 @@ const Home = () => {
                 <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-gradient-to-tr from-primary/20 to-rose-gold/20 rounded-full animate-pulse"></div>
 
                 <CardContent className="p-8 relative z-10">
-                  <h3 className="text-xl font-bold gradient-text mb-6">Jetzt Termin buchen</h3>
+                  <h3 className="text-xl font-bold gradient-text mb-6">{t('home.contact.book-now')}</h3>
                   <div className="space-y-6">
                     <Button
                       size="lg"
@@ -580,7 +582,7 @@ const Home = () => {
                       onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                     >
                       <Phone className="w-5 h-5 mr-2 animate-bounce" />
-                      Termin buchen
+                      {t('home.hero.button')}
                     </Button>
 
                     <Button
@@ -590,7 +592,7 @@ const Home = () => {
                       onClick={() => window.location.href = 'mailto:Yulachip@icloud.com'}
                     >
                       <Mail className="w-5 h-5 mr-2" />
-                      E-Mail schreiben
+                      {t('home.contact.send-email')}
                     </Button>
                   </div>
 
