@@ -12,8 +12,10 @@ import {
   Mail,
   Sparkles,
 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const DekaGeraeteverkauf = () => {
+  const { t } = useLanguage();
   const getDeviceUrl = (deviceId: string) => {
     switch (deviceId) {
       case 'physiq360':
@@ -34,67 +36,67 @@ const DekaGeraeteverkauf = () => {
   const dekaDevices = [
     {
       id: 'physiq360',
-      name: 'PHYSIQ 360',
-      subtitle: 'Система для уникальной коррекции фигуры',
-      description: 'Революционная технология для точной коррекции фигуры и подтяжки кожи с научно доказанными результатами.',
+      name: t('equipment.device.physiq360.name'),
+      subtitle: t('equipment.device.physiq360.subtitle'),
+      description: t('equipment.device.physiq360.description'),
       features: [
-        'Неинвазивная коррекция фигуры',
-        'Подтяжка и омоложение кожи',
-        'Подход 360°',
-        'Клинически доказанные результаты'
+        t('equipment.device.physiq360.feature1'),
+        t('equipment.device.physiq360.feature2'),
+        t('equipment.device.physiq360.feature3'),
+        t('equipment.device.physiq360.feature4')
       ],
       image: '/deka4.png'
     },
     {
       id: 'redtouch-pro',
-      name: 'RedTouch PRO',
-      subtitle: 'Новая длина волны для омоложения кожи',
-      description: 'Мощная манипула с 675 нм, разработанная для всех типов кожи, с интегрированным охлаждением кожи и новым режимом Moveo.',
+      name: t('equipment.device.redtouch-pro.name'),
+      subtitle: t('equipment.device.redtouch-pro.subtitle'),
+      description: t('equipment.device.redtouch-pro.description'),
       features: [
-        'Микрозоны термического повреждения',
-        'Охлаждение кожи — минимум побочных эффектов',
-        'Длина волны 675 нм — точное воздействие на коллаген',
-        'Доказанное увеличение коллагена и эластина',
-        'Режим Moveo — быстрая процедура для всех типов кожи'
+        t('equipment.device.redtouch-pro.feature1'),
+        t('equipment.device.redtouch-pro.feature2'),
+        t('equipment.device.redtouch-pro.feature3'),
+        t('equipment.device.redtouch-pro.feature4'),
+        t('equipment.device.redtouch-pro.feature5')
       ],
       image: '/deka2.png'
     },
     {
       id: 'again-cos',
-      name: 'Again cos',
-      subtitle: 'Высокотехнологичное решение для эпиляции',
-      description: 'Новейшая технология диодного лазера для долговременной эпиляции с максимальной эффективностью и комфортом.',
+      name: t('equipment.device.again-cos.name'),
+      subtitle: t('equipment.device.again-cos.subtitle'),
+      description: t('equipment.device.again-cos.description'),
       features: [
-        'Высокотехнологичный диодный лазер',
-        'Быстрое время процедуры',
-        'Подходит для всех типов кожи',
-        'Безболезненное применение'
+        t('equipment.device.again-cos.feature1'),
+        t('equipment.device.again-cos.feature2'),
+        t('equipment.device.again-cos.feature3'),
+        t('equipment.device.again-cos.feature4')
       ],
       image: '/deka5.png'
     },
     {
       id: 'motus-ax',
-      name: 'Motus AX',
-      subtitle: 'Новая эра эпиляции',
-      description: 'Александритовый лазер нового поколения с улучшенной технологией для оптимальных результатов эпиляции.',
+      name: t('equipment.device.motus-ax.name'),
+      subtitle: t('equipment.device.motus-ax.subtitle'),
+      description: t('equipment.device.motus-ax.description'),
       features: [
-        'Технология александритового лазера',
-        'Технология движения',
-        'Оптимальные системы охлаждения',
-        'Точная эпиляция'
+        t('equipment.device.motus-ax.feature1'),
+        t('equipment.device.motus-ax.feature2'),
+        t('equipment.device.motus-ax.feature3'),
+        t('equipment.device.motus-ax.feature4')
       ],
       image: '/deka3.png'
     },
     {
       id: 'motus-pro',
-      name: 'Motus PRO',
-      subtitle: 'Идеальное решение в области эпиляции',
-      description: 'Профессиональная система эпиляции с проверенной технологией DEKA для самых высоких требований.',
+      name: t('equipment.device.motus-pro.name'),
+      subtitle: t('equipment.device.motus-pro.subtitle'),
+      description: t('equipment.device.motus-pro.description'),
       features: [
-        'Профессиональное оборудование',
-        'Проверенная технология DEKA',
-        'Универсальные применения',
-        'Надежные результаты'
+        t('equipment.device.motus-pro.feature1'),
+        t('equipment.device.motus-pro.feature2'),
+        t('equipment.device.motus-pro.feature3'),
+        t('equipment.device.motus-pro.feature4')
       ],
       image: '/deka1.png'
     }
@@ -103,23 +105,23 @@ const DekaGeraeteverkauf = () => {
   const advantages = [
     {
       icon: Award,
-      title: 'Инновации',
-      description: 'Новейшие технологии для исключительных результатов процедур'
+      title: t('equipment.advantages.innovation.title'),
+      description: t('equipment.advantages.innovation.description')
     },
     {
       icon: Shield,
-      title: 'Безопасность',
-      description: 'Оборудование с сертификацией CE и высочайшими стандартами безопасности'
+      title: t('equipment.advantages.safety.title'),
+      description: t('equipment.advantages.safety.description')
     },
     {
       icon: Target,
-      title: 'Точность',
-      description: 'Точные результаты процедур благодаря передовой лазерной технологии'
+      title: t('equipment.advantages.precision.title'),
+      description: t('equipment.advantages.precision.description')
     },
     {
       icon: Star,
-      title: 'Превосходство',
-      description: 'Качественное лазерное оборудование для профессиональных бьюти-применений'
+      title: t('equipment.advantages.excellence.title'),
+      description: t('equipment.advantages.excellence.description')
     }
   ];
 
@@ -149,11 +151,11 @@ const DekaGeraeteverkauf = () => {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4 animate-slide-up">
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white drop-shadow-lg">
-            Продажа оборудования DEKA
+            {t('equipment.hero.title')}
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-4xl mx-auto leading-relaxed mt-4">
-            Мощные лазерные аппараты обеспечивают безопасные и выдающиеся результаты – для новой эры косметологии.
+            {t('equipment.hero.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -164,7 +166,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Записаться на консультацию
+                {t('equipment.hero.consultation')}
               </a>
             </Button>
 
@@ -175,7 +177,7 @@ const DekaGeraeteverkauf = () => {
               asChild
             >
               <a href="#devices">
-                Посмотреть оборудование
+                {t('equipment.hero.view-equipment')}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
@@ -189,15 +191,11 @@ const DekaGeraeteverkauf = () => {
           <div className="max-w-6xl mx-auto text-center">
             <div className="animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
-                Точность, безопасность и превосходство для вашей студии
+                {t('equipment.about.title')}
               </h2>
 
               <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                DEKA Beauty – это инновации, качество и передовые технологии в косметологии.
-                Наши аппараты сочетают технологическое совершенство с удобным дизайном,
-                разработанным для потребностей современных бьюти-экспертов.
-                Благодаря многочисленным наградам и сертификации CE наши системы обеспечивают
-                максимальную безопасность и эффективность.
+                {t('equipment.about.description')}
               </p>
             </div>
           </div>
@@ -209,9 +207,9 @@ const DekaGeraeteverkauf = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Гарантия качества DEKA</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('equipment.advantages.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Четыре столпа нашего превосходства
+                {t('equipment.advantages.subtitle')}
               </p>
             </div>
 
@@ -240,9 +238,9 @@ const DekaGeraeteverkauf = () => {
       <section id="devices" className="py-20 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Наше оборудование DEKA</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('equipment.devices.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Откройте для себя высококачественные лазерные аппараты DEKA для профессионального бьюти-применения
+              {t('equipment.devices.subtitle')}
             </p>
           </div>
 
@@ -289,7 +287,7 @@ const DekaGeraeteverkauf = () => {
                       <p className="text-muted-foreground text-lg leading-relaxed">{device.description}</p>
                     </div>
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold text-primary mb-4">Основные характеристики:</h4>
+                      <h4 className="text-lg font-semibold text-primary mb-4">{t('equipment.devices.features')}</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {device.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
@@ -307,7 +305,7 @@ const DekaGeraeteverkauf = () => {
                       >
                         <a href="tel:+4915206067810" onClick={(e) => e.stopPropagation()}>
                           <Phone className="w-4 h-4 mr-2" />
-                          Запросить консультацию
+                          {t('equipment.device.request-consultation')}
                         </a>
                       </Button>
                       <Button
@@ -317,7 +315,7 @@ const DekaGeraeteverkauf = () => {
                       >
                         <a href="mailto:Yulachip@icloud.com" onClick={(e) => e.stopPropagation()}>
                           <Mail className="w-4 h-4 mr-2" />
-                          Запросить предложение
+                          {t('equipment.device.request-quote')}
                         </a>
                       </Button>
                     </div>
@@ -340,10 +338,10 @@ const DekaGeraeteverkauf = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Готовы к технологии DEKA?
+            {t('equipment.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Свяжитесь с нами для персональной консультации и узнайте больше о наших лазерных аппаратах DEKA.
+            {t('equipment.cta.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -354,7 +352,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Получить консультацию
+                {t('equipment.cta.get-consultation')}
               </a>
             </Button>
             <Button
@@ -365,7 +363,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 ml-2" />
-                Отправить email
+                {t('equipment.cta.send-email')}
               </a>
             </Button>
           </div>
