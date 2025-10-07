@@ -468,7 +468,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-transparent relative overflow-hidden -mt-16 md:-mt-24">
+      <section id="contact" className="py-8 bg-transparent relative overflow-hidden mt-8 md:mt-12">
         {/* Dynamic floating elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>
