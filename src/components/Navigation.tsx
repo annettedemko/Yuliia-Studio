@@ -92,6 +92,9 @@ const Navigation = () => {
             {(location.pathname === '/deka' ||
               location.pathname === '/DEKA' ||
               location.pathname === '/deka-day' ||
+              location.pathname === '/deka-anna' ||
+              location.pathname === '/deka-lera' ||
+              location.pathname === '/deka-liudmila' ||
               location.pathname === '/kopie-deka-day-anna' ||
               location.pathname === '/deka-geraeteverkauf' ||
               location.pathname === '/physiq360' ||
