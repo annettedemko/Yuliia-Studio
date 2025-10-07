@@ -382,7 +382,7 @@ const Home = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 bg-transparent relative overflow-hidden -mt-16 md:-mt-24">
+      <section className="py-12 bg-transparent relative overflow-hidden mt-[7vh]">
         {/* Floating geometric elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 left-10 w-6 h-6 border-2 border-rose-gold/30 rotate-45 animate-float"></div>
