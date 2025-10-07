@@ -7,9 +7,12 @@ const LanguageSwitcher: React.FC = () => {
 
   const handleLanguageChange = (newLang: 'de' | 'ru') => {
     if (newLang !== language) {
-      setLanguage(newLang);
-      // Force page reload to ensure all content updates
-      window.location.reload();
+      // Update localStorage directly first
+      localStorage.setItem('language', newLang);
+      // Then force page reload
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
     }
   };
 
