@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Phone, Scissors, Palette, CheckCircle } from 'lucide-react';
+import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Scissors, Palette, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -163,7 +163,6 @@ const ManikuerePedikuere = () => {
             asChild
           >
             <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-              <Phone className="w-5 h-5 mr-2" />
               {t('nails.hero.button')}
             </a>
           </Button>
@@ -295,7 +294,6 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  <Phone className="w-5 h-5 mr-2" />
                   Termin buchen
                 </a>
               </Button>
@@ -360,7 +358,6 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  <Phone className="w-5 h-5 mr-2" />
                   Termin buchen
                 </a>
               </Button>

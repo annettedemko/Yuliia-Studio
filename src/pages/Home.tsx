@@ -584,7 +584,6 @@ const Home = () => {
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
                       onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
                     >
-                      <Phone className="w-5 h-5 mr-2 animate-bounce" />
                       {t('home.hero.button')}
                     </Button>
 

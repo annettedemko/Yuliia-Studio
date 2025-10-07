@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
+import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -94,7 +94,6 @@ const LaserHairRemoval = () => {
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              <Phone className="w-5 h-5 mr-2" />
               {t('laser.hero.button')}
             </Button>
             <Button

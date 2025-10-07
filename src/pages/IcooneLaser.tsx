@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Phone, Instagram, CheckCircle } from 'lucide-react';
+import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Instagram, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 
@@ -121,7 +121,6 @@ const IcooneLaser = () => {
               asChild
             >
               <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                <Phone className="w-5 h-5 mr-2" />
                 Записаться на консультацию
               </a>
             </Button>

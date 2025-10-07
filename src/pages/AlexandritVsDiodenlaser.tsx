@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Phone, CheckCircle, Info, Zap, Shield, Sparkles, Target, Award, Star } from 'lucide-react';
+import { CheckCircle, Info, Zap, Shield, Sparkles, Target, Award, Star } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { Link } from 'react-router-dom';
@@ -77,7 +77,6 @@ const AlexandritVsDiodenlaser = () => {
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105"
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              <Phone className="w-5 h-5 mr-2" />
               Записаться на консультацию
             </Button>
             <Button
@@ -864,7 +863,6 @@ const AlexandritVsDiodenlaser = () => {
                 className="bg-white text-primary hover:bg-white/90 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 text-lg px-8 py-6"
                 onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
               >
-                <Phone className="w-5 h-5 mr-2" />
                 Записаться на прием
               </Button>
               <Button
