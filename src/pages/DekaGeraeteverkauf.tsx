@@ -35,66 +35,66 @@ const DekaGeraeteverkauf = () => {
     {
       id: 'physiq360',
       name: 'PHYSIQ 360',
-      subtitle: 'Das System für einzigartige Körperkonturierung',
-      description: 'Revolutionäre Technologie für präzise Körperformung und Hautstraffung mit wissenschaftlich bewiesenen Ergebnissen.',
+      subtitle: 'Система для уникальной коррекции фигуры',
+      description: 'Революционная технология для точной коррекции фигуры и подтяжки кожи с научно доказанными результатами.',
       features: [
-        'Non-invasive Körperkonturierung',
-        'Hautstraffung und -verjüngung',
-        '360° Behandlungsansatz',
-        'Klinisch bewiesene Ergebnisse'
+        'Неинвазивная коррекция фигуры',
+        'Подтяжка и омоложение кожи',
+        'Подход 360°',
+        'Клинически доказанные результаты'
       ],
       image: '/deka4.png'
     },
     {
       id: 'redtouch-pro',
       name: 'RedTouch PRO',
-      subtitle: 'Eine neue Wellenlänge für die Hautverjüngung',
-      description: 'Leistungsstarkes Handstück mit 675 nm, entwickelt für alle Hauttypen, mit integrierter Hautkühlung und dem neuen Moveo-Modus.',
+      subtitle: 'Новая длина волны для омоложения кожи',
+      description: 'Мощная манипула с 675 нм, разработанная для всех типов кожи, с интегрированным охлаждением кожи и новым режимом Moveo.',
       features: [
-        'Mikrozonen thermischer Schädigung → Neokollagenese-Prozess',
-        'Integrierte Hautkühlung → minimierte Nebenwirkungen, keine Epidermisschädigung',
-        '675 nm Wellenlänge → selektiv auf Kollagenfasern, hocheffektiv',
-        'Histologische Studien → zeigen Vermehrung von Kollagen- und elastischen Fasern',
-        'RedTouch PRO → mehr Leistung, Moveo-Modus, schnelle Behandlung auch bei dunkler/sonnengebräunter Haut'
+        'Микрозоны термического повреждения → процесс неоколлагенеза',
+        'Интегрированное охлаждение кожи → минимизированные побочные эффекты, без повреждения эпидермиса',
+        'Длина волны 675 нм → избирательно на коллагеновые волокна, высокоэффективна',
+        'Гистологические исследования → показывают увеличение коллагеновых и эластичных волокон',
+        'RedTouch PRO → больше мощности, режим Moveo, быстрая процедура даже для темной/загорелой кожи'
       ],
       image: '/deka2.png'
     },
     {
       id: 'again-cos',
       name: 'Again cos',
-      subtitle: 'Die Hightech Lösung in der Haarentfernung',
-      description: 'Modernste Diodenlaser-Technologie für dauerhafte Haarentfernung mit maximaler Effizienz und Komfort.',
+      subtitle: 'Высокотехнологичное решение для эпиляции',
+      description: 'Новейшая технология диодного лазера для долговременной эпиляции с максимальной эффективностью и комфортом.',
       features: [
-        'Hightech Diodenlaser',
-        'Schnelle Behandlungszeiten',
-        'Für alle Hauttypen geeignet',
-        'Schmerzfreie Anwendung'
+        'Высокотехнологичный диодный лазер',
+        'Быстрое время процедуры',
+        'Подходит для всех типов кожи',
+        'Безболезненное применение'
       ],
       image: '/deka5.png'
     },
     {
       id: 'motus-ax',
       name: 'Motus AX',
-      subtitle: 'Die neue Ära der Haarentfernung',
-      description: 'Alexandrit-Laser der neuesten Generation mit verbesserter Technologie für optimale Haarentfernungs-Ergebnisse.',
+      subtitle: 'Новая эра эпиляции',
+      description: 'Александритовый лазер нового поколения с улучшенной технологией для оптимальных результатов эпиляции.',
       features: [
-        'Alexandrit-Laser Technologie',
-        'Bewegungs-Technologie',
-        'Optimale Kühlsysteme',
-        'Präzise Haarentfernung'
+        'Технология александритового лазера',
+        'Технология движения',
+        'Оптимальные системы охлаждения',
+        'Точная эпиляция'
       ],
       image: '/deka3.png'
     },
     {
       id: 'motus-pro',
       name: 'Motus PRO',
-      subtitle: 'Die ideale Lösung im Bereich Haarentfernung',
-      description: 'Professionelles Haarentfernungs-System mit bewährter DEKA-Technologie für höchste Ansprüche.',
+      subtitle: 'Идеальное решение в области эпиляции',
+      description: 'Профессиональная система эпиляции с проверенной технологией DEKA для самых высоких требований.',
       features: [
-        'Professionelle Ausstattung',
-        'Bewährte DEKA-Technologie',
-        'Vielseitige Anwendungen',
-        'Zuverlässige Ergebnisse'
+        'Профессиональное оборудование',
+        'Проверенная технология DEKA',
+        'Универсальные применения',
+        'Надежные результаты'
       ],
       image: '/deka1.png'
     }
@@ -103,23 +103,23 @@ const DekaGeraeteverkauf = () => {
   const advantages = [
     {
       icon: Award,
-      title: 'Innovation',
-      description: 'Modernste Technologie für außergewöhnliche Behandlungsergebnisse'
+      title: 'Инновации',
+      description: 'Новейшие технологии для исключительных результатов процедур'
     },
     {
       icon: Shield,
-      title: 'Sicherheit',
-      description: 'CE-zertifizierte Geräte mit höchsten Sicherheitsstandards'
+      title: 'Безопасность',
+      description: 'Оборудование с сертификацией CE и высочайшими стандартами безопасности'
     },
     {
       icon: Target,
-      title: 'Präzision',
-      description: 'Exakte Behandlungsergebnisse durch fortschrittliche Lasertechnologie'
+      title: 'Точность',
+      description: 'Точные результаты процедур благодаря передовой лазерной технологии'
     },
     {
       icon: Star,
-      title: 'Exzellenz',
-      description: 'Qualitäts-Lasergeräte für professionelle Beauty-Anwendungen'
+      title: 'Превосходство',
+      description: 'Качественное лазерное оборудование для профессиональных бьюти-применений'
     }
   ];
 
@@ -149,11 +149,11 @@ const DekaGeraeteverkauf = () => {
         <div className="relative z-10 text-center max-w-5xl mx-auto px-4 animate-slide-up">
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 text-white drop-shadow-lg">
-            DEKA Geräteverkauf
+            Продажа оборудования DEKA
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-white/95 max-w-4xl mx-auto leading-relaxed mt-4">
-            Leistungsstarken Lasergeräte liefern sichere und außergewöhnliche Ergebnisse – für eine neue Ära der Schönheitsbehandlung.
+            Мощные лазерные аппараты обеспечивают безопасные и выдающиеся результаты – для новой эры косметологии.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -164,7 +164,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Beratung vereinbaren
+                Записаться на консультацию
               </a>
             </Button>
 
@@ -175,7 +175,7 @@ const DekaGeraeteverkauf = () => {
               asChild
             >
               <a href="#devices">
-                Geräte entdecken
+                Посмотреть оборудование
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
@@ -189,15 +189,15 @@ const DekaGeraeteverkauf = () => {
           <div className="max-w-6xl mx-auto text-center">
             <div className="animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
-                Präzision, Sicherheit und Exzellenz für Ihr Studio
+                Точность, безопасность и превосходство для вашей студии
               </h2>
 
               <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                DEKA Beauty steht für Innovation, Qualität und modernste Technologie in der Kosmetik.
-                Unsere Geräte vereinen technologische Spitzenleistungen mit einem benutzerfreundlichen
-                Design, das auf die Bedürfnisse der heutigen Beauty-Experten zugeschnitten ist.
-                Dank zahlreicher Auszeichnungen und CE-Zertifizierungen bieten unsere Systeme höchste
-                Sicherheit und Wirksamkeit.
+                DEKA Beauty – это инновации, качество и передовые технологии в косметологии.
+                Наши аппараты сочетают технологическое совершенство с удобным дизайном,
+                разработанным для потребностей современных бьюти-экспертов.
+                Благодаря многочисленным наградам и сертификации CE наши системы обеспечивают
+                максимальную безопасность и эффективность.
               </p>
             </div>
           </div>
@@ -209,9 +209,9 @@ const DekaGeraeteverkauf = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">DEKA Qualitätsversprechen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Гарантия качества DEKA</h2>
               <p className="text-xl text-muted-foreground">
-                Vier Säulen unserer Exzellenz
+                Четыре столпа нашего превосходства
               </p>
             </div>
 
@@ -240,9 +240,9 @@ const DekaGeraeteverkauf = () => {
       <section id="devices" className="py-20 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Unsere DEKA Geräte</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Наше оборудование DEKA</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Entdecken Sie unsere hochwertigen DEKA Lasergeräte für professionelle Beauty-Anwendungen
+              Откройте для себя высококачественные лазерные аппараты DEKA для профессионального бьюти-применения
             </p>
           </div>
 
@@ -289,7 +289,7 @@ const DekaGeraeteverkauf = () => {
                       <p className="text-muted-foreground text-lg leading-relaxed">{device.description}</p>
                     </div>
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold text-primary mb-4">Hauptmerkmale:</h4>
+                      <h4 className="text-lg font-semibold text-primary mb-4">Основные характеристики:</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {device.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
@@ -307,7 +307,7 @@ const DekaGeraeteverkauf = () => {
                       >
                         <a href="tel:+4915206067810" onClick={(e) => e.stopPropagation()}>
                           <Phone className="w-4 h-4 mr-2" />
-                          Beratung anfordern
+                          Запросить консультацию
                         </a>
                       </Button>
                       <Button
@@ -317,7 +317,7 @@ const DekaGeraeteverkauf = () => {
                       >
                         <a href="mailto:Yulachip@icloud.com" onClick={(e) => e.stopPropagation()}>
                           <Mail className="w-4 h-4 mr-2" />
-                          Angebot anfordern
+                          Запросить предложение
                         </a>
                       </Button>
                     </div>
@@ -340,10 +340,10 @@ const DekaGeraeteverkauf = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für DEKA Technologie?
+            Готовы к технологии DEKA?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Kontaktieren Sie uns für eine persönliche Beratung und erfahren Sie mehr über unsere DEKA Lasergeräte.
+            Свяжитесь с нами для персональной консультации и узнайте больше о наших лазерных аппаратах DEKA.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -354,7 +354,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt beraten lassen
+                Получить консультацию
               </a>
             </Button>
             <Button
@@ -365,7 +365,7 @@ const DekaGeraeteverkauf = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 ml-2" />
-                E-Mail senden
+                Отправить email
               </a>
             </Button>
           </div>

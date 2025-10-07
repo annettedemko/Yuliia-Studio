@@ -21,61 +21,61 @@ const MotusPro = () => {
   const technicalFeatures = [
     {
       number: '1',
-      title: 'Alexandrit-Wellenlänge (755 nm)',
-      description: 'Eignet sich zum wirkungsvollen Behandeln von feinem und hellem Haar.'
+      title: 'Длина волны александрита (755 нм)',
+      description: 'Подходит для эффективного удаления тонких и светлых волос.'
     },
     {
       number: '2',
-      title: 'Moveo-HR-Handstück',
-      description: 'Sowohl für Alexandrit- als auch für Nd:YAG-Laser erhältlich. Ermöglicht schmerzfreie und wirksame Haarentfernung mit neuer, leichterer, schnellerer und sichererer Methode.'
+      title: 'Манипула Moveo-HR',
+      description: 'Доступна как для александритовых, так и для Nd:YAG-лазеров. Обеспечивает безболезненное и эффективное удаление волос с помощью новой, более легкой, быстрой и безопасной методики.'
     },
     {
       number: '3',
-      title: 'Innovative Technologie',
-      description: 'Vereinfacht den Kern des Lasersystems strukturell und reduziert so die Kosten sowie Wartungsprobleme.'
+      title: 'Инновационная технология',
+      description: 'Структурно упрощает ядро лазерной системы, снижая расходы и проблемы с обслуживанием.'
     },
     {
       number: '4',
-      title: 'Modernes Design',
-      description: 'System mit großem und schwenkbarem 15,6 Zoll Display und intuitiver Benutzeroberfläche.'
+      title: 'Современный дизайн',
+      description: 'Система с большим поворотным дисплеем 15,6 дюймов и интуитивным пользовательским интерфейсом.'
     },
     {
       number: '5',
-      title: 'Kompaktes System',
-      description: 'Niedrige, laufende Kosten für das moderne Beauty-Studio.'
+      title: 'Компактная система',
+      description: 'Низкие эксплуатационные расходы для современной бьюти-студии.'
     }
   ];
 
   const keyFeatures = [
     {
       icon: Zap,
-      title: '755 / 1064 nm Kombilaser',
-      description: 'Die Alexandrit- und Nd:YAG-Wellenlänge ermöglichen eine maximale Flexibilität. Dank optimierter Stromversorgung reicht eine Standard Schuko-Steckdose mit 16A.'
+      title: 'Комбинированный лазер 755 / 1064 нм',
+      description: 'Длины волн александрита и Nd:YAG обеспечивают максимальную гибкость. Благодаря оптимизированному источнику питания достаточно стандартной розетки Schuko на 16А.'
     },
     {
       icon: Monitor,
-      title: 'Einfach und benutzerfreundlich',
-      description: 'Der Motus PRO zeichnet sich durch besondere Features aus: die kompakte Größe, intuitive Software, leichte und ergonomische Handstücke sowie die innovative Moveo-Methode.'
+      title: 'Простой и удобный',
+      description: 'Motus PRO отличается особыми характеристиками: компактные размеры, интуитивное программное обеспечение, легкие и эргономичные манипулы, а также инновационный метод Moveo.'
     },
     {
       icon: Target,
-      title: 'Innovatives Moveo-Handstück',
-      description: 'Der Motus PRO bietet mit seinem Moveo-HR-Handstück (24 mm Spot Ø) einen Fokus auf die Haarentfernung. Zusätzlich steht ein Anschluss für eine Hautkühlung zur Verfügung.'
+      title: 'Инновационная манипула Moveo',
+      description: 'Motus PRO предлагает манипулу Moveo-HR (диаметр пятна 24 мм) с фокусом на удаление волос. Дополнительно доступно подключение для охлаждения кожи.'
     },
     {
       icon: Award,
-      title: 'Integrierte Behandlungsprotokolle',
-      description: 'Der Motus PRO bietet bis zu 200 Behandlungsprotokolle für die Moveo-Technologie.'
+      title: 'Интегрированные протоколы процедур',
+      description: 'Motus PRO предлагает до 200 протоколов процедур для технологии Moveo.'
     },
     {
       icon: Shield,
-      title: 'Integrierte Hautkühlung',
-      description: 'Die Kontakthautkühlung und Moveo-Technologie sorgen für eine allmähliche Erwärmung, was eine sanfte Behandlung und minimale Nebenwirkungen garantiert.'
+      title: 'Интегрированное охлаждение кожи',
+      description: 'Контактное охлаждение кожи и технология Moveo обеспечивают постепенное нагревание, что гарантирует мягкую процедуру и минимальные побочные эффекты.'
     },
     {
       icon: Activity,
-      title: '180° schwenkbares 15,6″ Display',
-      description: 'Das dreh- und kippbare 15,6" Touchscreen Display mit einer komplett modernisierten Oberfläche und großen Symbolen ermöglicht eine intuitive sowie schnelle Bedienung.'
+      title: 'Дисплей 15,6″ с поворотом на 180°',
+      description: 'Поворотный и наклонный сенсорный дисплей 15,6" с полностью модернизированным интерфейсом и крупными иконками обеспечивает интуитивное и быстрое управление.'
     }
   ];
 
@@ -120,7 +120,7 @@ const MotusPro = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-green-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Die ideale Lösung für Haarentfernung
+                    Идеальное решение для эпиляции
                   </p>
                 </div>
 
@@ -132,7 +132,7 @@ const MotusPro = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Beratung vereinbaren
+                      Записаться на консультацию
                     </a>
                   </Button>
                 </div>
@@ -153,10 +153,10 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptmerkmale des Motus PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Основные характеристики Motus PRO</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Innovative Technologie für maximale Effizienz und Komfort
+                Инновационная технология для максимальной эффективности и комфорта
               </p>
             </div>
 
@@ -244,8 +244,8 @@ const MotusPro = () => {
                   }}
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">Moveo-Handstück</h4>
-                  <p className="text-sm text-muted-foreground">Innovative Saphir-Spitze für präzise Energieübertragung</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">Манипула Moveo</h4>
+                  <p className="text-sm text-muted-foreground">Инновационный сапфировый наконечник для точной передачи энергии</p>
                 </div>
               </div>
 
@@ -256,8 +256,8 @@ const MotusPro = () => {
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">15,6″ Touchscreen</h4>
-                  <p className="text-sm text-muted-foreground">180° schwenkbares Display mit intuitiver Benutzeroberfläche</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">Сенсорный экран 15,6″</h4>
+                  <p className="text-sm text-muted-foreground">Дисплей с поворотом на 180° и интуитивным интерфейсом</p>
                 </div>
               </div>
 
@@ -268,8 +268,8 @@ const MotusPro = () => {
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">Kompaktes Design</h4>
-                  <p className="text-sm text-muted-foreground">Modernes System für das professionelle Beauty-Studio</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">Компактный дизайн</h4>
+                  <p className="text-sm text-muted-foreground">Современная система для профессиональной бьюти-студии</p>
                 </div>
               </div>
             </div>
@@ -288,10 +288,10 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Technische Features</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Технические характеристики</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-blue-300 to-cyan-400 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-blue-100">
-                Fünf Schlüsseltechnologien für optimale Behandlungsergebnisse
+                Пять ключевых технологий для оптимальных результатов процедур
               </p>
             </div>
 
@@ -327,40 +327,40 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Die Moveo-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Технология Moveo</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6"></div>
-              <p className="text-xl text-blue-100">Gesteigerte Effizienz für maximale Ergebnisse</p>
+              <p className="text-xl text-blue-100">Повышенная эффективность для максимальных результатов</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-up">
                 <Card className="bg-white/10 backdrop-blur-sm border border-white/20">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-6 text-cyan-300">Revolutionäre Saphir-Spitze</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-cyan-300">Революционный сапфировый наконечник</h3>
                     <p className="text-lg leading-relaxed mb-6 text-blue-100">
-                      Das Moveo-Handstück von DEKA revolutioniert die Laserbehandlung, indem es dank einer
-                      innovativen Saphir-Spitze Energieverluste minimiert und die Laserenergie präzise auf
-                      die Haut überträgt – selbst bei besonders hellen Hauttypen.
+                      Манипула Moveo от DEKA революционизирует лазерные процедуры, благодаря
+                      инновационному сапфировому наконечнику минимизируя потери энергии и точно передавая
+                      лазерную энергию на кожу – даже для особенно светлых типов кожи.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                       <div className="bg-cyan-500/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-cyan-300 mb-2">Intelligente Software</h4>
-                        <p className="text-blue-100 text-sm">Erkennt das Handstück automatisch und bietet schnelle Parameterauswahl</p>
+                        <h4 className="font-semibold text-cyan-300 mb-2">Интеллектуальное ПО</h4>
+                        <p className="text-blue-100 text-sm">Автоматически распознает манипулу и предлагает быстрый выбор параметров</p>
                       </div>
                       <div className="bg-cyan-500/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-cyan-300 mb-2">Integrierter Speicher</h4>
-                        <p className="text-blue-100 text-sm">Zeigt die abgegebene Energie an mit akustischem Behandlungssignal</p>
+                        <h4 className="font-semibold text-cyan-300 mb-2">Встроенная память</h4>
+                        <p className="text-blue-100 text-sm">Отображает переданную энергию со звуковым сигналом процедуры</p>
                       </div>
                     </div>
 
                     <div className="border-t border-white/20 pt-6">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="w-5 h-5 text-cyan-400" />
-                        <span className="font-semibold text-cyan-300">Ultraschnelle Behandlung</span>
+                        <span className="font-semibold text-cyan-300">Ультрабыстрая процедура</span>
                       </div>
                       <p className="text-blue-100 text-sm">
-                        Hautareale von 10 x 10 cm in nur 25 Sekunden effizient behandeln
+                        Эффективная обработка участков кожи 10 x 10 см всего за 25 секунд
                       </p>
                     </div>
                   </CardContent>
@@ -380,7 +380,7 @@ const MotusPro = () => {
                       <div className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-amber-300/50">
                         <span className="text-white font-bold text-xs flex items-center whitespace-nowrap">
                           <Sparkles className="w-3 h-3 mr-1" />
-                          Premium Technologie
+                          Премиум-технология
                         </span>
                       </div>
                     </div>
@@ -412,10 +412,10 @@ const MotusPro = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Jetzt Motus PRO erleben</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Испытайте Motus PRO прямо сейчас</h2>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
-              Entdecken Sie die revolutionäre Motus PRO Technologie für Ihr Beauty-Studio.
-              Kontaktieren Sie uns für eine individuelle Beratung und Demonstration.
+              Откройте для себя революционную технологию Motus PRO для вашей бьюти-студии.
+              Свяжитесь с нами для индивидуальной консультации и демонстрации.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -426,7 +426,7 @@ const MotusPro = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-5 h-5 mr-2" />
-                  Sofort anrufen
+                  Позвонить сейчас
                 </a>
               </Button>
 
@@ -438,7 +438,7 @@ const MotusPro = () => {
               >
                 <a href="mailto:info@yuliia-studio.de">
                   <Mail className="w-5 h-5 mr-2" />
-                  Angebot anfordern
+                  Запросить предложение
                 </a>
               </Button>
 
@@ -450,15 +450,15 @@ const MotusPro = () => {
               >
                 <Link to="/deka-geraeteverkauf">
                   <ArrowRight className="w-5 h-5 mr-2" />
-                  Weitere DEKA Geräte
+                  Другое оборудование DEKA
                 </Link>
               </Button>
             </div>
 
             <div className="mt-8 pt-8 border-t border-white/20">
               <p className="text-white/80 text-sm">
-                Als offizieller DEKA Vertriebspartner bieten wir Ihnen umfassende Beratung,
-                Schulungen und professionellen Support für Ihre Motus PRO Installation.
+                Как официальный партнер по продажам DEKA, мы предлагаем вам комплексные консультации,
+                обучение и профессиональную поддержку для установки Motus PRO.
               </p>
             </div>
           </div>

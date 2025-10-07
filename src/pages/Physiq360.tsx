@@ -8,15 +8,15 @@ const Physiq360 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const beforeAfterImages = [
-    { id: 1, src: '/34.jpg', alt: 'PHYSIQ 360 Ergebnis 1' },
-    { id: 2, src: '/35.jpg', alt: 'PHYSIQ 360 Ergebnis 2' },
-    { id: 3, src: '/36.jpg', alt: 'PHYSIQ 360 Ergebnis 3' },
-    { id: 4, src: '/37.jpg', alt: 'PHYSIQ 360 Ergebnis 4' },
-    { id: 5, src: '/38.jpg', alt: 'PHYSIQ 360 Ergebnis 5' },
-    { id: 6, src: '/39.jpg', alt: 'PHYSIQ 360 Ergebnis 6' },
-    { id: 7, src: '/40.jpg', alt: 'PHYSIQ 360 Ergebnis 7' },
-    { id: 8, src: '/41.jpg', alt: 'PHYSIQ 360 Ergebnis 8' },
-    { id: 9, src: '/42.jpg', alt: 'PHYSIQ 360 Ergebnis 9' },
+    { id: 1, src: '/34.jpg', alt: 'PHYSIQ 360 Результат 1' },
+    { id: 2, src: '/35.jpg', alt: 'PHYSIQ 360 Результат 2' },
+    { id: 3, src: '/36.jpg', alt: 'PHYSIQ 360 Результат 3' },
+    { id: 4, src: '/37.jpg', alt: 'PHYSIQ 360 Результат 4' },
+    { id: 5, src: '/38.jpg', alt: 'PHYSIQ 360 Результат 5' },
+    { id: 6, src: '/39.jpg', alt: 'PHYSIQ 360 Результат 6' },
+    { id: 7, src: '/40.jpg', alt: 'PHYSIQ 360 Результат 7' },
+    { id: 8, src: '/41.jpg', alt: 'PHYSIQ 360 Результат 8' },
+    { id: 9, src: '/42.jpg', alt: 'PHYSIQ 360 Результат 9' },
   ];
 
   const nextSlide = () => {
@@ -29,42 +29,42 @@ const Physiq360 = () => {
   const keyFeatures = [
     {
       icon: Sparkles,
-      title: "Vielseitige Technologie",
-      description: "PHYSIQ 360 kombiniert EMS und LZR mit exklusiver STEP-Technologie. Dies ermöglicht eine effektive Behandlung von Muskeln und Körperreserven in einer Sitzung."
+      title: "Универсальная технология",
+      description: "PHYSIQ 360 сочетает EMS и LZR с эксклюзивной технологией STEP. Это обеспечивает эффективную процедуру для мышц и жировых отложений за один сеанс."
     },
     {
       icon: Target,
-      title: "Individuelle Behandlungsoptionen",
-      description: "Mit vier unabhängigen Applikatoren können mehrere Körperbereiche gleichzeitig behandelt werden. Dies maximiert die Effizienz und Behandlungsergebnisse."
+      title: "Индивидуальные варианты процедур",
+      description: "С четырьмя независимыми аппликаторами можно одновременно обрабатывать несколько зон тела. Это максимизирует эффективность и результаты процедуры."
     },
     {
       icon: Shield,
-      title: "Optimierte Patientenerfahrung",
-      description: "Die Behandlung ist komfortabel und erfordert keine Ausfallzeiten. Konstante Kühlung und individuelle Anpassungen sorgen für eine angenehme Sitzung."
+      title: "Оптимизированный опыт пациента",
+      description: "Процедура комфортна и не требует периода восстановления. Постоянное охлаждение и индивидуальные настройки обеспечивают приятный сеанс."
     },
     {
       icon: Clock,
-      title: "Geringer Personalaufwand",
-      description: "Dank intuitiver Steuerung und selbstfixierenden Applikatoren ist der Personalaufwand minimal. So können mehr Patienten in kürzerer Zeit behandelt werden."
+      title: "Минимальные затраты персонала",
+      description: "Благодаря интуитивному управлению и самофиксирующимся аппликаторам затраты персонала минимальны. Так можно обработать больше пациентов за меньшее время."
     },
     {
       icon: Award,
-      title: "Sicher und effektiv",
-      description: "PHYSIQ 360 ist für alle Haut- und Körpertypen geeignet. Anpassbare und vorab definierte Parameter, einschließlich speziell entwickelter Kombinationsbehandlungen ermöglichen optimale Ergebnisse."
+      title: "Безопасно и эффективно",
+      description: "PHYSIQ 360 подходит для всех типов кожи и тела. Настраиваемые и предустановленные параметры, включая специально разработанные комбинированные процедуры, обеспечивают оптимальные результаты."
     }
   ];
 
   const technologyFeatures = [
     {
       title: "EMS",
-      subtitle: "Elektrische Muskelstimulation",
-      description: "Aktiviert kraftvoll alle Muskelfasern für eine umfassende Muskelneubildung.",
+      subtitle: "Электрическая мышечная стимуляция",
+      description: "Мощно активирует все мышечные волокна для комплексного наращивания мышц.",
       icon: Zap
     },
     {
       title: "LZR",
-      subtitle: "Laserbehandlung",
-      description: "Laserenergie mit der patent-pending PURE BEAM-Technologie gewährleistet optimale Qualität, Gleichmäßigkeit und Eindringtiefe, um die Körperregionen gezielt zu behandeln.",
+      subtitle: "Лазерная процедура",
+      description: "Лазерная энергия с патентованной технологией PURE BEAM гарантирует оптимальное качество, однородность и глубину проникновения для целенаправленной обработки зон тела.",
       icon: Target
     }
   ];
@@ -113,7 +113,7 @@ const Physiq360 = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-orange-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Das System für einzigartige Körperkonturierung
+                    Система для уникальной коррекции фигуры
                   </p>
                 </div>
 
@@ -125,7 +125,7 @@ const Physiq360 = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Beratung vereinbaren
+                      Записаться на консультацию
                     </a>
                   </Button>
                 </div>
@@ -146,9 +146,9 @@ const Physiq360 = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Revolutionäre PHYSIQ 360 Features</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Революционные возможности PHYSIQ 360</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 mx-auto mb-6"></div>
-              <p className="text-xl text-muted-foreground">Innovative Technologie für einzigartige Körperkonturierung</p>
+              <p className="text-xl text-muted-foreground">Инновационная технология для уникальной коррекции фигуры</p>
             </div>
 
             {/* Cards Around Device Layout */}
@@ -233,12 +233,12 @@ const Physiq360 = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Exklusive STEP-Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Эксклюзивная технология STEP</h2>
               <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                Die exklusive STEP-Technologie (Sequential Thermal & Electrical Pulse) ermöglicht die sequenzielle
-                Anwendung von EMS und LZR in einer einzigen Sitzung. Durch die gezielte Anpassung der Energiearten
-                für Muskeln und Körperreserven werden die Ergebnisse maximiert, während die Behandlungsdauer
-                minimiert wird.
+                Эксклюзивная технология STEP (Sequential Thermal & Electrical Pulse) позволяет последовательно
+                применять EMS и LZR в одном сеансе. Благодаря целенаправленной адаптации типов энергии
+                для мышц и жировых отложений результаты максимизируются, а продолжительность процедуры
+                минимизируется.
               </p>
             </div>
 
@@ -318,12 +318,12 @@ const Physiq360 = () => {
             <div className="text-center mb-12 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">
                 <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-                  Behandlungsergebnisse
+                  Результаты процедур
                 </span>
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-primary via-rose-gold to-primary mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Sehen Sie die beeindruckenden Ergebnisse unserer PHYSIQ 360 Behandlungen
+                Посмотрите впечатляющие результаты наших процедур PHYSIQ 360
               </p>
             </div>
 
@@ -349,14 +349,14 @@ const Physiq360 = () => {
                 <button
                   onClick={prevSlide}
                   className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group z-10"
-                  aria-label="Vorheriges Bild"
+                  aria-label="Предыдущее изображение"
                 >
                   <ChevronLeft className="w-6 h-6 text-primary group-hover:text-rose-gold" />
                 </button>
                 <button
                   onClick={nextSlide}
                   className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 group z-10"
-                  aria-label="Nächstes Bild"
+                  aria-label="Следующее изображение"
                 >
                   <ChevronRight className="w-6 h-6 text-primary group-hover:text-rose-gold" />
                 </button>
@@ -373,7 +373,7 @@ const Physiq360 = () => {
                         ? 'bg-rose-gold w-8'
                         : 'bg-gray-300 hover:bg-gray-400'
                     }`}
-                    aria-label={`Bild ${index + 1} anzeigen`}
+                    aria-label={`Показать изображение ${index + 1}`}
                   />
                 ))}
               </div>
@@ -391,12 +391,12 @@ const Physiq360 = () => {
               <CardContent className="p-6 text-center">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <Sparkles className="w-5 h-5 text-rose-gold" />
-                  <h3 className="font-bold text-primary text-lg">Individuelle Ergebnisse</h3>
+                  <h3 className="font-bold text-primary text-lg">Индивидуальные результаты</h3>
                   <Sparkles className="w-5 h-5 text-rose-gold" />
                 </div>
                 <p className="text-muted-foreground">
-                  Die Ergebnisse können je nach individuellem Körpertyp, Lebensstil und Anzahl der Behandlungen variieren.
-                  Wir beraten Sie gerne persönlich über realistische Erwartungen für Ihre Behandlung.
+                  Результаты могут варьироваться в зависимости от индивидуального типа тела, образа жизни и количества процедур.
+                  Мы с удовольствием проконсультируем вас лично о реалистичных ожиданиях от вашей процедуры.
                 </p>
               </CardContent>
             </Card>
@@ -414,10 +414,10 @@ const Physiq360 = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-primary">
-            Bereit für revolutionäre Körperkonturierung?
+            Готовы к революционной коррекции фигуры?
           </h2>
           <p className="text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-            Erleben Sie die innovative PHYSIQ 360 Technologie in unserem Studio. Vereinbaren Sie noch heute Ihren Beratungstermin.
+            Испытайте инновационную технологию PHYSIQ 360 в нашей студии. Запишитесь на консультацию уже сегодня.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -428,7 +428,7 @@ const Physiq360 = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt beraten lassen
+                Получить консультацию
               </a>
             </Button>
             <Button
@@ -439,7 +439,7 @@ const Physiq360 = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <ArrowRight className="w-5 h-5 ml-2" />
-                E-Mail senden
+                Отправить email
               </a>
             </Button>
           </div>
@@ -448,15 +448,15 @@ const Physiq360 = () => {
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-                <p className="text-sm text-primary">DEKA Zertifiziert</p>
+                <p className="text-sm text-primary">Сертификация DEKA</p>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                <p className="text-sm text-primary">Sicher & Effektiv</p>
+                <p className="text-sm text-primary">Безопасно и эффективно</p>
               </div>
               <div className="text-center">
                 <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
-                <p className="text-sm text-primary">Premium Qualität</p>
+                <p className="text-sm text-primary">Премиум качество</p>
               </div>
             </div>
 

@@ -36,46 +36,6 @@ const DekaAnna = () => {
     loadEvents();
   }, []);
 
-  // Fallback events data if Supabase is not available
-  const fallbackEvents = [
-    {
-      id: '1',
-      title: 'DEKA Beauty Day',
-      date: '2025-10-05',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    },
-    {
-      id: '2',
-      title: 'BEAUTY FORUM Festival 2025',
-      date: '2025-10-18',
-      time: '10:00–17:00',
-      location: 'Messe München',
-      address: 'Am Messesee 2, 81829 München',
-      description: 'Besuchen Sie den DEKA-Stand – innovative Lösungen für Haarentfernung, Hautverjüngung und Körperformung: Motus AX, Again COS, Motus PRO, PHYSIQ 360 und RedTouch PRO'
-    },
-    {
-      id: '3',
-      title: 'DEKA Beauty Day',
-      date: '2025-11-09',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    },
-    {
-      id: '4',
-      title: 'DEKA Beauty Day',
-      date: '2025-12-17',
-      time: '18:00',
-      location: 'Yuliia Cheporska Studio',
-      address: 'Elsässer Straße 33, 81667 München',
-      description: 'Exklusive Präsentation der neuesten DEKA Technologien mit Live-Demonstrationen'
-    }
-  ];
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -84,24 +44,13 @@ const DekaAnna = () => {
     }));
   };
 
-  // Combine events data - use upcomingEvents if available, fallback otherwise
-  const eventsToShow = upcomingEvents.length > 0 ? upcomingEvents : fallbackEvents;
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const eventDetails = eventsToShow.find(event => event.id === formData.selectedEvent);
-    const eventInfo = eventDetails ? `Veranstaltung: ${eventDetails.title} am ${eventDetails.date} um ${eventDetails.time}` : '';
-
-    // Prepare form data for the hook - it expects the raw form data and will process it
-    const submissionData = {
-      ...formData,
-      selectedEvent: eventInfo // Pass the event info as the selectedEvent message
-    };
-
-    await submitForm(submissionData);
+    await submitForm(formData);
 
     if (!submitError) {
+      // Reset form on success
       setFormData({
         vorname: '',
         name: '',
@@ -125,8 +74,8 @@ const DekaAnna = () => {
     },
     {
       icon: Star,
-      titleKey: 'deka-day.benefits.income',
-      descriptionKey: 'deka-day.benefits.income.desc'
+      titleKey: 'benefits.income',
+      descriptionKey: 'benefits.income.desc'
     },
     {
       icon: Shield,
@@ -145,83 +94,83 @@ const DekaAnna = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-800">
-        {/* Background with DEKA Devices */}
-        <div className="absolute inset-0 opacity-12">
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-6 h-full w-full p-8 items-center justify-items-center">
-            <div className="animate-float-5">
-              <img src="/deka5.png" alt="Again cos" className="w-36 md:w-48 h-auto opacity-90 hover:opacity-90 transition-opacity duration-500" />
-            </div>
-            <div className="animate-float-3">
-              <img src="/deka3.png" alt="Motus AX" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
-            </div>
-            <div className="animate-float-2 col-span-1 md:col-span-1">
-              <img src="/deka2.png" alt="RedTouch PRO" className="w-40 md:w-52 h-auto opacity-90 hover:opacity-90 transition-opacity duration-500" />
-            </div>
+      <section className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+        {/* Background with DEKA Devices - Optimized for mobile */}
+        <div className="absolute inset-0 opacity-10 sm:opacity-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 h-full w-full p-4 sm:p-8 items-center justify-items-center">
             <div className="animate-float-1">
-              <img src="/deka1.png" alt="Motus PRO" className="w-32 md:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+              <img src="/deka1.png" alt="Motus PRO" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
-            <div className="animate-float-4">
-              <img src="/deka4.png" alt="PHYSIQ 360" className="w-34 md:w-46 h-auto opacity-85 hover:opacity-85 transition-opacity duration-500" />
+            <div className="animate-float-2">
+              <img src="/deka2.png" alt="RedTouch PRO" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+            </div>
+            <div className="animate-float-3 col-span-1 md:col-span-1">
+              <img src="/deka3.png" alt="Motus AX" className="w-24 sm:w-32 md:w-36 lg:w-48 h-auto opacity-90 hover:opacity-90 transition-opacity duration-500" />
+            </div>
+            <div className="animate-float-4 hidden sm:block">
+              <img src="/deka4.png" alt="PHYSIQ 360" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+            </div>
+            <div className="animate-float-5 hidden sm:block">
+              <img src="/deka5.png" alt="Again cos" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
             </div>
           </div>
         </div>
 
-        {/* Animated Background Particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-80 h-80 bg-emerald-500/10 rounded-full -top-40 -right-40 animate-pulse delay-300"></div>
-          <div className="absolute w-96 h-96 bg-teal-500/10 rounded-full -bottom-48 -left-48 animate-pulse delay-1000"></div>
-          <div className="absolute w-72 h-72 bg-rose-gold/10 rounded-full top-1/4 left-1/3 animate-pulse delay-600"></div>
+        {/* Animated Background Particles - Smaller for mobile */}
+        <div className="absolute inset-0 overflow-hidden hidden sm:block">
+          <div className="absolute w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-rose-gold/10 rounded-full -top-24 sm:-top-48 -left-24 sm:-left-48 animate-pulse"></div>
+          <div className="absolute w-48 sm:w-64 md:w-96 h-48 sm:h-64 md:h-96 bg-primary/10 rounded-full -bottom-24 sm:-bottom-48 -right-24 sm:-right-48 animate-pulse delay-1000"></div>
+          <div className="absolute w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-blue-500/10 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse delay-500"></div>
         </div>
 
         {/* Main Content */}
-        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
+        <div className="relative z-10 text-center px-4 py-8 sm:py-12 max-w-6xl mx-auto">
           <div className="animate-fade-in-up">
             {/* DEKA Logo */}
-            <div className="mb-8 flex justify-center">
+            <div className="mb-6 sm:mb-8 flex justify-center">
               <img
                 src="/DEKA logo.png"
                 alt="DEKA Logo"
-                className="h-16 md:h-20 w-auto filter drop-shadow-2xl animate-glow"
+                className="h-12 sm:h-16 md:h-20 w-auto filter drop-shadow-2xl animate-glow"
               />
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white via-emerald-200 to-white bg-clip-text text-transparent animate-shimmer">
-                {t('anna.hero.title')}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-rose-gold to-white bg-clip-text text-transparent animate-shimmer">
+                {t('deka.hero.title')}
               </span>
             </h1>
 
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-emerald-300 mb-8 animate-fade-in-up delay-300">
-              {t('anna.hero.subtitle')}
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-rose-gold mb-6 sm:mb-8 animate-fade-in-up delay-300 leading-tight">
+              {t('deka.hero.subtitle')}
             </h2>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-500">
-              {t('anna.hero.description')}<br/>
-              <span className="text-emerald-300 font-medium">{t('anna.hero.features')}</span>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-500">
+              {t('deka.hero.description')}<br/>
+              <span className="text-rose-gold font-medium">{t('deka.hero.features')}</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-700">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-teal-600 hover:to-emerald-500 text-white text-lg py-6 px-8 rounded-full shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-sm sm:text-base md:text-lg py-4 sm:py-6 px-6 sm:px-8 rounded-full shadow-2xl hover:shadow-rose-gold/25 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 onClick={() => {
                   const registrationSection = document.querySelector('#registration-form');
                   registrationSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {t('anna.hero.button')}
+                {t('deka.hero.button')}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10 text-lg py-6 px-8 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                className="border-white/30 text-white hover:bg-white/10 text-sm sm:text-base md:text-lg py-4 sm:py-6 px-6 sm:px-8 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 onClick={() => {
                   const benefitsSection = document.querySelector('#benefits-section');
                   benefitsSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {t('anna.hero.button2')}
+                {t('deka.hero.button2')}
               </Button>
             </div>
           </div>
@@ -236,24 +185,24 @@ const DekaAnna = () => {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits-section" className="py-16 bg-accent/10">
+      <section id="benefits-section" className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-3xl font-bold text-center text-primary mb-4">
+            <h3 className="text-2xl sm:text-3xl font-bold text-center text-primary mb-4">
               {t('benefits.title')}
             </h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
               {benefits.map((benefit, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-rose-gold/20 p-3 rounded-full flex-shrink-0">
-                        <benefit.icon className="w-6 h-6 text-rose-gold" />
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="bg-rose-gold/20 p-2 sm:p-3 rounded-full flex-shrink-0">
+                        <benefit.icon className="w-5 h-5 sm:w-6 sm:h-6 text-rose-gold" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary mb-2">{t(benefit.titleKey)}</h4>
-                        <p className="text-muted-foreground">{t(benefit.descriptionKey)}</p>
+                        <h4 className="font-semibold text-primary mb-2 text-sm sm:text-base">{t(benefit.titleKey)}</h4>
+                        <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{t(benefit.descriptionKey)}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -384,18 +333,18 @@ const DekaAnna = () => {
       </section>
 
       {/* Registration Form */}
-      <section id="registration-form" className="py-16 bg-background">
+      <section id="registration-form" className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card className="shadow-xl">
-              <CardHeader className="text-center">
-                <CardTitle className="text-3xl font-bold text-primary">
-                  {t('anna.form.title')}
+              <CardHeader className="text-center p-4 sm:p-6">
+                <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
+                  {t('registration.title')}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CardContent className="p-4 sm:p-6 md:p-8">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="vorname" className="text-base font-medium">
                         {t('form.firstname')}:
@@ -456,7 +405,7 @@ const DekaAnna = () => {
                     />
                   </div>
 
-                  {eventsToShow.length > 0 && (
+                  {upcomingEvents.length > 0 && (
                     <div>
                       <Label htmlFor="selectedEvent" className="text-base font-medium">
                         {t('events.select-event')}
@@ -470,7 +419,7 @@ const DekaAnna = () => {
                         required
                       >
                         <option value="">{t('events.select-placeholder')}</option>
-                        {eventsToShow.map((event) => (
+                        {upcomingEvents.map((event) => (
                           <option key={event.id} value={event.id}>
                             {event.title} - {new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
@@ -521,9 +470,9 @@ const DekaAnna = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-lg py-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-base sm:text-lg py-4 sm:py-6 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg touch-manipulation"
                   >
-                    {isSubmitting ? t('ui.submitting') : t('anna.hero.button')}
+                    {isSubmitting ? t('ui.submitting') : t('form.submit')}
                   </Button>
                 </form>
               </CardContent>
@@ -541,7 +490,7 @@ const DekaAnna = () => {
               <p className="text-muted-foreground">{t('devices.subtitle')}</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {[
                 { name: 'Motus PRO', src: '/deka1.png', alt: 'Motus PRO', link: '/motus-pro' },
                 { name: 'RedTouch PRO', src: '/deka2.png', alt: 'RedTouch PRO', link: '/redtouch-pro' },
@@ -550,13 +499,13 @@ const DekaAnna = () => {
                 { name: 'Again cos', src: '/deka5.png', alt: 'Again cos', link: '/again-cos' }
               ].map((device, index) => (
                 <Link key={index} to={device.link} className="block">
-                  <div className="bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 cursor-pointer">
+                  <div className="bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-3 sm:p-4 cursor-pointer touch-manipulation">
                     <img
                       src={device.src}
                       alt={device.alt}
-                      className="w-full h-32 object-contain object-center mb-3"
+                      className="w-full h-24 sm:h-28 md:h-32 object-contain object-center mb-2 sm:mb-3"
                     />
-                    <h4 className="text-sm font-semibold text-center text-primary">{device.name}</h4>
+                    <h4 className="text-xs sm:text-sm font-semibold text-center text-primary leading-tight">{device.name}</h4>
                   </div>
                 </Link>
               ))}
@@ -569,5 +518,4 @@ const DekaAnna = () => {
 };
 
 export default DekaAnna;
-
 

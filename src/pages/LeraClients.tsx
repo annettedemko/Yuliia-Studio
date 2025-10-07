@@ -36,6 +36,7 @@ import {
   deleteLeraClient
 } from '@/utils/clientsAPI';
 import type { Database } from '@/lib/supabase';
+import { FormSubmissionsWidget } from '@/components/admin/FormSubmissionsWidget';
 
 type LeraClient = Database['public']['Tables']['lera_clients']['Row'];
 type LeraClientInsert = Database['public']['Tables']['lera_clients']['Insert'];
@@ -286,6 +287,9 @@ const LeraClients = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Form Submissions Widget */}
+        <FormSubmissionsWidget owner="Lera" />
       </div>
     </div>
   );

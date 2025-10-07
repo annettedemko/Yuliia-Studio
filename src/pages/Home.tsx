@@ -15,8 +15,8 @@ const Home = () => {
   const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
   useEffect(() => {
     setPageMeta({
-      title: 'Yuliia Cheporska Studio | Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Nägel – München',
-      description: 'Studio in München-Haidhausen (Elsässer Str. 33). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Termin online buchen.'
+      title: 'Yuliia Cheporska Studio | Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Nails – München',
+      description: 'Studio in München-Haidhausen (Elsässer Str. 33). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Jetzt online buchen.'
     });
 
     setJsonLd({
@@ -234,7 +234,7 @@ const Home = () => {
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <Link to="/preis">
-                Alle Preise ansehen
+                Посмотреть все цены
               </Link>
             </Button>
           </div>
@@ -268,7 +268,10 @@ const Home = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-              {subscriptions.map((pkg, index) => {
+              {[...subscriptions].sort((a, b) => {
+                const order = { 'Silber': 1, 'Gold': 2, 'Platin': 3 };
+                return (order[a.name] || 99) - (order[b.name] || 99);
+              }).map((pkg, index) => {
                 const isPopular = pkg.is_popular;
                 const tierColors = {
                   'Silber': { border: 'border-gray-400', shadow: 'hover:shadow-gray-500/20', gradient: 'from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500', text: 'text-gray-500', bgGradient: 'from-gray-100/50 to-gray-200/30' },
@@ -556,7 +559,7 @@ const Home = () => {
                     className="text-muted-foreground hover:text-rose-gold transition-colors"
                   >
                     Elsässer Straße 33<br />
-                    81667 München
+                    81667 Мюнхен
                   </a>
                 </div>
               </div>

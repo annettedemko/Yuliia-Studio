@@ -22,38 +22,38 @@ const RedTouchPro = () => {
   const deviceFeatures = [
     {
       icon: Sparkles,
-      title: 'Flexible Faser',
-      description: 'Das Laserlicht wird über eine lange und flexible Faser übertragen und gewährleistet somit optimalen Komfort für den Behandler.',
+      title: 'Гибкое волокно',
+      description: 'Лазерный свет передается через длинное и гибкое волокно, обеспечивая оптимальный комфорт для специалиста.',
       position: 'top-left'
     },
     {
       icon: Monitor,
-      title: 'Ultrascharfer 10,1″ LCD Touchscreen',
-      description: 'Das ultrascharfe und reaktionsschnelle 10,1" Display mit einer modernen Benutzeroberfläche ermöglicht eine intuitive Bedienung.',
+      title: 'Ультрачеткий 10,1″ LCD сенсорный экран',
+      description: 'Ультрачеткий и быстрореагирующий 10,1" дисплей с современным интерфейсом обеспечивает интуитивное управление.',
       position: 'top-right'
     },
     {
       icon: Award,
-      title: 'Integrierte Protokolle',
-      description: 'Für den RedTouch PRO wurden spezielle Behandlungsprotokolle für die Hautverjüngung entwickelt.',
+      title: 'Интегрированные протоколы',
+      description: 'Для RedTouch PRO разработаны специальные протоколы процедур для омоложения кожи.',
       position: 'center-left'
     },
     {
       icon: Shield,
-      title: 'Integrierte Hautkühlung',
-      description: 'Dank des integrierten Hautkühlungssystems wird die Epidermisschicht nicht beschädigt, dadurch werden Nebenwirkungen und daraus resultierende Ausfallzeiten minimiert.',
+      title: 'Интегрированное охлаждение кожи',
+      description: 'Благодаря встроенной системе охлаждения кожи эпидермальный слой не повреждается, что минимизирует побочные эффекты и период восстановления.',
       position: 'center-right'
     },
     {
       icon: Target,
-      title: 'Innovatives Wellenlängen-System',
-      description: 'Der RedTouch war das erste System mit 675 nm, welches selektiv auf Kollagenfasern einwirkt und deshalb besonders effektiv arbeitet.',
+      title: 'Инновационная система длины волны',
+      description: 'RedTouch стал первой системой с 675 нм, которая избирательно воздействует на коллагеновые волокна и поэтому работает особенно эффективно.',
       position: 'bottom-left'
     },
     {
       icon: Activity,
-      title: 'Scanner',
-      description: 'Der integrierte Scanner erzielt mittels optimierter Ergonomie bestmögliche Ergebnisse. Mikrozonen thermischer Schädigung rufen eine konsekutive Kollagenfaserdenaturierung hervor.',
+      title: 'Сканер',
+      description: 'Интегрированный сканер обеспечивает наилучшие результаты благодаря оптимизированной эргономике. Микрозоны термического повреждения вызывают последовательную денатурацию коллагеновых волокон.',
       position: 'bottom-right'
     }
   ];
@@ -61,60 +61,60 @@ const RedTouchPro = () => {
   const advantages = [
     {
       icon: Zap,
-      title: 'Mikrozonen thermischer Schädigung',
-      description: 'Rufen eine sofortige konsekutive Kollagenfaserdenaturierung hervor, die zur Neokollagenese führt'
+      title: 'Микрозоны термического повреждения',
+      description: 'Вызывают немедленную последовательную денатурацию коллагеновых волокон, что приводит к неоколлагенезу'
     },
     {
       icon: Shield,
-      title: 'Integrierte Hautkühlung',
-      description: 'Minimiert Nebenwirkungen und Ausfallzeiten durch Schutz der Epidermisschicht'
+      title: 'Интегрированное охлаждение кожи',
+      description: 'Минимизирует побочные эффекты и период восстановления за счет защиты эпидермального слоя'
     },
     {
       icon: Target,
-      title: '675 nm Wellenlänge',
-      description: 'Selektiv auf Kollagenfasern ausgerichtet für hocheffektive Behandlungen'
+      title: 'Длина волны 675 нм',
+      description: 'Избирательно направлена на коллагеновые волокна для высокоэффективных процедур'
     },
     {
       icon: Activity,
-      title: 'Moveo-Modus',
-      description: 'Verbesserte Behandlungsgeschwindigkeit und Handhabung auch bei dunkler Haut'
+      title: 'Режим Moveo',
+      description: 'Улучшенная скорость процедуры и работа даже с темной кожей'
     },
     {
       icon: Star,
-      title: 'Mehr Leistung',
-      description: 'Weiterentwicklung des RedTouch mit verbesserter Kühlung und höherer Effizienz'
+      title: 'Больше мощности',
+      description: 'Усовершенствованная версия RedTouch с улучшенным охлаждением и повышенной эффективностью'
     },
     {
       icon: CheckCircle,
-      title: 'Alle Hauttypen',
-      description: 'Sicher anwendbar bei verschiedenen Hauttypen, auch gebräunter Haut'
+      title: 'Все типы кожи',
+      description: 'Безопасно применяется на разных типах кожи, включая загорелую кожу'
     }
   ];
 
   const applications = [
-    'Hautverjüngung und Anti-Aging',
-    'Verbesserung der Hautelastizität',
-    'Kollagen-Stimulation',
-    'Behandlung verschiedener Hauttypen',
-    'Reduzierung von Hauterschlaffung',
-    'Optimierung der Hautstruktur'
+    'Омоложение кожи и Anti-Aging',
+    'Улучшение эластичности кожи',
+    'Стимуляция коллагена',
+    'Процедуры для различных типов кожи',
+    'Уменьшение провисания кожи',
+    'Оптимизация структуры кожи'
   ];
 
   const designFeatures = [
     {
       icon: Monitor,
-      title: 'Touchscreen Interface',
-      description: 'Intuitive Bedienung über modernes Touchscreen-Display'
+      title: 'Сенсорный интерфейс',
+      description: 'Интуитивное управление через современный сенсорный дисплей'
     },
     {
       icon: Sparkles,
-      title: 'Flexible Faser',
-      description: 'Optimierte Ergonomie für beste Energieübertragung'
+      title: 'Гибкое волокно',
+      description: 'Оптимизированная эргономика для наилучшей передачи энергии'
     },
     {
       icon: Award,
-      title: 'Integrierte Protokolle',
-      description: 'Vordefinierte Behandlungsprotokolle für verschiedene Anwendungen'
+      title: 'Интегрированные протоколы',
+      description: 'Предустановленные протоколы процедур для различных применений'
     }
   ];
 
@@ -137,10 +137,10 @@ const RedTouchPro = () => {
               RedTouch PRO
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
-              Innovative Hautverjüngung mit Laser
+              Инновационное омоложение кожи лазером
             </p>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-              Professionelle RedTouch®️ 675 nm Technologie mit integrierter Hautkühlung für sichere und effektive Hautstraffung
+              Профессиональная технология RedTouch®️ 675 нм с интегрированным охлаждением кожи для безопасной и эффективной подтяжки кожи
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -150,7 +150,7 @@ const RedTouchPro = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-5 h-5 mr-2" />
-                  Beratung vereinbaren
+                  Записаться на консультацию
                 </a>
               </Button>
               <Button
@@ -160,7 +160,7 @@ const RedTouchPro = () => {
                 asChild
               >
                 <a href="#technology">
-                  Mehr erfahren
+                  Узнать больше
                 </a>
               </Button>
             </div>
@@ -238,10 +238,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Revolutionäre Technologie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Революционная технология</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Entdecken Sie die bahnbrechende 675 nm Technologie mit integriertem Scanner und modernster Benutzeroberfläche
+                Откройте для себя передовую технологию 675 нм с интегрированным сканером и современным интерфейсом
               </p>
             </div>
 
@@ -324,9 +324,9 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Wissenschaftliche Analyse</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Научный анализ</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
-              <p className="text-xl text-muted-foreground">Van Gieson-Färbetechnik zeigt revolutionäre Ergebnisse</p>
+              <p className="text-xl text-muted-foreground">Техника окрашивания Ван Гизона показывает революционные результаты</p>
             </div>
 
             {/* Large Image at the top */}
@@ -361,29 +361,29 @@ const RedTouchPro = () => {
             <div className="max-w-5xl mx-auto animate-slide-up delay-300" style={{marginTop: '-20px'}}>
               <Card className="shadow-elegant">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-primary">Wirkprinzip der 675 nm Technologie</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-primary">Принцип действия технологии 675 нм</h3>
                   <p className="text-lg leading-relaxed mb-6 text-muted-foreground">
-                    Die Mikrozonen thermischer Schädigung rufen eine sofortige konsekutive Kollagenfaserdenaturierung
-                    hervor, die zur Neokollagenese führt. Aufgrund eines integrierten Kühlungssystems und der
-                    Selektivität von 675 nm wird die Epidermisschicht nicht beschädigt, dadurch werden Nebenwirkungen
-                    und daraus resultierende Ausfallzeiten minimiert.
+                    Микрозоны термического повреждения вызывают немедленную последовательную денатурацию коллагеновых волокон,
+                    которая приводит к неоколлагенезу. Благодаря встроенной системе охлаждения и избирательности
+                    675 нм эпидермальный слой не повреждается, что минимизирует побочные эффекты
+                    и период восстановления.
                   </p>
 
                   <div className="border-t border-border pt-6">
-                    <h4 className="text-xl font-semibold mb-4 text-primary">Histologische Untersuchung</h4>
+                    <h4 className="text-xl font-semibold mb-4 text-primary">Гистологическое исследование</h4>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      Die histologische Untersuchung unter Anwendung der Van Gieson-Färbetechnik zeigt die
-                      menschliche Haut vor (A) und nach der (B) der Behandlung mit dem RedTouch PRO.
+                      Гистологическое исследование с использованием техники окрашивания Ван Гизона показывает
+                      человеческую кожу до (A) и после (B) процедуры с RedTouch PRO.
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      Beim ersten Bilderpaar zeigt Bild B, dass es in der Retikularschicht (tiefe Hautschicht)
-                      keine Kollagenfaserbündel gibt, sondern dünnere Fasern, die paralleler und gerader sind.
-                      Es zeigt eine organisiertere Struktur mit einer <strong className="text-primary">Vermehrung von Kollagenfasern</strong>.
+                      На первой паре изображений снимок B показывает, что в ретикулярном слое (глубокий слой кожи)
+                      отсутствуют пучки коллагеновых волокон, а есть более тонкие волокна, которые более параллельны и прямы.
+                      Это показывает более организованную структуру с <strong className="text-primary">увеличением коллагеновых волокон</strong>.
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      Beim zweiten Bilderpaar zeigt Bild B, dass auch die elastischen Fasern (dunkel dargestellt)
-                      nach der Behandlung paralleler und gerader in der Haut vorkommen. Dieser Aspekt weist auf
-                      eine Struktur hin, die <strong className="text-primary">funktional geeigneter ist für eine bessere Gewebeelastizität</strong>.
+                      На второй паре изображений снимок B показывает, что эластичные волокна (показаны темным цветом)
+                      после процедуры также становятся более параллельными и прямыми в коже. Этот аспект указывает на
+                      структуру, которая <strong className="text-primary">функционально более подходит для лучшей эластичности тканей</strong>.
                     </p>
                   </div>
                 </CardContent>
@@ -418,10 +418,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">RedTouch PRO Gerät</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Аппарат RedTouch PRO</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">
-                Professionelle DEKA Technologie für Hautverjüngung
+                Профессиональная технология DEKA для омоложения кожи
               </p>
             </div>
 
@@ -458,7 +458,7 @@ const RedTouchPro = () => {
                         <span className="text-white font-semibold text-sm">DEKA Premium</span>
                       </div>
                       <h3 className="text-2xl font-bold text-gray-800 mb-2">RedTouch PRO</h3>
-                      <p className="text-gray-600 font-medium">675 nm Hautverjüngungstechnologie</p>
+                      <p className="text-gray-600 font-medium">Технология омоложения кожи 675 нм</p>
                     </div>
                   </div>
 
@@ -476,24 +476,24 @@ const RedTouchPro = () => {
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-6 h-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Präzise Technologie</h4>
-                <p className="text-gray-600 text-sm">675 nm Wellenlänge für optimale Kollagenbildung</p>
+                <h4 className="font-semibold text-gray-800 mb-2">Точная технология</h4>
+                <p className="text-gray-600 text-sm">Длина волны 675 нм для оптимального образования коллагена</p>
               </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Sichere Anwendung</h4>
-                <p className="text-gray-600 text-sm">Integrierte Hautkühlung schützt die Epidermis</p>
+                <h4 className="font-semibold text-gray-800 mb-2">Безопасное применение</h4>
+                <p className="text-gray-600 text-sm">Интегрированное охлаждение кожи защищает эпидермис</p>
               </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Activity className="w-6 h-6 text-purple-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Moveo-Modus</h4>
-                <p className="text-gray-600 text-sm">Fortschrittliche Behandlungsgeschwindigkeit</p>
+                <h4 className="font-semibold text-gray-800 mb-2">Режим Moveo</h4>
+                <p className="text-gray-600 text-sm">Передовая скорость процедуры</p>
               </div>
             </div>
           </div>
@@ -505,7 +505,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Vorteile des RedTouch PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Преимущества RedTouch PRO</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
@@ -531,10 +531,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Behandlungsgebiete & Anwendungsbereiche in München</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Зоны процедур и области применения в Мюнхене</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-muted-foreground">
-                Im Yuliia Studio in München Haidhausen setzen wir RedTouch®️ gezielt in folgenden Zonen ein:
+                В студии Yuliia в Мюнхен-Хайдхаузен мы используем RedTouch®️ целенаправленно в следующих зонах:
               </p>
             </div>
 
@@ -557,22 +557,22 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Design & Ergonomie</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Дизайн и эргономика</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-up">
                 <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Optimierte Handhabung</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">Оптимизированное управление</h3>
                   <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                    Der RedTouch PRO ist eine Weiterentwicklung des RedTouch, bietet mehr Leistung, eine verbesserte
-                    Kühlung und fügt den Behandlungsmodus Moveo hinzu. Durch die Ausweitung der Anwendung auf dunkle
-                    Hauttypen oder gebräunte Haut ermöglicht es eine unvergleichliche Behandlungsgeschwindigkeit und Handhabung.
+                    RedTouch PRO - это усовершенствованная версия RedTouch, которая обеспечивает больше мощности, улучшенное
+                    охлаждение и добавляет режим процедуры Moveo. Благодаря расширению применения на темные
+                    типы кожи или загорелую кожу, он обеспечивает непревзойденную скорость процедуры и управление.
                   </p>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Das RedTouch PRO-Handstück mit integriertem Scanner wurde entwickelt, um bei optimierter Ergonomie
-                    die beste Leistung bei der Energieübertragung auf die Haut zu erzielen.
+                    Манипула RedTouch PRO с интегрированным сканером разработана для достижения наилучшей
+                    производительности при передаче энергии на кожу при оптимизированной эргономике.
                   </p>
                 </div>
 
@@ -616,23 +616,23 @@ const RedTouchPro = () => {
       <section className="py-8 bg-gradient-to-r from-blue-600 to-primary text-white" style={{marginTop: '-30px'}}>
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
-            Interessiert am RedTouch PRO?
+            Интересует RedTouch PRO?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto animate-slide-up delay-200">
-            Entdecken Sie die revolutionäre RedTouch PRO Technologie für Ihr Studio.
-            Vereinbaren Sie jetzt einen Beratungstermin!
+            Откройте для себя революционную технологию RedTouch PRO для вашей студии.
+            Запишитесь на консультацию прямо сейчас!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Beratung vereinbaren
+                Записаться на консультацию
               </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 mr-2" />
-                E-Mail senden
+                Отправить email
               </a>
             </Button>
           </div>

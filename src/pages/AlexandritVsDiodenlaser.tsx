@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 const AlexandritVsDiodenlaser = () => {
   useEffect(() => {
     setPageMeta({
-      title: 'Alexandrit oder Diodenlaser? Unterschiede | Haarentfernung München',
-      description: 'Vergleich Alexandrit vs. Diodenlaser – Vorteile & Unterschiede. Erfahren Sie, welche Methode für Ihre Haut & Haare geeignet ist. Studio in München-Haidhausen.'
+      title: 'Alexandrit- oder Diodenlaser? Die Unterschiede | Laser-Haarentfernung München',
+      description: 'Alexandrit- vs. Diodenlaser im Vergleich – Vorteile & Unterschiede. Erfahren Sie, welche Methode für Ihre Haut & Haare geeignet ist. Studio in München-Haidhausen.'
     });
 
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'Article',
-      headline: 'Alexandrit vs. Diodenlaser: Was ist wann sinnvoll?',
+      headline: 'Alexandrit vs. Diodenlaser: Was ist wann effektiver?',
       author: {
         '@type': 'Organization',
         name: 'Yuliia Cheporska Studio'
@@ -30,7 +30,7 @@ const AlexandritVsDiodenlaser = () => {
         }
       },
       datePublished: '2025-01-15',
-      description: 'Ein verständlicher Ratgeber: Wir erklären, wie Alexandrit- und Diodenlaser funktionieren, wo ihre Stärken liegen und wie wir die passende Methode auswählen.'
+      description: 'Verständlicher Leitfaden: Wir erklären, wie Alexandrit- und Diodenlaser funktionieren, wo ihre Stärken liegen und wie wir die passende Methode wählen.'
     });
   }, []);
 
@@ -55,20 +55,20 @@ const AlexandritVsDiodenlaser = () => {
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20">
             <Sparkles className="w-4 h-4 text-yellow-300" />
-            <span className="text-sm font-medium">Professioneller Vergleich</span>
+            <span className="text-sm font-medium">Профессиональное сравнение</span>
             <Sparkles className="w-4 h-4 text-blue-300" />
           </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
             <span className="bg-gradient-to-r from-yellow-300 via-white to-blue-300 bg-clip-text text-transparent">
-              Alexandrit vs. Diodenlaser
+              Александрит vs. Диодный лазер
             </span>
             <br />
-            <span className="text-white">Was ist wann sinnvoll?</span>
+            <span className="text-white">Что и когда эффективнее?</span>
           </h1>
 
           <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed">
-            Ein verständlicher Ratgeber: Wir erklären, wie beide Systeme funktionieren, wo ihre Stärken liegen und wie wir in der Praxis die passende Methode auswählen.
+            Понятный путеводитель: Мы объясняем, как работают обе системы, в чем их сильные стороны и как мы на практике выбираем подходящий метод.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -78,7 +78,7 @@ const AlexandritVsDiodenlaser = () => {
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
               <Phone className="w-5 h-5 mr-2" />
-              Jetzt Beratung buchen
+              Записаться на консультацию
             </Button>
             <Button
               size="lg"
@@ -87,7 +87,7 @@ const AlexandritVsDiodenlaser = () => {
               asChild
             >
               <Link to="/preis">
-                Preise ansehen
+                Посмотреть цены
               </Link>
             </Button>
           </div>
@@ -106,12 +106,12 @@ const AlexandritVsDiodenlaser = () => {
               <div className="inline-block bg-gradient-to-r from-yellow-500 to-blue-500 p-1 rounded-full mb-4">
                 <div className="bg-white px-6 py-2 rounded-full">
                   <span className="text-sm font-bold bg-gradient-to-r from-yellow-600 to-blue-600 bg-clip-text text-transparent">
-                    Schneller Überblick
+                    Краткий обзор
                   </span>
                 </div>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Die wichtigsten Fakten auf einen Blick
+                Самые важные факты с первого взгляда
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
             </div>
@@ -124,7 +124,7 @@ const AlexandritVsDiodenlaser = () => {
                       <CheckCircle className="w-6 h-6 text-rose-gold" />
                     </div>
                     <p className="text-muted-foreground flex-1 leading-relaxed">
-                      <span className="font-semibold text-primary">Beide Laser</span> reduzieren Haarwuchs nachhaltig, brauchen aber <span className="font-semibold text-primary">mehrere Sitzungen (mindestens 6)</span>, weil Haare in Zyklen wachsen.
+                      <span className="font-semibold text-primary">Оба лазера</span> устойчиво уменьшают рост волос, но требуют <span className="font-semibold text-primary">нескольких сеансов (минимум 6)</span>, потому что волосы растут циклами.
                     </p>
                   </div>
                 </CardContent>
@@ -142,7 +142,7 @@ const AlexandritVsDiodenlaser = () => {
                         <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-semibold">PREMIUM</span>
                       </div>
                       <p className="text-muted-foreground leading-relaxed">
-                        Sehr effektiv bei hellerer bis mittlerer Haut mit dunkleren Haaren; angenehm dank Kontaktkühlung; stark auf großen Flächen.
+                        Очень эффективен для светлой и средней кожи с темными волосами; комфортен благодаря контактному охлаждению; мощный на больших зонах.
                       </p>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const AlexandritVsDiodenlaser = () => {
                         <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-semibold">UNIVERSAL</span>
                       </div>
                       <p className="text-muted-foreground leading-relaxed">
-                        Flexibel für ein breites Haut-/Haarspektrum, auch empfindliche Zonen; schnelle Behandlungen, leistungsstarke Kühlung.
+                        Гибкий для широкого спектра типов кожи и волос, включая чувствительные зоны; быстрые процедуры, мощное охлаждение.
                       </p>
                     </div>
                   </div>
@@ -175,8 +175,8 @@ const AlexandritVsDiodenlaser = () => {
                       <Info className="w-6 h-6 text-orange-600" />
                     </div>
                     <p className="text-muted-foreground flex-1 leading-relaxed">
-                      <span className="font-bold text-orange-800 text-lg block mb-1">⚠️ Wichtig zu wissen:</span>
-                      Graue/weiße/rote Haare enthalten kaum/kein Pigment → eingeschränkte Wirkung bei beiden Systemen.
+                      <span className="font-bold text-orange-800 text-lg block mb-1">⚠️ Важно знать:</span>
+                      Седые/белые/рыжие волосы содержат мало/не содержат пигмента → ограниченная эффективность для обеих систем.
                     </p>
                   </div>
                 </CardContent>
@@ -191,7 +191,7 @@ const AlexandritVsDiodenlaser = () => {
                   </div>
                 </div>
                 <p className="text-lg text-primary font-semibold leading-relaxed">
-                  In unserem Studio wählen wir pro Termin das passende Gerät und passen die Parameter an Haut, Haar, Region und Saison an.
+                  В нашей студии мы выбираем подходящий аппарат для каждого сеанса и адаптируем параметры под тип кожи, волос, зону и сезон.
                 </p>
               </CardContent>
             </Card>
@@ -211,10 +211,10 @@ const AlexandritVsDiodenlaser = () => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full mb-4 shadow-lg">
                 <Sparkles className="w-5 h-5 text-rose-gold" />
-                <span className="text-sm font-semibold text-primary">Technologie erklärt</span>
+                <span className="text-sm font-semibold text-primary">Объяснение технологии</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Wie funktionieren Alexandrit- und Diodenlaser?
+                Как работают александритовый и диодный лазеры?
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
             </div>
@@ -232,13 +232,13 @@ const AlexandritVsDiodenlaser = () => {
             <Card className="border-2 border-transparent hover:border-rose-gold/50 shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Beide Systeme geben <span className="font-semibold text-primary">gerichtetes Licht</span> ab. Das Haarpigment (Melanin) nimmt die Energie auf; an der Haarwurzel entsteht Wärme, die das Haarwachstum schwächt. Am wirksamsten ist das in der <span className="font-semibold text-primary">aktiven Wachstumsphase</span>.
+                  Обе системы излучают <span className="font-semibold text-primary">направленный свет</span>. Пигмент волоса (меланин) поглощает энергию; в волосяном фолликуле образуется тепло, которое ослабляет рост волос. Наиболее эффективно это в <span className="font-semibold text-primary">активной фазе роста</span>.
                 </p>
                 <div className="bg-gradient-to-br from-rose-gold/10 to-primary/10 p-6 rounded-xl border-l-4 border-rose-gold">
                   <div className="flex items-start gap-3">
                     <Award className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <p className="font-semibold text-primary leading-relaxed">
-                      Deshalb sind mehrere Sitzungen nötig – typisch 6 bis 10 Behandlungen im Abstand von 4-6 Wochen.
+                      Поэтому необходимо несколько сеансов – обычно 6-10 процедур с интервалом 4-6 недель.
                     </p>
                   </div>
                 </div>
@@ -259,10 +259,10 @@ const AlexandritVsDiodenlaser = () => {
                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Gerätespezifischer Direktvergleich
+                Прямое сравнение аппаратов
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Detaillierte technische Spezifikationen unserer Premium-Lasersysteme
+                Подробные технические характеристики наших премиальных лазерных систем
               </p>
             </div>
 
@@ -273,47 +273,47 @@ const AlexandritVsDiodenlaser = () => {
                     <thead className="bg-gradient-to-r from-primary via-rose-gold to-primary">
                       <tr>
                         <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider">
-                          Kriterium
+                          Критерий
                         </th>
                         <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-yellow-500/20">
                           <div className="flex items-center gap-2">
                             <Star className="w-4 h-4" />
-                            Alexandrit 755 nm
+                            Alexandrit 755 нм
                           </div>
                         </th>
                         <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-blue-500/20">
                           <div className="flex items-center gap-2">
                             <Shield className="w-4 h-4" />
-                            M-Tech Diodenlaser
+                            M-Tech Диодный лазер
                           </div>
                         </th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Wellenlängen</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">755 nm (Alexandrit)</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">4 Wellenlängen: 755/808/940/1064 nm</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Длины волн</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">755 нм (Александрит)</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">4 длины волн: 755/808/940/1064 нм</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Betriebsmodus</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Moveo (Mehrfachpass „in Bewegung"), 5–20 mm Spots</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">SHR/in-motion + „Stempeln"; große Spots</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Режим работы</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Moveo (многопроходный «в движении»), насадки 5–20 мм</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">SHR/in-motion + «штамповка»; большие насадки</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Kühlung/Komfort</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Kontaktkühlung (Saphir-Tip)</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Starke Hautkühlung (teils unter 0 °C)</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Охлаждение/Комфорт</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Контактное охлаждение (сапфировый наконечник)</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Мощное охлаждение кожи (частично ниже 0 °C)</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Haut-/Haartypen</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Stark bei dunklen Haaren; Moveo für alle Phototypen (I–VI)</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Flexibel: 1064 nm für dunklere Haut</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Типы кожи/волос</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Мощный для темных волос; Moveo для всех фототипов (I–VI)</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Гибкий: 1064 нм для более темной кожи</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Evidenzlage</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Studien zeigen gute Wirksamkeit & Sicherheit</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Klinische Daten zu Wirksamkeit & Sicherheit</td>
+                        <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">Доказательства</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">Исследования показывают хорошую эффективность и безопасность</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">Клинические данные об эффективности и безопасности</td>
                       </tr>
                     </tbody>
                   </table>
@@ -328,8 +328,8 @@ const AlexandritVsDiodenlaser = () => {
                     <Info className="w-6 h-6 text-blue-600" />
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-blue-800 block mb-1">💡 Hinweis:</span>
-                    Hersteller- und Studienangaben sind kontextabhängig. In der Praxis zählt die individuelle Parametrisierung — wir wählen je Termin das passende System.
+                    <span className="font-semibold text-blue-800 block mb-1">💡 Примечание:</span>
+                    Данные производителей и исследований зависят от контекста. На практике важна индивидуальная настройка параметров — мы выбираем подходящую систему для каждого сеанса.
                   </p>
                 </div>
               </CardContent>
@@ -392,13 +392,13 @@ const AlexandritVsDiodenlaser = () => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-blue-500 px-6 py-3 rounded-full mb-4 shadow-xl">
                 <Target className="w-5 h-5 text-white" />
-                <span className="text-sm font-bold text-white">Praxisleitfaden</span>
+                <span className="text-sm font-bold text-white">Практическое руководство</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Welcher Laser passt zu wem?
+                Какой лазер кому подходит?
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Entscheidungshilfe basierend auf Ihrem Hauttyp und Behandlungsbereich
+                Помощь в выборе на основе вашего типа кожи и зоны обработки
               </p>
             </div>
 
@@ -408,36 +408,36 @@ const AlexandritVsDiodenlaser = () => {
                   <table className="min-w-full divide-y divide-gray-300">
                     <thead className="bg-gradient-to-r from-rose-gold via-primary to-rose-gold">
                       <tr>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase">Kriterium</th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-yellow-500/20">Alexandrit</th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-blue-500/20">Diodenlaser</th>
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase">Критерий</th>
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-yellow-500/20">Александрит</th>
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-blue-500/20">Диодный лазер</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       <tr className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-semibold text-gray-900">Hauttypen</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Optimal I–III; Moveo auch IV–VI</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">Alle Hauttypen geeignet</td>
+                        <td className="px-6 py-4 font-semibold text-gray-900">Типы кожи</td>
+                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Оптимально I–III; Moveo также IV–VI</td>
+                        <td className="px-6 py-4 text-sm bg-blue-50/50">Подходит для всех типов кожи</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-semibold text-gray-900">Haartypen</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Feine, dunkle Haare</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">Kräftige, tief sitzende Haare</td>
+                        <td className="px-6 py-4 font-semibold text-gray-900">Типы волос</td>
+                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Тонкие, темные волосы</td>
+                        <td className="px-6 py-4 text-sm bg-blue-50/50">Жесткие, глубоко расположенные волосы</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-semibold text-gray-900">Komfort</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">⭐ Sehr angenehm</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">⭐ Angenehm</td>
+                        <td className="px-6 py-4 font-semibold text-gray-900">Комфорт</td>
+                        <td className="px-6 py-4 text-sm bg-yellow-50/50">⭐ Очень комфортно</td>
+                        <td className="px-6 py-4 text-sm bg-blue-50/50">⭐ Комфортно</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-semibold text-gray-900">Geschwindigkeit</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Schnell auf kleinen Arealen</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">Effizient auf großen Flächen</td>
+                        <td className="px-6 py-4 font-semibold text-gray-900">Скорость</td>
+                        <td className="px-6 py-4 text-sm bg-yellow-50/50">Быстро на небольших зонах</td>
+                        <td className="px-6 py-4 text-sm bg-blue-50/50">Эффективно на больших поверхностях</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-semibold text-gray-900">Sicherheit</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">✅ Bewährt</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">✅ Flexibel</td>
+                        <td className="px-6 py-4 font-semibold text-gray-900">Безопасность</td>
+                        <td className="px-6 py-4 text-sm bg-yellow-50/50">✅ Проверенный</td>
+                        <td className="px-6 py-4 text-sm bg-blue-50/50">✅ Гибкий</td>
                       </tr>
                     </tbody>
                   </table>
@@ -493,10 +493,10 @@ const AlexandritVsDiodenlaser = () => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-white shadow-lg px-6 py-3 rounded-full mb-4 border-2 border-rose-gold/30">
                 <Sparkles className="w-5 h-5 text-rose-gold" />
-                <span className="text-sm font-bold text-primary">Zonen-Guide</span>
+                <span className="text-sm font-bold text-primary">Руководство по зонам</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Empfehlungen nach Körperzone
+                Рекомендации по зонам тела
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
             </div>
@@ -504,33 +504,33 @@ const AlexandritVsDiodenlaser = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  zone: 'Oberlippe / Gesicht',
-                  alex: '✅ Besonders effektiv bei feinen, dunklen Haaren; sehr hoher Komfort',
-                  diode: 'Einsetzbar, wenn Haare dunkler sind',
+                  zone: 'Верхняя губа / Лицо',
+                  alex: '✅ Особенно эффективен для тонких темных волос; очень комфортно',
+                  diode: 'Применим, если волосы темнее',
                   alexBest: true
                 },
                 {
-                  zone: 'Achseln',
-                  alex: 'Gut geeignet bei hellerer Haut',
-                  diode: '✅ Sehr effektiv auch bei dunklerer Haut',
+                  zone: 'Подмышки',
+                  alex: 'Хорошо подходит для светлой кожи',
+                  diode: '✅ Очень эффективен также для более темной кожи',
                   alexBest: false
                 },
                 {
-                  zone: 'Arme',
-                  alex: '✅ Optimal bei helleren Hauttypen und feinerem Haar',
-                  diode: 'Geeignet bei kräftigerem Haar',
+                  zone: 'Руки',
+                  alex: '✅ Оптимально для светлых типов кожи и тонких волос',
+                  diode: 'Подходит для более жестких волос',
                   alexBest: true
                 },
                 {
-                  zone: 'Beine / Rücken',
-                  alex: 'Weniger effizient bei sehr tiefen Haaren',
-                  diode: '✅ Erste Wahl für große Flächen & dunklere Hauttypen',
+                  zone: 'Ноги / Спина',
+                  alex: 'Менее эффективен для очень глубоких волос',
+                  diode: '✅ Первый выбор для больших зон и более темных типов кожи',
                   alexBest: false
                 },
                 {
-                  zone: 'Intim / Bikini',
-                  alex: 'Möglich, sehr komfortabel bei hellerer Haut',
-                  diode: '✅ Erste Wahl bei kräftigem Haar oder dunklerer Haut',
+                  zone: 'Интимная зона / Бикини',
+                  alex: 'Возможен, очень комфортен для светлой кожи',
+                  diode: '✅ Первый выбор для жестких волос или более темной кожи',
                   alexBest: false
                 }
               ].map((item, index) => (
@@ -549,14 +549,14 @@ const AlexandritVsDiodenlaser = () => {
                       <div className="bg-yellow-50/50 p-4 rounded-lg border-l-4 border-yellow-500">
                         <div className="flex items-center gap-2 mb-1">
                           <Star className="w-4 h-4 text-yellow-600" />
-                          <p className="text-sm font-bold text-yellow-700">Alexandrit:</p>
+                          <p className="text-sm font-bold text-yellow-700">Александрит:</p>
                         </div>
                         <p className="text-sm text-gray-700">{item.alex}</p>
                       </div>
                       <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-500">
                         <div className="flex items-center gap-2 mb-1">
                           <Shield className="w-4 h-4 text-blue-600" />
-                          <p className="text-sm font-bold text-blue-700">Diodenlaser:</p>
+                          <p className="text-sm font-bold text-blue-700">Диодный лазер:</p>
                         </div>
                         <p className="text-sm text-gray-700">{item.diode}</p>
                       </div>
@@ -575,17 +575,17 @@ const AlexandritVsDiodenlaser = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Sitzungen, Abstände & Erwartungen
+                Сеансы, интервалы и ожидания
               </h2>
-              <p className="text-muted-foreground">Was Sie über den Behandlungsverlauf wissen sollten</p>
+              <p className="text-muted-foreground">Что вам следует знать о ходе процедуры</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {[
-                { icon: CheckCircle, title: 'Anzahl Sitzungen', desc: 'Rechne mit mindestens 6 Sitzungen, häufig mehr — Haare wachsen zyklisch.' },
-                { icon: CheckCircle, title: 'Abstände', desc: 'Typisch 4–6 Wochen (je nach Region; z. B. Rücken ggf. länger).' },
-                { icon: CheckCircle, title: 'Erwartung', desc: 'Erste Reduktion oft nach wenigen Terminen; Ergebnis ist individuell (Haut/Haar/Hormone).' },
-                { icon: CheckCircle, title: 'Vorbereitung', desc: '24 h vorher rasieren, nicht wachsen/epilieren; Sonne/Selbstbräuner meiden.' }
+                { icon: CheckCircle, title: 'Количество сеансов', desc: 'Рассчитывайте минимум на 6 сеансов, часто больше — волосы растут циклами.' },
+                { icon: CheckCircle, title: 'Интервалы', desc: 'Обычно 4–6 недель (в зависимости от зоны; напр., спина возможно дольше).' },
+                { icon: CheckCircle, title: 'Ожидания', desc: 'Первое уменьшение часто после нескольких процедур; результат индивидуален (кожа/волосы/гормоны).' },
+                { icon: CheckCircle, title: 'Подготовка', desc: 'За 24 ч до процедуры побриться, не делать воск/эпиляцию; избегать солнца/автозагара.' }
               ].map((item, index) => (
                 <Card key={index} className="group hover:shadow-xl transition-all border-2 border-transparent hover:border-rose-gold/50">
                   <CardContent className="p-6">
@@ -606,8 +606,8 @@ const AlexandritVsDiodenlaser = () => {
                     <Sparkles className="w-6 h-6 text-rose-gold" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-primary mb-2 text-lg">Nachsorge</h3>
-                    <p className="text-muted-foreground leading-relaxed">Kühlen, milde Pflege; UV und starke Peelings kurz pausieren.</p>
+                    <h3 className="font-bold text-primary mb-2 text-lg">Послепроцедурный уход</h3>
+                    <p className="text-muted-foreground leading-relaxed">Охлаждение, мягкий уход; на короткое время избегать УФ и сильных пилингов.</p>
                   </div>
                 </div>
               </CardContent>
@@ -623,28 +623,28 @@ const AlexandritVsDiodenlaser = () => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-yellow-500/10 px-6 py-3 rounded-full mb-4 border-2 border-yellow-500/30">
                 <Award className="w-5 h-5 text-yellow-600" />
-                <span className="text-sm font-bold text-yellow-700">Premium-Technologie</span>
+                <span className="text-sm font-bold text-yellow-700">Премиум-технология</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Warum ist der Alexandrit-Laser oft teurer?
+                Почему александритовый лазер часто дороже?
               </h2>
             </div>
 
             <div className="space-y-4">
               {[
                 {
-                  title: 'Technologie & Gerät',
-                  text: 'Motus Moveo AX ist ein hochwertiges Alexandrit-System. Moveo-Protokolle (in-motion/Mehrfachpass bei Low-Fluence) ermöglichen komfortable, sichere Behandlungen — insbesondere in sensiblen Zonen. Anschaffung/Wartung sind höher.',
+                  title: 'Технология и аппарат',
+                  text: 'Motus Moveo AX - это высококачественная александритовая система. Протоколы Moveo (in-motion/многопроходный при Low-Fluence) позволяют проводить комфортные, безопасные процедуры — особенно в чувствительных зонах. Стоимость приобретения/обслуживания выше.',
                   color: 'yellow'
                 },
                 {
-                  title: 'Eignung',
-                  text: '755 nm hat eine hohe Melanin-Absorption — wird deshalb häufig bei feineren, dunkleren Haaren bevorzugt.',
+                  title: 'Применимость',
+                  text: '755 нм имеет высокое поглощение меланином — поэтому часто предпочтителен для более тонких, темных волос.',
                   color: 'yellow'
                 },
                 {
-                  title: 'Sitzungsdynamik',
-                  text: 'Bei passender Indikation können schnell sichtbare Reduktionen auftreten; insgesamt bleiben mehrere Sitzungen nötig (typisch 4–6 Wochen Abstand).',
+                  title: 'Динамика сеансов',
+                  text: 'При подходящих показаниях могут быстро появляться видимые результаты; в целом необходимо несколько сеансов (обычно с интервалом 4–6 недель).',
                   color: 'yellow'
                 }
               ].map((item, index) => (
@@ -670,9 +670,9 @@ const AlexandritVsDiodenlaser = () => {
                       <Info className="w-6 h-6 text-yellow-700" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-yellow-800 mb-2 text-lg">💡 Einordnung</h3>
+                      <h3 className="font-bold text-yellow-800 mb-2 text-lg">💡 Классификация</h3>
                       <p className="text-gray-700 leading-relaxed">
-                        Der Alexandrit-Laser ist eine weit verbreitete Premium-Option, besonders bei helleren Hauttypen; bei sehr dunklen Hauttypen wird häufig 1064 nm (Nd:YAG) hervorgehoben.
+                        Александритовый лазер - широко распространенный премиальный вариант, особенно для более светлых типов кожи; для очень темных типов кожи часто выделяют 1064 нм (Nd:YAG).
                       </p>
                     </div>
                   </div>
@@ -690,10 +690,10 @@ const AlexandritVsDiodenlaser = () => {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-green-500/10 px-6 py-3 rounded-full mb-4 border-2 border-green-500/30">
                 <Shield className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-bold text-green-700">Sicherheit First</span>
+                <span className="text-sm font-bold text-green-700">Безопасность прежде всего</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Sicherheit, Risiken & Kontraindikationen
+                Безопасность, риски и противопоказания
               </h2>
             </div>
 
@@ -705,9 +705,9 @@ const AlexandritVsDiodenlaser = () => {
                       <Shield className="w-6 h-6 text-green-600" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-green-700 mb-2 text-lg">✅ Typisch & vorübergehend:</h3>
+                      <h3 className="font-bold text-green-700 mb-2 text-lg">✅ Типичные и временные:</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        Rötung/Wärmegefühl, evtl. leichte Schwellung (klingt in Stunden bis 1–2 Tagen ab).
+                        Покраснение/ощущение тепла, возможно легкая отечность (проходит в течение нескольких часов до 1–2 дней).
                       </p>
                     </div>
                   </div>
@@ -721,9 +721,9 @@ const AlexandritVsDiodenlaser = () => {
                       <Info className="w-6 h-6 text-orange-600" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-orange-700 mb-2 text-lg">⚠️ Selten:</h3>
+                      <h3 className="font-bold text-orange-700 mb-2 text-lg">⚠️ Редко:</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        Reizungen, vorübergehende Pigmentverschiebungen; sehr selten paradoxer Haarwuchs (feiner Flaum in Randbereichen).
+                        Раздражения, временные изменения пигментации; очень редко парадоксальный рост волос (тонкий пушок по краям зоны).
                       </p>
                     </div>
                   </div>
@@ -736,24 +736,24 @@ const AlexandritVsDiodenlaser = () => {
                     <div className="bg-red-500/20 p-2 rounded-full">
                       <Info className="w-5 h-5 text-red-600" />
                     </div>
-                    🚫 Vorübergehend ungeeignet:
+                    🚫 Временно не подходит:
                   </h3>
                   <ul className="space-y-2 text-gray-700 ml-12">
                     <li className="flex items-start gap-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Frische starke Sonnenbräune</span>
+                      <span>Свежий сильный загар</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Aktive Hautentzündungen</span>
+                      <span>Активные воспаления кожи</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Schwangerschaft (Vorsichtsprinzip)</span>
+                      <span>Беременность (принцип предосторожности)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-red-500 mt-1">•</span>
-                      <span>Photosensibilisierende Medikamente</span>
+                      <span>Фотосенсибилизирующие медикаменты</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -766,9 +766,9 @@ const AlexandritVsDiodenlaser = () => {
                       <Shield className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-3 text-xl">🛡️ Unsere Maßnahmen:</h3>
+                      <h3 className="font-bold mb-3 text-xl">🛡️ Наши меры:</h3>
                       <p className="text-white/90 leading-relaxed text-lg">
-                        Hauttest, Gerätewahl, Kontaktkühlung und individuelle Parameter pro Termin.
+                        Тест кожи, выбор аппарата, контактное охлаждение и индивидуальные параметры для каждого сеанса.
                       </p>
                     </div>
                   </div>
@@ -789,32 +789,32 @@ const AlexandritVsDiodenlaser = () => {
                 <span className="text-sm font-bold text-primary">FAQ</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-                Häufig gestellte Fragen
+                Часто задаваемые вопросы
               </h2>
-              <p className="text-muted-foreground">Antworten auf die wichtigsten Fragen</p>
+              <p className="text-muted-foreground">Ответы на самые важные вопросы</p>
             </div>
 
             <Accordion type="single" collapsible className="w-full space-y-4">
               {[
                 {
-                  q: 'Ist eine Methode grundsätzlich besser?',
-                  a: 'Nein. Beide Systeme sind wirksam. Wir wählen pro Person & Termin die beste Option basierend auf Ihrem Hauttyp, Haarfarbe und der zu behandelnden Zone.'
+                  q: 'Один метод принципиально лучше другого?',
+                  a: 'Нет. Обе системы эффективны. Мы выбираем лучший вариант для каждого человека и сеанса, основываясь на вашем типе кожи, цвете волос и зоне обработки.'
                 },
                 {
-                  q: 'Tut eine Laser-Behandlung weh?',
-                  a: 'Empfinden ist individuell. Die Kontaktkühlung macht die Sitzung für die meisten gut verträglich. Viele beschreiben es als leichtes Kribbeln oder warmes Gefühl.'
+                  q: 'Больно ли делать лазерную эпиляцию?',
+                  a: 'Ощущения индивидуальны. Контактное охлаждение делает сеанс хорошо переносимым для большинства. Многие описывают это как легкое покалывание или теплое ощущение.'
                 },
                 {
-                  q: 'Kann ich im Sommer starten?',
-                  a: 'Ja, mit Einschränkungen: Sonne/Bräune möglichst meiden; ggf. konservative Einstellungen oder Termin verschieben. Wir beraten Sie individuell zur besten Strategie.'
+                  q: 'Можно ли начинать летом?',
+                  a: 'Да, с ограничениями: по возможности избегать солнца/загара; возможно консервативные настройки или перенос сеанса. Мы проконсультируем вас индивидуально о лучшей стратегии.'
                 },
                 {
-                  q: 'Wirkt es bei sehr feinen, grauen oder roten Haaren?',
-                  a: 'Bei sehr hellen/grauen/roten Haaren ist die Wirkung eingeschränkt (wenig/kein Pigment). Wir besprechen Alternativen und realistische Erwartungen während der Beratung.'
+                  q: 'Работает ли на очень тонких, седых или рыжих волосах?',
+                  a: 'Для очень светлых/седых/рыжих волос эффективность ограничена (мало/нет пигмента). Мы обсудим альтернативы и реалистичные ожидания во время консультации.'
                 },
                 {
-                  q: 'Wie viele Sitzungen brauche ich?',
-                  a: 'Meist mindestens 6, teils mehr. Abstände 4–6 Wochen, je nach Region und Verlauf. Die genaue Anzahl hängt von Ihrem Haartyp, Hauttyp und der behandelten Zone ab.'
+                  q: 'Сколько сеансов мне понадобится?',
+                  a: 'Обычно минимум 6, иногда больше. Интервалы 4–6 недель, в зависимости от зоны и динамики. Точное количество зависит от вашего типа волос, типа кожи и обрабатываемой зоны.'
                 }
               ].map((item, index) => (
                 <AccordionItem
@@ -847,15 +847,15 @@ const AlexandritVsDiodenlaser = () => {
           <div className="max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/30">
               <Sparkles className="w-5 h-5" />
-              <span className="text-sm font-bold">Persönliche Beratung</span>
+              <span className="text-sm font-bold">Персональная консультация</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Bereit für Ihre persönliche Beratung?
+              Готовы к персональной консультации?
             </h2>
 
             <p className="text-xl md:text-2xl mb-10 text-white/90 leading-relaxed">
-              Vereinbaren Sie einen Termin in unserem Studio in München-Haidhausen. Wir analysieren Ihren Haut- und Haartyp und empfehlen die optimale Laser-Methode für Sie.
+              Запишитесь на прием в нашу студию в Мюнхен-Haidhausen. Мы проанализируем ваш тип кожи и волос и порекомендуем оптимальный лазерный метод для вас.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -865,7 +865,7 @@ const AlexandritVsDiodenlaser = () => {
                 onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt Termin buchen
+                Записаться на прием
               </Button>
               <Button
                 size="lg"
@@ -873,7 +873,7 @@ const AlexandritVsDiodenlaser = () => {
                 className="border-2 border-white text-white hover:bg-white hover:text-primary transition-all hover:scale-105 text-lg px-8 py-6"
                 onClick={() => window.location.href = '/laser-haarentfernung-muenchen'}
               >
-                Mehr zur Laser-Haarentfernung
+                Подробнее о лазерной эпиляции
               </Button>
             </div>
           </div>

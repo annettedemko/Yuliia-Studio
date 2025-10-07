@@ -7,56 +7,56 @@ const AgainCos = () => {
   const keyFeatures = [
     {
       icon: Zap,
-      title: "Alexandrit 755 nm",
-      description: "Die Alexandrit-Wellenlänge ermöglicht eine schnelle und effektive Haarentfernung."
+      title: "Александрит 755 нм",
+      description: "Длина волны александрита обеспечивает быстрое и эффективное удаление волос."
     },
     {
       icon: Users,
-      title: "Einfach und benutzerfreundlich",
-      description: "Der Again zeichnet sich durch einfache und leicht bedienbare Merkmale aus: die kompakte Größe, intuitive Software, leichtes und ergonomisches Handstück sowie die innovative Moveo-Methode."
+      title: "Простой и удобный",
+      description: "Again отличается простыми и легко управляемыми характеристиками: компактные размеры, интуитивное программное обеспечение, легкая и эргономичная манипула, а также инновационный метод Moveo."
     },
     {
       icon: Monitor,
-      title: "Integrierte Protokolle",
-      description: "Der Again bietet ein intuitives Benutzerinterface mit zahlreichen Behandlungsprotokollen für die Moveo-Technologie."
+      title: "Интегрированные протоколы",
+      description: "Again предлагает интуитивный пользовательский интерфейс с многочисленными протоколами процедур для технологии Moveo."
     },
     {
       icon: Shield,
-      title: "Integrierte Hautkühlung",
-      description: "Die Kontakthautkühlung und wiederholte Passes mit Impulsen geringer Fluence bewirken eine allmähliche Erwärmung, um eine sanfte Behandlung zu ermöglichen."
+      title: "Интегрированное охлаждение кожи",
+      description: "Контактное охлаждение кожи и повторные проходы с импульсами низкой флюенции обеспечивают постепенное нагревание для мягкой процедуры."
     },
     {
       icon: Target,
-      title: "Moveo-HR-Handstück",
-      description: "Das Moveo HR Handstück ist optimal für die Behandlung aller Haar- und Hauttypen. Dank der integrierten Kühlung ist eine sanfte Behandlung garantiert."
+      title: "Манипула Moveo-HR",
+      description: "Манипула Moveo HR оптимальна для обработки всех типов волос и кожи. Благодаря интегрированному охлаждению гарантируется мягкая процедура."
     },
     {
       icon: Sparkles,
-      title: "180° dreh- und kippbares 15,6″ Display",
-      description: "Das dreh- und kippbare 15,6\" Touchscreen Display mit einer komplett modernisierten Benutzeroberfläche ermöglicht eine intuitive und benutzerfreundliche Bedienung."
+      title: "Дисплей 15,6″ с поворотом на 180°",
+      description: "Поворотный и наклонный сенсорный дисплей 15,6\" с полностью модернизированным пользовательским интерфейсом обеспечивает интуитивное и удобное управление."
     }
   ];
 
   const technicalFeatures = [
     {
       number: "1",
-      description: "Die Alexandrit-Wellenlänge (755 nm) eignet sich zum wirkungsvollen Behandeln von feinem und hellem Haar."
+      description: "Длина волны александрита (755 нм) подходит для эффективного удаления тонких и светлых волос."
     },
     {
       number: "2",
-      description: "Mit dem Moveo-HR-Handstück lässt sich unerwünschtes Haar mit Hilfe einer neuen, leichteren, schnelleren und sichereren Methode schmerzfrei und noch wirksamer entfernen."
+      description: "С помощью манипулы Moveo-HR нежелательные волосы можно удалить безболезненно и еще более эффективно благодаря новому, более легкому, быстрому и безопасному методу."
     },
     {
       number: "3",
-      description: "Eine innovative Technologie vereinfacht den Kern des Lasersystems strukturell und reduziert so die Kosten sowie Wartungsprobleme."
+      description: "Инновационная технология структурно упрощает ядро лазерной системы, снижая расходы и проблемы с обслуживанием."
     },
     {
       number: "4",
-      description: "Das System kommt in einem modernen Design mit einem großen und schwenkbaren 15,6 Zoll Display und intuitiver Benutzeroberfläche."
+      description: "Система представлена в современном дизайне с большим поворотным дисплеем 15,6 дюймов и интуитивным пользовательским интерфейсом."
     },
     {
       number: "5",
-      description: "Ein kompaktes System mit niedrigen, laufenden Kosten für das moderne Beauty-Studio."
+      description: "Компактная система с низкими эксплуатационными расходами для современной бьюти-студии."
     }
   ];
 
@@ -104,7 +104,7 @@ const AgainCos = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-teal-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Die Hightech Lösung in der Haarentfernung
+                    Высокотехнологичное решение для эпиляции
                   </p>
                 </div>
 
@@ -116,7 +116,7 @@ const AgainCos = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Beratung vereinbaren
+                      Записаться на консультацию
                     </a>
                   </Button>
                 </div>
@@ -137,10 +137,10 @@ const AgainCos = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Hauptvorteile des Again cos</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Основные преимущества Again cos</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Modernste Alexandrit-Laser-Technologie für professionelle Haarentfernung
+                Новейшая технология александритового лазера для профессиональной эпиляции
               </p>
             </div>
 
@@ -235,12 +235,12 @@ const AgainCos = () => {
             <div className="text-center mb-16 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
                 <span className="bg-gradient-to-r from-teal-300 to-cyan-300 bg-clip-text text-transparent">
-                  Technische Features
+                  Технические характеристики
                 </span>
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-teal-400 to-cyan-400 mx-auto mb-8"></div>
               <p className="text-xl text-teal-100 max-w-4xl mx-auto leading-relaxed">
-                Revolutionäre Again cos Technologie für maximale Präzision und Effizienz
+                Революционная технология Again cos для максимальной точности и эффективности
               </p>
             </div>
 
@@ -287,8 +287,8 @@ const AgainCos = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-primary mb-4">System Highlights</h3>
-              <p className="text-lg text-muted-foreground">Entdecken Sie die Details der Again cos Technologie</p>
+              <h3 className="text-3xl font-bold text-primary mb-4">Особенности системы</h3>
+              <p className="text-lg text-muted-foreground">Откройте для себя детали технологии Again cos</p>
             </div>
 
             {/* System Showcase */}
@@ -302,8 +302,8 @@ const AgainCos = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-teal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h4 className="font-bold text-lg">System Features</h4>
-                    <p className="text-sm text-teal-100">Modernste Technologie</p>
+                    <h4 className="font-bold text-lg">Характеристики системы</h4>
+                    <p className="text-sm text-teal-100">Новейшая технология</p>
                   </div>
                 </div>
               </Card>
@@ -317,8 +317,8 @@ const AgainCos = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/80 via-cyan-900/40 to-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h4 className="font-bold text-lg">Behandlung</h4>
-                    <p className="text-sm text-cyan-100">Professionelle Anwendung</p>
+                    <h4 className="font-bold text-lg">Процедура</h4>
+                    <p className="text-sm text-cyan-100">Профессиональное применение</p>
                   </div>
                 </div>
               </Card>
@@ -337,10 +337,10 @@ const AgainCos = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für professionelle Haarentfernung?
+            Готовы к профессиональной эпиляции?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Erleben Sie die innovative Again cos Technologie in unserem Studio. Vereinbaren Sie noch heute Ihren Beratungstermin.
+            Испытайте инновационную технологию Again cos в нашей студии. Запишитесь на консультацию уже сегодня.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -351,7 +351,7 @@ const AgainCos = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt beraten lassen
+                Получить консультацию
               </a>
             </Button>
             <Button
@@ -362,7 +362,7 @@ const AgainCos = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <ArrowRight className="w-5 h-5 ml-2" />
-                E-Mail senden
+                Отправить email
               </a>
             </Button>
           </div>
@@ -371,15 +371,15 @@ const AgainCos = () => {
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">DEKA Zertifiziert</p>
+                <p className="text-sm text-white/80">Сертифицировано DEKA</p>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 text-green-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">Sicher & Effektiv</p>
+                <p className="text-sm text-white/80">Безопасно и эффективно</p>
               </div>
               <div className="text-center">
                 <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
-                <p className="text-sm text-white/80">Premium Qualität</p>
+                <p className="text-sm text-white/80">Премиум-качество</p>
               </div>
             </div>
 

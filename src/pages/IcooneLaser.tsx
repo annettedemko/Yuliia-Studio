@@ -9,7 +9,7 @@ const IcooneLaser = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Icoone®️ Behandlung München-Haidhausen – Hautstraffung & Lymphdrainage',
-      description: 'Icoone®️ im Yuliia Cheporska Studio, Elsässer Str. 33 (Haidhausen). Straffere Haut, Cellulite-Reduktion, Lymphdrainage. Termin online buchen.'
+      description: 'Icoone®️ im Yuliia Cheporska Studio, Elsässer Str. 33 (Haidhausen). Straffere Haut, Cellulite-Reduktion, Lymphdrainage. Jetzt online buchen.'
     });
 
     setJsonLd({
@@ -41,54 +41,54 @@ const IcooneLaser = () => {
     {
       icon: Target,
       title: 'Body Contouring',
-      description: 'Gezielte Modellierung der Körpersilhouette durch innovative Vakuum-Laser-Kombination'
+      description: 'Целенаправленное моделирование силуэта тела с помощью инновационной вакуумно-лазерной комбинации'
     },
     {
       icon: Sparkles,
-      title: 'Hautstraffung',
-      description: 'Verbesserung der Hautelastizität und Reduzierung von Erschlaffungen'
+      title: 'Подтяжка кожи',
+      description: 'Улучшение эластичности кожи и уменьшение провисаний'
     },
     {
       icon: Heart,
-      title: 'Cellulite-Reduktion',
-      description: 'Effektive Behandlung von Orangenhaut und Verbesserung der Hautstruktur'
+      title: 'Уменьшение целлюлита',
+      description: 'Эффективное лечение апельсиновой корки и улучшение структуры кожи'
     },
     {
       icon: Shield,
-      title: 'Lymphdrainage',
-      description: 'Förderung des Lymphflusses und Entgiftung des Gewebes'
+      title: 'Лимфодренаж',
+      description: 'Стимуляция лимфотока и детоксикация тканей'
     }
   ];
 
   const treatmentAreas = [
-    'Bauch und Taille',
-    'Oberschenkel und Po',
-    'Arme und Oberarme',
-    'Hüften und Flanken',
-    'Rücken',
-    'Dekolleté und Hals'
+    'Живот и талия',
+    'Бедра и ягодицы',
+    'Руки и плечи',
+    'Бока и фланки',
+    'Спина',
+    'Декольте и шея'
   ];
 
   const processSteps = [
     {
       step: 1,
-      title: 'Beratung & Analyse',
-      description: 'Individuelle Hautanalyse und Behandlungsplanung'
+      title: 'Консультация и анализ',
+      description: 'Индивидуальный анализ кожи и планирование процедуры'
     },
     {
       step: 2,
-      title: 'Vorbereitung',
-      description: 'Reinigung und Vorbereitung der Behandlungszone'
+      title: 'Подготовка',
+      description: 'Очищение и подготовка зоны обработки'
     },
     {
       step: 3,
-      title: 'Icoone Behandlung',
-      description: 'Kombination aus Vakuummassage und Laserbehandlung'
+      title: 'Процедура Icoone',
+      description: 'Комбинация вакуумного массажа и лазерной обработки'
     },
     {
       step: 4,
-      title: 'Nachbehandlung',
-      description: 'Pflegehinweise und Terminplanung für Folgesitzungen'
+      title: 'Постобработка',
+      description: 'Рекомендации по уходу и планирование последующих сеансов'
     }
   ];
 
@@ -106,13 +106,13 @@ const IcooneLaser = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Icoone®️ Behandlung in München-Haidhausen – Hautstraffung & Cellulite-Reduktion
+            Процедура Icoone®️ в Мюнхен-Хайдхаузен – Подтяжка кожи и уменьшение целлюлита
           </h1>
           <p className="text-lg md:text-xl mb-4 text-white/95">
-            Professionelle Icoone Laser Behandlung München
+            Профессиональная процедура Icoone Laser в Мюнхене
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Erleben Sie die revolutionäre Kombination aus Vakuummassage und Laserbehandlung für optimale Hautstraffung und Körperkonturierung in unserem Studio in München-Haidhausen.
+            Испытайте революционную комбинацию вакуумного массажа и лазерной обработки для оптимальной подтяжки кожи и коррекции фигуры в нашей студии в Мюнхен-Хайдхаузен.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -122,7 +122,7 @@ const IcooneLaser = () => {
             >
               <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
                 <Phone className="w-5 h-5 mr-2" />
-                Beratungstermin vereinbaren
+                Записаться на консультацию
               </a>
             </Button>
             <Button
@@ -132,7 +132,7 @@ const IcooneLaser = () => {
               asChild
             >
               <Link to="/preis#icoone-laser">
-                Preise ansehen
+                Посмотреть цены
               </Link>
             </Button>
           </div>
@@ -144,7 +144,7 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Vorteile von Icoone®️ in München-Haidhausen
+              Преимущества Icoone®️ в Мюнхен-Хайдхаузен
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -153,9 +153,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Hautstraffung & Cellulite-Reduktion</h3>
+                      <h3 className="font-bold text-primary mb-2">Подтяжка кожи и уменьшение целлюлита</h3>
                       <p className="text-muted-foreground">
-                        Gezielte Verbesserung der Hautelastizität, Reduzierung von Orangenhaut und straffere Körperkonturen.
+                        Целенаправленное улучшение эластичности кожи, уменьшение апельсиновой корки и более упругие контуры тела.
                       </p>
                     </div>
                   </div>
@@ -167,9 +167,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Lymphdrainage & Entgiftung</h3>
+                      <h3 className="font-bold text-primary mb-2">Лимфодренаж и детоксикация</h3>
                       <p className="text-muted-foreground">
-                        Förderung des Lymphflusses, Unterstützung der Entschlackung und Entgiftung des Gewebes.
+                        Стимуляция лимфотока, поддержка очищения и детоксикации тканей.
                       </p>
                     </div>
                   </div>
@@ -181,9 +181,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Schmerzfrei & Entspannend</h3>
+                      <h3 className="font-bold text-primary mb-2">Безболезненно и расслабляюще</h3>
                       <p className="text-muted-foreground">
-                        Angenehme Behandlung ohne Ausfallzeiten – ideal für Berufstätige in München.
+                        Приятная процедура без периода восстановления – идеально для работающих людей в Мюнхене.
                       </p>
                     </div>
                   </div>
@@ -195,9 +195,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Professionelle Beratung</h3>
+                      <h3 className="font-bold text-primary mb-2">Профессиональная консультация</h3>
                       <p className="text-muted-foreground">
-                        Individuelle Analyse und maßgeschneiderte Behandlungsplanung im Herzen von Haidhausen.
+                        Индивидуальный анализ и персонализированное планирование процедур в сердце Хайдхаузена.
                       </p>
                     </div>
                   </div>
@@ -212,10 +212,10 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Was ist Icoone Laser?</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Что такое Icoone Laser?</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Icoone ist eine revolutionäre Technologie, die Vakuummassage mit Laserbehandlung kombiniert,
-                um optimale Ergebnisse in der Körperkonturierung und Hautverbesserung zu erzielen.
+                Icoone – это революционная технология, которая сочетает вакуумный массаж с лазерной обработкой
+                для достижения оптимальных результатов в коррекции фигуры и улучшении состояния кожи.
               </p>
             </div>
 
@@ -255,30 +255,30 @@ const IcooneLaser = () => {
               <div className="space-y-6">
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Mikro-Vakuum-Technologie</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">Микро-вакуумная технология</h3>
                     <p className="text-muted-foreground">
-                      Über 21.600 Mikro-Perforationen erzeugen einen kontrollierten Vakuumeffekt,
-                      der die Durchblutung fördert und das Gewebe stimuliert.
+                      Более 21 600 микроперфораций создают контролируемый вакуумный эффект,
+                      который стимулирует кровообращение и активизирует ткани.
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Laser-Integration</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">Лазерная интеграция</h3>
                     <p className="text-muted-foreground">
-                      Die Kombination mit Laserenergie verstärkt die Wirkung und sorgt für
-                      tiefgreifende Hautverbesserungen und Gewebestraffung.
+                      Комбинация с лазерной энергией усиливает эффект и обеспечивает
+                      глубокое улучшение кожи и подтяжку тканей.
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Schmerzfreie Anwendung</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">Безболезненное применение</h3>
                     <p className="text-muted-foreground">
-                      Die Behandlung ist angenehm und entspannend, ohne Ausfallzeiten oder
-                      schmerzhafte Nachwirkungen.
+                      Процедура приятна и расслабляюща, без периода восстановления или
+                      болезненных последствий.
                     </p>
                   </CardContent>
                 </Card>
@@ -293,8 +293,8 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsbeispiele & Ergebnisse</h2>
-              <p className="text-xl text-muted-foreground">Sehen Sie die beeindruckenden Ergebnisse unserer Icoone Laser Behandlungen</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Примеры процедур и результаты</h2>
+              <p className="text-xl text-muted-foreground">Посмотрите впечатляющие результаты наших процедур Icoone Laser</p>
             </div>
 
             {/* Image Gallery Grid */}
@@ -330,10 +330,10 @@ const IcooneLaser = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h3 className="text-3xl font-bold text-primary mb-6">Professionelle Icoone Laser Behandlung</h3>
+            <h3 className="text-3xl font-bold text-primary mb-6">Профессиональная процедура Icoone Laser</h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Erleben Sie die revolutionäre Kombination aus Vakuummassage und Laserbehandlung für
-              optimale Hautstraffung und Körperkonturierung in unserem Studio.
+              Испытайте революционную комбинацию вакуумного массажа и лазерной обработки для
+              оптимальной подтяжки кожи и коррекции фигуры в нашей студии.
             </p>
           </div>
         </div>

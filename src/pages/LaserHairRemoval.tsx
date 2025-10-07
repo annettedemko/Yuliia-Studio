@@ -44,24 +44,24 @@ const LaserHairRemoval = () => {
 
   const faqItems = [
     {
-      question: 'Wie viele Sitzungen sind erforderlich?',
-      answer: 'In der Regel sind 6-10 Sitzungen erforderlich, abhängig von Ihrem Haartyp, der Körperregion und Ihren individuellen Eigenschaften. Die Sitzungen werden alle 4-8 Wochen durchgeführt.'
+      question: 'Сколько сеансов необходимо?',
+      answer: 'Как правило, требуется 6-10 сеансов, в зависимости от вашего типа волос, области тела и индивидуальных особенностей. Сеансы проводятся каждые 4-8 недель.'
     },
     {
-      question: 'Ist die Behandlung schmerzhaft?',
-      answer: 'Die Behandlung wird oft als weniger schmerzhaft als das Wachsen beschrieben. Die meisten Patienten empfinden sie als ein leichtes Zwicken oder eine warme Empfindung. Unser modernes Equipment minimiert Beschwerden.'
+      question: 'Болезненна ли процедура?',
+      answer: 'Процедуру часто описывают как менее болезненную, чем восковую депиляцию. Большинство пациентов ощущают легкое покалывание или теплое ощущение. Наше современное оборудование минимизирует дискомфорт.'
     },
     {
-      question: 'Für wen ist die Laser-Haarentfernung geeignet?',
-      answer: 'Die Behandlung ist für die meisten Hauttypen geeignet. Besonders effektiv ist sie bei dunklen Haaren auf heller Haut. Bei einer Beratung besprechen wir Ihre individuellen Voraussetzungen.'
+      question: 'Для кого подходит лазерная эпиляция?',
+      answer: 'Процедура подходит для большинства типов кожи. Особенно эффективна она для темных волос на светлой коже. На консультации мы обсудим ваши индивидуальные особенности.'
     },
     {
-      question: 'Welche Körperbereiche können behandelt werden?',
-      answer: 'Praktisch alle Körperbereiche können behandelt werden: Gesicht, Achseln, Beine, Arme, Bikinizone, Rücken und mehr. Jeder Bereich erfordert individuelle Behandlungszyklen.'
+      question: 'Какие области тела можно обрабатывать?',
+      answer: 'Практически все области тела могут быть обработаны: лицо, подмышки, ноги, руки, зона бикини, спина и другие. Каждая область требует индивидуальных циклов процедур.'
     },
     {
-      question: 'Was kostet eine Behandlung?',
-      answer: 'Die Kosten variieren je nach Behandlungsbereich. Kleine Bereiche wie die Oberlippe beginnen bei 30-35€, größere Bereiche wie komplette Beine bei 120-200€. Genaue Preise finden Sie auf unserer Preisseite.'
+      question: 'Сколько стоит процедура?',
+      answer: 'Стоимость варьируется в зависимости от зоны обработки. Небольшие зоны, такие как верхняя губа, начинаются от 30-35€, более крупные зоны, такие как полностью ноги, от 120-200€. Точные цены вы найдете на странице с ценами.'
     }
   ];
 
@@ -210,10 +210,10 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">Warum sind mehrere Sitzungen erforderlich?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">Почему необходимо несколько сеансов?</h2>
             <div className="text-center mb-12">
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Das Haarwachstum erfolgt in verschiedenen Phasen. Der Laser kann nur Haare in der aktiven Wachstumsphase (Anagenphase) effektiv behandeln.
+                Рост волос происходит в разных фазах. Лазер может эффективно обрабатывать только волосы в активной фазе роста (анагенфаза).
               </p>
             </div>
 
@@ -223,9 +223,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">1</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Anagenphase</h3>
+                  <h3 className="font-bold text-primary mb-3">Анагенфаза</h3>
                   <p className="text-sm text-muted-foreground">
-                    Aktive Wachstumsphase - Haare sind am empfindlichsten für Laserbehandlung
+                    Активная фаза роста - волосы наиболее чувствительны к лазерной обработке
                   </p>
                 </CardContent>
               </Card>
@@ -235,9 +235,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">2</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Katagenphase</h3>
+                  <h3 className="font-bold text-primary mb-3">Катагенфаза</h3>
                   <p className="text-sm text-muted-foreground">
-                    Übergangsphase - Haare reagieren weniger auf Laserbehandlung
+                    Переходная фаза - волосы менее реагируют на лазерную обработку
                   </p>
                 </CardContent>
               </Card>
@@ -247,9 +247,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">3</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Telogenphase</h3>
+                  <h3 className="font-bold text-primary mb-3">Телогенфаза</h3>
                   <p className="text-sm text-muted-foreground">
-                    Ruhephase - Laser zeigt keine Wirkung auf ruhende Haarfollikel
+                    Фаза покоя - лазер не оказывает воздействия на спящие волосяные фолликулы
                   </p>
                 </CardContent>
               </Card>
@@ -258,11 +258,11 @@ const LaserHairRemoval = () => {
             <div className="text-center mt-12">
               <Card className="max-w-2xl mx-auto">
                 <CardContent className="p-6">
-                  <h4 className="font-bold text-primary mb-4">Behandlungsplan</h4>
+                  <h4 className="font-bold text-primary mb-4">План процедур</h4>
                   <p className="text-muted-foreground">
-                    Da sich nur 20-30% der Haare gleichzeitig in der Wachstumsphase befinden, sind
-                    <strong className="text-primary"> 6-10 Sitzungen im Abstand von 4-8 Wochen</strong> erforderlich,
-                    um alle Haare zu erfassen und dauerhafte Ergebnisse zu erzielen.
+                    Поскольку только 20-30% волос одновременно находятся в фазе роста, необходимо
+                    <strong className="text-primary"> 6-10 сеансов с интервалом 4-8 недель</strong>,
+                    чтобы охватить все волосы и достичь долговременных результатов.
                   </p>
                 </CardContent>
               </Card>
@@ -275,7 +275,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Ход процедуры</h2>
             
             <div className="space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -283,32 +283,32 @@ const LaserHairRemoval = () => {
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">1</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Beratung</h3>
-                  <p className="text-sm text-muted-foreground">Individuelle Hautanalyse und Behandlungsplan</p>
+                  <h3 className="font-bold text-primary mb-2">Консультация</h3>
+                  <p className="text-sm text-muted-foreground">Индивидуальный анализ кожи и план процедур</p>
                 </div>
                 
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">2</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Vorbereitung</h3>
-                  <p className="text-sm text-muted-foreground">Hautreinigung und Schutzmaßnahmen</p>
+                  <h3 className="font-bold text-primary mb-2">Подготовка</h3>
+                  <p className="text-sm text-muted-foreground">Очищение кожи и защитные меры</p>
                 </div>
                 
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">3</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Behandlung</h3>
-                  <p className="text-sm text-muted-foreground">Präzise Laser-Anwendung der Zielregion</p>
+                  <h3 className="font-bold text-primary mb-2">Процедура</h3>
+                  <p className="text-sm text-muted-foreground">Точное лазерное воздействие на целевую зону</p>
                 </div>
                 
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">4</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Nachsorge</h3>
-                  <p className="text-sm text-muted-foreground">Pflegehinweise und Folgetermin</p>
+                  <h3 className="font-bold text-primary mb-2">Послепроцедурный уход</h3>
+                  <p className="text-sm text-muted-foreground">Рекомендации по уходу и последующий прием</p>
                 </div>
               </div>
             </div>
@@ -320,32 +320,32 @@ const LaserHairRemoval = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Für wen ist die Laser-Haarentfernung geeignet?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Для кого подходит лазерная эпиляция?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10">
               <Card>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">✓ Eignung</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">✓ Подходит</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Effektiv für alle Hauttypen (I bis VI) und verschiedene Haarfarben dank Alexandrit- und Diodenlaser
+                      Эффективно для всех типов кожи (I-VI) и различных цветов волос благодаря александритовому и диодному лазерам
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Alle Körperbereiche behandelbar
+                      Можно обрабатывать все области тела
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Frauen und Männer jeden Alters (ab 16 Jahren)
+                      Женщины и мужчины любого возраста (от 16 лет)
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Besonders effektiv bei dichtem Haarwuchs
+                      Особенно эффективно при густом росте волос
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Hauttypen I-IV (helle bis olivfarbene Haut)
+                      Типы кожи I-IV (от светлой до оливковой)
                     </li>
                   </ul>
                 </CardContent>
@@ -353,27 +353,27 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">⚠️ Kontraindikationen</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">⚠️ Противопоказания</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Schwangerschaft und Stillzeit
+                      Беременность и период лактации
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Akute Hautentzündungen oder Infektionen
+                      Острые воспаления кожи или инфекции
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Einnahme lichtsensibilisierender Medikamente
+                      Прием светочувствительных медикаментов
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Frische Bräune oder Sonnenbad (4 Wochen vorher)
+                      Свежий загар или солнечные ванны (за 4 недели до процедуры)
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Epilepsie oder andere neurologische Erkrankungen
+                      Эпилепсия или другие неврологические заболевания
                     </li>
                   </ul>
                 </CardContent>
@@ -381,27 +381,27 @@ const LaserHairRemoval = () => {
             </div>
 
             {/* Risks and Side Effects */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">Risiken und Nebenwirkungen</h3>
+            <h3 className="text-3xl font-bold text-primary text-center mb-12">Риски и побочные эффекты</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">Häufige, vorübergehende Nebenwirkungen</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">Частые, временные побочные эффекты</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Leichte Rötung und Schwellung (1-24h)
+                      Легкое покраснение и отек (1-24 ч)
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Warmes Gefühl der behandelten Haut
+                      Теплое ощущение обработанной кожи
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Kleine Krusten um die Haarfollikel
+                      Небольшие корочки вокруг волосяных фолликулов
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Leichte Hautschuppung nach 1-2 Wochen
+                      Легкое шелушение кожи через 1-2 недели
                     </li>
                   </ul>
                 </CardContent>
@@ -409,23 +409,23 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">Seltene Risiken</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">Редкие риски</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Hyperpigmentierung (dunkle Flecken)
+                      Гиперпигментация (темные пятна)
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Hypopigmentierung (helle Flecken)
+                      Гипопигментация (светлые пятна)
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Oberflächliche Verbrennungen bei unsachgemäßer Anwendung
+                      Поверхностные ожоги при неправильном применении
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Paradoxer Haarwuchs (sehr selten)
+                      Парадоксальный рост волос (очень редко)
                     </li>
                   </ul>
                 </CardContent>
@@ -433,31 +433,31 @@ const LaserHairRemoval = () => {
             </div>
 
             {/* Preparation and Aftercare */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">Vorbereitung und Nachsorge</h3>
+            <h3 className="text-3xl font-bold text-primary text-center mb-12">Подготовка и послепроцедурный уход</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">📋 Vorbereitung</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">📋 Подготовка</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      4 Wochen vor Behandlung: Keine Sonnenbestrahlung oder Solarium
+                      За 4 недели до процедуры: Избегать солнца или солярия
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      6 Wochen vorher: Kein Waxing, Epilation oder Zupfen
+                      За 6 недель до процедуры: Не делать воск, эпиляцию или выщипывание
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      1-2 Tage vorher: Haare rasieren (nicht zupfen!)
+                      За 1-2 дня до процедуры: Побрить волосы (не выщипывать!)
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Am Behandlungstag: Keine Cremes oder Deodorants auftragen
+                      В день процедуры: Не наносить кремы или дезодоранты
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Bei Medikamenteneinnahme: Rücksprache mit uns halten
+                      При приеме медикаментов: Проконсультироваться с нами
                     </li>
                   </ul>
                 </CardContent>
@@ -465,27 +465,27 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">🧴 Nachsorge</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">🧴 Послепроцедурный уход</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      24h nach Behandlung: Kühlung mit kalten Kompressen
+                      24 ч после процедуры: Охлаждение холодными компрессами
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      2 Wochen: Hohen Lichtschutzfaktor (LSF 50+) verwenden
+                      2 недели: Использовать высокий SPF-фактор (SPF 50+)
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      4 Wochen: Keine Sonnenbestrahlung oder Solarium
+                      4 недели: Избегать солнца или солярия
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Zwischen Sitzungen: Nur rasieren, nicht zupfen oder wachsen
+                      Между сеансами: Только бритье, не выщипывать и не делать воск
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Bei Rötung: Beruhigende Aloe Vera Creme auftragen
+                      При покраснении: Наносить успокаивающий крем с алоэ вера
                     </li>
                   </ul>
                 </CardContent>
@@ -499,7 +499,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Häufig gestellte Fragen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Часто задаваемые вопросы</h2>
             
             <Accordion type="single" collapsible className="space-y-4">
               {faqItems.map((item, index) => (
@@ -522,19 +522,19 @@ const LaserHairRemoval = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Warum Laser-Haarentfernung im Yuliia Cheporska Studio?
+              Почему лазерная эпиляция в Yuliia Cheporska Studio?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Modernste Laser-Technologie (Alexandrit 755 nm & Diodenlaser)
+                  Современнейшие лазерные технологии (Александрит 755 нм и Диодный лазер)
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Individuelle Beratung und Behandlungsplanung
+                  Индивидуальная консультация и планирование процедур
                 </p>
               </div>
               <div className="flex items-start space-x-3">
@@ -558,7 +558,7 @@ const LaserHairRemoval = () => {
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Zentrale Lage in München-Haidhausen, nur 5 Min. vom Ostbahnhof
+                  Zentrale Lage in Мюнхен-Haidhausen, nur 5 Min. vom Ostbahnhof
                 </p>
               </div>
             </div>
@@ -617,7 +617,7 @@ const LaserHairRemoval = () => {
                       className="text-muted-foreground hover:text-rose-gold transition-colors"
                     >
                       Elsässer Straße 33<br />
-                      81667 München
+                      81667 Мюнхен
                     </a>
                   </CardContent>
                 </Card>
@@ -643,7 +643,7 @@ const LaserHairRemoval = () => {
                       <h3 className="text-xl font-bold text-primary">Anfahrt mit dem Auto</h3>
                     </div>
                     <div className="space-y-2 text-sm text-muted-foreground">
-                      <p>• A94 Ausfahrt München-Steinhausen</p>
+                      <p>• A94 Ausfahrt Мюнхен-Steinhausen</p>
                       <p>• Parkmöglichkeiten in der Nähe vorhanden</p>
                       <p>• Kostenpflichtige Parkplätze in der Straße</p>
                     </div>

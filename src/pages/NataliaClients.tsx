@@ -36,6 +36,7 @@ import {
   deleteNataliaClient
 } from '@/utils/clientsAPI';
 import type { Database } from '@/lib/supabase';
+import { FormSubmissionsWidget } from '@/components/admin/FormSubmissionsWidget';
 
 type NataliaClient = Database['public']['Tables']['natalia_clients']['Row'];
 type NataliaClientInsert = Database['public']['Tables']['natalia_clients']['Insert'];
@@ -275,6 +276,9 @@ const NataliaClients = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Form Submissions Widget */}
+        <FormSubmissionsWidget owner="Natalia" />
       </div>
     </div>
   );

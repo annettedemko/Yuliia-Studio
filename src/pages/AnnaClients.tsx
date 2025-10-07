@@ -36,6 +36,7 @@ import {
   deleteAnnaClient
 } from '@/utils/clientsAPI';
 import type { Database } from '@/lib/supabase';
+import { FormSubmissionsWidget } from '@/components/admin/FormSubmissionsWidget';
 
 type AnnaClient = Database['public']['Tables']['anna_clients']['Row'];
 type AnnaClientInsert = Database['public']['Tables']['anna_clients']['Insert'];
@@ -284,6 +285,9 @@ const AnnaClients = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Form Submissions Widget */}
+        <FormSubmissionsWidget owner="Anna" />
       </div>
     </div>
   );

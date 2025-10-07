@@ -244,9 +244,9 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Maniküre-Leistungen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Услуги маникюра</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Professionelle Handpflege für gepflegte und schöne Nägel in entspannter Atmosphäre
+                Профессиональный уход за руками для ухоженных и красивых ногтей в расслабляющей атмосфере
               </p>
             </div>
 
@@ -265,7 +265,7 @@ const ManikuerePedikuere = () => {
                             <Clock className="w-4 h-4 mr-1" />
                             {service.duration}
                           </span>
-                          <span className="text-lg font-bold text-rose-gold">{service.price}€</span>
+                          <span className="text-lg font-bold text-rose-gold">{service.price}</span>
                         </div>
                       </div>
                     </div>
@@ -279,12 +279,26 @@ const ManikuerePedikuere = () => {
                       asChild
                     >
                       <Link to="/preis">
-                        Alle Preise ansehen
+                        Посмотреть все цены
                       </Link>
                     </Button>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Termin buchen button for Maniküre */}
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Termin buchen
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -295,9 +309,9 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Pediküre-Leistungen</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Услуги педикюра</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Entspannende Fußpflege für gesunde und gepflegte Füße
+                Расслабляющий уход за ногами для здоровых и ухоженных стоп
               </p>
             </div>
 
@@ -316,7 +330,7 @@ const ManikuerePedikuere = () => {
                             <Clock className="w-4 h-4 mr-1" />
                             {service.duration}
                           </span>
-                          <span className="text-lg font-bold text-primary">{service.price}€</span>
+                          <span className="text-lg font-bold text-primary">{service.price}</span>
                         </div>
                       </div>
                     </div>
@@ -330,12 +344,26 @@ const ManikuerePedikuere = () => {
                       asChild
                     >
                       <Link to="/preis">
-                        Alle Preise ansehen
+                        Посмотреть все цены
                       </Link>
                     </Button>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            {/* Termin buchen button for Pediküre */}
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                asChild
+              >
+                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Termin buchen
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -345,7 +373,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Warum Yuliia Cheporska Studio?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Почему Yuliia Cheporska Studio?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Галерея изображений маникюра */}
@@ -425,7 +453,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Behandlungsablauf</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Ход процедуры</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {processSteps.map((process, index) => (
@@ -446,37 +474,37 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Pflege-Tipps für zu Hause</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Советы по уходу в домашних условиях</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Hand className="w-5 h-5 text-rose-gold" />
-                    Nagelpflege-Tipps
+                    Советы по уходу за ногтями
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Verwenden Sie täglich Nagelöl oder Handcreme
+                      Используйте ежедневно масло для ногтей или крем для рук
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Tragen Sie Handschuhe bei Hausarbeiten
+                      Носите перчатки при домашней работе
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Feilen Sie Nägel in eine Richtung
+                      Подпиливайте ногти в одном направлении
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Vermeiden Sie das Kauen an Nägeln und Nagelhaut
+                      Избегайте обгрызания ногтей и кутикулы
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Nutzen Sie einen Unterlack vor der Farbgebung
+                      Используйте базовое покрытие перед нанесением цвета
                     </li>
                   </ul>
                 </CardContent>
@@ -486,30 +514,30 @@ const ManikuerePedikuere = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Heart className="w-5 h-5 text-primary" />
-                    Fußpflege-Tipps
+                    Советы по уходу за ногами
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Cremen Sie Ihre Füße täglich ein
+                      Наносите крем на ноги ежедневно
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Wechseln Sie täglich Strümpfe und Socken
+                      Меняйте чулки и носки ежедневно
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Schneiden Sie Fußnägel gerade ab
+                      Подрезайте ногти на ногах прямо
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Verwenden Sie atmungsaktive Schuhe
+                      Используйте дышащую обувь
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Gönnen Sie Ihren Füßen regelmäßig ein Fußbad
+                      Балуйте свои ноги регулярными ванночками для ног
                     </li>
                   </ul>
                 </CardContent>
@@ -523,27 +551,27 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Unsere Pediküre-Arbeiten</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Наши работы по педикюру</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-primary">Professionelle Fußpflege</h3>
+                <h3 className="text-2xl font-bold text-primary">Профессиональный уход за ногами</h3>
                 <p className="text-muted-foreground">
-                  Entdecken Sie unsere hochwertigen Pediküre-Behandlungen. Von medizinischer Fußpflege
-                  bis hin zu entspannenden Wellness-Behandlungen – wir sorgen für gesunde und gepflegte Füße.
+                  Откройте для себя наши высококачественные процедуры педикюра. От медицинского ухода за ногами
+                  до расслабляющих велнес-процедур – мы заботимся о здоровых и ухоженных ногах.
                 </p>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Medizinische Fußpflege mit Hornhautentfernung
+                    Медицинский уход за ногами с удалением мозолей
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Entspannende Wellness-Pediküre mit Massage
+                    Расслабляющий велнес-педикюр с массажем
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Gel-Lackierung für langanhaltende Ergebnisse
+                    Гель-лаковое покрытие для долговременных результатов
                   </li>
                 </ul>
               </div>
@@ -574,10 +602,10 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Verwöhnen Sie Ihre Hände und Füße</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Побалуйте свои руки и ноги</h2>
             <p className="text-xl mb-8 text-white/90">
-              Buchen Sie jetzt Ihren Termin und erleben Sie professionelle Hand- und Fußpflege
-              in entspannter Atmosphäre.
+              Запишитесь на прием прямо сейчас и испытайте профессиональный уход за руками и ногами
+              в расслабляющей атмосфере.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -587,7 +615,7 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  Jetzt Termin buchen
+                  Записаться на прием
                 </a>
               </Button>
 
@@ -602,7 +630,7 @@ const ManikuerePedikuere = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  📸 Maniküre Arbeiten ansehen
+                  📸 Посмотреть работы по маникюру
                 </a>
               </Button>
             </div>
@@ -614,7 +642,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Was unsere Kunden sagen</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Что говорят наши клиенты</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
@@ -625,12 +653,12 @@ const ManikuerePedikuere = () => {
                     ))}
                   </div>
                   <blockquote className="text-muted-foreground italic mb-4">
-                    "Die beste Maniküre, die ich je hatte! Yuliia arbeitet sehr präzise und das Ergebnis
-                    hält wirklich 3 Wochen. Das Studio ist sehr sauber und gemütlich."
+                    "Лучший маникюр, который у меня когда-либо был! Юлия работает очень точно, и результат
+                    действительно держится 3 недели. Студия очень чистая и уютная."
                   </blockquote>
                   <div className="text-center">
-                    <div className="font-semibold text-primary">Maria Schmidt</div>
-                    <div className="text-sm text-muted-foreground">Stammkundin seit 2022</div>
+                    <div className="font-semibold text-primary">Мария Шмидт</div>
+                    <div className="text-sm text-muted-foreground">Постоянная клиентка с 2022</div>
                   </div>
                 </CardContent>
               </Card>
@@ -643,12 +671,12 @@ const ManikuerePedikuere = () => {
                     ))}
                   </div>
                   <blockquote className="text-muted-foreground italic mb-4">
-                    "Endlich eine Pediküre, bei der ich mich wirklich entspannen kann. Die Behandlung
-                    ist sehr gründlich und meine Füße fühlen sich danach wie neu an."
+                    "Наконец-то педикюр, во время которого я действительно могу расслабиться. Процедура
+                    очень тщательная, и мои ноги после нее чувствуются как новые."
                   </blockquote>
                   <div className="text-center">
-                    <div className="font-semibold text-primary">Anna Müller</div>
-                    <div className="text-sm text-muted-foreground">Regelmäßige Kundin</div>
+                    <div className="font-semibold text-primary">Анна Мюллер</div>
+                    <div className="text-sm text-muted-foreground">Постоянная клиентка</div>
                   </div>
                 </CardContent>
               </Card>

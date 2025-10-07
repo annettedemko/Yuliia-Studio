@@ -11,8 +11,8 @@ const Services = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: 'Unsere Behandlungen im Überblick – Kosmetik & Beauty in München-Haidhausen',
-      description: 'Vielseitiges Angebot an Kosmetik-, Wellness- und Beauty-Behandlungen im Yuliia Cheporska Studio. Laser-Haarentfernung, Hautbehandlungen, Massagen & mehr in München-Haidhausen.'
+      title: 'Unsere Leistungen im Überblick – Kosmetik & Beauty in München-Haidhausen',
+      description: 'Vielfältige Kosmetik-, Wellness- und Beauty-Behandlungen im Yuliia Cheporska Studio. Laser-Haarentfernung, Hautpflege, Massage und mehr in München-Haidhausen.'
     });
   }, []);
 

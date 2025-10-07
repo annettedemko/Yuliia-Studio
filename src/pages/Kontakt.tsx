@@ -12,7 +12,7 @@ const Kontakt = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Kontakt – Yuliia Cheporska Studio München-Haidhausen | Elsässer Str. 33',
-      description: 'Yuliia Cheporska Studio in München-Haidhausen (Elsässer Str. 33). Nur 5 Min. vom Ostbahnhof. ÖPNV: Tram 19, Bus 145. Termin online buchen oder anrufen.'
+      description: 'Yuliia Cheporska Studio in München-Haidhausen (Elsässer Str. 33). Nur 5 Min. vom Ostbahnhof. Öffentliche Verkehrsmittel: Tram 19, Bus 145. Online buchen oder anrufen.'
     });
 
     setJsonLd({

@@ -57,58 +57,58 @@ const RedTouchProService = () => {
   const deviceFeatures = [
     {
       icon: Sparkles,
-      title: 'Flexible Faser',
-      description: 'Das Laserlicht wird über eine lange und flexible Faser übertragen und gewährleistet somit optimalen Komfort für den Behandler.',
+      title: 'Гибкий световод',
+      description: 'Лазерный свет передается через длинный и гибкий световод, обеспечивая оптимальный комфорт для специалиста.',
       position: 'top-left'
     },
     {
       icon: Monitor,
-      title: 'Ultrascharfer 10,1″ LCD Touchscreen',
-      description: 'Das ultrascharfe und reaktionsschnelle 10,1" Display mit einer modernen Benutzeroberfläche ermöglicht eine intuitive Bedienung.',
+      title: 'Сверхчёткий 10,1″ LCD сенсорный экран',
+      description: 'Сверхчёткий и быстро реагирующий 10,1" дисплей с современным пользовательским интерфейсом обеспечивает интуитивное управление.',
       position: 'top-right'
     },
     {
       icon: Award,
-      title: 'Integrierte Protokolle',
-      description: 'Für den RedTouch PRO wurden spezielle Behandlungsprotokolle für die Hautverjüngung entwickelt.',
+      title: 'Встроенные протоколы',
+      description: 'Для RedTouch PRO разработаны специальные протоколы процедур для омоложения кожи.',
       position: 'center-left'
     },
     {
       icon: Shield,
-      title: 'Integrierte Hautkühlung',
-      description: 'Dank des integrierten Hautkühlungssystems wird die Epidermisschicht nicht beschädigt, dadurch werden Nebenwirkungen und daraus resultierende Ausfallzeiten minimiert.',
+      title: 'Встроенное охлаждение кожи',
+      description: 'Благодаря встроенной системе охлаждения кожи эпидермальный слой не повреждается, минимизируя побочные эффекты и время восстановления.',
       position: 'center-right'
     },
     {
       icon: Target,
-      title: 'Innovatives Wellenlängen-System',
-      description: 'Der RedTouch war das erste System mit 675 nm, welches selektiv auf Kollagenfasern einwirkt und deshalb besonders effektiv arbeitet.',
+      title: 'Инновационная система длины волн',
+      description: 'RedTouch стала первой системой с длиной волны 675 нм, которая избирательно воздействует на коллагеновые волокна, поэтому особенно эффективна.',
       position: 'bottom-left'
     },
     {
       icon: Activity,
-      title: 'Ergonomisches Design',
-      description: 'Weiterentwicklung des RedTouch mit verbesserter Kühlung und höherer Effizienz',
+      title: 'Эргономичный дизайн',
+      description: 'Усовершенствованная версия RedTouch с улучшенным охлаждением и повышенной эффективностью',
       position: 'bottom-right'
     }
   ];
 
   const benefits = [
-    'Effektive Hautstraffung und Kollagenproduktion',
-    'Sichere Behandlung für alle Hauttypen',
-    'Schmerzfreie und komfortable Anwendung',
-    'Keine Ausfallzeiten nach der Behandlung',
-    'Sichtbare Ergebnisse bereits nach wenigen Sitzungen',
-    'Langanhaltende Hautverjüngung'
+    'Эффективная подтяжка кожи и выработка коллагена',
+    'Безопасная процедура для всех типов кожи',
+    'Безболезненное и комфортное применение',
+    'Без периода восстановления после процедуры',
+    'Видимые результаты уже после нескольких сеансов',
+    'Долговременное омоложение кожи'
   ];
 
   const treatmentAreas = [
-    'Gesicht (Faltenreduktion)',
-    'Hals und Dekolleté',
-    'Hände und Unterarme',
-    'Körperzonen nach Bedarf',
-    'Bikini-Bereich',
-    'Spezielle Problemzonen'
+    'Лицо (уменьшение морщин)',
+    'Шея и декольте',
+    'Руки и предплечья',
+    'Зоны тела по необходимости',
+    'Зона бикини',
+    'Особые проблемные зоны'
   ];
 
   return (
@@ -127,7 +127,7 @@ const RedTouchProService = () => {
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
-              RedTouch®️ Laserbehandlung in München-Haidhausen – Hautverjüngung & Pigmentkorrektur
+              RedTouch®️ Laserbehandlung in Мюнхен-Haidhausen – Hautverjüngung & Pigmentkorrektur
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
               Professionelle RedTouch®️ 675 nm Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
@@ -144,7 +144,7 @@ const RedTouchProService = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Vorteile von RedTouch®️ in München-Haidhausen
+              Vorteile von RedTouch®️ in Мюнхен-Haidhausen
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -197,7 +197,7 @@ const RedTouchProService = () => {
                     <div>
                       <h3 className="font-bold text-primary mb-2">Zentrale Lage in Haidhausen</h3>
                       <p className="text-muted-foreground">
-                        Bequem erreichbar nahe Ostbahnhof – ideal für Berufstätige in München.
+                        Bequem erreichbar nahe Ostbahnhof – ideal für Berufstätige in Мюнхен.
                       </p>
                     </div>
                   </div>
@@ -235,11 +235,11 @@ const RedTouchProService = () => {
             </div>
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-primary mb-6">
-                Modernste Technologie für Ihre Haut
+                Современнейшая технология для вашей кожи
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Das RedTouchPro System kombiniert fortschrittliche Laser-Technologie mit einem integrierten
-                Kühlsystem für maximale Sicherheit und Komfort während der Behandlung.
+                Система RedTouchPro сочетает передовую лазерную технологию с интегрированной
+                системой охлаждения для максимальной безопасности и комфорта во время процедуры.
               </p>
               <ul className="space-y-3">
                 {benefits.map((benefit, index) => (
@@ -258,9 +258,9 @@ const RedTouchProService = () => {
       <section className="py-16 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsergebnisse</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Результаты процедур</h2>
             <p className="text-xl text-muted-foreground">
-              Überzeugen Sie sich von den beeindruckenden Ergebnissen unserer RedTouchPro Behandlungen
+              Убедитесь в впечатляющих результатах наших процедур RedTouchPro
             </p>
           </div>
 
@@ -292,9 +292,9 @@ const RedTouchProService = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">RedTouchPro Gerät</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Аппарат RedTouchPro</h2>
             <p className="text-xl text-muted-foreground">
-              Technische Exzellenz in jedem Detail
+              Техническое совершенство в каждой детали
             </p>
           </div>
 
@@ -319,15 +319,15 @@ const RedTouchProService = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsgebiete</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Зоны обработки</h2>
               <p className="text-xl text-muted-foreground">
-                Vielseitige Anwendungsmöglichkeiten für optimale Ergebnisse
+                Универсальные возможности применения для оптимальных результатов
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-primary mb-6">Hauptbehandlungsgebiete</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">Основные зоны обработки</h3>
                 <ul className="space-y-4">
                   {treatmentAreas.map((area, index) => (
                     <li key={index} className="flex items-center">
@@ -339,13 +339,13 @@ const RedTouchProService = () => {
               </div>
               <div>
                 <Card className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-4">Behandlungshinweise</h3>
+                  <h3 className="text-xl font-bold text-primary mb-4">Указания по процедуре</h3>
                   <ul className="space-y-3 text-sm text-muted-foreground">
-                    <li>• Behandlungsdauer: 15 Minuten bis 1,5 Stunden je nach Bereich</li>
-                    <li>• Empfohlene Sitzungen: 3-6 Behandlungen für optimale Ergebnisse</li>
-                    <li>• Behandlungsintervall: 2-4 Wochen zwischen den Sitzungen</li>
-                    <li>• Keine Ausfallzeiten oder Nebenwirkungen</li>
-                    <li>• Sofort gesellschaftsfähig nach der Behandlung</li>
+                    <li>• Длительность процедуры: От 15 минут до 1,5 часов в зависимости от зоны</li>
+                    <li>• Рекомендуемые сеансы: 3-6 процедур для оптимальных результатов</li>
+                    <li>• Интервал процедур: 2-4 недели между сеансами</li>
+                    <li>• Без периода восстановления или побочных эффектов</li>
+                    <li>• Можно вернуться к обычной жизни сразу после процедуры</li>
                   </ul>
                 </Card>
               </div>
@@ -358,11 +358,11 @@ const RedTouchProService = () => {
       <section className="py-16 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für Ihre RedTouchPro Behandlung?
+            Готовы к процедуре RedTouchPro?
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Entdecken Sie die revolutionäre RedTouchPro Technologie für Ihre Hautstraffung.
-            Vereinbaren Sie jetzt einen Beratungstermin!
+            Откройте для себя революционную технологию RedTouchPro для подтяжки кожи.
+            Запишитесь на консультацию прямо сейчас!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -372,7 +372,7 @@ const RedTouchProService = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Jetzt Termin vereinbaren
+                Записаться на прием
               </a>
             </Button>
             <Button
@@ -382,7 +382,7 @@ const RedTouchProService = () => {
               asChild
             >
               <Link to="/preis#redtouchpro">
-                Preise ansehen
+                Посмотреть цены
               </Link>
             </Button>
           </div>

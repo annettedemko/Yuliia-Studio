@@ -36,6 +36,7 @@ import {
   deleteYuliaClient
 } from '@/utils/clientsAPI';
 import type { Database } from '@/lib/supabase';
+import { FormSubmissionsWidget } from '@/components/admin/FormSubmissionsWidget';
 
 type YuliaClient = Database['public']['Tables']['yulia_clients']['Row'];
 type YuliaClientInsert = Database['public']['Tables']['yulia_clients']['Insert'];
@@ -286,6 +287,9 @@ const YuliaClients = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Form Submissions Widget */}
+        <FormSubmissionsWidget owner="Yulia" />
       </div>
     </div>
   );
