@@ -17,43 +17,45 @@ import {
   Award,
   Clock
 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const RedTouchPro = () => {
+  const { t } = useLanguage();
   const deviceFeatures = [
     {
       icon: Sparkles,
-      title: 'Гибкое волокно',
-      description: 'Лазерный свет передается через длинное и гибкое волокно, обеспечивая оптимальный комфорт для специалиста.',
+      titleKey: 'redtouch.features.flex-fiber.title',
+      descKey: 'redtouch.features.flex-fiber.desc',
       position: 'top-left'
     },
     {
       icon: Monitor,
-      title: 'Ультрачеткий 10,1″ LCD сенсорный экран',
-      description: 'Ультрачеткий и быстрореагирующий 10,1" дисплей с современным интерфейсом обеспечивает интуитивное управление.',
+      titleKey: 'redtouch.features.screen.title',
+      descKey: 'redtouch.features.screen.desc',
       position: 'top-right'
     },
     {
       icon: Award,
-      title: 'Интегрированные протоколы',
-      description: 'Для RedTouch PRO разработаны специальные протоколы процедур для омоложения кожи.',
+      titleKey: 'redtouch.features.protocols.title',
+      descKey: 'redtouch.features.protocols.desc',
       position: 'center-left'
     },
     {
       icon: Shield,
-      title: 'Интегрированное охлаждение кожи',
-      description: 'Благодаря встроенной системе охлаждения кожи эпидермальный слой не повреждается, что минимизирует побочные эффекты и период восстановления.',
+      titleKey: 'redtouch.features.cooling.title',
+      descKey: 'redtouch.features.cooling.desc',
       position: 'center-right'
     },
     {
       icon: Target,
-      title: 'Инновационная система длины волны',
-      description: 'RedTouch стал первой системой с 675 нм, которая избирательно воздействует на коллагеновые волокна и поэтому работает особенно эффективно.',
+      titleKey: 'redtouch.features.wavelength.title',
+      descKey: 'redtouch.features.wavelength.desc',
       position: 'bottom-left'
     },
     {
       icon: Activity,
-      title: 'Сканер',
-      description: 'Интегрированный сканер обеспечивает наилучшие результаты благодаря оптимизированной эргономике. Микрозоны термического повреждения вызывают последовательную денатурацию коллагеновых волокон.',
+      titleKey: 'redtouch.features.scanner.title',
+      descKey: 'redtouch.features.scanner.desc',
       position: 'bottom-right'
     }
   ];
@@ -61,60 +63,60 @@ const RedTouchPro = () => {
   const advantages = [
     {
       icon: Zap,
-      title: 'Микрозоны термического повреждения',
-      description: 'Вызывают немедленную последовательную денатурацию коллагеновых волокон, что приводит к неоколлагенезу'
+      titleKey: 'redtouch.advantages.mtd.title',
+      descKey: 'redtouch.advantages.mtd.desc'
     },
     {
       icon: Shield,
-      title: 'Интегрированное охлаждение кожи',
-      description: 'Минимизирует побочные эффекты и период восстановления за счет защиты эпидермального слоя'
+      titleKey: 'redtouch.advantages.cooling.title',
+      descKey: 'redtouch.advantages.cooling.desc'
     },
     {
       icon: Target,
-      title: 'Длина волны 675 нм',
-      description: 'Избирательно направлена на коллагеновые волокна для высокоэффективных процедур'
+      titleKey: 'redtouch.advantages.wavelength.title',
+      descKey: 'redtouch.advantages.wavelength.desc'
     },
     {
       icon: Activity,
-      title: 'Режим Moveo',
-      description: 'Улучшенная скорость процедуры и работа даже с темной кожей'
+      titleKey: 'redtouch.advantages.moveo.title',
+      descKey: 'redtouch.advantages.moveo.desc'
     },
     {
       icon: Star,
-      title: 'Больше мощности',
-      description: 'Усовершенствованная версия RedTouch с улучшенным охлаждением и повышенной эффективностью'
+      titleKey: 'redtouch.advantages.power.title',
+      descKey: 'redtouch.advantages.power.desc'
     },
     {
       icon: CheckCircle,
-      title: 'Все типы кожи',
-      description: 'Безопасно применяется на разных типах кожи, включая загорелую кожу'
+      titleKey: 'redtouch.advantages.all-skin.title',
+      descKey: 'redtouch.advantages.all-skin.desc'
     }
   ];
 
   const applications = [
-    'Омоложение кожи и Anti-Aging',
-    'Улучшение эластичности кожи',
-    'Стимуляция коллагена',
-    'Процедуры для различных типов кожи',
-    'Уменьшение провисания кожи',
-    'Оптимизация структуры кожи'
+    'redtouch.applications.item1',
+    'redtouch.applications.item2',
+    'redtouch.applications.item3',
+    'redtouch.applications.item4',
+    'redtouch.applications.item5',
+    'redtouch.applications.item6'
   ];
 
   const designFeatures = [
     {
       icon: Monitor,
-      title: 'Сенсорный интерфейс',
-      description: 'Интуитивное управление через современный сенсорный дисплей'
+      titleKey: 'redtouch.design.feature1.title',
+      descKey: 'redtouch.design.feature1.desc'
     },
     {
       icon: Sparkles,
-      title: 'Гибкое волокно',
-      description: 'Оптимизированная эргономика для наилучшей передачи энергии'
+      titleKey: 'redtouch.design.feature2.title',
+      descKey: 'redtouch.design.feature2.desc'
     },
     {
       icon: Award,
-      title: 'Интегрированные протоколы',
-      description: 'Предустановленные протоколы процедур для различных применений'
+      titleKey: 'redtouch.design.feature3.title',
+      descKey: 'redtouch.design.feature3.desc'
     }
   ];
 
@@ -134,13 +136,13 @@ const RedTouchPro = () => {
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
-              RedTouch PRO
+              {t('redtouch.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
-              Инновационное омоложение кожи лазером
+              {t('redtouch.hero.subtitle')}
             </p>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-              Профессиональная технология RedTouch®️ 675 нм с интегрированным охлаждением кожи для безопасной и эффективной подтяжки кожи
+              {t('redtouch.hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -150,7 +152,7 @@ const RedTouchPro = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-5 h-5 mr-2" />
-                  Записаться на консультацию
+                  {t('redtouch.hero.button.book')}
                 </a>
               </Button>
               <Button
@@ -160,7 +162,7 @@ const RedTouchPro = () => {
                 asChild
               >
                 <a href="#technology">
-                  Узнать больше
+                  {t('redtouch.hero.button.learn')}
                 </a>
               </Button>
             </div>
@@ -173,7 +175,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">RedTouch PRO im Detail</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.gallery.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
             </div>
 
@@ -238,10 +240,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Революционная технология</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.tech.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Откройте для себя передовую технологию 675 нм с интегрированным сканером и современным интерфейсом
+                {t('redtouch.tech.subtitle')}
               </p>
             </div>
 
@@ -261,8 +263,8 @@ const RedTouchPro = () => {
                           <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{feature.title}</h3>
-                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
+                          <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
                         </div>
                       </div>
                       {/* Animated border bottom */}
@@ -304,8 +306,8 @@ const RedTouchPro = () => {
                           <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{feature.title}</h3>
-                          <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
+                          <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
                         </div>
                       </div>
                       {/* Animated border bottom */}
@@ -324,9 +326,9 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Научный анализ</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.analysis.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
-              <p className="text-xl text-muted-foreground">Техника окрашивания Ван Гизона показывает революционные результаты</p>
+              <p className="text-xl text-muted-foreground">{t('redtouch.analysis.subtitle')}</p>
             </div>
 
             {/* Large Image at the top */}
@@ -361,29 +363,21 @@ const RedTouchPro = () => {
             <div className="max-w-5xl mx-auto animate-slide-up delay-300" style={{marginTop: '-20px'}}>
               <Card className="shadow-elegant">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6 text-primary">Принцип действия технологии 675 нм</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-primary">{t('redtouch.analysis.heading')}</h3>
                   <p className="text-lg leading-relaxed mb-6 text-muted-foreground">
-                    Микрозоны термического повреждения вызывают немедленную последовательную денатурацию коллагеновых волокон,
-                    которая приводит к неоколлагенезу. Благодаря встроенной системе охлаждения и избирательности
-                    675 нм эпидермальный слой не повреждается, что минимизирует побочные эффекты
-                    и период восстановления.
+                    {t('redtouch.analysis.p1')}
                   </p>
 
                   <div className="border-t border-border pt-6">
-                    <h4 className="text-xl font-semibold mb-4 text-primary">Гистологическое исследование</h4>
+                    <h4 className="text-xl font-semibold mb-4 text-primary">{t('redtouch.analysis.histology.title')}</h4>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      Гистологическое исследование с использованием техники окрашивания Ван Гизона показывает
-                      человеческую кожу до (A) и после (B) процедуры с RedTouch PRO.
+                      {t('redtouch.analysis.histology.p1')}
                     </p>
                     <p className="text-muted-foreground leading-relaxed mb-4">
-                      На первой паре изображений снимок B показывает, что в ретикулярном слое (глубокий слой кожи)
-                      отсутствуют пучки коллагеновых волокон, а есть более тонкие волокна, которые более параллельны и прямы.
-                      Это показывает более организованную структуру с <strong className="text-primary">увеличением коллагеновых волокон</strong>.
+                      {t('redtouch.analysis.histology.p2')}
                     </p>
                     <p className="text-muted-foreground leading-relaxed">
-                      На второй паре изображений снимок B показывает, что эластичные волокна (показаны темным цветом)
-                      после процедуры также становятся более параллельными и прямыми в коже. Этот аспект указывает на
-                      структуру, которая <strong className="text-primary">функционально более подходит для лучшей эластичности тканей</strong>.
+                      {t('redtouch.analysis.histology.p3')}
                     </p>
                   </div>
                 </CardContent>
@@ -418,10 +412,10 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Аппарат RedTouch PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.device.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">
-                Профессиональная технология DEKA для омоложения кожи
+                {t('redtouch.device.subtitle')}
               </p>
             </div>
 
@@ -457,8 +451,8 @@ const RedTouchPro = () => {
                         <Star className="w-4 h-4 text-white mr-2" />
                         <span className="text-white font-semibold text-sm">DEKA Premium</span>
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-800 mb-2">RedTouch PRO</h3>
-                      <p className="text-gray-600 font-medium">Технология омоложения кожи 675 нм</p>
+                      <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('redtouch.device.name')}</h3>
+                      <p className="text-gray-600 font-medium">{t('redtouch.device.tech')}</p>
                     </div>
                   </div>
 
@@ -476,24 +470,24 @@ const RedTouchPro = () => {
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-6 h-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Точная технология</h4>
-                <p className="text-gray-600 text-sm">Длина волны 675 нм для оптимального образования коллагена</p>
+                <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec1.title')}</h4>
+                <p className="text-gray-600 text-sm">{t('redtouch.device.spec1.desc')}</p>
               </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-6 h-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Безопасное применение</h4>
-                <p className="text-gray-600 text-sm">Интегрированное охлаждение кожи защищает эпидермис</p>
+                <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec2.title')}</h4>
+                <p className="text-gray-600 text-sm">{t('redtouch.device.spec2.desc')}</p>
               </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Activity className="w-6 h-6 text-purple-600" />
                 </div>
-                <h4 className="font-semibold text-gray-800 mb-2">Режим Moveo</h4>
-                <p className="text-gray-600 text-sm">Передовая скорость процедуры</p>
+                <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec3.title')}</h4>
+                <p className="text-gray-600 text-sm">{t('redtouch.device.spec3.desc')}</p>
               </div>
             </div>
           </div>
@@ -505,7 +499,7 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Преимущества RedTouch PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.advantages.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
@@ -516,8 +510,8 @@ const RedTouchPro = () => {
                     <div className="bg-blue-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <advantage.icon className="w-8 h-8 text-blue-500" />
                     </div>
-                    <h3 className="text-lg font-bold text-primary mb-3">{advantage.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{advantage.description}</p>
+                    <h3 className="text-lg font-bold text-primary mb-3">{t(advantage.titleKey)}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{t(advantage.descKey)}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -531,20 +525,20 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Зоны процедур и области применения в Мюнхене</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.applications.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-muted-foreground">
-                В студии Yuliia в Мюнхен-Хайдхаузен мы используем RedTouch®️ целенаправленно в следующих зонах:
+                {t('redtouch.applications.subtitle')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {applications.map((application, index) => (
+              {applications.map((applicationKey, index) => (
                 <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-card hover:shadow-lg transition-shadow animate-slide-up" style={{animationDelay: `${index * 100}ms`}}>
                   <div className="bg-blue-500/10 p-2 rounded-full">
                     <CheckCircle className="w-5 h-5 text-blue-500" />
                   </div>
-                  <span className="text-primary font-medium">{application}</span>
+                  <span className="text-primary font-medium">{t(applicationKey)}</span>
                 </div>
               ))}
             </div>
@@ -557,22 +551,19 @@ const RedTouchPro = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">Дизайн и эргономика</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.design.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-up">
                 <div className="mb-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Оптимизированное управление</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-4">{t('redtouch.design.heading')}</h3>
                   <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                    RedTouch PRO - это усовершенствованная версия RedTouch, которая обеспечивает больше мощности, улучшенное
-                    охлаждение и добавляет режим процедуры Moveo. Благодаря расширению применения на темные
-                    типы кожи или загорелую кожу, он обеспечивает непревзойденную скорость процедуры и управление.
+                    {t('redtouch.design.p1')}
                   </p>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Манипула RedTouch PRO с интегрированным сканером разработана для достижения наилучшей
-                    производительности при передаче энергии на кожу при оптимизированной эргономике.
+                    {t('redtouch.design.p2')}
                   </p>
                 </div>
 
@@ -583,8 +574,8 @@ const RedTouchPro = () => {
                         <feature.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary mb-2">{feature.title}</h4>
-                        <p className="text-muted-foreground">{feature.description}</p>
+                        <h4 className="font-semibold text-primary mb-2">{t(feature.titleKey)}</h4>
+                        <p className="text-muted-foreground">{t(feature.descKey)}</p>
                       </div>
                     </div>
                   ))}
@@ -616,23 +607,22 @@ const RedTouchPro = () => {
       <section className="py-8 bg-gradient-to-r from-blue-600 to-primary text-white" style={{marginTop: '-30px'}}>
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
-            Интересует RedTouch PRO?
+            {t('redtouch.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto animate-slide-up delay-200">
-            Откройте для себя революционную технологию RedTouch PRO для вашей студии.
-            Запишитесь на консультацию прямо сейчас!
+            {t('redtouch.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Записаться на консультацию
+                {t('redtouch.cta.button.book')}
               </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 mr-2" />
-                Отправить email
+                {t('redtouch.cta.button.email')}
               </a>
             </Button>
           </div>

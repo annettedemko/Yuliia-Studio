@@ -144,10 +144,10 @@ const LaserHairRemoval = () => {
                       {t('laser.alexandrit.desc')}
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Besonders effektiv bei dunklen Haaren</li>
-                      <li>• Schnelle Behandlungszeiten</li>
-                      <li>• Präzise und schonend</li>
-                      <li>• Klinisch getestet und sicher</li>
+                      <li>• {t('laser.alexandrit.benefits.item1')}</li>
+                      <li>• {t('laser.alexandrit.benefits.item2')}</li>
+                      <li>• {t('laser.alexandrit.benefits.item3')}</li>
+                      <li>• {t('laser.alexandrit.benefits.item4')}</li>
                     </ul>
                   </div>
                 </div>
@@ -159,16 +159,15 @@ const LaserHairRemoval = () => {
               <Card className="overflow-hidden hover:shadow-card transition-all duration-300">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-primary mb-4">Diodenlaser</h3>
+                    <h3 className="text-2xl font-bold text-primary mb-4">{t('laser.diode.title')}</h3>
                     <p className="text-muted-foreground mb-4">
-                      Unser Diodenlaser eignet sich hervorragend für alle Hauttypen und bietet
-                      besonders schonende Behandlungen bei dauerhaften Ergebnissen.
+                      {t('laser.diode.desc')}
                     </p>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Für alle Hauttypen geeignet</li>
-                      <li>• Große Behandlungsflächen möglich</li>
-                      <li>• Minimale Nebenwirkungen</li>
-                      <li>• Langanhaltende Ergebnisse</li>
+                      <li>• {t('laser.diode.benefits.item1')}</li>
+                      <li>• {t('laser.diode.benefits.item2')}</li>
+                      <li>• {t('laser.diode.benefits.item3')}</li>
+                      <li>• {t('laser.diode.benefits.item4')}</li>
                     </ul>
                   </div>
                   <div className="relative">
@@ -196,7 +195,7 @@ const LaserHairRemoval = () => {
             <div className="text-center mt-8">
               <Link to="/alexandrit-gegen-diodenlaser">
                 <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all w-full sm:w-auto">
-                  <span className="font-semibold text-sm sm:text-base">Mehr zur Technik: Alexandrit vs. Diodenlaser – Unterschiede & Einsatz</span>
+                  <span className="font-semibold text-sm sm:text-base">{t('laser.comparison.button')}</span>
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 </Button>
               </Link>
@@ -521,43 +520,43 @@ const LaserHairRemoval = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Почему лазерная эпиляция в Yuliia Cheporska Studio?
+              {t('laser.why-us.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Современнейшие лазерные технологии (Александрит 755 нм и Диодный лазер)
+                  {t('laser.why-us.item1')}
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Индивидуальная консультация и планирование процедур
+                  {t('laser.why-us.item2')}
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Erfahrene, zertifizierte Behandlerinnen mit über 5 Jahren Erfahrung
+                  {t('laser.why-us.item3')}
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Höchste Hygienestandards und Sicherheitsprotokolle
+                  {t('laser.why-us.item4')}
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Transparente Preise ohne versteckte Kosten
+                  {t('laser.why-us.item5')}
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                 <p className="text-lg text-muted-foreground">
-                  Zentrale Lage in Мюнхен-Haidhausen, nur 5 Min. vom Ostbahnhof
+                  {t('laser.why-us.item6')}
                 </p>
               </div>
             </div>
@@ -569,9 +568,9 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Preise Laser-Haarentfernung</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('laser.pricing.title')}</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Transparent und fair - entdecken Sie unsere Preise für alle Behandlungsbereiche
+              {t('laser.pricing.description')}
             </p>
 
             <Button
@@ -580,7 +579,7 @@ const LaserHairRemoval = () => {
               asChild
             >
               <Link to="/preis">
-                Alle Preise ansehen
+                {t('laser.pricing.view-all')}
               </Link>
             </Button>
 
@@ -589,7 +588,7 @@ const LaserHairRemoval = () => {
               variant="outline"
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
-              Kostenlose Beratung
+              {t('laser.pricing.consultation')}
             </Button>
           </div>
         </div>
