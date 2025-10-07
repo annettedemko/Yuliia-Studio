@@ -594,7 +594,16 @@ const AdminDashboard = () => {
                     <>
                       <div className="flex justify-between items-start mb-2">
                         <div>
-                          <h4 className="font-semibold text-lg">{event.title}</h4>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold text-lg">{event.title}</h4>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              event.is_published
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-gray-100 text-gray-800'
+                            }`}>
+                              {event.is_published ? '✓ Veröffentlicht' : 'Entwurf'}
+                            </span>
+                          </div>
                           <p className="text-muted-foreground">
                             {event.date && new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
@@ -925,24 +934,26 @@ const EventEditor = ({
   onCancel
 }: {
   event?: SupabaseEvent;
-  onSave: (event: Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at' | 'is_published'>) => void;
+  onSave: (event: Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at'>) => void;
   onCancel: () => void;
 }) => {
-  const [formData, setFormData] = useState<Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at' | 'is_published'>>(
+  const [formData, setFormData] = useState<Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at'>>(
     event ? {
       title: event.title,
       date: event.date || '',
       time: event.time || '',
       location: event.location || '',
       address: event.address || '',
-      description: event.description || ''
+      description: event.description || '',
+      is_published: event.is_published ?? true
     } : {
       title: '',
       date: '',
       time: '',
       location: '',
       address: '',
-      description: ''
+      description: '',
+      is_published: true
     }
   );
 
@@ -1012,6 +1023,19 @@ const EventEditor = ({
           rows={3}
           placeholder="Zusätzliche Informationen zur Veranstaltung"
         />
+      </div>
+
+      <div className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          id="is_published"
+          checked={formData.is_published ?? true}
+          onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
+          className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
+        />
+        <Label htmlFor="is_published" className="cursor-pointer">
+          Veröffentlicht (sichtbar auf der Website)
+        </Label>
       </div>
 
       <div className="flex gap-2">
