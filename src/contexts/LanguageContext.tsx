@@ -841,7 +841,7 @@ const translations = {
     'footer.legal.contact': 'Контакты и как добраться',
     'footer.legal.imprint': 'Выходные данные',
     'footer.legal.privacy': 'Конфиденциальность',
-    'footer.copyright': '© 2024 Студия Юлии Чепорской. Все права защищены.',
+    'footer.copyright': '© 2024 Yuliia Cheporska Studio. Все права защищены.',
 
     // Common Service Page Elements
     'service.button.book': 'Записаться на прием',
