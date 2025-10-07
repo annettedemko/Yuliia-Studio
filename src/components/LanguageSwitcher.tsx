@@ -5,12 +5,20 @@ import { Button } from '@/components/ui/button';
 const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage } = useLanguage();
 
+  const handleLanguageChange = (newLang: 'de' | 'ru') => {
+    if (newLang !== language) {
+      setLanguage(newLang);
+      // Force page reload to ensure all content updates
+      window.location.reload();
+    }
+  };
+
   return (
     <div className="flex items-center space-x-2">
       <Button
         variant={language === 'de' ? 'default' : 'outline'}
         size="sm"
-        onClick={() => setLanguage('de')}
+        onClick={() => handleLanguageChange('de')}
         className="h-8 px-3 text-xs font-medium"
       >
         🇩🇪 DE
@@ -18,7 +26,7 @@ const LanguageSwitcher: React.FC = () => {
       <Button
         variant={language === 'ru' ? 'default' : 'outline'}
         size="sm"
-        onClick={() => setLanguage('ru')}
+        onClick={() => handleLanguageChange('ru')}
         className="h-8 px-3 text-xs font-medium"
       >
         🇷🇺 RU
