@@ -5,13 +5,12 @@ export type Event = Database['public']['Tables']['events']['Row'];
 export type CreateEvent = Database['public']['Tables']['events']['Insert'];
 export type UpdateEvent = Database['public']['Tables']['events']['Update'];
 
-// Get all events (published only)
+// Get all events (for admin dashboard - includes drafts)
 export const getEvents = async (): Promise<Event[]> => {
-  console.log('getEvents: Fetching published events from Supabase...');
+  console.log('getEvents: Fetching ALL events from Supabase (including drafts)...');
   const { data, error } = await supabase
     .from('events')
     .select('*')
-    .eq('is_published', true)
     .order('date', { ascending: true });
 
   if (error) {
