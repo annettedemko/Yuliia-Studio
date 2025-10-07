@@ -242,7 +242,7 @@ const Home = () => {
       </section>
 
       {/* Subscription Packages */}
-      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden -mt-12 md:-mt-16">
+      <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden mt-[5vh]">
         {/* Floating decorative elements */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/10 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float delay-1000"></div>
@@ -342,7 +342,7 @@ const Home = () => {
       </section>
 
       {/* Working Hours Section */}
-      <section className="py-10 bg-transparent relative overflow-hidden -mt-12 md:-mt-16">
+      <section className="py-10 bg-transparent relative overflow-hidden mt-[8vh]">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/5 rounded-full animate-pulse"></div>
@@ -468,7 +468,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-8 bg-transparent relative overflow-hidden mt-8 md:mt-12">
+      <section id="contact" className="py-8 bg-transparent relative overflow-hidden mt-[12vh]">
         {/* Dynamic floating elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>
