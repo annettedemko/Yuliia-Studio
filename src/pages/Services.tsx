@@ -30,9 +30,6 @@ const Services = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
               {t('services.hero.description')}
             </p>
-            <p className="text-lg text-primary max-w-3xl mx-auto font-medium">
-              {t('services.hero.cta')}
-            </p>
           </div>
         </div>
       </section>
