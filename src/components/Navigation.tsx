@@ -103,7 +103,7 @@ const Navigation = () => {
                 <img
                   src="/DEKA logo.png"
                   alt="DEKA Logo"
-                  className="h-7 w-auto"
+                  className="h-12 w-auto"
                   style={{
                     filter: 'brightness(1.2) saturate(1.1)',
                   }}
