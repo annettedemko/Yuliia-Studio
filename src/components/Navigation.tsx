@@ -80,13 +80,13 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="/logo2.jpg"
               alt="Yuliia Cheporska Studio"
-              className="h-10 w-auto"
+              className="h-16 w-auto"
             />
             {/* DEKA Logo - на всех DEKA страницах */}
             {(location.pathname === '/deka' ||
