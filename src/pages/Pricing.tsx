@@ -189,7 +189,10 @@ const Pricing = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-            {subscriptionPackages.map((pkg, index) => {
+            {[...subscriptionPackages].sort((a, b) => {
+              const order = { 'Silber': 1, 'Gold': 2, 'Platin': 3 };
+              return (order[a.name] || 99) - (order[b.name] || 99);
+            }).map((pkg, index) => {
               // Определяем цветовую схему в зависимости от названия пакета
               let cardStyles = '';
               let titleStyles = '';
