@@ -23,9 +23,9 @@ const Home = () => {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Yuliia Cheporska Studio',
-      image: 'https://yuliia-studio.vercel.app/logo2.jpg',
-      '@id': 'https://yuliia-studio.vercel.app',
-      url: 'https://yuliia-studio.vercel.app',
+      image: 'https://www.munchen-beauty.de/logo2.jpg',
+      '@id': 'https://www.munchen-beauty.de',
+      url: 'https://www.munchen-beauty.de',
       telephone: '+4915206067810',
       address: {
         '@type': 'PostalAddress',
@@ -234,7 +234,7 @@ const Home = () => {
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               <Link to="/preis">
-                Посмотреть все цены
+                {t('home.services.view-prices')}
               </Link>
             </Button>
           </div>
@@ -314,7 +314,15 @@ const Home = () => {
                         </div>
                         <Button
                           className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
-                          onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                          onClick={() => {
+                            const dikidiLinks = {
+                              'Silber': 'https://dkd.su/1833345/s/20701465',
+                              'Gold': 'https://dkd.su/1833345/s/20701481',
+                              'Platin': 'https://dkd.su/1833345/s/20701485'
+                            };
+                            const link = dikidiLinks[pkg.name] || 'https://beauty.dikidi.net/#widget=185505';
+                            window.open(link, '_blank');
+                          }}
                         >
                           {t('home.hero.button')}
                         </Button>
@@ -422,9 +430,33 @@ const Home = () => {
                       <p className="text-muted-foreground mb-2">
                         <span className="font-semibold">{t('home.map.public')}</span> {t('home.map.public-desc')}
                       </p>
-                      <p className="text-muted-foreground">
-                        <span className="font-semibold">{t('home.map.parking')}</span> {t('home.map.parking-desc')}
-                      </p>
+                      <div className="text-muted-foreground">
+                        <span className="font-semibold">{t('home.map.parking')}</span>
+                        <div className="mt-1 space-y-1">
+                          <div>
+                            <a
+                              href={t('home.map.parking1-url')}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-rose-gold hover:underline"
+                            >
+                              {t('home.map.parking1-name')}
+                            </a>
+                            {' '}({t('home.map.parking1-time')})
+                          </div>
+                          <div>
+                            <a
+                              href={t('home.map.parking2-url')}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-rose-gold hover:underline"
+                            >
+                              {t('home.map.parking2-name')}
+                            </a>
+                            {' '}({t('home.map.parking2-time')})
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

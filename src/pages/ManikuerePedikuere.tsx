@@ -243,9 +243,9 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Услуги маникюра</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('nails.manicure-services.title')}</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Профессиональный уход за руками для ухоженных и красивых ногтей в расслабляющей атмосфере
+                {t('nails.manicure-services.subtitle')}
               </p>
             </div>
 
@@ -278,7 +278,7 @@ const ManikuerePedikuere = () => {
                       asChild
                     >
                       <Link to="/preis">
-                        Посмотреть все цены
+                        {t('nails.view-prices')}
                       </Link>
                     </Button>
                   </CardContent>
@@ -294,7 +294,7 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  Termin buchen
+                  {t('nails.cta.book')}
                 </a>
               </Button>
             </div>
@@ -307,9 +307,9 @@ const ManikuerePedikuere = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Услуги педикюра</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('nails.pedicure-services.title')}</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Расслабляющий уход за ногами для здоровых и ухоженных стоп
+                {t('nails.pedicure-services.subtitle')}
               </p>
             </div>
 
@@ -342,7 +342,7 @@ const ManikuerePedikuere = () => {
                       asChild
                     >
                       <Link to="/preis">
-                        Посмотреть все цены
+                        {t('nails.view-prices')}
                       </Link>
                     </Button>
                   </CardContent>
@@ -358,7 +358,7 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  Termin buchen
+                  {t('nails.cta.book')}
                 </a>
               </Button>
             </div>
@@ -370,7 +370,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Почему Yuliia Cheporska Studio?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.why.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Галерея изображений маникюра */}
@@ -450,7 +450,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Ход процедуры</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.process.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {processSteps.map((process, index) => (
@@ -471,37 +471,37 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Советы по уходу в домашних условиях</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.tips.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Hand className="w-5 h-5 text-rose-gold" />
-                    Советы по уходу за ногтями
+                    {t('nails.tips.nails.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Используйте ежедневно масло для ногтей или крем для рук
+                      {t('nails.tips.nails.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Носите перчатки при домашней работе
+                      {t('nails.tips.nails.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Подпиливайте ногти в одном направлении
+                      {t('nails.tips.nails.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Избегайте обгрызания ногтей и кутикулы
+                      {t('nails.tips.nails.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Используйте базовое покрытие перед нанесением цвета
+                      {t('nails.tips.nails.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -511,30 +511,30 @@ const ManikuerePedikuere = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Heart className="w-5 h-5 text-primary" />
-                    Советы по уходу за ногами
+                    {t('nails.tips.feet.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Наносите крем на ноги ежедневно
+                      {t('nails.tips.feet.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Меняйте чулки и носки ежедневно
+                      {t('nails.tips.feet.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Подрезайте ногти на ногах прямо
+                      {t('nails.tips.feet.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Используйте дышащую обувь
+                      {t('nails.tips.feet.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Балуйте свои ноги регулярными ванночками для ног
+                      {t('nails.tips.feet.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -548,27 +548,26 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Наши работы по педикюру</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.gallery.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-primary">Профессиональный уход за ногами</h3>
+                <h3 className="text-2xl font-bold text-primary">{t('nails.gallery.subtitle')}</h3>
                 <p className="text-muted-foreground">
-                  Откройте для себя наши высококачественные процедуры педикюра. От медицинского ухода за ногами
-                  до расслабляющих велнес-процедур – мы заботимся о здоровых и ухоженных ногах.
+                  {t('nails.gallery.description')}
                 </p>
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Медицинский уход за ногами с удалением мозолей
+                    {t('nails.gallery.item1')}
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Расслабляющий велнес-педикюр с массажем
+                    {t('nails.gallery.item2')}
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                    Гель-лаковое покрытие для долговременных результатов
+                    {t('nails.gallery.item3')}
                   </li>
                 </ul>
               </div>
@@ -599,10 +598,9 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-gradient-hero text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Побалуйте свои руки и ноги</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('nails.final-cta.title')}</h2>
             <p className="text-xl mb-8 text-white/90">
-              Запишитесь на прием прямо сейчас и испытайте профессиональный уход за руками и ногами
-              в расслабляющей атмосфере.
+              {t('nails.final-cta.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -612,7 +610,7 @@ const ManikuerePedikuere = () => {
                 asChild
               >
                 <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  Записаться на прием
+                  {t('nails.final-cta.book')}
                 </a>
               </Button>
 
@@ -627,7 +625,7 @@ const ManikuerePedikuere = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  📸 Посмотреть работы по маникюру
+                  {t('nails.final-cta.instagram')}
                 </a>
               </Button>
             </div>
@@ -639,7 +637,7 @@ const ManikuerePedikuere = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Что говорят наши клиенты</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.testimonials.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
@@ -650,12 +648,11 @@ const ManikuerePedikuere = () => {
                     ))}
                   </div>
                   <blockquote className="text-muted-foreground italic mb-4">
-                    "Лучший маникюр, который у меня когда-либо был! Юлия работает очень точно, и результат
-                    действительно держится 3 недели. Студия очень чистая и уютная."
+                    "{t('nails.testimonials.item1.quote')}"
                   </blockquote>
                   <div className="text-center">
-                    <div className="font-semibold text-primary">Мария Шмидт</div>
-                    <div className="text-sm text-muted-foreground">Постоянная клиентка с 2022</div>
+                    <div className="font-semibold text-primary">{t('nails.testimonials.item1.name')}</div>
+                    <div className="text-sm text-muted-foreground">{t('nails.testimonials.item1.subtitle')}</div>
                   </div>
                 </CardContent>
               </Card>
@@ -668,12 +665,11 @@ const ManikuerePedikuere = () => {
                     ))}
                   </div>
                   <blockquote className="text-muted-foreground italic mb-4">
-                    "Наконец-то педикюр, во время которого я действительно могу расслабиться. Процедура
-                    очень тщательная, и мои ноги после нее чувствуются как новые."
+                    "{t('nails.testimonials.item2.quote')}"
                   </blockquote>
                   <div className="text-center">
-                    <div className="font-semibold text-primary">Анна Мюллер</div>
-                    <div className="text-sm text-muted-foreground">Постоянная клиентка</div>
+                    <div className="font-semibold text-primary">{t('nails.testimonials.item2.name')}</div>
+                    <div className="text-sm text-muted-foreground">{t('nails.testimonials.item2.subtitle')}</div>
                   </div>
                 </CardContent>
               </Card>

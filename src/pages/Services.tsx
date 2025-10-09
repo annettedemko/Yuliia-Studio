@@ -68,7 +68,7 @@ const Services = () => {
                   <p className="text-muted-foreground mb-6">
                     {t('services.motus.description')}
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/laser-haarentfernung-muenchen">
                         {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
@@ -114,7 +114,7 @@ const Services = () => {
                       <li>• {t('services.diode.benefits.universal')}</li>
                     </ul>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/laser-haarentfernung-muenchen">
                         {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
@@ -154,7 +154,7 @@ const Services = () => {
                   <p className="text-muted-foreground mb-6">
                     {t('services.icoone.description')}
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/icoone-laser-muenchen">
                         {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
@@ -203,7 +203,7 @@ const Services = () => {
                       <li>• {t('services.redtouch.areas.special')}</li>
                     </ul>
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
                       <Link to="/redtouch-laser-muenchen">
                         {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
@@ -234,7 +234,7 @@ const Services = () => {
                     <p className="text-muted-foreground mb-6">
                       {t('services.nails.description')}
                     </p>
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <Button asChild className="bg-gradient-hero text-white">
                         <Link to="/manikuere-pedikuere-muenchen">
                           {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />

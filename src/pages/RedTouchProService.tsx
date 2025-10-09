@@ -21,8 +21,10 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const RedTouchProService = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
       title: 'RedTouch®️ Laser München-Haidhausen – Hautverjüngung & Pigment',
@@ -57,58 +59,58 @@ const RedTouchProService = () => {
   const deviceFeatures = [
     {
       icon: Sparkles,
-      title: 'Гибкий световод',
-      description: 'Лазерный свет передается через длинный и гибкий световод, обеспечивая оптимальный комфорт для специалиста.',
+      title: t('redtouch.device.feature1.title'),
+      description: t('redtouch.device.feature1.desc'),
       position: 'top-left'
     },
     {
       icon: Monitor,
-      title: 'Сверхчёткий 10,1″ LCD сенсорный экран',
-      description: 'Сверхчёткий и быстро реагирующий 10,1" дисплей с современным пользовательским интерфейсом обеспечивает интуитивное управление.',
+      title: t('redtouch.device.feature2.title'),
+      description: t('redtouch.device.feature2.desc'),
       position: 'top-right'
     },
     {
       icon: Award,
-      title: 'Встроенные протоколы',
-      description: 'Для RedTouch PRO разработаны специальные протоколы процедур для омоложения кожи.',
+      title: t('redtouch.device.feature3.title'),
+      description: t('redtouch.device.feature3.desc'),
       position: 'center-left'
     },
     {
       icon: Shield,
-      title: 'Встроенное охлаждение кожи',
-      description: 'Благодаря встроенной системе охлаждения кожи эпидермальный слой не повреждается, минимизируя побочные эффекты и время восстановления.',
+      title: t('redtouch.device.feature4.title'),
+      description: t('redtouch.device.feature4.desc'),
       position: 'center-right'
     },
     {
       icon: Target,
-      title: 'Инновационная система длины волн',
-      description: 'RedTouch стала первой системой с длиной волны 675 нм, которая избирательно воздействует на коллагеновые волокна, поэтому особенно эффективна.',
+      title: t('redtouch.device.feature5.title'),
+      description: t('redtouch.device.feature5.desc'),
       position: 'bottom-left'
     },
     {
       icon: Activity,
-      title: 'Эргономичный дизайн',
-      description: 'Усовершенствованная версия RedTouch с улучшенным охлаждением и повышенной эффективностью',
+      title: t('redtouch.device.feature6.title'),
+      description: t('redtouch.device.feature6.desc'),
       position: 'bottom-right'
     }
   ];
 
   const benefits = [
-    'Эффективная подтяжка кожи и выработка коллагена',
-    'Безопасная процедура для всех типов кожи',
-    'Безболезненное и комфортное применение',
-    'Без периода восстановления после процедуры',
-    'Видимые результаты уже после нескольких сеансов',
-    'Долговременное омоложение кожи'
+    t('redtouch.technology.benefit1'),
+    t('redtouch.technology.benefit2'),
+    t('redtouch.technology.benefit3'),
+    t('redtouch.technology.benefit4'),
+    t('redtouch.technology.benefit5'),
+    t('redtouch.technology.benefit6')
   ];
 
   const treatmentAreas = [
-    'Лицо (уменьшение морщин)',
-    'Шея и декольте',
-    'Руки и предплечья',
-    'Зоны тела по необходимости',
-    'Зона бикини',
-    'Особые проблемные зоны'
+    t('redtouch.areas.area1'),
+    t('redtouch.areas.area2'),
+    t('redtouch.areas.area3'),
+    t('redtouch.areas.area4'),
+    t('redtouch.areas.area5'),
+    t('redtouch.areas.area6')
   ];
 
   return (
@@ -127,13 +129,13 @@ const RedTouchProService = () => {
         <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
-              RedTouch®️ Laserbehandlung in Мюнхен-Haidhausen – Hautverjüngung & Pigmentkorrektur
+              {t('redtouch.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
-              Professionelle RedTouch®️ 675 nm Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).
+              {t('redtouch.hero.subtitle')}
             </p>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Innovative Laser-Technologie für Hautbild-Verbesserung, Pigmentkorrektur und Kollagenproduktion – mit geringer Ausfallzeit.
+              {t('redtouch.hero.description')}
             </p>
           </div>
         </div>

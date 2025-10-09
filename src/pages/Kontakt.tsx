@@ -19,9 +19,9 @@ const Kontakt = () => {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       name: 'Yuliia Cheporska Studio',
-      image: 'https://yuliia-studio.vercel.app/logo2.jpg',
-      '@id': 'https://yuliia-studio.vercel.app',
-      url: 'https://yuliia-studio.vercel.app/kontakt',
+      image: 'https://www.munchen-beauty.de/logo2.jpg',
+      '@id': 'https://www.munchen-beauty.de',
+      url: 'https://www.munchen-beauty.de/kontakt',
       telephone: '+4915206067810',
       email: 'info@yuliia-studio.de',
       address: {
@@ -225,11 +225,25 @@ const Kontakt = () => {
                       <ul className="space-y-2 text-muted-foreground">
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span>{t('kontakt.transport.car.parking')}</span>
+                          <a
+                            href={t('kontakt.transport.car.parking-url')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-rose-gold hover:underline"
+                          >
+                            {t('kontakt.transport.car.parking')}
+                          </a>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
-                          <span>{t('kontakt.transport.car.parkhouse')}</span>
+                          <a
+                            href={t('kontakt.transport.car.parkhouse-url')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-rose-gold hover:underline"
+                          >
+                            {t('kontakt.transport.car.parkhouse')}
+                          </a>
                         </li>
                         <li className="flex items-start">
                           <span className="text-rose-gold mr-2">•</span>
@@ -267,7 +281,7 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <Link to="/services">
@@ -277,7 +291,7 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-primary"
+                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
                 asChild
               >
                 <Link to="/preis">

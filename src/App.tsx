@@ -55,10 +55,10 @@ const App = () => (
             <meta name="author" content="Yuliia Cheporska Studio" />
             <meta name="keywords" content="Laser Haarentfernung München, Alexandrit Laser München, Diodenlaser München, iCoone München, RedTouchPro München, Maniküre München, Pediküre München, DEKA München, Kosmetikstudio München, Александритовый лазер Мюнхен, эпиляция Мюнхен" />
             <meta property="og:title" content="Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro" />
-            <meta property="og:description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Александритовый лазер." />
+            <meta property="og:description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Александритovый лазер." />
             <meta property="og:type" content="website" />
-            <meta property="og:image" content="https://yuliia-studio.vercel.app/logo2.jpg" />
-            <meta property="og:url" content="https://yuliia-studio.vercel.app/" />
+            <meta property="og:image" content="https://www.munchen-beauty.de/logo2.jpg" />
+            <meta property="og:url" content="https://www.munchen-beauty.de/" />
             <meta property="og:locale" content="de_DE" />
           </Helmet>
           <Toaster />

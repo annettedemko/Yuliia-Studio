@@ -63,7 +63,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const initializeAdmin = async () => {
-      const user = simpleAuthService.getCurrentUser();
+      const user = await simpleAuthService.getCurrentUser();
 
       if (!user) {
         navigate('/admin/login');

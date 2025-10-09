@@ -55,27 +55,41 @@ class SimpleAuthService {
     await supabase.auth.signOut()
   }
 
-  getCurrentUser(): SimpleAuthUser | null {
-    if (this.currentUser) {
-      return this.currentUser
-    }
+  async getCurrentUser(): Promise<SimpleAuthUser | null> {
+    try {
+      // Проверяем реальную сессию Supabase
+      const { data: { session }, error } = await supabase.auth.getSession()
 
-    // Пытаемся загрузить из localStorage
-    const stored = localStorage.getItem('simpleAuth')
-    if (stored) {
-      try {
-        this.currentUser = JSON.parse(stored)
-        return this.currentUser
-      } catch {
+      if (error || !session || !session.user) {
+        // Очищаем localStorage если сессия недействительна
+        this.currentUser = null
         localStorage.removeItem('simpleAuth')
+        return null
       }
-    }
 
-    return null
+      // Получаем роль из метаданных пользователя
+      const userRole = session.user.user_metadata?.role || session.user.raw_user_meta_data?.role || 'viewer'
+
+      this.currentUser = {
+        id: session.user.id,
+        email: session.user.email || '',
+        role: userRole
+      }
+
+      // Обновляем localStorage
+      localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser))
+
+      return this.currentUser
+    } catch (error) {
+      console.error('🔴 SimpleAuth: Ошибка при получении пользователя:', error)
+      this.currentUser = null
+      localStorage.removeItem('simpleAuth')
+      return null
+    }
   }
 
-  isAdmin(): boolean {
-    const user = this.getCurrentUser()
+  async isAdmin(): Promise<boolean> {
+    const user = await this.getCurrentUser()
     return user?.role === 'admin'
   }
 }

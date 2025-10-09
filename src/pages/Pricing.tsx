@@ -270,7 +270,15 @@ const Pricing = () => {
 
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
-                        onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                        onClick={() => {
+                          const dikidiLinks = {
+                            'Silber': 'https://dkd.su/1833345/s/20701465',
+                            'Gold': 'https://dkd.su/1833345/s/20701481',
+                            'Platin': 'https://dkd.su/1833345/s/20701485'
+                          };
+                          const link = dikidiLinks[pkg.name] || 'https://beauty.dikidi.net/#widget=185505';
+                          window.open(link, '_blank');
+                        }}
                       >
                         {t('pricing.button.book')}
                       </Button>
@@ -357,7 +365,6 @@ const Pricing = () => {
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>• {t('pricing.info.payment.cash')}</li>
                       <li>• {t('pricing.info.payment.card')}</li>
-                      <li>• {t('pricing.info.payment.installment')}</li>
                       <li>• {t('pricing.info.payment.subscription')}</li>
                     </ul>
                   </div>

@@ -44,24 +44,24 @@ const LaserHairRemoval = () => {
 
   const faqItems = [
     {
-      question: 'Сколько сеансов необходимо?',
-      answer: 'Как правило, требуется 6-10 сеансов, в зависимости от вашего типа волос, области тела и индивидуальных особенностей. Сеансы проводятся каждые 4-8 недель.'
+      question: t('laser.faq.q1'),
+      answer: t('laser.faq.a1')
     },
     {
-      question: 'Болезненна ли процедура?',
-      answer: 'Процедуру часто описывают как менее болезненную, чем восковую депиляцию. Большинство пациентов ощущают легкое покалывание или теплое ощущение. Наше современное оборудование минимизирует дискомфорт.'
+      question: t('laser.faq.q2'),
+      answer: t('laser.faq.a2')
     },
     {
-      question: 'Для кого подходит лазерная эпиляция?',
-      answer: 'Процедура подходит для большинства типов кожи. Особенно эффективна она для темных волос на светлой коже. На консультации мы обсудим ваши индивидуальные особенности.'
+      question: t('laser.faq.q3'),
+      answer: t('laser.faq.a3')
     },
     {
-      question: 'Какие области тела можно обрабатывать?',
-      answer: 'Практически все области тела могут быть обработаны: лицо, подмышки, ноги, руки, зона бикини, спина и другие. Каждая область требует индивидуальных циклов процедур.'
+      question: t('laser.faq.q4'),
+      answer: t('laser.faq.a4')
     },
     {
-      question: 'Сколько стоит процедура?',
-      answer: 'Стоимость варьируется в зависимости от зоны обработки. Небольшие зоны, такие как верхняя губа, начинаются от 30-35€, более крупные зоны, такие как полностью ноги, от 120-200€. Точные цены вы найдете на странице с ценами.'
+      question: t('laser.faq.q5'),
+      answer: t('laser.faq.a5')
     }
   ];
 
@@ -99,7 +99,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
               <Link to="/preis#laser-haarentfernung">
@@ -208,10 +208,10 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">Почему необходимо несколько сеансов?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">{t('laser.sessions.title')}</h2>
             <div className="text-center mb-12">
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Рост волос происходит в разных фазах. Лазер может эффективно обрабатывать только волосы в активной фазе роста (анагенфаза).
+                {t('laser.sessions.intro')}
               </p>
             </div>
 
@@ -221,9 +221,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">1</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Анагенфаза</h3>
+                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.anagen.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Активная фаза роста - волосы наиболее чувствительны к лазерной обработке
+                    {t('laser.sessions.anagen.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -233,9 +233,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">2</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Катагенфаза</h3>
+                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.catagen.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Переходная фаза - волосы менее реагируют на лазерную обработку
+                    {t('laser.sessions.catagen.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -245,9 +245,9 @@ const LaserHairRemoval = () => {
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-primary">3</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">Телогенфаза</h3>
+                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.telogen.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Фаза покоя - лазер не оказывает воздействия на спящие волосяные фолликулы
+                    {t('laser.sessions.telogen.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -256,11 +256,9 @@ const LaserHairRemoval = () => {
             <div className="text-center mt-12">
               <Card className="max-w-2xl mx-auto">
                 <CardContent className="p-6">
-                  <h4 className="font-bold text-primary mb-4">План процедур</h4>
+                  <h4 className="font-bold text-primary mb-4">{t('laser.sessions.plan.title')}</h4>
                   <p className="text-muted-foreground">
-                    Поскольку только 20-30% волос одновременно находятся в фазе роста, необходимо
-                    <strong className="text-primary"> 6-10 сеансов с интервалом 4-8 недель</strong>,
-                    чтобы охватить все волосы и достичь долговременных результатов.
+                    {t('laser.sessions.plan.desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -273,40 +271,40 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Ход процедуры</h2>
-            
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.process.title')}</h2>
+
             <div className="space-y-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">1</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Консультация</h3>
-                  <p className="text-sm text-muted-foreground">Индивидуальный анализ кожи и план процедур</p>
+                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step1.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('laser.process.step1.desc')}</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">2</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Подготовка</h3>
-                  <p className="text-sm text-muted-foreground">Очищение кожи и защитные меры</p>
+                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step2.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('laser.process.step2.desc')}</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">3</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Процедура</h3>
-                  <p className="text-sm text-muted-foreground">Точное лазерное воздействие на целевую зону</p>
+                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step3.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('laser.process.step3.desc')}</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">4</span>
                   </div>
-                  <h3 className="font-bold text-primary mb-2">Послепроцедурный уход</h3>
-                  <p className="text-sm text-muted-foreground">Рекомендации по уходу и последующий прием</p>
+                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step4.title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('laser.process.step4.desc')}</p>
                 </div>
               </div>
             </div>
@@ -318,32 +316,32 @@ const LaserHairRemoval = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Для кого подходит лазерная эпиляция?</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.suitability.title')}</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10">
               <Card>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">✓ Подходит</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">{t('laser.suitability.suitable.title')}</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Эффективно для всех типов кожи (I-VI) и различных цветов волос благодаря александритовому и диодному лазерам
+                      {t('laser.suitability.suitable.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Можно обрабатывать все области тела
+                      {t('laser.suitability.suitable.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Женщины и мужчины любого возраста (от 16 лет)
+                      {t('laser.suitability.suitable.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Особенно эффективно при густом росте волос
+                      {t('laser.suitability.suitable.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Типы кожи I-IV (от светлой до оливковой)
+                      {t('laser.suitability.suitable.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -351,27 +349,27 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">⚠️ Противопоказания</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-6">{t('laser.suitability.contraindications.title')}</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Беременность и период лактации
+                      {t('laser.suitability.contraindications.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Острые воспаления кожи или инфекции
+                      {t('laser.suitability.contraindications.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Прием светочувствительных медикаментов
+                      {t('laser.suitability.contraindications.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Свежий загар или солнечные ванны (за 4 недели до процедуры)
+                      {t('laser.suitability.contraindications.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      Эпилепсия или другие неврологические заболевания
+                      {t('laser.suitability.contraindications.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -379,27 +377,27 @@ const LaserHairRemoval = () => {
             </div>
 
             {/* Risks and Side Effects */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">Риски и побочные эффекты</h3>
+            <h3 className="text-3xl font-bold text-primary text-center mb-12">{t('laser.risks.title')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">Частые, временные побочные эффекты</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.risks.common.title')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Легкое покраснение и отек (1-24 ч)
+                      {t('laser.risks.common.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Теплое ощущение обработанной кожи
+                      {t('laser.risks.common.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Небольшие корочки вокруг волосяных фолликулов
+                      {t('laser.risks.common.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Легкое шелушение кожи через 1-2 недели
+                      {t('laser.risks.common.item4')}
                     </li>
                   </ul>
                 </CardContent>
@@ -407,23 +405,23 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">Редкие риски</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.risks.rare.title')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Гиперпигментация (темные пятна)
+                      {t('laser.risks.rare.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Гипопигментация (светлые пятна)
+                      {t('laser.risks.rare.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Поверхностные ожоги при неправильном применении
+                      {t('laser.risks.rare.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Парадоксальный рост волос (очень редко)
+                      {t('laser.risks.rare.item4')}
                     </li>
                   </ul>
                 </CardContent>
@@ -431,31 +429,31 @@ const LaserHairRemoval = () => {
             </div>
 
             {/* Preparation and Aftercare */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">Подготовка и послепроцедурный уход</h3>
+            <h3 className="text-3xl font-bold text-primary text-center mb-12">{t('laser.care.title')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">📋 Подготовка</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.care.preparation.title')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      За 4 недели до процедуры: Избегать солнца или солярия
+                      {t('laser.care.preparation.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      За 6 недель до процедуры: Не делать воск, эпиляцию или выщипывание
+                      {t('laser.care.preparation.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      За 1-2 дня до процедуры: Побрить волосы (не выщипывать!)
+                      {t('laser.care.preparation.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      В день процедуры: Не наносить кремы или дезодоранты
+                      {t('laser.care.preparation.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      При приеме медикаментов: Проконсультироваться с нами
+                      {t('laser.care.preparation.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -463,27 +461,27 @@ const LaserHairRemoval = () => {
 
               <Card>
                 <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">🧴 Послепроцедурный уход</h4>
+                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.care.aftercare.title')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      24 ч после процедуры: Охлаждение холодными компрессами
+                      {t('laser.care.aftercare.item1')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      2 недели: Использовать высокий SPF-фактор (SPF 50+)
+                      {t('laser.care.aftercare.item2')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      4 недели: Избегать солнца или солярия
+                      {t('laser.care.aftercare.item3')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      Между сеансами: Только бритье, не выщипывать и не делать воск
+                      {t('laser.care.aftercare.item4')}
                     </li>
                     <li className="flex items-start">
                       <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      При покраснении: Наносить успокаивающий крем с алоэ вера
+                      {t('laser.care.aftercare.item5')}
                     </li>
                   </ul>
                 </CardContent>
@@ -497,7 +495,7 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">Часто задаваемые вопросы</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.faq.title')}</h2>
             
             <Accordion type="single" collapsible className="space-y-4">
               {faqItems.map((item, index) => (
@@ -573,23 +571,25 @@ const LaserHairRemoval = () => {
               {t('laser.pricing.description')}
             </p>
 
-            <Button
-              size="lg"
-              className="bg-gradient-hero text-white border-none shadow-rose mr-4"
-              asChild
-            >
-              <Link to="/preis">
-                {t('laser.pricing.view-all')}
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="bg-gradient-hero text-white border-none shadow-rose"
+                asChild
+              >
+                <Link to="/preis">
+                  {t('laser.pricing.view-all')}
+                </Link>
+              </Button>
 
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
-            >
-              {t('laser.pricing.consultation')}
-            </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+              >
+                {t('laser.pricing.consultation')}
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -598,15 +598,15 @@ const LaserHairRemoval = () => {
       <section className="py-12 bg-accent/20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">So finden Sie uns</h2>
-            
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.location.title')}</h2>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div className="space-y-8">
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <MapPin className="w-6 h-6 text-rose-gold mr-3" />
-                      <h3 className="text-xl font-bold text-primary">Adresse</h3>
+                      <h3 className="text-xl font-bold text-primary">{t('laser.location.address.title')}</h3>
                     </div>
                     <a
                       href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
@@ -614,36 +614,57 @@ const LaserHairRemoval = () => {
                       rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-rose-gold transition-colors"
                     >
-                      Elsässer Straße 33<br />
-                      81667 Мюнхен
+                      {t('laser.location.address.line1')}<br />
+                      {t('laser.location.address.line2')}
                     </a>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <Train className="w-6 h-6 text-rose-gold mr-3" />
-                      <h3 className="text-xl font-bold text-primary">Öffentliche Verkehrsmittel</h3>
+                      <h3 className="text-xl font-bold text-primary">{t('laser.location.transport.title')}</h3>
                     </div>
                     <div className="space-y-2 text-sm text-muted-foreground">
-                      <p>• S-Bahn: S3, S7 bis Rosenheimer Platz (5 Min. Fußweg)</p>
-                      <p>• U-Bahn: U4, U5 bis Max-Weber-Platz (8 Min. Fußweg)</p>
-                      <p>• Bus: Linie 145 bis Elsässer Straße</p>
+                      <p>• {t('laser.location.transport.item1')}</p>
+                      <p>• {t('laser.location.transport.item2')}</p>
+                      <p>• {t('laser.location.transport.item3')}</p>
                     </div>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       <Car className="w-6 h-6 text-rose-gold mr-3" />
-                      <h3 className="text-xl font-bold text-primary">Anfahrt mit dem Auto</h3>
+                      <h3 className="text-xl font-bold text-primary">{t('laser.location.car.title')}</h3>
                     </div>
                     <div className="space-y-2 text-sm text-muted-foreground">
-                      <p>• A94 Ausfahrt Мюнхен-Steinhausen</p>
-                      <p>• Parkmöglichkeiten in der Nähe vorhanden</p>
-                      <p>• Kostenpflichtige Parkplätze in der Straße</p>
+                      <p>• {t('laser.location.car.item1')}</p>
+                      <p>• {t('laser.location.car.item2')}</p>
+                      <p className="ml-4">
+                        <a
+                          href="https://maps.app.goo.gl/8z6W3JdrDSJkH3ys9"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-rose-gold hover:underline"
+                        >
+                          {t('laser.location.car.parking1')}
+                        </a>
+                        {' '}{t('laser.location.car.parking1.time')}
+                      </p>
+                      <p className="ml-4">
+                        <a
+                          href="https://maps.app.goo.gl/49DpsSqqMTcRN3748"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-rose-gold hover:underline"
+                        >
+                          {t('laser.location.car.parking2')}
+                        </a>
+                        {' '}{t('laser.location.car.parking2.time')}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -670,8 +691,8 @@ const LaserHairRemoval = () => {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-10">Kundenstimmen</h2>
-            
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-10">{t('laser.testimonials.title')}</h2>
+
             <Card className="max-w-2xl mx-auto">
               <CardContent className="p-8">
                 <div className="flex justify-center mb-4">
@@ -680,15 +701,13 @@ const LaserHairRemoval = () => {
                   ))}
                 </div>
                 <blockquote className="text-lg text-muted-foreground italic mb-6">
-                  "Ich bin absolut begeistert von der professionellen Laser-Haarentfernung bei Yuliia! 
-                  Die Behandlung war viel weniger schmerzhaft als erwartet und die Ergebnisse sind fantastisch. 
-                  Das Studio ist sehr sauber und das Personal äußerst kompetent."
+                  "{t('laser.testimonials.quote')}"
                 </blockquote>
                 <div className="text-primary font-semibold">
-                  Inna Shevchenko
+                  {t('laser.testimonials.name')}
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Kundin seit 2023
+                  {t('laser.testimonials.since')}
                 </div>
               </CardContent>
             </Card>

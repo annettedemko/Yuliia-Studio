@@ -28,7 +28,7 @@ import {
   X,
   Users
 } from 'lucide-react';
-import { isAuthenticated, logout, getCurrentUser, getCurrentUserRole } from '@/utils/adminAuth';
+import { simpleAuthService } from '@/services/simpleAuthService';
 import {
   getNataliaClients,
   createNataliaClient,
@@ -52,21 +52,20 @@ const NataliaClients = () => {
 
   useEffect(() => {
     const initializeAuth = async () => {
-      if (!isAuthenticated()) {
+      const user = await simpleAuthService.getCurrentUser();
+
+      if (!user) {
         navigate('/admin/login');
         return;
       }
 
-      const user = getCurrentUser();
-      const role = getCurrentUserRole();
-
-      if (!user || (role !== 'admin' && role !== 'natalia')) {
+      if (user.role !== 'admin' && user.role !== 'natalia') {
         navigate('/admin/login');
         return;
       }
 
-      setCurrentUser(user);
-      setUserRole(role);
+      setCurrentUser(user.email);
+      setUserRole(user.role);
       await loadClients();
     };
 
@@ -86,7 +85,7 @@ const NataliaClients = () => {
   };
 
   const handleLogout = () => {
-    logout();
+    simpleAuthService.logout();
     navigate('/admin/login');
   };
 

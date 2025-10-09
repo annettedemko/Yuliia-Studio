@@ -158,7 +158,7 @@ const RedTouchPro = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 asChild
               >
                 <a href="#technology">
@@ -547,7 +547,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Design & Ergonomie */}
-      <section className="py-8 bg-background" style={{marginTop: '-30px'}}>
+      <section className="py-8 pb-24 bg-background" style={{marginTop: '-30px'}}>
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
@@ -604,7 +604,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-8 bg-gradient-to-r from-blue-600 to-primary text-white" style={{marginTop: '-30px'}}>
+      <section className="py-12 bg-gradient-to-r from-blue-600 to-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
             {t('redtouch.cta.title')}
@@ -619,7 +619,7 @@ const RedTouchPro = () => {
                 {t('redtouch.cta.button.book')}
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+            <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10" asChild>
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 mr-2" />
                 {t('redtouch.cta.button.email')}

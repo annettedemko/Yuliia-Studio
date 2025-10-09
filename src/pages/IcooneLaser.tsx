@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Instagram, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const IcooneLaser = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
       title: 'Icoone®️ Behandlung München-Haidhausen – Hautstraffung & Lymphdrainage',
@@ -40,55 +42,55 @@ const IcooneLaser = () => {
   const benefits = [
     {
       icon: Target,
-      title: 'Body Contouring',
-      description: 'Целенаправленное моделирование силуэта тела с помощью инновационной вакуумно-лазерной комбинации'
+      title: t('icoone.benefits.bodycontouring.title'),
+      description: t('icoone.benefits.bodycontouring.description')
     },
     {
       icon: Sparkles,
-      title: 'Подтяжка кожи',
-      description: 'Улучшение эластичности кожи и уменьшение провисаний'
+      title: t('icoone.benefits.tightening.title'),
+      description: t('icoone.benefits.tightening.description')
     },
     {
       icon: Heart,
-      title: 'Уменьшение целлюлита',
-      description: 'Эффективное лечение апельсиновой корки и улучшение структуры кожи'
+      title: t('icoone.benefits.cellulite.title'),
+      description: t('icoone.benefits.cellulite.description')
     },
     {
       icon: Shield,
-      title: 'Лимфодренаж',
-      description: 'Стимуляция лимфотока и детоксикация тканей'
+      title: t('icoone.benefits.lymphdrainage.title'),
+      description: t('icoone.benefits.lymphdrainage.description')
     }
   ];
 
   const treatmentAreas = [
-    'Живот и талия',
-    'Бедра и ягодицы',
-    'Руки и плечи',
-    'Бока и фланки',
-    'Спина',
-    'Декольте и шея'
+    t('icoone.areas.abdomen'),
+    t('icoone.areas.thighs'),
+    t('icoone.areas.arms'),
+    t('icoone.areas.flanks'),
+    t('icoone.areas.back'),
+    t('icoone.areas.decollete')
   ];
 
   const processSteps = [
     {
       step: 1,
-      title: 'Консультация и анализ',
-      description: 'Индивидуальный анализ кожи и планирование процедуры'
+      title: t('icoone.process.step1.title'),
+      description: t('icoone.process.step1.description')
     },
     {
       step: 2,
-      title: 'Подготовка',
-      description: 'Очищение и подготовка зоны обработки'
+      title: t('icoone.process.step2.title'),
+      description: t('icoone.process.step2.description')
     },
     {
       step: 3,
-      title: 'Процедура Icoone',
-      description: 'Комбинация вакуумного массажа и лазерной обработки'
+      title: t('icoone.process.step3.title'),
+      description: t('icoone.process.step3.description')
     },
     {
       step: 4,
-      title: 'Постобработка',
-      description: 'Рекомендации по уходу и планирование последующих сеансов'
+      title: t('icoone.process.step4.title'),
+      description: t('icoone.process.step4.description')
     }
   ];
 
@@ -106,13 +108,13 @@ const IcooneLaser = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-            Процедура Icoone®️ в Мюнхен-Хайдхаузен – Подтяжка кожи и уменьшение целлюлита
+            {t('icoone.hero.title')}
           </h1>
           <p className="text-lg md:text-xl mb-4 text-white/95">
-            Профессиональная процедура Icoone Laser в Мюнхене
+            {t('icoone.hero.subtitle')}
           </p>
           <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-            Испытайте революционную комбинацию вакуумного массажа и лазерной обработки для оптимальной подтяжки кожи и коррекции фигуры в нашей студии в Мюнхен-Хайдхаузен.
+            {t('icoone.hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -121,17 +123,17 @@ const IcooneLaser = () => {
               asChild
             >
               <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                Записаться на консультацию
+                {t('icoone.hero.button.consultation')}
               </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
               <Link to="/preis#icoone-laser">
-                Посмотреть цены
+                {t('icoone.hero.button.pricing')}
               </Link>
             </Button>
           </div>
@@ -143,7 +145,7 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Преимущества Icoone®️ в Мюнхен-Хайдхаузен
+              {t('icoone.benefits.section.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -152,9 +154,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Подтяжка кожи и уменьшение целлюлита</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('icoone.benefits.card1.title')}</h3>
                       <p className="text-muted-foreground">
-                        Целенаправленное улучшение эластичности кожи, уменьшение апельсиновой корки и более упругие контуры тела.
+                        {t('icoone.benefits.card1.description')}
                       </p>
                     </div>
                   </div>
@@ -166,9 +168,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Лимфодренаж и детоксикация</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('icoone.benefits.card2.title')}</h3>
                       <p className="text-muted-foreground">
-                        Стимуляция лимфотока, поддержка очищения и детоксикации тканей.
+                        {t('icoone.benefits.card2.description')}
                       </p>
                     </div>
                   </div>
@@ -180,9 +182,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Безболезненно и расслабляюще</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('icoone.benefits.card3.title')}</h3>
                       <p className="text-muted-foreground">
-                        Приятная процедура без периода восстановления – идеально для работающих людей в Мюнхене.
+                        {t('icoone.benefits.card3.description')}
                       </p>
                     </div>
                   </div>
@@ -194,9 +196,9 @@ const IcooneLaser = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Профессиональная консультация</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('icoone.benefits.card4.title')}</h3>
                       <p className="text-muted-foreground">
-                        Индивидуальный анализ и персонализированное планирование процедур в сердце Хайдхаузена.
+                        {t('icoone.benefits.card4.description')}
                       </p>
                     </div>
                   </div>
@@ -211,10 +213,9 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">Что такое Icoone Laser?</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('icoone.what.title')}</h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Icoone – это революционная технология, которая сочетает вакуумный массаж с лазерной обработкой
-                для достижения оптимальных результатов в коррекции фигуры и улучшении состояния кожи.
+                {t('icoone.what.subtitle')}
               </p>
             </div>
 
@@ -254,30 +255,27 @@ const IcooneLaser = () => {
               <div className="space-y-6">
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Микро-вакуумная технология</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">{t('icoone.what.microvacuum.title')}</h3>
                     <p className="text-muted-foreground">
-                      Более 21 600 микроперфораций создают контролируемый вакуумный эффект,
-                      который стимулирует кровообращение и активизирует ткани.
+                      {t('icoone.what.microvacuum.description')}
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Лазерная интеграция</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">{t('icoone.what.laser.title')}</h3>
                     <p className="text-muted-foreground">
-                      Комбинация с лазерной энергией усиливает эффект и обеспечивает
-                      глубокое улучшение кожи и подтяжку тканей.
+                      {t('icoone.what.laser.description')}
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-primary mb-3">Безболезненное применение</h3>
+                    <h3 className="text-xl font-bold text-primary mb-3">{t('icoone.what.painless.title')}</h3>
                     <p className="text-muted-foreground">
-                      Процедура приятна и расслабляюща, без периода восстановления или
-                      болезненных последствий.
+                      {t('icoone.what.painless.description')}
                     </p>
                   </CardContent>
                 </Card>
@@ -292,8 +290,8 @@ const IcooneLaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Примеры процедур и результаты</h2>
-              <p className="text-xl text-muted-foreground">Посмотрите впечатляющие результаты наших процедур Icoone Laser</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('icoone.gallery.title')}</h2>
+              <p className="text-xl text-muted-foreground">{t('icoone.gallery.subtitle')}</p>
             </div>
 
             {/* Image Gallery Grid */}
@@ -329,10 +327,9 @@ const IcooneLaser = () => {
       <section className="py-12 bg-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h3 className="text-3xl font-bold text-primary mb-6">Профессиональная процедура Icoone Laser</h3>
+            <h3 className="text-3xl font-bold text-primary mb-6">{t('icoone.professional.title')}</h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Испытайте революционную комбинацию вакуумного массажа и лазерной обработки для
-              оптимальной подтяжки кожи и коррекции фигуры в нашей студии.
+              {t('icoone.professional.description')}
             </p>
           </div>
         </div>

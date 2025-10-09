@@ -16,66 +16,68 @@ import {
   Clock,
   Activity
 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const MotusPro = () => {
+  const { t } = useLanguage();
   const technicalFeatures = [
     {
       number: '1',
-      title: 'Длина волны александрита (755 нм)',
-      description: 'Подходит для эффективного удаления тонких и светлых волос.'
+      title: t('motuspro.technical.feature1.title'),
+      description: t('motuspro.technical.feature1.description')
     },
     {
       number: '2',
-      title: 'Манипула Moveo-HR',
-      description: 'Доступна как для александритовых, так и для Nd:YAG-лазеров. Обеспечивает безболезненное и эффективное удаление волос с помощью новой, более легкой, быстрой и безопасной методики.'
+      title: t('motuspro.technical.feature2.title'),
+      description: t('motuspro.technical.feature2.description')
     },
     {
       number: '3',
-      title: 'Инновационная технология',
-      description: 'Структурно упрощает ядро лазерной системы, снижая расходы и проблемы с обслуживанием.'
+      title: t('motuspro.technical.feature3.title'),
+      description: t('motuspro.technical.feature3.description')
     },
     {
       number: '4',
-      title: 'Современный дизайн',
-      description: 'Система с большим поворотным дисплеем 15,6 дюймов и интуитивным пользовательским интерфейсом.'
+      title: t('motuspro.technical.feature4.title'),
+      description: t('motuspro.technical.feature4.description')
     },
     {
       number: '5',
-      title: 'Компактная система',
-      description: 'Низкие эксплуатационные расходы для современной бьюти-студии.'
+      title: t('motuspro.technical.feature5.title'),
+      description: t('motuspro.technical.feature5.description')
     }
   ];
 
   const keyFeatures = [
     {
       icon: Zap,
-      title: 'Комбинированный лазер 755 / 1064 нм',
-      description: 'Длины волн александрита и Nd:YAG обеспечивают максимальную гибкость. Благодаря оптимизированному источнику питания достаточно стандартной розетки Schuko на 16А.'
+      title: t('motuspro.features.laser.title'),
+      description: t('motuspro.features.laser.description')
     },
     {
       icon: Monitor,
-      title: 'Простой и удобный',
-      description: 'Motus PRO отличается особыми характеристиками: компактные размеры, интуитивное программное обеспечение, легкие и эргономичные манипулы, а также инновационный метод Moveo.'
+      title: t('motuspro.features.simple.title'),
+      description: t('motuspro.features.simple.description')
     },
     {
       icon: Target,
-      title: 'Инновационная манипула Moveo',
-      description: 'Motus PRO предлагает манипулу Moveo-HR (диаметр пятна 24 мм) с фокусом на удаление волос. Дополнительно доступно подключение для охлаждения кожи.'
+      title: t('motuspro.features.moveo.title'),
+      description: t('motuspro.features.moveo.description')
     },
     {
       icon: Award,
-      title: 'Интегрированные протоколы процедур',
-      description: 'Motus PRO предлагает до 200 протоколов процедур для технологии Moveo.'
+      title: t('motuspro.features.protocols.title'),
+      description: t('motuspro.features.protocols.description')
     },
     {
       icon: Shield,
-      title: 'Интегрированное охлаждение кожи',
-      description: 'Контактное охлаждение кожи и технология Moveo обеспечивают постепенное нагревание, что гарантирует мягкую процедуру и минимальные побочные эффекты.'
+      title: t('motuspro.features.cooling.title'),
+      description: t('motuspro.features.cooling.description')
     },
     {
       icon: Activity,
-      title: 'Дисплей 15,6″ с поворотом на 180°',
-      description: 'Поворотный и наклонный сенсорный дисплей 15,6" с полностью модернизированным интерфейсом и крупными иконками обеспечивает интуитивное и быстрое управление.'
+      title: t('motuspro.features.display.title'),
+      description: t('motuspro.features.display.description')
     }
   ];
 
@@ -100,7 +102,7 @@ const MotusPro = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
                 <div className="absolute top-4 left-4">
                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+                    <span className="text-primary font-semibold text-sm">{t('motuspro.hero.badge')}</span>
                   </div>
                 </div>
               </div>
@@ -120,7 +122,7 @@ const MotusPro = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-green-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Идеальное решение для эпиляции
+                    {t('motuspro.hero.subtitle')}
                   </p>
                 </div>
 
@@ -132,7 +134,7 @@ const MotusPro = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Записаться на консультацию
+                      {t('motuspro.hero.button.consultation')}
                     </a>
                   </Button>
                 </div>
@@ -153,10 +155,10 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Основные характеристики Motus PRO</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('motuspro.features.section.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Инновационная технология для максимальной эффективности и комфорта
+                {t('motuspro.features.section.subtitle')}
               </p>
             </div>
 
@@ -244,8 +246,8 @@ const MotusPro = () => {
                   }}
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">Манипула Moveo</h4>
-                  <p className="text-sm text-muted-foreground">Инновационный сапфировый наконечник для точной передачи энергии</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">{t('motuspro.images.moveo.title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('motuspro.images.moveo.description')}</p>
                 </div>
               </div>
 
@@ -256,8 +258,8 @@ const MotusPro = () => {
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">Сенсорный экран 15,6″</h4>
-                  <p className="text-sm text-muted-foreground">Дисплей с поворотом на 180° и интуитивным интерфейсом</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">{t('motuspro.images.display.title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('motuspro.images.display.description')}</p>
                 </div>
               </div>
 
@@ -268,8 +270,8 @@ const MotusPro = () => {
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="mt-4">
-                  <h4 className="text-lg font-bold text-primary mb-3">Компактный дизайн</h4>
-                  <p className="text-sm text-muted-foreground">Современная система для профессиональной бьюти-студии</p>
+                  <h4 className="text-lg font-bold text-primary mb-3">{t('motuspro.images.design.title')}</h4>
+                  <p className="text-sm text-muted-foreground">{t('motuspro.images.design.description')}</p>
                 </div>
               </div>
             </div>
@@ -288,10 +290,10 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">Технические характеристики</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">{t('motuspro.technical.section.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-blue-300 to-cyan-400 mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-blue-100">
-                Пять ключевых технологий для оптимальных результатов процедур
+                {t('motuspro.technical.section.subtitle')}
               </p>
             </div>
 
@@ -327,40 +329,38 @@ const MotusPro = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Технология Moveo</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('motuspro.moveo.section.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6"></div>
-              <p className="text-xl text-blue-100">Повышенная эффективность для максимальных результатов</p>
+              <p className="text-xl text-blue-100">{t('motuspro.moveo.section.subtitle')}</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-up">
                 <Card className="bg-white/10 backdrop-blur-sm border border-white/20">
                   <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold mb-6 text-cyan-300">Революционный сапфировый наконечник</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-cyan-300">{t('motuspro.moveo.sapphire.title')}</h3>
                     <p className="text-lg leading-relaxed mb-6 text-blue-100">
-                      Манипула Moveo от DEKA революционизирует лазерные процедуры, благодаря
-                      инновационному сапфировому наконечнику минимизируя потери энергии и точно передавая
-                      лазерную энергию на кожу – даже для особенно светлых типов кожи.
+                      {t('motuspro.moveo.sapphire.description')}
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                       <div className="bg-cyan-500/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-cyan-300 mb-2">Интеллектуальное ПО</h4>
-                        <p className="text-blue-100 text-sm">Автоматически распознает манипулу и предлагает быстрый выбор параметров</p>
+                        <h4 className="font-semibold text-cyan-300 mb-2">{t('motuspro.moveo.software.title')}</h4>
+                        <p className="text-blue-100 text-sm">{t('motuspro.moveo.software.description')}</p>
                       </div>
                       <div className="bg-cyan-500/20 p-4 rounded-lg">
-                        <h4 className="font-semibold text-cyan-300 mb-2">Встроенная память</h4>
-                        <p className="text-blue-100 text-sm">Отображает переданную энергию со звуковым сигналом процедуры</p>
+                        <h4 className="font-semibold text-cyan-300 mb-2">{t('motuspro.moveo.memory.title')}</h4>
+                        <p className="text-blue-100 text-sm">{t('motuspro.moveo.memory.description')}</p>
                       </div>
                     </div>
 
                     <div className="border-t border-white/20 pt-6">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="w-5 h-5 text-cyan-400" />
-                        <span className="font-semibold text-cyan-300">Ультрабыстрая процедура</span>
+                        <span className="font-semibold text-cyan-300">{t('motuspro.moveo.ultrafast.title')}</span>
                       </div>
                       <p className="text-blue-100 text-sm">
-                        Эффективная обработка участков кожи 10 x 10 см всего за 25 секунд
+                        {t('motuspro.moveo.ultrafast.description')}
                       </p>
                     </div>
                   </CardContent>
@@ -380,7 +380,7 @@ const MotusPro = () => {
                       <div className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-amber-300/50">
                         <span className="text-white font-bold text-xs flex items-center whitespace-nowrap">
                           <Sparkles className="w-3 h-3 mr-1" />
-                          Премиум-технология
+                          {t('motuspro.moveo.premium.badge')}
                         </span>
                       </div>
                     </div>
@@ -412,10 +412,9 @@ const MotusPro = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">Испытайте Motus PRO прямо сейчас</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('motuspro.cta.title')}</h2>
             <p className="text-xl mb-8 text-white/90 leading-relaxed">
-              Откройте для себя революционную технологию Motus PRO для вашей бьюти-студии.
-              Свяжитесь с нами для индивидуальной консультации и демонстрации.
+              {t('motuspro.cta.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -426,7 +425,7 @@ const MotusPro = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-5 h-5 mr-2" />
-                  Позвонить сейчас
+                  {t('motuspro.cta.button.call')}
                 </a>
               </Button>
 
@@ -438,7 +437,7 @@ const MotusPro = () => {
               >
                 <a href="mailto:info@yuliia-studio.de">
                   <Mail className="w-5 h-5 mr-2" />
-                  Запросить предложение
+                  {t('motuspro.cta.button.quote')}
                 </a>
               </Button>
 
@@ -450,15 +449,14 @@ const MotusPro = () => {
               >
                 <Link to="/deka-geraeteverkauf">
                   <ArrowRight className="w-5 h-5 mr-2" />
-                  Другое оборудование DEKA
+                  {t('motuspro.cta.button.equipment')}
                 </Link>
               </Button>
             </div>
 
             <div className="mt-8 pt-8 border-t border-white/20">
               <p className="text-white/80 text-sm">
-                Как официальный партнер по продажам DEKA, мы предлагаем вам комплексные консультации,
-                обучение и профессиональную поддержку для установки Motus PRO.
+                {t('motuspro.cta.partnership')}
               </p>
             </div>
           </div>

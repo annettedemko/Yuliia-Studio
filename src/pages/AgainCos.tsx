@@ -2,61 +2,63 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Users, Shield, Clock, Target, Award, Star, Phone, Instagram, Sparkles, Monitor } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const AgainCos = () => {
+  const { t } = useLanguage();
   const keyFeatures = [
     {
       icon: Zap,
-      title: "Александрит 755 нм",
-      description: "Длина волны александрита обеспечивает быстрое и эффективное удаление волос."
+      title: t('againcos.features.alexandrite.title'),
+      description: t('againcos.features.alexandrite.description')
     },
     {
       icon: Users,
-      title: "Простой и удобный",
-      description: "Again отличается простыми и легко управляемыми характеристиками: компактные размеры, интуитивное программное обеспечение, легкая и эргономичная манипула, а также инновационный метод Moveo."
+      title: t('againcos.features.simple.title'),
+      description: t('againcos.features.simple.description')
     },
     {
       icon: Monitor,
-      title: "Интегрированные протоколы",
-      description: "Again предлагает интуитивный пользовательский интерфейс с многочисленными протоколами процедур для технологии Moveo."
+      title: t('againcos.features.protocols.title'),
+      description: t('againcos.features.protocols.description')
     },
     {
       icon: Shield,
-      title: "Интегрированное охлаждение кожи",
-      description: "Контактное охлаждение кожи и повторные проходы с импульсами низкой флюенции обеспечивают постепенное нагревание для мягкой процедуры."
+      title: t('againcos.features.cooling.title'),
+      description: t('againcos.features.cooling.description')
     },
     {
       icon: Target,
-      title: "Манипула Moveo-HR",
-      description: "Манипула Moveo HR оптимальна для обработки всех типов волос и кожи. Благодаря интегрированному охлаждению гарантируется мягкая процедура."
+      title: t('againcos.features.moveohr.title'),
+      description: t('againcos.features.moveohr.description')
     },
     {
       icon: Sparkles,
-      title: "Дисплей 15,6″ с поворотом на 180°",
-      description: "Поворотный и наклонный сенсорный дисплей 15,6\" с полностью модернизированным пользовательским интерфейсом обеспечивает интуитивное и удобное управление."
+      title: t('againcos.features.display.title'),
+      description: t('againcos.features.display.description')
     }
   ];
 
   const technicalFeatures = [
     {
       number: "1",
-      description: "Длина волны александрита (755 нм) подходит для эффективного удаления тонких и светлых волос."
+      description: t('againcos.technical.feature1')
     },
     {
       number: "2",
-      description: "С помощью манипулы Moveo-HR нежелательные волосы можно удалить безболезненно и еще более эффективно благодаря новому, более легкому, быстрому и безопасному методу."
+      description: t('againcos.technical.feature2')
     },
     {
       number: "3",
-      description: "Инновационная технология структурно упрощает ядро лазерной системы, снижая расходы и проблемы с обслуживанием."
+      description: t('againcos.technical.feature3')
     },
     {
       number: "4",
-      description: "Система представлена в современном дизайне с большим поворотным дисплеем 15,6 дюймов и интуитивным пользовательским интерфейсом."
+      description: t('againcos.technical.feature4')
     },
     {
       number: "5",
-      description: "Компактная система с низкими эксплуатационными расходами для современной бьюти-студии."
+      description: t('againcos.technical.feature5')
     }
   ];
 
@@ -81,7 +83,7 @@ const AgainCos = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
                 <div className="absolute top-4 left-4">
                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+                    <span className="text-primary font-semibold text-sm">{t('againcos.hero.badge')}</span>
                   </div>
                 </div>
               </div>
@@ -104,7 +106,7 @@ const AgainCos = () => {
                     </span>
                   </h1>
                   <p className="text-xl md:text-2xl text-teal-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    Высокотехнологичное решение для эпиляции
+                    {t('againcos.hero.subtitle')}
                   </p>
                 </div>
 
@@ -116,7 +118,7 @@ const AgainCos = () => {
                   >
                     <a href="tel:+4915206067810">
                       <Phone className="w-5 h-5 mr-2" />
-                      Записаться на консультацию
+                      {t('againcos.hero.button.consultation')}
                     </a>
                   </Button>
                 </div>
@@ -137,10 +139,10 @@ const AgainCos = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-slide-up">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">Основные преимущества Again cos</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('againcos.features.section.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Новейшая технология александритового лазера для профессиональной эпиляции
+                {t('againcos.features.section.subtitle')}
               </p>
             </div>
 
@@ -235,12 +237,12 @@ const AgainCos = () => {
             <div className="text-center mb-16 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
                 <span className="bg-gradient-to-r from-teal-300 to-cyan-300 bg-clip-text text-transparent">
-                  Технические характеристики
+                  {t('againcos.technical.section.title')}
                 </span>
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-teal-400 to-cyan-400 mx-auto mb-8"></div>
               <p className="text-xl text-teal-100 max-w-4xl mx-auto leading-relaxed">
-                Революционная технология Again cos для максимальной точности и эффективности
+                {t('againcos.technical.section.subtitle')}
               </p>
             </div>
 
@@ -287,8 +289,8 @@ const AgainCos = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-primary mb-4">Особенности системы</h3>
-              <p className="text-lg text-muted-foreground">Откройте для себя детали технологии Again cos</p>
+              <h3 className="text-3xl font-bold text-primary mb-4">{t('againcos.showcase.section.title')}</h3>
+              <p className="text-lg text-muted-foreground">{t('againcos.showcase.section.subtitle')}</p>
             </div>
 
             {/* System Showcase */}
@@ -302,8 +304,8 @@ const AgainCos = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-teal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h4 className="font-bold text-lg">Характеристики системы</h4>
-                    <p className="text-sm text-teal-100">Новейшая технология</p>
+                    <h4 className="font-bold text-lg">{t('againcos.showcase.system.title')}</h4>
+                    <p className="text-sm text-teal-100">{t('againcos.showcase.system.subtitle')}</p>
                   </div>
                 </div>
               </Card>
@@ -317,8 +319,8 @@ const AgainCos = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/80 via-cyan-900/40 to-cyan-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 left-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <h4 className="font-bold text-lg">Процедура</h4>
-                    <p className="text-sm text-cyan-100">Профессиональное применение</p>
+                    <h4 className="font-bold text-lg">{t('againcos.showcase.application.title')}</h4>
+                    <p className="text-sm text-cyan-100">{t('againcos.showcase.application.subtitle')}</p>
                   </div>
                 </div>
               </Card>
@@ -337,10 +339,10 @@ const AgainCos = () => {
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Готовы к профессиональной эпиляции?
+            {t('againcos.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Испытайте инновационную технологию Again cos в нашей студии. Запишитесь на консультацию уже сегодня.
+            {t('againcos.cta.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -351,7 +353,7 @@ const AgainCos = () => {
             >
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                Получить консультацию
+                {t('againcos.cta.button.consultation')}
               </a>
             </Button>
             <Button
@@ -362,7 +364,7 @@ const AgainCos = () => {
             >
               <a href="mailto:Yulachip@icloud.com">
                 <ArrowRight className="w-5 h-5 ml-2" />
-                Отправить email
+                {t('againcos.cta.button.email')}
               </a>
             </Button>
           </div>
@@ -371,15 +373,15 @@ const AgainCos = () => {
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">Сертифицировано DEKA</p>
+                <p className="text-sm text-white/80">{t('againcos.cta.certification')}</p>
               </div>
               <div className="text-center">
                 <Shield className="w-8 h-8 text-green-300 mx-auto mb-2" />
-                <p className="text-sm text-white/80">Безопасно и эффективно</p>
+                <p className="text-sm text-white/80">{t('againcos.cta.safe')}</p>
               </div>
               <div className="text-center">
                 <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
-                <p className="text-sm text-white/80">Премиум-качество</p>
+                <p className="text-sm text-white/80">{t('againcos.cta.premium')}</p>
               </div>
             </div>
 
