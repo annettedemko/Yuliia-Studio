@@ -60,11 +60,14 @@ class AuthService {
 
   async getCurrentUser(): Promise<AuthUser | null> {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
+      // Use getSession() instead of getUser() for better performance and consistency
+      const { data: { session }, error } = await supabase.auth.getSession()
 
-      if (!user) {
+      if (error || !session || !session.user) {
         return null
       }
+
+      const user = session.user
 
       // Get role from user metadata (same as in signIn method)
       const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
