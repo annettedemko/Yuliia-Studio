@@ -1,20 +1,41 @@
 User-agent: *
 Allow: /
 
-# Important pages for SEO
+# Публичные страницы для SEO (основные)
 Allow: /
-Allow: /services
-Allow: /laser-haarentfernung-muenchen
-Allow: /icoone-laser
-Allow: /manikuere-pedikuere
-Allow: /preise
 Allow: /about
+Allow: /services
+Allow: /kontakt
+Allow: /preis
+Allow: /impressum
+Allow: /datenschutzerklaerung
 
-# Block admin pages from search engines
+# Публичные страницы услуг
+Allow: /laser-haarentfernung-muenchen
+Allow: /alexandrit-gegen-diodenlaser
+Allow: /icoone-laser-muenchen
+Allow: /manikuere-pedikuere-muenchen
+Allow: /redtouch-laser-muenchen
+
+# Страницы оборудования DEKA (B2B, но публичные)
+Allow: /deka-geraeteverkauf
+Allow: /redtouch-pro
+Allow: /motus-pro
+Allow: /motus-ax
+Allow: /physiq360
+Allow: /again-cos
+
+# Блокировать админские страницы
 Disallow: /admin/
+Disallow: /admin
+
+# Блокировать персональные внутренние страницы DEKA
 Disallow: /deka
+Disallow: /DEKA
 Disallow: /deka-day
-Disallow: /kopie-deka-day-anna
+Disallow: /deka-anna
+Disallow: /deka-lera
+Disallow: /deka-liudmila
 
 # Sitemap location
-Sitemap: https://yuliia-cheporska-studio.com/sitemap.xml
+Sitemap: https://www.munchen-beauty.de/sitemap.xml
