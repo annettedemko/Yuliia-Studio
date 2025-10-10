@@ -287,8 +287,8 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-6 border-t bg-background/95 backdrop-blur-md max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div className="flex flex-col space-y-6 px-4">
+          <div className="md:hidden pt-4 pb-4 border-t bg-background/95 backdrop-blur-md max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+            <div className="flex flex-col space-y-4 px-4">
 
               {navItems.map((item) => (
                 <Link

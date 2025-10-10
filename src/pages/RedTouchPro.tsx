@@ -363,7 +363,7 @@ const RedTouchPro = () => {
                   alt="Wissenschaftliche Hautanalyse - Vorher/Nachher Vergleich der Kollagenfasern"
                   className="w-full object-contain rounded-xl shadow-2xl border-2 border-primary/20"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 hidden md:block">
                   <div className="bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-white font-semibold text-sm flex items-center">
                       <Microscope className="w-4 h-4 mr-2" />
