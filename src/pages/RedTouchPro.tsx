@@ -372,8 +372,8 @@ const RedTouchPro = () => {
                   </div>
                 </div>
 
-                {/* RedTouch Logo in top right */}
-                <div className="absolute top-4 right-4">
+                {/* RedTouch Logo in top right - hidden on mobile */}
+                <div className="absolute top-4 right-4 hidden md:block">
                   <img
                     src="/deka2.4.png"
                     alt="RedTouch Logo"
