@@ -16,11 +16,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Get initial user
-    authService.getCurrentUser().then(user => {
-      setUser(user)
+    // Get initial user with timeout protection
+    const timeoutId = setTimeout(() => {
+      console.warn('AuthContext: getCurrentUser timeout - setting loading to false')
       setLoading(false)
-    })
+    }, 3000) // 3 second timeout
+
+    authService.getCurrentUser()
+      .then(user => {
+        clearTimeout(timeoutId)
+        setUser(user)
+        setLoading(false)
+      })
+      .catch(error => {
+        console.error('AuthContext: Error getting current user:', error)
+        clearTimeout(timeoutId)
+        setUser(null)
+        setLoading(false)
+      })
 
     // Listen for auth changes
     const { data: { subscription } } = authService.onAuthStateChange((user) => {
@@ -28,7 +41,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setLoading(false)
     })
 
-    return () => subscription.unsubscribe()
+    return () => {
+      clearTimeout(timeoutId)
+      subscription.unsubscribe()
+    }
   }, [])
 
   const signIn = async (email: string, password: string): Promise<{ error: string | null }> => {

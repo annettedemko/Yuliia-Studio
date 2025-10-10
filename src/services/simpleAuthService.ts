@@ -57,29 +57,47 @@ class SimpleAuthService {
 
   async getCurrentUser(): Promise<SimpleAuthUser | null> {
     try {
-      // Проверяем реальную сессию Supabase
-      const { data: { session }, error } = await supabase.auth.getSession()
+      // Add timeout to prevent infinite loading
+      const timeoutPromise = new Promise<null>((resolve) => {
+        setTimeout(() => {
+          console.warn('🟡 SimpleAuth: getSession timeout after 2 seconds')
+          resolve(null)
+        }, 2000)
+      })
 
-      if (error || !session || !session.user) {
-        // Очищаем localStorage если сессия недействительна
+      // Проверяем реальную сессию Supabase с timeout
+      const sessionPromise = supabase.auth.getSession().then(({ data: { session }, error }) => {
+        if (error || !session || !session.user) {
+          // Очищаем localStorage если сессия недействительна
+          this.currentUser = null
+          localStorage.removeItem('simpleAuth')
+          return null
+        }
+
+        // Получаем роль из метаданных пользователя
+        const userRole = session.user.user_metadata?.role || session.user.raw_user_meta_data?.role || 'viewer'
+
+        this.currentUser = {
+          id: session.user.id,
+          email: session.user.email || '',
+          role: userRole
+        }
+
+        // Обновляем localStorage
+        localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser))
+
+        return this.currentUser
+      })
+
+      // Race between timeout and actual session fetch
+      const result = await Promise.race([sessionPromise, timeoutPromise])
+
+      if (result === null) {
         this.currentUser = null
         localStorage.removeItem('simpleAuth')
-        return null
       }
 
-      // Получаем роль из метаданных пользователя
-      const userRole = session.user.user_metadata?.role || session.user.raw_user_meta_data?.role || 'viewer'
-
-      this.currentUser = {
-        id: session.user.id,
-        email: session.user.email || '',
-        role: userRole
-      }
-
-      // Обновляем localStorage
-      localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser))
-
-      return this.currentUser
+      return result
     } catch (error) {
       console.error('🔴 SimpleAuth: Ошибка при получении пользователя:', error)
       this.currentUser = null

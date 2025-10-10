@@ -60,21 +60,32 @@ class AuthService {
 
   async getCurrentUser(): Promise<AuthUser | null> {
     try {
-      const { data: { user } } = await supabase.auth.getUser()
+      // Add timeout to prevent infinite loading
+      const timeoutPromise = new Promise<null>((resolve) => {
+        setTimeout(() => {
+          console.warn('getCurrentUser: Timeout after 2 seconds')
+          resolve(null)
+        }, 2000)
+      })
 
-      if (!user) {
-        return null
-      }
+      const userPromise = supabase.auth.getUser().then(({ data: { user } }) => {
+        if (!user) {
+          return null
+        }
 
-      // Get role from user metadata (same as in signIn method)
-      const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
+        // Get role from user metadata (same as in signIn method)
+        const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
 
-      return {
-        id: user.id,
-        email: user.email || '',
-        role: metaRole || 'viewer',
-        full_name: user.user_metadata?.full_name || undefined
-      }
+        return {
+          id: user.id,
+          email: user.email || '',
+          role: metaRole || 'viewer',
+          full_name: user.user_metadata?.full_name || undefined
+        }
+      })
+
+      // Race between timeout and actual user fetch
+      return await Promise.race([userPromise, timeoutPromise])
     } catch (error) {
       console.error('Error getting current user:', error)
       return null
