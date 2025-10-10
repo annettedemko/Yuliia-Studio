@@ -11,8 +11,8 @@ const AlexandritVsDiodenlaser = () => {
   const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
-      title: 'Alexandrit- oder Diodenlaser? Die Unterschiede | Laser-Haarentfernung München',
-      description: 'Alexandrit- vs. Diodenlaser im Vergleich – Vorteile & Unterschiede. Erfahren Sie, welche Methode für Ihre Haut & Haare geeignet ist. Studio in München-Haidhausen.'
+      title: 'Alexandrit vs. Diodenlaser – Unterschiede & Einsatz',
+      description: 'Vergleich: Alexandrit vs. Diodenlaser – Wirkung, Komfort, Eignung je Haut/Haartyp, Sommer/Bräune, Sicherheit, Sitzungen. Praxis-FAQ & Empfehlungen.'
     });
 
     setJsonLd({
@@ -28,7 +28,7 @@ const AlexandritVsDiodenlaser = () => {
         name: 'Yuliia Cheporska Studio',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://yuliia-studio.vercel.app/logo2.jpg'
+          url: 'https://www.munchen-beauty.de/logo2.jpg'
         }
       },
       datePublished: '2025-01-15',

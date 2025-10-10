@@ -11,8 +11,8 @@ const Services = () => {
 
   useEffect(() => {
     setPageMeta({
-      title: 'Unsere Leistungen im Überblick – Kosmetik & Beauty in München-Haidhausen',
-      description: 'Vielfältige Kosmetik-, Wellness- und Beauty-Behandlungen im Yuliia Cheporska Studio. Laser-Haarentfernung, Hautpflege, Massage und mehr in München-Haidhausen.'
+      title: 'Leistungen – Laser, RedTouch, Icoone, Nägel | München',
+      description: 'Alle Leistungen im Überblick: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Jetzt passende Behandlung finden.'
     });
   }, []);
 

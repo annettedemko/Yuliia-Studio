@@ -11,8 +11,8 @@ const ManikuerePedikuere = () => {
   const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
-      title: 'Maniküre & Pediküre München-Haidhausen – Kosmetikstudio nahe Ostbahnhof',
-      description: 'Klassische Maniküre, Pediküre, Shellac/Gel im Yuliia Cheporska Studio (Elsässer Str. 33). Hygiene & Präzision. Termin in Haidhausen buchen.'
+      title: 'Maniküre & Pediküre München | Yuliia Cheporska Studio',
+      description: 'Maniküre & Pediküre München: Klassisch, Gel, Shellac – hygienisch & präzise. Elsässer Str. 33 (Haidhausen). Jetzt Termin online.'
     });
 
     setJsonLd({
@@ -617,7 +617,7 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="bg-transparent border-white text-white hover:bg-white/10"
                 asChild
               >
                 <a

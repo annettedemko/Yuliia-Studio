@@ -1,6 +1,15 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { useEffect } from 'react';
+import { setPageMeta } from '@/seo/seo';
 
 const Datenschutz = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Datenschutzerklärung – Yuliia Cheporska Studio München',
+      description: 'Datenschutzerklärung und Informationen zum Schutz Ihrer persönlichen Daten im Yuliia Cheporska Studio München.'
+    });
+  }, []);
+
   return (
     <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
       

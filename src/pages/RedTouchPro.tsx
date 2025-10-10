@@ -152,7 +152,7 @@ const RedTouchPro = () => {
               >
                 <a href="tel:+4915206067810">
                   <Phone className="w-5 h-5 mr-2" />
-                  {t('redtouch.hero.button.book')}
+                  {t('redtouch.cta.book')}
                 </a>
               </Button>
               <Button
@@ -162,7 +162,7 @@ const RedTouchPro = () => {
                 asChild
               >
                 <a href="#technology">
-                  {t('redtouch.hero.button.learn')}
+                  {t('common.learn-more')}
                 </a>
               </Button>
             </div>
@@ -616,13 +616,13 @@ const RedTouchPro = () => {
             <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
               <a href="tel:+4915206067810">
                 <Phone className="w-5 h-5 mr-2" />
-                {t('redtouch.cta.button.book')}
+                {t('redtouch.cta.book')}
               </a>
             </Button>
             <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10" asChild>
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 mr-2" />
-                {t('redtouch.cta.button.email')}
+                {t('contact.send-email')}
               </a>
             </Button>
           </div>

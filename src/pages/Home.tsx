@@ -15,8 +15,8 @@ const Home = () => {
   const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
   useEffect(() => {
     setPageMeta({
-      title: 'Yuliia Cheporska Studio | Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Nails – München',
-      description: 'Studio in München-Haidhausen (Elsässer Str. 33). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Jetzt online buchen.'
+      title: 'Yuliia Cheporska Studio München | Laser, RedTouch & Nägel',
+      description: 'Studio in München-Haidhausen (nahe Ostbahnhof). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Nagelstudio. Termin online.'
     });
 
     setJsonLd({
@@ -591,7 +591,7 @@ const Home = () => {
                     className="text-muted-foreground hover:text-rose-gold transition-colors"
                   >
                     Elsässer Straße 33<br />
-                    81667 Мюнхен
+                    81667 München
                   </a>
                 </div>
               </div>

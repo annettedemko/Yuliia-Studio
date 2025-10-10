@@ -1,6 +1,15 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { useEffect } from 'react';
+import { setPageMeta } from '@/seo/seo';
 
 const Impressum = () => {
+  useEffect(() => {
+    setPageMeta({
+      title: 'Impressum – Yuliia Cheporska Studio München',
+      description: 'Impressum und rechtliche Informationen gemäß § 5 TMG für das Yuliia Cheporska Studio in München-Haidhausen.'
+    });
+  }, []);
+
   return (
     <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
       

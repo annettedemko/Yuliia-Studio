@@ -12,8 +12,8 @@ const LaserHairRemoval = () => {
   const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
-      title: 'Dauerhafte Laser-Haarentfernung in München-Haidhausen',
-      description: 'Professionelle Laser-Haarentfernung in München-Haidhausen mit Alexandrit (755 nm) & Diodenlaser. Schonend, effektiv, nachhaltig. Nur 5 Min. vom Ostbahnhof. Jetzt Termin buchen!'
+      title: 'Laser-Haarentfernung München | Alexandrit & Diodenlaser',
+      description: 'Laser Haarentfernung München: Alexandrit (755 nm) & Diodenlaser. Langanhaltende Reduktion, Kontaktkühlung, Ablauf & Zonen. Preise auf /preis.'
     });
 
     setJsonLd({

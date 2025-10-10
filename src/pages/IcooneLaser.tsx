@@ -10,8 +10,8 @@ const IcooneLaser = () => {
   const { t } = useLanguage();
   useEffect(() => {
     setPageMeta({
-      title: 'Icoone®️ Behandlung München-Haidhausen – Hautstraffung & Lymphdrainage',
-      description: 'Icoone®️ im Yuliia Cheporska Studio, Elsässer Str. 33 (Haidhausen). Straffere Haut, Cellulite-Reduktion, Lymphdrainage. Jetzt online buchen.'
+      title: 'Icoone®️ München – Bindegewebe & Hautbild',
+      description: 'Icoone®️ München: wohltuende, mechanisch stimulierte Anwendungen für Bindegewebe & Hautbild. Planbar, ohne Downtime. Termin online.'
     });
 
     setJsonLd({

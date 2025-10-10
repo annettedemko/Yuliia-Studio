@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { setPageMeta } from '@/seo/seo';
 
 const Pricing = () => {
   const { language, t } = useLanguage();
@@ -13,6 +14,14 @@ const Pricing = () => {
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Set page meta
+  useEffect(() => {
+    setPageMeta({
+      title: 'Preise – Yuliia Cheporska Studio München',
+      description: 'Preise für Laser-Haarentfernung, RedTouch, Icoone, Maniküre & Pediküre im Yuliia Cheporska Studio München-Haidhausen. Transparente Kosten, keine versteckten Gebühren.'
+    });
+  }, []);
 
   // Helper: get translated text with fallback
   const getTranslated = (de: string, ru?: string) => {
