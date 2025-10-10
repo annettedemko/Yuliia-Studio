@@ -64,6 +64,19 @@ const Navigation = () => {
     }, 300); // 300ms задержки
   };
 
+  // Block body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     return () => {
       if (dropdownTimeoutRef.current) {
@@ -274,7 +287,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-6 border-t bg-background/95 backdrop-blur-md">
+          <div className="md:hidden py-6 border-t bg-background/95 backdrop-blur-md max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div className="flex flex-col space-y-6 px-4">
 
               {navItems.map((item) => (

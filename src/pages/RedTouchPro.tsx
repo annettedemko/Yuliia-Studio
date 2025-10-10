@@ -273,9 +273,9 @@ const RedTouchPro = () => {
             </div>
 
             {/* Cards Around Device Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" style={{marginBottom: '-40px'}}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-0 lg:mb-[-40px]">
               {/* LEFT SIDE - First 3 cards */}
-              <div className="lg:col-span-3 space-y-6" style={{transform: window.innerWidth >= 1024 ? 'translateY(7%)' : 'translateY(0)'}}>
+              <div className="lg:col-span-3 space-y-6 lg:translate-y-[7%]">
                 {deviceFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
@@ -305,8 +305,7 @@ const RedTouchPro = () => {
                   <img
                     src="/deka2.png"
                     alt="RedTouch PRO - Das ultimative Hautverjüngungsgerät"
-                    className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
-                    style={{transform: 'scale(0.75) translateY(-20%)'}}
+                    className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 scale-100 lg:scale-75 translate-y-0 lg:-translate-y-[20%]"
                   />
 
                   {/* Floating tech particles */}
@@ -347,7 +346,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Scientific Analysis Section */}
-      <section className="py-10 bg-background relative overflow-hidden" style={{marginTop: '-160px'}}>
+      <section className="py-10 bg-background relative overflow-hidden mt-0 lg:mt-[-160px]">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
@@ -385,7 +384,7 @@ const RedTouchPro = () => {
             </div>
 
             {/* Text content below */}
-            <div className="max-w-5xl mx-auto animate-slide-up delay-300" style={{marginTop: '-20px'}}>
+            <div className="max-w-5xl mx-auto animate-slide-up delay-300 mt-0 lg:mt-[-20px]">
               <Card className="shadow-elegant">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6 text-primary">{t('redtouch.analysis.heading')}</h3>
@@ -410,13 +409,12 @@ const RedTouchPro = () => {
             </div>
 
             {/* Additional Scientific Image */}
-            <div className="text-center mb-6 animate-slide-up delay-500" style={{marginTop: '40px'}}>
+            <div className="text-center mb-6 animate-slide-up delay-500 mt-10">
               <div className="relative inline-block w-full max-w-4xl mx-auto">
                 <img
                   src="/deka2.2.jpeg"
                   alt="RedTouch PRO - Detailaufnahme der Behandlungsergebnisse"
                   className="w-full object-contain rounded-xl shadow-2xl border-2 border-primary/20"
-                  style={{transform: 'translateY(0%)'}}
                 />
                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full">
@@ -433,7 +431,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Premium Device Showcase Section */}
-      <section className="py-10 bg-gradient-to-b from-slate-50 to-white" style={{marginTop: '-30px'}}>
+      <section className="py-10 bg-gradient-to-b from-slate-50 to-white mt-0 lg:mt-[-30px]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
@@ -451,20 +449,20 @@ const RedTouchPro = () => {
                 <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-primary/30 to-blue-500/20 rounded-3xl blur-lg group-hover:blur-xl transition-all duration-500 opacity-75 group-hover:opacity-100"></div>
 
                 {/* Main device card */}
-                <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden group-hover:shadow-3xl transition-all duration-500 w-[600px] h-[480px]">
+                <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden group-hover:shadow-3xl transition-all duration-500 w-full max-w-[600px] h-auto min-h-[320px] lg:h-[480px]">
                   {/* Silver gradient border */}
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-white to-gray-200 p-[2px] rounded-2xl">
                     <div className="bg-white h-full w-full rounded-2xl"></div>
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 p-8 h-full flex flex-col justify-center items-center">
+                  <div className="relative z-10 p-4 lg:p-8 h-full flex flex-col justify-center items-center">
                     {/* Device image container */}
-                    <div className="relative mb-6 group-hover:scale-105 transition-transform duration-500">
+                    <div className="relative mb-4 lg:mb-6 group-hover:scale-105 transition-transform duration-500">
                       <img
                         src="/deka2.png"
                         alt="RedTouch PRO - Premium DEKA Device"
-                        className="w-80 h-80 object-contain drop-shadow-2xl"
+                        className="w-48 h-48 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
                       />
                       {/* Subtle glow around device */}
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-primary/10 rounded-full blur-2xl scale-110"></div>
@@ -520,7 +518,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Vorteile des RedTouch PRO */}
-      <section className="py-8 bg-background" style={{marginTop: '-30px'}}>
+      <section className="py-8 bg-background mt-0 lg:mt-[-30px]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
@@ -546,7 +544,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Anwendungsbereiche */}
-      <section className="py-8 bg-accent/20" style={{marginTop: '-30px'}}>
+      <section className="py-8 bg-accent/20 mt-0 lg:mt-[-30px]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
@@ -572,7 +570,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* Design & Ergonomie */}
-      <section className="py-8 pb-24 bg-background" style={{marginTop: '-30px'}}>
+      <section className="py-8 pb-24 bg-background mt-0 lg:mt-[-30px]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
