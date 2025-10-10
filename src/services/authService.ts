@@ -13,36 +13,47 @@ class AuthService {
     try {
       console.log('AuthService: Attempting login with email:', email);
 
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      // Add timeout to prevent infinite loading on login
+      const timeoutPromise = new Promise<{ user: AuthUser | null, error: string | null }>((resolve) => {
+        setTimeout(() => {
+          console.warn('AuthService: signInWithPassword timeout after 5 seconds')
+          resolve({ user: null, error: 'Timeout - bitte Internetverbindung prüfen' })
+        }, 5000)
       })
 
-      console.log('AuthService: Supabase auth response:', { data, error });
+      const loginPromise = supabase.auth.signInWithPassword({
+        email,
+        password,
+      }).then(({ data, error }) => {
+        console.log('AuthService: Supabase auth response:', { data, error });
 
-      if (error) {
-        console.error('AuthService: Supabase auth error:', error);
-        return { user: null, error: 'Ungültige Anmeldedaten' }
-      }
+        if (error) {
+          console.error('AuthService: Supabase auth error:', error);
+          return { user: null, error: 'Ungültige Anmeldedaten' }
+        }
 
-      if (!data.user) {
-        return { user: null, error: 'Kein Benutzer gefunden' }
-      }
+        if (!data.user) {
+          return { user: null, error: 'Kein Benutzer gefunden' }
+        }
 
-      // Get role from user metadata (since we're using Supabase auth with roles in metadata)
-      const metaRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role;
-      console.log('User metadata role:', metaRole);
-      console.log('User email:', data.user.email);
-      console.log('User ID:', data.user.id);
+        // Get role from user metadata (since we're using Supabase auth with roles in metadata)
+        const metaRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role;
+        console.log('User metadata role:', metaRole);
+        console.log('User email:', data.user.email);
+        console.log('User ID:', data.user.id);
 
-      const authUser: AuthUser = {
-        id: data.user.id,
-        email: data.user.email || '',
-        role: metaRole || 'viewer',
-        full_name: data.user.user_metadata?.full_name || data.user.raw_user_meta_data?.full_name || undefined
-      }
+        const authUser: AuthUser = {
+          id: data.user.id,
+          email: data.user.email || '',
+          role: metaRole || 'viewer',
+          full_name: data.user.user_metadata?.full_name || data.user.raw_user_meta_data?.full_name || undefined
+        }
 
-      return { user: authUser, error: null }
+        return { user: authUser, error: null }
+      })
+
+      // Race between timeout and actual login
+      return await Promise.race([loginPromise, timeoutPromise])
     } catch (error) {
       console.error('AuthService: Caught exception during sign in:', error);
       return { user: null, error: 'Anmeldefehler' }

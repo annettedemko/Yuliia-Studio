@@ -13,33 +13,44 @@ class SimpleAuthService {
     try {
       console.log('🟡 SimpleAuth: Пытаемся войти с email:', email);
 
-      // Используем стандартную Supabase аутентификацию
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      // Add timeout to prevent infinite loading on login
+      const timeoutPromise = new Promise<{ user: SimpleAuthUser | null, error: string | null }>((resolve) => {
+        setTimeout(() => {
+          console.warn('🔴 SimpleAuth: signInWithPassword timeout after 5 seconds')
+          resolve({ user: null, error: 'Timeout - проверьте подключение к интернету' })
+        }, 5000)
       })
 
-      console.log('🟡 SimpleAuth: Ответ:', { data, error });
+      // Используем стандартную Supabase аутентификацию с timeout
+      const loginPromise = supabase.auth.signInWithPassword({
+        email,
+        password,
+      }).then(({ data, error }) => {
+        console.log('🟡 SimpleAuth: Ответ:', { data, error });
 
-      if (error || !data.user) {
-        console.log('🔴 SimpleAuth: Неверные данные');
-        return { user: null, error: 'Неверный email или пароль' }
-      }
+        if (error || !data.user) {
+          console.log('🔴 SimpleAuth: Неверные данные');
+          return { user: null, error: 'Неверный email или пароль' }
+        }
 
-      // Получаем роль из метаданных пользователя
-      const userRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role || 'viewer';
+        // Получаем роль из метаданных пользователя
+        const userRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role || 'viewer';
 
-      this.currentUser = {
-        id: data.user.id,
-        email: data.user.email || '',
-        role: userRole
-      }
+        this.currentUser = {
+          id: data.user.id,
+          email: data.user.email || '',
+          role: userRole
+        }
 
-      // Сохраняем в localStorage
-      localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser));
+        // Сохраняем в localStorage
+        localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser));
 
-      console.log('🟢 SimpleAuth: Успешный вход:', this.currentUser);
-      return { user: this.currentUser, error: null }
+        console.log('🟢 SimpleAuth: Успешный вход:', this.currentUser);
+        return { user: this.currentUser, error: null }
+      })
+
+      // Race between timeout and actual login
+      return await Promise.race([loginPromise, timeoutPromise])
 
     } catch (error) {
       console.error('🔴 SimpleAuth: Ошибка:', error);
