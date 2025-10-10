@@ -18,9 +18,18 @@ import {
   Clock
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect } from 'react';
+import { setPageMeta } from '@/seo/seo';
 
 const RedTouchPro = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    setPageMeta({
+      title: 'RedTouch PRO – DEKA Technologie für Hautverjüngung',
+      description: 'RedTouch PRO von DEKA: 675 nm Wellenlänge, MTD-Technologie, Moveo-Modus. Professionelle Hautverjüngung, Kollagenstimulation & Hautstraffung. Details zur Technologie.'
+    });
+  }, []);
   const deviceFeatures = [
     {
       icon: Sparkles,
