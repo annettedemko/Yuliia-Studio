@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Lock, Mail } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { simpleAuthService } from '@/services/simpleAuthService';
 
@@ -12,15 +12,6 @@ const AdminLogin = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Проверяем если пользователь уже авторизован
-    const user = simpleAuthService.getCurrentUser();
-    if (user) {
-      console.log('🟢 AdminLogin: Пользователь уже авторизован, перенаправление');
-      navigate('/admin');
-    }
-  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

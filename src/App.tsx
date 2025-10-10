@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ProtectedRoute, PublicRoute } from "@/components/ProtectedRoute";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -96,13 +97,13 @@ const App = () => (
                   <Route path="/deka-anna" element={<DekaAnna />} />
                   <Route path="/deka-lera" element={<DekaLera />} />
                   <Route path="/deka-liudmila" element={<DekaLiudmila />} />
-                  <Route path="/admin" element={<AdminDashboard />} />
-                  <Route path="/admin/login" element={<AdminLogin />} />
-                  <Route path="/admin/yulia-clients" element={<YuliaClients />} />
-                  <Route path="/admin/anna-clients" element={<AnnaClients />} />
-                  <Route path="/admin/natalia-clients" element={<NataliaClients />} />
-                  <Route path="/admin/lera-clients" element={<LeraClients />} />
-                  <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
+                  <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+                  <Route path="/admin/login" element={<PublicRoute><AdminLogin /></PublicRoute>} />
+                  <Route path="/admin/yulia-clients" element={<ProtectedRoute><YuliaClients /></ProtectedRoute>} />
+                  <Route path="/admin/anna-clients" element={<ProtectedRoute><AnnaClients /></ProtectedRoute>} />
+                  <Route path="/admin/natalia-clients" element={<ProtectedRoute><NataliaClients /></ProtectedRoute>} />
+                  <Route path="/admin/lera-clients" element={<ProtectedRoute><LeraClients /></ProtectedRoute>} />
+                  <Route path="/admin/liudmila-clients" element={<ProtectedRoute><LiudmilaClients /></ProtectedRoute>} />
                   <Route path="/kontakt" element={<Kontakt />} />
                   <Route path="/impressum" element={<Impressum />} />
                   <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
