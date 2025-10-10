@@ -12,7 +12,7 @@ const ManikuerePedikuere = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Maniküre & Pediküre München | Yuliia Cheporska Studio',
-      description: 'Maniküre & Pediküre München: Klassisch, Gel, Shellac – hygienisch & präzise. Elsässer Str. 33 (Haidhausen). Jetzt Termin online.'
+      description: 'Maniküre & Pediküre in München-Haidhausen: präzise Pflege, saubere Form, Hygiene; Lack/Gel nach Wunsch. Termin online buchen.'
     });
 
     setJsonLd({
@@ -277,7 +277,7 @@ const ManikuerePedikuere = () => {
                       className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                       asChild
                     >
-                      <Link to="/preis">
+                      <Link to="/preis#manicure">
                         {t('nails.view-prices')}
                       </Link>
                     </Button>
@@ -341,7 +341,7 @@ const ManikuerePedikuere = () => {
                       className="border-primary text-primary hover:bg-primary hover:text-white"
                       asChild
                     >
-                      <Link to="/preis">
+                      <Link to="/preis#pedicure">
                         {t('nails.view-prices')}
                       </Link>
                     </Button>

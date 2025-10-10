@@ -13,7 +13,7 @@ const LaserHairRemoval = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Laser-Haarentfernung München | Alexandrit & Diodenlaser',
-      description: 'Laser Haarentfernung München: Alexandrit (755 nm) & Diodenlaser. Langanhaltende Reduktion, Kontaktkühlung, Ablauf & Zonen. Preise auf /preis.'
+      description: 'Laser Haarentfernung München: Alexandrit (755 nm) & Diodenlaser. Langanhaltende Reduktion, Kontaktkühlung, Ablauf & Zonen. Preise auf /preise.'
     });
 
     setJsonLd({
@@ -102,7 +102,7 @@ const LaserHairRemoval = () => {
               className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
-              <Link to="/preis#laser-haarentfernung">
+              <Link to="/preis#alexandrit">
                 {t('service.button.prices')}
               </Link>
             </Button>

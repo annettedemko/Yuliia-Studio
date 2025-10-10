@@ -6,7 +6,7 @@ const Datenschutz = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Datenschutzerklärung – Yuliia Cheporska Studio München',
-      description: 'Datenschutzerklärung und Informationen zum Schutz Ihrer persönlichen Daten im Yuliia Cheporska Studio München.'
+      description: 'Datenschutzerklärung: Zwecke, Rechtsgrundlagen, Speicherdauer und Rechte der Betroffenen im Yuliia Cheporska Studio München.'
     });
   }, []);
 

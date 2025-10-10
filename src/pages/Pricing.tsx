@@ -19,7 +19,7 @@ const Pricing = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Preise – Yuliia Cheporska Studio München',
-      description: 'Preise für Laser-Haarentfernung, RedTouch, Icoone, Maniküre & Pediküre im Yuliia Cheporska Studio München-Haidhausen. Transparente Kosten, keine versteckten Gebühren.'
+      description: 'Transparente Preise & Pakete: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Alle Zonen & Angebote im Überblick.'
     });
   }, []);
 

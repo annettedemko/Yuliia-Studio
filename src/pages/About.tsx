@@ -16,7 +16,7 @@ const About = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Über uns – Yuliia Cheporska Studio München',
-      description: 'Lernen Sie unser Team kennen: Yuliia Cheporska Studio in München-Haidhausen. Professionelle Laser-Haarentfernung, RedTouch, Icoone, Maniküre & Pediküre.'
+      description: 'Studio & Team in München-Haidhausen. Meist gut verträgliche Behandlungen dank Kontaktkühlung. Kontakt, Anfahrt & Öffnungszeiten.'
     });
   }, []);
 

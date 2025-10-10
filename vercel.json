@@ -7,7 +7,8 @@
   "redirects": [
     { "source": "/icoone-laser", "destination": "/icoone-laser-muenchen", "permanent": true },
     { "source": "/redtouchpro", "destination": "/redtouch-laser-muenchen", "permanent": true },
-    { "source": "/manikuere-pedikuere", "destination": "/manikuere-pedikuere-muenchen", "permanent": true }
+    { "source": "/manikuere-pedikuere", "destination": "/manikuere-pedikuere-muenchen", "permanent": true },
+    { "source": "/kopie-deka-day-anna", "destination": "/deka-anna", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

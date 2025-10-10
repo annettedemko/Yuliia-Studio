@@ -132,7 +132,7 @@ const IcooneLaser = () => {
               className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
-              <Link to="/preis#icoone-laser">
+              <Link to="/preis#icoone">
                 {t('icoone.hero.button.pricing')}
               </Link>
             </Button>

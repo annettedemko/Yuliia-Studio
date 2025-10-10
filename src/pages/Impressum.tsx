@@ -6,7 +6,7 @@ const Impressum = () => {
   useEffect(() => {
     setPageMeta({
       title: 'Impressum – Yuliia Cheporska Studio München',
-      description: 'Impressum und rechtliche Informationen gemäß § 5 TMG für das Yuliia Cheporska Studio in München-Haidhausen.'
+      description: 'Anbieterkennzeichnung gemäß § 5 TMG: Anschrift, Kontakt und Verantwortliche des Studios in München-Haidhausen.'
     });
   }, []);
 

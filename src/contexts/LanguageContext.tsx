@@ -605,6 +605,8 @@ const translations = {
     'laser.testimonials.since': 'Kundin seit 2023',
 
     // RedTouch PRO Page
+    'redtouch.hero.badge': 'DEKA Innovation',
+    'redtouch.hero.button.consultation': 'Beratung vereinbaren',
     'redtouch.gallery.title': 'RedTouch PRO im Detail',
     'redtouch.gallery.alt.main': 'RedTouch PRO - Professionelles Hautverjüngungsgerät',
     'redtouch.gallery.alt.logo': 'RedTouch Logo',
@@ -1040,7 +1042,7 @@ const translations = {
 
     // RedTouch PRO Service Page
     'redtouch.hero.title': 'RedTouch®️ Laserbehandlung in München-Haidhausen – Hautverjüngung & Pigmentkorrektur',
-    'redtouch.hero.subtitle': 'Professionelle RedTouch®️ 675 nm Behandlung im Yuliia Cheporska Studio (Elsässer Str. 33, Nähe Ostbahnhof).',
+    'redtouch.hero.subtitle': 'Innovatives DEKA Gerät für professionelle Hautverjüngung',
     'redtouch.hero.description': 'Innovative Laser-Technologie für Hautbild-Verbesserung, Pigmentkorrektur und Kollagenproduktion – mit geringer Ausfallzeit.',
 
     'redtouch.benefits.title': 'Vorteile von RedTouch®️ in München-Haidhausen',
@@ -1883,6 +1885,8 @@ const translations = {
     'laser.testimonials.since': 'Клиентка с 2023 года',
 
     // RedTouch PRO Page
+    'redtouch.hero.badge': 'Инновация DEKA',
+    'redtouch.hero.button.consultation': 'Записаться на консультацию',
     'redtouch.gallery.title': 'RedTouch PRO в деталях',
     'redtouch.gallery.alt.main': 'RedTouch PRO - профессиональный аппарат для омоложения кожи',
     'redtouch.gallery.alt.logo': 'Логотип RedTouch',
@@ -2318,7 +2322,7 @@ const translations = {
 
     // RedTouch PRO Service Page
     'redtouch.hero.title': 'Лазерная процедура RedTouch®️ в Мюнхене-Хайдхаузен – Омоложение кожи и коррекция пигмента',
-    'redtouch.hero.subtitle': 'Профессиональная процедура RedTouch®️ 675 нм в студии Yuliia Cheporska (Elsässer Str. 33, рядом с Ostbahnhof).',
+    'redtouch.hero.subtitle': 'Инновационный аппарат DEKA для профессионального омоложения кожи',
     'redtouch.hero.description': 'Инновационная лазерная технология для улучшения состояния кожи, коррекции пигмента и выработки коллагена – с минимальным временем восстановления.',
 
     'redtouch.benefits.title': 'Преимущества RedTouch®️ в Мюнхене-Хайдхаузен',
