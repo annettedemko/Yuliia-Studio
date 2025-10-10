@@ -3,15 +3,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Lock, Mail } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { simpleAuthService } from '@/services/simpleAuthService';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  // Check if already logged in on mount
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const user = await simpleAuthService.getCurrentUser();
+        if (user) {
+          console.log('🟢 AdminLogin: Уже авторизован, редирект на /admin');
+          navigate('/admin');
+        } else {
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('🔴 AdminLogin: Ошибка проверки авторизации:', err);
+        setLoading(false);
+      }
+    };
+    checkAuth();
+  }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,24 +39,48 @@ const AdminLogin = () => {
 
     console.log('🟡 AdminLogin: Попытка входа с', credentials.email);
 
+    // Add timeout wrapper
+    const loginTimeout = setTimeout(() => {
+      console.warn('🟡 AdminLogin: Login timeout after 10 seconds');
+      setError('Timeout - проверьте подключение к интернету');
+      setLoading(false);
+    }, 10000);
+
     try {
       const { user, error: signInError } = await simpleAuthService.login(credentials.email, credentials.password);
+
+      clearTimeout(loginTimeout);
 
       if (signInError) {
         console.log('🔴 AdminLogin: Ошибка входа:', signInError);
         setError(signInError);
+        setLoading(false);
       } else if (user) {
         console.log('🟢 AdminLogin: Успешный вход:', user);
         navigate('/admin');
+      } else {
+        setError('Ошибка входа');
+        setLoading(false);
       }
     } catch (err) {
+      clearTimeout(loginTimeout);
       console.error('🔴 AdminLogin: Исключение:', err);
       setError('Ошибка входа');
-    } finally {
       setLoading(false);
     }
   };
 
+
+  if (loading && !error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-gray-600">Überprüfen...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-rose-gold/5 to-accent/10">
