@@ -37,6 +37,10 @@ SUPABASE_SETUP.md
 !/supabase/migrations/*.sql
 !/supabase/incremental_migrations/*.sql
 
+# Supabase temporary files
+supabase/.temp/
+supabase/.branches/
+
 # Python virtual environment
 venv/
 __pycache__/
