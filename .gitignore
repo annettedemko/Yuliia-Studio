@@ -28,6 +28,9 @@ dist-ssr
 .env
 .env.*.local
 
+# Vercel deploy hook (contains private token)
+VERCEL_DEPLOY.md
+
 # Temporary and development files
 ВРЕМЕННОЕ_РЕШЕНИЕ.md
 README_SETUP.md
