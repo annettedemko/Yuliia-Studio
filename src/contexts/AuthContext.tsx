@@ -16,33 +16,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Get initial user with timeout protection
-    const timeoutId = setTimeout(() => {
-      console.warn('AuthContext: getCurrentUser timeout - setting loading to false')
-      setLoading(false)
-    }, 3000) // 3 second timeout
+    let mounted = true
 
+    // Get initial user
     authService.getCurrentUser()
       .then(user => {
-        clearTimeout(timeoutId)
-        setUser(user)
-        setLoading(false)
+        if (mounted) {
+          setUser(user)
+          setLoading(false)
+        }
       })
       .catch(error => {
         console.error('AuthContext: Error getting current user:', error)
-        clearTimeout(timeoutId)
-        setUser(null)
-        setLoading(false)
+        if (mounted) {
+          setUser(null)
+          setLoading(false)
+        }
       })
 
     // Listen for auth changes
     const { data: { subscription } } = authService.onAuthStateChange((user) => {
-      setUser(user)
-      setLoading(false)
+      if (mounted) {
+        setUser(user)
+        setLoading(false)
+      }
     })
 
     return () => {
-      clearTimeout(timeoutId)
+      mounted = false
       subscription.unsubscribe()
     }
   }, [])
