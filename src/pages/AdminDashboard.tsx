@@ -62,9 +62,20 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const initializeAdmin = async () => {
       try {
+        // Set timeout to prevent infinite loading
+        timeoutId = setTimeout(() => {
+          console.warn('🟡 AdminDashboard: Auth check timeout - redirecting to login');
+          setLoading(false);
+          navigate('/admin/login');
+        }, 5000); // 5 second timeout
+
         const user = await simpleAuthService.getCurrentUser();
+
+        clearTimeout(timeoutId);
 
         if (!user) {
           navigate('/admin/login');
@@ -98,6 +109,7 @@ const AdminDashboard = () => {
         setUserRole(user.role);
         await loadData();
       } catch (error) {
+        clearTimeout(timeoutId);
         console.error('🔴 AdminDashboard: Ошибка инициализации:', error);
         setLoading(false);
         navigate('/admin/login');
@@ -105,6 +117,10 @@ const AdminDashboard = () => {
     };
 
     initializeAdmin();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [navigate]);
 
   const loadData = async () => {
