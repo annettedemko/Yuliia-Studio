@@ -32,10 +32,11 @@ SETUP_LOCAL_DB.md
 ПРОСТОЙ_ЗАПУСК.md
 SUPABASE_SETUP.md
 
-# Temporary SQL files (keep only migrations)
+# Temporary SQL files (keep only migrations and schema)
 /*.sql
 !/supabase/migrations/*.sql
 !/supabase/incremental_migrations/*.sql
+!/supabase/PRODUCTION_SCHEMA.sql
 
 # Supabase temporary files
 supabase/.temp/
