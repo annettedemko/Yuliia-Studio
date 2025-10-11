@@ -15,9 +15,20 @@ const AdminLogin = () => {
 
   // Check if already logged in on mount
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const checkAuth = async () => {
       try {
+        // Set timeout to prevent infinite loading
+        timeoutId = setTimeout(() => {
+          console.warn('🟡 AdminLogin: Auth check timeout - showing login form');
+          setLoading(false);
+        }, 5000); // 5 second timeout
+
         const user = await simpleAuthService.getCurrentUser();
+
+        clearTimeout(timeoutId);
+
         if (user) {
           console.log('🟢 AdminLogin: Уже авторизован, редирект на dashboard');
           // Redirect to appropriate dashboard based on role
@@ -34,11 +45,17 @@ const AdminLogin = () => {
           setLoading(false);
         }
       } catch (err) {
+        clearTimeout(timeoutId);
         console.error('🔴 AdminLogin: Ошибка проверки авторизации:', err);
         setLoading(false);
       }
     };
+
     checkAuth();
+
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
