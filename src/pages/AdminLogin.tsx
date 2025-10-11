@@ -19,8 +19,17 @@ const AdminLogin = () => {
       try {
         const user = await simpleAuthService.getCurrentUser();
         if (user) {
-          console.log('🟢 AdminLogin: Уже авторизован, редирект на /admin');
-          navigate('/admin');
+          console.log('🟢 AdminLogin: Уже авторизован, редирект на dashboard');
+          // Redirect to appropriate dashboard based on role
+          const dashboardRoutes: Record<string, string> = {
+            admin: '/admin',
+            anna: '/admin/anna-clients',
+            natalia: '/admin/natalia-clients',
+            lera: '/admin/lera-clients',
+            liudmila: '/admin/liudmila-clients',
+          };
+          const route = dashboardRoutes[user.role] || '/admin';
+          navigate(route);
         } else {
           setLoading(false);
         }
@@ -57,7 +66,16 @@ const AdminLogin = () => {
         setLoading(false);
       } else if (user) {
         console.log('🟢 AdminLogin: Успешный вход:', user);
-        navigate('/admin');
+        // Redirect to appropriate dashboard based on role
+        const dashboardRoutes: Record<string, string> = {
+          admin: '/admin',
+          anna: '/admin/anna-clients',
+          natalia: '/admin/natalia-clients',
+          lera: '/admin/lera-clients',
+          liudmila: '/admin/liudmila-clients',
+        };
+        const route = dashboardRoutes[user.role] || '/admin';
+        navigate(route);
       } else {
         setError('Ошибка входа');
         setLoading(false);
