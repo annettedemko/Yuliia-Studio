@@ -13,47 +13,36 @@ class AuthService {
     try {
       console.log('AuthService: Attempting login with email:', email);
 
-      // Add timeout to prevent infinite loading on login
-      const timeoutPromise = new Promise<{ user: AuthUser | null, error: string | null }>((resolve) => {
-        setTimeout(() => {
-          console.warn('AuthService: signInWithPassword timeout after 5 seconds')
-          resolve({ user: null, error: 'Timeout - bitte Internetverbindung prüfen' })
-        }, 5000)
-      })
-
-      const loginPromise = supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
-      }).then(({ data, error }) => {
-        console.log('AuthService: Supabase auth response:', { data, error });
-
-        if (error) {
-          console.error('AuthService: Supabase auth error:', error);
-          return { user: null, error: 'Ungültige Anmeldedaten' }
-        }
-
-        if (!data.user) {
-          return { user: null, error: 'Kein Benutzer gefunden' }
-        }
-
-        // Get role from user metadata (since we're using Supabase auth with roles in metadata)
-        const metaRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role;
-        console.log('User metadata role:', metaRole);
-        console.log('User email:', data.user.email);
-        console.log('User ID:', data.user.id);
-
-        const authUser: AuthUser = {
-          id: data.user.id,
-          email: data.user.email || '',
-          role: metaRole || 'viewer',
-          full_name: data.user.user_metadata?.full_name || data.user.raw_user_meta_data?.full_name || undefined
-        }
-
-        return { user: authUser, error: null }
       })
 
-      // Race between timeout and actual login
-      return await Promise.race([loginPromise, timeoutPromise])
+      console.log('AuthService: Supabase auth response:', { data, error });
+
+      if (error) {
+        console.error('AuthService: Supabase auth error:', error);
+        return { user: null, error: 'Ungültige Anmeldedaten' }
+      }
+
+      if (!data.user) {
+        return { user: null, error: 'Kein Benutzer gefunden' }
+      }
+
+      // Get role from user metadata (since we're using Supabase auth with roles in metadata)
+      const metaRole = data.user.user_metadata?.role || data.user.raw_user_meta_data?.role;
+      console.log('User metadata role:', metaRole);
+      console.log('User email:', data.user.email);
+      console.log('User ID:', data.user.id);
+
+      const authUser: AuthUser = {
+        id: data.user.id,
+        email: data.user.email || '',
+        role: metaRole || 'viewer',
+        full_name: data.user.user_metadata?.full_name || data.user.raw_user_meta_data?.full_name || undefined
+      }
+
+      return { user: authUser, error: null }
     } catch (error) {
       console.error('AuthService: Caught exception during sign in:', error);
       return { user: null, error: 'Anmeldefehler' }
@@ -71,32 +60,21 @@ class AuthService {
 
   async getCurrentUser(): Promise<AuthUser | null> {
     try {
-      // Add timeout to prevent infinite loading
-      const timeoutPromise = new Promise<null>((resolve) => {
-        setTimeout(() => {
-          console.warn('getCurrentUser: Timeout after 2 seconds')
-          resolve(null)
-        }, 2000)
-      })
+      const { data: { user } } = await supabase.auth.getUser()
 
-      const userPromise = supabase.auth.getUser().then(({ data: { user } }) => {
-        if (!user) {
-          return null
-        }
+      if (!user) {
+        return null
+      }
 
-        // Get role from user metadata (same as in signIn method)
-        const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
+      // Get role from user metadata (same as in signIn method)
+      const metaRole = user.user_metadata?.role || user.raw_user_meta_data?.role;
 
-        return {
-          id: user.id,
-          email: user.email || '',
-          role: metaRole || 'viewer',
-          full_name: user.user_metadata?.full_name || undefined
-        }
-      })
-
-      // Race between timeout and actual user fetch
-      return await Promise.race([userPromise, timeoutPromise])
+      return {
+        id: user.id,
+        email: user.email || '',
+        role: metaRole || 'viewer',
+        full_name: user.user_metadata?.full_name || undefined
+      }
     } catch (error) {
       console.error('Error getting current user:', error)
       return null
