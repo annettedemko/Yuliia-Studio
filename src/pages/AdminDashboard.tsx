@@ -63,39 +63,45 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const initializeAdmin = async () => {
-      const user = await simpleAuthService.getCurrentUser();
+      try {
+        const user = await simpleAuthService.getCurrentUser();
 
-      if (!user) {
+        if (!user) {
+          navigate('/admin/login');
+          return;
+        }
+
+        console.log('🟢 AdminDashboard: Пользователь авторизован:', user);
+
+        // Role-based redirection
+        if (user.role === 'anna') {
+          navigate('/admin/anna-clients');
+          return;
+        } else if (user.role === 'natalia') {
+          navigate('/admin/natalia-clients');
+          return;
+        } else if (user.role === 'yulia') {
+          navigate('/admin/yulia-clients');
+          return;
+        } else if (user.role === 'lera') {
+          navigate('/admin/lera-clients');
+          return;
+        } else if (user.role === 'liudmila') {
+          navigate('/admin/liudmila-clients');
+          return;
+        } else if (user.role !== 'admin') {
+          navigate('/admin/login');
+          return;
+        }
+
+        setCurrentUser(user.email);
+        setUserRole(user.role);
+        await loadData();
+      } catch (error) {
+        console.error('🔴 AdminDashboard: Ошибка инициализации:', error);
+        setLoading(false);
         navigate('/admin/login');
-        return;
       }
-
-      console.log('🟢 AdminDashboard: Пользователь авторизован:', user);
-
-      // Role-based redirection
-      if (user.role === 'anna') {
-        navigate('/admin/anna-clients');
-        return;
-      } else if (user.role === 'natalia') {
-        navigate('/admin/natalia-clients');
-        return;
-      } else if (user.role === 'yulia') {
-        navigate('/admin/yulia-clients');
-        return;
-      } else if (user.role === 'lera') {
-        navigate('/admin/lera-clients');
-        return;
-      } else if (user.role === 'liudmila') {
-        navigate('/admin/liudmila-clients');
-        return;
-      } else if (user.role !== 'admin') {
-        navigate('/admin/login');
-        return;
-      }
-
-      setCurrentUser(user.email);
-      setUserRole(user.role);
-      await loadData();
     };
 
     initializeAdmin();
