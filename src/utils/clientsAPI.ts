@@ -66,63 +66,103 @@ export const getAnnaClients = async (): Promise<AnnaClient[]> => {
 };
 
 export const createAnnaClient = async (client: Omit<AnnaClientInsert, 'id' | 'created_at'>): Promise<AnnaClient | null> => {
-  try {
-    console.log('Creating Anna client in Supabase:', client);
-    const { data, error } = await supabase
-      .from('anna_clients')
-      .insert([client])
-      .select()
-      .single();
+  console.log('Creating Anna client via REST API:', client);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Supabase error creating Anna client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/anna_clients`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(client)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createAnnaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('createAnnaClient: Error creating client:', error);
+      return null;
     }
 
-    console.log('Successfully created Anna client:', data);
-    return data;
+    const data = await response.json();
+    console.log('createAnnaClient: Successfully created client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in createAnnaClient:', error);
+    console.error('createAnnaClient: Exception:', error);
     return null;
   }
 };
 
 export const updateAnnaClient = async (id: string, updates: AnnaClientUpdate): Promise<AnnaClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('anna_clients')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+  console.log('Updating Anna client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating Anna client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/anna_clients?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateAnnaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('updateAnnaClient: Error updating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('updateAnnaClient: Successfully updated client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in updateAnnaClient:', error);
+    console.error('updateAnnaClient: Exception:', error);
     return null;
   }
 };
 
 export const deleteAnnaClient = async (id: string): Promise<boolean> => {
-  try {
-    const { error } = await supabase
-      .from('anna_clients')
-      .delete()
-      .eq('id', id);
+  console.log('Deleting Anna client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting Anna client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/anna_clients?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteAnnaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('deleteAnnaClient: Error deleting client:', error);
+      return false;
     }
 
+    console.log('deleteAnnaClient: Successfully deleted client', id);
     return true;
   } catch (error) {
-    console.error('Error in deleteAnnaClient:', error);
+    console.error('deleteAnnaClient: Exception:', error);
     return false;
   }
 };
@@ -133,61 +173,103 @@ export const getNataliaClients = async (): Promise<NataliaClient[]> => {
 };
 
 export const createNataliaClient = async (client: Omit<NataliaClientInsert, 'id' | 'created_at'>): Promise<NataliaClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('natalia_clients')
-      .insert([client])
-      .select()
-      .single();
+  console.log('Creating Natalia client via REST API:', client);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error creating Natalia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/natalia_clients`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(client)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createNataliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('createNataliaClient: Error creating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('createNataliaClient: Successfully created client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in createNataliaClient:', error);
+    console.error('createNataliaClient: Exception:', error);
     return null;
   }
 };
 
 export const updateNataliaClient = async (id: string, updates: NataliaClientUpdate): Promise<NataliaClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('natalia_clients')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+  console.log('Updating Natalia client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating Natalia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/natalia_clients?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateNataliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('updateNataliaClient: Error updating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('updateNataliaClient: Successfully updated client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in updateNataliaClient:', error);
+    console.error('updateNataliaClient: Exception:', error);
     return null;
   }
 };
 
 export const deleteNataliaClient = async (id: string): Promise<boolean> => {
-  try {
-    const { error } = await supabase
-      .from('natalia_clients')
-      .delete()
-      .eq('id', id);
+  console.log('Deleting Natalia client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting Natalia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/natalia_clients?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteNataliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('deleteNataliaClient: Error deleting client:', error);
+      return false;
     }
 
+    console.log('deleteNataliaClient: Successfully deleted client', id);
     return true;
   } catch (error) {
-    console.error('Error in deleteNataliaClient:', error);
+    console.error('deleteNataliaClient: Exception:', error);
     return false;
   }
 };
@@ -274,63 +356,103 @@ export const getYuliaClients = async (): Promise<YuliaClient[]> => {
 };
 
 export const createYuliaClient = async (client: Omit<YuliaClientInsert, 'id' | 'created_at'>): Promise<YuliaClient | null> => {
-  try {
-    console.log('Creating Yulia client in Supabase:', client);
-    const { data, error } = await supabase
-      .from('yulia_clients')
-      .insert([client])
-      .select()
-      .single();
+  console.log('Creating Yulia client via REST API:', client);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Supabase error creating Yulia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/yulia_clients`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(client)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createYuliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('createYuliaClient: Error creating client:', error);
+      return null;
     }
 
-    console.log('Successfully created Yulia client:', data);
-    return data;
+    const data = await response.json();
+    console.log('createYuliaClient: Successfully created client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in createYuliaClient:', error);
+    console.error('createYuliaClient: Exception:', error);
     return null;
   }
 };
 
 export const updateYuliaClient = async (id: string, updates: YuliaClientUpdate): Promise<YuliaClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('yulia_clients')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+  console.log('Updating Yulia client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating Yulia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/yulia_clients?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateYuliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('updateYuliaClient: Error updating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('updateYuliaClient: Successfully updated client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in updateYuliaClient:', error);
+    console.error('updateYuliaClient: Exception:', error);
     return null;
   }
 };
 
 export const deleteYuliaClient = async (id: string): Promise<boolean> => {
-  try {
-    const { error } = await supabase
-      .from('yulia_clients')
-      .delete()
-      .eq('id', id);
+  console.log('Deleting Yulia client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting Yulia client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/yulia_clients?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteYuliaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('deleteYuliaClient: Error deleting client:', error);
+      return false;
     }
 
+    console.log('deleteYuliaClient: Successfully deleted client', id);
     return true;
   } catch (error) {
-    console.error('Error in deleteYuliaClient:', error);
+    console.error('deleteYuliaClient: Exception:', error);
     return false;
   }
 };
@@ -341,63 +463,103 @@ export const getLeraClients = async (): Promise<LeraClient[]> => {
 };
 
 export const createLeraClient = async (client: Omit<LeraClientInsert, 'id' | 'created_at'>): Promise<LeraClient | null> => {
-  try {
-    console.log('Creating Lera client in Supabase:', client);
-    const { data, error } = await supabase
-      .from('lera_clients')
-      .insert([client])
-      .select()
-      .single();
+  console.log('Creating Lera client via REST API:', client);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Supabase error creating Lera client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/lera_clients`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(client)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createLeraClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('createLeraClient: Error creating client:', error);
+      return null;
     }
 
-    console.log('Successfully created Lera client:', data);
-    return data;
+    const data = await response.json();
+    console.log('createLeraClient: Successfully created client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in createLeraClient:', error);
+    console.error('createLeraClient: Exception:', error);
     return null;
   }
 };
 
 export const updateLeraClient = async (id: string, updates: LeraClientUpdate): Promise<LeraClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('lera_clients')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+  console.log('Updating Lera client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating Lera client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/lera_clients?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateLeraClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('updateLeraClient: Error updating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('updateLeraClient: Successfully updated client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in updateLeraClient:', error);
+    console.error('updateLeraClient: Exception:', error);
     return null;
   }
 };
 
 export const deleteLeraClient = async (id: string): Promise<boolean> => {
-  try {
-    const { error } = await supabase
-      .from('lera_clients')
-      .delete()
-      .eq('id', id);
+  console.log('Deleting Lera client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting Lera client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/lera_clients?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteLeraClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('deleteLeraClient: Error deleting client:', error);
+      return false;
     }
 
+    console.log('deleteLeraClient: Successfully deleted client', id);
     return true;
   } catch (error) {
-    console.error('Error in deleteLeraClient:', error);
+    console.error('deleteLeraClient: Exception:', error);
     return false;
   }
 };
@@ -408,63 +570,103 @@ export const getLiudmilaClients = async (): Promise<LiudmilaClient[]> => {
 };
 
 export const createLiudmilaClient = async (client: Omit<LiudmilaClientInsert, 'id' | 'created_at'>): Promise<LiudmilaClient | null> => {
-  try {
-    console.log('Creating Liudmila client in Supabase:', client);
-    const { data, error } = await supabase
-      .from('liudmila_clients')
-      .insert([client])
-      .select()
-      .single();
+  console.log('Creating Liudmila client via REST API:', client);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Supabase error creating Liudmila client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/liudmila_clients`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(client)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createLiudmilaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('createLiudmilaClient: Error creating client:', error);
+      return null;
     }
 
-    console.log('Successfully created Liudmila client:', data);
-    return data;
+    const data = await response.json();
+    console.log('createLiudmilaClient: Successfully created client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in createLiudmilaClient:', error);
+    console.error('createLiudmilaClient: Exception:', error);
     return null;
   }
 };
 
 export const updateLiudmilaClient = async (id: string, updates: LiudmilaClientUpdate): Promise<LiudmilaClient | null> => {
-  try {
-    const { data, error } = await supabase
-      .from('liudmila_clients')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+  console.log('Updating Liudmila client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating Liudmila client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/liudmila_clients?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(updates)
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateLiudmilaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('updateLiudmilaClient: Error updating client:', error);
+      return null;
     }
 
-    return data;
+    const data = await response.json();
+    console.log('updateLiudmilaClient: Successfully updated client:', data[0]);
+    return data[0] || null;
   } catch (error) {
-    console.error('Error in updateLiudmilaClient:', error);
+    console.error('updateLiudmilaClient: Exception:', error);
     return null;
   }
 };
 
 export const deleteLiudmilaClient = async (id: string): Promise<boolean> => {
-  try {
-    const { error } = await supabase
-      .from('liudmila_clients')
-      .delete()
-      .eq('id', id);
+  console.log('Deleting Liudmila client', id, 'via REST API...');
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting Liudmila client:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/liudmila_clients?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteLiudmilaClient: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('deleteLiudmilaClient: Error deleting client:', error);
+      return false;
     }
 
+    console.log('deleteLiudmilaClient: Successfully deleted client', id);
     return true;
   } catch (error) {
-    console.error('Error in deleteLiudmilaClient:', error);
+    console.error('deleteLiudmilaClient: Exception:', error);
     return false;
   }
 };
