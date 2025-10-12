@@ -66,12 +66,12 @@ const AdminDashboard = () => {
 
     const initializeAdmin = async () => {
       try {
-        // Set timeout to prevent infinite loading
+        // Set timeout to prevent infinite loading - 15 seconds for Supabase free tier
         timeoutId = setTimeout(() => {
           console.warn('🟡 AdminDashboard: Auth check timeout - redirecting to login');
           setLoading(false);
           navigate('/admin/login');
-        }, 5000); // 5 second timeout
+        }, 15000); // 15 second timeout
 
         const user = await simpleAuthService.getCurrentUser();
 
