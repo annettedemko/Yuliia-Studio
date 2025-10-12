@@ -57,7 +57,18 @@ class SimpleAuthService {
 
   async getCurrentUser(): Promise<SimpleAuthUser | null> {
     try {
-      // Проверяем реальную сессию Supabase
+      // Сначала пробуем взять из localStorage (быстро)
+      const cachedUser = localStorage.getItem('simpleAuth')
+      if (cachedUser) {
+        try {
+          this.currentUser = JSON.parse(cachedUser)
+          console.log('🟡 SimpleAuth: Используем cached user:', this.currentUser)
+        } catch (e) {
+          console.warn('🟡 SimpleAuth: Ошибка парсинга cached user')
+        }
+      }
+
+      // Затем проверяем реальную сессию Supabase (для валидации)
       const { data: { session }, error } = await supabase.auth.getSession()
 
       if (error || !session || !session.user) {
@@ -82,6 +93,11 @@ class SimpleAuthService {
       return this.currentUser
     } catch (error) {
       console.error('🔴 SimpleAuth: Ошибка при получении пользователя:', error)
+      // Если была ошибка но есть cached user - возвращаем его
+      if (this.currentUser) {
+        console.log('🟡 SimpleAuth: Используем cached user после ошибки')
+        return this.currentUser
+      }
       this.currentUser = null
       localStorage.removeItem('simpleAuth')
       return null
