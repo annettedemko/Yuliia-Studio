@@ -1,5 +1,13 @@
 import { supabase } from '@/lib/supabase'
 
+const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
+
+// Helper to get auth token
+const getAuthToken = (): string => {
+  return localStorage.getItem('supabase.auth.token') || SUPABASE_ANON_KEY;
+};
+
 export interface FormSubmission {
   id: string
   name: string
@@ -75,20 +83,34 @@ export const formService = {
 
   async getAllSubmissions(): Promise<FormSubmission[]> {
     console.log('formService.getAllSubmissions: Starting to fetch submissions...');
+    const startTime = Date.now();
 
-    const { data, error } = await supabase
-      .from('form_submissions')
-      .select('*')
-      .order('created_at', { ascending: false })
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions?select=*&order=created_at.desc`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    console.log('formService.getAllSubmissions: Supabase response:', { data, error });
+      const elapsed = Date.now() - startTime;
+      console.log(`formService.getAllSubmissions: REST API ответил за ${elapsed}ms`);
 
-    if (error) {
-      console.error('Error fetching form submissions:', error)
-      return []
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching form submissions:', error);
+        return [];
+      }
+
+      const data = await response.json();
+      console.log('formService.getAllSubmissions: Received', data.length, 'submissions');
+      return data as FormSubmission[];
+    } catch (error) {
+      console.error('formService.getAllSubmissions: Exception:', error);
+      return [];
     }
-
-    return data as FormSubmission[]
   },
 
   async getSubmissionsByOwner(owner: FormSubmission['owner']): Promise<FormSubmission[]> {
