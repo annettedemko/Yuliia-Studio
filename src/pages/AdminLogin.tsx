@@ -19,11 +19,11 @@ const AdminLogin = () => {
 
     const checkAuth = async () => {
       try {
-        // Set timeout to prevent infinite loading
+        // Set timeout to prevent infinite loading - 15 seconds for Supabase free tier
         timeoutId = setTimeout(() => {
           console.warn('🟡 AdminLogin: Auth check timeout - showing login form');
           setLoading(false);
-        }, 5000); // 5 second timeout
+        }, 15000); // 15 second timeout
 
         const user = await simpleAuthService.getCurrentUser();
 
@@ -65,12 +65,12 @@ const AdminLogin = () => {
 
     console.log('🟡 AdminLogin: Попытка входа с', credentials.email);
 
-    // Add timeout wrapper
+    // Add timeout wrapper - 30 seconds for Supabase free tier wake-up
     const loginTimeout = setTimeout(() => {
-      console.warn('🟡 AdminLogin: Login timeout after 10 seconds');
-      setError('Timeout - проверьте подключение к интернету');
+      console.warn('🟡 AdminLogin: Login timeout after 30 seconds');
+      setError('Timeout - Supabase не отвечает. Попробуйте еще раз через минуту.');
       setLoading(false);
-    }, 10000);
+    }, 30000);
 
     try {
       const { user, error: signInError } = await simpleAuthService.login(credentials.email, credentials.password);
