@@ -51,40 +51,27 @@ export const getEvents = async (): Promise<Event[]> => {
 export const getUpcomingEvents = async (): Promise<Event[]> => {
   const today = new Date().toISOString().split('T')[0];
   console.log('getUpcomingEvents: Today date string:', today);
-  const startTime = Date.now();
 
-  try {
-    // Using anon key for public access (no auth token needed)
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/events?is_published=eq.true&date=gte.${today}&order=date.asc&select=*`, {
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json'
-      }
-    });
+  const { data, error } = await supabase
+    .from('events')
+    .select('*')
+    .eq('is_published', true)
+    .gte('date', today)
+    .order('date', { ascending: true });
 
-    const elapsed = Date.now() - startTime;
-    console.log(`getUpcomingEvents: REST API ответил за ${elapsed}ms`);
-
-    if (!response.ok) {
-      const error = await response.json();
-      console.error('Error fetching upcoming events:', error);
-      console.error('Error details:', JSON.stringify(error, null, 2));
-      return [];
-    }
-
-    const data = await response.json();
-    console.log('getUpcomingEvents: Found events:', data?.length || 0);
-    return data || [];
-  } catch (error) {
-    console.error('getUpcomingEvents: Exception:', error);
+  if (error) {
+    console.error('Error fetching upcoming events:', error);
+    console.error('Error details:', JSON.stringify(error, null, 2));
     return [];
   }
+
+  console.log('getUpcomingEvents: Found events:', data?.length || 0);
+  return data || [];
 };
 
 // Create new event
 export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' | 'updated_at' | 'user_id'>): Promise<Event | null> => {
-  console.log('createEvent: Creating event...');
+  console.log('createEvent: Creating event via REST API...');
   const startTime = Date.now();
 
   try {
@@ -99,7 +86,7 @@ export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' |
       },
       body: JSON.stringify({
         ...event,
-        is_published: true
+        is_published: event.is_published ?? true
       })
     });
 
@@ -108,11 +95,12 @@ export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' |
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('Error creating event:', error);
+      console.error('createEvent: Error creating event:', error);
       return null;
     }
 
     const data = await response.json();
+    console.log('createEvent: Successfully created event:', data[0]);
     return data[0] || null;
   } catch (error) {
     console.error('createEvent: Exception:', error);
@@ -122,7 +110,7 @@ export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' |
 
 // Update event
 export const updateEvent = async (id: string, updates: UpdateEvent): Promise<Event | null> => {
-  console.log('updateEvent: Updating event', id);
+  console.log('updateEvent: Updating event', id, 'via REST API...');
   const startTime = Date.now();
 
   try {
@@ -146,11 +134,12 @@ export const updateEvent = async (id: string, updates: UpdateEvent): Promise<Eve
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('Error updating event:', error);
+      console.error('updateEvent: Error updating event:', error);
       return null;
     }
 
     const data = await response.json();
+    console.log('updateEvent: Successfully updated event:', data[0]);
     return data[0] || null;
   } catch (error) {
     console.error('updateEvent: Exception:', error);
@@ -160,7 +149,7 @@ export const updateEvent = async (id: string, updates: UpdateEvent): Promise<Eve
 
 // Delete event
 export const deleteEvent = async (id: string): Promise<boolean> => {
-  console.log('deleteEvent: Deleting event', id);
+  console.log('deleteEvent: Deleting event', id, 'via REST API...');
   const startTime = Date.now();
 
   try {
@@ -179,7 +168,7 @@ export const deleteEvent = async (id: string): Promise<boolean> => {
 
     if (!response.ok) {
       const error = await response.json();
-      console.error('Error deleting event:', error);
+      console.error('deleteEvent: Error deleting event:', error);
       return false;
     }
 
