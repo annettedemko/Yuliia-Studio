@@ -1,5 +1,3 @@
-import { supabase } from '@/lib/supabase'
-
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
@@ -57,28 +55,38 @@ export const formService = {
       owner: owner
     });
 
-    const { data, error } = await supabase
-      .from('form_submissions')
-      .insert({
-        name: submission.name,
-        phone: submission.phone,
-        email: submission.email || null,
-        message: submission.message || null,
-        page: submission.page,
-        owner: owner
-      })
-      .select()
-      .single()
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          name: submission.name,
+          phone: submission.phone,
+          email: submission.email || null,
+          message: submission.message || null,
+          page: submission.page,
+          owner: owner
+        })
+      });
 
-    console.log('🟡 FormService: Ответ от Supabase:', { data, error });
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('🔴 FormService: Ошибка отправки формы:', error)
+        return null
+      }
 
-    if (error) {
-      console.error('🔴 FormService: Ошибка отправки формы:', error)
+      const data = await response.json();
+      console.log('🟢 FormService: Форма отправлена успешно:', data);
+      return data[0] as FormSubmission
+    } catch (error) {
+      console.error('🔴 FormService: Exception:', error)
       return null
     }
-
-    console.log('🟢 FormService: Форма отправлена успешно:', data);
-    return data as FormSubmission
   },
 
   async getAllSubmissions(): Promise<FormSubmission[]> {
@@ -146,37 +154,60 @@ export const formService = {
   },
 
   async deleteSubmission(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('form_submissions')
-      .delete()
-      .eq('id', id)
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    if (error) {
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error deleting form submission:', error)
+        return false
+      }
+
+      return true
+    } catch (error) {
       console.error('Error deleting form submission:', error)
       return false
     }
-
-    return true
   },
 
   async getSubmissionsCount(): Promise<Record<FormSubmission['owner'], number>> {
-    const { data, error } = await supabase
-      .from('form_submissions')
-      .select('owner')
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions?select=owner`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    if (error) {
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching submissions count:', error)
+        return { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
+      }
+
+      const data = await response.json();
+      const counts = { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
+      data.forEach((item: { owner: FormSubmission['owner'] }) => {
+        const owner = item.owner
+        if (owner in counts) {
+          counts[owner]++
+        }
+      })
+
+      return counts
+    } catch (error) {
       console.error('Error fetching submissions count:', error)
       return { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
     }
-
-    const counts = { Yulia: 0, Natalia: 0, Anna: 0, Lera: 0, Liudmila: 0 }
-    data.forEach(item => {
-      const owner = item.owner as FormSubmission['owner']
-      if (owner in counts) {
-        counts[owner]++
-      }
-    })
-
-    return counts
   }
 }

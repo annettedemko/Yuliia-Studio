@@ -404,129 +404,205 @@ export const subscriptionsService = {
 // Events service
 export const eventsService = {
   async getAll(): Promise<Event[]> {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('is_published', true)
-      .order('date', { ascending: true })
+    console.log('🔍 Events: Fetching all published events from Supabase...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error fetching events:', error)
-      return []
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/events?is_published=eq.true&order=date.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Events: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching events:', error);
+        return [];
+      }
+
+      const data = await response.json();
+      console.log('🔍 Events: Found events:', data?.length || 0);
+
+      return data.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        title_ru: item.title_ru || undefined,
+        date: item.date || '',
+        time: item.time || undefined,
+        location: item.location || undefined,
+        address: item.address || undefined,
+        description: item.description || undefined,
+        description_ru: item.description_ru || undefined
+      }));
+    } catch (error) {
+      console.error('Events: Exception:', error);
+      return [];
     }
-
-    return data.map(item => ({
-      id: item.id,
-      title: item.title,
-      title_ru: item.title_ru || undefined,
-      date: item.date || '',
-      time: item.time || undefined,
-      location: item.location || undefined,
-      address: item.address || undefined,
-      description: item.description || undefined,
-      description_ru: item.description_ru || undefined
-    }))
   },
 
   async getUpcoming(): Promise<Event[]> {
-    const today = new Date().toISOString().split('T')[0]
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .eq('is_published', true)
-      .gte('date', today)
-      .order('date', { ascending: true })
+    const today = new Date().toISOString().split('T')[0];
+    console.log('🔍 Events: Fetching upcoming events from Supabase... Today:', today);
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error fetching upcoming events:', error)
-      return []
+    try {
+      // Using anon key for public access (no auth token needed)
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/events?is_published=eq.true&date=gte.${today}&order=date.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Events: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching upcoming events:', error);
+        return [];
+      }
+
+      const data = await response.json();
+      console.log('🔍 Events: Found upcoming events:', data?.length || 0, data);
+
+      return data.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        title_ru: item.title_ru || undefined,
+        date: item.date || '',
+        time: item.time || undefined,
+        location: item.location || undefined,
+        address: item.address || undefined,
+        description: item.description || undefined,
+        description_ru: item.description_ru || undefined
+      }));
+    } catch (error) {
+      console.error('Events: Exception:', error);
+      return [];
     }
-
-    return data.map(item => ({
-      id: item.id,
-      title: item.title,
-      title_ru: item.title_ru || undefined,
-      date: item.date || '',
-      time: item.time || undefined,
-      location: item.location || undefined,
-      address: item.address || undefined,
-      description: item.description || undefined,
-      description_ru: item.description_ru || undefined
-    }))
   },
 
   async create(event: Omit<Event, 'id'>): Promise<Event | null> {
-    const { data, error } = await supabase
-      .from('events')
-      .insert({
-        title: event.title,
-        date: event.date || null,
-        time: event.time || null,
-        location: event.location || null,
-        address: event.address || null,
-        description: event.description || null
-      })
-      .select()
-      .single()
+    console.log('🔍 Events: Creating event...');
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/events`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          title: event.title,
+          date: event.date || null,
+          time: event.time || null,
+          location: event.location || null,
+          address: event.address || null,
+          description: event.description || null,
+          is_published: true
+        })
+      });
 
-    if (error) {
-      console.error('Error creating event:', error)
-      return null
-    }
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error creating event:', error);
+        return null;
+      }
 
-    return {
-      id: data.id,
-      title: data.title,
-      date: data.date || '',
-      time: data.time || undefined,
-      location: data.location || undefined,
-      address: data.address || undefined,
-      description: data.description || undefined
+      const data = await response.json();
+      return {
+        id: data[0].id,
+        title: data[0].title,
+        date: data[0].date || '',
+        time: data[0].time || undefined,
+        location: data[0].location || undefined,
+        address: data[0].address || undefined,
+        description: data[0].description || undefined
+      };
+    } catch (error) {
+      console.error('Error creating event:', error);
+      return null;
     }
   },
 
   async update(id: string, updates: Partial<Event>): Promise<Event | null> {
-    const { data, error } = await supabase
-      .from('events')
-      .update({
-        title: updates.title,
-        date: updates.date || null,
-        time: updates.time || null,
-        location: updates.location || null,
-        address: updates.address || null,
-        description: updates.description || null
-      })
-      .eq('id', id)
-      .select()
-      .single()
+    console.log('🔍 Events: Updating event:', id);
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          title: updates.title,
+          date: updates.date || null,
+          time: updates.time || null,
+          location: updates.location || null,
+          address: updates.address || null,
+          description: updates.description || null,
+          updated_at: new Date().toISOString()
+        })
+      });
 
-    if (error) {
-      console.error('Error updating event:', error)
-      return null
-    }
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error updating event:', error);
+        return null;
+      }
 
-    return {
-      id: data.id,
-      title: data.title,
-      date: data.date || '',
-      time: data.time || undefined,
-      location: data.location || undefined,
-      address: data.address || undefined,
-      description: data.description || undefined
+      const data = await response.json();
+      return {
+        id: data[0].id,
+        title: data[0].title,
+        date: data[0].date || '',
+        time: data[0].time || undefined,
+        location: data[0].location || undefined,
+        address: data[0].address || undefined,
+        description: data[0].description || undefined
+      };
+    } catch (error) {
+      console.error('Error updating event:', error);
+      return null;
     }
   },
 
   async delete(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('events')
-      .delete()
-      .eq('id', id)
+    console.log('🔍 Events: Deleting event:', id);
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    if (error) {
-      console.error('Error deleting event:', error)
-      return false
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error deleting event:', error);
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error deleting event:', error);
+      return false;
     }
-
-    return true
   }
 }
