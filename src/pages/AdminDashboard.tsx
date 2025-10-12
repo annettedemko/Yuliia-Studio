@@ -40,9 +40,6 @@ import {
   updateEvent as updateSupabaseEvent,
   deleteEvent as deleteSupabaseEvent
 } from '@/utils/supabaseEventsAPI';
-import { debugEventsTable, checkEventDataTypes } from '@/utils/debugEvents';
-import { migrateEventsFromCSV } from '@/utils/migrateEventsFromCSV';
-import { testSupabaseConnection } from '@/utils/testSupabaseConnection';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
 import { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
@@ -231,26 +228,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleMigrateCSVEvents = async () => {
-    if (confirm('Möchten Sie die Events aus form_submisssions.csv in Supabase migrieren? Dies wird alle vorhandenen Events ersetzen.')) {
-      console.log('Starting migration process...');
-      try {
-        const result = await migrateEventsFromCSV();
-        console.log('Migration result:', result);
-        if (result.success) {
-          alert(result.message);
-          console.log('Reloading data...');
-          await loadData();
-          console.log('Data reloaded');
-        } else {
-          alert(`Fehler: ${result.message}`);
-        }
-      } catch (error) {
-        console.error('Migration process error:', error);
-        alert(`Unerwarteter Fehler: ${error}`);
-      }
-    }
-  };
 
   const categoryNames = {
     alexandrit: 'Alexandrit Laser',
