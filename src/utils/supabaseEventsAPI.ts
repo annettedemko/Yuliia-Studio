@@ -84,56 +84,111 @@ export const getUpcomingEvents = async (): Promise<Event[]> => {
 
 // Create new event
 export const createEvent = async (event: Omit<CreateEvent, 'id' | 'created_at' | 'updated_at' | 'user_id'>): Promise<Event | null> => {
-  const { data, error } = await supabase
-    .from('events')
-    .insert({
-      ...event,
-      is_published: true
-    })
-    .select()
-    .maybeSingle();
+  console.log('createEvent: Creating event...');
+  const startTime = Date.now();
 
-  if (error) {
-    console.error('Error creating event:', error);
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/events`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({
+        ...event,
+        is_published: true
+      })
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`createEvent: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error creating event:', error);
+      return null;
+    }
+
+    const data = await response.json();
+    return data[0] || null;
+  } catch (error) {
+    console.error('createEvent: Exception:', error);
     return null;
   }
-
-  return data;
 };
 
 // Update event
 export const updateEvent = async (id: string, updates: UpdateEvent): Promise<Event | null> => {
-  const { data, error } = await supabase
-    .from('events')
-    .update({
-      ...updates,
-      updated_at: new Date().toISOString()
-    })
-    .eq('id', id)
-    .select()
-    .single();
+  console.log('updateEvent: Updating event', id);
+  const startTime = Date.now();
 
-  if (error) {
-    console.error('Error updating event:', error);
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify({
+        ...updates,
+        updated_at: new Date().toISOString()
+      })
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`updateEvent: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error updating event:', error);
+      return null;
+    }
+
+    const data = await response.json();
+    return data[0] || null;
+  } catch (error) {
+    console.error('updateEvent: Exception:', error);
     return null;
   }
-
-  return data;
 };
 
 // Delete event
 export const deleteEvent = async (id: string): Promise<boolean> => {
-  const { error } = await supabase
-    .from('events')
-    .delete()
-    .eq('id', id);
+  console.log('deleteEvent: Deleting event', id);
+  const startTime = Date.now();
 
-  if (error) {
-    console.error('Error deleting event:', error);
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`deleteEvent: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error deleting event:', error);
+      return false;
+    }
+
+    console.log('deleteEvent: Successfully deleted event', id);
+    return true;
+  } catch (error) {
+    console.error('deleteEvent: Exception:', error);
     return false;
   }
-
-  return true;
 };
 
 // Migrate CSV data to Supabase
