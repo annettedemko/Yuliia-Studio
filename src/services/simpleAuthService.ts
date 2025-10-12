@@ -12,6 +12,7 @@ class SimpleAuthService {
   async login(email: string, password: string): Promise<{ user: SimpleAuthUser | null, error: string | null }> {
     try {
       console.log('🟡 SimpleAuth: Пытаемся войти с email:', email);
+      const startTime = Date.now();
 
       // Используем стандартную Supabase аутентификацию
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -19,11 +20,13 @@ class SimpleAuthService {
         password,
       })
 
+      const elapsed = Date.now() - startTime;
+      console.log(`🟡 SimpleAuth: signInWithPassword завершен за ${elapsed}ms`);
       console.log('🟡 SimpleAuth: Ответ:', { data, error });
 
       if (error || !data.user) {
-        console.log('🔴 SimpleAuth: Неверные данные');
-        return { user: null, error: 'Неверный email или пароль' }
+        console.log('🔴 SimpleAuth: Неверные данные:', error?.message);
+        return { user: null, error: error?.message || 'Неверный email или пароль' }
       }
 
       // Получаем роль из метаданных пользователя
@@ -43,7 +46,7 @@ class SimpleAuthService {
 
     } catch (error) {
       console.error('🔴 SimpleAuth: Ошибка:', error);
-      return { user: null, error: 'Ошибка входа' }
+      return { user: null, error: error instanceof Error ? error.message : 'Ошибка входа' }
     }
   }
 
@@ -69,9 +72,28 @@ class SimpleAuthService {
       }
 
       // Затем проверяем реальную сессию Supabase (для валидации)
+      console.log('🟡 SimpleAuth: Проверяем сессию Supabase...');
+      const startTime = Date.now();
+
       const { data: { session }, error } = await supabase.auth.getSession()
 
-      if (error || !session || !session.user) {
+      const elapsed = Date.now() - startTime;
+      console.log(`🟡 SimpleAuth: getSession завершен за ${elapsed}ms`);
+
+      if (error) {
+        console.error('🔴 SimpleAuth: Ошибка getSession:', error.message);
+        // Если была ошибка но есть cached user - возвращаем его
+        if (this.currentUser) {
+          console.log('🟡 SimpleAuth: Используем cached user после ошибки getSession')
+          return this.currentUser
+        }
+        this.currentUser = null
+        localStorage.removeItem('simpleAuth')
+        return null
+      }
+
+      if (!session || !session.user) {
+        console.log('🟡 SimpleAuth: Нет активной сессии');
         // Очищаем localStorage если сессия недействительна
         this.currentUser = null
         localStorage.removeItem('simpleAuth')
@@ -89,13 +111,14 @@ class SimpleAuthService {
 
       // Обновляем localStorage
       localStorage.setItem('simpleAuth', JSON.stringify(this.currentUser))
+      console.log('🟢 SimpleAuth: Сессия валидна:', this.currentUser);
 
       return this.currentUser
     } catch (error) {
       console.error('🔴 SimpleAuth: Ошибка при получении пользователя:', error)
       // Если была ошибка но есть cached user - возвращаем его
       if (this.currentUser) {
-        console.log('🟡 SimpleAuth: Используем cached user после ошибки')
+        console.log('🟡 SimpleAuth: Используем cached user после исключения')
         return this.currentUser
       }
       this.currentUser = null
