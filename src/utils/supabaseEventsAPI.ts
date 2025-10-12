@@ -5,23 +5,46 @@ export type Event = Database['public']['Tables']['events']['Row'];
 export type CreateEvent = Database['public']['Tables']['events']['Insert'];
 export type UpdateEvent = Database['public']['Tables']['events']['Update'];
 
+const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
+
+// Helper to get auth token
+const getAuthToken = (): string => {
+  return localStorage.getItem('supabase.auth.token') || SUPABASE_ANON_KEY;
+};
+
 // Get all events (for admin dashboard - includes drafts)
 export const getEvents = async (): Promise<Event[]> => {
   console.log('getEvents: Fetching ALL events from Supabase (including drafts)...');
-  const { data, error } = await supabase
-    .from('events')
-    .select('*')
-    .order('date', { ascending: true });
+  const startTime = Date.now();
 
-  if (error) {
-    console.error('getEvents: Error fetching events:', error);
-    console.error('getEvents: Error details:', JSON.stringify(error, null, 2));
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/events?select=*&order=date.asc`, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`getEvents: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('getEvents: Error fetching events:', error);
+      return [];
+    }
+
+    const data = await response.json();
+    console.log('getEvents: Raw data from Supabase:', data);
+    console.log('getEvents: Returning events:', data || []);
+    return data || [];
+  } catch (error) {
+    console.error('getEvents: Exception:', error);
     return [];
   }
-
-  console.log('getEvents: Raw data from Supabase:', data);
-  console.log('getEvents: Returning events:', data || []);
-  return data || [];
 };
 
 // Get upcoming events (not past, published only)
