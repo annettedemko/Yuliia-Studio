@@ -1,6 +1,14 @@
 import { supabase } from '@/lib/supabase'
 import type { ServicePrice, SubscriptionPackage, Event } from '@/types/admin'
 
+const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
+
+// Helper to get auth token
+const getAuthToken = (): string => {
+  return localStorage.getItem('supabase.auth.token') || SUPABASE_ANON_KEY;
+};
+
 // Price category interface
 export interface PriceCategory {
   id: string
@@ -18,18 +26,34 @@ export interface PriceCategory {
 // Categories service
 export const categoriesService = {
   async getAll(): Promise<PriceCategory[]> {
-    const { data, error } = await supabase
-      .from('price_categories')
-      .select('*')
-      .eq('is_published', true)
-      .order('order_index', { ascending: true })
+    console.log('🔍 Categories: Fetching from Supabase...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error fetching categories:', error)
-      return []
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?is_published=eq.true&order=order_index.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Categories: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching categories:', error);
+        return [];
+      }
+
+      const data = await response.json();
+      return data as PriceCategory[];
+    } catch (error) {
+      console.error('Categories: Exception:', error);
+      return [];
     }
-
-    return data as PriceCategory[]
   },
 
   async create(category: Omit<PriceCategory, 'id'>): Promise<PriceCategory | null> {
@@ -68,39 +92,50 @@ export const categoriesService = {
 export const pricesService = {
   async getAll(): Promise<ServicePrice[]> {
     console.log('🔍 Prices: Начинаем запрос к таблице prices...');
+    const startTime = Date.now();
 
-    // Простой запрос без joins для совместимости с продакшн БД
-    const { data, error } = await supabase
-      .from('prices')
-      .select('*')
-      .eq('is_published', true)
-      .order('order_index', { ascending: true })
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?is_published=eq.true&order=order_index.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    console.log('🔍 Prices: Ответ от Supabase:', { data: data?.length, error });
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Prices: REST API ответил за ${elapsed}ms`);
 
-    if (error) {
-      console.error('🔴 Error fetching prices:', error)
-      console.error('🔴 Error details:', error.message, error.details, error.hint, error.code);
-      return []
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('🔴 Error fetching prices:', error);
+        return [];
+      }
+
+      const data = await response.json();
+
+      if (!data || data.length === 0) {
+        console.warn('⚠️ Prices: Таблица пустая или нет опубликованных цен');
+        return [];
+      }
+
+      console.log('🟢 Prices: Найдено записей:', data.length);
+      console.log('🟢 Prices: Первая запись:', data[0]);
+
+      return data.map((item: any) => ({
+        id: item.id,
+        service: item.service,
+        service_ru: item.service_ru || undefined,
+        price: item.price,
+        category: item.category as ServicePrice['category'],
+        note: item.note || undefined,
+        note_ru: item.note_ru || undefined
+      }));
+    } catch (error) {
+      console.error('🔴 Prices: Exception:', error);
+      return [];
     }
-
-    if (!data || data.length === 0) {
-      console.warn('⚠️ Prices: Таблица пустая или нет опубликованных цен');
-      return []
-    }
-
-    console.log('🟢 Prices: Найдено записей:', data.length);
-    console.log('🟢 Prices: Первая запись:', data[0]);
-
-    return data.map(item => ({
-      id: item.id,
-      service: item.service,
-      service_ru: item.service_ru || undefined,
-      price: item.price,
-      category: item.category as ServicePrice['category'],
-      note: item.note || undefined,
-      note_ru: item.note_ru || undefined
-    }))
   },
 
   async getAllWithCategories() {
@@ -242,30 +277,47 @@ export const pricesService = {
 // Subscriptions service
 export const subscriptionsService = {
   async getAll(): Promise<SubscriptionPackage[]> {
-    const { data, error } = await supabase
-      .from('subscriptions')
-      .select('*')
-      .eq('is_published', true)
-      .order('order_index', { ascending: true })
+    console.log('🔍 Subscriptions: Fetching from Supabase...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error fetching subscriptions:', error)
-      return []
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?is_published=eq.true&order=order_index.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Subscriptions: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching subscriptions:', error);
+        return [];
+      }
+
+      const data = await response.json();
+
+      return data.map((item: any) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        period: item.period || undefined,
+        period_ru: item.period_ru || undefined,
+        treatments: item.treatments || undefined,
+        treatments_ru: item.treatments_ru || undefined,
+        frequency: item.frequency || undefined,
+        frequency_ru: item.frequency_ru || undefined,
+        features: item.features || [],
+        popular: item.popular
+      }));
+    } catch (error) {
+      console.error('Subscriptions: Exception:', error);
+      return [];
     }
-
-    return data.map(item => ({
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      period: item.period || undefined,
-      period_ru: item.period_ru || undefined,
-      treatments: item.treatments || undefined,
-      treatments_ru: item.treatments_ru || undefined,
-      frequency: item.frequency || undefined,
-      frequency_ru: item.frequency_ru || undefined,
-      features: item.features || [],
-      popular: item.popular
-    }))
   },
 
   async create(subscription: Omit<SubscriptionPackage, 'id'>): Promise<SubscriptionPackage | null> {
