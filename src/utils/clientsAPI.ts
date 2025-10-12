@@ -2,6 +2,14 @@ import { supabase } from '@/lib/supabase';
 import type { Client } from '@/types/admin';
 import type { Database } from '@/lib/supabase';
 
+const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
+
+// Helper to get auth token
+const getAuthToken = (): string => {
+  return localStorage.getItem('supabase.auth.token') || SUPABASE_ANON_KEY;
+};
+
 type AnnaClient = Database['public']['Tables']['anna_clients']['Row'];
 type NataliaClient = Database['public']['Tables']['natalia_clients']['Row'];
 type YuliaClient = Database['public']['Tables']['yulia_clients']['Row'];
@@ -18,26 +26,42 @@ type YuliaClientUpdate = Database['public']['Tables']['yulia_clients']['Update']
 type LeraClientUpdate = Database['public']['Tables']['lera_clients']['Update'];
 type LiudmilaClientUpdate = Database['public']['Tables']['liudmila_clients']['Update'];
 
-// Anna Clients API
-export const getAnnaClients = async (): Promise<AnnaClient[]> => {
-  try {
-    console.log('Fetching Anna clients from Supabase...');
-    const { data, error } = await supabase
-      .from('anna_clients')
-      .select('*')
-      .order('created_at', { ascending: false });
+// Helper function for GET requests
+const fetchClientsREST = async (tableName: string, ownerName: string): Promise<any[]> => {
+  console.log(`Fetching ${ownerName} clients...`);
+  const startTime = Date.now();
 
-    if (error) {
-      console.error('Supabase error fetching Anna clients:', error);
-      throw error;
+  try {
+    const token = getAuthToken();
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${tableName}?select=*&order=created_at.desc`, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const elapsed = Date.now() - startTime;
+    console.log(`${ownerName} clients: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error(`Error fetching ${ownerName} clients:`, error);
+      return [];
     }
 
-    console.log('Successfully fetched Anna clients:', data);
+    const data = await response.json();
+    console.log(`Successfully fetched ${ownerName} clients:`, data.length);
     return data || [];
   } catch (error) {
-    console.error('Error in getAnnaClients:', error);
+    console.error(`Error in fetch ${ownerName} clients:`, error);
     return [];
   }
+};
+
+// Anna Clients API
+export const getAnnaClients = async (): Promise<AnnaClient[]> => {
+  return fetchClientsREST('anna_clients', 'Anna') as Promise<AnnaClient[]>;
 };
 
 export const createAnnaClient = async (client: Omit<AnnaClientInsert, 'id' | 'created_at'>): Promise<AnnaClient | null> => {
@@ -104,22 +128,7 @@ export const deleteAnnaClient = async (id: string): Promise<boolean> => {
 
 // Natalia Clients API
 export const getNataliaClients = async (): Promise<NataliaClient[]> => {
-  try {
-    const { data, error } = await supabase
-      .from('natalia_clients')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Error fetching Natalia clients:', error);
-      throw error;
-    }
-
-    return data || [];
-  } catch (error) {
-    console.error('Error in getNataliaClients:', error);
-    return [];
-  }
+  return fetchClientsREST('natalia_clients', 'Natalia') as Promise<NataliaClient[]>;
 };
 
 export const createNataliaClient = async (client: Omit<NataliaClientInsert, 'id' | 'created_at'>): Promise<NataliaClient | null> => {
@@ -260,24 +269,7 @@ export const deleteClientByRole = async (role: 'anna' | 'natalia' | 'yulia' | 'l
 
 // Yulia Clients API
 export const getYuliaClients = async (): Promise<YuliaClient[]> => {
-  try {
-    console.log('Fetching Yulia clients from Supabase...');
-    const { data, error } = await supabase
-      .from('yulia_clients')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Supabase error fetching Yulia clients:', error);
-      throw error;
-    }
-
-    console.log('Successfully fetched Yulia clients:', data);
-    return data || [];
-  } catch (error) {
-    console.error('Error in getYuliaClients:', error);
-    return [];
-  }
+  return fetchClientsREST('yulia_clients', 'Yulia') as Promise<YuliaClient[]>;
 };
 
 export const createYuliaClient = async (client: Omit<YuliaClientInsert, 'id' | 'created_at'>): Promise<YuliaClient | null> => {
@@ -344,24 +336,7 @@ export const deleteYuliaClient = async (id: string): Promise<boolean> => {
 
 // Lera Clients API
 export const getLeraClients = async (): Promise<LeraClient[]> => {
-  try {
-    console.log('Fetching Lera clients from Supabase...');
-    const { data, error } = await supabase
-      .from('lera_clients')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Supabase error fetching Lera clients:', error);
-      throw error;
-    }
-
-    console.log('Successfully fetched Lera clients:', data);
-    return data || [];
-  } catch (error) {
-    console.error('Error in getLeraClients:', error);
-    return [];
-  }
+  return fetchClientsREST('lera_clients', 'Lera') as Promise<LeraClient[]>;
 };
 
 export const createLeraClient = async (client: Omit<LeraClientInsert, 'id' | 'created_at'>): Promise<LeraClient | null> => {
@@ -428,24 +403,7 @@ export const deleteLeraClient = async (id: string): Promise<boolean> => {
 
 // Liudmila Clients API
 export const getLiudmilaClients = async (): Promise<LiudmilaClient[]> => {
-  try {
-    console.log('Fetching Liudmila clients from Supabase...');
-    const { data, error } = await supabase
-      .from('liudmila_clients')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Supabase error fetching Liudmila clients:', error);
-      throw error;
-    }
-
-    console.log('Successfully fetched Liudmila clients:', data);
-    return data || [];
-  } catch (error) {
-    console.error('Error in getLiudmilaClients:', error);
-    return [];
-  }
+  return fetchClientsREST('liudmila_clients', 'Liudmila') as Promise<LiudmilaClient[]>;
 };
 
 export const createLiudmilaClient = async (client: Omit<LiudmilaClientInsert, 'id' | 'created_at'>): Promise<LiudmilaClient | null> => {
