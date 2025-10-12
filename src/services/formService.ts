@@ -1,9 +1,10 @@
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
-// Helper to get auth token
+// Helper to get auth token - always use ANON_KEY for REST API
 const getAuthToken = (): string => {
-  return localStorage.getItem('supabase.auth.token') || SUPABASE_ANON_KEY;
+  // ANON KEY is correct - RLS policies handle authorization
+  return SUPABASE_ANON_KEY;
 };
 
 export interface FormSubmission {
