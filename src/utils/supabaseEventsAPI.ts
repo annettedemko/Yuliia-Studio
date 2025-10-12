@@ -51,22 +51,35 @@ export const getEvents = async (): Promise<Event[]> => {
 export const getUpcomingEvents = async (): Promise<Event[]> => {
   const today = new Date().toISOString().split('T')[0];
   console.log('getUpcomingEvents: Today date string:', today);
+  const startTime = Date.now();
 
-  const { data, error } = await supabase
-    .from('events')
-    .select('*')
-    .eq('is_published', true)
-    .gte('date', today)
-    .order('date', { ascending: true });
+  try {
+    // Using anon key for public access (no auth token needed)
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/events?is_published=eq.true&date=gte.${today}&order=date.asc&select=*`, {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
 
-  if (error) {
-    console.error('Error fetching upcoming events:', error);
-    console.error('Error details:', JSON.stringify(error, null, 2));
+    const elapsed = Date.now() - startTime;
+    console.log(`getUpcomingEvents: REST API ответил за ${elapsed}ms`);
+
+    if (!response.ok) {
+      const error = await response.json();
+      console.error('Error fetching upcoming events:', error);
+      console.error('Error details:', JSON.stringify(error, null, 2));
+      return [];
+    }
+
+    const data = await response.json();
+    console.log('getUpcomingEvents: Found events:', data?.length || 0);
+    return data || [];
+  } catch (error) {
+    console.error('getUpcomingEvents: Exception:', error);
     return [];
   }
-
-  console.log('getUpcomingEvents: Found events:', data?.length || 0);
-  return data || [];
 };
 
 // Create new event
