@@ -114,18 +114,35 @@ export const formService = {
   },
 
   async getSubmissionsByOwner(owner: FormSubmission['owner']): Promise<FormSubmission[]> {
-    const { data, error } = await supabase
-      .from('form_submissions')
-      .select('*')
-      .eq('owner', owner)
-      .order('created_at', { ascending: false })
+    console.log(`formService.getSubmissionsByOwner: Fetching for ${owner}...`);
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error fetching form submissions by owner:', error)
-      return []
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/form_submissions?owner=eq.${owner}&order=created_at.desc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`formService.getSubmissionsByOwner (${owner}): REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error(`Error fetching form submissions for ${owner}:`, error);
+        return [];
+      }
+
+      const data = await response.json();
+      console.log(`formService.getSubmissionsByOwner (${owner}): Received`, data.length, 'submissions');
+      return data as FormSubmission[];
+    } catch (error) {
+      console.error(`formService.getSubmissionsByOwner (${owner}): Exception:`, error);
+      return [];
     }
-
-    return data as FormSubmission[]
   },
 
   async deleteSubmission(id: string): Promise<boolean> {
