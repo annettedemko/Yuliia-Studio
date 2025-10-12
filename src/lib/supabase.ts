@@ -8,8 +8,10 @@ console.log('🔧 Supabase Config:', {
   url: supabaseUrl,
   hasAnonKey: !!supabaseAnonKey,
   anonKeyLength: supabaseAnonKey?.length || 0,
+  anonKeyPreview: supabaseAnonKey?.substring(0, 50) + '...',
   envUrl: import.meta.env.VITE_SUPABASE_URL,
   envKeyExists: !!import.meta.env.VITE_SUPABASE_ANON_KEY,
+  envKeyLength: import.meta.env.VITE_SUPABASE_ANON_KEY?.length || 0,
   mode: import.meta.env.MODE,
   prod: import.meta.env.PROD
 })
@@ -21,7 +23,24 @@ if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
   console.warn('⚠️ VITE_SUPABASE_ANON_KEY not found, using production default')
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Validate that we have both URL and key
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.error('🔴 CRITICAL: Missing Supabase credentials!', {
+    hasUrl: !!supabaseUrl,
+    hasKey: !!supabaseAnonKey
+  })
+  throw new Error('Missing Supabase credentials')
+}
+
+console.log('✅ Creating Supabase client with URL:', supabaseUrl)
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false
+  }
+})
 
 export type Database = {
   public: {
