@@ -58,34 +58,73 @@ export const categoriesService = {
   },
 
   async create(category: Omit<PriceCategory, 'id'>): Promise<PriceCategory | null> {
-    const { data, error } = await supabase
-      .from('price_categories')
-      .insert(category)
-      .select()
-      .single()
+    console.log('Creating price category via REST API:', category);
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error creating category:', error)
-      return null
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(category)
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`createPriceCategory: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('createPriceCategory: Error creating category:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('createPriceCategory: Successfully created category:', data[0]);
+      return data[0] as PriceCategory;
+    } catch (error) {
+      console.error('createPriceCategory: Exception:', error);
+      return null;
     }
-
-    return data as PriceCategory
   },
 
   async update(id: string, updates: Partial<PriceCategory>): Promise<PriceCategory | null> {
-    const { data, error } = await supabase
-      .from('price_categories')
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single()
+    console.log('Updating price category', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating category:', error)
-      return null
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(updates)
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`updatePriceCategory: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updatePriceCategory: Error updating category:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('updatePriceCategory: Successfully updated category:', data[0]);
+      return data[0] as PriceCategory;
+    } catch (error) {
+      console.error('updatePriceCategory: Exception:', error);
+      return null;
     }
-
-    return data as PriceCategory
   }
 }
 
@@ -159,119 +198,215 @@ export const pricesService = {
   },
 
   async create(price: Omit<ServicePrice, 'id'>): Promise<ServicePrice | null> {
-    // Find category_id by category code
-    const { data: categoryData } = await supabase
-      .from('price_categories')
-      .select('id')
-      .eq('code', price.category)
-      .single()
+    console.log('Creating price via REST API:', price);
+    const startTime = Date.now();
 
-    if (!categoryData) {
-      console.error('Category not found:', price.category)
-      return null
-    }
+    try {
+      const token = getAuthToken();
 
-    const { data, error } = await supabase
-      .from('prices')
-      .insert({
-        service: price.service,
-        price: price.price,
-        category_id: categoryData.id,
-        note: price.note || null,
-        order_index: 0
-      })
-      .select()
-      .single()
+      // Find category_id by category code using REST API
+      const categoryResponse = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?code=eq.${price.category}&select=id`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-    if (error) {
-      console.error('Error creating price:', error)
-      return null
-    }
+      if (!categoryResponse.ok) {
+        console.error('Error fetching category:', await categoryResponse.json());
+        return null;
+      }
 
-    return {
-      id: data.id,
-      service: data.service,
-      price: data.price,
-      category: data.category as ServicePrice['category'],
-      note: data.note || undefined
+      const categoryData = await categoryResponse.json();
+      if (!categoryData || categoryData.length === 0) {
+        console.error('Category not found:', price.category);
+        return null;
+      }
+
+      // Create price
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/prices`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          service: price.service,
+          price: price.price,
+          category_id: categoryData[0].id,
+          note: price.note || null,
+          order_index: 0
+        })
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`createPrice: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('createPrice: Error creating price:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('createPrice: Successfully created price:', data[0]);
+
+      return {
+        id: data[0].id,
+        service: data[0].service,
+        price: data[0].price,
+        category: data[0].category as ServicePrice['category'],
+        note: data[0].note || undefined
+      };
+    } catch (error) {
+      console.error('createPrice: Exception:', error);
+      return null;
     }
   },
 
   async update(id: string, updates: Partial<ServicePrice>): Promise<ServicePrice | null> {
-    let category_id = undefined
+    console.log('Updating price', id, 'via REST API...');
+    const startTime = Date.now();
 
-    // If category is being updated, find the category_id
-    if (updates.category) {
-      const { data: categoryData } = await supabase
-        .from('price_categories')
-        .select('id')
-        .eq('code', updates.category)
-        .single()
+    try {
+      const token = getAuthToken();
+      let category_id = undefined;
 
-      if (!categoryData) {
-        console.error('Category not found:', updates.category)
-        return null
+      // If category is being updated, find the category_id
+      if (updates.category) {
+        const categoryResponse = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?code=eq.${updates.category}&select=id`, {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!categoryResponse.ok) {
+          console.error('Error fetching category:', await categoryResponse.json());
+          return null;
+        }
+
+        const categoryData = await categoryResponse.json();
+        if (!categoryData || categoryData.length === 0) {
+          console.error('Category not found:', updates.category);
+          return null;
+        }
+        category_id = categoryData[0].id;
       }
-      category_id = categoryData.id
-    }
 
-    const updateData: any = {
-      service: updates.service,
-      price: updates.price,
-      note: updates.note || null
-    }
+      const updateData: any = {
+        service: updates.service,
+        price: updates.price,
+        note: updates.note || null
+      };
 
-    if (category_id) {
-      updateData.category_id = category_id
-    }
+      if (category_id) {
+        updateData.category_id = category_id;
+      }
 
-    const { data, error } = await supabase
-      .from('prices')
-      .update(updateData)
-      .eq('id', id)
-      .select()
-      .single()
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(updateData)
+      });
 
-    if (error) {
-      console.error('Error updating price:', error)
-      return null
-    }
+      const elapsed = Date.now() - startTime;
+      console.log(`updatePrice: REST API ответил за ${elapsed}ms`);
 
-    return {
-      id: data.id,
-      service: data.service,
-      price: data.price,
-      category: data.category as ServicePrice['category'],
-      note: data.note || undefined
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updatePrice: Error updating price:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('updatePrice: Successfully updated price:', data[0]);
+
+      return {
+        id: data[0].id,
+        service: data[0].service,
+        price: data[0].price,
+        category: data[0].category as ServicePrice['category'],
+        note: data[0].note || undefined
+      };
+    } catch (error) {
+      console.error('updatePrice: Exception:', error);
+      return null;
     }
   },
 
   async delete(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('prices')
-      .delete()
-      .eq('id', id)
+    console.log('Deleting price', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting price:', error)
-      return false
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`deletePrice: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('deletePrice: Error deleting price:', error);
+        return false;
+      }
+
+      console.log('deletePrice: Successfully deleted price', id);
+      return true;
+    } catch (error) {
+      console.error('deletePrice: Exception:', error);
+      return false;
     }
-
-    return true
   },
 
   async updateOrder(id: string, order_index: number): Promise<boolean> {
-    const { error } = await supabase
-      .from('prices')
-      .update({ order_index })
-      .eq('id', id)
+    console.log('Updating price order', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating price order:', error)
-      return false
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ order_index })
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`updatePriceOrder: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updatePriceOrder: Error updating order:', error);
+        return false;
+      }
+
+      console.log('updatePriceOrder: Successfully updated order for price', id);
+      return true;
+    } catch (error) {
+      console.error('updatePriceOrder: Exception:', error);
+      return false;
     }
-
-    return true
   }
 }
 
@@ -322,83 +457,142 @@ export const subscriptionsService = {
   },
 
   async create(subscription: Omit<SubscriptionPackage, 'id'>): Promise<SubscriptionPackage | null> {
-    const { data, error } = await supabase
-      .from('subscriptions')
-      .insert({
-        name: subscription.name,
-        price: subscription.price,
-        period: subscription.period || null,
-        treatments: subscription.treatments || null,
-        frequency: subscription.frequency || null,
-        features: subscription.features || [],
-        popular: subscription.popular || false,
-        order_index: 0
-      })
-      .select()
-      .single()
+    console.log('Creating subscription via REST API:', subscription);
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error creating subscription:', error)
-      return null
-    }
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          name: subscription.name,
+          price: subscription.price,
+          period: subscription.period || null,
+          treatments: subscription.treatments || null,
+          frequency: subscription.frequency || null,
+          features: subscription.features || [],
+          popular: subscription.popular || false,
+          order_index: 0
+        })
+      });
 
-    return {
-      id: data.id,
-      name: data.name,
-      price: data.price,
-      period: data.period || undefined,
-      treatments: data.treatments || undefined,
-      frequency: data.frequency || undefined,
-      features: data.features || [],
-      popular: data.popular
+      const elapsed = Date.now() - startTime;
+      console.log(`createSubscription: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('createSubscription: Error creating subscription:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('createSubscription: Successfully created subscription:', data[0]);
+
+      return {
+        id: data[0].id,
+        name: data[0].name,
+        price: data[0].price,
+        period: data[0].period || undefined,
+        treatments: data[0].treatments || undefined,
+        frequency: data[0].frequency || undefined,
+        features: data[0].features || [],
+        popular: data[0].popular
+      };
+    } catch (error) {
+      console.error('createSubscription: Exception:', error);
+      return null;
     }
   },
 
   async update(id: string, updates: Partial<SubscriptionPackage>): Promise<SubscriptionPackage | null> {
-    const { data, error } = await supabase
-      .from('subscriptions')
-      .update({
-        name: updates.name,
-        price: updates.price,
-        period: updates.period || null,
-        treatments: updates.treatments || null,
-        frequency: updates.frequency || null,
-        features: updates.features || [],
-        popular: updates.popular || false
-      })
-      .eq('id', id)
-      .select()
-      .single()
+    console.log('Updating subscription', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating subscription:', error)
-      return null
-    }
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          name: updates.name,
+          price: updates.price,
+          period: updates.period || null,
+          treatments: updates.treatments || null,
+          frequency: updates.frequency || null,
+          features: updates.features || [],
+          popular: updates.popular || false
+        })
+      });
 
-    return {
-      id: data.id,
-      name: data.name,
-      price: data.price,
-      period: data.period || undefined,
-      treatments: data.treatments || undefined,
-      frequency: data.frequency || undefined,
-      features: data.features || [],
-      popular: data.popular
+      const elapsed = Date.now() - startTime;
+      console.log(`updateSubscription: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updateSubscription: Error updating subscription:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('updateSubscription: Successfully updated subscription:', data[0]);
+
+      return {
+        id: data[0].id,
+        name: data[0].name,
+        price: data[0].price,
+        period: data[0].period || undefined,
+        treatments: data[0].treatments || undefined,
+        frequency: data[0].frequency || undefined,
+        features: data[0].features || [],
+        popular: data[0].popular
+      };
+    } catch (error) {
+      console.error('updateSubscription: Exception:', error);
+      return null;
     }
   },
 
   async delete(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('subscriptions')
-      .delete()
-      .eq('id', id)
+    console.log('Deleting subscription', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting subscription:', error)
-      return false
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`deleteSubscription: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('deleteSubscription: Error deleting subscription:', error);
+        return false;
+      }
+
+      console.log('deleteSubscription: Successfully deleted subscription', id);
+      return true;
+    } catch (error) {
+      console.error('deleteSubscription: Exception:', error);
+      return false;
     }
-
-    return true
   }
 }
 
