@@ -205,6 +205,7 @@ export const pricesService = {
       const token = getAuthToken();
 
       // Find category_id by category code using REST API
+      console.log('Looking for category with code:', price.category);
       const categoryResponse = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?code=eq.${price.category}&select=id`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -214,15 +215,20 @@ export const pricesService = {
       });
 
       if (!categoryResponse.ok) {
-        console.error('Error fetching category:', await categoryResponse.json());
+        const error = await categoryResponse.json();
+        console.error('Error fetching category:', error);
+        alert(`Fehler beim Abrufen der Kategorie: ${JSON.stringify(error)}`);
         return null;
       }
 
       const categoryData = await categoryResponse.json();
+      console.log('Category data received:', categoryData);
       if (!categoryData || categoryData.length === 0) {
-        console.error('Category not found:', price.category);
+        console.error('Category not found for code:', price.category);
+        alert(`Kategorie nicht gefunden: ${price.category}`);
         return null;
       }
+      console.log('Using category_id:', categoryData[0].id);
 
       // Create price
       const response = await fetch(`${SUPABASE_URL}/rest/v1/prices`, {
