@@ -1,3 +1,9 @@
 # Supabase configuration - local development only
-*
-!.gitignore
+# Allow migrations to be tracked
+!migrations/
+!migrations/*.sql
+
+# Ignore local development files
+.branches/
+.temp/
+seed/*.sql
