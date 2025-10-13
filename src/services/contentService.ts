@@ -238,7 +238,8 @@ export const pricesService = {
           price: price.price,
           category_id: categoryData[0].id,
           note: price.note || null,
-          order_index: 0
+          order_index: 0,
+          is_published: true
         })
       });
 
@@ -478,7 +479,8 @@ export const subscriptionsService = {
           frequency: subscription.frequency || null,
           features: subscription.features || [],
           popular: subscription.popular || false,
-          order_index: 0
+          order_index: 0,
+          is_published: true
         })
       });
 
