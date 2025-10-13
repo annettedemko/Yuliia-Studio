@@ -228,6 +228,7 @@ export type Database = {
           full_name: string
           instagram: string | null
           warming_level: string | null
+          notes: string | null
           user_id: string | null
           created_at: string
         }
@@ -238,6 +239,7 @@ export type Database = {
           full_name: string
           instagram?: string | null
           warming_level?: string | null
+          notes?: string | null
           user_id?: string | null
           created_at?: string
         }
@@ -248,6 +250,7 @@ export type Database = {
           full_name?: string
           instagram?: string | null
           warming_level?: string | null
+          notes?: string | null
           user_id?: string | null
           created_at?: string
         }
@@ -260,6 +263,7 @@ export type Database = {
           full_name: string
           instagram: string | null
           warming_level: string | null
+          notes: string | null
           user_id: string | null
           created_at: string
         }
@@ -270,6 +274,7 @@ export type Database = {
           full_name: string
           instagram?: string | null
           warming_level?: string | null
+          notes?: string | null
           user_id?: string | null
           created_at?: string
         }
@@ -280,6 +285,112 @@ export type Database = {
           full_name?: string
           instagram?: string | null
           warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+      }
+      yulia_clients: {
+        Row: {
+          id: string
+          phone: string
+          email: string | null
+          full_name: string
+          instagram: string | null
+          warming_level: string | null
+          notes: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          phone: string
+          email?: string | null
+          full_name: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          phone?: string
+          email?: string | null
+          full_name?: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+      }
+      lera_clients: {
+        Row: {
+          id: string
+          phone: string
+          email: string | null
+          full_name: string
+          instagram: string | null
+          warming_level: string | null
+          notes: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          phone: string
+          email?: string | null
+          full_name: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          phone?: string
+          email?: string | null
+          full_name?: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+      }
+      liudmila_clients: {
+        Row: {
+          id: string
+          phone: string
+          email: string | null
+          full_name: string
+          instagram: string | null
+          warming_level: string | null
+          notes: string | null
+          user_id: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          phone: string
+          email?: string | null
+          full_name: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
+          user_id?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          phone?: string
+          email?: string | null
+          full_name?: string
+          instagram?: string | null
+          warming_level?: string | null
+          notes?: string | null
           user_id?: string | null
           created_at?: string
         }

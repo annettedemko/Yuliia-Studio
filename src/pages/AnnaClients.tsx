@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
@@ -216,6 +217,7 @@ const AnnaClients = () => {
                     <TableHead>E-Mail</TableHead>
                     <TableHead>Instagram</TableHead>
                     <TableHead>Warming Level</TableHead>
+                    <TableHead>Kommentare</TableHead>
                     <TableHead>Erstellt am</TableHead>
                     <TableHead className="text-right">Aktionen</TableHead>
                   </TableRow>
@@ -224,7 +226,7 @@ const AnnaClients = () => {
                   {clients.map((client) => (
                     <TableRow key={client.id}>
                       {editingClient?.id === client.id ? (
-                        <TableCell colSpan={7}>
+                        <TableCell colSpan={8}>
                           <ClientEditor
                             client={editingClient}
                             onSave={handleSaveClient}
@@ -247,6 +249,7 @@ const AnnaClients = () => {
                               {client.warming_level || 'Nicht gesetzt'}
                             </span>
                           </TableCell>
+                          <TableCell className="max-w-xs truncate">{client.notes || '-'}</TableCell>
                           <TableCell>
                             {new Date(client.created_at).toLocaleDateString('de-DE')}
                           </TableCell>
@@ -274,7 +277,7 @@ const AnnaClients = () => {
                   ))}
                   {clients.length === 0 && (
                     <TableRow>
-                      <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                      <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                         Noch keine Kunden vorhanden
                       </TableCell>
                     </TableRow>
@@ -309,6 +312,7 @@ const ClientEditor = ({
       email: client.email,
       instagram: client.instagram,
       warming_level: client.warming_level,
+      notes: client.notes,
       user_id: client.user_id
     } : {
       full_name: '',
@@ -316,6 +320,7 @@ const ClientEditor = ({
       email: '',
       instagram: '',
       warming_level: 'cold',
+      notes: '',
       user_id: null
     }
   );
@@ -387,6 +392,16 @@ const ClientEditor = ({
             </SelectContent>
           </Select>
         </div>
+      </div>
+      <div>
+        <Label htmlFor="notes">Kommentare</Label>
+        <Textarea
+          id="notes"
+          value={formData.notes || ''}
+          onChange={(e) => setFormData({ ...formData, notes: e.target.value || null })}
+          placeholder="Fügen Sie Kommentare oder Notizen zum Kunden hinzu..."
+          rows={3}
+        />
       </div>
       <div className="flex gap-2">
         <Button type="submit" size="sm">

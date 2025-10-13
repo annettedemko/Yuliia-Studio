@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
@@ -216,6 +217,7 @@ const LeraClients = () => {
                     <TableHead>E-Mail</TableHead>
                     <TableHead>Instagram</TableHead>
                     <TableHead>Уровень прогрева</TableHead>
+                    <TableHead>Комментарии</TableHead>
                     <TableHead>Создан</TableHead>
                     <TableHead className="text-right">Действия</TableHead>
                   </TableRow>
@@ -224,7 +226,7 @@ const LeraClients = () => {
                   {clients.map((client) => (
                     <TableRow key={client.id}>
                       {editingClient?.id === client.id ? (
-                        <TableCell colSpan={7}>
+                        <TableCell colSpan={8}>
                           <ClientEditor
                             client={editingClient}
                             onSave={handleSaveClient}
@@ -250,6 +252,7 @@ const LeraClients = () => {
                                'Не задан'}
                             </span>
                           </TableCell>
+                          <TableCell className="max-w-xs truncate">{client.notes || '-'}</TableCell>
                           <TableCell>
                             {new Date(client.created_at).toLocaleDateString('ru-RU')}
                           </TableCell>
@@ -277,7 +280,7 @@ const LeraClients = () => {
                   ))}
                   {clients.length === 0 && (
                     <TableRow>
-                      <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                      <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                         Пока нет клиентов
                       </TableCell>
                     </TableRow>
@@ -312,6 +315,7 @@ const ClientEditor = ({
       email: client.email,
       instagram: client.instagram,
       warming_level: client.warming_level,
+      notes: client.notes,
       user_id: client.user_id
     } : {
       full_name: '',
@@ -319,6 +323,7 @@ const ClientEditor = ({
       email: '',
       instagram: '',
       warming_level: 'cold',
+      notes: '',
       user_id: null
     }
   );
@@ -390,6 +395,16 @@ const ClientEditor = ({
             </SelectContent>
           </Select>
         </div>
+      </div>
+      <div>
+        <Label htmlFor="notes">Комментарии</Label>
+        <Textarea
+          id="notes"
+          value={formData.notes || ''}
+          onChange={(e) => setFormData({ ...formData, notes: e.target.value || null })}
+          placeholder="Добавьте комментарии или заметки о клиенте..."
+          rows={3}
+        />
       </div>
       <div className="flex gap-2">
         <Button type="submit" size="sm">
