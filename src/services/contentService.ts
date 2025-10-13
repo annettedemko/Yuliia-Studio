@@ -242,6 +242,7 @@ export const pricesService = {
         body: JSON.stringify({
           service: price.service,
           price: price.price,
+          category: price.category,
           category_id: categoryData[0].id,
           note: price.note || null,
           order_index: 0,
@@ -310,6 +311,10 @@ export const pricesService = {
         price: updates.price,
         note: updates.note || null
       };
+
+      if (updates.category) {
+        updateData.category = updates.category;
+      }
 
       if (category_id) {
         updateData.category_id = category_id;
