@@ -95,24 +95,24 @@ const DekaLera = () => {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+      <section className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900/95 via-purple-900/90 to-slate-800/95">
         {/* Background with DEKA Devices - Optimized for mobile */}
-        <div className="absolute inset-0 opacity-10 sm:opacity-16">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 h-full w-full p-4 sm:p-8 items-center justify-items-center">
-            <div className="animate-float-1">
-              <img src="/deka1.png" alt="Motus PRO" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+        <div className="absolute inset-0 opacity-20 sm:opacity-25 md:opacity-30">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-4 h-full w-full p-6 sm:p-8 items-center justify-items-center">
+            <div className="animate-float-1 flex items-center justify-center">
+              <img src="/deka1.png" alt="Motus PRO" className="w-24 sm:w-28 md:w-32 lg:w-44 h-auto opacity-90 hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <div className="animate-float-2">
-              <img src="/deka2.png" alt="RedTouch PRO" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+            <div className="animate-float-2 self-end pb-32 flex items-center justify-center">
+              <img src="/deka2.png" alt="RedTouch PRO" className="w-64 lg:w-88 h-auto opacity-90 hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <div className="animate-float-3 col-span-1 md:col-span-1">
-              <img src="/deka3.png" alt="Motus AX" className="w-24 sm:w-32 md:w-36 lg:w-48 h-auto opacity-90 hover:opacity-90 transition-opacity duration-500" />
+            <div className="animate-float-3 col-span-2 sm:col-span-1 flex items-center justify-center">
+              <img src="/deka3.png" alt="Motus AX" className="w-72 lg:w-96 h-auto opacity-95 hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <div className="animate-float-4 hidden sm:block">
-              <img src="/deka4.png" alt="PHYSIQ 360" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+            <div className="animate-float-4 hidden md:flex items-center justify-center">
+              <img src="/deka4.png" alt="PHYSIQ 360" className="w-24 sm:w-28 md:w-32 lg:w-44 h-auto opacity-90 hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <div className="animate-float-5 hidden sm:block">
-              <img src="/deka5.png" alt="Again cos" className="w-20 sm:w-28 md:w-32 lg:w-44 h-auto opacity-80 hover:opacity-80 transition-opacity duration-500" />
+            <div className="animate-float-5 hidden md:flex items-center justify-center">
+              <img src="/deka5.png" alt="Again cos" className="w-36 lg:w-48 h-auto opacity-90 hover:opacity-100 transition-opacity duration-500" />
             </div>
           </div>
         </div>
@@ -195,7 +195,7 @@ const DekaLera = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-8 sm:mt-12">
               {benefits.map((benefit, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                <Card key={index} className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl border-rose-gold/30 hover:bg-gradient-to-br hover:from-orange-100/50 hover:via-rose-100/50 hover:to-amber-50/50 hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:scale-[1.02] hover:border-rose-gold/50">
                   <CardContent className="p-4 sm:p-6">
                     <div className="flex items-start gap-3 sm:gap-4">
                       <div className="bg-rose-gold/20 p-2 sm:p-3 rounded-full flex-shrink-0">
@@ -224,7 +224,7 @@ const DekaLera = () => {
 
             <div className="space-y-4">
               {congressFeatures.map((featureKey, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div key={index} className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl border border-rose-gold/30 rounded-xl hover:bg-gradient-to-br hover:from-orange-100/50 hover:via-rose-100/50 hover:to-amber-50/50 hover:border-rose-gold/50 transition-all duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-rose-gold/20">
                   <Check className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                   <p className="text-lg text-foreground">{t(featureKey)}</p>
                 </div>
@@ -232,19 +232,21 @@ const DekaLera = () => {
             </div>
 
             <div className="mt-12 p-8 bg-gradient-to-r from-rose-gold/10 to-primary/10 rounded-lg">
-              <h4 className="text-2xl font-bold text-primary mb-4 text-center">
-                {t('congress.partner.title')}
-              </h4>
-              <p className="text-lg text-center text-muted-foreground mb-6">
-                {t('congress.partner.description')}
-              </p>
-              <div className="text-center">
-                <p className="text-xl font-semibold text-rose-gold mb-2">
-                  {t('congress.partner.highlight')}
+              <div className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl rounded-lg p-8">
+                <h4 className="text-2xl font-bold text-primary mb-4 text-center">
+                  {t('congress.partner.title')}
+                </h4>
+                <p className="text-lg text-center text-muted-foreground mb-6">
+                  {t('congress.partner.description')}
                 </p>
-                <p className="text-lg text-primary font-medium">
-                  {t('congress.partner.cta')}
-                </p>
+                <div className="text-center">
+                  <p className="text-xl font-semibold text-rose-gold mb-2">
+                    {t('congress.partner.highlight')}
+                  </p>
+                  <p className="text-lg text-primary font-medium">
+                    {t('congress.partner.cta')}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -269,7 +271,7 @@ const DekaLera = () => {
               { src: '/IMG4.jpg', alt: 'DEKA Beauty Event 3' },
               { src: '/sert.jpg', alt: 'DEKA Zertifikat' }
             ].map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-rose-gold/30 transition-all duration-500 hover:scale-105 border border-rose-gold/30 bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl cursor-pointer">
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -280,10 +282,30 @@ const DekaLera = () => {
             ))}
           </div>
 
+          {/* Event Video */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 bg-gradient-to-br from-rose-gold/10 to-primary/10 p-1">
+              <div className="relative rounded-lg overflow-hidden bg-black">
+                <video
+                  controls
+                  preload="metadata"
+                  className="w-full h-auto"
+                  poster="/IMG1.jpg"
+                >
+                  <source src="/video1.mp4" type="video/mp4" />
+                  {language === 'de' ? 'Ihr Browser unterstützt das Video-Tag nicht.' : 'Ваш браузер не поддерживает видео.'}
+                </video>
+              </div>
+            </div>
+            <p className="text-center text-muted-foreground mt-4 text-sm sm:text-base">
+              {language === 'de' ? 'Eindrücke von unserem letzten DEKA Event' : 'Впечатления с нашего последнего мероприятия DEKA'}
+            </p>
+          </div>
+
           {upcomingEvents.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {upcomingEvents.map((event, index) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow duration-300">
+                <Card key={event.id} className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl border-rose-gold/30 hover:bg-gradient-to-br hover:from-orange-100/50 hover:via-rose-100/50 hover:to-amber-50/50 hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:scale-[1.02] hover:border-rose-gold/50">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="bg-rose-gold/20 p-3 rounded-full flex-shrink-0">
@@ -337,7 +359,7 @@ const DekaLera = () => {
       <section id="registration-form" className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <Card className="shadow-xl">
+            <Card className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-2xl border-rose-gold/30 shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:border-rose-gold/50">
               <CardHeader className="text-center p-4 sm:p-6">
                 <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
                   {t('registration.title')}
@@ -500,7 +522,7 @@ const DekaLera = () => {
                 { name: 'Again cos', src: '/deka5.png', alt: 'Again cos', link: '/again-cos' }
               ].map((device, index) => (
                 <Link key={index} to={device.link} className="block">
-                  <div className="bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 p-3 sm:p-4 cursor-pointer touch-manipulation">
+                  <div className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl border border-rose-gold/30 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-rose-gold/30 hover:scale-105 hover:bg-gradient-to-br hover:from-orange-100/50 hover:via-rose-100/50 hover:to-amber-50/50 hover:border-rose-gold/50 transition-all duration-500 p-3 sm:p-4 cursor-pointer touch-manipulation group">
                     <img
                       src={device.src}
                       alt={device.alt}
