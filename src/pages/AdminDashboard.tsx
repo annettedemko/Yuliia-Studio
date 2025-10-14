@@ -1295,55 +1295,52 @@ const CategoryEditor = ({
     }
   );
 
+  // Auto-generate code from German name
+  const generateCode = (name: string): string => {
+    return name
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.code.trim() || !formData.name.trim()) {
-      alert('Code und Name sind Pflichtfelder');
+    if (!formData.name.trim()) {
+      alert('Название (Deutsch) обязательно для заполнения');
       return;
     }
-    if (category) {
-      onSave({ ...formData, id: category.id } as PriceCategory);
-    } else {
-      onSave(formData);
-    }
+
+    // Auto-generate code if creating new category
+    const dataToSave = category
+      ? { ...formData, id: category.id } as PriceCategory
+      : {
+          ...formData,
+          code: generateCode(formData.name),
+          order_index: 999 // Auto-place at end
+        };
+
+    onSave(dataToSave);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="code">Code * (z.B. neuer-laser)</Label>
-          <Input
-            id="code"
-            value={formData.code}
-            onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-            required
-            placeholder="neuer-laser"
-            disabled={!!category}
-          />
-          <p className="text-xs text-muted-foreground mt-1">
-            {category ? 'Code kann nicht geändert werden' : 'Nur Kleinbuchstaben und Bindestriche'}
-          </p>
-        </div>
-        <div>
-          <Label htmlFor="order_index">Reihenfolge *</Label>
-          <Input
-            id="order_index"
-            type="number"
-            value={formData.order_index}
-            onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) })}
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="name">Name (Deutsch) *</Label>
+          <Label htmlFor="name">Название (Deutsch) *</Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
-            placeholder="z.B. Neuer Laser"
+            placeholder="например: Neuer Laser"
           />
+          <p className="text-xs text-muted-foreground mt-1">
+            Обязательное поле
+          </p>
         </div>
         <div>
           <Label htmlFor="name_ru">Название (Русский)</Label>
@@ -1351,16 +1348,16 @@ const CategoryEditor = ({
             id="name_ru"
             value={formData.name_ru || ''}
             onChange={(e) => setFormData({ ...formData, name_ru: e.target.value })}
-            placeholder="напр. Новый лазер"
+            placeholder="например: Новый лазер"
           />
         </div>
         <div>
-          <Label htmlFor="description">Beschreibung (Deutsch)</Label>
+          <Label htmlFor="description">Описание (Deutsch)</Label>
           <Input
             id="description"
             value={formData.description || ''}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            placeholder="z.B. Modernste Lasertechnologie"
+            placeholder="например: Modernste Lasertechnologie"
           />
         </div>
         <div>
@@ -1369,11 +1366,11 @@ const CategoryEditor = ({
             id="description_ru"
             value={formData.description_ru || ''}
             onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
-            placeholder="напр. Современная лазерная технология"
+            placeholder="например: Современная лазерная технология"
           />
         </div>
         <div>
-          <Label htmlFor="icon">Icon</Label>
+          <Label htmlFor="icon">Иконка</Label>
           <Select
             value={formData.icon || 'Sparkles'}
             onValueChange={(value) => setFormData({ ...formData, icon: value })}
@@ -1382,16 +1379,16 @@ const CategoryEditor = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Sparkles">Sparkles</SelectItem>
-              <SelectItem value="Zap">Zap</SelectItem>
-              <SelectItem value="Heart">Heart</SelectItem>
-              <SelectItem value="Waves">Waves</SelectItem>
-              <SelectItem value="Hand">Hand</SelectItem>
+              <SelectItem value="Sparkles">✨ Искры (Sparkles)</SelectItem>
+              <SelectItem value="Zap">⚡ Молния (Zap)</SelectItem>
+              <SelectItem value="Heart">❤️ Сердце (Heart)</SelectItem>
+              <SelectItem value="Waves">🌊 Волны (Waves)</SelectItem>
+              <SelectItem value="Hand">✋ Рука (Hand)</SelectItem>
             </SelectContent>
           </Select>
         </div>
         <div>
-          <Label htmlFor="color">Farbe</Label>
+          <Label htmlFor="color">Цвет</Label>
           <Select
             value={formData.color || 'rose-gold'}
             onValueChange={(value) => setFormData({ ...formData, color: value })}
@@ -1400,15 +1397,15 @@ const CategoryEditor = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="rose-gold">Rose Gold</SelectItem>
-              <SelectItem value="primary">Primary (Blue)</SelectItem>
-              <SelectItem value="purple">Purple</SelectItem>
-              <SelectItem value="green">Green</SelectItem>
-              <SelectItem value="orange">Orange</SelectItem>
+              <SelectItem value="rose-gold">🌹 Розовое золото (Rose Gold)</SelectItem>
+              <SelectItem value="primary">🔵 Синий (Blue)</SelectItem>
+              <SelectItem value="purple">🟣 Фиолетовый (Purple)</SelectItem>
+              <SelectItem value="green">🟢 Зелёный (Green)</SelectItem>
+              <SelectItem value="orange">🟠 Оранжевый (Orange)</SelectItem>
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 col-span-2">
           <input
             type="checkbox"
             id="is_published"
@@ -1416,17 +1413,17 @@ const CategoryEditor = ({
             onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
             className="w-4 h-4"
           />
-          <Label htmlFor="is_published">Veröffentlicht (sichtbar auf der Website)</Label>
+          <Label htmlFor="is_published">Опубликовать (сделать видимой на сайте)</Label>
         </div>
       </div>
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Speichern
+          Сохранить
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Abbrechen
+          Отмена
         </Button>
       </div>
     </form>
