@@ -167,18 +167,18 @@ const AdminDashboard = () => {
       await loadData();
     } catch (error) {
       console.error('Error saving price:', error);
-      alert('Fehler beim Speichern des Preises');
+      alert('Ошибка при сохранении цены');
     }
   };
 
   const handleDeletePrice = async (id: string) => {
-    if (confirm('Sind Sie sicher, dass Sie diesen Preis löschen möchten?')) {
+    if (confirm('Вы уверены, что хотите удалить эту цену?')) {
       try {
         await pricesService.delete(id);
         await loadData();
       } catch (error) {
         console.error('Error deleting price:', error);
-        alert('Fehler beim Löschen des Preises');
+        alert('Ошибка при удалении цены');
       }
     }
   };
@@ -195,18 +195,18 @@ const AdminDashboard = () => {
       await loadData();
     } catch (error) {
       console.error('Error saving subscription:', error);
-      alert('Fehler beim Speichern des Abonnements');
+      alert('Ошибка при сохранении подписки');
     }
   };
 
   const handleDeleteSubscription = async (id: string) => {
-    if (confirm('Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?')) {
+    if (confirm('Вы уверены, что хотите удалить эту подписку?')) {
       try {
         await subscriptionsService.delete(id);
         await loadData();
       } catch (error) {
         console.error('Error deleting subscription:', error);
-        alert('Fehler beim Löschen des Abonnements');
+        alert('Ошибка при удалении подписки');
       }
     }
   };
@@ -223,7 +223,7 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
+    if (confirm('Вы уверены, что хотите удалить это событие?')) {
       await deleteSupabaseEvent(id);
       await loadData();
     }
@@ -241,20 +241,20 @@ const AdminDashboard = () => {
       await loadData();
     } catch (error) {
       console.error('Error saving category:', error);
-      alert('Fehler beim Speichern der Kategorie');
+      alert('Ошибка при сохранении категории');
     }
   };
 
   const handleDeleteCategory = async (id: string) => {
-    if (confirm('Sind Sie sicher, dass Sie diese Kategorie löschen möchten? Alle zugehörigen Preise werden ebenfalls gelöscht!')) {
+    if (confirm('Вы уверены, что хотите удалить эту категорию? Все связанные цены также будут удалены!')) {
       try {
         // TODO: Add delete method to categoriesService
-        alert('Kategorie-Löschung muss noch implementiert werden');
+        alert('Удаление категории ещё не реализовано');
         // await categoriesService.delete(id);
         // await loadData();
       } catch (error) {
         console.error('Error deleting category:', error);
-        alert('Fehler beim Löschen der Kategorie');
+        alert('Ошибка при удалении категории');
       }
     }
   };
@@ -483,7 +483,7 @@ const AdminDashboard = () => {
                             <h3 className="font-semibold text-lg">{category.name}</h3>
                             {category.is_published && (
                               <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
-                                Veröffentlicht
+                                Опубликовано
                               </span>
                             )}
                           </div>
@@ -653,7 +653,7 @@ const AdminDashboard = () => {
                             {subscription.name}
                             {subscription.popular && (
                               <span className="ml-2 bg-rose-gold text-white px-2 py-1 rounded text-xs">
-                                Beliebt
+                                Популярная
                               </span>
                             )}
                           </h3>
@@ -755,7 +755,7 @@ const AdminDashboard = () => {
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-gray-100 text-gray-800'
                             }`}>
-                              {event.is_published ? '✓ Veröffentlicht' : 'Entwurf'}
+                              {event.is_published ? '✓ Опубликовано' : 'Черновик'}
                             </span>
                           </div>
                           <p className="text-muted-foreground">
@@ -908,35 +908,36 @@ const PriceEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="service">Service (Deutsch)</Label>
+          <Label htmlFor="service">Название услуги (Deutsch)</Label>
           <Input
             id="service"
             value={formData.service}
             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
             required
-            placeholder="z.B. Bikini Komplett"
+            placeholder="например: Bikini Komplett"
           />
         </div>
         <div>
-          <Label htmlFor="service_ru">Услуга (Русский)</Label>
+          <Label htmlFor="service_ru">Название услуги (Русский)</Label>
           <Input
             id="service_ru"
             value={formData.service_ru || ''}
             onChange={(e) => setFormData({ ...formData, service_ru: e.target.value })}
-            placeholder="напр. Бикини полностью"
+            placeholder="например: Бикини полностью"
           />
         </div>
         <div>
-          <Label htmlFor="price">Preis</Label>
+          <Label htmlFor="price">Цена (€)</Label>
           <Input
             id="price"
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
             required
+            placeholder="например: 45"
           />
         </div>
         <div>
-          <Label htmlFor="category">Kategorie</Label>
+          <Label htmlFor="category">Категория</Label>
           <Select
             value={formData.category}
             onValueChange={(value: any) => setFormData({ ...formData, category: value })}
@@ -954,21 +955,21 @@ const PriceEditor = ({
           </Select>
         </div>
         <div>
-          <Label htmlFor="note">Notiz (Deutsch, optional)</Label>
+          <Label htmlFor="note">Примечание (Deutsch, опционально)</Label>
           <Input
             id="note"
             value={formData.note || ''}
             onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-            placeholder="z.B. ohne Pofalte"
+            placeholder="например: ohne Pofalte"
           />
         </div>
         <div>
-          <Label htmlFor="note_ru">Заметка (Русский, optional)</Label>
+          <Label htmlFor="note_ru">Примечание (Русский, опционально)</Label>
           <Input
             id="note_ru"
             value={formData.note_ru || ''}
             onChange={(e) => setFormData({ ...formData, note_ru: e.target.value })}
-            placeholder="напр. без складки"
+            placeholder="например: без складки"
           />
         </div>
       </div>
@@ -1026,31 +1027,33 @@ const SubscriptionEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="name">Название подписки</Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
+            placeholder="например: Starter"
           />
         </div>
         <div>
-          <Label htmlFor="price">Preis</Label>
+          <Label htmlFor="price">Цена</Label>
           <Input
             id="price"
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
             required
+            placeholder="например: 299€"
           />
         </div>
         <div>
-          <Label htmlFor="period">Zeitraum (Deutsch)</Label>
+          <Label htmlFor="period">Период (Deutsch)</Label>
           <Input
             id="period"
             value={formData.period}
             onChange={(e) => setFormData({ ...formData, period: e.target.value })}
             required
-            placeholder="z.B. pro Monat"
+            placeholder="например: pro Monat"
           />
         </div>
         <div>
@@ -1059,17 +1062,17 @@ const SubscriptionEditor = ({
             id="period_ru"
             value={formData.period_ru || ''}
             onChange={(e) => setFormData({ ...formData, period_ru: e.target.value })}
-            placeholder="напр. в месяц"
+            placeholder="например: в месяц"
           />
         </div>
         <div>
-          <Label htmlFor="treatments">Behandlungen (Deutsch)</Label>
+          <Label htmlFor="treatments">Процедуры (Deutsch)</Label>
           <Input
             id="treatments"
             value={formData.treatments}
             onChange={(e) => setFormData({ ...formData, treatments: e.target.value })}
             required
-            placeholder="z.B. 6 Behandlungen"
+            placeholder="например: 6 Behandlungen"
           />
         </div>
         <div>
@@ -1078,17 +1081,17 @@ const SubscriptionEditor = ({
             id="treatments_ru"
             value={formData.treatments_ru || ''}
             onChange={(e) => setFormData({ ...formData, treatments_ru: e.target.value })}
-            placeholder="напр. 6 процедур"
+            placeholder="например: 6 процедур"
           />
         </div>
         <div>
-          <Label htmlFor="frequency">Häufigkeit (Deutsch)</Label>
+          <Label htmlFor="frequency">Частота (Deutsch)</Label>
           <Input
             id="frequency"
             value={formData.frequency}
             onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
             required
-            placeholder="z.B. Alle 6 Wochen"
+            placeholder="например: Alle 6 Wochen"
           />
         </div>
         <div>
@@ -1097,7 +1100,7 @@ const SubscriptionEditor = ({
             id="frequency_ru"
             value={formData.frequency_ru || ''}
             onChange={(e) => setFormData({ ...formData, frequency_ru: e.target.value })}
-            placeholder="напр. Каждые 6 недель"
+            placeholder="например: Каждые 6 недель"
           />
         </div>
         <div className="flex items-center space-x-2">
@@ -1107,18 +1110,19 @@ const SubscriptionEditor = ({
             checked={formData.popular}
             onChange={(e) => setFormData({ ...formData, popular: e.target.checked })}
           />
-          <Label htmlFor="popular">Als beliebt markieren</Label>
+          <Label htmlFor="popular">Отметить как популярную</Label>
         </div>
       </div>
 
       <div>
-        <Label htmlFor="features">Features (eine pro Zeile)</Label>
+        <Label htmlFor="features">Преимущества (одно на строку)</Label>
         <Textarea
           id="features"
           value={featuresText}
           onChange={(e) => setFeaturesText(e.target.value)}
           rows={4}
           required
+          placeholder="например:&#10;✓ 6 процедур&#10;✓ Каждые 6 недель&#10;✓ 10% скидка"
         />
       </div>
 
@@ -1175,16 +1179,17 @@ const EventEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="title">Titel</Label>
+          <Label htmlFor="title">Название события</Label>
           <Input
             id="title"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
+            placeholder="например: День открытых дверей"
           />
         </div>
         <div>
-          <Label htmlFor="date">Datum</Label>
+          <Label htmlFor="date">Дата</Label>
           <Input
             id="date"
             type="date"
@@ -1194,43 +1199,45 @@ const EventEditor = ({
           />
         </div>
         <div>
-          <Label htmlFor="time">Zeit (optional)</Label>
+          <Label htmlFor="time">Время (опционально)</Label>
           <Input
             id="time"
             value={formData.time || ''}
             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-            placeholder="z.B. 18-19.10"
+            placeholder="например: 18-19.10"
           />
         </div>
         <div>
-          <Label htmlFor="location">Ort</Label>
+          <Label htmlFor="location">Место проведения</Label>
           <Input
             id="location"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
             required
+            placeholder="например: Yuliia Beauty Studio"
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="address">Adresse</Label>
+        <Label htmlFor="address">Адрес</Label>
         <Input
           id="address"
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           required
+          placeholder="например: Hauptstraße 123, 12345 Berlin"
         />
       </div>
 
       <div>
-        <Label htmlFor="description">Beschreibung (optional)</Label>
+        <Label htmlFor="description">Описание (опционально)</Label>
         <Textarea
           id="description"
           value={formData.description || ''}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows={3}
-          placeholder="Zusätzliche Informationen zur Veranstaltung"
+          placeholder="Дополнительная информация о событии"
         />
       </div>
 
@@ -1243,7 +1250,7 @@ const EventEditor = ({
           className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
         />
         <Label htmlFor="is_published" className="cursor-pointer">
-          Veröffentlicht (sichtbar auf der Website)
+          Опубликовать (сделать видимым на сайте)
         </Label>
       </div>
 
