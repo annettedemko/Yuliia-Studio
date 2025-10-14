@@ -53,7 +53,8 @@ const AdminDashboard = () => {
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
   const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
-  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
+  const [editingCategory, setEditingCategory] = useState<PriceCategory | null>(null);
+  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | 'category' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -228,6 +229,35 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleSaveCategory = async (category: Omit<PriceCategory, 'id'> | PriceCategory) => {
+    try {
+      if ('id' in category && editingCategory) {
+        await categoriesService.update(category.id, category);
+      } else {
+        await categoriesService.create(category as Omit<PriceCategory, 'id'>);
+      }
+      setEditingCategory(null);
+      setIsCreating(null);
+      await loadData();
+    } catch (error) {
+      console.error('Error saving category:', error);
+      alert('Fehler beim Speichern der Kategorie');
+    }
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    if (confirm('Sind Sie sicher, dass Sie diese Kategorie löschen möchten? Alle zugehörigen Preise werden ebenfalls gelöscht!')) {
+      try {
+        // TODO: Add delete method to categoriesService
+        alert('Kategorie-Löschung muss noch implementiert werden');
+        // await categoriesService.delete(id);
+        // await loadData();
+      } catch (error) {
+        console.error('Error deleting category:', error);
+        alert('Fehler beim Löschen der Kategorie');
+      }
+    }
+  };
 
   const categoryNames = {
     alexandrit: 'Alexandrit Laser',
@@ -271,6 +301,26 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Navigation Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
+              const element = document.getElementById('categories-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-amber-500/20 p-2 rounded-full">
+                  <Package className="w-5 h-5 text-amber-500" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Категории</p>
+                  <p className="text-xl font-bold">{categories.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card
             className="cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
@@ -391,6 +441,89 @@ const AdminDashboard = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Categories Management */}
+        <Card className="mb-8" id="categories-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Управление категориями</CardTitle>
+              <Button
+                onClick={() => setIsCreating('category')}
+                className="flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Новая категория
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isCreating === 'category' && (
+              <div className="mb-6">
+                <CategoryEditor
+                  onSave={handleSaveCategory}
+                  onCancel={() => setIsCreating(null)}
+                />
+              </div>
+            )}
+
+            <div className="grid gap-4">
+              {categories.map((category) => (
+                <div key={category.id} className="border rounded-lg p-4">
+                  {editingCategory?.id === category.id ? (
+                    <CategoryEditor
+                      category={editingCategory}
+                      onSave={handleSaveCategory}
+                      onCancel={() => setEditingCategory(null)}
+                    />
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h3 className="font-semibold text-lg">{category.name}</h3>
+                            {category.is_published && (
+                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
+                                Veröffentlicht
+                              </span>
+                            )}
+                          </div>
+                          {category.name_ru && (
+                            <p className="text-sm text-muted-foreground mb-1">{category.name_ru}</p>
+                          )}
+                          <p className="text-sm text-muted-foreground">
+                            <span className="font-medium">Code:</span> {category.code}
+                          </p>
+                          {category.description && (
+                            <p className="text-sm text-muted-foreground mt-1">{category.description}</p>
+                          )}
+                          {category.description_ru && (
+                            <p className="text-sm text-muted-foreground">{category.description_ru}</p>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEditingCategory(category)}
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteCategory(category.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Prices Management */}
         <Card className="mb-8" id="prices-section">
@@ -1114,6 +1247,178 @@ const EventEditor = ({
         </Label>
       </div>
 
+      <div className="flex gap-2">
+        <Button type="submit" size="sm">
+          <Save className="w-4 h-4 mr-2" />
+          Speichern
+        </Button>
+        <Button type="button" variant="outline" size="sm" onClick={onCancel}>
+          <X className="w-4 h-4 mr-2" />
+          Abbrechen
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+// Category Editor Component
+const CategoryEditor = ({
+  category,
+  onSave,
+  onCancel
+}: {
+  category?: PriceCategory;
+  onSave: (category: Omit<PriceCategory, 'id'> | PriceCategory) => void;
+  onCancel: () => void;
+}) => {
+  const [formData, setFormData] = useState<Omit<PriceCategory, 'id'>>(
+    category ? {
+      code: category.code,
+      name: category.name,
+      name_ru: category.name_ru || '',
+      description: category.description || '',
+      description_ru: category.description_ru || '',
+      icon: category.icon || '',
+      color: category.color || '',
+      order_index: category.order_index,
+      is_published: category.is_published
+    } : {
+      code: '',
+      name: '',
+      name_ru: '',
+      description: '',
+      description_ru: '',
+      icon: 'Sparkles',
+      color: 'rose-gold',
+      order_index: 999,
+      is_published: true
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.code.trim() || !formData.name.trim()) {
+      alert('Code und Name sind Pflichtfelder');
+      return;
+    }
+    if (category) {
+      onSave({ ...formData, id: category.id } as PriceCategory);
+    } else {
+      onSave(formData);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="code">Code * (z.B. neuer-laser)</Label>
+          <Input
+            id="code"
+            value={formData.code}
+            onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+            required
+            placeholder="neuer-laser"
+            disabled={!!category}
+          />
+          <p className="text-xs text-muted-foreground mt-1">
+            {category ? 'Code kann nicht geändert werden' : 'Nur Kleinbuchstaben und Bindestriche'}
+          </p>
+        </div>
+        <div>
+          <Label htmlFor="order_index">Reihenfolge *</Label>
+          <Input
+            id="order_index"
+            type="number"
+            value={formData.order_index}
+            onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) })}
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="name">Name (Deutsch) *</Label>
+          <Input
+            id="name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+            placeholder="z.B. Neuer Laser"
+          />
+        </div>
+        <div>
+          <Label htmlFor="name_ru">Название (Русский)</Label>
+          <Input
+            id="name_ru"
+            value={formData.name_ru || ''}
+            onChange={(e) => setFormData({ ...formData, name_ru: e.target.value })}
+            placeholder="напр. Новый лазер"
+          />
+        </div>
+        <div>
+          <Label htmlFor="description">Beschreibung (Deutsch)</Label>
+          <Input
+            id="description"
+            value={formData.description || ''}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder="z.B. Modernste Lasertechnologie"
+          />
+        </div>
+        <div>
+          <Label htmlFor="description_ru">Описание (Русский)</Label>
+          <Input
+            id="description_ru"
+            value={formData.description_ru || ''}
+            onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
+            placeholder="напр. Современная лазерная технология"
+          />
+        </div>
+        <div>
+          <Label htmlFor="icon">Icon</Label>
+          <Select
+            value={formData.icon || 'Sparkles'}
+            onValueChange={(value) => setFormData({ ...formData, icon: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Sparkles">Sparkles</SelectItem>
+              <SelectItem value="Zap">Zap</SelectItem>
+              <SelectItem value="Heart">Heart</SelectItem>
+              <SelectItem value="Waves">Waves</SelectItem>
+              <SelectItem value="Hand">Hand</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="color">Farbe</Label>
+          <Select
+            value={formData.color || 'rose-gold'}
+            onValueChange={(value) => setFormData({ ...formData, color: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="rose-gold">Rose Gold</SelectItem>
+              <SelectItem value="primary">Primary (Blue)</SelectItem>
+              <SelectItem value="purple">Purple</SelectItem>
+              <SelectItem value="green">Green</SelectItem>
+              <SelectItem value="orange">Orange</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            id="is_published"
+            checked={formData.is_published}
+            onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
+            className="w-4 h-4"
+          />
+          <Label htmlFor="is_published">Veröffentlicht (sichtbar auf der Website)</Label>
+        </div>
+      </div>
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
