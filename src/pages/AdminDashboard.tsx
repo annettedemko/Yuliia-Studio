@@ -975,11 +975,11 @@ const PriceEditor = ({
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Speichern
+          Сохранить
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Abbrechen
+          Отмена
         </Button>
       </div>
     </form>
@@ -1125,11 +1125,11 @@ const SubscriptionEditor = ({
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Speichern
+          Сохранить
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Abbrechen
+          Отмена
         </Button>
       </div>
     </form>
@@ -1250,11 +1250,11 @@ const EventEditor = ({
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Speichern
+          Сохранить
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Abbrechen
+          Отмена
         </Button>
       </div>
     </form>
@@ -1309,8 +1309,8 @@ const CategoryEditor = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim()) {
-      alert('Название (Deutsch) обязательно для заполнения');
+    if (!formData.name.trim() || !formData.name_ru?.trim()) {
+      alert('Название (Deutsch) и Название (Русский) обязательны для заполнения');
       return;
     }
 
@@ -1343,13 +1343,17 @@ const CategoryEditor = ({
           </p>
         </div>
         <div>
-          <Label htmlFor="name_ru">Название (Русский)</Label>
+          <Label htmlFor="name_ru">Название (Русский) *</Label>
           <Input
             id="name_ru"
             value={formData.name_ru || ''}
             onChange={(e) => setFormData({ ...formData, name_ru: e.target.value })}
+            required
             placeholder="например: Новый лазер"
           />
+          <p className="text-xs text-muted-foreground mt-1">
+            Обязательное поле
+          </p>
         </div>
         <div>
           <Label htmlFor="description">Описание (Deutsch)</Label>
