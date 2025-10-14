@@ -241,10 +241,12 @@ export const pricesService = {
         },
         body: JSON.stringify({
           service: price.service,
+          service_ru: price.service_ru || null,
           price: price.price,
           category: price.category,
           category_id: categoryData[0].id,
           note: price.note || null,
+          note_ru: price.note_ru || null,
           order_index: 0,
           is_published: true
         })
@@ -265,9 +267,11 @@ export const pricesService = {
       return {
         id: data[0].id,
         service: data[0].service,
+        service_ru: data[0].service_ru || undefined,
         price: data[0].price,
         category: data[0].category as ServicePrice['category'],
-        note: data[0].note || undefined
+        note: data[0].note || undefined,
+        note_ru: data[0].note_ru || undefined
       };
     } catch (error) {
       console.error('createPrice: Exception:', error);
@@ -308,8 +312,10 @@ export const pricesService = {
 
       const updateData: any = {
         service: updates.service,
+        service_ru: updates.service_ru || null,
         price: updates.price,
-        note: updates.note || null
+        note: updates.note || null,
+        note_ru: updates.note_ru || null
       };
 
       if (updates.category) {
@@ -346,9 +352,11 @@ export const pricesService = {
       return {
         id: data[0].id,
         service: data[0].service,
+        service_ru: data[0].service_ru || undefined,
         price: data[0].price,
         category: data[0].category as ServicePrice['category'],
-        note: data[0].note || undefined
+        note: data[0].note || undefined,
+        note_ru: data[0].note_ru || undefined
       };
     } catch (error) {
       console.error('updatePrice: Exception:', error);
@@ -486,8 +494,11 @@ export const subscriptionsService = {
           name: subscription.name,
           price: subscription.price,
           period: subscription.period || null,
+          period_ru: subscription.period_ru || null,
           treatments: subscription.treatments || null,
+          treatments_ru: subscription.treatments_ru || null,
           frequency: subscription.frequency || null,
+          frequency_ru: subscription.frequency_ru || null,
           features: subscription.features || [],
           popular: subscription.popular || false,
           order_index: 0,
@@ -512,8 +523,11 @@ export const subscriptionsService = {
         name: data[0].name,
         price: data[0].price,
         period: data[0].period || undefined,
+        period_ru: data[0].period_ru || undefined,
         treatments: data[0].treatments || undefined,
+        treatments_ru: data[0].treatments_ru || undefined,
         frequency: data[0].frequency || undefined,
+        frequency_ru: data[0].frequency_ru || undefined,
         features: data[0].features || [],
         popular: data[0].popular
       };
@@ -541,8 +555,11 @@ export const subscriptionsService = {
           name: updates.name,
           price: updates.price,
           period: updates.period || null,
+          period_ru: updates.period_ru || null,
           treatments: updates.treatments || null,
+          treatments_ru: updates.treatments_ru || null,
           frequency: updates.frequency || null,
+          frequency_ru: updates.frequency_ru || null,
           features: updates.features || [],
           popular: updates.popular || false
         })
@@ -565,8 +582,11 @@ export const subscriptionsService = {
         name: data[0].name,
         price: data[0].price,
         period: data[0].period || undefined,
+        period_ru: data[0].period_ru || undefined,
         treatments: data[0].treatments || undefined,
+        treatments_ru: data[0].treatments_ru || undefined,
         frequency: data[0].frequency || undefined,
+        frequency_ru: data[0].frequency_ru || undefined,
         features: data[0].features || [],
         popular: data[0].popular
       };

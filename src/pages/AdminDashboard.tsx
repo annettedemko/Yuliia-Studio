@@ -433,13 +433,25 @@ const AdminDashboard = () => {
                             />
                           ) : (
                             <>
-                              <div>
-                                <span className="font-medium">{price.service}</span>
-                                <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
-                                {price.note && (
-                                  <span className="ml-2 text-sm text-muted-foreground">
-                                    {price.note}
-                                  </span>
+                              <div className="flex-1">
+                                <div>
+                                  <span className="font-medium">{price.service}</span>
+                                  <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
+                                  {price.note && (
+                                    <span className="ml-2 text-sm text-muted-foreground">
+                                      {price.note}
+                                    </span>
+                                  )}
+                                </div>
+                                {(price.service_ru || price.note_ru) && (
+                                  <div className="text-sm text-muted-foreground mt-1">
+                                    {price.service_ru && <span>{price.service_ru}</span>}
+                                    {price.note_ru && (
+                                      <span className="ml-2">
+                                        {price.note_ru}
+                                      </span>
+                                    )}
+                                  </div>
                                 )}
                               </div>
                               <div className="flex gap-2">
@@ -515,9 +527,19 @@ const AdminDashboard = () => {
                           <p className="text-rose-gold font-semibold">
                             {subscription.price} {subscription.period}
                           </p>
+                          {subscription.period_ru && (
+                            <p className="text-sm text-muted-foreground">
+                              {subscription.price} {subscription.period_ru}
+                            </p>
+                          )}
                           <p className="text-sm text-muted-foreground">
                             {subscription.treatments} • {subscription.frequency}
                           </p>
+                          {(subscription.treatments_ru || subscription.frequency_ru) && (
+                            <p className="text-sm text-muted-foreground">
+                              {subscription.treatments_ru || subscription.treatments} • {subscription.frequency_ru || subscription.frequency}
+                            </p>
+                          )}
                         </div>
                         <div className="flex gap-2">
                           <Button
@@ -736,8 +758,10 @@ const PriceEditor = ({
     price || {
       id: '',
       service: '',
+      service_ru: '',
       price: '',
       note: '',
+      note_ru: '',
       category: 'alexandrit'
     }
   );
@@ -751,12 +775,22 @@ const PriceEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="service">Service</Label>
+          <Label htmlFor="service">Service (Deutsch)</Label>
           <Input
             id="service"
             value={formData.service}
             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
             required
+            placeholder="z.B. Bikini Komplett"
+          />
+        </div>
+        <div>
+          <Label htmlFor="service_ru">Услуга (Русский)</Label>
+          <Input
+            id="service_ru"
+            value={formData.service_ru || ''}
+            onChange={(e) => setFormData({ ...formData, service_ru: e.target.value })}
+            placeholder="напр. Бикини полностью"
           />
         </div>
         <div>
@@ -787,11 +821,21 @@ const PriceEditor = ({
           </Select>
         </div>
         <div>
-          <Label htmlFor="note">Notiz (optional)</Label>
+          <Label htmlFor="note">Notiz (Deutsch, optional)</Label>
           <Input
             id="note"
             value={formData.note || ''}
             onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+            placeholder="z.B. ohne Pofalte"
+          />
+        </div>
+        <div>
+          <Label htmlFor="note_ru">Заметка (Русский, optional)</Label>
+          <Input
+            id="note_ru"
+            value={formData.note_ru || ''}
+            onChange={(e) => setFormData({ ...formData, note_ru: e.target.value })}
+            placeholder="напр. без складки"
           />
         </div>
       </div>
@@ -825,8 +869,11 @@ const SubscriptionEditor = ({
       name: '',
       price: '',
       period: 'pro Monat',
+      period_ru: '',
       treatments: '',
+      treatments_ru: '',
       frequency: '',
+      frequency_ru: '',
       features: [],
       popular: false
     }
@@ -864,30 +911,60 @@ const SubscriptionEditor = ({
           />
         </div>
         <div>
-          <Label htmlFor="period">Zeitraum</Label>
+          <Label htmlFor="period">Zeitraum (Deutsch)</Label>
           <Input
             id="period"
             value={formData.period}
             onChange={(e) => setFormData({ ...formData, period: e.target.value })}
             required
+            placeholder="z.B. pro Monat"
           />
         </div>
         <div>
-          <Label htmlFor="treatments">Behandlungen</Label>
+          <Label htmlFor="period_ru">Период (Русский)</Label>
+          <Input
+            id="period_ru"
+            value={formData.period_ru || ''}
+            onChange={(e) => setFormData({ ...formData, period_ru: e.target.value })}
+            placeholder="напр. в месяц"
+          />
+        </div>
+        <div>
+          <Label htmlFor="treatments">Behandlungen (Deutsch)</Label>
           <Input
             id="treatments"
             value={formData.treatments}
             onChange={(e) => setFormData({ ...formData, treatments: e.target.value })}
             required
+            placeholder="z.B. 6 Behandlungen"
           />
         </div>
         <div>
-          <Label htmlFor="frequency">Häufigkeit</Label>
+          <Label htmlFor="treatments_ru">Процедуры (Русский)</Label>
+          <Input
+            id="treatments_ru"
+            value={formData.treatments_ru || ''}
+            onChange={(e) => setFormData({ ...formData, treatments_ru: e.target.value })}
+            placeholder="напр. 6 процедур"
+          />
+        </div>
+        <div>
+          <Label htmlFor="frequency">Häufigkeit (Deutsch)</Label>
           <Input
             id="frequency"
             value={formData.frequency}
             onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
             required
+            placeholder="z.B. Alle 6 Wochen"
+          />
+        </div>
+        <div>
+          <Label htmlFor="frequency_ru">Частота (Русский)</Label>
+          <Input
+            id="frequency_ru"
+            value={formData.frequency_ru || ''}
+            onChange={(e) => setFormData({ ...formData, frequency_ru: e.target.value })}
+            placeholder="напр. Каждые 6 недель"
           />
         </div>
         <div className="flex items-center space-x-2">
