@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Scissors, Palette, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
@@ -9,6 +9,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const ManikuerePedikuere = () => {
   const { t } = useLanguage();
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
+
   useEffect(() => {
     setPageMeta({
       title: 'Maniküre & Pediküre München | Yuliia Cheporska Studio',
@@ -277,7 +290,7 @@ const ManikuerePedikuere = () => {
                       className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                       asChild
                     >
-                      <Link to="/preis#manicure">
+                      <Link to={withLang("/preis#manicure")}>
                         {t('nails.view-prices')}
                       </Link>
                     </Button>
@@ -341,7 +354,7 @@ const ManikuerePedikuere = () => {
                       className="border-primary text-primary hover:bg-primary hover:text-white"
                       asChild
                     >
-                      <Link to="/preis#pedicure">
+                      <Link to={withLang("/preis#pedicure")}>
                         {t('nails.view-prices')}
                       </Link>
                     </Button>

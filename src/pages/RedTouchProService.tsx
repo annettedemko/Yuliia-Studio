@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight,
   Phone,
@@ -25,6 +25,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const RedTouchProService = () => {
   const { t } = useLanguage();
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
+
   useEffect(() => {
     setPageMeta({
       title: 'RedTouch 675 nm München – Hautbild & Pigment',
@@ -380,7 +393,7 @@ const RedTouchProService = () => {
               className="bg-transparent border-white/80 text-white hover:bg-white/10 backdrop-blur-sm"
               asChild
             >
-              <Link to="/preis#redtouchpro">
+              <Link to={withLang("/preis#redtouchpro")}>
                 Preise ansehen
               </Link>
             </Button>

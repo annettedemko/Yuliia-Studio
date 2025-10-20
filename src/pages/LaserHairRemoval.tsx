@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
@@ -10,6 +10,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const LaserHairRemoval = () => {
   const { t } = useLanguage();
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
+
   useEffect(() => {
     setPageMeta({
       title: 'Laser-Haarentfernung München | Alexandrit & Diodenlaser',
@@ -102,7 +115,7 @@ const LaserHairRemoval = () => {
               className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
               asChild
             >
-              <Link to="/preis#alexandrit">
+              <Link to={withLang("/preis#alexandrit")}>
                 {t('service.button.prices')}
               </Link>
             </Button>
@@ -193,7 +206,7 @@ const LaserHairRemoval = () => {
 
             {/* Comparison Link */}
             <div className="text-center mt-8">
-              <Link to="/alexandrit-gegen-diodenlaser">
+              <Link to={withLang("/alexandrit-gegen-diodenlaser")}>
                 <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all w-full sm:w-auto">
                   <span className="font-semibold text-sm sm:text-base">{t('laser.comparison.button')}</span>
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
@@ -577,7 +590,7 @@ const LaserHairRemoval = () => {
                 className="bg-gradient-hero text-white border-none shadow-rose"
                 asChild
               >
-                <Link to="/preis">
+                <Link to={withLang("/preis")}>
                   {t('laser.pricing.view-all')}
                 </Link>
               </Button>

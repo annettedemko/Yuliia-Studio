@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MapPin, Mail, Instagram } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { subscriptionsService } from '@/services/contentService';
@@ -11,8 +11,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const Home = () => {
   const { t } = useLanguage();
+  const location = useLocation();
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
   useEffect(() => {
     setPageMeta({
       title: 'Yuliia Cheporska Studio München | Laser, RedTouch & Nägel',
@@ -120,7 +131,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <Link to="/laser-haarentfernung-muenchen" className="group">
+            <Link to={withLang('/laser-haarentfernung-muenchen')} className="group">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -149,7 +160,7 @@ const Home = () => {
               </Card>
             </Link>
 
-            <Link to="/redtouch-laser-muenchen" className="group">
+            <Link to={withLang('/redtouch-laser-muenchen')} className="group">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -174,7 +185,7 @@ const Home = () => {
               </Card>
             </Link>
 
-            <Link to="/icoone-laser-muenchen" className="group">
+            <Link to={withLang('/icoone-laser-muenchen')} className="group">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -200,7 +211,7 @@ const Home = () => {
               </Card>
             </Link>
 
-            <Link to="/manikuere-pedikuere-muenchen" className="group">
+            <Link to={withLang('/manikuere-pedikuere-muenchen')} className="group">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -233,7 +244,7 @@ const Home = () => {
               asChild
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              <Link to="/preis">
+              <Link to={withLang('/preis')}>
                 {t('home.services.view-prices')}
               </Link>
             </Button>
@@ -341,7 +352,7 @@ const Home = () => {
               asChild
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
-              <Link to="/preis">
+              <Link to={withLang('/preis')}>
                 {t('home.services.view-prices')}
               </Link>
             </Button>

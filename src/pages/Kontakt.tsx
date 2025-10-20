@@ -1,13 +1,26 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Clock, Train, Car, Instagram, Calendar, MessageCircle, Send } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Kontakt = () => {
   const { t } = useLanguage();
+
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
 
   useEffect(() => {
     setPageMeta({
@@ -284,7 +297,7 @@ const Kontakt = () => {
                 className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
                 asChild
               >
-                <Link to="/services">
+                <Link to={withLang("/services")}>
                   {t('kontakt.cta.services')}
                 </Link>
               </Button>
@@ -294,7 +307,7 @@ const Kontakt = () => {
                 className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
                 asChild
               >
-                <Link to="/preis">
+                <Link to={withLang("/preis")}>
                   {t('kontakt.cta.prices')}
                 </Link>
               </Button>

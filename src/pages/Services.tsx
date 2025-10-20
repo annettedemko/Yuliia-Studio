@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Instagram, Waves, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { setPageMeta } from '@/seo/seo';
@@ -8,6 +8,17 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
   const { t } = useLanguage();
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
 
   useEffect(() => {
     setPageMeta({
@@ -43,7 +54,7 @@ const Services = () => {
               {t('services.laser.subtitle')}
             </p>
             <Button asChild className="bg-gradient-hero text-white mb-6">
-              <Link to="/laser-haarentfernung-muenchen">
+              <Link to={withLang('/laser-haarentfernung-muenchen')}>
                 {t('services.laser.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
@@ -51,7 +62,7 @@ const Services = () => {
 
           {/* Motus AX Alexandrit-Laser */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/laser-haarentfernung-muenchen" className="block">
+            <Link to={withLang('/laser-haarentfernung-muenchen')} className="block">
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
@@ -70,12 +81,12 @@ const Services = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/laser-haarentfernung-muenchen">
+                      <Link to={withLang('/laser-haarentfernung-muenchen')}>
                         {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#alexandrit">{t('services.motus.view-prices')}</Link>
+                      <Link to={withLang('/preis#alexandrit')}>{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -86,7 +97,7 @@ const Services = () => {
 
           {/* M-Tech Diodenlaser */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/laser-haarentfernung-muenchen" className="block">
+            <Link to={withLang('/laser-haarentfernung-muenchen')} className="block">
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
@@ -116,12 +127,12 @@ const Services = () => {
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/laser-haarentfernung-muenchen">
+                      <Link to={withLang('/laser-haarentfernung-muenchen')}>
                         {t('services.motus.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#dioden">{t('services.motus.view-prices')}</Link>
+                      <Link to={withLang('/preis#dioden')}>{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -132,7 +143,7 @@ const Services = () => {
 
           {/* Icoone Laser Section */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/icoone-laser-muenchen" className="block">
+            <Link to={withLang('/icoone-laser-muenchen')} className="block">
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
@@ -156,12 +167,12 @@ const Services = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/icoone-laser-muenchen">
+                      <Link to={withLang('/icoone-laser-muenchen')}>
                         {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#icoone">{t('services.motus.view-prices')}</Link>
+                      <Link to={withLang('/preis#icoone')}>{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -172,7 +183,7 @@ const Services = () => {
 
           {/* RedTouchPro Section */}
           <div className="max-w-5xl mx-auto mb-6">
-            <Link to="/redtouch-laser-muenchen" className="block">
+            <Link to={withLang('/redtouch-laser-muenchen')} className="block">
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
@@ -205,12 +216,12 @@ const Services = () => {
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button asChild className="bg-gradient-hero text-white">
-                      <Link to="/redtouch-laser-muenchen">
+                      <Link to={withLang('/redtouch-laser-muenchen')}>
                         {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <Link to="/preis#redtouchpro">{t('services.motus.view-prices')}</Link>
+                      <Link to={withLang('/preis#redtouchpro')}>{t('services.motus.view-prices')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -226,7 +237,7 @@ const Services = () => {
       <section className="py-6 bg-white mt-[-2%]">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <Link to="/manikuere-pedikuere-muenchen" className="block">
+            <Link to={withLang('/manikuere-pedikuere-muenchen')} className="block">
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                   <div className="p-8 flex flex-col justify-center">
@@ -236,12 +247,12 @@ const Services = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Button asChild className="bg-gradient-hero text-white">
-                        <Link to="/manikuere-pedikuere-muenchen">
+                        <Link to={withLang('/manikuere-pedikuere-muenchen')}>
                           {t('common.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
                         </Link>
                       </Button>
                       <Button variant="outline" asChild>
-                        <Link to="/preis#manicure">{t('services.motus.view-prices')}</Link>
+                        <Link to={withLang('/preis#manicure')}>{t('services.motus.view-prices')}</Link>
                       </Button>
                     </div>
                   </div>
@@ -308,7 +319,7 @@ const Services = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-6 text-center">{t('services.all.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Link to="/laser-haarentfernung-muenchen" className="group">
+              <Link to={withLang('/laser-haarentfernung-muenchen')} className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.laser')}</span>
@@ -316,7 +327,7 @@ const Services = () => {
                   </div>
                 </Card>
               </Link>
-              <Link to="/redtouch-laser-muenchen" className="group">
+              <Link to={withLang('/redtouch-laser-muenchen')} className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.redtouch')}</span>
@@ -324,7 +335,7 @@ const Services = () => {
                   </div>
                 </Card>
               </Link>
-              <Link to="/icoone-laser-muenchen" className="group">
+              <Link to={withLang('/icoone-laser-muenchen')} className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.icoone')}</span>
@@ -332,7 +343,7 @@ const Services = () => {
                   </div>
                 </Card>
               </Link>
-              <Link to="/manikuere-pedikuere-muenchen" className="group">
+              <Link to={withLang('/manikuere-pedikuere-muenchen')} className="group">
                 <Card className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-medium text-primary group-hover:text-rose-gold transition-colors">{t('services.all.nails')}</span>
