@@ -7,7 +7,8 @@ import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, MapPin } fr
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
-import { setPageMeta } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
+
 // Изображения загружаются из папки public
 
 const About = () => {
@@ -24,13 +25,6 @@ const About = () => {
     if (path === '/') return langPrefix;
     return `${langPrefix}${path}`;
   };
-
-  useEffect(() => {
-    setPageMeta({
-      title: 'Über uns – Yuliia Cheporska Studio München',
-      description: 'Studio & Team in München-Haidhausen. Meist gut verträgliche Behandlungen dank Kontaktkühlung. Kontakt, Anfahrt & Öffnungszeiten.'
-    });
-  }, []);
 
   const scrollToContact = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
@@ -74,6 +68,8 @@ const About = () => {
   ];
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
       
       {/* Hero Section */}
@@ -313,7 +309,8 @@ const About = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

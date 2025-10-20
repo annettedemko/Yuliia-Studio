@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { setPageMeta } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
 
 const Pricing = () => {
   const { language, t } = useLanguage();
@@ -28,12 +28,6 @@ const Pricing = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Preise – Yuliia Cheporska Studio München',
-      description: 'Transparente Preise & Pakete: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Alle Zonen & Angebote im Überblick.'
-    });
-  }, []);
 
   // Helper: get translated text with fallback
   const getTranslated = (de: string, ru?: string) => {
@@ -176,9 +170,11 @@ const Pricing = () => {
   );
 
   return (
-    <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
-      
-      {/* Hero Section */}
+    <>
+      <PageHelmet />
+      <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
+
+        {/* Hero Section */}
       <section
         className="relative pt-24 pb-16"
         style={{
@@ -457,7 +453,8 @@ const Pricing = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

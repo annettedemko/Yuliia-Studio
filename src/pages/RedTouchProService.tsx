@@ -20,8 +20,9 @@ import {
   Waves
 } from 'lucide-react';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+
 import { useLanguage } from '@/contexts/LanguageContext';
+import { PageHelmet } from '@/components/PageHelmet';
 
 const RedTouchProService = () => {
   const { t } = useLanguage();
@@ -39,11 +40,6 @@ const RedTouchProService = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'RedTouch 675 nm München – Hautbild & Pigment',
-      description: 'RedTouch München: 675 nm, nicht-ablativ – Hautstruktur, feine Linien, Akne-Narben & ausgewählte Pigmentthemen. Meist kaum Downtime.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -127,6 +123,8 @@ const RedTouchProService = () => {
   ];
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -150,8 +148,8 @@ const RedTouchProService = () => {
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               {t('redtouch.hero.description')}
             </p>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Benefits Section */}
@@ -172,8 +170,8 @@ const RedTouchProService = () => {
                       <p className="text-muted-foreground">
                         Gezielte Kollagen-Ansprache für Hautverjüngung und Straffung – besonders effektiv bei Pigment und feinen Linien.
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -186,8 +184,8 @@ const RedTouchProService = () => {
                       <p className="text-muted-foreground">
                         Nicht-ablativ: keine Abtragung der Haut, meist schnelle Rückkehr zum Alltag.
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -200,8 +198,8 @@ const RedTouchProService = () => {
                       <p className="text-muted-foreground">
                         Individuelle Behandlungsplanung nach Hauttyp und Behandlungsziel.
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -214,13 +212,13 @@ const RedTouchProService = () => {
                       <p className="text-muted-foreground">
                         Bequem erreichbar nahe Ostbahnhof – ideal für Berufstätige in München.
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Main Features Section */}
@@ -231,7 +229,7 @@ const RedTouchProService = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Das RedTouchPro System nutzt eine einzigartige 675nm Wellenlänge für optimale Kollagenstimulation
             </p>
-          </div>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -241,13 +239,13 @@ const RedTouchProService = () => {
                   alt="RedTouch PRO Logo"
                   className="h-20 w-auto"
                 />
-              </div>
+                </div>
               <img
                 src="/deka2.png"
                 alt="RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hauptgerät"
                 className="w-full h-auto rounded-lg shadow-elegant"
               />
-            </div>
+              </div>
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-primary mb-6">
                 Modernste Technologie für Ihre Haut
@@ -264,9 +262,9 @@ const RedTouchProService = () => {
                   </li>
                 ))}
               </ul>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Before/After Gallery Section */}
@@ -277,7 +275,7 @@ const RedTouchProService = () => {
             <p className="text-xl text-muted-foreground">
               Überzeugen Sie sich von den beeindruckenden Ergebnissen unserer RedTouchPro Behandlungen
             </p>
-          </div>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {[
@@ -294,10 +292,10 @@ const RedTouchProService = () => {
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+                </div>
             ))}
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Device Features */}
@@ -308,7 +306,7 @@ const RedTouchProService = () => {
             <p className="text-xl text-muted-foreground">
               Technische Perfektion in jedem Detail
             </p>
-          </div>
+            </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {deviceFeatures.map((feature, index) => (
@@ -316,14 +314,14 @@ const RedTouchProService = () => {
                 <CardContent className="p-8">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="w-8 h-8 text-rose-gold" />
-                  </div>
+                    </div>
                   <h3 className="text-xl font-bold text-primary mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Behandlungsgebiete */}
@@ -335,7 +333,7 @@ const RedTouchProService = () => {
               <p className="text-xl text-muted-foreground">
                 Vielseitige Anwendungsmöglichkeiten für optimale Ergebnisse
               </p>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
@@ -348,7 +346,7 @@ const RedTouchProService = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+                </div>
               <div>
                 <Card className="p-6">
                   <h3 className="text-xl font-bold text-primary mb-4">Behandlungshinweise</h3>
@@ -360,10 +358,10 @@ const RedTouchProService = () => {
                     <li>• Sofortige Rückkehr zum normalen Alltag möglich</li>
                   </ul>
                 </Card>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* CTA Section */}
@@ -397,11 +395,12 @@ const RedTouchProService = () => {
                 Preise ansehen
               </Link>
             </Button>
+            </div>
           </div>
-        </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

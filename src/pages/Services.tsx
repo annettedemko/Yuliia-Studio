@@ -2,8 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Instagram, Waves, CheckCircle } from 'lucide-react';
-import { useEffect } from 'react';
-import { setPageMeta } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Services = () => {
@@ -20,15 +19,10 @@ const Services = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'Leistungen – Laser, RedTouch, Icoone, Nägel | München',
-      description: 'Alle Leistungen im Überblick: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Jetzt passende Behandlung finden.'
-    });
-  }, []);
-
   return (
-    <div className="min-h-screen pt-16">
+    <>
+      <PageHelmet />
+      <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
       <section className="py-6 bg-gradient-to-b from-accent/10 to-background">
@@ -384,7 +378,8 @@ const Services = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

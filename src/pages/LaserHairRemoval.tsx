@@ -4,7 +4,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 // Изображения загружаются из папки public
 
@@ -24,11 +25,6 @@ const LaserHairRemoval = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'Laser-Haarentfernung München | Alexandrit & Diodenlaser',
-      description: 'Laser Haarentfernung München: Alexandrit (755 nm) & Diodenlaser. Langanhaltende Reduktion, Kontaktkühlung, Ablauf & Zonen. Preise auf /preise.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -79,9 +75,11 @@ const LaserHairRemoval = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
-      
-      {/* Hero Section */}
+    <>
+      <PageHelmet />
+      <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
+
+        {/* Hero Section */}
       <section
         className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
         style={{
@@ -729,7 +727,8 @@ const LaserHairRemoval = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

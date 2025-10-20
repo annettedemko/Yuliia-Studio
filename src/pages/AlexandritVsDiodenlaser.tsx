@@ -3,7 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Info, Zap, Shield, Sparkles, Target, Award, Star } from 'lucide-react';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -23,11 +24,6 @@ const AlexandritVsDiodenlaser = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'Alexandrit vs. Diodenlaser – Unterschiede & Einsatz',
-      description: 'Vergleich: Alexandrit vs. Diodenlaser – Wirkung, Komfort, Eignung je Haut/Haartyp, Sommer/Bräune, Sicherheit, Sitzungen. Praxis-FAQ & Empfehlungen.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -50,9 +46,11 @@ const AlexandritVsDiodenlaser = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-16">
+    <>
+      <PageHelmet />
+      <div className="min-h-screen pt-16">
 
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section
         className="relative min-h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-white overflow-hidden"
         style={{
@@ -897,7 +895,8 @@ const AlexandritVsDiodenlaser = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { HreflangTags } from "@/components/HreflangTags";
@@ -50,18 +49,6 @@ const App = () => (
     <AuthProvider>
       <LanguageProvider>
         <TooltipProvider>
-          <Helmet>
-            <title>Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro, Maniküre, Pediküre</title>
-            <meta name="description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Elsässer Str. 33. Александритовый лазер Мюнхен." />
-            <meta name="author" content="Yuliia Cheporska Studio" />
-            <meta name="keywords" content="Laser Haarentfernung München, Alexandrit Laser München, Diodenlaser München, iCoone München, RedTouchPro München, Maniküre München, Pediküre München, DEKA München, Kosmetikstudio München, Александритовый лазер Мюнхен, эпиляция Мюнхен" />
-            <meta property="og:title" content="Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro" />
-            <meta property="og:description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Александритovый лазер." />
-            <meta property="og:type" content="website" />
-            <meta property="og:image" content="https://www.munchen-beauty.de/logo2.jpg" />
-            <meta property="og:url" content="https://www.munchen-beauty.de/" />
-            <meta property="og:locale" content="de_DE" />
-          </Helmet>
           <Toaster />
           <Sonner />
           <BrowserRouter

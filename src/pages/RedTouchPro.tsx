@@ -19,7 +19,8 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
-import { setPageMeta } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
+
 
 const RedTouchPro = () => {
   const { t } = useLanguage();
@@ -36,12 +37,6 @@ const RedTouchPro = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
-    setPageMeta({
-      title: 'RedTouch PRO – DEKA Technologie für Hautverjüngung',
-      description: 'RedTouch PRO von DEKA: 675 nm Wellenlänge, MTD-Technologie, Moveo-Modus. Professionelle Hautverjüngung, Kollagenstimulation & Hautstraffung. Details zur Technologie.'
-    });
-  }, []);
   const deviceFeatures = [
     {
       icon: Sparkles,
@@ -142,6 +137,8 @@ const RedTouchPro = () => {
   ];
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
@@ -163,9 +160,9 @@ const RedTouchPro = () => {
                 <div className="absolute top-4 left-4">
                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-red-600 font-semibold text-sm">{t('redtouch.hero.badge')}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
               <div className="p-8 lg:p-12 flex flex-col justify-center relative">
                 <div className="absolute top-4 right-4">
                   <img
@@ -176,7 +173,7 @@ const RedTouchPro = () => {
                       filter: 'brightness(1.2) saturate(1.1)',
                     }}
                   />
-                </div>
+                  </div>
 
                 <div className="mb-6 mt-8">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
@@ -187,7 +184,7 @@ const RedTouchPro = () => {
                   <p className="text-xl md:text-2xl text-red-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
                     {t('redtouch.hero.subtitle')}
                   </p>
-                </div>
+                  </div>
 
                 <div className="flex justify-start animate-slide-up" style={{animationDelay: '400ms'}}>
                   <Button
@@ -200,11 +197,11 @@ const RedTouchPro = () => {
                       {t('redtouch.hero.button.consultation')}
                     </a>
                   </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* RedTouch Gallery Section */}
@@ -214,7 +211,7 @@ const RedTouchPro = () => {
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.gallery.title')}</h2>
               <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Main Device Image */}
@@ -228,10 +225,10 @@ const RedTouchPro = () => {
                   <div className="absolute top-4 right-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
                       <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
               {/* Side Images */}
               <div className="space-y-8">
@@ -243,8 +240,8 @@ const RedTouchPro = () => {
                       alt="RedTouch Logo"
                       className="w-full h-auto object-contain group-hover:scale-110 transition-transform duration-500"
                     />
+                    </div>
                   </div>
-                </div>
 
                 {/* Detail Image */}
                 <div className="relative group animate-slide-up delay-300">
@@ -257,13 +254,13 @@ const RedTouchPro = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <p className="text-white text-sm font-medium">675 nm Wellenlänge</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Revolutionary Technology Section with Floating Features */}
@@ -272,7 +269,7 @@ const RedTouchPro = () => {
           <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-float"></div>
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-rose-gold/10 rounded-full blur-lg animate-bounce delay-1000"></div>
-        </div>
+          </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
@@ -282,7 +279,7 @@ const RedTouchPro = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t('redtouch.tech.subtitle')}
               </p>
-            </div>
+              </div>
 
             {/* Cards Around Device Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-0 lg:mb-[-40px]">
@@ -298,18 +295,18 @@ const RedTouchPro = () => {
                       <div className="flex items-center gap-3">
                         <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                           <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
-                        </div>
+                          </div>
                         <div className="flex-1">
                           <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
+                          </div>
                         </div>
-                      </div>
                       {/* Animated border bottom */}
                       <div className="mt-3 h-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
-              </div>
+                </div>
 
               {/* CENTER - Device Image */}
               <div className="lg:col-span-6 text-center">
@@ -325,8 +322,8 @@ const RedTouchPro = () => {
                   <div className="absolute bottom-12 left-12 w-2 h-2 bg-pink-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
                   <div className="absolute top-1/3 left-8 w-1 h-1 bg-red-300 rounded-full animate-ping delay-500 opacity-80"></div>
                   <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-pink-600 rounded-full animate-pulse delay-700 opacity-75"></div>
+                  </div>
                 </div>
-              </div>
 
               {/* RIGHT SIDE - Remaining 3 cards */}
               <div className="lg:col-span-3 space-y-6">
@@ -340,21 +337,21 @@ const RedTouchPro = () => {
                       <div className="flex items-center gap-3">
                         <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                           <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
-                        </div>
+                          </div>
                         <div className="flex-1">
                           <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
+                          </div>
                         </div>
-                      </div>
                       {/* Animated border bottom */}
                       <div className="mt-3 h-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Scientific Analysis Section */}
@@ -365,7 +362,7 @@ const RedTouchPro = () => {
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.analysis.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">{t('redtouch.analysis.subtitle')}</p>
-            </div>
+              </div>
 
             {/* Large Image at the top */}
             <div className="text-center mb-6 animate-slide-up">
@@ -381,8 +378,8 @@ const RedTouchPro = () => {
                       <Microscope className="w-4 h-4 mr-2" />
                       Van Gieson-Färbetechnik
                     </span>
+                    </div>
                   </div>
-                </div>
 
                 {/* RedTouch Logo in top right - hidden on mobile */}
                 <div className="absolute top-4 right-4 hidden md:block">
@@ -391,9 +388,9 @@ const RedTouchPro = () => {
                     alt="RedTouch Logo"
                     className="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity"
                   />
+                  </div>
                 </div>
               </div>
-            </div>
 
             {/* Text content below */}
             <div className="max-w-5xl mx-auto animate-slide-up delay-300 mt-0 lg:mt-[-20px]">
@@ -415,10 +412,10 @@ const RedTouchPro = () => {
                     <p className="text-muted-foreground leading-relaxed">
                       {t('redtouch.analysis.histology.p3')}
                     </p>
-                  </div>
+                    </div>
                 </CardContent>
               </Card>
-            </div>
+              </div>
 
             {/* Additional Scientific Image */}
             <div className="text-center mb-6 animate-slide-up delay-500 mt-10">
@@ -434,12 +431,12 @@ const RedTouchPro = () => {
                       <Award className="w-4 h-4 mr-2" />
                       Klinische Studie
                     </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Premium Device Showcase Section */}
@@ -452,7 +449,7 @@ const RedTouchPro = () => {
               <p className="text-xl text-muted-foreground">
                 {t('redtouch.device.subtitle')}
               </p>
-            </div>
+              </div>
 
             {/* Premium Device Card with DEKA-style design */}
             <div className="flex justify-center animate-slide-up delay-300">
@@ -465,7 +462,7 @@ const RedTouchPro = () => {
                   {/* Silver gradient border */}
                   <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-white to-gray-200 p-[2px] rounded-2xl">
                     <div className="bg-white h-full w-full rounded-2xl"></div>
-                  </div>
+                    </div>
 
                   {/* Content */}
                   <div className="relative z-10 p-4 lg:p-8 h-full flex flex-col justify-center items-center">
@@ -478,55 +475,55 @@ const RedTouchPro = () => {
                       />
                       {/* Subtle glow around device */}
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-primary/10 rounded-full blur-2xl scale-110"></div>
-                    </div>
+                      </div>
 
                     {/* Device name and badge */}
                     <div className="text-center">
                       <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-primary px-4 py-2 rounded-full mb-4">
                         <Star className="w-4 h-4 text-white mr-2" />
                         <span className="text-white font-semibold text-sm">DEKA Premium</span>
-                      </div>
+                        </div>
                       <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('redtouch.device.name')}</h3>
                       <p className="text-gray-600 font-medium">{t('redtouch.device.tech')}</p>
+                      </div>
                     </div>
-                  </div>
 
                   {/* Floating sparkle effects */}
                   <div className="absolute top-6 right-6 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
                   <div className="absolute bottom-8 left-8 w-1 h-1 bg-primary rounded-full animate-bounce delay-1000 opacity-40"></div>
                   <div className="absolute top-1/3 left-6 w-1 h-1 bg-blue-300 rounded-full animate-ping delay-500 opacity-50"></div>
+                  </div>
                 </div>
               </div>
-            </div>
 
             {/* Technical specifications below */}
             <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-up delay-500">
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-6 h-6 text-blue-600" />
-                </div>
+                  </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec1.title')}</h4>
                 <p className="text-gray-600 text-sm">{t('redtouch.device.spec1.desc')}</p>
-              </div>
+                </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-6 h-6 text-green-600" />
-                </div>
+                  </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec2.title')}</h4>
                 <p className="text-gray-600 text-sm">{t('redtouch.device.spec2.desc')}</p>
-              </div>
+                </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Activity className="w-6 h-6 text-purple-600" />
-                </div>
+                  </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec3.title')}</h4>
                 <p className="text-gray-600 text-sm">{t('redtouch.device.spec3.desc')}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Vorteile des RedTouch PRO */}
@@ -536,7 +533,7 @@ const RedTouchPro = () => {
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.advantages.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {advantages.map((advantage, index) => (
@@ -544,15 +541,15 @@ const RedTouchPro = () => {
                   <CardContent className="p-6">
                     <div className="bg-blue-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                       <advantage.icon className="w-8 h-8 text-blue-500" />
-                    </div>
+                      </div>
                     <h3 className="text-lg font-bold text-primary mb-3">{t(advantage.titleKey)}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{t(advantage.descKey)}</p>
                   </CardContent>
                 </Card>
               ))}
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Anwendungsbereiche */}
@@ -565,20 +562,20 @@ const RedTouchPro = () => {
               <p className="text-xl text-muted-foreground">
                 {t('redtouch.applications.subtitle')}
               </p>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {applications.map((applicationKey, index) => (
                 <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-card hover:shadow-lg transition-shadow animate-slide-up" style={{animationDelay: `${index * 100}ms`}}>
                   <div className="bg-blue-500/10 p-2 rounded-full">
                     <CheckCircle className="w-5 h-5 text-blue-500" />
-                  </div>
+                    </div>
                   <span className="text-primary font-medium">{t(applicationKey)}</span>
-                </div>
+                  </div>
               ))}
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Design & Ergonomie */}
@@ -588,7 +585,7 @@ const RedTouchPro = () => {
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.design.title')}</h2>
               <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-slide-up">
@@ -600,22 +597,22 @@ const RedTouchPro = () => {
                   <p className="text-lg text-muted-foreground leading-relaxed">
                     {t('redtouch.design.p2')}
                   </p>
-                </div>
+                  </div>
 
                 <div className="space-y-6">
                   {designFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start gap-4">
                       <div className="bg-primary/10 p-3 rounded-full">
                         <feature.icon className="w-6 h-6 text-primary" />
-                      </div>
+                        </div>
                       <div>
                         <h4 className="font-semibold text-primary mb-2">{t(feature.titleKey)}</h4>
                         <p className="text-muted-foreground">{t(feature.descKey)}</p>
+                        </div>
                       </div>
-                    </div>
                   ))}
+                  </div>
                 </div>
-              </div>
 
               <div className="animate-slide-up delay-300">
                 <div className="relative">
@@ -629,13 +626,13 @@ const RedTouchPro = () => {
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
                       <span className="text-primary font-semibold text-sm">Moveo-Modus</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* CTA Section */}
@@ -660,11 +657,12 @@ const RedTouchPro = () => {
                 {t('contact.send-email')}
               </a>
             </Button>
+            </div>
           </div>
-        </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

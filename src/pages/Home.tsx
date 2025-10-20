@@ -3,7 +3,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MapPin, Mail, Instagram } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 import { subscriptionsService } from '@/services/contentService';
 import type { SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,11 +26,6 @@ const Home = () => {
     return `${langPrefix}${path}`;
   };
   useEffect(() => {
-    setPageMeta({
-      title: 'Yuliia Cheporska Studio München | Laser, RedTouch & Nägel',
-      description: 'Studio in München-Haidhausen (nahe Ostbahnhof). Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm, Icoone®️, Nagelstudio. Termin online.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
@@ -85,9 +81,11 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen pt-16 bg-gradient-to-b from-white via-gray-50/30 to-white">{/* Add padding-top for fixed navigation */}
-      
-      {/* Hero Section */}
+    <>
+      <PageHelmet />
+      <div className="min-h-screen pt-16 bg-gradient-to-b from-white via-gray-50/30 to-white">{/* Add padding-top for fixed navigation */}
+
+        {/* Hero Section */}
       <section
         className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-fixed sm:bg-fixed"
         style={{
@@ -650,7 +648,8 @@ const Home = () => {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

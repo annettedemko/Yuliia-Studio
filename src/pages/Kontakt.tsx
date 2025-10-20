@@ -3,8 +3,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Clock, Train, Car, Instagram, Calendar, MessageCircle, Send } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+
 import { useLanguage } from '@/contexts/LanguageContext';
+import { PageHelmet } from '@/components/PageHelmet';
 
 const Kontakt = () => {
   const { t } = useLanguage();
@@ -23,11 +24,6 @@ const Kontakt = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'Kontakt – Yuliia Cheporska Studio München-Haidhausen | Elsässer Str. 33',
-      description: 'Yuliia Cheporska Studio in München-Haidhausen (Elsässer Str. 33). Nur 5 Min. vom Ostbahnhof. Öffentliche Verkehrsmittel: Tram 19, Bus 145. Online buchen oder anrufen.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
@@ -69,6 +65,8 @@ const Kontakt = () => {
   }, []);
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -79,8 +77,8 @@ const Kontakt = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('kontakt.hero.subtitle')}
             </p>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Contact Cards */}
@@ -93,7 +91,7 @@ const Kontakt = () => {
               <CardContent className="p-8 text-center">
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-8 h-8 text-rose-gold" />
-                </div>
+                  </div>
                 <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.address.title')}</h3>
                 <p className="text-muted-foreground mb-2">{t('kontakt.address.street')}</p>
                 <p className="text-muted-foreground mb-4">{t('kontakt.address.city')}</p>
@@ -113,7 +111,7 @@ const Kontakt = () => {
               <CardContent className="p-8 text-center">
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Phone className="w-8 h-8 text-rose-gold" />
-                </div>
+                  </div>
                 <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.phone.title')}</h3>
                 <p className="text-muted-foreground mb-2">
                   <a href="tel:+4915206067810" className="hover:text-rose-gold transition-colors">
@@ -137,7 +135,7 @@ const Kontakt = () => {
               <CardContent className="p-8 text-center">
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Send className="w-8 h-8 text-rose-gold" />
-                </div>
+                  </div>
                 <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.telegram.title')}</h3>
                 <a
                   href="https://t.me/+4915206067810"
@@ -163,7 +161,7 @@ const Kontakt = () => {
               <CardContent className="p-8 text-center">
                 <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="w-8 h-8 text-rose-gold" />
-                </div>
+                  </div>
                 <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.hours.title')}</h3>
                 <p className="text-muted-foreground mb-1">{t('kontakt.hours.weekdays')}</p>
                 <p className="text-muted-foreground mb-1">{t('kontakt.hours.saturday')}</p>
@@ -171,8 +169,8 @@ const Kontakt = () => {
               </CardContent>
             </Card>
 
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Map Section */}
@@ -193,7 +191,7 @@ const Kontakt = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Yuliia Cheporska Studio München-Haidhausen Standort"
               ></iframe>
-            </div>
+              </div>
 
             {/* Transport Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -204,7 +202,7 @@ const Kontakt = () => {
                   <div className="flex items-start space-x-4">
                     <div className="bg-primary/10 p-3 rounded-full">
                       <Train className="w-6 h-6 text-primary" />
-                    </div>
+                      </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.transport.public.title')}</h3>
                       <ul className="space-y-2 text-muted-foreground">
@@ -221,8 +219,8 @@ const Kontakt = () => {
                           <span>{t('kontakt.transport.public.bus')}</span>
                         </li>
                       </ul>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -232,7 +230,7 @@ const Kontakt = () => {
                   <div className="flex items-start space-x-4">
                     <div className="bg-primary/10 p-3 rounded-full">
                       <Car className="w-6 h-6 text-primary" />
-                    </div>
+                      </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.transport.car.title')}</h3>
                       <ul className="space-y-2 text-muted-foreground">
@@ -263,14 +261,14 @@ const Kontakt = () => {
                           <span>{t('kontakt.transport.car.directions')}</span>
                         </li>
                       </ul>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* CTA Section */}
@@ -311,7 +309,7 @@ const Kontakt = () => {
                   {t('kontakt.cta.prices')}
                 </Link>
               </Button>
-            </div>
+              </div>
 
             {/* Social Media */}
             <div className="flex justify-center items-center gap-4 mt-8">
@@ -325,12 +323,13 @@ const Kontakt = () => {
               >
                 <Instagram className="w-6 h-6 text-white" />
               </a>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

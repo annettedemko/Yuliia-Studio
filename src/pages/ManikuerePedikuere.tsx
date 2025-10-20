@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Scissors, Palette, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+
 import { useLanguage } from '@/contexts/LanguageContext';
+import { PageHelmet } from '@/components/PageHelmet';
 // Изображения загружаются из папки public
 
 const ManikuerePedikuere = () => {
@@ -23,11 +24,6 @@ const ManikuerePedikuere = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'Maniküre & Pediküre München | Yuliia Cheporska Studio',
-      description: 'Maniküre & Pediküre in München-Haidhausen: präzise Pflege, saubere Form, Hygiene; Lack/Gel nach Wunsch. Termin online buchen.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -148,6 +144,8 @@ const ManikuerePedikuere = () => {
   ];
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -179,7 +177,7 @@ const ManikuerePedikuere = () => {
               {t('nails.hero.button')}
             </a>
           </Button>
-        </div>
+          </div>
       </section>
 
       {/* Benefits Section */}
@@ -200,8 +198,8 @@ const ManikuerePedikuere = () => {
                       <p className="text-muted-foreground">
                         {t('nails.services.classic.desc')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -214,8 +212,8 @@ const ManikuerePedikuere = () => {
                       <p className="text-muted-foreground">
                         {t('nails.services.gel.desc')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -228,8 +226,8 @@ const ManikuerePedikuere = () => {
                       <p className="text-muted-foreground">
                         {t('nails.services.extension.desc')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -242,13 +240,13 @@ const ManikuerePedikuere = () => {
                       <p className="text-muted-foreground">
                         {t('nails.services.art.desc')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Maniküre Services */}
@@ -260,7 +258,7 @@ const ManikuerePedikuere = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {t('nails.manicure-services.subtitle')}
               </p>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {manicureServices.map((service, index) => (
@@ -269,7 +267,7 @@ const ManikuerePedikuere = () => {
                     <div className="flex items-center gap-4">
                       <div className="bg-rose-gold/20 p-3 rounded-full">
                         <service.icon className="w-6 h-6 text-rose-gold" />
-                      </div>
+                        </div>
                       <div className="flex-1">
                         <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
                         <div className="flex items-center gap-4 mt-2">
@@ -278,9 +276,9 @@ const ManikuerePedikuere = () => {
                             {service.duration}
                           </span>
                           <span className="text-lg font-bold text-rose-gold">{service.price}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{service.description}</p>
@@ -297,7 +295,7 @@ const ManikuerePedikuere = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+              </div>
 
             {/* Termin buchen button for Maniküre */}
             <div className="text-center mt-12">
@@ -310,9 +308,9 @@ const ManikuerePedikuere = () => {
                   {t('nails.cta.book')}
                 </a>
               </Button>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Pediküre Services */}
@@ -324,7 +322,7 @@ const ManikuerePedikuere = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {t('nails.pedicure-services.subtitle')}
               </p>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {pedicureServices.map((service, index) => (
@@ -333,7 +331,7 @@ const ManikuerePedikuere = () => {
                     <div className="flex items-center gap-4">
                       <div className="bg-primary/20 p-3 rounded-full">
                         <service.icon className="w-6 h-6 text-primary" />
-                      </div>
+                        </div>
                       <div className="flex-1">
                         <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
                         <div className="flex items-center gap-4 mt-2">
@@ -342,9 +340,9 @@ const ManikuerePedikuere = () => {
                             {service.duration}
                           </span>
                           <span className="text-lg font-bold text-primary">{service.price}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{service.description}</p>
@@ -361,7 +359,7 @@ const ManikuerePedikuere = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+              </div>
 
             {/* Termin buchen button for Pediküre */}
             <div className="text-center mt-12">
@@ -374,9 +372,9 @@ const ManikuerePedikuere = () => {
                   {t('nails.cta.book')}
                 </a>
               </Button>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Benefits Section */}
@@ -409,7 +407,7 @@ const ManikuerePedikuere = () => {
                     alt="Maniküre Design"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
-                </div>
+                  </div>
                 <div className="space-y-4 mt-8">
                   <img
                     src="/4.jpeg"
@@ -441,22 +439,22 @@ const ManikuerePedikuere = () => {
                     alt="Maniküre 7"
                     className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
+                  </div>
                 </div>
-              </div>
 
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="bg-rose-gold/20 p-2 rounded-full mt-1">
                       <Star className="w-4 h-4 text-rose-gold" />
-                    </div>
+                      </div>
                     <p className="text-muted-foreground">{benefit}</p>
-                  </div>
+                    </div>
                 ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Process Section */}
@@ -470,14 +468,14 @@ const ManikuerePedikuere = () => {
                 <div key={index} className="text-center">
                   <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-rose-gold">{process.step}</span>
-                  </div>
+                    </div>
                   <h3 className="font-bold text-primary mb-3">{process.title}</h3>
                   <p className="text-sm text-muted-foreground">{process.description}</p>
-                </div>
+                  </div>
               ))}
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Care Tips */}
@@ -552,9 +550,9 @@ const ManikuerePedikuere = () => {
                   </ul>
                 </CardContent>
               </Card>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Pediküre Gallery Section */}
@@ -583,7 +581,7 @@ const ManikuerePedikuere = () => {
                     {t('nails.gallery.item3')}
                   </li>
                 </ul>
-              </div>
+                </div>
 
               {/* Галерея изображений педикюра */}
               <div className="flex gap-4">
@@ -593,18 +591,18 @@ const ManikuerePedikuere = () => {
                     alt="Pediküre Hauptbild"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
-                </div>
+                  </div>
                 <div className="flex-1">
                   <img
                     src="/16.jpg"
                     alt="Pediküre Detail"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Pricing & Booking CTA */}
@@ -641,9 +639,9 @@ const ManikuerePedikuere = () => {
                   {t('nails.final-cta.instagram')}
                 </a>
               </Button>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Testimonials */}
@@ -659,14 +657,14 @@ const ManikuerePedikuere = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 text-rose-gold fill-current" />
                     ))}
-                  </div>
+                    </div>
                   <blockquote className="text-muted-foreground italic mb-4">
                     "{t('nails.testimonials.item1.quote')}"
                   </blockquote>
                   <div className="text-center">
                     <div className="font-semibold text-primary">{t('nails.testimonials.item1.name')}</div>
                     <div className="text-sm text-muted-foreground">{t('nails.testimonials.item1.subtitle')}</div>
-                  </div>
+                    </div>
                 </CardContent>
               </Card>
 
@@ -676,22 +674,23 @@ const ManikuerePedikuere = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 text-rose-gold fill-current" />
                     ))}
-                  </div>
+                    </div>
                   <blockquote className="text-muted-foreground italic mb-4">
                     "{t('nails.testimonials.item2.quote')}"
                   </blockquote>
                   <div className="text-center">
                     <div className="font-semibold text-primary">{t('nails.testimonials.item2.name')}</div>
                     <div className="text-sm text-muted-foreground">{t('nails.testimonials.item2.subtitle')}</div>
-                  </div>
+                    </div>
                 </CardContent>
               </Card>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 

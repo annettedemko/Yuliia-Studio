@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Instagram, CheckCircle } from 'lucide-react';
 import { useEffect } from 'react';
-import { setPageMeta, setJsonLd } from '@/seo/seo';
+
 import { useLanguage } from '@/contexts/LanguageContext';
+import { PageHelmet } from '@/components/PageHelmet';
 
 const IcooneLaser = () => {
   const { t } = useLanguage();
@@ -22,11 +23,6 @@ const IcooneLaser = () => {
   };
 
   useEffect(() => {
-    setPageMeta({
-      title: 'Icoone®️ München – Bindegewebe & Hautbild',
-      description: 'Icoone®️ München: wohltuende, mechanisch stimulierte Anwendungen für Bindegewebe & Hautbild. Planbar, ohne Downtime. Termin online.'
-    });
-
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -108,6 +104,8 @@ const IcooneLaser = () => {
   ];
 
   return (
+    <>
+      <PageHelmet />
     <div className="min-h-screen pt-16">
 
       <section
@@ -149,8 +147,8 @@ const IcooneLaser = () => {
                 {t('icoone.hero.button.pricing')}
               </Link>
             </Button>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Benefits Section */}
@@ -171,8 +169,8 @@ const IcooneLaser = () => {
                       <p className="text-muted-foreground">
                         {t('icoone.benefits.card1.description')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -185,8 +183,8 @@ const IcooneLaser = () => {
                       <p className="text-muted-foreground">
                         {t('icoone.benefits.card2.description')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -199,8 +197,8 @@ const IcooneLaser = () => {
                       <p className="text-muted-foreground">
                         {t('icoone.benefits.card3.description')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -213,13 +211,13 @@ const IcooneLaser = () => {
                       <p className="text-muted-foreground">
                         {t('icoone.benefits.card4.description')}
                       </p>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       <section className="py-12 bg-background">
@@ -230,7 +228,7 @@ const IcooneLaser = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 {t('icoone.what.subtitle')}
               </p>
-            </div>
+              </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-4">
@@ -262,8 +260,8 @@ const IcooneLaser = () => {
                       objectPosition: 'center'
                     }}
                   />
+                  </div>
                 </div>
-              </div>
 
               <div className="space-y-6">
                 <Card>
@@ -292,10 +290,10 @@ const IcooneLaser = () => {
                     </p>
                   </CardContent>
                 </Card>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Gallery Section */}
@@ -305,7 +303,7 @@ const IcooneLaser = () => {
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('icoone.gallery.title')}</h2>
               <p className="text-xl text-muted-foreground">{t('icoone.gallery.subtitle')}</p>
-            </div>
+              </div>
 
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -330,11 +328,11 @@ const IcooneLaser = () => {
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                  </div>
               ))}
+              </div>
             </div>
           </div>
-        </div>
       </section>
 
       <section className="py-12 bg-accent/10">
@@ -344,11 +342,12 @@ const IcooneLaser = () => {
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
               {t('icoone.professional.description')}
             </p>
+            </div>
           </div>
-        </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 };
 
