@@ -79,6 +79,15 @@ const App = () => (
                   {/* Редирект с корня на /de */}
                   <Route path="/" element={<Navigate to="/de" replace />} />
 
+                  {/* Редиректы для старых DEKA ссылок без языкового префикса */}
+                  <Route path="/deka" element={<Navigate to="/de/deka" replace />} />
+                  <Route path="/DEKA" element={<Navigate to="/de/DEKA" replace />} />
+                  <Route path="/deka-day" element={<Navigate to="/de/deka-day" replace />} />
+                  <Route path="/deka-anna" element={<Navigate to="/de/deka-anna" replace />} />
+                  <Route path="/deka-lera" element={<Navigate to="/de/deka-lera" replace />} />
+                  <Route path="/deka-liudmila" element={<Navigate to="/de/deka-liudmila" replace />} />
+                  <Route path="/deka-geraeteverkauf" element={<Navigate to="/de/deka-geraeteverkauf" replace />} />
+
                   {/* Немецкие роуты /de/* */}
                   <Route path="/de/*">
                     <Route index element={<Home />} />
