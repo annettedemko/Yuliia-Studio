@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight,
   Phone,
@@ -23,6 +23,18 @@ import { setPageMeta } from '@/seo/seo';
 
 const RedTouchPro = () => {
   const { t } = useLanguage();
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
 
   useEffect(() => {
     setPageMeta({

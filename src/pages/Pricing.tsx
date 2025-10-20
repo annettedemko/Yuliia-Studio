@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Zap, Sparkles, Heart, Hand, Instagram, Waves, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -16,6 +16,18 @@ const Pricing = () => {
   const [loading, setLoading] = useState(true);
 
   // Set page meta
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
+
   useEffect(() => {
     setPageMeta({
       title: 'Preise – Yuliia Cheporska Studio München',

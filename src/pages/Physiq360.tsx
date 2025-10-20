@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Users, Shield, Clock, Target, Award, Star, Phone, Instagram, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -70,6 +70,18 @@ const Physiq360 = () => {
       icon: Target
     }
   ];
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
 
   return (
     <div className="min-h-screen pt-16 overflow-x-hidden">

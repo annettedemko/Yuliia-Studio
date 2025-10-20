@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
 import { setPageMeta } from '@/seo/seo';
@@ -12,6 +12,18 @@ import { setPageMeta } from '@/seo/seo';
 
 const About = () => {
   const { t } = useLanguage();
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
 
   useEffect(() => {
     setPageMeta({
@@ -143,7 +155,7 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <Link key={index} to={service.link} className="flex items-center space-x-3 hover:bg-rose-gold/5 p-3 rounded-lg transition-colors group">
+                <Link key={index} to={withLang(service.link)} className="flex items-center space-x-3 hover:bg-rose-gold/5 p-3 rounded-lg transition-colors group">
                   <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 group-hover:scale-110 transition-transform" />
                   <span className="text-lg text-foreground group-hover:text-rose-gold transition-colors">{t(service.nameKey)}</span>
                 </Link>

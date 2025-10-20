@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin, AlertCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
 import { eventsService } from '@/services/contentService';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -70,6 +70,18 @@ const DekaLiudmila = () => {
     if (touchStart - touchEnd < -75) {
       prevImage();
     }
+  };
+
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
   };
 
   useEffect(() => {
@@ -678,7 +690,7 @@ const DekaLiudmila = () => {
                 { name: 'PHYSIQ 360', src: '/deka4.png', alt: 'PHYSIQ 360', link: '/physiq360' },
                 { name: 'Again cos', src: '/deka5.png', alt: 'Again cos', link: '/again-cos' }
               ].map((device, index) => (
-                <Link key={index} to={device.link} className="block">
+                <Link key={index} to={withLang(device.link)} className="block">
                   <div className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-xl border border-rose-gold/30 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-rose-gold/30 hover:scale-105 hover:bg-gradient-to-br hover:from-orange-100/50 hover:via-rose-100/50 hover:to-amber-50/50 hover:border-rose-gold/50 transition-all duration-500 p-3 sm:p-4 cursor-pointer touch-manipulation group">
                     <img
                       src={device.src}

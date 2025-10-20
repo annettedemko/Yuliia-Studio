@@ -3,6 +3,18 @@ import { useEffect } from 'react';
 import { setPageMeta } from '@/seo/seo';
 
 const Impressum = () => {
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    if (path === '/') return langPrefix;
+    return `${langPrefix}${path}`;
+  };
+
   useEffect(() => {
     setPageMeta({
       title: 'Impressum – Yuliia Cheporska Studio München',
