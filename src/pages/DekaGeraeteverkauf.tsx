@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   ArrowRight,
   Award,
@@ -16,20 +16,29 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const DekaGeraeteverkauf = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
   const getDeviceUrl = (deviceId: string) => {
-    switch (deviceId) {
-      case 'physiq360':
-        return '/physiq360';
-      case 'redtouch-pro':
-        return '/redtouch-pro';
-      case 'again-cos':
-        return '/again-cos';
-      case 'motus-ax':
-        return '/motus-ax';
-      case 'motus-pro':
-        return '/motus-pro';
-      default:
-        return '#';
+    const paths: Record<string, string> = {
+      'physiq360': '/physiq360',
+      'redtouch-pro': '/redtouch-pro',
+      'again-cos': '/again-cos',
+      'motus-ax': '/motus-ax',
+      'motus-pro': '/motus-pro',
+    };
+    const path = paths[deviceId] || '#';
+    return path === '#' ? path : `${langPrefix}${path}`;
+  };
+
+  const handleCardClick = (deviceId: string) => {
+    const url = getDeviceUrl(deviceId);
+    if (url !== '#') {
+      navigate(url);
     }
   };
 
@@ -246,7 +255,7 @@ const DekaGeraeteverkauf = () => {
 
           <div className="max-w-7xl mx-auto space-y-16">
             {dekaDevices.map((device, index) => (
-              <Link key={device.id} to={getDeviceUrl(device.id)} className="block">
+              <div key={device.id} onClick={() => handleCardClick(device.id)}>
                 <Card className={`overflow-hidden hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] animate-slide-up cursor-pointer ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`} style={{animationDelay: `${index * 200}ms`}}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px]">
                   <div className="relative overflow-hidden">
@@ -322,7 +331,7 @@ const DekaGeraeteverkauf = () => {
                   </div>
                 </div>
                 </Card>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
