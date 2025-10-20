@@ -1,135 +1,442 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Главная страница -->
+  <!-- Главная страница - редирект на /de -->
   <url>
     <loc>https://www.munchen-beauty.de/</loc>
-    <lastmod>2025-01-10</lastmod>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Основные публичные страницы -->
+  <!-- ==================== НЕМЕЦКИЕ СТРАНИЦЫ (/de) ==================== -->
+
+  <!-- Главная страница - Немецкий -->
   <url>
-    <loc>https://www.munchen-beauty.de/services</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru" />
+  </url>
+
+  <!-- Основные публичные страницы - Немецкий -->
+  <url>
+    <loc>https://www.munchen-beauty.de/de/services</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/services" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/services" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/about</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/about</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/about" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/preis</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/preis</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/preis" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/preis" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/kontakt</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/kontakt</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/kontakt" />
   </url>
 
-  <!-- Страницы услуг (высокий приоритет для SEO) -->
+  <!-- Страницы услуг (высокий приоритет для SEO) - Немецкий -->
   <url>
-    <loc>https://www.munchen-beauty.de/laser-haarentfernung-muenchen</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/alexandrit-gegen-diodenlaser</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/icoone-laser-muenchen</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/icoone-laser-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/icoone-laser-muenchen" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/redtouch-laser-muenchen</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/redtouch-laser-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-laser-muenchen" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/manikuere-pedikuere-muenchen</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen" />
   </url>
 
-  <!-- B2B страницы оборудования DEKA -->
+  <!-- B2B страницы оборудования DEKA - Немецкий -->
   <url>
-    <loc>https://www.munchen-beauty.de/deka-geraeteverkauf</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/deka-geraeteverkauf</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-geraeteverkauf" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-geraeteverkauf" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/redtouch-pro</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/redtouch-pro</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-pro" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-pro" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/motus-pro</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/motus-pro</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/motus-pro" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/motus-pro" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/motus-ax</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/motus-ax</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/motus-ax" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/motus-ax" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/physiq360</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/physiq360</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/physiq360" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/physiq360" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/again-cos</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/again-cos</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/again-cos" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/again-cos" />
   </url>
 
-  <!-- Юридические страницы -->
+  <!-- DEKA Event Pages - Немецкий -->
   <url>
-    <loc>https://www.munchen-beauty.de/impressum</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/deka</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/de/deka-day</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-day" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-day" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/de/deka-anna</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-anna" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-anna" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/de/deka-lera</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-lera" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-lera" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/de/deka-liudmila</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-liudmila" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-liudmila" />
+  </url>
+
+  <!-- Юридические страницы - Немецкий -->
+  <url>
+    <loc>https://www.munchen-beauty.de/de/impressum</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/impressum" />
   </url>
 
   <url>
-    <loc>https://www.munchen-beauty.de/datenschutzerklaerung</loc>
-    <lastmod>2025-01-10</lastmod>
+    <loc>https://www.munchen-beauty.de/de/datenschutzerklaerung</loc>
+    <lastmod>2025-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/datenschutzerklaerung" />
+  </url>
+
+  <!-- ==================== РУССКИЕ СТРАНИЦЫ (/ru) ==================== -->
+
+  <!-- Главная страница - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru" />
+  </url>
+
+  <!-- Основные публичные страницы - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/services</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/services" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/services" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/about</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/about" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/preis</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/preis" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/preis" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/kontakt</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/kontakt" />
+  </url>
+
+  <!-- Страницы услуг - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/icoone-laser-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/icoone-laser-muenchen" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/redtouch-laser-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-laser-muenchen" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen" />
+  </url>
+
+  <!-- B2B страницы оборудования DEKA - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka-geraeteverkauf</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-geraeteverkauf" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-geraeteverkauf" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/redtouch-pro</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-pro" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-pro" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/motus-pro</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/motus-pro" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/motus-pro" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/motus-ax</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/motus-ax" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/motus-ax" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/physiq360</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/physiq360" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/physiq360" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/again-cos</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/again-cos" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/again-cos" />
+  </url>
+
+  <!-- DEKA Event Pages - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka-day</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-day" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-day" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka-anna</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-anna" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-anna" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka-lera</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-lera" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-lera" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/deka-liudmila</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/deka-liudmila" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/deka-liudmila" />
+  </url>
+
+  <!-- Юридические страницы - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/impressum</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/impressum" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/datenschutzerklaerung</loc>
+    <lastmod>2025-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/datenschutzerklaerung" />
   </url>
 
 </urlset>
