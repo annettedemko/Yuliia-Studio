@@ -20,7 +20,7 @@ import {
   Waves
 } from 'lucide-react';
 import { useEffect } from 'react';
-
+import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 
