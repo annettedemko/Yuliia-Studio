@@ -79,7 +79,24 @@ const App = () => (
                   {/* Редирект с корня на /de */}
                   <Route path="/" element={<Navigate to="/de" replace />} />
 
-                  {/* Редиректы для старых DEKA ссылок без языкового префикса */}
+                  {/* Редиректы для старых ссылок без языкового префикса (все редиректят на /de) */}
+
+                  {/* Основные страницы */}
+                  <Route path="/about" element={<Navigate to="/de/about" replace />} />
+                  <Route path="/services" element={<Navigate to="/de/services" replace />} />
+                  <Route path="/preis" element={<Navigate to="/de/preis" replace />} />
+                  <Route path="/kontakt" element={<Navigate to="/de/kontakt" replace />} />
+                  <Route path="/impressum" element={<Navigate to="/de/impressum" replace />} />
+                  <Route path="/datenschutzerklaerung" element={<Navigate to="/de/datenschutzerklaerung" replace />} />
+
+                  {/* Услуги */}
+                  <Route path="/laser-haarentfernung-muenchen" element={<Navigate to="/de/laser-haarentfernung-muenchen" replace />} />
+                  <Route path="/alexandrit-gegen-diodenlaser" element={<Navigate to="/de/alexandrit-gegen-diodenlaser" replace />} />
+                  <Route path="/icoone-laser-muenchen" element={<Navigate to="/de/icoone-laser-muenchen" replace />} />
+                  <Route path="/manikuere-pedikuere-muenchen" element={<Navigate to="/de/manikuere-pedikuere-muenchen" replace />} />
+                  <Route path="/redtouch-laser-muenchen" element={<Navigate to="/de/redtouch-laser-muenchen" replace />} />
+
+                  {/* DEKA устройства */}
                   <Route path="/deka" element={<Navigate to="/de/deka" replace />} />
                   <Route path="/DEKA" element={<Navigate to="/de/DEKA" replace />} />
                   <Route path="/deka-day" element={<Navigate to="/de/deka-day" replace />} />
@@ -87,6 +104,11 @@ const App = () => (
                   <Route path="/deka-lera" element={<Navigate to="/de/deka-lera" replace />} />
                   <Route path="/deka-liudmila" element={<Navigate to="/de/deka-liudmila" replace />} />
                   <Route path="/deka-geraeteverkauf" element={<Navigate to="/de/deka-geraeteverkauf" replace />} />
+                  <Route path="/physiq360" element={<Navigate to="/de/physiq360" replace />} />
+                  <Route path="/motus-ax" element={<Navigate to="/de/motus-ax" replace />} />
+                  <Route path="/motus-pro" element={<Navigate to="/de/motus-pro" replace />} />
+                  <Route path="/redtouch-pro" element={<Navigate to="/de/redtouch-pro" replace />} />
+                  <Route path="/again-cos" element={<Navigate to="/de/again-cos" replace />} />
 
                   {/* Немецкие роуты /de/* */}
                   <Route path="/de/*">
