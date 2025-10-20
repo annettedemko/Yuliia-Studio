@@ -5,7 +5,20 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Footer = () => {
   const { t } = useLanguage();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    // Для главной страницы возвращаем просто префикс языка
+    if (path === '/') return langPrefix;
+    // Для остальных страниц добавляем префикс
+    return `${langPrefix}${path}`;
+  };
+
+  const isHomePage = location.pathname === langPrefix || location.pathname === '/';
 
   return (
     <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'mt-[9vh]' : ''}`}>
@@ -72,31 +85,31 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.services.title')}</h4>
             <div className="flex flex-col space-y-2">
               <Link
-                to="/laser-haarentfernung-muenchen"
+                to={withLang('/laser-haarentfernung-muenchen')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.services.laser')}
               </Link>
               <Link
-                to="/icoone-laser-muenchen"
+                to={withLang('/icoone-laser-muenchen')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.services.icoone')}
               </Link>
               <Link
-                to="/redtouch-laser-muenchen"
+                to={withLang('/redtouch-laser-muenchen')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.services.redtouch')}
               </Link>
               <Link
-                to="/manikuere-pedikuere-muenchen"
+                to={withLang('/manikuere-pedikuere-muenchen')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.services.nails')}
               </Link>
               <Link
-                to="/services"
+                to={withLang('/services')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors font-medium"
               >
                 {t('footer.services.all')}
@@ -109,19 +122,19 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">{t('footer.legal.title')}</h4>
             <div className="flex flex-col space-y-2">
               <Link
-                to="/kontakt"
+                to={withLang('/kontakt')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.legal.contact')}
               </Link>
               <Link
-                to="/impressum"
+                to={withLang('/impressum')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.legal.imprint')}
               </Link>
               <Link
-                to="/datenschutzerklaerung"
+                to={withLang('/datenschutzerklaerung')}
                 className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
               >
                 {t('footer.legal.privacy')}

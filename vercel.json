@@ -1,16 +1,18 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:ssg",
   "outputDirectory": "dist",
   "framework": null,
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "redirects": [
-    { "source": "/icoone-laser", "destination": "/icoone-laser-muenchen", "permanent": true },
-    { "source": "/redtouchpro", "destination": "/redtouch-laser-muenchen", "permanent": true },
-    { "source": "/manikuere-pedikuere", "destination": "/manikuere-pedikuere-muenchen", "permanent": true },
-    { "source": "/kopie-deka-day-anna", "destination": "/deka-anna", "permanent": true }
+    { "source": "/icoone-laser", "destination": "/de/icoone-laser-muenchen", "permanent": true },
+    { "source": "/redtouchpro", "destination": "/de/redtouch-laser-muenchen", "permanent": true },
+    { "source": "/manikuere-pedikuere", "destination": "/de/manikuere-pedikuere-muenchen", "permanent": true },
+    { "source": "/kopie-deka-day-anna", "destination": "/de/deka-anna", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/de/:path*", "destination": "/de/:path*/index.html" },
+    { "source": "/ru/:path*", "destination": "/ru/:path*/index.html" },
     { "source": "/:path*", "destination": "/index.html" }
   ],
   "headers": [

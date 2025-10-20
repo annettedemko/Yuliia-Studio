@@ -15,6 +15,18 @@ const Navigation = () => {
   const servicesDropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
+  // Получаем текущий язык из URL
+  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
+
+  // Функция для добавления языкового префикса к ссылкам
+  const withLang = (path: string) => {
+    // Для главной страницы возвращаем просто префикс языка
+    if (path === '/') return langPrefix;
+    // Для остальных страниц добавляем префикс
+    return `${langPrefix}${path}`;
+  };
+
   const navItems = [
     { href: '/', labelKey: 'nav.home' },
     { href: '/about', labelKey: 'nav.about' },
@@ -88,33 +100,33 @@ const Navigation = () => {
     };
   }, []);
 
-  const isActive = (href: string) => location.pathname === href;
+  const isActive = (href: string) => location.pathname === withLang(href);
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to={withLang('/')} className="flex items-center space-x-2">
             <img
               src="/logo2.jpg"
               alt="Yuliia Cheporska Studio"
               className="h-16 w-auto"
             />
             {/* DEKA Logo - на всех DEKA страницах */}
-            {(location.pathname === '/deka' ||
-              location.pathname === '/DEKA' ||
-              location.pathname === '/deka-day' ||
-              location.pathname === '/deka-anna' ||
-              location.pathname === '/deka-lera' ||
-              location.pathname === '/deka-liudmila' ||
-              location.pathname === '/kopie-deka-day-anna' ||
-              location.pathname === '/deka-geraeteverkauf' ||
-              location.pathname === '/physiq360' ||
-              location.pathname === '/redtouch-pro' ||
-              location.pathname === '/motus-ax' ||
-              location.pathname === '/motus-pro' ||
-              location.pathname === '/again-cos') && (
+            {(location.pathname.endsWith('/deka') ||
+              location.pathname.endsWith('/DEKA') ||
+              location.pathname.endsWith('/deka-day') ||
+              location.pathname.endsWith('/deka-anna') ||
+              location.pathname.endsWith('/deka-lera') ||
+              location.pathname.endsWith('/deka-liudmila') ||
+              location.pathname.endsWith('/kopie-deka-day-anna') ||
+              location.pathname.endsWith('/deka-geraeteverkauf') ||
+              location.pathname.endsWith('/physiq360') ||
+              location.pathname.endsWith('/redtouch-pro') ||
+              location.pathname.endsWith('/motus-ax') ||
+              location.pathname.endsWith('/motus-pro') ||
+              location.pathname.endsWith('/again-cos')) && (
               <div className="border border-primary rounded-lg p-1.5 bg-white/5 backdrop-blur-sm">
                 <img
                   src="/DEKA logo.png"
@@ -133,7 +145,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                to={item.href}
+                to={withLang(item.href)}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-rose-gold",
                   isActive(item.href) ? "text-rose-gold" : "text-foreground"
@@ -150,7 +162,7 @@ const Navigation = () => {
               onMouseLeave={handleServicesDropdownLeave}
             >
               <Link
-                to="/services"
+                to={withLang('/services')}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
                   (isActive('/services') ||
@@ -173,7 +185,7 @@ const Navigation = () => {
                   onMouseLeave={handleServicesDropdownLeave}
                 >
                   <Link
-                    to="/services"
+                    to={withLang('/services')}
                     className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
                   >
                     {t('nav.services.all')}
@@ -182,7 +194,7 @@ const Navigation = () => {
                   {services.map((service) => (
                     <Link
                       key={service.href}
-                      to={service.href}
+                      to={withLang(service.href)}
                       className={cn(
                         "block px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
                         isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
@@ -202,7 +214,7 @@ const Navigation = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <Link
-                to="/deka-geraeteverkauf"
+                to={withLang('/deka-geraeteverkauf')}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
                   (isActive('/deka-geraeteverkauf') ||
@@ -225,7 +237,7 @@ const Navigation = () => {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <Link
-                    to="/deka-geraeteverkauf"
+                    to={withLang('/deka-geraeteverkauf')}
                     className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
                   >
                     {t('nav.deka.all')}
@@ -234,7 +246,7 @@ const Navigation = () => {
                   {dekaDevices.map((device) => (
                     <Link
                       key={device.href}
-                      to={device.href}
+                      to={withLang(device.href)}
                       className={cn(
                         "block px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
@@ -293,7 +305,7 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  to={withLang(item.href)}
                   className={cn(
                     "text-base font-medium transition-colors hover:text-rose-gold py-2 px-4 rounded-lg text-center",
                     isActive(item.href) ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
@@ -307,7 +319,7 @@ const Navigation = () => {
               {/* Leistungen Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
-                  to="/services"
+                  to={withLang('/services')}
                   className={cn(
                     "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
                     (isActive('/services') ||
@@ -322,7 +334,7 @@ const Navigation = () => {
                   {services.map((service) => (
                     <Link
                       key={service.href}
-                      to={service.href}
+                      to={withLang(service.href)}
                       className={cn(
                         "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
                         isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
@@ -338,7 +350,7 @@ const Navigation = () => {
               {/* DEKA Geräte Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
-                  to="/deka-geraeteverkauf"
+                  to={withLang('/deka-geraeteverkauf')}
                   className={cn(
                     "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
                     (isActive('/deka-geraeteverkauf') ||
@@ -353,7 +365,7 @@ const Navigation = () => {
                   {dekaDevices.map((device) => (
                     <Link
                       key={device.href}
-                      to={device.href}
+                      to={withLang(device.href)}
                       className={cn(
                         "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"

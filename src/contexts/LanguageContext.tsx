@@ -2575,19 +2575,51 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('de');
+  // Определяем язык из URL
+  const getLanguageFromURL = (): Language => {
+    const pathname = window.location.pathname;
+    if (pathname.startsWith('/ru')) return 'ru';
+    if (pathname.startsWith('/de')) return 'de';
 
-  useEffect(() => {
-    // Load saved language from localStorage
+    // Fallback: проверяем localStorage
     const savedLanguage = localStorage.getItem('language') as Language;
     if (savedLanguage && (savedLanguage === 'de' || savedLanguage === 'ru')) {
-      setLanguage(savedLanguage);
+      return savedLanguage;
     }
-  }, []);
+
+    return 'de'; // default
+  };
+
+  const [language, setLanguage] = useState<Language>(getLanguageFromURL);
+
+  useEffect(() => {
+    // Синхронизируем язык при изменении URL
+    const updateLanguageFromURL = () => {
+      const newLang = getLanguageFromURL();
+      if (newLang !== language) {
+        setLanguage(newLang);
+      }
+    };
+
+    // Слушаем изменения истории браузера
+    window.addEventListener('popstate', updateLanguageFromURL);
+
+    return () => {
+      window.removeEventListener('popstate', updateLanguageFromURL);
+    };
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
+    // Сохраняем новый язык
     localStorage.setItem('language', lang);
+
+    // Перенаправляем на соответствующий язык в URL
+    const currentPath = window.location.pathname.replace(/^\/(de|ru)/, '') || '/';
+    const newPath = `/${lang}${currentPath === '/' ? '' : currentPath}`;
+
+    // Используем window.location.href для полного перехода,
+    // чтобы React Router правильно обработал изменение
+    window.location.href = newPath;
   };
 
   const t = (key: string): string => {

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { HreflangTags } from "@/components/HreflangTags";
 // ProtectedRoute removed - each admin page handles auth internally via simpleAuthService
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -50,7 +51,6 @@ const App = () => (
       <LanguageProvider>
         <TooltipProvider>
           <Helmet>
-            <html lang="de" />
             <title>Yuliia Cheporska Studio München – Alexandrit, Diodenlaser, iCoone, RedTouchPro, Maniküre, Pediküre</title>
             <meta name="description" content="Professionelle Laser Haarentfernung (Alexandrit & Diodenlaser), iCoone Laser, RedTouchPro, Maniküre und Pediküre in München. DEKA Geräte. Elsässer Str. 33. Александритовый лазер Мюнхен." />
             <meta name="author" content="Yuliia Cheporska Studio" />
@@ -64,39 +64,84 @@ const App = () => (
           </Helmet>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
+            <HreflangTags />
             <ScrollToTop />
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
               <Navigation />
               <main style={{ flex: 1 }}>
                 <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
-                  <Route path="/alexandrit-gegen-diodenlaser" element={<AlexandritVsDiodenlaser />} />
-                  {/* New SEO-friendly URLs */}
-                  <Route path="/icoone-laser-muenchen" element={<IcooneLaser />} />
-                  <Route path="/manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
-                  <Route path="/redtouch-laser-muenchen" element={<RedTouchProService />} />
-                  {/* Redirects from old URLs */}
-                  <Route path="/icoone-laser" element={<Navigate to="/icoone-laser-muenchen" replace />} />
-                  <Route path="/manikuere-pedikuere" element={<Navigate to="/manikuere-pedikuere-muenchen" replace />} />
-                  <Route path="/redtouchpro" element={<Navigate to="/redtouch-laser-muenchen" replace />} />
-                  {/* Other pages */}
-                  <Route path="/deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
-                  <Route path="/redtouch-pro" element={<RedTouchPro />} />
-                  <Route path="/motus-pro" element={<MotusPro />} />
-                  <Route path="/motus-ax" element={<MotusAX />} />
-                  <Route path="/physiq360" element={<Physiq360 />} />
-                  <Route path="/again-cos" element={<AgainCos />} />
-                  <Route path="/preis" element={<Pricing />} />
-                  <Route path="/deka" element={<Deka />} />
-                  <Route path="/DEKA" element={<Deka />} />
-                  <Route path="/deka-day" element={<DekaDay />} />
-                  <Route path="/deka-anna" element={<DekaAnna />} />
-                  <Route path="/deka-lera" element={<DekaLera />} />
-                  <Route path="/deka-liudmila" element={<DekaLiudmila />} />
+                  {/* Редирект с корня на /de */}
+                  <Route path="/" element={<Navigate to="/de" replace />} />
+
+                  {/* Немецкие роуты /de/* */}
+                  <Route path="/de/*">
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="services" element={<Services />} />
+                    <Route path="laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
+                    <Route path="alexandrit-gegen-diodenlaser" element={<AlexandritVsDiodenlaser />} />
+                    <Route path="icoone-laser-muenchen" element={<IcooneLaser />} />
+                    <Route path="manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
+                    <Route path="redtouch-laser-muenchen" element={<RedTouchProService />} />
+                    <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
+                    <Route path="redtouch-pro" element={<RedTouchPro />} />
+                    <Route path="motus-pro" element={<MotusPro />} />
+                    <Route path="motus-ax" element={<MotusAX />} />
+                    <Route path="physiq360" element={<Physiq360 />} />
+                    <Route path="again-cos" element={<AgainCos />} />
+                    <Route path="kontakt" element={<Kontakt />} />
+                    <Route path="impressum" element={<Impressum />} />
+                    <Route path="datenschutzerklaerung" element={<Datenschutz />} />
+                    <Route path="preis" element={<Pricing />} />
+                    <Route path="deka" element={<Deka />} />
+                    <Route path="DEKA" element={<Deka />} />
+                    <Route path="deka-day" element={<DekaDay />} />
+                    <Route path="deka-anna" element={<DekaAnna />} />
+                    <Route path="deka-lera" element={<DekaLera />} />
+                    <Route path="deka-liudmila" element={<DekaLiudmila />} />
+                    <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
+                    <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
+                    <Route path="redtouchpro" element={<Navigate to="redtouch-laser-muenchen" replace />} />
+                  </Route>
+
+                  {/* Русские роуты /ru/* */}
+                  <Route path="/ru/*">
+                    <Route index element={<Home />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="services" element={<Services />} />
+                    <Route path="laser-haarentfernung-muenchen" element={<LaserHairRemoval />} />
+                    <Route path="alexandrit-gegen-diodenlaser" element={<AlexandritVsDiodenlaser />} />
+                    <Route path="icoone-laser-muenchen" element={<IcooneLaser />} />
+                    <Route path="manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
+                    <Route path="redtouch-laser-muenchen" element={<RedTouchProService />} />
+                    <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
+                    <Route path="redtouch-pro" element={<RedTouchPro />} />
+                    <Route path="motus-pro" element={<MotusPro />} />
+                    <Route path="motus-ax" element={<MotusAX />} />
+                    <Route path="physiq360" element={<Physiq360 />} />
+                    <Route path="again-cos" element={<AgainCos />} />
+                    <Route path="kontakt" element={<Kontakt />} />
+                    <Route path="impressum" element={<Impressum />} />
+                    <Route path="datenschutzerklaerung" element={<Datenschutz />} />
+                    <Route path="preis" element={<Pricing />} />
+                    <Route path="deka" element={<Deka />} />
+                    <Route path="DEKA" element={<Deka />} />
+                    <Route path="deka-day" element={<DekaDay />} />
+                    <Route path="deka-anna" element={<DekaAnna />} />
+                    <Route path="deka-lera" element={<DekaLera />} />
+                    <Route path="deka-liudmila" element={<DekaLiudmila />} />
+                    <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
+                    <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
+                    <Route path="redtouchpro" element={<Navigate to="redtouch-laser-muenchen" replace />} />
+                  </Route>
+
+                  {/* Admin routes (без языкового префикса) */}
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/admin/login" element={<AdminLogin />} />
                   <Route path="/admin/yulia-clients" element={<YuliaClients />} />
@@ -104,9 +149,8 @@ const App = () => (
                   <Route path="/admin/natalia-clients" element={<NataliaClients />} />
                   <Route path="/admin/lera-clients" element={<LeraClients />} />
                   <Route path="/admin/liudmila-clients" element={<LiudmilaClients />} />
-                  <Route path="/kontakt" element={<Kontakt />} />
-                  <Route path="/impressum" element={<Impressum />} />
-                  <Route path="/datenschutzerklaerung" element={<Datenschutz />} />
+
+                  {/* 404 */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
