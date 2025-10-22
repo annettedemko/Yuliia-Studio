@@ -22,7 +22,8 @@ import {
   Clock,
   Calendar,
   Users,
-  FileText
+  FileText,
+  Sparkles
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +32,8 @@ import {
   pricesService,
   subscriptionsService,
   categoriesService,
-  eventsService
+  eventsService,
+  promotionsService
 } from '@/services/contentService';
 import type { PriceCategory } from '@/services/contentService';
 import {
@@ -44,7 +46,7 @@ import { debugEventsTable, checkEventDataTypes } from '@/utils/debugEvents';
 import { migrateEventsFromCSV } from '@/utils/migrateEventsFromCSV';
 import { testSupabaseConnection } from '@/utils/testSupabaseConnection';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
-import { ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { ServicePrice, SubscriptionPackage, Promotion } from '@/types/admin';
 import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
 
 const AdminDashboard = () => {
@@ -53,10 +55,12 @@ const AdminDashboard = () => {
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
   const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
-  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | null>(null);
+  const [editingPromotion, setEditingPromotion] = useState<Promotion | null>(null);
+  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | 'promotion' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -129,22 +133,25 @@ const AdminDashboard = () => {
 
     try {
       // Load all data from Supabase
-      const [pricesData, subscriptionsData, categoriesData, eventsData] = await Promise.all([
+      const [pricesData, subscriptionsData, categoriesData, eventsData, promotionsData] = await Promise.all([
         pricesService.getAll(),
         subscriptionsService.getAll(),
         categoriesService.getAll(),
-        getEvents()
+        getEvents(),
+        promotionsService.getAll()
       ]);
 
       console.log('Loaded prices:', pricesData);
       console.log('Loaded subscriptions:', subscriptionsData);
       console.log('Loaded categories:', categoriesData);
       console.log('Loaded events:', eventsData);
+      console.log('Loaded promotions:', promotionsData);
 
       setPrices(pricesData);
       setSubscriptions(subscriptionsData);
       setCategories(categoriesData);
       setSupabaseEvents(eventsData);
+      setPromotions(promotionsData);
     } catch (error) {
       console.error('Error loading data:', error);
     } finally {
@@ -227,6 +234,24 @@ const AdminDashboard = () => {
   const handleDeleteEvent = async (id: string) => {
     if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
       await deleteSupabaseEvent(id);
+      await loadData();
+    }
+  };
+
+  const handleSavePromotion = async (promotionData: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>) => {
+    if (editingPromotion && editingPromotion.id) {
+      await promotionsService.update(editingPromotion.id, promotionData);
+    } else {
+      await promotionsService.create(promotionData);
+    }
+    setEditingPromotion(null);
+    setIsCreating(null);
+    await loadData();
+  };
+
+  const handleDeletePromotion = async (id: string) => {
+    if (confirm('Sind Sie sicher, dass Sie diese Aktion löschen möchten?')) {
+      await promotionsService.delete(id);
       await loadData();
     }
   };
@@ -666,6 +691,114 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
 
+        {/* Promotions Management */}
+        <Card className="mb-8" id="promotions-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Управление акциями</CardTitle>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => setIsCreating('promotion')}
+                  disabled={isCreating === 'promotion'}
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <Plus className="w-4 h-4" />
+                  Новая акция
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isCreating === 'promotion' && (
+              <div className="mb-4">
+                <PromotionEditor
+                  onSave={handleSavePromotion}
+                  onCancel={() => setIsCreating(null)}
+                />
+              </div>
+            )}
+
+            <div className="space-y-4">
+              {promotions.map((promotion) => (
+                <div key={promotion.id} className="border p-4 rounded-lg">
+                  {editingPromotion?.id === promotion.id ? (
+                    <PromotionEditor
+                      promotion={editingPromotion}
+                      onSave={handleSavePromotion}
+                      onCancel={() => setEditingPromotion(null)}
+                    />
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold text-lg">{promotion.title_de}</h4>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              promotion.is_active
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-gray-100 text-gray-800'
+                            }`}>
+                              {promotion.is_active ? '✓ Aktiv' : 'Inaktiv'}
+                            </span>
+                            {promotion.discount_text_de && (
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-rose-gold/20 text-rose-gold">
+                                {promotion.discount_text_de}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            🇷🇺 {promotion.title_ru}
+                          </p>
+                          <p className="text-sm text-muted-foreground mt-2">
+                            {promotion.description_de}
+                          </p>
+                          <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                            <span>Icon: {promotion.icon}</span>
+                            <span>Farbe: {promotion.color}</span>
+                            <span>Reihenfolge: {promotion.display_order}</span>
+                            {promotion.valid_until && (
+                              <span className="text-orange-600 font-medium">
+                                ⏰ Gültig bis: {new Date(promotion.valid_until).toLocaleDateString('de-DE')}
+                              </span>
+                            )}
+                            {!promotion.valid_until && (
+                              <span className="text-green-600 font-medium">
+                                ∞ Unbegrenzt
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEditingPromotion(promotion)}
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeletePromotion(promotion.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+              {promotions.length === 0 && !isCreating && (
+                <p className="text-center text-muted-foreground py-8">
+                  Keine Aktionen vorhanden. Erstellen Sie eine neue Aktion, um sie auf der Homepage anzuzeigen.
+                </p>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Form Submissions Management */}
         <div id="forms-section">
           <FormSubmissionsManager />
@@ -1058,6 +1191,207 @@ const EventEditor = ({
         <Label htmlFor="is_published" className="cursor-pointer">
           Veröffentlicht (sichtbar auf der Website)
         </Label>
+      </div>
+
+      <div className="flex gap-2">
+        <Button type="submit" size="sm">
+          <Save className="w-4 h-4 mr-2" />
+          Speichern
+        </Button>
+        <Button type="button" variant="outline" size="sm" onClick={onCancel}>
+          <X className="w-4 h-4 mr-2" />
+          Abbrechen
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+// Promotion Editor Component
+const PromotionEditor = ({
+  promotion,
+  onSave,
+  onCancel
+}: {
+  promotion?: Promotion;
+  onSave: (promotion: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>) => void;
+  onCancel: () => void;
+}) => {
+  const [formData, setFormData] = useState<Omit<Promotion, 'id' | 'created_at' | 'updated_at'>>(
+    promotion ? {
+      title_de: promotion.title_de,
+      title_ru: promotion.title_ru,
+      description_de: promotion.description_de,
+      description_ru: promotion.description_ru,
+      discount_text_de: promotion.discount_text_de,
+      discount_text_ru: promotion.discount_text_ru,
+      valid_until: promotion.valid_until,
+      is_active: promotion.is_active,
+      display_order: promotion.display_order,
+      icon: promotion.icon || 'Sparkles',
+      color: promotion.color || 'rose-gold'
+    } : {
+      title_de: '',
+      title_ru: '',
+      description_de: '',
+      description_ru: '',
+      discount_text_de: '',
+      discount_text_ru: '',
+      valid_until: undefined,
+      is_active: true,
+      display_order: 0,
+      icon: 'Sparkles',
+      color: 'rose-gold'
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSave(formData);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="title_de">Titel (Deutsch)</Label>
+          <Input
+            id="title_de"
+            value={formData.title_de}
+            onChange={(e) => setFormData({ ...formData, title_de: e.target.value })}
+            required
+            placeholder="z.B. Icoone Erstbehandlung -50%"
+          />
+        </div>
+        <div>
+          <Label htmlFor="title_ru">Название (Русский)</Label>
+          <Input
+            id="title_ru"
+            value={formData.title_ru}
+            onChange={(e) => setFormData({ ...formData, title_ru: e.target.value })}
+            required
+            placeholder="например Первое посещение Icoone -50%"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="description_de">Beschreibung (Deutsch)</Label>
+          <Textarea
+            id="description_de"
+            value={formData.description_de}
+            onChange={(e) => setFormData({ ...formData, description_de: e.target.value })}
+            required
+            rows={3}
+            placeholder="Detaillierte Beschreibung der Aktion"
+          />
+        </div>
+        <div>
+          <Label htmlFor="description_ru">Описание (Русский)</Label>
+          <Textarea
+            id="description_ru"
+            value={formData.description_ru}
+            onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
+            required
+            rows={3}
+            placeholder="Подробное описание акции"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="discount_text_de">Rabatt Text (Deutsch, optional)</Label>
+          <Input
+            id="discount_text_de"
+            value={formData.discount_text_de || ''}
+            onChange={(e) => setFormData({ ...formData, discount_text_de: e.target.value })}
+            placeholder="z.B. -50%"
+          />
+        </div>
+        <div>
+          <Label htmlFor="discount_text_ru">Текст скидки (Русский, optional)</Label>
+          <Input
+            id="discount_text_ru"
+            value={formData.discount_text_ru || ''}
+            onChange={(e) => setFormData({ ...formData, discount_text_ru: e.target.value })}
+            placeholder="например -50%"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <Label htmlFor="valid_until">Gültig bis (optional)</Label>
+          <Input
+            id="valid_until"
+            type="datetime-local"
+            value={formData.valid_until ? formData.valid_until.slice(0, 16) : ''}
+            onChange={(e) => setFormData({ ...formData, valid_until: e.target.value ? `${e.target.value}:00+00` : undefined })}
+            placeholder="Leer lassen für unbegrenzt"
+          />
+        </div>
+        <div>
+          <Label htmlFor="icon">Icon</Label>
+          <Select
+            value={formData.icon || 'Sparkles'}
+            onValueChange={(value) => setFormData({ ...formData, icon: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Sparkles">Sparkles ✨</SelectItem>
+              <SelectItem value="Zap">Zap ⚡</SelectItem>
+              <SelectItem value="Heart">Heart ❤️</SelectItem>
+              <SelectItem value="Gift">Gift 🎁</SelectItem>
+              <SelectItem value="Star">Star ⭐</SelectItem>
+              <SelectItem value="Clock">Clock ⏰</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="color">Farbe</Label>
+          <Select
+            value={formData.color || 'rose-gold'}
+            onValueChange={(value) => setFormData({ ...formData, color: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="rose-gold">Rose Gold 🌹</SelectItem>
+              <SelectItem value="primary">Primary 💜</SelectItem>
+              <SelectItem value="gold">Gold 🥇</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="display_order">Reihenfolge</Label>
+          <Input
+            id="display_order"
+            type="number"
+            value={formData.display_order}
+            onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 0 })}
+            min="0"
+          />
+        </div>
+        <div className="flex items-center space-x-2 pt-8">
+          <input
+            type="checkbox"
+            id="is_active"
+            checked={formData.is_active}
+            onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
+            className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
+          />
+          <Label htmlFor="is_active" className="cursor-pointer">
+            Aktiv (sichtbar auf der Website)
+          </Label>
+        </div>
       </div>
 
       <div className="flex gap-2">
