@@ -52,7 +52,7 @@ const colorMap: Record<string, { bg: string; text: string; accent: string; borde
 };
 
 export const Promotions = () => {
-  const { currentLang } = useLanguage();
+  const { language } = useLanguage();
   const [promotions, setPromotions] = useState<Promotion[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -87,14 +87,14 @@ export const Promotions = () => {
     return null;
   }
 
-  const title = currentLang === 'ru' ? 'Специальные предложения' : 'Aktuelle Aktionen';
-  const subtitle = currentLang === 'ru'
+  const title = language === 'ru' ? 'Специальные предложения' : 'Aktuelle Aktionen';
+  const subtitle = language === 'ru'
     ? 'Не упустите возможность воспользоваться нашими выгодными предложениями!'
     : 'Nutzen Sie unsere exklusiven Angebote und profitieren Sie von attraktiven Rabatten!';
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return currentLang === 'ru'
+    return language === 'ru'
       ? date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })
       : date.toLocaleDateString('de-DE', { day: 'numeric', month: 'long' });
   };
@@ -138,7 +138,7 @@ export const Promotions = () => {
                 {(promo.discount_text_de || promo.discount_text_ru) && (
                   <div className="absolute top-4 right-4 z-10">
                     <Badge className={`${colors.accent} text-white text-lg px-4 py-2 font-bold shadow-lg`}>
-                      {currentLang === 'ru' ? promo.discount_text_ru : promo.discount_text_de}
+                      {language === 'ru' ? promo.discount_text_ru : promo.discount_text_de}
                     </Badge>
                   </div>
                 )}
@@ -151,12 +151,12 @@ export const Promotions = () => {
 
                   {/* Title */}
                   <h3 className={`text-2xl font-bold mb-4 ${colors.text}`}>
-                    {currentLang === 'ru' ? promo.title_ru : promo.title_de}
+                    {language === 'ru' ? promo.title_ru : promo.title_de}
                   </h3>
 
                   {/* Description */}
                   <p className="text-muted-foreground text-base leading-relaxed mb-6 flex-grow">
-                    {currentLang === 'ru' ? promo.description_ru : promo.description_de}
+                    {language === 'ru' ? promo.description_ru : promo.description_de}
                   </p>
 
                   {/* Expiry Date */}
@@ -164,7 +164,7 @@ export const Promotions = () => {
                     <div className={`flex items-center gap-2 mb-6 ${isExpiringSoon ? 'animate-pulse' : ''}`}>
                       <Clock className={`w-4 h-4 ${isExpiringSoon ? 'text-red-500' : colors.text}`} />
                       <span className={`text-sm font-semibold ${isExpiringSoon ? 'text-red-600' : colors.text}`}>
-                        {currentLang === 'ru' ? 'До' : 'Gültig bis'} {formatDate(promo.valid_until)}
+                        {language === 'ru' ? 'До' : 'Gültig bis'} {formatDate(promo.valid_until)}
                       </span>
                     </div>
                   )}
@@ -173,7 +173,7 @@ export const Promotions = () => {
                     <div className={`flex items-center gap-2 mb-6`}>
                       <Star className={`w-4 h-4 ${colors.text}`} />
                       <span className={`text-sm font-semibold ${colors.text}`}>
-                        {currentLang === 'ru' ? 'Бессрочное предложение' : 'Dauerhaft gültig'}
+                        {language === 'ru' ? 'Бессрочное предложение' : 'Dauerhaft gültig'}
                       </span>
                     </div>
                   )}
@@ -186,7 +186,7 @@ export const Promotions = () => {
                   >
                     <a href="tel:+4915206067810" className="flex items-center justify-center gap-2">
                       <Phone className="w-5 h-5" />
-                      <span>{currentLang === 'ru' ? 'Записаться' : 'Termin buchen'}</span>
+                      <span>{language === 'ru' ? 'Записаться' : 'Termin buchen'}</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
@@ -199,7 +199,7 @@ export const Promotions = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-lg text-muted-foreground mb-6">
-            {currentLang === 'ru'
+            {language === 'ru'
               ? 'Хотите узнать больше о наших акциях?'
               : 'Haben Sie Fragen zu unseren Angeboten?'}
           </p>
@@ -210,7 +210,7 @@ export const Promotions = () => {
           >
             <a href="tel:+4915206067810" className="flex items-center gap-2">
               <Phone className="w-5 h-5" />
-              <span>{currentLang === 'ru' ? 'Позвонить' : 'Jetzt anrufen'}</span>
+              <span>{language === 'ru' ? 'Позвонить' : 'Jetzt anrufen'}</span>
             </a>
           </Button>
         </div>
