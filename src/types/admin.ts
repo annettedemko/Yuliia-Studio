@@ -52,9 +52,27 @@ export interface Client {
   created_at: string;
 }
 
+export interface Promotion {
+  id: string;
+  title_de: string;
+  title_ru: string;
+  description_de: string;
+  description_ru: string;
+  discount_text_de?: string;
+  discount_text_ru?: string;
+  valid_until?: string;
+  is_active: boolean;
+  display_order: number;
+  icon?: string;
+  color?: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface ContentData {
   prices: ServicePrice[];
   subscriptions: SubscriptionPackage[];
   events: Event[];
+  promotions?: Promotion[];
   lastUpdated: string;
 }

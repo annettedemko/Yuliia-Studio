@@ -22,7 +22,8 @@ import {
   Clock,
   Calendar,
   Users,
-  FileText
+  FileText,
+  Sparkles
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -31,7 +32,8 @@ import {
   pricesService,
   subscriptionsService,
   categoriesService,
-  eventsService
+  eventsService,
+  promotionsService
 } from '@/services/contentService';
 import type { PriceCategory } from '@/services/contentService';
 import {
@@ -41,7 +43,7 @@ import {
   deleteEvent as deleteSupabaseEvent
 } from '@/utils/supabaseEventsAPI';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
-import { ServicePrice, SubscriptionPackage } from '@/types/admin';
+import { ServicePrice, SubscriptionPackage, Promotion } from '@/types/admin';
 import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
 
 const AdminDashboard = () => {
@@ -50,11 +52,13 @@ const AdminDashboard = () => {
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
   const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
+  const [editingPromotion, setEditingPromotion] = useState<Promotion | null>(null);
   const [editingCategory, setEditingCategory] = useState<PriceCategory | null>(null);
-  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | 'category' | null>(null);
+  const [isCreating, setIsCreating] = useState<'price' | 'subscription' | 'event' | 'promotion' | 'category' | null>(null);
   const [currentUser, setCurrentUser] = useState<string | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -127,22 +131,25 @@ const AdminDashboard = () => {
 
     try {
       // Load all data from Supabase
-      const [pricesData, subscriptionsData, categoriesData, eventsData] = await Promise.all([
+      const [pricesData, subscriptionsData, categoriesData, eventsData, promotionsData] = await Promise.all([
         pricesService.getAll(),
         subscriptionsService.getAll(),
         categoriesService.getAll(),
-        getEvents()
+        getEvents(),
+        promotionsService.getAll()
       ]);
 
       console.log('Loaded prices:', pricesData);
       console.log('Loaded subscriptions:', subscriptionsData);
       console.log('Loaded categories:', categoriesData);
       console.log('Loaded events:', eventsData);
+      console.log('Loaded promotions:', promotionsData);
 
       setPrices(pricesData);
       setSubscriptions(subscriptionsData);
       setCategories(categoriesData);
       setSupabaseEvents(eventsData);
+      setPromotions(promotionsData);
     } catch (error) {
       console.error('Error loading data:', error);
     } finally {
@@ -167,18 +174,18 @@ const AdminDashboard = () => {
       await loadData();
     } catch (error) {
       console.error('Error saving price:', error);
-      alert('Ошибка при сохранении цены');
+      alert('Fehler beim Speichern des Preises');
     }
   };
 
   const handleDeletePrice = async (id: string) => {
-    if (confirm('Вы уверены, что хотите удалить эту цену?')) {
+    if (confirm('Sind Sie sicher, dass Sie diesen Preis löschen möchten?')) {
       try {
         await pricesService.delete(id);
         await loadData();
       } catch (error) {
         console.error('Error deleting price:', error);
-        alert('Ошибка при удалении цены');
+        alert('Fehler beim Löschen des Preises');
       }
     }
   };
@@ -195,18 +202,18 @@ const AdminDashboard = () => {
       await loadData();
     } catch (error) {
       console.error('Error saving subscription:', error);
-      alert('Ошибка при сохранении подписки');
+      alert('Fehler beim Speichern des Abonnements');
     }
   };
 
   const handleDeleteSubscription = async (id: string) => {
-    if (confirm('Вы уверены, что хотите удалить эту подписку?')) {
+    if (confirm('Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?')) {
       try {
         await subscriptionsService.delete(id);
         await loadData();
       } catch (error) {
         console.error('Error deleting subscription:', error);
-        alert('Ошибка при удалении подписки');
+        alert('Fehler beim Löschen des Abonnements');
       }
     }
   };
@@ -223,8 +230,26 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (confirm('Вы уверены, что хотите удалить это событие?')) {
+    if (confirm('Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?')) {
       await deleteSupabaseEvent(id);
+      await loadData();
+    }
+  };
+
+  const handleSavePromotion = async (promotionData: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>) => {
+    if (editingPromotion && editingPromotion.id) {
+      await promotionsService.update(editingPromotion.id, promotionData);
+    } else {
+      await promotionsService.create(promotionData);
+    }
+    setEditingPromotion(null);
+    setIsCreating(null);
+    await loadData();
+  };
+
+  const handleDeletePromotion = async (id: string) => {
+    if (confirm('Sind Sie sicher, dass Sie diese Aktion löschen möchten?')) {
+      await promotionsService.delete(id);
       await loadData();
     }
   };
@@ -273,7 +298,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -301,26 +326,6 @@ const AdminDashboard = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Navigation Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
-          <Card
-            className="cursor-pointer hover:shadow-lg transition-shadow"
-            onClick={() => {
-              const element = document.getElementById('categories-section');
-              element?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            <CardContent className="flex items-center p-4">
-              <div className="flex items-center">
-                <div className="bg-amber-500/20 p-2 rounded-full">
-                  <Package className="w-5 h-5 text-amber-500" />
-                </div>
-                <div className="ml-3">
-                  <p className="text-xs text-muted-foreground">Категории</p>
-                  <p className="text-xl font-bold">{categories.length || 0}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           <Card
             className="cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
@@ -442,89 +447,6 @@ const AdminDashboard = () => {
           </Card>
         </div>
 
-        {/* Categories Management */}
-        <Card className="mb-8" id="categories-section">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle>Управление категориями</CardTitle>
-              <Button
-                onClick={() => setIsCreating('category')}
-                className="flex items-center gap-2"
-              >
-                <Plus className="w-4 h-4" />
-                Новая категория
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            {isCreating === 'category' && (
-              <div className="mb-6">
-                <CategoryEditor
-                  onSave={handleSaveCategory}
-                  onCancel={() => setIsCreating(null)}
-                />
-              </div>
-            )}
-
-            <div className="grid gap-4">
-              {categories.map((category) => (
-                <div key={category.id} className="border rounded-lg p-4">
-                  {editingCategory?.id === category.id ? (
-                    <CategoryEditor
-                      category={editingCategory}
-                      onSave={handleSaveCategory}
-                      onCancel={() => setEditingCategory(null)}
-                    />
-                  ) : (
-                    <>
-                      <div className="flex justify-between items-start">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <h3 className="font-semibold text-lg">{category.name}</h3>
-                            {category.is_published && (
-                              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">
-                                Опубликовано
-                              </span>
-                            )}
-                          </div>
-                          {category.name_ru && (
-                            <p className="text-sm text-muted-foreground mb-1">{category.name_ru}</p>
-                          )}
-                          <p className="text-sm text-muted-foreground">
-                            <span className="font-medium">Code:</span> {category.code}
-                          </p>
-                          {category.description && (
-                            <p className="text-sm text-muted-foreground mt-1">{category.description}</p>
-                          )}
-                          {category.description_ru && (
-                            <p className="text-sm text-muted-foreground">{category.description_ru}</p>
-                          )}
-                        </div>
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => setEditingCategory(category)}
-                          >
-                            <Edit3 className="w-4 h-4" />
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleDeleteCategory(category.id)}
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Prices Management */}
         <Card className="mb-8" id="prices-section">
           <CardHeader>
@@ -566,25 +488,13 @@ const AdminDashboard = () => {
                             />
                           ) : (
                             <>
-                              <div className="flex-1">
-                                <div>
-                                  <span className="font-medium">{price.service}</span>
-                                  <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
-                                  {price.note && (
-                                    <span className="ml-2 text-sm text-muted-foreground">
-                                      {price.note}
-                                    </span>
-                                  )}
-                                </div>
-                                {(price.service_ru || price.note_ru) && (
-                                  <div className="text-sm text-muted-foreground mt-1">
-                                    {price.service_ru && <span>{price.service_ru}</span>}
-                                    {price.note_ru && (
-                                      <span className="ml-2">
-                                        {price.note_ru}
-                                      </span>
-                                    )}
-                                  </div>
+                              <div>
+                                <span className="font-medium">{price.service}</span>
+                                <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
+                                {price.note && (
+                                  <span className="ml-2 text-sm text-muted-foreground">
+                                    {price.note}
+                                  </span>
                                 )}
                               </div>
                               <div className="flex gap-2">
@@ -653,26 +563,16 @@ const AdminDashboard = () => {
                             {subscription.name}
                             {subscription.popular && (
                               <span className="ml-2 bg-rose-gold text-white px-2 py-1 rounded text-xs">
-                                Популярная
+                                Beliebt
                               </span>
                             )}
                           </h3>
                           <p className="text-rose-gold font-semibold">
                             {subscription.price} {subscription.period}
                           </p>
-                          {subscription.period_ru && (
-                            <p className="text-sm text-muted-foreground">
-                              {subscription.price} {subscription.period_ru}
-                            </p>
-                          )}
                           <p className="text-sm text-muted-foreground">
                             {subscription.treatments} • {subscription.frequency}
                           </p>
-                          {(subscription.treatments_ru || subscription.frequency_ru) && (
-                            <p className="text-sm text-muted-foreground">
-                              {subscription.treatments_ru || subscription.treatments} • {subscription.frequency_ru || subscription.frequency}
-                            </p>
-                          )}
                         </div>
                         <div className="flex gap-2">
                           <Button
@@ -755,7 +655,7 @@ const AdminDashboard = () => {
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-gray-100 text-gray-800'
                             }`}>
-                              {event.is_published ? '✓ Опубликовано' : 'Черновик'}
+                              {event.is_published ? '✓ Veröffentlicht' : 'Entwurf'}
                             </span>
                           </div>
                           <p className="text-muted-foreground">
@@ -794,6 +694,114 @@ const AdminDashboard = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Promotions Management */}
+        <Card className="mb-8" id="promotions-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Управление акциями</CardTitle>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => setIsCreating('promotion')}
+                  disabled={isCreating === 'promotion'}
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <Plus className="w-4 h-4" />
+                  Новая акция
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isCreating === 'promotion' && (
+              <div className="mb-4">
+                <PromotionEditor
+                  onSave={handleSavePromotion}
+                  onCancel={() => setIsCreating(null)}
+                />
+              </div>
+            )}
+
+            <div className="space-y-4">
+              {promotions.map((promotion) => (
+                <div key={promotion.id} className="border p-4 rounded-lg">
+                  {editingPromotion?.id === promotion.id ? (
+                    <PromotionEditor
+                      promotion={editingPromotion}
+                      onSave={handleSavePromotion}
+                      onCancel={() => setEditingPromotion(null)}
+                    />
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold text-lg">{promotion.title_de}</h4>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              promotion.is_active
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-gray-100 text-gray-800'
+                            }`}>
+                              {promotion.is_active ? '✓ Aktiv' : 'Inaktiv'}
+                            </span>
+                            {promotion.discount_text_de && (
+                              <span className="px-2 py-1 rounded-full text-xs font-medium bg-rose-gold/20 text-rose-gold">
+                                {promotion.discount_text_de}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            🇷🇺 {promotion.title_ru}
+                          </p>
+                          <p className="text-sm text-muted-foreground mt-2">
+                            {promotion.description_de}
+                          </p>
+                          <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                            <span>Icon: {promotion.icon}</span>
+                            <span>Farbe: {promotion.color}</span>
+                            <span>Reihenfolge: {promotion.display_order}</span>
+                            {promotion.valid_until && (
+                              <span className="text-orange-600 font-medium">
+                                ⏰ Gültig bis: {new Date(promotion.valid_until).toLocaleDateString('de-DE')}
+                              </span>
+                            )}
+                            {!promotion.valid_until && (
+                              <span className="text-green-600 font-medium">
+                                ∞ Unbegrenzt
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEditingPromotion(promotion)}
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeletePromotion(promotion.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+              {promotions.length === 0 && !isCreating && (
+                <p className="text-center text-muted-foreground py-8">
+                  Keine Aktionen vorhanden. Erstellen Sie eine neue Aktion, um sie auf der Homepage anzuzeigen.
+                </p>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -891,10 +899,8 @@ const PriceEditor = ({
     price || {
       id: '',
       service: '',
-      service_ru: '',
       price: '',
       note: '',
-      note_ru: '',
       category: 'alexandrit'
     }
   );
@@ -908,36 +914,25 @@ const PriceEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="service">Название услуги (Deutsch)</Label>
+          <Label htmlFor="service">Service</Label>
           <Input
             id="service"
             value={formData.service}
             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
             required
-            placeholder="например: Bikini Komplett"
           />
         </div>
         <div>
-          <Label htmlFor="service_ru">Название услуги (Русский)</Label>
-          <Input
-            id="service_ru"
-            value={formData.service_ru || ''}
-            onChange={(e) => setFormData({ ...formData, service_ru: e.target.value })}
-            placeholder="например: Бикини полностью"
-          />
-        </div>
-        <div>
-          <Label htmlFor="price">Цена (€)</Label>
+          <Label htmlFor="price">Preis</Label>
           <Input
             id="price"
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
             required
-            placeholder="например: 45"
           />
         </div>
         <div>
-          <Label htmlFor="category">Категория</Label>
+          <Label htmlFor="category">Kategorie</Label>
           <Select
             value={formData.category}
             onValueChange={(value: any) => setFormData({ ...formData, category: value })}
@@ -955,32 +950,22 @@ const PriceEditor = ({
           </Select>
         </div>
         <div>
-          <Label htmlFor="note">Примечание (Deutsch, опционально)</Label>
+          <Label htmlFor="note">Notiz (optional)</Label>
           <Input
             id="note"
             value={formData.note || ''}
             onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-            placeholder="например: ohne Pofalte"
-          />
-        </div>
-        <div>
-          <Label htmlFor="note_ru">Примечание (Русский, опционально)</Label>
-          <Input
-            id="note_ru"
-            value={formData.note_ru || ''}
-            onChange={(e) => setFormData({ ...formData, note_ru: e.target.value })}
-            placeholder="например: без складки"
           />
         </div>
       </div>
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Сохранить
+          Speichern
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Отмена
+          Abbrechen
         </Button>
       </div>
     </form>
@@ -1003,11 +988,8 @@ const SubscriptionEditor = ({
       name: '',
       price: '',
       period: 'pro Monat',
-      period_ru: '',
       treatments: '',
-      treatments_ru: '',
       frequency: '',
-      frequency_ru: '',
       features: [],
       popular: false
     }
@@ -1027,80 +1009,48 @@ const SubscriptionEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="name">Название подписки</Label>
+          <Label htmlFor="name">Name</Label>
           <Input
             id="name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
-            placeholder="например: Starter"
           />
         </div>
         <div>
-          <Label htmlFor="price">Цена</Label>
+          <Label htmlFor="price">Preis</Label>
           <Input
             id="price"
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
             required
-            placeholder="например: 299€"
           />
         </div>
         <div>
-          <Label htmlFor="period">Период (Deutsch)</Label>
+          <Label htmlFor="period">Zeitraum</Label>
           <Input
             id="period"
             value={formData.period}
             onChange={(e) => setFormData({ ...formData, period: e.target.value })}
             required
-            placeholder="например: pro Monat"
           />
         </div>
         <div>
-          <Label htmlFor="period_ru">Период (Русский)</Label>
-          <Input
-            id="period_ru"
-            value={formData.period_ru || ''}
-            onChange={(e) => setFormData({ ...formData, period_ru: e.target.value })}
-            placeholder="например: в месяц"
-          />
-        </div>
-        <div>
-          <Label htmlFor="treatments">Процедуры (Deutsch)</Label>
+          <Label htmlFor="treatments">Behandlungen</Label>
           <Input
             id="treatments"
             value={formData.treatments}
             onChange={(e) => setFormData({ ...formData, treatments: e.target.value })}
             required
-            placeholder="например: 6 Behandlungen"
           />
         </div>
         <div>
-          <Label htmlFor="treatments_ru">Процедуры (Русский)</Label>
-          <Input
-            id="treatments_ru"
-            value={formData.treatments_ru || ''}
-            onChange={(e) => setFormData({ ...formData, treatments_ru: e.target.value })}
-            placeholder="например: 6 процедур"
-          />
-        </div>
-        <div>
-          <Label htmlFor="frequency">Частота (Deutsch)</Label>
+          <Label htmlFor="frequency">Häufigkeit</Label>
           <Input
             id="frequency"
             value={formData.frequency}
             onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
             required
-            placeholder="например: Alle 6 Wochen"
-          />
-        </div>
-        <div>
-          <Label htmlFor="frequency_ru">Частота (Русский)</Label>
-          <Input
-            id="frequency_ru"
-            value={formData.frequency_ru || ''}
-            onChange={(e) => setFormData({ ...formData, frequency_ru: e.target.value })}
-            placeholder="например: Каждые 6 недель"
           />
         </div>
         <div className="flex items-center space-x-2">
@@ -1110,30 +1060,29 @@ const SubscriptionEditor = ({
             checked={formData.popular}
             onChange={(e) => setFormData({ ...formData, popular: e.target.checked })}
           />
-          <Label htmlFor="popular">Отметить как популярную</Label>
+          <Label htmlFor="popular">Als beliebt markieren</Label>
         </div>
       </div>
 
       <div>
-        <Label htmlFor="features">Преимущества (одно на строку)</Label>
+        <Label htmlFor="features">Features (eine pro Zeile)</Label>
         <Textarea
           id="features"
           value={featuresText}
           onChange={(e) => setFeaturesText(e.target.value)}
           rows={4}
           required
-          placeholder="например:&#10;✓ 6 процедур&#10;✓ Каждые 6 недель&#10;✓ 10% скидка"
         />
       </div>
 
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Сохранить
+          Speichern
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Отмена
+          Abbrechen
         </Button>
       </div>
     </form>
@@ -1179,17 +1128,16 @@ const EventEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="title">Название события</Label>
+          <Label htmlFor="title">Titel</Label>
           <Input
             id="title"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
-            placeholder="например: День открытых дверей"
           />
         </div>
         <div>
-          <Label htmlFor="date">Дата</Label>
+          <Label htmlFor="date">Datum</Label>
           <Input
             id="date"
             type="date"
@@ -1199,45 +1147,43 @@ const EventEditor = ({
           />
         </div>
         <div>
-          <Label htmlFor="time">Время (опционально)</Label>
+          <Label htmlFor="time">Zeit (optional)</Label>
           <Input
             id="time"
             value={formData.time || ''}
             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-            placeholder="например: 18-19.10"
+            placeholder="z.B. 18-19.10"
           />
         </div>
         <div>
-          <Label htmlFor="location">Место проведения</Label>
+          <Label htmlFor="location">Ort</Label>
           <Input
             id="location"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
             required
-            placeholder="например: Yuliia Beauty Studio"
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="address">Адрес</Label>
+        <Label htmlFor="address">Adresse</Label>
         <Input
           id="address"
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           required
-          placeholder="например: Hauptstraße 123, 12345 Berlin"
         />
       </div>
 
       <div>
-        <Label htmlFor="description">Описание (опционально)</Label>
+        <Label htmlFor="description">Beschreibung (optional)</Label>
         <Textarea
           id="description"
           value={formData.description || ''}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows={3}
-          placeholder="Дополнительная информация о событии"
+          placeholder="Zusätzliche Informationen zur Veranstaltung"
         />
       </div>
 
@@ -1250,138 +1196,151 @@ const EventEditor = ({
           className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
         />
         <Label htmlFor="is_published" className="cursor-pointer">
-          Опубликовать (сделать видимым на сайте)
+          Veröffentlicht (sichtbar auf der Website)
         </Label>
       </div>
 
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Сохранить
+          Speichern
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Отмена
+          Abbrechen
         </Button>
       </div>
     </form>
   );
 };
 
-// Category Editor Component
-const CategoryEditor = ({
-  category,
+// Promotion Editor Component
+const PromotionEditor = ({
+  promotion,
   onSave,
   onCancel
 }: {
-  category?: PriceCategory;
-  onSave: (category: Omit<PriceCategory, 'id'> | PriceCategory) => void;
+  promotion?: Promotion;
+  onSave: (promotion: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>) => void;
   onCancel: () => void;
 }) => {
-  const [formData, setFormData] = useState<Omit<PriceCategory, 'id'>>(
-    category ? {
-      code: category.code,
-      name: category.name,
-      name_ru: category.name_ru || '',
-      description: category.description || '',
-      description_ru: category.description_ru || '',
-      icon: category.icon || '',
-      color: category.color || '',
-      order_index: category.order_index,
-      is_published: category.is_published
+  const [formData, setFormData] = useState<Omit<Promotion, 'id' | 'created_at' | 'updated_at'>>(
+    promotion ? {
+      title_de: promotion.title_de,
+      title_ru: promotion.title_ru,
+      description_de: promotion.description_de,
+      description_ru: promotion.description_ru,
+      discount_text_de: promotion.discount_text_de,
+      discount_text_ru: promotion.discount_text_ru,
+      valid_until: promotion.valid_until,
+      is_active: promotion.is_active,
+      display_order: promotion.display_order,
+      icon: promotion.icon || 'Sparkles',
+      color: promotion.color || 'rose-gold'
     } : {
-      code: '',
-      name: '',
-      name_ru: '',
-      description: '',
+      title_de: '',
+      title_ru: '',
+      description_de: '',
       description_ru: '',
+      discount_text_de: '',
+      discount_text_ru: '',
+      valid_until: undefined,
+      is_active: true,
+      display_order: 0,
       icon: 'Sparkles',
-      color: 'rose-gold',
-      order_index: 999,
-      is_published: true
+      color: 'rose-gold'
     }
   );
 
-  // Auto-generate code from German name
-  const generateCode = (name: string): string => {
-    return name
-      .toLowerCase()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/ß/g, 'ss')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.name_ru?.trim()) {
-      alert('Название (Deutsch) и Название (Русский) обязательны для заполнения');
-      return;
-    }
-
-    // Auto-generate code if creating new category
-    const dataToSave = category
-      ? { ...formData, id: category.id } as PriceCategory
-      : {
-          ...formData,
-          code: generateCode(formData.name),
-          order_index: 999 // Auto-place at end
-        };
-
-    onSave(dataToSave);
+    onSave(formData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="name">Название (Deutsch) *</Label>
+          <Label htmlFor="title_de">Titel (Deutsch)</Label>
           <Input
-            id="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            id="title_de"
+            value={formData.title_de}
+            onChange={(e) => setFormData({ ...formData, title_de: e.target.value })}
             required
-            placeholder="например: Neuer Laser"
+            placeholder="z.B. Icoone Erstbehandlung -50%"
           />
-          <p className="text-xs text-muted-foreground mt-1">
-            Обязательное поле
-          </p>
         </div>
         <div>
-          <Label htmlFor="name_ru">Название (Русский) *</Label>
+          <Label htmlFor="title_ru">Название (Русский)</Label>
           <Input
-            id="name_ru"
-            value={formData.name_ru || ''}
-            onChange={(e) => setFormData({ ...formData, name_ru: e.target.value })}
+            id="title_ru"
+            value={formData.title_ru}
+            onChange={(e) => setFormData({ ...formData, title_ru: e.target.value })}
             required
-            placeholder="например: Новый лазер"
+            placeholder="например Первое посещение Icoone -50%"
           />
-          <p className="text-xs text-muted-foreground mt-1">
-            Обязательное поле
-          </p>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="description">Описание (Deutsch)</Label>
-          <Input
-            id="description"
-            value={formData.description || ''}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            placeholder="например: Modernste Lasertechnologie"
+          <Label htmlFor="description_de">Beschreibung (Deutsch)</Label>
+          <Textarea
+            id="description_de"
+            value={formData.description_de}
+            onChange={(e) => setFormData({ ...formData, description_de: e.target.value })}
+            required
+            rows={3}
+            placeholder="Detaillierte Beschreibung der Aktion"
           />
         </div>
         <div>
           <Label htmlFor="description_ru">Описание (Русский)</Label>
-          <Input
+          <Textarea
             id="description_ru"
-            value={formData.description_ru || ''}
+            value={formData.description_ru}
             onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
-            placeholder="например: Современная лазерная технология"
+            required
+            rows={3}
+            placeholder="Подробное описание акции"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="discount_text_de">Rabatt Text (Deutsch, optional)</Label>
+          <Input
+            id="discount_text_de"
+            value={formData.discount_text_de || ''}
+            onChange={(e) => setFormData({ ...formData, discount_text_de: e.target.value })}
+            placeholder="z.B. -50%"
           />
         </div>
         <div>
-          <Label htmlFor="icon">Иконка</Label>
+          <Label htmlFor="discount_text_ru">Текст скидки (Русский, optional)</Label>
+          <Input
+            id="discount_text_ru"
+            value={formData.discount_text_ru || ''}
+            onChange={(e) => setFormData({ ...formData, discount_text_ru: e.target.value })}
+            placeholder="например -50%"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <Label htmlFor="valid_until">Gültig bis (optional)</Label>
+          <Input
+            id="valid_until"
+            type="datetime-local"
+            value={formData.valid_until ? formData.valid_until.slice(0, 16) : ''}
+            onChange={(e) => setFormData({ ...formData, valid_until: e.target.value ? `${e.target.value}:00+00` : undefined })}
+            placeholder="Leer lassen für unbegrenzt"
+          />
+        </div>
+        <div>
+          <Label htmlFor="icon">Icon</Label>
           <Select
             value={formData.icon || 'Sparkles'}
             onValueChange={(value) => setFormData({ ...formData, icon: value })}
@@ -1390,16 +1349,17 @@ const CategoryEditor = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Sparkles">✨ Искры (Sparkles)</SelectItem>
-              <SelectItem value="Zap">⚡ Молния (Zap)</SelectItem>
-              <SelectItem value="Heart">❤️ Сердце (Heart)</SelectItem>
-              <SelectItem value="Waves">🌊 Волны (Waves)</SelectItem>
-              <SelectItem value="Hand">✋ Рука (Hand)</SelectItem>
+              <SelectItem value="Sparkles">Sparkles ✨</SelectItem>
+              <SelectItem value="Zap">Zap ⚡</SelectItem>
+              <SelectItem value="Heart">Heart ❤️</SelectItem>
+              <SelectItem value="Gift">Gift 🎁</SelectItem>
+              <SelectItem value="Star">Star ⭐</SelectItem>
+              <SelectItem value="Clock">Clock ⏰</SelectItem>
             </SelectContent>
           </Select>
         </div>
         <div>
-          <Label htmlFor="color">Цвет</Label>
+          <Label htmlFor="color">Farbe</Label>
           <Select
             value={formData.color || 'rose-gold'}
             onValueChange={(value) => setFormData({ ...formData, color: value })}
@@ -1408,33 +1368,47 @@ const CategoryEditor = ({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="rose-gold">🌹 Розовое золото (Rose Gold)</SelectItem>
-              <SelectItem value="primary">🔵 Синий (Blue)</SelectItem>
-              <SelectItem value="purple">🟣 Фиолетовый (Purple)</SelectItem>
-              <SelectItem value="green">🟢 Зелёный (Green)</SelectItem>
-              <SelectItem value="orange">🟠 Оранжевый (Orange)</SelectItem>
+              <SelectItem value="rose-gold">Rose Gold 🌹</SelectItem>
+              <SelectItem value="primary">Primary 💜</SelectItem>
+              <SelectItem value="gold">Gold 🥇</SelectItem>
             </SelectContent>
           </Select>
         </div>
-        <div className="flex items-center space-x-2 col-span-2">
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="display_order">Reihenfolge</Label>
+          <Input
+            id="display_order"
+            type="number"
+            value={formData.display_order}
+            onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 0 })}
+            min="0"
+          />
+        </div>
+        <div className="flex items-center space-x-2 pt-8">
           <input
             type="checkbox"
-            id="is_published"
-            checked={formData.is_published}
-            onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
-            className="w-4 h-4"
+            id="is_active"
+            checked={formData.is_active}
+            onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
+            className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
           />
-          <Label htmlFor="is_published">Опубликовать (сделать видимой на сайте)</Label>
+          <Label htmlFor="is_active" className="cursor-pointer">
+            Aktiv (sichtbar auf der Website)
+          </Label>
         </div>
       </div>
+
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Сохранить
+          Speichern
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Отмена
+          Abbrechen
         </Button>
       </div>
     </form>

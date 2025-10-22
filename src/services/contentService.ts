@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-import type { ServicePrice, SubscriptionPackage, Event } from '@/types/admin'
+import type { ServicePrice, SubscriptionPackage, Event, Promotion } from '@/types/admin'
 
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
@@ -832,5 +832,153 @@ export const eventsService = {
       console.error('Error deleting event:', error);
       return false;
     }
+  }
+}
+
+// Promotions service
+export const promotionsService = {
+  async getAll(): Promise<Promotion[]> {
+    console.log('🔍 Promotions: Fetching from Supabase...');
+    const startTime = Date.now();
+
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?is_active=eq.true&order=display_order.asc&select=*`, {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`🔍 Promotions: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('Error fetching promotions:', error);
+        return [];
+      }
+
+      const data = await response.json();
+      console.log('🟢 Promotions: Найдено записей:', data.length);
+
+      return data.map((item: any) => ({
+        id: item.id,
+        title_de: item.title_de,
+        title_ru: item.title_ru,
+        description_de: item.description_de,
+        description_ru: item.description_ru,
+        discount_text_de: item.discount_text_de || undefined,
+        discount_text_ru: item.discount_text_ru || undefined,
+        valid_until: item.valid_until || undefined,
+        is_active: item.is_active,
+        display_order: item.display_order,
+        icon: item.icon || 'Sparkles',
+        color: item.color || 'rose-gold',
+        created_at: item.created_at,
+        updated_at: item.updated_at
+      }));
+    } catch (error) {
+      console.error('Promotions: Exception:', error);
+      return [];
+    }
+  },
+
+  async getActive(): Promise<Promotion[]> {
+    const allPromotions = await this.getAll();
+    const now = new Date();
+
+    return allPromotions.filter(promo => {
+      if (!promo.valid_until) return true; // No expiry date
+      return new Date(promo.valid_until) > now;
+    });
+  },
+
+  async create(promotion: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>): Promise<Promotion | null> {
+    const { data, error } = await supabase
+      .from('promotions')
+      .insert({
+        title_de: promotion.title_de,
+        title_ru: promotion.title_ru,
+        description_de: promotion.description_de,
+        description_ru: promotion.description_ru,
+        discount_text_de: promotion.discount_text_de || null,
+        discount_text_ru: promotion.discount_text_ru || null,
+        valid_until: promotion.valid_until || null,
+        is_active: promotion.is_active,
+        display_order: promotion.display_order,
+        icon: promotion.icon || 'Sparkles',
+        color: promotion.color || 'rose-gold'
+      })
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating promotion:', error)
+      return null
+    }
+
+    return data as Promotion
+  },
+
+  async update(id: string, updates: Partial<Promotion>): Promise<Promotion | null> {
+    const updateData: any = {
+      updated_at: new Date().toISOString()
+    };
+
+    if (updates.title_de !== undefined) updateData.title_de = updates.title_de;
+    if (updates.title_ru !== undefined) updateData.title_ru = updates.title_ru;
+    if (updates.description_de !== undefined) updateData.description_de = updates.description_de;
+    if (updates.description_ru !== undefined) updateData.description_ru = updates.description_ru;
+    if (updates.discount_text_de !== undefined) updateData.discount_text_de = updates.discount_text_de;
+    if (updates.discount_text_ru !== undefined) updateData.discount_text_ru = updates.discount_text_ru;
+    if (updates.valid_until !== undefined) updateData.valid_until = updates.valid_until;
+    if (updates.is_active !== undefined) updateData.is_active = updates.is_active;
+    if (updates.display_order !== undefined) updateData.display_order = updates.display_order;
+    if (updates.icon !== undefined) updateData.icon = updates.icon;
+    if (updates.color !== undefined) updateData.color = updates.color;
+
+    const { data, error } = await supabase
+      .from('promotions')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating promotion:', error)
+      return null
+    }
+
+    return data as Promotion
+  },
+
+  async delete(id: string): Promise<boolean> {
+    const { error } = await supabase
+      .from('promotions')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Error deleting promotion:', error)
+      return false
+    }
+
+    return true
+  },
+
+  async updateOrder(id: string, display_order: number): Promise<boolean> {
+    const { error } = await supabase
+      .from('promotions')
+      .update({ display_order, updated_at: new Date().toISOString() })
+      .eq('id', id)
+
+    if (error) {
+      console.error('Error updating promotion order:', error)
+      return false
+    }
+
+    return true
   }
 }
