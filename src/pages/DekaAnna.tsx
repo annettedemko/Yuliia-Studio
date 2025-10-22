@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin, AlertCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Star, TrendingUp, Shield, Users, Calendar, MapPin, AlertCircle, X, ChevronLeft, ChevronRight, Phone, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useFormSubmission } from '@/hooks/useFormSubmission';
@@ -22,6 +22,9 @@ const DekaAnna = () => {
 
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const { submitForm, isSubmitting, submitSuccess, submitError } = useFormSubmission('deka-anna');
+
+  // Contact modal state
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // Gallery state
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -166,6 +169,59 @@ const DekaAnna = () => {
 
   return (
     <div className="min-h-screen pt-16 relative">
+      {/* Contact Modal */}
+      {isContactModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setIsContactModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl transform transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                {currentLang === 'ru' ? 'Выберите способ связи' : 'Kontaktmethode wählen'}
+              </h3>
+              <button
+                onClick={() => setIsContactModalOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <a
+                href="tel:+4915206067810"
+                className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary text-white transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                <Phone className="w-6 h-6" />
+                <div className="text-left">
+                  <div className="font-semibold">
+                    {currentLang === 'ru' ? 'Позвонить' : 'Anrufen'}
+                  </div>
+                  <div className="text-sm opacity-90">+49 152 06067810</div>
+                </div>
+              </a>
+
+              <a
+                href="https://wa.me/4915206067810"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-500 text-white transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                <MessageCircle className="w-6 h-6" />
+                <div className="text-left">
+                  <div className="font-semibold">WhatsApp</div>
+                  <div className="text-sm opacity-90">+49 152 06067810</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative z-10 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900/90 via-purple-900/85 to-purple-800/90">
         {/* Background with DEKA Devices - Beautiful layout: 3 top, 2 bottom larger on mobile */}
@@ -252,12 +308,9 @@ const DekaAnna = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white text-sm sm:text-base md:text-lg lg:text-xl py-4 sm:py-5 md:py-6 lg:py-7 px-6 sm:px-8 md:px-10 lg:px-12 rounded-full shadow-2xl hover:shadow-rose-gold/25 transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-                onClick={() => {
-                  const registrationSection = document.querySelector('#registration-form');
-                  registrationSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => setIsContactModalOpen(true)}
               >
-                {t('deka.hero.button')}
+                {currentLang === 'ru' ? 'Связаться с менеджером' : 'Kontakt zum Manager'}
               </Button>
               <Button
                 variant="outline"
