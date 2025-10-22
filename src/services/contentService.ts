@@ -4,9 +4,17 @@ import type { ServicePrice, SubscriptionPackage, Event, Promotion } from '@/type
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
-// Helper to get auth token - always use ANON_KEY for REST API
+// Helper to get auth token - use user's access_token if available, otherwise ANON_KEY
 const getAuthToken = (): string => {
-  // ANON KEY is correct - RLS policies handle authorization
+  // Try to get user's access token from localStorage
+  const userToken = localStorage.getItem('supabase.auth.token');
+  if (userToken) {
+    console.log('🔑 Using user access token for API request');
+    return userToken;
+  }
+
+  // Fallback to ANON_KEY for public access
+  console.log('🔑 Using ANON_KEY for API request');
   return SUPABASE_ANON_KEY;
 };
 
@@ -896,89 +904,171 @@ export const promotionsService = {
   },
 
   async create(promotion: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>): Promise<Promotion | null> {
-    const { data, error } = await supabase
-      .from('promotions')
-      .insert({
-        title_de: promotion.title_de,
-        title_ru: promotion.title_ru,
-        description_de: promotion.description_de,
-        description_ru: promotion.description_ru,
-        discount_text_de: promotion.discount_text_de || null,
-        discount_text_ru: promotion.discount_text_ru || null,
-        valid_until: promotion.valid_until || null,
-        is_active: promotion.is_active,
-        display_order: promotion.display_order,
-        icon: promotion.icon || 'Sparkles',
-        color: promotion.color || 'rose-gold'
-      })
-      .select()
-      .single()
+    console.log('Creating promotion via REST API:', promotion);
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error creating promotion:', error)
-      return null
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({
+          title_de: promotion.title_de,
+          title_ru: promotion.title_ru,
+          description_de: promotion.description_de,
+          description_ru: promotion.description_ru,
+          discount_text_de: promotion.discount_text_de || null,
+          discount_text_ru: promotion.discount_text_ru || null,
+          valid_until: promotion.valid_until || null,
+          is_active: promotion.is_active,
+          display_order: promotion.display_order,
+          icon: promotion.icon || 'Sparkles',
+          color: promotion.color || 'rose-gold'
+        })
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`createPromotion: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('createPromotion: Error creating promotion:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('createPromotion: Successfully created promotion:', data[0]);
+      return data[0] as Promotion;
+    } catch (error) {
+      console.error('createPromotion: Exception:', error);
+      return null;
     }
-
-    return data as Promotion
   },
 
   async update(id: string, updates: Partial<Promotion>): Promise<Promotion | null> {
-    const updateData: any = {
-      updated_at: new Date().toISOString()
-    };
+    console.log('Updating promotion', id, 'via REST API...', updates);
+    const startTime = Date.now();
 
-    if (updates.title_de !== undefined) updateData.title_de = updates.title_de;
-    if (updates.title_ru !== undefined) updateData.title_ru = updates.title_ru;
-    if (updates.description_de !== undefined) updateData.description_de = updates.description_de;
-    if (updates.description_ru !== undefined) updateData.description_ru = updates.description_ru;
-    if (updates.discount_text_de !== undefined) updateData.discount_text_de = updates.discount_text_de;
-    if (updates.discount_text_ru !== undefined) updateData.discount_text_ru = updates.discount_text_ru;
-    if (updates.valid_until !== undefined) updateData.valid_until = updates.valid_until;
-    if (updates.is_active !== undefined) updateData.is_active = updates.is_active;
-    if (updates.display_order !== undefined) updateData.display_order = updates.display_order;
-    if (updates.icon !== undefined) updateData.icon = updates.icon;
-    if (updates.color !== undefined) updateData.color = updates.color;
+    try {
+      const token = getAuthToken();
 
-    const { data, error } = await supabase
-      .from('promotions')
-      .update(updateData)
-      .eq('id', id)
-      .select()
-      .single()
+      const updateData: any = {
+        updated_at: new Date().toISOString()
+      };
 
-    if (error) {
-      console.error('Error updating promotion:', error)
-      return null
+      if (updates.title_de !== undefined) updateData.title_de = updates.title_de;
+      if (updates.title_ru !== undefined) updateData.title_ru = updates.title_ru;
+      if (updates.description_de !== undefined) updateData.description_de = updates.description_de;
+      if (updates.description_ru !== undefined) updateData.description_ru = updates.description_ru;
+      if (updates.discount_text_de !== undefined) updateData.discount_text_de = updates.discount_text_de || null;
+      if (updates.discount_text_ru !== undefined) updateData.discount_text_ru = updates.discount_text_ru || null;
+      if (updates.valid_until !== undefined) updateData.valid_until = updates.valid_until || null;
+      if (updates.is_active !== undefined) updateData.is_active = updates.is_active;
+      if (updates.display_order !== undefined) updateData.display_order = updates.display_order;
+      if (updates.icon !== undefined) updateData.icon = updates.icon || null;
+      if (updates.color !== undefined) updateData.color = updates.color || null;
+
+      console.log('updatePromotion: Sending update data:', updateData);
+
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify(updateData)
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`updatePromotion: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updatePromotion: Error updating promotion:', error);
+        return null;
+      }
+
+      const data = await response.json();
+      console.log('updatePromotion: Successfully updated promotion:', data[0]);
+      return data[0] as Promotion;
+    } catch (error) {
+      console.error('updatePromotion: Exception:', error);
+      return null;
     }
-
-    return data as Promotion
   },
 
   async delete(id: string): Promise<boolean> {
-    const { error } = await supabase
-      .from('promotions')
-      .delete()
-      .eq('id', id)
+    console.log('Deleting promotion', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error deleting promotion:', error)
-      return false
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`deletePromotion: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('deletePromotion: Error deleting promotion:', error);
+        return false;
+      }
+
+      console.log('deletePromotion: Successfully deleted promotion', id);
+      return true;
+    } catch (error) {
+      console.error('deletePromotion: Exception:', error);
+      return false;
     }
-
-    return true
   },
 
   async updateOrder(id: string, display_order: number): Promise<boolean> {
-    const { error } = await supabase
-      .from('promotions')
-      .update({ display_order, updated_at: new Date().toISOString() })
-      .eq('id', id)
+    console.log('Updating promotion order', id, 'via REST API...');
+    const startTime = Date.now();
 
-    if (error) {
-      console.error('Error updating promotion order:', error)
-      return false
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?id=eq.${id}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          display_order,
+          updated_at: new Date().toISOString()
+        })
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`updatePromotionOrder: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('updatePromotionOrder: Error updating order:', error);
+        return false;
+      }
+
+      console.log('updatePromotionOrder: Successfully updated order for promotion', id);
+      return true;
+    } catch (error) {
+      console.error('updatePromotionOrder: Exception:', error);
+      return false;
     }
-
-    return true
   }
 }

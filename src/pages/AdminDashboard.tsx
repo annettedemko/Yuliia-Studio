@@ -22,7 +22,6 @@ import {
   Clock,
   Calendar,
   Users,
-  FileText,
   Sparkles
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -44,7 +43,6 @@ import {
 } from '@/utils/supabaseEventsAPI';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
 import { ServicePrice, SubscriptionPackage, Promotion } from '@/types/admin';
-import { FormSubmissionsManager } from '@/components/admin/FormSubmissionsManager';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -237,14 +235,31 @@ const AdminDashboard = () => {
   };
 
   const handleSavePromotion = async (promotionData: Omit<Promotion, 'id' | 'created_at' | 'updated_at'>) => {
-    if (editingPromotion && editingPromotion.id) {
-      await promotionsService.update(editingPromotion.id, promotionData);
-    } else {
-      await promotionsService.create(promotionData);
+    try {
+      console.log('Saving promotion data:', promotionData);
+      let result;
+      if (editingPromotion && editingPromotion.id) {
+        console.log('Updating promotion:', editingPromotion.id);
+        result = await promotionsService.update(editingPromotion.id, promotionData);
+      } else {
+        console.log('Creating new promotion');
+        result = await promotionsService.create(promotionData);
+      }
+
+      if (!result) {
+        console.error('Failed to save promotion');
+        alert('Fehler beim Speichern der Aktion. Bitte überprüfen Sie die Konsole für Details.');
+        return;
+      }
+
+      console.log('Promotion saved successfully:', result);
+      setEditingPromotion(null);
+      setIsCreating(null);
+      await loadData();
+    } catch (error) {
+      console.error('Error saving promotion:', error);
+      alert('Fehler beim Speichern der Aktion');
     }
-    setEditingPromotion(null);
-    setIsCreating(null);
-    await loadData();
   };
 
   const handleDeletePromotion = async (id: string) => {
@@ -389,20 +404,18 @@ const AdminDashboard = () => {
           <Card
             className="cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
-              const element = document.getElementById('forms-section');
+              const element = document.getElementById('promotions-section');
               element?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             <CardContent className="flex items-center p-4">
               <div className="flex items-center">
-                <div className="bg-green-500/20 p-2 rounded-full">
-                  <FileText className="w-5 h-5 text-green-500" />
+                <div className="bg-rose-gold/20 p-2 rounded-full">
+                  <Sparkles className="w-5 h-5 text-rose-gold" />
                 </div>
                 <div className="ml-3">
-                  <p className="text-xs text-muted-foreground">Заявки</p>
-                  <p className="text-xl font-bold">
-                    <span className="text-sm">Управление</span>
-                  </p>
+                  <p className="text-xs text-muted-foreground">Акции</p>
+                  <p className="text-xl font-bold">{promotions.length || 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -805,11 +818,6 @@ const AdminDashboard = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* Form Submissions Management */}
-        <div id="forms-section">
-          <FormSubmissionsManager />
-        </div>
 
         {/* Client Management Links for Admin */}
         {userRole === 'admin' && (
@@ -1254,6 +1262,7 @@ const PromotionEditor = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('PromotionEditor: Submitting form data:', formData);
     onSave(formData);
   };
 
@@ -1335,7 +1344,7 @@ const PromotionEditor = ({
             id="valid_until"
             type="datetime-local"
             value={formData.valid_until ? formData.valid_until.slice(0, 16) : ''}
-            onChange={(e) => setFormData({ ...formData, valid_until: e.target.value ? `${e.target.value}:00+00` : undefined })}
+            onChange={(e) => setFormData({ ...formData, valid_until: e.target.value ? new Date(e.target.value).toISOString() : undefined })}
             placeholder="Leer lassen für unbegrenzt"
           />
         </div>
