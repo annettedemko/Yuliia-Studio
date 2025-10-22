@@ -576,8 +576,8 @@ const DekaLera = () => {
         </div>
       </section>
 
-      {/* Registration Form */}
-      <section id="registration-form" className="relative z-10 py-12 sm:py-16">
+      {/* Registration Form - TEMPORARILY HIDDEN */}
+      {/* <section id="registration-form" className="relative z-10 py-12 sm:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Card className="bg-gradient-to-br from-orange-100/30 via-rose-100/30 to-amber-50/30 backdrop-blur-2xl border-rose-gold/30 shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:border-rose-gold/50">
@@ -723,7 +723,7 @@ const DekaLera = () => {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Device Gallery */}
       <section className="relative z-10 py-12 sm:py-16">
