@@ -768,7 +768,7 @@ const AdminDashboard = () => {
                             )}
                           </div>
                           <p className="text-sm text-muted-foreground mb-1">
-                            🇷🇺 {promotion.title_ru}
+                            RU: {promotion.title_ru}
                           </p>
                           <p className="text-sm text-muted-foreground mt-2">
                             {promotion.description_de}
