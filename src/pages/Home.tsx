@@ -7,6 +7,7 @@ import { setPageMeta, setJsonLd } from '@/seo/seo';
 import { subscriptionsService } from '@/services/contentService';
 import type { SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Promotions } from '@/components/Promotions';
 // Изображения загружаются из папки public
 
 const Home = () => {
@@ -240,6 +241,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Promotions Section */}
+      <Promotions />
 
       {/* Subscription Packages */}
       <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden mt-[5vh]">
