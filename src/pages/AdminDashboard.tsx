@@ -364,6 +364,26 @@ const AdminDashboard = () => {
           <Card
             className="cursor-pointer hover:shadow-lg transition-shadow"
             onClick={() => {
+              const element = document.getElementById('categories-section');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <CardContent className="flex items-center p-4">
+              <div className="flex items-center">
+                <div className="bg-purple-500/20 p-2 rounded-full">
+                  <Package className="w-5 h-5 text-purple-500" />
+                </div>
+                <div className="ml-3">
+                  <p className="text-xs text-muted-foreground">Категории</p>
+                  <p className="text-xl font-bold">{categories.length || 0}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => {
               const element = document.getElementById('subscriptions-section');
               element?.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -539,6 +559,90 @@ const AdminDashboard = () => {
                         </div>
                       ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Categories Management */}
+        <Card className="mb-8" id="categories-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle>Управление категориями</CardTitle>
+              <Button
+                onClick={() => setIsCreating('category')}
+                className="flex items-center gap-2"
+              >
+                <Plus className="w-4 h-4" />
+                Новая категория
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {isCreating === 'category' && (
+              <div className="mb-4">
+                <CategoryEditor
+                  onSave={handleSaveCategory}
+                  onCancel={() => setIsCreating(null)}
+                />
+              </div>
+            )}
+
+            <div className="grid gap-4">
+              {categories.map(category => (
+                <div key={category.id} className="border rounded-lg p-4">
+                  {editingCategory?.id === category.id ? (
+                    <CategoryEditor
+                      category={editingCategory}
+                      onSave={handleSaveCategory}
+                      onCancel={() => setEditingCategory(null)}
+                    />
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-semibold text-lg">{category.name}</h3>
+                            {category.name_ru && (
+                              <span className="text-sm text-muted-foreground">• {category.name_ru}</span>
+                            )}
+                          </div>
+                          {(category.description || category.description_ru) && (
+                            <div className="text-sm text-muted-foreground mb-2">
+                              {category.description && <div>DE: {category.description}</div>}
+                              {category.description_ru && <div>RU: {category.description_ru}</div>}
+                            </div>
+                          )}
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                            <span>Code: <span className="font-mono">{category.code}</span></span>
+                            <span>Icon: {category.icon}</span>
+                            <span>Farbe: {category.color}</span>
+                            <span>Reihenfolge: {category.order_index}</span>
+                            <span className={category.is_published ? 'text-green-600' : 'text-gray-600'}>
+                              {category.is_published ? '✓ Veröffentlicht' : 'Nicht veröffentlicht'}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => setEditingCategory(category)}
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteCategory(category.id)}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -1480,6 +1584,173 @@ const PromotionEditor = ({
             Aktiv (sichtbar auf der Website)
           </Label>
         </div>
+      </div>
+
+      <div className="flex gap-2">
+        <Button type="submit" size="sm">
+          <Save className="w-4 h-4 mr-2" />
+          Speichern
+        </Button>
+        <Button type="button" variant="outline" size="sm" onClick={onCancel}>
+          <X className="w-4 h-4 mr-2" />
+          Abbrechen
+        </Button>
+      </div>
+    </form>
+  );
+};
+
+// Category Editor Component
+const CategoryEditor = ({
+  category,
+  onSave,
+  onCancel
+}: {
+  category?: PriceCategory;
+  onSave: (category: Omit<PriceCategory, 'id'> | PriceCategory) => void;
+  onCancel: () => void;
+}) => {
+  const [formData, setFormData] = useState<Omit<PriceCategory, 'id'>>(
+    category ? {
+      code: category.code,
+      name: category.name,
+      name_ru: category.name_ru || '',
+      description: category.description || '',
+      description_ru: category.description_ru || '',
+      icon: category.icon || 'Sparkles',
+      color: category.color || 'rose-gold',
+      order_index: category.order_index || 0,
+      is_published: category.is_published ?? true
+    } : {
+      code: '',
+      name: '',
+      name_ru: '',
+      description: '',
+      description_ru: '',
+      icon: 'Sparkles',
+      color: 'rose-gold',
+      order_index: 0,
+      is_published: true
+    }
+  );
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (category) {
+      onSave({ ...formData, id: category.id } as PriceCategory);
+    } else {
+      onSave(formData);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="code">Code (eindeutig)</Label>
+          <Input
+            id="code"
+            value={formData.code}
+            onChange={(e) => setFormData({ ...formData, code: e.target.value })}
+            required
+            disabled={!!category}
+            placeholder="z.B. alexandrit"
+          />
+        </div>
+        <div>
+          <Label htmlFor="order_index">Reihenfolge</Label>
+          <Input
+            id="order_index"
+            type="number"
+            value={formData.order_index}
+            onChange={(e) => setFormData({ ...formData, order_index: parseInt(e.target.value) || 0 })}
+            min="0"
+          />
+        </div>
+        <div>
+          <Label htmlFor="name">Name (Deutsch)</Label>
+          <Input
+            id="name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+            placeholder="z.B. Alexandrit Laser Motus AX"
+          />
+        </div>
+        <div>
+          <Label htmlFor="name_ru">Название (Русский)</Label>
+          <Input
+            id="name_ru"
+            value={formData.name_ru || ''}
+            onChange={(e) => setFormData({ ...formData, name_ru: e.target.value })}
+            required
+            placeholder="например Александритовый лазер Motus AX"
+          />
+        </div>
+        <div>
+          <Label htmlFor="description">Beschreibung (Deutsch, optional)</Label>
+          <Input
+            id="description"
+            value={formData.description || ''}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder="Kurze Beschreibung"
+          />
+        </div>
+        <div>
+          <Label htmlFor="description_ru">Описание (Русский, optional)</Label>
+          <Input
+            id="description_ru"
+            value={formData.description_ru || ''}
+            onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
+            placeholder="Краткое описание"
+          />
+        </div>
+        <div>
+          <Label htmlFor="icon">Icon</Label>
+          <Select
+            value={formData.icon || 'Sparkles'}
+            onValueChange={(value) => setFormData({ ...formData, icon: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Zap">Zap ⚡</SelectItem>
+              <SelectItem value="Sparkles">Sparkles ✨</SelectItem>
+              <SelectItem value="Heart">Heart ❤️</SelectItem>
+              <SelectItem value="Hand">Hand 🖐️</SelectItem>
+              <SelectItem value="Waves">Waves 🌊</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="color">Farbe</Label>
+          <Select
+            value={formData.color || 'rose-gold'}
+            onValueChange={(value) => setFormData({ ...formData, color: value })}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="rose-gold">Rose Gold 🌹</SelectItem>
+              <SelectItem value="primary">Primary 💜</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      <div className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          id="is_published"
+          checked={formData.is_published ?? true}
+          onChange={(e) => setFormData({ ...formData, is_published: e.target.checked })}
+          className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
+        />
+        <Label htmlFor="is_published" className="cursor-pointer">
+          Veröffentlicht (sichtbar auf der Website)
+        </Label>
       </div>
 
       <div className="flex gap-2">
