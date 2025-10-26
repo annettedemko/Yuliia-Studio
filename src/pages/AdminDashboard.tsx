@@ -501,16 +501,24 @@ const AdminDashboard = () => {
                             />
                           ) : (
                             <>
-                              <div>
-                                <span className="font-medium">{price.service}</span>
-                                <span className="ml-4 text-rose-gold font-semibold">{price.price}€</span>
-                                {price.note && (
-                                  <span className="ml-2 text-sm text-muted-foreground">
-                                    {price.note}
-                                  </span>
+                              <div className="flex-1">
+                                <div className="flex items-start gap-2">
+                                  <div className="flex-1">
+                                    <div className="font-medium">{price.service}</div>
+                                    {price.service_ru && (
+                                      <div className="text-sm text-muted-foreground">{price.service_ru}</div>
+                                    )}
+                                  </div>
+                                  <span className="text-rose-gold font-semibold whitespace-nowrap">{price.price}€</span>
+                                </div>
+                                {(price.note || price.note_ru) && (
+                                  <div className="mt-1 text-sm text-muted-foreground">
+                                    {price.note && <div>DE: {price.note}</div>}
+                                    {price.note_ru && <div>RU: {price.note_ru}</div>}
+                                  </div>
                                 )}
                               </div>
-                              <div className="flex gap-2">
+                              <div className="flex gap-2 ml-4">
                                 <Button
                                   size="sm"
                                   variant="outline"
@@ -912,8 +920,10 @@ const PriceEditor = ({
     price || {
       id: '',
       service: '',
+      service_ru: '',
       price: '',
       note: '',
+      note_ru: '',
       category: 'alexandrit'
     }
   );
@@ -927,12 +937,23 @@ const PriceEditor = ({
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="service">Service</Label>
+          <Label htmlFor="service">Service (Deutsch)</Label>
           <Input
             id="service"
             value={formData.service}
             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
             required
+            placeholder="z.B. Alexandrit Laser Ganzkörper"
+          />
+        </div>
+        <div>
+          <Label htmlFor="service_ru">Услуга (Русский)</Label>
+          <Input
+            id="service_ru"
+            value={formData.service_ru || ''}
+            onChange={(e) => setFormData({ ...formData, service_ru: e.target.value })}
+            required
+            placeholder="например Александрит лазер все тело"
           />
         </div>
         <div>
@@ -963,11 +984,21 @@ const PriceEditor = ({
           </Select>
         </div>
         <div>
-          <Label htmlFor="note">Notiz (optional)</Label>
+          <Label htmlFor="note">Notiz (Deutsch, optional)</Label>
           <Input
             id="note"
             value={formData.note || ''}
             onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+            placeholder="z.B. ab 6 Behandlungen"
+          />
+        </div>
+        <div>
+          <Label htmlFor="note_ru">Примечание (Русский, optional)</Label>
+          <Input
+            id="note_ru"
+            value={formData.note_ru || ''}
+            onChange={(e) => setFormData({ ...formData, note_ru: e.target.value })}
+            placeholder="например от 6 процедур"
           />
         </div>
       </div>
