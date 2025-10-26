@@ -4,16 +4,10 @@ import type { ServicePrice, SubscriptionPackage, Event, Promotion } from '@/type
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
-// Helper to get auth token - use user's access_token if available, otherwise ANON_KEY
+// Helper to get auth token - ALWAYS use ANON_KEY
+// The Supabase client handles session automatically, we just need ANON_KEY for REST API
 const getAuthToken = (): string => {
-  // Try to get user's access token from localStorage
-  const userToken = localStorage.getItem('supabase.auth.token');
-  if (userToken) {
-    console.log('🔑 Using user access token for API request');
-    return userToken;
-  }
-
-  // Fallback to ANON_KEY for public access
+  // Always use ANON_KEY - RLS policies handle access control
   console.log('🔑 Using ANON_KEY for API request');
   return SUPABASE_ANON_KEY;
 };
