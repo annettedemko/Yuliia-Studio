@@ -224,7 +224,7 @@ const RedTouchPro = () => {
                   />
                   <div className="absolute top-4 right-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                      <span className="text-primary font-semibold text-sm">DEKA Technology</span>
+                      <span className="text-primary font-semibold text-sm">{t('redtouch.gallery.badge')}</span>
                       </div>
                     </div>
                   </div>
@@ -253,7 +253,7 @@ const RedTouchPro = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-white text-sm font-medium">675 nm Wellenlänge</p>
+                      <p className="text-white text-sm font-medium">{t('redtouch.gallery.wavelength')}</p>
                       </div>
                     </div>
                   </div>
@@ -376,7 +376,7 @@ const RedTouchPro = () => {
                   <div className="bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-white font-semibold text-sm flex items-center">
                       <Microscope className="w-4 h-4 mr-2" />
-                      Van Gieson-Färbetechnik
+                      {t('redtouch.analysis.label.van-gieson')}
                     </span>
                     </div>
                   </div>
@@ -429,7 +429,7 @@ const RedTouchPro = () => {
                   <div className="bg-primary/90 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-white font-semibold text-sm flex items-center">
                       <Award className="w-4 h-4 mr-2" />
-                      Klinische Studie
+                      {t('redtouch.analysis.label.study')}
                     </span>
                     </div>
                   </div>
@@ -481,7 +481,7 @@ const RedTouchPro = () => {
                     <div className="text-center">
                       <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-primary px-4 py-2 rounded-full mb-4">
                         <Star className="w-4 h-4 text-white mr-2" />
-                        <span className="text-white font-semibold text-sm">DEKA Premium</span>
+                        <span className="text-white font-semibold text-sm">{t('redtouch.device.badge')}</span>
                         </div>
                       <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('redtouch.device.name')}</h3>
                       <p className="text-gray-600 font-medium">{t('redtouch.device.tech')}</p>
@@ -625,7 +625,7 @@ const RedTouchPro = () => {
 
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                      <span className="text-primary font-semibold text-sm">Moveo-Modus</span>
+                      <span className="text-primary font-semibold text-sm">{t('redtouch.device.spec3.title')}</span>
                       </div>
                     </div>
                   </div>
