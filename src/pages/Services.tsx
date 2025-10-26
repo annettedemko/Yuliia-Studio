@@ -183,7 +183,7 @@ const Services = () => {
                 <div className="relative h-64 md:h-80 lg:h-full">
                   <img src="/deka2.png" alt="RedTouchPro"
                     className="w-full h-full object-contain"
-                    style={{ objectPosition: 'center top' }}
+                    style={{ objectPosition: 'center' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">

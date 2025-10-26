@@ -5,17 +5,12 @@ const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
 // Helper to get auth token - use user's access_token if available, otherwise ANON_KEY
-const getAuthToken = async (): Promise<string> => {
-  try {
-    // Try to get user's session from Supabase
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (session?.access_token) {
-      console.log('🔑 Using authenticated user token for API request');
-      return session.access_token;
-    }
-  } catch (error) {
-    console.warn('🔑 Error getting session:', error);
+const getAuthToken = (): string => {
+  // Try to get user's access token from localStorage
+  const userToken = localStorage.getItem('supabase.auth.token');
+  if (userToken) {
+    console.log('🔑 Using user access token for API request');
+    return userToken;
   }
 
   // Fallback to ANON_KEY for public access
@@ -44,7 +39,7 @@ export const categoriesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?is_published=eq.true&order=order_index.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -75,7 +70,7 @@ export const categoriesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories`, {
         method: 'POST',
         headers: {
@@ -110,7 +105,7 @@ export const categoriesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?id=eq.${id}`, {
         method: 'PATCH',
         headers: {
@@ -148,7 +143,7 @@ export const pricesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?is_published=eq.true&order=order_index.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -215,7 +210,7 @@ export const pricesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
 
       // Find category_id by category code using REST API
       console.log('Looking for category with code:', price.category);
@@ -297,7 +292,7 @@ export const pricesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       let category_id = undefined;
 
       // If category is being updated, find the category_id
@@ -382,7 +377,7 @@ export const pricesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?id=eq.${id}`, {
         method: 'DELETE',
         headers: {
@@ -414,7 +409,7 @@ export const pricesService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/prices?id=eq.${id}`, {
         method: 'PATCH',
         headers: {
@@ -450,7 +445,7 @@ export const subscriptionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?is_published=eq.true&order=order_index.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -494,7 +489,7 @@ export const subscriptionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions`, {
         method: 'POST',
         headers: {
@@ -555,7 +550,7 @@ export const subscriptionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?id=eq.${id}`, {
         method: 'PATCH',
         headers: {
@@ -614,7 +609,7 @@ export const subscriptionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/subscriptions?id=eq.${id}`, {
         method: 'DELETE',
         headers: {
@@ -649,7 +644,7 @@ export const eventsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/events?is_published=eq.true&order=date.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -734,7 +729,7 @@ export const eventsService = {
   async create(event: Omit<Event, 'id'>): Promise<Event | null> {
     console.log('🔍 Events: Creating event...');
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/events`, {
         method: 'POST',
         headers: {
@@ -779,7 +774,7 @@ export const eventsService = {
   async update(id: string, updates: Partial<Event>): Promise<Event | null> {
     console.log('🔍 Events: Updating event:', id);
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
         method: 'PATCH',
         headers: {
@@ -824,7 +819,7 @@ export const eventsService = {
   async delete(id: string): Promise<boolean> {
     console.log('🔍 Events: Deleting event:', id);
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/events?id=eq.${id}`, {
         method: 'DELETE',
         headers: {
@@ -855,7 +850,7 @@ export const promotionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?is_active=eq.true&order=display_order.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
@@ -913,7 +908,7 @@ export const promotionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions`, {
         method: 'POST',
         headers: {
@@ -960,7 +955,7 @@ export const promotionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
 
       const updateData: any = {
         updated_at: new Date().toISOString()
@@ -1014,7 +1009,7 @@ export const promotionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?id=eq.${id}`, {
         method: 'DELETE',
         headers: {
@@ -1046,7 +1041,7 @@ export const promotionsService = {
     const startTime = Date.now();
 
     try {
-      const token = await getAuthToken();
+      const token = getAuthToken();
       const response = await fetch(`${SUPABASE_URL}/rest/v1/promotions?id=eq.${id}`, {
         method: 'PATCH',
         headers: {
