@@ -990,6 +990,16 @@ export const promotionsService = {
       }
 
       const data = await response.json();
+      console.log('updatePromotion: Response data:', data);
+      console.log('updatePromotion: Response is array?', Array.isArray(data));
+      console.log('updatePromotion: Response length:', data?.length);
+
+      if (!data || data.length === 0) {
+        console.error('updatePromotion: No data returned from update. This may be an RLS policy issue.');
+        console.error('updatePromotion: Check that anon role has UPDATE permissions with USING and WITH CHECK policies');
+        return null;
+      }
+
       console.log('updatePromotion: Successfully updated promotion:', data[0]);
       return data[0] as Promotion;
     } catch (error) {
