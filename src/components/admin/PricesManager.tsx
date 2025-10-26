@@ -27,9 +27,11 @@ const CATEGORIES = [
 
 interface PriceFormData {
   service: string
+  service_ru: string
   price: string
   category: ServicePrice['category']
   note: string
+  note_ru: string
 }
 
 export function PricesManager() {
@@ -39,9 +41,11 @@ export function PricesManager() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [formData, setFormData] = useState<PriceFormData>({
     service: '',
+    service_ru: '',
     price: '',
     category: 'alexandrit',
-    note: ''
+    note: '',
+    note_ru: ''
   })
 
   useEffect(() => {
@@ -79,7 +83,7 @@ export function PricesManager() {
       }
 
       // Reset form
-      setFormData({ service: '', price: '', category: 'alexandrit', note: '' })
+      setFormData({ service: '', service_ru: '', price: '', category: 'alexandrit', note: '', note_ru: '' })
       setEditingPrice(null)
       setIsDialogOpen(false)
     } catch (error) {
@@ -92,9 +96,11 @@ export function PricesManager() {
     setEditingPrice(price)
     setFormData({
       service: price.service,
+      service_ru: price.service_ru || '',
       price: price.price,
       category: price.category,
-      note: price.note || ''
+      note: price.note || '',
+      note_ru: price.note_ru || ''
     })
     setIsDialogOpen(true)
   }
@@ -116,7 +122,7 @@ export function PricesManager() {
   const handleDialogClose = () => {
     setIsDialogOpen(false)
     setEditingPrice(null)
-    setFormData({ service: '', price: '', category: 'alexandrit', note: '' })
+    setFormData({ service: '', service_ru: '', price: '', category: 'alexandrit', note: '', note_ru: '' })
   }
 
   const getCategoryLabel = (category: string) => {
@@ -185,15 +191,27 @@ export function PricesManager() {
                     </Select>
                   </div>
 
-                  <div>
-                    <Label htmlFor="service">Dienstleistung</Label>
-                    <Input
-                      id="service"
-                      value={formData.service}
-                      onChange={(e) => setFormData(prev => ({ ...prev, service: e.target.value }))}
-                      placeholder="z.B. Oberlippe"
-                      required
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="service">Dienstleistung (DE)</Label>
+                      <Input
+                        id="service"
+                        value={formData.service}
+                        onChange={(e) => setFormData(prev => ({ ...prev, service: e.target.value }))}
+                        placeholder="z.B. Oberlippe"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="service_ru">Услуга (RU)</Label>
+                      <Input
+                        id="service_ru"
+                        value={formData.service_ru}
+                        onChange={(e) => setFormData(prev => ({ ...prev, service_ru: e.target.value }))}
+                        placeholder="напр. Верхняя губа"
+                        required
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -207,15 +225,27 @@ export function PricesManager() {
                     />
                   </div>
 
-                  <div>
-                    <Label htmlFor="note">Notiz (optional)</Label>
-                    <Textarea
-                      id="note"
-                      value={formData.note}
-                      onChange={(e) => setFormData(prev => ({ ...prev, note: e.target.value }))}
-                      placeholder="z.B. (pro Sitzung)"
-                      rows={2}
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="note">Notiz (DE, optional)</Label>
+                      <Textarea
+                        id="note"
+                        value={formData.note}
+                        onChange={(e) => setFormData(prev => ({ ...prev, note: e.target.value }))}
+                        placeholder="z.B. (pro Sitzung)"
+                        rows={2}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="note_ru">Примечание (RU, optional)</Label>
+                      <Textarea
+                        id="note_ru"
+                        value={formData.note_ru}
+                        onChange={(e) => setFormData(prev => ({ ...prev, note_ru: e.target.value }))}
+                        placeholder="напр. (за сеанс)"
+                        rows={2}
+                      />
+                    </div>
                   </div>
 
                   <div className="flex gap-2 pt-4">
@@ -255,10 +285,20 @@ export function PricesManager() {
                       className="flex items-center justify-between p-3 bg-white border rounded-lg hover:shadow-sm transition-shadow"
                     >
                       <div className="flex-1">
-                        <div className="font-medium">{price.service}</div>
-                        {price.note && (
-                          <div className="text-sm text-gray-600">{price.note}</div>
-                        )}
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <div className="font-medium">{price.service}</div>
+                            {price.note && (
+                              <div className="text-sm text-gray-600">{price.note}</div>
+                            )}
+                          </div>
+                          <div className="text-gray-700">
+                            <div className="font-medium">{price.service_ru || '—'}</div>
+                            {price.note_ru && (
+                              <div className="text-sm text-gray-600">{price.note_ru}</div>
+                            )}
+                          </div>
+                        </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="font-semibold text-primary">{price.price}€</div>
