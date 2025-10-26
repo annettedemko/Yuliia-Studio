@@ -583,9 +583,14 @@ const AdminDashboard = () => {
                           <p className="text-rose-gold font-semibold">
                             {subscription.price} {subscription.period}
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            {subscription.treatments} • {subscription.frequency}
-                          </p>
+                          <div className="grid grid-cols-2 gap-2 text-sm">
+                            <div className="text-muted-foreground">
+                              <div>DE: {subscription.treatments} • {subscription.frequency}</div>
+                            </div>
+                            <div className="text-muted-foreground">
+                              <div>RU: {subscription.treatments_ru || '—'} • {subscription.frequency_ru || '—'}</div>
+                            </div>
+                          </div>
                         </div>
                         <div className="flex gap-2">
                           <Button
@@ -996,8 +1001,11 @@ const SubscriptionEditor = ({
       name: '',
       price: '',
       period: 'pro Monat',
+      period_ru: 'в месяц',
       treatments: '',
+      treatments_ru: '',
       frequency: '',
+      frequency_ru: '',
       features: [],
       popular: false
     }
@@ -1035,29 +1043,62 @@ const SubscriptionEditor = ({
           />
         </div>
         <div>
-          <Label htmlFor="period">Zeitraum</Label>
+          <Label htmlFor="period">Zeitraum (DE)</Label>
           <Input
             id="period"
             value={formData.period}
             onChange={(e) => setFormData({ ...formData, period: e.target.value })}
+            placeholder="z.B. pro Monat"
             required
           />
         </div>
         <div>
-          <Label htmlFor="treatments">Behandlungen</Label>
+          <Label htmlFor="period_ru">Период (RU)</Label>
+          <Input
+            id="period_ru"
+            value={formData.period_ru || ''}
+            onChange={(e) => setFormData({ ...formData, period_ru: e.target.value })}
+            placeholder="напр. в месяц"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="treatments">Behandlungen (DE)</Label>
           <Input
             id="treatments"
             value={formData.treatments}
             onChange={(e) => setFormData({ ...formData, treatments: e.target.value })}
+            placeholder="z.B. 3 Sitzungen"
             required
           />
         </div>
         <div>
-          <Label htmlFor="frequency">Häufigkeit</Label>
+          <Label htmlFor="treatments_ru">Процедуры (RU)</Label>
+          <Input
+            id="treatments_ru"
+            value={formData.treatments_ru || ''}
+            onChange={(e) => setFormData({ ...formData, treatments_ru: e.target.value })}
+            placeholder="напр. 3 сеанса"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="frequency">Häufigkeit (DE)</Label>
           <Input
             id="frequency"
             value={formData.frequency}
             onChange={(e) => setFormData({ ...formData, frequency: e.target.value })}
+            placeholder="z.B. 2x pro Woche"
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="frequency_ru">Частота (RU)</Label>
+          <Input
+            id="frequency_ru"
+            value={formData.frequency_ru || ''}
+            onChange={(e) => setFormData({ ...formData, frequency_ru: e.target.value })}
+            placeholder="напр. 2 раза в неделю"
             required
           />
         </div>
