@@ -12,7 +12,7 @@ import { Promotions } from '@/components/Promotions';
 // Изображения загружаются из папки public
 
 const Home = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const location = useLocation();
   const [subscriptions, setSubscriptions] = useState<SubscriptionPackage[]>([]);
   const [loadingSubscriptions, setLoadingSubscriptions] = useState(true);
@@ -25,6 +25,11 @@ const Home = () => {
   const withLang = (path: string) => {
     if (path === '/') return langPrefix;
     return `${langPrefix}${path}`;
+  };
+
+  // Helper: get translated text with fallback
+  const getTranslated = (de: string, ru?: string) => {
+    return language === 'ru' && ru ? ru : de;
   };
   useEffect(() => {
     setJsonLd({
@@ -321,7 +326,7 @@ const Home = () => {
                           </div>
                           {pkg.treatments && pkg.frequency && (
                             <div className="text-sm text-muted-foreground mt-2">
-                              {pkg.treatments} • {pkg.frequency}
+                              {getTranslated(pkg.treatments, pkg.treatments_ru)} • {getTranslated(pkg.frequency, pkg.frequency_ru)}
                             </div>
                           )}
                         </div>
