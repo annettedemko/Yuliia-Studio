@@ -5,9 +5,15 @@
 -- PROMOTIONS: Add full CRUD for anon
 -- ============================================
 
+DROP POLICY IF EXISTS "anon_read_all_promotions" ON public.promotions;
 DROP POLICY IF EXISTS "anon_insert_promotions" ON public.promotions;
 DROP POLICY IF EXISTS "anon_update_promotions" ON public.promotions;
 DROP POLICY IF EXISTS "anon_delete_promotions" ON public.promotions;
+
+CREATE POLICY "anon_read_all_promotions"
+ON public.promotions FOR SELECT
+TO anon
+USING (true);
 
 CREATE POLICY "anon_insert_promotions"
 ON public.promotions FOR INSERT
