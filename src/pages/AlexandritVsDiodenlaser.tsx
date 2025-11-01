@@ -52,7 +52,7 @@ const AlexandritVsDiodenlaser = () => {
 
         {/* Hero Section */}
       <section
-        className="relative min-h-[50vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-[85vh] sm:min-h-[70vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-white overflow-hidden"
         style={{
           backgroundImage: `url(/24.png)`,
           backgroundSize: 'cover',
@@ -66,13 +66,13 @@ const AlexandritVsDiodenlaser = () => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-white/20 mt-16 sm:mt-8">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-4 border border-white/20">
             <Sparkles className="w-4 h-4 text-yellow-300" />
             <span className="text-sm font-medium">{t('comparison.hero.badge')}</span>
             <Sparkles className="w-4 h-4 text-blue-300" />
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2">
             <span className="bg-gradient-to-r from-yellow-300 via-white to-blue-300 bg-clip-text text-transparent">
               {t('comparison.hero.title.line1')}
             </span>
@@ -80,14 +80,14 @@ const AlexandritVsDiodenlaser = () => {
             <span className="text-white">{t('comparison.hero.title.line2')}</span>
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed px-4">
             {t('comparison.hero.description')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
               onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
             >
               {t('comparison.hero.button.book')}
@@ -95,7 +95,7 @@ const AlexandritVsDiodenlaser = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
               asChild
             >
               <Link to={withLang("/preis")}>

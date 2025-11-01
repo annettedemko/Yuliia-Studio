@@ -28,13 +28,14 @@ export interface PriceCategory {
 
 // Categories service
 export const categoriesService = {
-  async getAll(): Promise<PriceCategory[]> {
-    console.log('🔍 Categories: Fetching from Supabase...');
+  async getAll(publishedOnly: boolean = true): Promise<PriceCategory[]> {
+    console.log('🔍 Categories: Fetching from Supabase...', publishedOnly ? '(published only)' : '(all)');
     const startTime = Date.now();
 
     try {
       const token = getAuthToken();
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?is_published=eq.true&order=order_index.asc&select=*`, {
+      const filterParam = publishedOnly ? 'is_published=eq.true&' : '';
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?${filterParam}order=order_index.asc&select=*`, {
         headers: {
           'apikey': SUPABASE_ANON_KEY,
           'Authorization': `Bearer ${token}`,
@@ -126,6 +127,38 @@ export const categoriesService = {
     } catch (error) {
       console.error('updatePriceCategory: Exception:', error);
       return null;
+    }
+  },
+
+  async delete(id: string): Promise<boolean> {
+    console.log('Deleting price category', id, 'via REST API...');
+    const startTime = Date.now();
+
+    try {
+      const token = getAuthToken();
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/price_categories?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const elapsed = Date.now() - startTime;
+      console.log(`deletePriceCategory: REST API ответил за ${elapsed}ms`);
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error('deletePriceCategory: Error deleting category:', error);
+        return false;
+      }
+
+      console.log('deletePriceCategory: Successfully deleted category', id);
+      return true;
+    } catch (error) {
+      console.error('deletePriceCategory: Exception:', error);
+      return false;
     }
   }
 }

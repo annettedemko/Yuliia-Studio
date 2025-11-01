@@ -129,10 +129,11 @@ const AdminDashboard = () => {
 
     try {
       // Load all data from Supabase
+      // For admin panel, load ALL categories (not just published ones)
       const [pricesData, subscriptionsData, categoriesData, eventsData, promotionsData] = await Promise.all([
         pricesService.getAll(),
         subscriptionsService.getAll(),
-        categoriesService.getAll(),
+        categoriesService.getAll(false), // false = get all categories, including unpublished
         getEvents(),
         promotionsService.getAll()
       ]);
@@ -288,10 +289,13 @@ const AdminDashboard = () => {
   const handleDeleteCategory = async (id: string) => {
     if (confirm('Вы уверены, что хотите удалить эту категорию? Все связанные цены также будут удалены!')) {
       try {
-        // TODO: Add delete method to categoriesService
-        alert('Удаление категории ещё не реализовано');
-        // await categoriesService.delete(id);
-        // await loadData();
+        const success = await categoriesService.delete(id);
+        if (success) {
+          console.log('Category deleted successfully');
+          await loadData();
+        } else {
+          alert('Ошибка при удалении категории. Проверьте консоль для деталей.');
+        }
       } catch (error) {
         console.error('Error deleting category:', error);
         alert('Ошибка при удалении категории');
@@ -299,13 +303,9 @@ const AdminDashboard = () => {
     }
   };
 
-  const categoryNames = {
-    alexandrit: 'Alexandrit Laser',
-    dioden: 'Dioden Laser',
-    icoone: 'Icoone Laser',
-    redtouchpro: 'RedTouchPro',
-    manicure: 'Maniküre',
-    pedicure: 'Pediküre'
+  // Get category name with fallback to code if no name_ru available
+  const getCategoryDisplayName = (category: PriceCategory) => {
+    return category.name_ru || category.name || category.code;
   };
 
   if (loading) {
@@ -504,13 +504,25 @@ const AdminDashboard = () => {
             )}
 
             <div className="space-y-4">
-              {Object.entries(categoryNames).map(([category, name]) => (
-                <div key={category} className="border rounded-lg p-4">
-                  <h3 className="font-semibold mb-3">{name}</h3>
+              {categories.map((category) => {
+                const categoryPrices = prices.filter(p => p.category === category.code);
+                return (
+                <div key={category.id} className="border rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <h3 className="font-semibold">{getCategoryDisplayName(category)}</h3>
+                      <span className="text-xs text-muted-foreground">
+                        Code: <span className="font-mono">{category.code}</span> • {categoryPrices.length} {categoryPrices.length === 1 ? 'цена' : 'цен'}
+                      </span>
+                    </div>
+                    {!category.is_published && (
+                      <span className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">
+                        Не опубликовано
+                      </span>
+                    )}
+                  </div>
                   <div className="grid gap-2">
-                    {prices
-                      .filter(p => p.category === category)
-                      .map(price => (
+                    {categoryPrices.map(price => (
                         <div key={price.id} className="flex items-center justify-between bg-gray-50 p-3 rounded">
                           {editingPrice?.id === price.id ? (
                             <PriceEditor
@@ -558,9 +570,14 @@ const AdminDashboard = () => {
                           )}
                         </div>
                       ))}
+                    {categoryPrices.length === 0 && (
+                      <p className="text-sm text-muted-foreground text-center py-4">
+                        Нет цен в этой категории
+                      </p>
+                    )}
                   </div>
                 </div>
-              ))}
+              )})}
             </div>
           </CardContent>
         </Card>
@@ -964,17 +981,6 @@ const AdminDashboard = () => {
                   <div className="text-left">
                     <div className="font-semibold">Клиенты Натальи</div>
                     <div className="text-sm text-muted-foreground">Управление клиентами Натальи</div>
-                  </div>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/anna-clients')}
-                >
-                  <Users className="w-6 h-6 text-rose-gold" />
-                  <div className="text-left">
-                    <div className="font-semibold">Клиенты Анны</div>
-                    <div className="text-sm text-muted-foreground">Управление клиентами Анны</div>
                   </div>
                 </Button>
                 <Button
