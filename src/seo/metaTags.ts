@@ -132,6 +132,116 @@ export const metaTags: Record<string, PageMeta> = {
       title: 'Контакты – Студия Yuliia Cheporska Мюнхен',
       description: 'Свяжитесь с нами: Elsässer Str. 33, 81667 Мюнхен. Телефон, электронная почта, Instagram. Часы работы и как добраться.'
     }
+  },
+  '/deka-geraeteverkauf': {
+    de: {
+      title: 'DEKA Laser Geräteverkauf München | Professionelle Lasersysteme',
+      description: 'Professioneller Verkauf von DEKA Lasersystemen: Alexandrit, Dioden, Motus AX, RedTouch Pro. Beratung, Installation und Service für Beauty-Studios in München.'
+    },
+    ru: {
+      title: 'Продажа лазерного оборудования DEKA Мюнхен | Профессиональные системы',
+      description: 'Профессиональная продажа лазерных систем DEKA: александрит, диод, Motus AX, RedTouch Pro. Консультация, установка и обслуживание для салонов красоты в Мюнхене.'
+    }
+  },
+  '/redtouch-pro': {
+    de: {
+      title: 'RedTouch Pro Laser München | Professionelle Hautbehandlung',
+      description: 'RedTouch Pro 675nm: Professionelles Lasersystem für Hautstraffung, Pigmentierung und Hautverjüngung. DEKA Technologie für Beauty-Profis.'
+    },
+    ru: {
+      title: 'RedTouch Pro лазер Мюнхен | Профессиональный уход за кожей',
+      description: 'RedTouch Pro 675нм: Профессиональная лазерная система для подтяжки кожи, пигментации и омоложения. Технология DEKA для профессионалов красоты.'
+    }
+  },
+  '/motus-pro': {
+    de: {
+      title: 'Motus Pro Laser München | DEKA Haarentfernungssystem',
+      description: 'Motus Pro: Professionelles Alexandrit-Lasersystem von DEKA für dauerhafte Haarentfernung. Moveo-Technologie für schmerzfreie Behandlung.'
+    },
+    ru: {
+      title: 'Motus Pro лазер Мюнхен | Система эпиляции DEKA',
+      description: 'Motus Pro: Профессиональная александритовая лазерная система DEKA для долговременного удаления волос. Технология Moveo для безболезненной процедуры.'
+    }
+  },
+  '/motus-ax': {
+    de: {
+      title: 'Motus AX Laser München | DEKA Alexandrit & Nd:YAG',
+      description: 'Motus AX: Dual-Wellenlängen Lasersystem (Alexandrit 755nm + Nd:YAG 1064nm) von DEKA. Für alle Hauttypen und ganzjährige Behandlung.'
+    },
+    ru: {
+      title: 'Motus AX лазер Мюнхен | DEKA александрит и Nd:YAG',
+      description: 'Motus AX: Двухволновая лазерная система (александрит 755нм + Nd:YAG 1064нм) от DEKA. Для всех типов кожи и круглогодичных процедур.'
+    }
+  },
+  '/physiq360': {
+    de: {
+      title: 'Physiq360 München | DEKA Body Contouring System',
+      description: 'Physiq360: Innovatives Body-Contouring-System von DEKA. Elektromagnetische Muskelstimulation (STEP) für Körperformung und Muskelaufbau.'
+    },
+    ru: {
+      title: 'Physiq360 Мюнхен | Система коррекции фигуры DEKA',
+      description: 'Physiq360: Инновационная система коррекции фигуры от DEKA. Электромагнитная стимуляция мышц (STEP) для формирования тела и наращивания мышц.'
+    }
+  },
+  '/again-cos': {
+    de: {
+      title: 'Again Cosmetics München | DEKA Kosmetikprodukte',
+      description: 'Again Cosmetics: Professionelle Hautpflegeprodukte von DEKA. Ergänzende Pflege für optimale Behandlungsergebnisse.'
+    },
+    ru: {
+      title: 'Again Cosmetics Мюнхен | Косметика DEKA',
+      description: 'Again Cosmetics: Профессиональные средства по уходу за кожей от DEKA. Дополнительный уход для оптимальных результатов процедур.'
+    }
+  },
+  '/deka': {
+    de: {
+      title: 'DEKA Event München | Laser Demonstrations & Schulungen',
+      description: 'DEKA Event in München: Live-Demonstrationen von Lasersystemen, Schulungen und Beratung. Exklusive Einblicke in DEKA Technologie.'
+    },
+    ru: {
+      title: 'DEKA Event Мюнхен | Демонстрация лазеров и обучение',
+      description: 'DEKA Event в Мюнхене: Live-демонстрации лазерных систем, обучение и консультации. Эксклюзивный взгляд на технологию DEKA.'
+    }
+  },
+  '/deka-day': {
+    de: {
+      title: 'DEKA Day München | Beauty Professional Event',
+      description: 'DEKA Day in München: Ganztagesveranstaltung mit Laser-Vorführungen, Workshops und Networking für Beauty-Professionals.'
+    },
+    ru: {
+      title: 'DEKA Day Мюнхен | Мероприятие для профессионалов красоты',
+      description: 'DEKA Day в Мюнхене: Однодневное мероприятие с демонстрацией лазеров, воркшопами и нетворкингом для профессионалов индустрии красоты.'
+    }
+  },
+  '/deka-anna': {
+    de: {
+      title: 'DEKA Anna München | Personal Beauty Consultation',
+      description: 'DEKA Beratung mit Anna: Persönliche Beratung zu DEKA Lasersystemen und Behandlungsmöglichkeiten in München.'
+    },
+    ru: {
+      title: 'DEKA Anna Мюнхен | Персональная консультация',
+      description: 'Консультация DEKA с Анной: Персональная консультация по лазерным системам DEKA и возможностям процедур в Мюнхене.'
+    }
+  },
+  '/deka-lera': {
+    de: {
+      title: 'DEKA Lera München | Expert Laser Consultation',
+      description: 'DEKA Beratung mit Lera: Expertenberatung zu professionellen Lasersystemen und Beauty-Behandlungen in München.'
+    },
+    ru: {
+      title: 'DEKA Lera Мюнхен | Экспертная консультация по лазерам',
+      description: 'Консультация DEKA с Лерой: Экспертная консультация по профессиональным лазерным системам и процедурам красоты в Мюнхене.'
+    }
+  },
+  '/deka-liudmila': {
+    de: {
+      title: 'DEKA Liudmila München | Professional Treatment Advice',
+      description: 'DEKA Beratung mit Liudmila: Professionelle Beratung zu Laserbehandlungen und Hautpflege-Lösungen in München.'
+    },
+    ru: {
+      title: 'DEKA Liudmila Мюнхен | Профессиональные советы по процедурам',
+      description: 'Консультация DEKA с Людмилой: Профессиональные советы по лазерным процедурам и решениям по уходу за кожей в Мюнхене.'
+    }
   }
 };
 
