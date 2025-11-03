@@ -6,41 +6,54 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { HreflangTags } from "@/components/HreflangTags";
+import { lazy, Suspense } from "react";
 // ProtectedRoute removed - each admin page handles auth internally via simpleAuthService
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import LaserHairRemoval from "./pages/LaserHairRemoval";
-import AlexandritVsDiodenlaser from "./pages/AlexandritVsDiodenlaser";
-import IcooneLaser from "./pages/IcooneLaser";
-import ManikuerePedikuere from "./pages/ManikuerePedikuere";
-import DekaGeraeteverkauf from "./pages/DekaGeraeteverkauf";
-import RedTouchPro from "./pages/RedTouchPro";
-import RedTouchProService from "./pages/RedTouchProService";
-import MotusPro from "./pages/MotusPro";
-import MotusAX from "./pages/MotusAX";
-import Physiq360 from "./pages/Physiq360";
-import AgainCos from "./pages/AgainCos";
-import Pricing from "./pages/Pricing";
-import Deka from "./pages/Deka";
-import DekaDay from "./pages/DekaDay";
-import DekaAnna from "./pages/DekaAnna";
-import DekaLera from "./pages/DekaLera";
-import DekaLiudmila from "./pages/DekaLiudmila";
-import AdminDashboard from "./pages/AdminDashboard";
-import AdminLogin from "./pages/AdminLogin";
-import YuliaClients from "./pages/YuliaClients";
-import AnnaClients from "./pages/AnnaClients";
-import NataliaClients from "./pages/NataliaClients";
-import LeraClients from "./pages/LeraClients";
-import LiudmilaClients from "./pages/LiudmilaClients";
-import Impressum from "./pages/Impressum";
-import Datenschutz from "./pages/Datenschutz";
-import Kontakt from "./pages/Kontakt";
-import NotFound from "./pages/NotFound";
+
+// Loading component for Suspense fallback
+const PageLoader = () => (
+  <div className="flex min-h-screen items-center justify-center">
+    <div className="flex flex-col items-center gap-4">
+      <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
+      <p className="text-muted-foreground">Loading...</p>
+    </div>
+  </div>
+);
+
+// Lazy load all page components for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const LaserHairRemoval = lazy(() => import("./pages/LaserHairRemoval"));
+const AlexandritVsDiodenlaser = lazy(() => import("./pages/AlexandritVsDiodenlaser"));
+const IcooneLaser = lazy(() => import("./pages/IcooneLaser"));
+const ManikuerePedikuere = lazy(() => import("./pages/ManikuerePedikuere"));
+const DekaGeraeteverkauf = lazy(() => import("./pages/DekaGeraeteverkauf"));
+const RedTouchPro = lazy(() => import("./pages/RedTouchPro"));
+const RedTouchProService = lazy(() => import("./pages/RedTouchProService"));
+const MotusPro = lazy(() => import("./pages/MotusPro"));
+const MotusAX = lazy(() => import("./pages/MotusAX"));
+const Physiq360 = lazy(() => import("./pages/Physiq360"));
+const AgainCos = lazy(() => import("./pages/AgainCos"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Deka = lazy(() => import("./pages/Deka"));
+const DekaDay = lazy(() => import("./pages/DekaDay"));
+const DekaAnna = lazy(() => import("./pages/DekaAnna"));
+const DekaLera = lazy(() => import("./pages/DekaLera"));
+const DekaLiudmila = lazy(() => import("./pages/DekaLiudmila"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const YuliaClients = lazy(() => import("./pages/YuliaClients"));
+const AnnaClients = lazy(() => import("./pages/AnnaClients"));
+const NataliaClients = lazy(() => import("./pages/NataliaClients"));
+const LeraClients = lazy(() => import("./pages/LeraClients"));
+const LiudmilaClients = lazy(() => import("./pages/LiudmilaClients"));
+const Impressum = lazy(() => import("./pages/Impressum"));
+const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const Kontakt = lazy(() => import("./pages/Kontakt"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -62,7 +75,8 @@ const App = () => (
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
               <Navigation />
               <main style={{ flex: 1 }}>
-                <Routes>
+                <Suspense fallback={<PageLoader />}>
+                  <Routes>
                   {/* Редирект с корня на /de */}
                   <Route path="/" element={<Navigate to="/de" replace />} />
 
@@ -170,7 +184,8 @@ const App = () => (
 
                   {/* 404 */}
                   <Route path="*" element={<NotFound />} />
-                </Routes>
+                  </Routes>
+                </Suspense>
               </main>
               <Footer />
             </div>

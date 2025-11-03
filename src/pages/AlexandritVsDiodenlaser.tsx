@@ -886,7 +886,7 @@ const AlexandritVsDiodenlaser = () => {
                 size="lg"
                 variant="outline"
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all hover:scale-105 text-lg px-8 py-6"
-                onClick={() => window.location.href = '/laser-haarentfernung-muenchen'}
+                onClick={() => window.location.href = withLang('/laser-haarentfernung-muenchen')}
               >
                 {t('comparison.cta.button.info')}
               </Button>

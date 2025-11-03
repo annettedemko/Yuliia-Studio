@@ -1,35 +1,91 @@
 User-agent: *
 Allow: /
 
-# Публичные страницы для SEO (основные)
-Allow: /
-Allow: /about
-Allow: /services
-Allow: /kontakt
-Allow: /preis
-Allow: /impressum
-Allow: /datenschutzerklaerung
+# ==================== НЕМЕЦКИЕ СТРАНИЦЫ (/de) ====================
+# Основные публичные страницы
+Allow: /de/
+Allow: /de/about
+Allow: /de/services
+Allow: /de/kontakt
+Allow: /de/preis
+Allow: /de/impressum
+Allow: /de/datenschutzerklaerung
 
-# Публичные страницы услуг
-Allow: /laser-haarentfernung-muenchen
-Allow: /alexandrit-gegen-diodenlaser
-Allow: /icoone-laser-muenchen
-Allow: /manikuere-pedikuere-muenchen
-Allow: /redtouch-laser-muenchen
+# Страницы услуг (высокий приоритет для SEO)
+Allow: /de/laser-haarentfernung-muenchen
+Allow: /de/alexandrit-gegen-diodenlaser
+Allow: /de/icoone-laser-muenchen
+Allow: /de/manikuere-pedikuere-muenchen
+Allow: /de/redtouch-laser-muenchen
 
-# Страницы оборудования DEKA (B2B, но публичные)
-Allow: /deka-geraeteverkauf
-Allow: /redtouch-pro
-Allow: /motus-pro
-Allow: /motus-ax
-Allow: /physiq360
-Allow: /again-cos
+# B2B страницы оборудования DEKA (публичные)
+Allow: /de/deka-geraeteverkauf
+Allow: /de/redtouch-pro
+Allow: /de/motus-pro
+Allow: /de/motus-ax
+Allow: /de/physiq360
+Allow: /de/again-cos
 
+# ==================== РУССКИЕ СТРАНИЦЫ (/ru) ====================
+# Основные публичные страницы
+Allow: /ru/
+Allow: /ru/about
+Allow: /ru/services
+Allow: /ru/kontakt
+Allow: /ru/preis
+Allow: /ru/impressum
+Allow: /ru/datenschutzerklaerung
+
+# Страницы услуг
+Allow: /ru/laser-haarentfernung-muenchen
+Allow: /ru/alexandrit-gegen-diodenlaser
+Allow: /ru/icoone-laser-muenchen
+Allow: /ru/manikuere-pedikuere-muenchen
+Allow: /ru/redtouch-laser-muenchen
+
+# B2B страницы оборудования DEKA
+Allow: /ru/deka-geraeteverkauf
+Allow: /ru/redtouch-pro
+Allow: /ru/motus-pro
+Allow: /ru/motus-ax
+Allow: /ru/physiq360
+Allow: /ru/again-cos
+
+# ==================== БЛОКИРОВКИ ====================
 # Блокировать админские страницы
 Disallow: /admin/
 Disallow: /admin
 
-# Блокировать персональные внутренние страницы DEKA
+# Блокировать персональные внутренние страницы DEKA (оба языка)
+Disallow: /de/deka
+Disallow: /de/DEKA
+Disallow: /de/deka-day
+Disallow: /de/deka-anna
+Disallow: /de/deka-lera
+Disallow: /de/deka-liudmila
+Disallow: /ru/deka
+Disallow: /ru/DEKA
+Disallow: /ru/deka-day
+Disallow: /ru/deka-anna
+Disallow: /ru/deka-lera
+Disallow: /ru/deka-liudmila
+
+# Блокировать старые пути без языкового префикса (редиректы)
+Disallow: /about
+Disallow: /services
+Disallow: /kontakt
+Disallow: /preis
+Disallow: /laser-haarentfernung-muenchen
+Disallow: /alexandrit-gegen-diodenlaser
+Disallow: /icoone-laser-muenchen
+Disallow: /manikuere-pedikuere-muenchen
+Disallow: /redtouch-laser-muenchen
+Disallow: /deka-geraeteverkauf
+Disallow: /redtouch-pro
+Disallow: /motus-pro
+Disallow: /motus-ax
+Disallow: /physiq360
+Disallow: /again-cos
 Disallow: /deka
 Disallow: /DEKA
 Disallow: /deka-day

@@ -109,7 +109,7 @@ const Pricing = () => {
       'manicure': '/manikuere-pedikuere-muenchen',
       'pedicure': '/manikuere-pedikuere-muenchen'
     };
-    return categoryMap[categoryCode] || '/services';
+    return withLang(categoryMap[categoryCode] || '/services');
   };
 
   // Custom order for categories
