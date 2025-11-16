@@ -35,7 +35,8 @@ const About = () => {
     { nameKey: 'about.services.icoone', link: '/icoone-laser-muenchen' },
     { nameKey: 'about.services.redtouch', link: '/redtouch-laser-muenchen' },
     { nameKey: 'about.services.nails', link: '/manikuere-pedikuere-muenchen' },
-    { nameKey: 'about.services.deka', link: '/deka-geraeteverkauf' },
+    // DEKA link - TEMPORARILY HIDDEN
+    // { nameKey: 'about.services.deka', link: '/deka-geraeteverkauf' },
     { nameKey: 'about.services.consultation', link: '/services' }
   ];
 

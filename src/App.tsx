@@ -30,19 +30,20 @@ const LaserHairRemoval = lazy(() => import("./pages/LaserHairRemoval"));
 const AlexandritVsDiodenlaser = lazy(() => import("./pages/AlexandritVsDiodenlaser"));
 const IcooneLaser = lazy(() => import("./pages/IcooneLaser"));
 const ManikuerePedikuere = lazy(() => import("./pages/ManikuerePedikuere"));
-const DekaGeraeteverkauf = lazy(() => import("./pages/DekaGeraeteverkauf"));
+// DEKA pages - TEMPORARILY HIDDEN
+// const DekaGeraeteverkauf = lazy(() => import("./pages/DekaGeraeteverkauf"));
 const RedTouchPro = lazy(() => import("./pages/RedTouchPro"));
 const RedTouchProService = lazy(() => import("./pages/RedTouchProService"));
-const MotusPro = lazy(() => import("./pages/MotusPro"));
-const MotusAX = lazy(() => import("./pages/MotusAX"));
-const Physiq360 = lazy(() => import("./pages/Physiq360"));
-const AgainCos = lazy(() => import("./pages/AgainCos"));
+// const MotusPro = lazy(() => import("./pages/MotusPro"));
+// const MotusAX = lazy(() => import("./pages/MotusAX"));
+// const Physiq360 = lazy(() => import("./pages/Physiq360"));
+// const AgainCos = lazy(() => import("./pages/AgainCos"));
 const Pricing = lazy(() => import("./pages/Pricing"));
-const Deka = lazy(() => import("./pages/Deka"));
-const DekaDay = lazy(() => import("./pages/DekaDay"));
-const DekaAnna = lazy(() => import("./pages/DekaAnna"));
-const DekaLera = lazy(() => import("./pages/DekaLera"));
-const DekaLiudmila = lazy(() => import("./pages/DekaLiudmila"));
+// const Deka = lazy(() => import("./pages/Deka"));
+// const DekaDay = lazy(() => import("./pages/DekaDay"));
+// const DekaAnna = lazy(() => import("./pages/DekaAnna"));
+// const DekaLera = lazy(() => import("./pages/DekaLera"));
+// const DekaLiudmila = lazy(() => import("./pages/DekaLiudmila"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const YuliaClients = lazy(() => import("./pages/YuliaClients"));
@@ -97,8 +98,8 @@ const App = () => (
                   <Route path="/manikuere-pedikuere-muenchen" element={<Navigate to="/de/manikuere-pedikuere-muenchen" replace />} />
                   <Route path="/redtouch-laser-muenchen" element={<Navigate to="/de/redtouch-laser-muenchen" replace />} />
 
-                  {/* DEKA устройства */}
-                  <Route path="/deka" element={<Navigate to="/de/deka" replace />} />
+                  {/* DEKA устройства - TEMPORARILY HIDDEN */}
+                  {/* <Route path="/deka" element={<Navigate to="/de/deka" replace />} />
                   <Route path="/DEKA" element={<Navigate to="/de/DEKA" replace />} />
                   <Route path="/deka-day" element={<Navigate to="/de/deka-day" replace />} />
                   <Route path="/deka-anna" element={<Navigate to="/de/deka-anna" replace />} />
@@ -109,7 +110,7 @@ const App = () => (
                   <Route path="/motus-ax" element={<Navigate to="/de/motus-ax" replace />} />
                   <Route path="/motus-pro" element={<Navigate to="/de/motus-pro" replace />} />
                   <Route path="/redtouch-pro" element={<Navigate to="/de/redtouch-pro" replace />} />
-                  <Route path="/again-cos" element={<Navigate to="/de/again-cos" replace />} />
+                  <Route path="/again-cos" element={<Navigate to="/de/again-cos" replace />} /> */}
 
                   {/* Немецкие роуты /de/* */}
                   <Route path="/de/*">
@@ -121,22 +122,23 @@ const App = () => (
                     <Route path="icoone-laser-muenchen" element={<IcooneLaser />} />
                     <Route path="manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
                     <Route path="redtouch-laser-muenchen" element={<RedTouchProService />} />
-                    <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
+                    {/* DEKA routes - TEMPORARILY HIDDEN */}
+                    {/* <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
                     <Route path="redtouch-pro" element={<RedTouchPro />} />
                     <Route path="motus-pro" element={<MotusPro />} />
                     <Route path="motus-ax" element={<MotusAX />} />
                     <Route path="physiq360" element={<Physiq360 />} />
-                    <Route path="again-cos" element={<AgainCos />} />
+                    <Route path="again-cos" element={<AgainCos />} /> */}
                     <Route path="kontakt" element={<Kontakt />} />
                     <Route path="impressum" element={<Impressum />} />
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                     <Route path="preis" element={<Pricing />} />
-                    <Route path="deka" element={<Deka />} />
+                    {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />
                     <Route path="deka-anna" element={<DekaAnna />} />
                     <Route path="deka-lera" element={<DekaLera />} />
-                    <Route path="deka-liudmila" element={<DekaLiudmila />} />
+                    <Route path="deka-liudmila" element={<DekaLiudmila />} /> */}
                     <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
                     <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
                     <Route path="redtouchpro" element={<Navigate to="redtouch-laser-muenchen" replace />} />
@@ -152,22 +154,23 @@ const App = () => (
                     <Route path="icoone-laser-muenchen" element={<IcooneLaser />} />
                     <Route path="manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
                     <Route path="redtouch-laser-muenchen" element={<RedTouchProService />} />
-                    <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
+                    {/* DEKA routes - TEMPORARILY HIDDEN */}
+                    {/* <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
                     <Route path="redtouch-pro" element={<RedTouchPro />} />
                     <Route path="motus-pro" element={<MotusPro />} />
                     <Route path="motus-ax" element={<MotusAX />} />
                     <Route path="physiq360" element={<Physiq360 />} />
-                    <Route path="again-cos" element={<AgainCos />} />
+                    <Route path="again-cos" element={<AgainCos />} /> */}
                     <Route path="kontakt" element={<Kontakt />} />
                     <Route path="impressum" element={<Impressum />} />
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                     <Route path="preis" element={<Pricing />} />
-                    <Route path="deka" element={<Deka />} />
+                    {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />
                     <Route path="deka-anna" element={<DekaAnna />} />
                     <Route path="deka-lera" element={<DekaLera />} />
-                    <Route path="deka-liudmila" element={<DekaLiudmila />} />
+                    <Route path="deka-liudmila" element={<DekaLiudmila />} /> */}
                     <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
                     <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
                     <Route path="redtouchpro" element={<Navigate to="redtouch-laser-muenchen" replace />} />

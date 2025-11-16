@@ -39,11 +39,26 @@ SETUP_LOCAL_DB.md
 ПРОСТОЙ_ЗАПУСК.md
 SUPABASE_SETUP.md
 
+# Documentation files (keep only README.md)
+LANGUAGE_STRUCTURE.md
+LANGUAGE_VISUAL_MAP.txt
+PAGES_MAP.txt
+PROJECT_STRUCTURE.md
+PROMOTIONS_FEATURE_README.md
+README_SSG_RU.md
+SSG_SETUP.md
+STATIC_VS_DYNAMIC_PAGES.md
+
 # Temporary SQL files (keep only migrations and schema)
 /*.sql
 !/supabase/migrations/*.sql
 !/supabase/incremental_migrations/*.sql
 !/supabase/PRODUCTION_SCHEMA.sql
+
+# Supabase documentation (keep only essential files)
+supabase/VERIFY_USER_MAPPING.md
+supabase/SETUP_AUTH_USERS_MANUAL.md
+supabase/USER_ACCOUNTS_STRUCTURE.md
 
 # Supabase temporary files
 supabase/.temp/
@@ -76,6 +91,17 @@ Icon?
 *~.nib
 .Spotlight-V100
 .Trashes
+
+# Python files (unless needed for specific tooling)
 venv/
 *.py
+*.pyc
+
+# CSV files (contain personal/test data)
 *.csv
+
+# Additional build artifacts
+bun.lockb
+
+# Test HTML files
+test-*.html

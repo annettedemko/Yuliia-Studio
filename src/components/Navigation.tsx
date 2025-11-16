@@ -207,8 +207,8 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* DEKA Geräte Dropdown */}
-            <div
+            {/* DEKA Geräte Dropdown - TEMPORARILY HIDDEN */}
+            {/* <div
               className="relative"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
@@ -229,7 +229,6 @@ const Navigation = () => {
                 )} />
               </Link>
 
-              {/* Dropdown Menu */}
               {dekaDropdownOpen && (
                 <div
                   className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
@@ -257,7 +256,7 @@ const Navigation = () => {
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
             <div className="hidden md:flex items-center space-x-2">
               <LanguageSwitcher />
               <Button
@@ -347,8 +346,8 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* DEKA Geräte Section for Mobile */}
-              <div className="border-t border-gray-200 pt-6 mt-4">
+              {/* DEKA Geräte Section for Mobile - TEMPORARILY HIDDEN */}
+              {/* <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
                   to={withLang('/deka-geraeteverkauf')}
                   className={cn(
@@ -376,7 +375,7 @@ const Navigation = () => {
                     </Link>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Contact Buttons - Make them larger and more prominent */}
               <div className="flex flex-col space-y-3 mt-6">
