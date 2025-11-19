@@ -31,7 +31,7 @@ export const HreflangTags = () => {
     <Helmet>
       <link rel="alternate" hrefLang="de" href={deUrl} />
       <link rel="alternate" hrefLang="ru" href={ruUrl} />
-      <link rel="alternate" hrefLang="x-default" href={deUrl} />
+      <link rel="alternate" hrefLang="x-default" href="https://www.munchen-beauty.de/" />
       <html lang={currentLang} />
     </Helmet>
   );
