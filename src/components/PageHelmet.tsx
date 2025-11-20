@@ -41,6 +41,13 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
       <meta property="og:locale" content={currentLang === 'de' ? 'de_DE' : 'ru_RU'} />
       <meta property="og:image" content="https://www.munchen-beauty.de/logo2.jpg" />
 
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content="https://www.munchen-beauty.de/logo2.jpg" />
+
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
     </Helmet>
