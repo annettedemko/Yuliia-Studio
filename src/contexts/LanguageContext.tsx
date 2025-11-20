@@ -2575,24 +2575,41 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Определяем язык из URL
+  // Определяем язык из URL (SSR-safe)
   const getLanguageFromURL = (): Language => {
+    // SSR-safe check
+    if (typeof window === 'undefined') {
+      return 'de'; // default for SSR
+    }
+
     const pathname = window.location.pathname;
     if (pathname.startsWith('/ru')) return 'ru';
     if (pathname.startsWith('/de')) return 'de';
 
     // Fallback: проверяем localStorage
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && (savedLanguage === 'de' || savedLanguage === 'ru')) {
-      return savedLanguage;
+    try {
+      const savedLanguage = localStorage.getItem('language') as Language;
+      if (savedLanguage && (savedLanguage === 'de' || savedLanguage === 'ru')) {
+        return savedLanguage;
+      }
+    } catch {
+      // localStorage not available
     }
 
     return 'de'; // default
   };
 
-  const [language, setLanguage] = useState<Language>(getLanguageFromURL);
+  const [language, setLanguage] = useState<Language>('de');
+
+  // Update language from URL on mount (client-side only)
+  useEffect(() => {
+    setLanguage(getLanguageFromURL());
+  }, []);
 
   useEffect(() => {
+    // SSR-safe check
+    if (typeof window === 'undefined') return;
+
     // Синхронизируем язык при изменении URL
     const updateLanguageFromURL = () => {
       const newLang = getLanguageFromURL();
@@ -2610,8 +2627,15 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
+    // SSR-safe check
+    if (typeof window === 'undefined') return;
+
     // Сохраняем новый язык
-    localStorage.setItem('language', lang);
+    try {
+      localStorage.setItem('language', lang);
+    } catch {
+      // localStorage not available
+    }
 
     // Перенаправляем на соответствующий язык в URL
     const currentPath = window.location.pathname.replace(/^\/(de|ru)/, '') || '/';

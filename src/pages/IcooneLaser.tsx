@@ -23,6 +23,8 @@ const IcooneLaser = () => {
   };
 
   useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
+    const lang = typeof window !== 'undefined' && window.location.pathname.startsWith('/ru') ? 'ru' : 'de';
     setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -31,19 +33,19 @@ const IcooneLaser = () => {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: window.location.origin
+          item: `${baseUrl}/${lang}`
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Services',
-          item: `${window.location.origin}/services`
+          item: `${baseUrl}/${lang}/services`
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: 'Icoone Laser München',
-          item: window.location.href
+          item: `${baseUrl}/${lang}/icoone-laser-muenchen`
         }
       ]
     });

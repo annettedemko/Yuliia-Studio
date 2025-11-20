@@ -17,4 +17,7 @@ export default defineConfig(() => ({
   build: {
     chunkSizeWarningLimit: 1200,
   },
+  ssr: {
+    noExternal: ['react-helmet-async'],
+  },
 }));
