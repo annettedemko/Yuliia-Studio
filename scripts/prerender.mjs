@@ -106,25 +106,36 @@ async function prerenderRoutes() {
         ''
       );
 
-      // Insert helmet meta tags before </head>
-      let headContent = `
-    ${helmet.meta}
-    ${helmet.link}
-    ${helmet.script}
+      // Build URLs for canonical and hreflang
+      const canonicalUrl = `${baseUrl}${route}`;
+      const pathWithoutLang = route.replace(/^\/(de|ru)/, '') || '/';
+      const deUrl = `${baseUrl}/de${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+      const ruUrl = `${baseUrl}/ru${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+
+      // Get helmet content and remove all canonical/hreflang tags with data-rh
+      let helmetLinks = helmet.link || '';
+      let helmetMeta = helmet.meta || '';
+      let helmetScript = helmet.script || '';
+
+      // Remove ALL data-rh link tags (canonical and hreflang)
+      // We'll add static versions manually
+      helmetLinks = helmetLinks.replace(/<link[^>]*data-rh="true"[^>]*rel="(canonical|alternate)"[^>]*\/?>/g, '');
+
+      // Build static canonical and hreflang tags (no data-rh attribute)
+      const staticLinkTags = `
+    <!-- Static canonical and hreflang for Google (no JS required) -->
+    <link rel="canonical" href="${canonicalUrl}" />
+    <link rel="alternate" hreflang="de" href="${deUrl}" />
+    <link rel="alternate" hreflang="ru" href="${ruUrl}" />
+    <link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/" />`;
+
+      // Combine all head content
+      const headContent = `
+    ${helmetMeta}
+    ${staticLinkTags}
+    ${helmetLinks}
+    ${helmetScript}
   `;
-
-      // Replace React Helmet canonical (data-rh="true") with static canonical (no data-rh)
-      // This removes the data-rh attribute to make it a static tag for Google
-      headContent = headContent.replace(
-        /<link data-rh="true" rel="canonical" href="([^"]*)"\/>/,
-        '<link rel="canonical" href="$1"/>'
-      );
-
-      // Replace React Helmet hreflang tags (data-rh="true") with static tags (no data-rh)
-      headContent = headContent.replace(
-        /<link data-rh="true" rel="alternate" hreflang="([^"]*)" href="([^"]*)"\/?>/g,
-        '<link rel="alternate" hreflang="$1" href="$2"/>'
-      );
 
       finalHtml = finalHtml.replace(
         '</head>',
