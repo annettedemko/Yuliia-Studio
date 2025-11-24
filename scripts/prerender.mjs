@@ -106,19 +106,25 @@ async function prerenderRoutes() {
         ''
       );
 
-      // Build canonical URL for this route
-      const canonicalUrl = `${baseUrl}${route}`;
-
-      // Insert static canonical + helmet meta tags before </head>
-      const headContent = `
-    <!-- Static canonical for SSR/pre-render (no JS required) -->
-    <link rel="canonical" href="${canonicalUrl}" />
-
-    <!-- Dynamic meta tags from React Helmet -->
+      // Insert helmet meta tags before </head>
+      let headContent = `
     ${helmet.meta}
     ${helmet.link}
     ${helmet.script}
   `;
+
+      // Replace React Helmet canonical (data-rh="true") with static canonical (no data-rh)
+      // This removes the data-rh attribute to make it a static tag for Google
+      headContent = headContent.replace(
+        /<link data-rh="true" rel="canonical" href="([^"]*)"\/>/,
+        '<link rel="canonical" href="$1"/>'
+      );
+
+      // Replace React Helmet hreflang tags (data-rh="true") with static tags (no data-rh)
+      headContent = headContent.replace(
+        /<link data-rh="true" rel="alternate" hreflang="([^"]*)" href="([^"]*)"\/?>/g,
+        '<link rel="alternate" hreflang="$1" href="$2"/>'
+      );
 
       finalHtml = finalHtml.replace(
         '</head>',
