@@ -40,6 +40,7 @@ const staticRoutes = {
 };
 
 async function prerenderRoutes() {
+  const baseUrl = 'https://www.munchen-beauty.de';
   const indexHtmlPath = path.join(distPath, 'index.html');
 
   if (!fs.existsSync(indexHtmlPath)) {
@@ -105,8 +106,15 @@ async function prerenderRoutes() {
         ''
       );
 
-      // Insert helmet meta tags before </head>
+      // Build canonical URL for this route
+      const canonicalUrl = `${baseUrl}${route}`;
+
+      // Insert static canonical + helmet meta tags before </head>
       const headContent = `
+    <!-- Static canonical for SSR/pre-render (no JS required) -->
+    <link rel="canonical" href="${canonicalUrl}" />
+
+    <!-- Dynamic meta tags from React Helmet -->
     ${helmet.meta}
     ${helmet.link}
     ${helmet.script}
