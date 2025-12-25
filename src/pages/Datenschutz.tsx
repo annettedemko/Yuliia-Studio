@@ -133,16 +133,41 @@ const Datenschutz = () => {
                     <h3 className="text-xl font-semibold text-primary mb-3">Google Maps</h3>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Diese Seite nutzt über eine API den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
-                      
+
                       <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
-                      
+
                       <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Google Analytics</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+
+                      <p>Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website durch den Nutzer ermöglichen. Die durch die Cookies erzeugten Informationen über Ihre Benutzung dieser Website (z. B. IP-Adresse, Gerätetyp, besuchte Seiten, Verweildauer) werden in der Regel an Server von Google übertragen und dort gespeichert.</p>
+
+                      <p>Die IP-Anonymisierung ist auf dieser Website aktiviert, sodass Ihre IP-Adresse von Google innerhalb der Europäischen Union gekürzt wird.</p>
+
+                      <p>Die Nutzung von Google Analytics erfolgt ausschließlich auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Ihre Einwilligung können Sie jederzeit über die Cookie-Einstellungen widerrufen.</p>
+
+                      <p>Die Speicherdauer der Daten beträgt bis zu 14 Monate.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Google Search Console</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Diese Website nutzt Google Search Console, einen Webanalysedienst von Google, zur technischen Analyse und Optimierung der Website. Google Search Console setzt keine Cookies und verarbeitet ausschließlich anonymisierte und aggregierte Daten.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Ahrefs</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Zur Suchmaschinenoptimierung und technischen Analyse der Website wird das Tool Ahrefs (Ahrefs Pte. Ltd., Singapur) eingesetzt. Ahrefs verarbeitet technische Zugriffsdaten (z. B. IP-Adresse, User-Agent) zur Analyse der Website-Performance.</p>
+
+                      <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Optimierung und Sicherheit der Website).</p>
                       </div>
                     </div>
 
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">7. Eigene Dienste</h2>
-                    
+
                     <h3 className="text-xl font-semibold text-primary mb-3">Terminbuchung und Kundenverwaltung</h3>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Zur Terminvereinbarung und Kundenverwaltung verarbeiten wir folgende personenbezogene Daten:</p>
@@ -153,8 +178,31 @@ const Datenschutz = () => {
                         <li>Behandlungswünsche und -historie</li>
                         <li>Terminzeiten</li>
                       </ul>
-                      
+
                       <p>Die Verarbeitung erfolgt zur Erfüllung des Vertrages mit Ihnen und zur Durchführung vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden für die Dauer der Geschäftsbeziehung sowie darüber hinaus zur Erfüllung gesetzlicher Aufbewahrungspflichten gespeichert.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Kontakt über Messenger und Telefon</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Diese Website enthält Verlinkungen zu externen Kommunikationsdiensten wie WhatsApp, Telegram sowie eine Telefonverbindung.</p>
+
+                      <p>Wenn Sie diese Dienste nutzen, erfolgt die Kommunikation über die jeweiligen Anbieter. Die Verarbeitung Ihrer personenbezogenen Daten erfolgt dabei in der Verantwortung des jeweiligen Dienstes.</p>
+
+                      <p>Die Nutzung dieser Kommunikationswege erfolgt freiwillig und auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Externe Links und soziale Netzwerke</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Unsere Website enthält Links zu externen Websites und sozialen Netzwerken (z. B. Instagram, externe Partnerseiten).</p>
+
+                      <p>Beim Anklicken solcher Links verlassen Sie unsere Website. Für die Verarbeitung personenbezogener Daten auf den verlinkten Seiten ist ausschließlich der jeweilige Betreiber verantwortlich.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Behandlungstechnische Hinweise</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Im Rahmen unserer Dienstleistungen (z. B. Maniküre, Pediküre, apparative Kosmetik, Behandlungen mit dem iCOONE® System sowie Laserbehandlungen mit Dioden-, Alexandrit- und RedTouch-Lasersystemen) werden keine personenbezogenen Gesundheitsdaten im Sinne des Art. 9 DSGVO automatisiert verarbeitet oder gespeichert.</p>
+
+                      <p>Personenbezogene Daten werden ausschließlich zur Terminorganisation und Kundenkommunikation verwendet.</p>
                       </div>
                     </div>
 

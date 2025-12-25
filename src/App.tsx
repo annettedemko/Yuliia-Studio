@@ -12,6 +12,7 @@ import { lazy, Suspense } from "react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CookieBanner from "./components/CookieBanner";
 
 // Loading component for Suspense fallback
 const PageLoader = () => (
@@ -194,6 +195,7 @@ const App = () => (
               </main>
               <Footer />
             </div>
+            <CookieBanner />
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>
