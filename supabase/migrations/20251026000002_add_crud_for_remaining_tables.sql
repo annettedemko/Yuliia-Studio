@@ -8,7 +8,6 @@
 DROP POLICY IF EXISTS "anon_select_form_submissions" ON public.form_submissions;
 DROP POLICY IF EXISTS "anon_update_form_submissions" ON public.form_submissions;
 DROP POLICY IF EXISTS "anon_delete_form_submissions" ON public.form_submissions;
-
 CREATE POLICY "anon_select_form_submissions"
 ON public.form_submissions FOR SELECT
 TO anon
