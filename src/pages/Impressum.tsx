@@ -48,6 +48,7 @@ const Impressum = () => {
                     <div className="space-y-2 text-muted-foreground">
                       <p><strong>{t('impressum.company')}</strong></p>
                       <p>{t('impressum.owner')}</p>
+                      <p><strong>{t('impressum.legal_form')}</strong> {t('impressum.legal_form.value')}</p>
                       <a
                         href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
                         target="_blank"
@@ -74,12 +75,7 @@ const Impressum = () => {
                     <div className="space-y-2 text-muted-foreground">
                       <p><strong>{t('impressum.profession.designation')}</strong> {t('impressum.profession.designation.value')}</p>
                       <p><strong>{t('impressum.profession.granted')}</strong> {t('impressum.profession.granted.value')}</p>
-                      <p><strong>{t('impressum.profession.regulations')}</strong></p>
-                      <ul className="list-disc list-inside ml-4 space-y-1">
-                        <li>{t('impressum.profession.regulation1')}</li>
-                        <li>{t('impressum.profession.regulation2')}</li>
-                        <li>{t('impressum.profession.regulation3')}</li>
-                      </ul>
+                      <p>{t('impressum.profession.regulations')}</p>
                       </div>
                     </div>
 
@@ -95,22 +91,6 @@ const Impressum = () => {
                     <h3 className="text-xl font-bold text-primary mb-4">{t('impressum.vat.title')}</h3>
                     <div className="space-y-2 text-muted-foreground">
                       <p>{t('impressum.vat.exemption')}</p>
-                      </div>
-                    </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold text-primary mb-4">{t('impressum.responsible.title')}</h3>
-                    <div className="space-y-2 text-muted-foreground">
-                      <p>Yuliia Cheporska</p>
-                      <a
-                        href="https://maps.app.goo.gl/EV635LLg4rmykZ2e8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-rose-gold hover:underline"
-                      >
-                        {t('impressum.address.street')}<br/>
-                        {t('impressum.address.city')}
-                      </a>
                       </div>
                     </div>
 

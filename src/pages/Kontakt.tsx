@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import AGBNotice from '@/components/AGBNotice';
 
 const Kontakt = () => {
   const { t } = useLanguage();
@@ -78,6 +79,10 @@ const Kontakt = () => {
               {t('kontakt.hero.subtitle')}
             </p>
             </div>
+          {/* AGB Notice */}
+          <div className="max-w-3xl mx-auto mt-6">
+            <AGBNotice />
+          </div>
           </div>
       </section>
 

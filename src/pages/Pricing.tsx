@@ -7,6 +7,7 @@ import { pricesService, subscriptionsService, categoriesService, type PriceCateg
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import AGBNotice from '@/components/AGBNotice';
 
 const Pricing = () => {
   const { language, t } = useLanguage();
@@ -192,6 +193,15 @@ const Pricing = () => {
             </p>
           </div>
 
+        </div>
+      </section>
+
+      {/* AGB Notice */}
+      <section className="py-6 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <AGBNotice />
+          </div>
         </div>
       </section>
 

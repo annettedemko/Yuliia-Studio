@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Instagram, Waves, CheckCircle } from 'lucide-react';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useLanguage } from '@/contexts/LanguageContext';
+import AGBNotice from '@/components/AGBNotice';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -35,6 +36,10 @@ const Services = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-2">
               {t('services.hero.description')}
             </p>
+          </div>
+          {/* AGB Notice */}
+          <div className="max-w-3xl mx-auto mt-6">
+            <AGBNotice />
           </div>
         </div>
       </section>

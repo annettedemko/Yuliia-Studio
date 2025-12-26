@@ -310,6 +310,7 @@ const translations = {
     'footer.legal.contact': 'Kontakt & Anfahrt',
     'footer.legal.imprint': 'Impressum',
     'footer.legal.privacy': 'Datenschutz',
+    'footer.legal.agb': 'AGB',
     'footer.copyright': '© 2024 Yuliia Cheporska Studio. Alle Rechte vorbehalten.',
 
     // Common Service Page Elements
@@ -1298,6 +1299,8 @@ const translations = {
     'impressum.tmg.title': 'Angaben gemäß § 5 TMG',
     'impressum.company': 'Yuliia Cheporska Studio',
     'impressum.owner': 'Inhaberin: Yuliia Cheporska',
+    'impressum.legal_form': 'Rechtsform:',
+    'impressum.legal_form.value': 'Einzelunternehmen (Gewerbebetrieb)',
     'impressum.address.street': 'Elsässer Straße 33',
     'impressum.address.city': '81667 München',
     'impressum.address.country': 'Deutschland',
@@ -1309,16 +1312,12 @@ const translations = {
     'impressum.profession.designation.value': 'Kosmetikerin',
     'impressum.profession.granted': 'Verliehen in:',
     'impressum.profession.granted.value': 'Deutschland',
-    'impressum.profession.regulations': 'Es gelten folgende berufsrechtliche Regelungen:',
-    'impressum.profession.regulation1': 'Handwerksordnung (HwO)',
-    'impressum.profession.regulation2': 'Kosmetikverordnung',
-    'impressum.profession.regulation3': 'Medizinproduktegesetz (MPG)',
+    'impressum.profession.regulations': 'Es gelten die einschlägigen gesetzlichen Bestimmungen der Bundesrepublik Deutschland.',
     'impressum.authority.title': 'Zuständige Aufsichtsbehörde',
     'impressum.authority.name': 'Landeshauptstadt München',
     'impressum.authority.department': 'Kreisverwaltungsreferat (KVR)',
-    'impressum.vat.title': 'Umsatzsteuer-ID',
+    'impressum.vat.title': 'Umsatzsteuer',
     'impressum.vat.exemption': 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.',
-    'impressum.responsible.title': 'Redaktionell verantwortlich',
     'impressum.dispute.title': 'EU-Streitschlichtung',
     'impressum.dispute.description': 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:',
     'impressum.dispute.email': 'Unsere E-Mail-Adresse finden Sie oben im Impressum.',
@@ -1334,7 +1333,7 @@ const translations = {
     'impressum.copyright.p1': 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.',
     'impressum.copyright.p2': 'Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.',
     'impressum.updated': 'Stand:',
-    'impressum.updated.date': 'Januar 2024',
+    'impressum.updated.date': 'Dezember 2025',
 
     // Cookie Banner
     'cookies.title': 'Cookies & Datenschutz',
@@ -1344,6 +1343,11 @@ const translations = {
     'cookies.decline': 'Ablehnen',
     'cookies.close': 'Schließen',
     'cookies.info': 'Sie können Ihre Einwilligung jederzeit in den Einstellungen widerrufen.',
+
+    // AGB Notice
+    'agb.notice.title': 'Hinweis',
+    'agb.notice.text': 'Mit jeder Terminbuchung gelten unsere',
+    'agb.notice.link': 'AGB',
   },
   ru: {
     // Navigation
@@ -1643,6 +1647,7 @@ const translations = {
     'footer.legal.contact': 'Контакты и как добраться',
     'footer.legal.imprint': 'Выходные данные',
     'footer.legal.privacy': 'Конфиденциальность',
+    'footer.legal.agb': 'Общие условия',
     'footer.copyright': '© 2024 Yuliia Cheporska Studio. Все права защищены.',
 
     // Common Service Page Elements
@@ -2631,6 +2636,8 @@ const translations = {
     'impressum.tmg.title': 'Данные согласно § 5 TMG',
     'impressum.company': 'Yuliia Cheporska Studio',
     'impressum.owner': 'Владелец: Юлия Чепорска',
+    'impressum.legal_form': 'Организационно-правовая форма:',
+    'impressum.legal_form.value': 'Индивидуальное предприятие (Коммерческое предприятие)',
     'impressum.address.street': 'Elsässer Straße 33',
     'impressum.address.city': '81667 Мюнхен',
     'impressum.address.country': 'Германия',
@@ -2642,16 +2649,12 @@ const translations = {
     'impressum.profession.designation.value': 'Косметолог',
     'impressum.profession.granted': 'Присвоено в:',
     'impressum.profession.granted.value': 'Германия',
-    'impressum.profession.regulations': 'Действуют следующие профессиональные правовые нормы:',
-    'impressum.profession.regulation1': 'Положение о ремеслах (HwO)',
-    'impressum.profession.regulation2': 'Положение о косметике',
-    'impressum.profession.regulation3': 'Закон о медицинских изделиях (MPG)',
+    'impressum.profession.regulations': 'Применяются соответствующие законодательные положения Федеративной Республики Германии.',
     'impressum.authority.title': 'Надзорный орган',
     'impressum.authority.name': 'Администрация города Мюнхена',
     'impressum.authority.department': 'Окружное управление (KVR)',
     'impressum.vat.title': 'НДС',
     'impressum.vat.exemption': 'Согласно § 19 UStG НДС не взимается.',
-    'impressum.responsible.title': 'Ответственный за контент',
     'impressum.dispute.title': 'Урегулирование споров в ЕС',
     'impressum.dispute.description': 'Европейская комиссия предоставляет платформу для онлайн-урегулирования споров (ОС):',
     'impressum.dispute.email': 'Наш адрес электронной почты указан выше в разделе Impressum.',
@@ -2667,7 +2670,7 @@ const translations = {
     'impressum.copyright.p1': 'Контент и работы, созданные операторами сайта на этих страницах, подпадают под действие немецкого закона об авторском праве. Воспроизведение, обработка, распространение и любое использование за пределами авторского права требуют письменного согласия соответствующего автора или создателя. Загрузки и копии этой страницы разрешены только для частного, некоммерческого использования.',
     'impressum.copyright.p2': 'Насколько контент на этой странице не был создан оператором, соблюдаются авторские права третьих лиц. В частности, контент третьих лиц помечается как таковой. Если вы все же обнаружите нарушение авторских прав, мы просим вас сообщить нам об этом. При обнаружении нарушений закона мы незамедлительно удалим такой контент.',
     'impressum.updated': 'Актуально на:',
-    'impressum.updated.date': 'Январь 2024',
+    'impressum.updated.date': 'Декабрь 2025',
 
     // Cookie Banner
     'cookies.title': 'Cookies и конфиденциальность',
@@ -2677,6 +2680,11 @@ const translations = {
     'cookies.decline': 'Отклонить',
     'cookies.close': 'Закрыть',
     'cookies.info': 'Вы можете отозвать свое согласие в любое время в настройках.',
+
+    // AGB Notice
+    'agb.notice.title': 'Примечание',
+    'agb.notice.text': 'При каждом бронировании действуют наши',
+    'agb.notice.link': 'Общие условия',
   }
 };
 

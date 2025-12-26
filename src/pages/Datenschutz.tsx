@@ -109,8 +109,13 @@ const Datenschutz = () => {
                     <h3 className="text-xl font-semibold text-primary mb-3">Anfrage per E-Mail, Telefon oder Telefax</h3>
                     <div className="space-y-4 text-muted-foreground">
                       <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-                      
+
                       <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und/oder auf unseren berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO), da wir ein berechtigtes Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen haben.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Cookie-Einwilligung</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Die Verwendung von Cookies und vergleichbaren Technologien erfolgt ausschließlich nach Ihrer Einwilligung über das Cookie-Banner. Nicht notwendige Cookies und Tracking-Technologien werden erst nach Ihrer aktiven Zustimmung gesetzt. Sie können Ihre Einwilligung jederzeit über die Cookie-Einstellungen widerrufen oder anpassen.</p>
                       </div>
                     </div>
 
@@ -122,8 +127,8 @@ const Datenschutz = () => {
                       <p>Auf unseren Seiten sind Funktionen des Dienstes Instagram eingebunden. Diese Funktionen werden angeboten durch die Facebook Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.</p>
                       
                       <p>Wenn Sie in Ihrem Instagram-Account eingeloggt sind, können Sie durch Anklicken des Instagram-Buttons die Inhalte unserer Seiten mit Ihrem Instagram-Profil verlinken. Dadurch kann Instagram den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Instagram erhalten.</p>
-                      
-                      <p>Die Speicherung und Analyse der Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an einer möglichst umfangreichen Sichtbarkeit in den Sozialen Medien. Sofern eine entsprechende Einwilligung abgefragt wurde (z. B. eine Einwilligung zur Speicherung von Cookies), erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+
+                      <p>Die Nutzung von Instagram erfolgt ausschließlich auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese Einwilligung können Sie jederzeit über die Cookie-Einstellungen widerrufen.</p>
                       </div>
                     </div>
 
@@ -136,7 +141,7 @@ const Datenschutz = () => {
 
                       <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
 
-                      <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+                      <p>Die Nutzung von Google Maps erfolgt ausschließlich auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese Einwilligung können Sie jederzeit über die Cookie-Einstellungen widerrufen.</p>
                       </div>
 
                     <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Google Analytics</h3>
@@ -179,7 +184,19 @@ const Datenschutz = () => {
                         <li>Terminzeiten</li>
                       </ul>
 
+                      <p className="font-semibold">Behandlungswünsche und -historie:</p>
+                      <p>Es werden keine medizinischen Diagnosen oder sensiblen Gesundheitsdaten im Sinne des Art. 9 DSGVO verarbeitet.</p>
+
                       <p>Die Verarbeitung erfolgt zur Erfüllung des Vertrages mit Ihnen und zur Durchführung vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden für die Dauer der Geschäftsbeziehung sowie darüber hinaus zur Erfüllung gesetzlicher Aufbewahrungspflichten gespeichert.</p>
+                      </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Online-Terminbuchung über DIKIDI</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>Die Online-Terminbuchung erfolgt teilweise über den externen Dienst DIKIDI. Bei der Nutzung des Buchungssystems werden personenbezogene Daten wie Name, Telefonnummer, E-Mail-Adresse sowie Terminwünsche verarbeitet.</p>
+
+                      <p>Die Verarbeitung der Daten erfolgt zum Zweck der Terminverwaltung und -organisation auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).</p>
+
+                      <p>Die Datenverarbeitung im Rahmen der Online-Terminbuchung erfolgt in der Verantwortung des jeweiligen Anbieters. Es gelten die Datenschutzbestimmungen von DIKIDI: <a href="https://support.dikidi.net/en/knowledge-bases/6/articles/648-privacy-policy" target="_blank" rel="noopener noreferrer" className="text-rose-gold hover:underline">https://support.dikidi.net/en/knowledge-bases/6/articles/648-privacy-policy</a></p>
                       </div>
 
                     <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Kontakt über Messenger und Telefon</h3>

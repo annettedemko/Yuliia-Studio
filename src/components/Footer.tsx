@@ -139,6 +139,12 @@ const Footer = () => {
               >
                 {t('footer.legal.privacy')}
               </Link>
+              <Link
+                to={withLang('/agb')}
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+              >
+                {t('footer.legal.agb')}
+              </Link>
             </div>
           </div>
         </div>

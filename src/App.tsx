@@ -55,6 +55,7 @@ const LeraClients = lazy(() => import("./pages/LeraClients"));
 const LiudmilaClients = lazy(() => import("./pages/LiudmilaClients"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const AGB = lazy(() => import("./pages/AGB"));
 const Kontakt = lazy(() => import("./pages/Kontakt"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -93,6 +94,7 @@ const App = () => (
                   <Route path="/kontakt" element={<Navigate to="/de/kontakt" replace />} />
                   <Route path="/impressum" element={<Navigate to="/de/impressum" replace />} />
                   <Route path="/datenschutzerklaerung" element={<Navigate to="/de/datenschutzerklaerung" replace />} />
+                  <Route path="/agb" element={<Navigate to="/de/agb" replace />} />
 
                   {/* Услуги */}
                   <Route path="/laser-haarentfernung-muenchen" element={<Navigate to="/de/laser-haarentfernung-muenchen" replace />} />
@@ -135,6 +137,7 @@ const App = () => (
                     <Route path="kontakt" element={<Kontakt />} />
                     <Route path="impressum" element={<Impressum />} />
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
+                    <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
@@ -167,6 +170,7 @@ const App = () => (
                     <Route path="kontakt" element={<Kontakt />} />
                     <Route path="impressum" element={<Impressum />} />
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
+                    <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
