@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import CookieSettings from './CookieSettings';
 
 const Footer = () => {
   const { t } = useLanguage();
   const location = useLocation();
+  const [showCookieSettings, setShowCookieSettings] = useState(false);
 
   // Получаем текущий язык из URL
   const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
@@ -145,6 +148,12 @@ const Footer = () => {
               >
                 {t('footer.legal.agb')}
               </Link>
+              <button
+                onClick={() => setShowCookieSettings(true)}
+                className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors text-left"
+              >
+                {t('footer.legal.cookie_settings')}
+              </button>
             </div>
           </div>
         </div>
@@ -153,6 +162,9 @@ const Footer = () => {
           {t('footer.copyright')}
         </div>
       </div>
+
+      {/* Cookie Settings Modal */}
+      <CookieSettings isOpen={showCookieSettings} onClose={() => setShowCookieSettings(false)} />
     </footer>
   );
 };

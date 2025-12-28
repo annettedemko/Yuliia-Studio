@@ -312,6 +312,7 @@ const translations = {
     'footer.legal.imprint': 'Impressum',
     'footer.legal.privacy': 'Datenschutz',
     'footer.legal.agb': 'AGB',
+    'footer.legal.cookie_settings': 'Cookie-Einstellungen',
     'footer.copyright': '© 2024 Yuliia Cheporska Studio. Alle Rechte vorbehalten.',
 
     // Common Service Page Elements
@@ -1345,6 +1346,19 @@ const translations = {
     'cookies.close': 'Schließen',
     'cookies.info': 'Sie können Ihre Einwilligung jederzeit in den Einstellungen widerrufen.',
 
+    // Cookie Settings Modal
+    'cookies.settings.title': 'Cookie-Einstellungen',
+    'cookies.settings.subtitle': 'Verwalten Sie Ihre Cookie-Präferenzen',
+    'cookies.settings.description': 'Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Sie können wählen, welche Kategorien von Cookies Sie zulassen möchten.',
+    'cookies.settings.necessary.title': 'Notwendige Cookies',
+    'cookies.settings.necessary.description': 'Diese Cookies sind für die grundlegende Funktionalität der Website erforderlich und können nicht deaktiviert werden. Sie speichern keine personenbezogenen Daten.',
+    'cookies.settings.analytics.title': 'Statistik / Analytics',
+    'cookies.settings.analytics.description': 'Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem Informationen anonym gesammelt und gemeldet werden.',
+    'cookies.settings.analytics.details': 'Cookies: Google Analytics (_ga, _gid, _gat). Diese Daten werden ausschließlich zur Verbesserung unseres Angebots verwendet.',
+    'cookies.settings.always_active': 'Immer aktiv',
+    'cookies.settings.save': 'Speichern',
+    'cookies.settings.info': 'Weitere Informationen finden Sie in unserer Datenschutzerklärung.',
+
     // AGB Notice
     'agb.notice.title': 'Hinweis',
     'agb.notice.text': 'Mit jeder Terminbuchung gelten unsere',
@@ -1650,6 +1664,7 @@ const translations = {
     'footer.legal.imprint': 'Выходные данные',
     'footer.legal.privacy': 'Конфиденциальность',
     'footer.legal.agb': 'Общие условия',
+    'footer.legal.cookie_settings': 'Настройки Cookie',
     'footer.copyright': '© 2024 Yuliia Cheporska Studio. Все права защищены.',
 
     // Common Service Page Elements
@@ -2682,6 +2697,19 @@ const translations = {
     'cookies.decline': 'Отклонить',
     'cookies.close': 'Закрыть',
     'cookies.info': 'Вы можете отозвать свое согласие в любое время в настройках.',
+
+    // Cookie Settings Modal
+    'cookies.settings.title': 'Настройки Cookie',
+    'cookies.settings.subtitle': 'Управление настройками cookie',
+    'cookies.settings.description': 'Мы используем файлы cookie, чтобы предоставить вам наилучший опыт использования нашего веб-сайта. Вы можете выбрать, какие категории файлов cookie вы хотите разрешить.',
+    'cookies.settings.necessary.title': 'Необходимые Cookie',
+    'cookies.settings.necessary.description': 'Эти файлы cookie необходимы для базовой функциональности веб-сайта и не могут быть отключены. Они не хранят личные данные.',
+    'cookies.settings.analytics.title': 'Статистика / Analytics',
+    'cookies.settings.analytics.description': 'Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим веб-сайтом, собирая и сообщая информацию анонимно.',
+    'cookies.settings.analytics.details': 'Cookies: Google Analytics (_ga, _gid, _gat). Эти данные используются исключительно для улучшения нашего предложения.',
+    'cookies.settings.always_active': 'Всегда активно',
+    'cookies.settings.save': 'Сохранить',
+    'cookies.settings.info': 'Дополнительную информацию см. в нашей Политике конфиденциальности.',
 
     // AGB Notice
     'agb.notice.title': 'Примечание',
