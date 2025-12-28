@@ -19,14 +19,14 @@ Yuliia Cheporska Studio is a premium beauty salon located in Munich, offering pr
 - **Backend & Database:** Supabase (PostgreSQL)
 - **Authentication:** Supabase Auth with Row Level Security (RLS)
 - **Deployment:** Vercel
-- **Booking Integration:** Dikidi booking system
+- **Booking Integration:** ALTEGIO (Alteg.io) booking system
 
 ## Key Features
 
 ### Client-Facing Features
 - Responsive design optimized for mobile and desktop
 - Multi-language support (German/Russian)
-- Online appointment booking via Dikidi integration
+- Online appointment booking via ALTEGIO integration
 - Dynamic pricing pages with service categories
 - Event registration forms for DEKA beauty days
 - DEKA equipment showcase pages

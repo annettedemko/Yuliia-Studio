@@ -88,13 +88,6 @@ const Impressum = () => {
                     </div>
 
                   <div>
-                    <h3 className="text-xl font-bold text-primary mb-4">{t('impressum.vat.title')}</h3>
-                    <div className="space-y-2 text-muted-foreground">
-                      <p>{t('impressum.vat.exemption')}</p>
-                      </div>
-                    </div>
-
-                  <div>
                     <h3 className="text-xl font-bold text-primary mb-4">{t('impressum.dispute.title')}</h3>
                     <div className="space-y-2 text-muted-foreground">
                       <p>{t('impressum.dispute.description')}</p>

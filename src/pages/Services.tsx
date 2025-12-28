@@ -366,7 +366,11 @@ const Services = () => {
             <Button
               size="lg"
               className="bg-white text-black hover:bg-white/90"
-              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
               {t('services.cta.book')}
             </Button>

@@ -190,13 +190,13 @@ const Datenschutz = () => {
                       <p>Die Verarbeitung erfolgt zur Erfüllung des Vertrages mit Ihnen und zur Durchführung vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden für die Dauer der Geschäftsbeziehung sowie darüber hinaus zur Erfüllung gesetzlicher Aufbewahrungspflichten gespeichert.</p>
                       </div>
 
-                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Online-Terminbuchung über DIKIDI</h3>
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Online-Terminbuchung über ALTEGIO</h3>
                     <div className="space-y-4 text-muted-foreground">
-                      <p>Die Online-Terminbuchung erfolgt teilweise über den externen Dienst DIKIDI. Bei der Nutzung des Buchungssystems werden personenbezogene Daten wie Name, Telefonnummer, E-Mail-Adresse sowie Terminwünsche verarbeitet.</p>
+                      <p>Die Online-Terminbuchung erfolgt über den externen Dienst ALTEGIO (Alteg.io). Bei der Nutzung des Buchungssystems werden personenbezogene Daten wie Name, Telefonnummer, E-Mail-Adresse sowie Terminwünsche verarbeitet.</p>
 
                       <p>Die Verarbeitung der Daten erfolgt zum Zweck der Terminverwaltung und -organisation auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).</p>
 
-                      <p>Die Datenverarbeitung im Rahmen der Online-Terminbuchung erfolgt in der Verantwortung des jeweiligen Anbieters. Es gelten die Datenschutzbestimmungen von DIKIDI: <a href="https://support.dikidi.net/en/knowledge-bases/6/articles/648-privacy-policy" target="_blank" rel="noopener noreferrer" className="text-rose-gold hover:underline">https://support.dikidi.net/en/knowledge-bases/6/articles/648-privacy-policy</a></p>
+                      <p>Die Datenverarbeitung im Rahmen der Online-Terminbuchung erfolgt in der Verantwortung des jeweiligen Anbieters. Es gelten die Datenschutzbestimmungen von ALTEGIO: <a href="https://altegio.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-rose-gold hover:underline">https://altegio.com/privacy-policy</a></p>
                       </div>
 
                     <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Kontakt über Messenger und Telefon</h3>

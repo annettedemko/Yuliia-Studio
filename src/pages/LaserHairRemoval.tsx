@@ -105,7 +105,11 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
-              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
               {t('laser.hero.button')}
             </Button>
@@ -598,7 +602,11 @@ const LaserHairRemoval = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
                 {t('laser.pricing.consultation')}
               </Button>

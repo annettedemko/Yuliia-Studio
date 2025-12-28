@@ -135,7 +135,7 @@ const IcooneLaser = () => {
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
               asChild
             >
-              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+              <a href="https://1408290.alteg.io/" target="_blank" rel="noopener noreferrer">
                 {t('icoone.hero.button.consultation')}
               </a>
             </Button>

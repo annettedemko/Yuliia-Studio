@@ -93,16 +93,16 @@ const CookieBanner = () => {
                   variant="outline"
                   className="border-2 border-muted hover:border-rose-gold/50 hover:bg-accent/50 font-semibold transition-all"
                 >
-                  {t('cookies.decline')}
+                  {t('cookies.necessary')}
                 </Button>
                 <Button
-                  onClick={() => setIsVisible(false)}
+                  asChild
                   variant="ghost"
-                  size="sm"
-                  className="sm:ml-auto hover:bg-accent/50"
-                  aria-label={t('cookies.close')}
+                  className="hover:bg-accent/50 font-semibold transition-all"
                 >
-                  <X className="w-4 h-4" />
+                  <Link to={`${langPrefix}/datenschutz`}>
+                    {t('cookies.settings')}
+                  </Link>
                 </Button>
               </div>
 

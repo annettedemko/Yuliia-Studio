@@ -274,12 +274,14 @@ const Navigation = () => {
                 variant="outline"
                 size="sm"
                 className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
-                asChild
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
-                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="w-3 h-3 mr-1" />
-                  {t('nav.button.appointment')}
-                </a>
+                <Calendar className="w-3 h-3 mr-1" />
+                {t('nav.button.appointment')}
               </Button>
             </div>
           </div>
@@ -394,12 +396,14 @@ const Navigation = () => {
                   variant="outline"
                   size="lg"
                   className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
-                  asChild
+                  onClick={() => {
+                    if (window.alteg_code) {
+                      window.alteg_code.show();
+                    }
+                  }}
                 >
-                  <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    {t('nav.button.book-appointment')}
-                  </a>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  {t('nav.button.book-appointment')}
                 </Button>
               </div>
             </div>

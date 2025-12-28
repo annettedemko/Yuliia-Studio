@@ -173,11 +173,13 @@ const ManikuerePedikuere = () => {
           <Button
             size="lg"
             className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
-            asChild
+            onClick={() => {
+              if (window.alteg_code) {
+                window.alteg_code.show();
+              }
+            }}
           >
-            <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-              {t('nails.hero.button')}
-            </a>
+            {t('nails.hero.button')}
           </Button>
           </div>
       </section>
@@ -304,11 +306,13 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                asChild
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
-                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  {t('nails.cta.book')}
-                </a>
+                {t('nails.cta.book')}
               </Button>
               </div>
             </div>
@@ -368,11 +372,13 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                asChild
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
-                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                  {t('nails.cta.book')}
-                </a>
+                {t('nails.cta.book')}
               </Button>
               </div>
             </div>
@@ -622,7 +628,7 @@ const ManikuerePedikuere = () => {
                 className="bg-white text-primary hover:bg-white/90"
                 asChild
               >
-                <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
+                <a href="https://1408290.alteg.io/" target="_blank" rel="noopener noreferrer">
                   {t('nails.final-cta.book')}
                 </a>
               </Button>

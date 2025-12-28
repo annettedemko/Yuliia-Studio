@@ -88,7 +88,11 @@ const AlexandritVsDiodenlaser = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
-              onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
               {t('comparison.hero.button.book')}
             </Button>
@@ -878,7 +882,11 @@ const AlexandritVsDiodenlaser = () => {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 text-lg px-8 py-6"
-                onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
                 {t('comparison.cta.button.book')}
               </Button>

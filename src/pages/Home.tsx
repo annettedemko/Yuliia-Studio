@@ -120,7 +120,11 @@ const Home = () => {
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
-            onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+            onClick={() => {
+              if (window.alteg_code) {
+                window.alteg_code.show();
+              }
+            }}
           >
             {t('home.hero.button')}
           </Button>
@@ -333,13 +337,9 @@ const Home = () => {
                         <Button
                           className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
                           onClick={() => {
-                            const dikidiLinks = {
-                              'Silber': 'https://dkd.su/1833345/s/20701465',
-                              'Gold': 'https://dkd.su/1833345/s/20701481',
-                              'Platin': 'https://dkd.su/1833345/s/20701485'
-                            };
-                            const link = dikidiLinks[pkg.name] || 'https://beauty.dikidi.net/#widget=185505';
-                            window.open(link, '_blank');
+                            if (window.alteg_code) {
+                              window.alteg_code.show();
+                            }
                           }}
                         >
                           {t('home.hero.button')}
@@ -632,7 +632,11 @@ const Home = () => {
                     <Button
                       size="lg"
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
-                      onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                      onClick={() => {
+                        if (window.alteg_code) {
+                          window.alteg_code.show();
+                        }
+                      }}
                     >
                       {t('home.hero.button')}
                     </Button>

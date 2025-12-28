@@ -289,7 +289,11 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90"
-                onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                onClick={() => {
+                  if (window.alteg_code) {
+                    window.alteg_code.show();
+                  }
+                }}
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 {t('kontakt.cta.book')}

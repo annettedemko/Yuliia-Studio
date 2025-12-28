@@ -196,6 +196,19 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* VAT Notice */}
+      <section className="py-4 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-primary/10 border-2 border-primary rounded-lg py-4 px-6 text-center">
+              <p className="text-base font-semibold text-primary">
+                {t('pricing.vat.notice')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* AGB Notice */}
       <section className="py-6 bg-background">
         <div className="container mx-auto px-4">
@@ -298,13 +311,9 @@ const Pricing = () => {
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
                         onClick={() => {
-                          const dikidiLinks = {
-                            'Silber': 'https://dkd.su/1833345/s/20701465',
-                            'Gold': 'https://dkd.su/1833345/s/20701481',
-                            'Platin': 'https://dkd.su/1833345/s/20701485'
-                          };
-                          const link = dikidiLinks[pkg.name] || 'https://beauty.dikidi.net/#widget=185505';
-                          window.open(link, '_blank');
+                          if (window.alteg_code) {
+                            window.alteg_code.show();
+                          }
                         }}
                       >
                         {t('pricing.button.book')}
@@ -355,7 +364,11 @@ const Pricing = () => {
                   <Button
                     size="lg"
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => window.open('https://beauty.dikidi.net/#widget=185505', '_blank')}
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
                     {t('pricing.button.book')}
                   </Button>
@@ -431,11 +444,13 @@ const Pricing = () => {
             <Button
               size="lg"
               className="bg-white text-black hover:bg-white/90"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="https://beauty.dikidi.net/#widget=185505" target="_blank" rel="noopener noreferrer">
-                {t('pricing.cta.book')}
-              </a>
+              {t('pricing.cta.book')}
             </Button>
             <Button
               size="lg"
