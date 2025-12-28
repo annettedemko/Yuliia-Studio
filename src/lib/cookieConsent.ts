@@ -38,6 +38,11 @@ export function saveConsentPreferences(categories: ConsentCategories): void {
   const value = JSON.stringify(categories);
   setCookie(CONSENT_COOKIE_NAME, value, CONSENT_EXPIRY_DAYS);
 
+  // If analytics is disabled, remove analytics cookies
+  if (!categories.analytics) {
+    removeAnalyticsCookies();
+  }
+
   // Trigger consent change event
   window.dispatchEvent(new CustomEvent('consentChanged', { detail: categories }));
 }

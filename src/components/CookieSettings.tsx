@@ -29,6 +29,12 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
       const current = getConsentPreferences();
       if (current) {
         setPreferences(current);
+      } else {
+        // No consent yet - ensure analytics is OFF by default
+        setPreferences({
+          necessary: true,
+          analytics: false,
+        });
       }
     }
   }, [isOpen]);
