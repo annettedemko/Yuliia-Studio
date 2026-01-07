@@ -33,7 +33,7 @@ const Kontakt = () => {
       '@id': 'https://www.munchen-beauty.de',
       url: 'https://www.munchen-beauty.de/kontakt',
       telephone: '+4915206067810',
-      email: 'info@yuliia-studio.de',
+      email: 'Yulachip@icloud.com',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Elsässer Straße 33',

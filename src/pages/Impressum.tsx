@@ -59,6 +59,7 @@ const Impressum = () => {
                         {t('impressum.address.city')}
                       </a>
                       <p>{t('impressum.address.country')}</p>
+                      <p><strong>{t('impressum.ust_idnr')}</strong> {t('impressum.ust_idnr.value')}</p>
                       </div>
                     </div>
 

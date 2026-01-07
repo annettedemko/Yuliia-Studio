@@ -133,11 +133,13 @@ const IcooneLaser = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="https://1408290.alteg.io/" target="_blank" rel="noopener noreferrer">
-                {t('icoone.hero.button.consultation')}
-              </a>
+              {t('icoone.hero.button.consultation')}
             </Button>
             <Button
               size="lg"

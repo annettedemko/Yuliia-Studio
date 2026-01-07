@@ -233,11 +233,17 @@ const Datenschutz = () => {
                     
                     <h3 className="text-xl font-semibold text-primary mb-3">Google Maps</h3>
                     <div className="space-y-4 text-muted-foreground">
-                      <p>Diese Seite nutzt über eine API den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+                      <p><strong>Anbieter und Funktionsweise:</strong></p>
+                      <p>Diese Seite nutzt den Kartendienst Google Maps zur Darstellung unseres Standortes. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.</p>
 
-                      <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
+                      <p><strong>Datenübertragung:</strong></p>
+                      <p>Bei der Nutzung von Google Maps wird Ihre IP-Adresse an Google übertragen, um die Karte anzuzeigen. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert.</p>
 
-                      <p>Die Nutzung von Google Maps erfolgt ausschließlich auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Diese Einwilligung können Sie jederzeit über die Cookie-Einstellungen widerrufen.</p>
+                      <p><strong>Rechtsgrundlage:</strong></p>
+                      <p>Die Nutzung von Google Maps erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse daran, unseren Standort visuell darzustellen und Ihnen die Anfahrt zu erleichtern. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+
+                      <p><strong>Weitere Informationen:</strong></p>
+                      <p>Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-rose-gold hover:underline">https://policies.google.com/privacy</a></p>
                       </div>
 
                     <h3 className="text-xl font-semibold text-primary mb-3 mt-6">Google Analytics</h3>
@@ -382,7 +388,7 @@ const Datenschutz = () => {
 
                   <div className="mt-12 pt-8 border-t border-border">
                     <p className="text-sm text-muted-foreground">
-                      <strong>Stand der Datenschutzerklärung:</strong> Januar 2024
+                      <strong>Stand der Datenschutzerklärung:</strong> Januar 2025
                     </p>
                     <p className="text-sm text-muted-foreground mt-2">
                       Diese Datenschutzerklärung wurde mit Hilfe des Datenschutz-Generators erstellt.

@@ -182,13 +182,15 @@ export const Promotions = () => {
                   <Button
                     className={`w-full ${colors.accent} text-white hover:opacity-90 transition-all group-hover:scale-105`}
                     size="lg"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810" className="flex items-center justify-center gap-2">
-                      <Phone className="w-5 h-5" />
-                      <span>{language === 'ru' ? 'Записаться' : 'Termin buchen'}</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    <Phone className="w-5 h-5" />
+                    <span>{language === 'ru' ? 'Записаться' : 'Termin buchen'}</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardContent>
               </Card>

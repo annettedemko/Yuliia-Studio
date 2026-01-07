@@ -190,12 +190,14 @@ const RedTouchPro = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-red-600 to-red-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {t('redtouch.hero.button.consultation')}
-                    </a>
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('redtouch.hero.button.consultation')}
                   </Button>
                   </div>
                 </div>
@@ -645,11 +647,17 @@ const RedTouchPro = () => {
             {t('redtouch.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                {t('redtouch.cta.book')}
-              </a>
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90"
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              {t('redtouch.cta.book')}
             </Button>
             <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10" asChild>
               <a href="mailto:Yulachip@icloud.com">

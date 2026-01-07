@@ -380,12 +380,14 @@ const RedTouchProService = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-rose-gold to-pink-500 text-white hover:shadow-xl hover:scale-105 transition-all"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                Termin vereinbaren
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              Termin vereinbaren
             </Button>
             <Button
               size="lg"

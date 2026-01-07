@@ -126,12 +126,14 @@ const AgainCos = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-teal-600 to-teal-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {t('againcos.hero.button.consultation')}
-                    </a>
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('againcos.hero.button.consultation')}
                   </Button>
                 </div>
               </div>
@@ -361,12 +363,14 @@ const AgainCos = () => {
             <Button
               size="lg"
               className="bg-white text-[#5a2d2a] hover:bg-white/90 text-lg px-8 py-4"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                {t('againcos.cta.button.consultation')}
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              {t('againcos.cta.button.consultation')}
             </Button>
             <Button
               size="lg"

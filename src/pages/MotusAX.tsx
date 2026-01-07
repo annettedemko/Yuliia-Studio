@@ -116,12 +116,14 @@ const MotusAX = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {t('motusax.hero.button')}
-                    </a>
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('motusax.hero.button')}
                   </Button>
                 </div>
               </div>

@@ -135,12 +135,14 @@ const Physiq360 = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-orange-600 to-orange-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {t('physiq360.hero.button.consultation')}
-                    </a>
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('physiq360.hero.button.consultation')}
                   </Button>
                 </div>
               </div>
@@ -434,12 +436,14 @@ const Physiq360 = () => {
             <Button
               size="lg"
               className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                {t('physiq360.cta.button.consultation')}
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              {t('physiq360.cta.button.consultation')}
             </Button>
             <Button
               size="lg"

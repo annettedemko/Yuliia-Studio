@@ -143,12 +143,14 @@ const MotusPro = () => {
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-green-600 to-green-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    asChild
+                    onClick={() => {
+                      if (window.alteg_code) {
+                        window.alteg_code.show();
+                      }
+                    }}
                   >
-                    <a href="tel:+4915206067810">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {t('motuspro.hero.button.consultation')}
-                    </a>
+                    <Phone className="w-5 h-5 mr-2" />
+                    {t('motuspro.hero.button.consultation')}
                   </Button>
                 </div>
               </div>
@@ -448,7 +450,7 @@ const MotusPro = () => {
                 className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
                 asChild
               >
-                <a href="mailto:info@yuliia-studio.de">
+                <a href="mailto:Yulachip@icloud.com">
                   <Mail className="w-5 h-5 mr-2" />
                   {t('motuspro.cta.button.quote')}
                 </a>

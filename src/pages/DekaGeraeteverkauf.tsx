@@ -171,12 +171,14 @@ const DekaGeraeteverkauf = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg text-lg px-8 py-4"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                {t('equipment.hero.consultation')}
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              {t('equipment.hero.consultation')}
             </Button>
 
             <Button
@@ -310,12 +312,15 @@ const DekaGeraeteverkauf = () => {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Button
                         className="bg-gradient-to-r from-primary to-primary/80 text-white hover:shadow-lg"
-                        asChild
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (window.alteg_code) {
+                            window.alteg_code.show();
+                          }
+                        }}
                       >
-                        <a href="tel:+4915206067810" onClick={(e) => e.stopPropagation()}>
-                          <Phone className="w-4 h-4 mr-2" />
-                          {t('equipment.device.request-consultation')}
-                        </a>
+                        <Phone className="w-4 h-4 mr-2" />
+                        {t('equipment.device.request-consultation')}
                       </Button>
                       <Button
                         variant="outline"
@@ -357,12 +362,14 @@ const DekaGeraeteverkauf = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4"
-              asChild
+              onClick={() => {
+                if (window.alteg_code) {
+                  window.alteg_code.show();
+                }
+              }}
             >
-              <a href="tel:+4915206067810">
-                <Phone className="w-5 h-5 mr-2" />
-                {t('equipment.cta.get-consultation')}
-              </a>
+              <Phone className="w-5 h-5 mr-2" />
+              {t('equipment.cta.get-consultation')}
             </Button>
             <Button
               size="lg"

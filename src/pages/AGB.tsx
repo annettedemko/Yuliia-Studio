@@ -69,7 +69,7 @@ const AGB = () => {
 
                       <p>Bei Jahresabonnements erfolgt die Abrechnung monatlich per vereinbarter Abbuchung.</p>
 
-                      <p>Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer, sofern diese anfällt.</p>
+                      <p>Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer, sofern nicht anders angegeben.</p>
                       </div>
                     </div>
 
