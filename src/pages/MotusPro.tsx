@@ -145,7 +145,7 @@ const MotusPro = () => {
                     className="bg-gradient-to-r from-green-600 to-green-700 text-white hover:shadow-lg text-lg px-8 py-4"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >

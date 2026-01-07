@@ -312,7 +312,7 @@ const Pricing = () => {
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
                         onClick={() => {
                           if (window.yWidget) {
-                            window.yWidget.show();
+                            window.yWidget.show(window.yWidget.href);
                           }
                         }}
                       >
@@ -366,7 +366,7 @@ const Pricing = () => {
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >
@@ -446,7 +446,7 @@ const Pricing = () => {
               className="bg-white text-black hover:bg-white/90"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >

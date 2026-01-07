@@ -192,7 +192,7 @@ const RedTouchPro = () => {
                     className="bg-gradient-to-r from-red-600 to-red-700 text-white hover:shadow-lg text-lg px-8 py-4"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >
@@ -652,7 +652,7 @@ const RedTouchPro = () => {
               className="bg-white text-primary hover:bg-white/90"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >

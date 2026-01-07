@@ -107,7 +107,7 @@ const LaserHairRemoval = () => {
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >
@@ -604,7 +604,7 @@ const LaserHairRemoval = () => {
                 variant="outline"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >

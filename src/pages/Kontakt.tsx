@@ -291,7 +291,7 @@ const Kontakt = () => {
                 className="bg-white text-primary hover:bg-white/90"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >

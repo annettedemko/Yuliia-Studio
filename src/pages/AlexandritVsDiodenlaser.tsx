@@ -90,7 +90,7 @@ const AlexandritVsDiodenlaser = () => {
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >
@@ -884,7 +884,7 @@ const AlexandritVsDiodenlaser = () => {
                 className="bg-white text-primary hover:bg-white/90 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 text-lg px-8 py-6"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >

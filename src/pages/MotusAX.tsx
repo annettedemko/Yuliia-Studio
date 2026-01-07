@@ -118,7 +118,7 @@ const MotusAX = () => {
                     className="bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-lg text-lg px-8 py-4"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >

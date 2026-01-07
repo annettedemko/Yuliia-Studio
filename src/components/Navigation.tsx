@@ -276,7 +276,7 @@ const Navigation = () => {
                 className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >
@@ -398,7 +398,7 @@ const Navigation = () => {
                   className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
                   onClick={() => {
                     if (window.yWidget) {
-                      window.yWidget.show();
+                      window.yWidget.show(window.yWidget.href);
                     }
                   }}
                 >

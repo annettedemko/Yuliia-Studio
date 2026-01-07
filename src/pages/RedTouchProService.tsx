@@ -382,7 +382,7 @@ const RedTouchProService = () => {
               className="bg-gradient-to-r from-rose-gold to-pink-500 text-white hover:shadow-xl hover:scale-105 transition-all"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >

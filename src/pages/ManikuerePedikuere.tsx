@@ -175,7 +175,7 @@ const ManikuerePedikuere = () => {
             className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
             onClick={() => {
               if (window.yWidget) {
-                window.yWidget.show();
+                window.yWidget.show(window.yWidget.href);
               }
             }}
           >
@@ -308,7 +308,7 @@ const ManikuerePedikuere = () => {
                 className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >
@@ -374,7 +374,7 @@ const ManikuerePedikuere = () => {
                 className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >
@@ -628,7 +628,7 @@ const ManikuerePedikuere = () => {
                 className="bg-white text-primary hover:bg-white/90"
                 onClick={() => {
                   if (window.yWidget) {
-                    window.yWidget.show();
+                    window.yWidget.show(window.yWidget.href);
                   }
                 }}
               >

@@ -137,7 +137,7 @@ const Physiq360 = () => {
                     className="bg-gradient-to-r from-orange-600 to-orange-700 text-white hover:shadow-lg text-lg px-8 py-4"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >
@@ -438,7 +438,7 @@ const Physiq360 = () => {
               className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >

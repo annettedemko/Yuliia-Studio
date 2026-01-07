@@ -184,7 +184,7 @@ export const Promotions = () => {
                     size="lg"
                     onClick={() => {
                       if (window.yWidget) {
-                        window.yWidget.show();
+                        window.yWidget.show(window.yWidget.href);
                       }
                     }}
                   >

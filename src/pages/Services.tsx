@@ -368,7 +368,7 @@ const Services = () => {
               className="bg-white text-black hover:bg-white/90"
               onClick={() => {
                 if (window.yWidget) {
-                  window.yWidget.show();
+                  window.yWidget.show(window.yWidget.href);
                 }
               }}
             >
