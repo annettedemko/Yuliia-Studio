@@ -172,8 +172,8 @@ const DekaGeraeteverkauf = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg text-lg px-8 py-4"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >
@@ -314,8 +314,8 @@ const DekaGeraeteverkauf = () => {
                         className="bg-gradient-to-r from-primary to-primary/80 text-white hover:shadow-lg"
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (window.alteg_code) {
-                            window.alteg_code.show();
+                          if (window.yWidget) {
+                            window.yWidget.show();
                           }
                         }}
                       >
@@ -363,8 +363,8 @@ const DekaGeraeteverkauf = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >

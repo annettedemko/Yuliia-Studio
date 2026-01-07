@@ -367,8 +367,8 @@ const Services = () => {
               size="lg"
               className="bg-white text-black hover:bg-white/90"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >

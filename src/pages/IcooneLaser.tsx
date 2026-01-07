@@ -134,8 +134,8 @@ const IcooneLaser = () => {
               size="lg"
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >

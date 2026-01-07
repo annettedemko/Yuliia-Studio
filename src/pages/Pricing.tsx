@@ -311,8 +311,8 @@ const Pricing = () => {
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
                         onClick={() => {
-                          if (window.alteg_code) {
-                            window.alteg_code.show();
+                          if (window.yWidget) {
+                            window.yWidget.show();
                           }
                         }}
                       >
@@ -365,8 +365,8 @@ const Pricing = () => {
                     size="lg"
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
                     onClick={() => {
-                      if (window.alteg_code) {
-                        window.alteg_code.show();
+                      if (window.yWidget) {
+                        window.yWidget.show();
                       }
                     }}
                   >
@@ -445,8 +445,8 @@ const Pricing = () => {
               size="lg"
               className="bg-white text-black hover:bg-white/90"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >

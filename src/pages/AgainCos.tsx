@@ -127,8 +127,8 @@ const AgainCos = () => {
                     size="lg"
                     className="bg-gradient-to-r from-teal-600 to-teal-700 text-white hover:shadow-lg text-lg px-8 py-4"
                     onClick={() => {
-                      if (window.alteg_code) {
-                        window.alteg_code.show();
+                      if (window.yWidget) {
+                        window.yWidget.show();
                       }
                     }}
                   >
@@ -364,8 +364,8 @@ const AgainCos = () => {
               size="lg"
               className="bg-white text-[#5a2d2a] hover:bg-white/90 text-lg px-8 py-4"
               onClick={() => {
-                if (window.alteg_code) {
-                  window.alteg_code.show();
+                if (window.yWidget) {
+                  window.yWidget.show();
                 }
               }}
             >

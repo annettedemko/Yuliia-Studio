@@ -183,8 +183,8 @@ export const Promotions = () => {
                     className={`w-full ${colors.accent} text-white hover:opacity-90 transition-all group-hover:scale-105`}
                     size="lg"
                     onClick={() => {
-                      if (window.alteg_code) {
-                        window.alteg_code.show();
+                      if (window.yWidget) {
+                        window.yWidget.show();
                       }
                     }}
                   >

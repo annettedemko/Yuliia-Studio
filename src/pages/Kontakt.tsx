@@ -290,8 +290,8 @@ const Kontakt = () => {
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90"
                 onClick={() => {
-                  if (window.alteg_code) {
-                    window.alteg_code.show();
+                  if (window.yWidget) {
+                    window.yWidget.show();
                   }
                 }}
               >
