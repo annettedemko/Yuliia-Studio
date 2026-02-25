@@ -41,32 +41,125 @@ const RedTouchProService = () => {
 
   useEffect(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    const lang = typeof window !== 'undefined' && window.location.pathname.startsWith('/ru') ? 'ru' : 'de';
+    const isRu = currentLang === 'ru';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
+      '@graph': [
         {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: `${baseUrl}/${lang}`
+          '@type': 'Service',
+          '@id': `${baseUrl}/${currentLang}/redtouch-laser-muenchen#service`,
+          name: isRu
+            ? 'RedTouch 675 нм Мюнхен — кожа и пигментация'
+            : 'RedTouch 675 nm München – Hautbild & Pigment',
+          serviceType: isRu ? 'Лазерная терапия кожи' : 'Laser-Hautbehandlung',
+          provider: {
+            '@type': 'BeautySalon',
+            '@id': `${baseUrl}#business`,
+            name: 'Yuliia Cheporska Studio'
+          },
+          description: isRu
+            ? 'Специализированная лазерная процедура RedTouch (675 нм) в Мюнхене для стимуляции коллагена, омоложения кожи и лечения пигментных пятен.'
+            : 'Spezialisierte RedTouch Laserbehandlung (675 nm) in München zur Kollagenstimulation, Hautverjüngung und Behandlung von Pigmentflecken.',
+          inLanguage: isRu ? 'ru' : 'de',
+          areaServed: {
+            '@type': 'City',
+            name: 'München'
+          },
+          brand: {
+            '@type': 'Brand',
+            name: 'DEKA'
+          },
+          offers: {
+            '@type': 'Offer',
+            url: `${baseUrl}/${currentLang}/preise`,
+            priceCurrency: 'EUR',
+            description: isRu
+              ? 'Цены на RedTouch процедуры варьируются в зависимости от показаний и зоны обработки.'
+              : 'Preise für RedTouch Behandlungen variieren je nach Indikation und Areal.',
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@type': 'BeautySalon',
+              name: 'Yuliia Cheporska Studio'
+            }
+          }
         },
         {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Services',
-          item: `${baseUrl}/${lang}/services`
+          '@type': 'HowTo',
+          name: isRu ? 'Как проходит процедура RedTouch' : 'Der Ablauf Ihrer RedTouch Behandlung',
+          inLanguage: isRu ? 'ru' : 'de',
+          step: [
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Анализ кожи' : 'Hautanalyse',
+              text: isRu
+                ? 'Определение целей процедуры: уменьшение морщин или коррекция пигментации.'
+                : 'Bestimmung der Behandlungsziele wie Faltenreduktion oder Pigmentausgleich.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Лазерная процедура' : 'Laser-Anwendung',
+              text: isRu
+                ? 'Целенаправленная стимуляция коллагеновых волокон с помощью длины волны 675 нм лазера RedTouch.'
+                : 'Gezielte Stimulation der Kollagenfasern durch die 675 nm Wellenlänge des RedTouch Lasers.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Уход после процедуры' : 'Nachsorge',
+              text: isRu
+                ? 'Нанесение успокаивающего ухода и обсуждение защиты от солнца для оптимальных результатов.'
+                : 'Auftragen beruhigender Pflege und Besprechung des Lichtschutzes für optimale Ergebnisse.'
+            }
+          ]
         },
         {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'RedTouch Laser München',
-          item: `${baseUrl}/${lang}/redtouch-laser-muenchen`
+          '@type': 'FAQPage',
+          inLanguage: isRu ? 'ru' : 'de',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: isRu ? 'Что делает лазер RedTouch?' : 'Was bewirkt der RedTouch Laser?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'RedTouch — первый лазер, целенаправленно воздействующий на коллагеновые волокна (длина волны 675 нм). Он стимулирует выработку нового коллагена, подтягивает ткани и улучшает состояние кожи при пигментации и покраснениях.'
+                  : 'Der RedTouch ist der erste Laser, der gezielt auf die Kollagenfasern (Wellenlänge 675 nm) wirkt. Er regt die Neubildung von Kollagen an, strafft das Gewebe und verbessert das Hautbild bei Pigmentierungen und Rötungen.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Процедура болезненна?' : 'Ist die Behandlung schmerzhaft?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Благодаря встроенной системе охлаждения процедура очень комфортна. Большинство пациентов ощущают лишь приятное тепло.'
+                  : 'Die Behandlung ist dank integrierter Kühlung sehr komfortabel. Die meisten Patienten spüren lediglich eine angenehme Wärme.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Сколько сеансов рекомендуется?' : 'Wie viele Sitzungen werden empfohlen?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Для оптимального результата омоложения кожи мы рекомендуем от 3 до 5 сеансов с интервалом в 4 недели.'
+                  : 'Für ein optimales Ergebnis zur Hautverjüngung empfehlen wir ca. 3 bis 5 Sitzungen im Abstand von 4 Wochen.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Есть ли период восстановления?' : 'Gibt es Ausfallzeiten?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Периода восстановления практически нет. Лёгкое покраснение сразу после процедуры обычно проходит в течение нескольких часов.'
+                  : 'Es gibt praktisch keine Ausfallzeiten. Eine leichte Rötung unmittelbar nach der Behandlung klingt meist innerhalb weniger Stunden ab.'
+              }
+            }
+          ]
         }
       ]
     });
-  }, []);
+  }, [currentLang]);
   const deviceFeatures = [
     {
       icon: Sparkles,

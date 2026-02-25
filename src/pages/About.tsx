@@ -8,6 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
 import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 
 // Изображения загружаются из папки public
 
@@ -25,6 +26,68 @@ const About = () => {
     if (path === '/') return langPrefix;
     return `${langPrefix}${path}`;
   };
+
+  useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'BeautySalon',
+      '@id': `${baseUrl}#business`,
+      name: 'Yuliia Cheporska Studio',
+      url: `${baseUrl}/${currentLang}/about`,
+      mainEntityOfPage: `${baseUrl}/${currentLang}/about`,
+      description: currentLang === 'ru'
+        ? 'Эксклюзивный салон аппаратной косметологии в Мюнхене-Хайдхаузен. Специализация: лазерная эпиляция, Icoone и RedTouchPro. Уникальное расположение на Elsässer Straße 33.'
+        : 'Exklusives Fachstudio für apparative Kosmetik in München-Haidhausen. Spezialisiert auf Laser-Haarentfernung, Icoone und RedTouchPro. Eindeutiger Standort an der Elsässer Straße 33, nicht zu verwechseln mit anderen Anbietern am Ostbahnhof.',
+      inLanguage: currentLang === 'ru' ? 'ru' : 'de',
+      founder: {
+        '@type': 'Person',
+        name: 'Yuliia Cheporska',
+        jobTitle: currentLang === 'ru' ? 'Косметолог' : 'Kosmetikerin',
+        description: currentLang === 'ru'
+          ? 'Владелица и основательница с более чем 5-летним опытом в бьюти-индустрии.'
+          : 'Inhaberin und Gründerin mit über 5 Jahren Expertise in der Beauty-Branche.',
+        knowsAbout: currentLang === 'ru'
+          ? ['Лазерная эпиляция', 'Анализ кожи', 'Аппаратная косметология']
+          : ['Laser-Haarentfernung', 'Hautanalyse', 'Apparative Kosmetik']
+      },
+      brand: {
+        '@type': 'Brand',
+        name: 'Yuliia Cheporska Studio',
+        description: currentLang === 'ru'
+          ? 'Сертифицированное лазерное и косметологическое оборудование с новейшими технологиями и высочайшими стандартами безопасности.'
+          : 'Zertifizierte Laser- und Kosmetikgeräte mit modernster Technologie und höchsten Sicherheitsstandards.'
+      },
+      knowsAbout: currentLang === 'ru'
+        ? [
+            'Лазерная эпиляция (Александрит & Диод)',
+            'Icoone Laser процедуры',
+            'RedTouchPro лазерные процедуры',
+            'Профессиональный маникюр и педикюр',
+            'Индивидуальная косметологическая консультация'
+          ]
+        : [
+            'Laser-Haarentfernung (Alexandrit & Dioden)',
+            'Icoone Laser Behandlungen',
+            'RedTouchPro Laser-Behandlungen',
+            'Professionelle Maniküre & Pediküre',
+            'Individuelle Kosmetikberatung'
+          ],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Elsässer Straße 33',
+        addressLocality: 'München',
+        postalCode: '81667',
+        addressCountry: 'DE'
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 48.120969,
+        longitude: 11.654647
+      },
+      hasMap: 'https://www.google.com/maps?cid=11116671040407330782'
+    });
+  }, [currentLang]);
 
   const scrollToContact = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });

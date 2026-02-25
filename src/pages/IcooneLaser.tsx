@@ -24,32 +24,125 @@ const IcooneLaser = () => {
 
   useEffect(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    const lang = typeof window !== 'undefined' && window.location.pathname.startsWith('/ru') ? 'ru' : 'de';
+    const isRu = currentLang === 'ru';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
+      '@graph': [
         {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: `${baseUrl}/${lang}`
+          '@type': 'Service',
+          '@id': `${baseUrl}/${currentLang}/icoone-laser-muenchen#service`,
+          name: isRu
+            ? 'Icoone® Laser Мюнхен — соединительная ткань и кожа'
+            : 'Icoone® Laser München – Bindegewebe & Hautbild',
+          serviceType: isRu ? 'Процедуры для тела и лица' : 'Körper- und Gesichtsbehandlung',
+          provider: {
+            '@type': 'BeautySalon',
+            '@id': `${baseUrl}#business`,
+            name: 'Yuliia Cheporska Studio'
+          },
+          description: isRu
+            ? 'Инновационная процедура Icoone® Laser в Мюнхене-Хайдхаузен для укрепления соединительной ткани, уменьшения целлюлита и улучшения состояния кожи.'
+            : 'Innovative Icoone® Laser Behandlung in München-Haidhausen zur Straffung des Bindegewebes, Reduktion von Cellulite und Verbesserung des Hautbildes.',
+          inLanguage: isRu ? 'ru' : 'de',
+          areaServed: {
+            '@type': 'City',
+            name: 'München'
+          },
+          brand: [
+            { '@type': 'Brand', name: 'icoone®' },
+            { '@type': 'Brand', name: 'DEKA' }
+          ],
+          offers: {
+            '@type': 'Offer',
+            url: `${baseUrl}/${currentLang}/preise`,
+            priceCurrency: 'EUR',
+            description: isRu
+              ? 'Цены на Icoone процедуры варьируются в зависимости от продолжительности и зоны обработки.'
+              : 'Preise für Icoone Behandlungen variieren je nach Behandlungsdauer und Areal.',
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@type': 'BeautySalon',
+              name: 'Yuliia Cheporska Studio'
+            }
+          }
         },
         {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Services',
-          item: `${baseUrl}/${lang}/services`
+          '@type': 'HowTo',
+          name: isRu ? 'Как проходит процедура Icoone®' : 'Ablauf Ihrer Icoone® Behandlung',
+          inLanguage: isRu ? 'ru' : 'de',
+          step: [
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Консультация' : 'Beratungsgespräch',
+              text: isRu
+                ? 'Индивидуальный анализ ваших целей: подтяжка кожи или уменьшение целлюлита.'
+                : 'Individuelle Analyse Ihrer Ziele, wie Hautstraffung oder Cellulite-Reduktion.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Процедура' : 'Behandlungsphase',
+              text: isRu
+                ? 'Применение технологии icoone® Roboderm® для мягкой глубокой микростимуляции.'
+                : 'Einsatz der icoone® Roboderm®-Technologie für eine sanfte, tiefenwirksame Mikrostimulation.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Результат' : 'Ergebnis',
+              text: isRu
+                ? 'Улучшенный лимфодренаж и заметно более упругая кожа уже после нескольких сеансов.'
+                : 'Verbesserte Lymphdrainage und ein sichtbar strafferes Hautbild bereits nach wenigen Sitzungen.'
+            }
+          ]
         },
         {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Icoone Laser München',
-          item: `${baseUrl}/${lang}/icoone-laser-muenchen`
+          '@type': 'FAQPage',
+          inLanguage: isRu ? 'ru' : 'de',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: isRu ? 'Как работает icoone®?' : 'Wie funktioniert icoone®?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Технология Roboderm® от icoone® создаёт миллионы микростимуляций на поверхности кожи с помощью микростимуляторов. Это активирует клеточный обмен и стимулирует выработку коллагена и эластина.'
+                  : 'Die Roboderm®-Technologie von icoone® erzeugt durch Mikrostimulatoren Millionen von Mikro-Stimulationen auf der Hautoberfläche. Dies aktiviert den Zellstoffwechsel und regt die Produktion von Kollagen und Elastin an.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'При каких проблемах помогает icoone®?' : 'Gegen welche Probleme hilft icoone®?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'icoone® особенно эффективен при целлюлите, дряблой соединительной ткани, локальных жировых отложениях, лимфатических отёках, а также для омоложения кожи.'
+                  : 'icoone® ist besonders effektiv bei Cellulite, schlaffem Bindegewebe, lokalen Fettansammlungen, Lymphödemen sowie zur Hautverjüngung.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Сколько процедур необходимо?' : 'Wie viele Behandlungen sind nötig?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Для оптимальных результатов мы рекомендуем курс из 5-10 процедур, в идеале 1-2 раза в неделю.'
+                  : 'Für optimale Ergebnisse empfehlen wir eine Kur von 5 bis 10 Behandlungen, idealerweise 1-2 Mal pro Woche.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Процедура болезненна?' : 'Ist die Behandlung schmerzhaft?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Нет, наоборот. Процедура воспринимается как очень приятная и расслабляющая.'
+                  : 'Nein, im Gegenteil. Die Behandlung wird als sehr angenehm und entspannend empfunden.'
+              }
+            }
+          ]
         }
       ]
     });
-  }, []);
+  }, [currentLang]);
   const benefits = [
     {
       icon: Target,

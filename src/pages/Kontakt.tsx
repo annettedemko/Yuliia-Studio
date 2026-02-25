@@ -25,15 +25,18 @@ const Kontakt = () => {
   };
 
   useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
+      '@type': 'BeautySalon',
+      '@id': `${baseUrl}#business`,
       name: 'Yuliia Cheporska Studio',
-      image: 'https://www.munchen-beauty.de/logo2.jpg',
-      '@id': 'https://www.munchen-beauty.de',
-      url: 'https://www.munchen-beauty.de/kontakt',
-      telephone: '+4915206067810',
-      email: 'Yulachip@icloud.com',
+      url: `${baseUrl}/${currentLang}/kontakt`,
+      mainEntityOfPage: `${baseUrl}/${currentLang}/kontakt`,
+      description: currentLang === 'ru'
+        ? 'Свяжитесь с Yuliia Cheporska Studio в Мюнхене-Хайдхаузен. Ваш экспертный салон лазерной эпиляции и аппаратной косметологии, всего 5-7 минут от Остбанхоф.'
+        : 'Kontaktieren Sie das Yuliia Cheporska Studio in München-Haidhausen. Ihr Experten-Studio für Laser-Haarentfernung und apparative Kosmetik, nur 5-7 Minuten vom Ostbahnhof entfernt.',
+      inLanguage: currentLang === 'ru' ? 'ru' : 'de',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Elsässer Straße 33',
@@ -44,26 +47,58 @@ const Kontakt = () => {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 48.1181,
-        longitude: 11.6034
+        latitude: 48.120969,
+        longitude: 11.654647
       },
+      telephone: '+4915206067810',
+      email: 'Yulachip@icloud.com',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+4915206067810',
+          contactType: 'customer support',
+          availableLanguage: ['German', 'Russian']
+        }
+      ],
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          dayOfWeek: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+          ],
           opens: '10:00',
           closes: '20:00'
-        },
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: 'Saturday',
-          opens: '10:00',
-          closes: '18:00'
         }
       ],
-      priceRange: '€€'
+      location: {
+        '@type': 'Place',
+        name: 'Yuliia Cheporska Studio',
+        amenityFeature: [
+          {
+            '@type': 'LocationFeatureSpecification',
+            name: currentLang === 'ru' ? 'Как добраться на общественном транспорте' : 'Anfahrt mit ÖPNV',
+            value: 'S-Bahn Ostbahnhof (5-7 Min.), Tram 19 (Orleansplatz), Bus 145'
+          },
+          {
+            '@type': 'LocationFeatureSpecification',
+            name: currentLang === 'ru' ? 'Парковка' : 'Parkmöglichkeiten',
+            value: 'Parkhaus am Ostbahnhof (6 Min.), Motel One Parkplatz (5 Min.)'
+          }
+        ]
+      },
+      hasMap: 'https://www.google.com/maps?cid=11116671040407330782',
+      sameAs: [
+        'https://t.me/yuliia_cheporska_studio',
+        'https://www.instagram.com/yuliia_cheporska_studio',
+        'https://www.tiktok.com/@yuliia_cheporska_studio'
+      ]
     });
-  }, []);
+  }, [currentLang]);
 
   return (
     <>
@@ -187,7 +222,7 @@ const Kontakt = () => {
             {/* Google Maps Embed */}
             <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5!2d11.6034!3d48.1181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f7d4f4c4c1%3A0x0!2sEls%C3%A4sser%20Stra%C3%9Fe%2033%2C%2081667%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

@@ -26,32 +26,126 @@ const LaserHairRemoval = () => {
 
   useEffect(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    const lang = typeof window !== 'undefined' && window.location.pathname.startsWith('/ru') ? 'ru' : 'de';
+    const isRu = currentLang === 'ru';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
+      '@graph': [
         {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: `${baseUrl}/${lang}`
+          '@type': 'Service',
+          '@id': `${baseUrl}/${currentLang}/laser-haarentfernung-muenchen#service`,
+          name: isRu
+            ? 'Лазерная эпиляция в Мюнхене — навсегда'
+            : 'Dauerhafte Laser-Haarentfernung München',
+          serviceType: isRu ? 'Удаление волос' : 'Haarentfernung',
+          provider: {
+            '@type': 'BeautySalon',
+            '@id': `${baseUrl}#business`,
+            name: 'Yuliia Cheporska Studio'
+          },
+          description: isRu
+            ? 'Профессиональная лазерная эпиляция александритовым и диодным лазером в салоне Yuliia Cheporska Studio, Мюнхен-Хайдхаузен.'
+            : 'Professionelle Laser-Haarentfernung mit Alexandrit- und Diodenlaser-Technologie im Yuliia Cheporska Studio München-Haidhausen.',
+          inLanguage: isRu ? 'ru' : 'de',
+          areaServed: {
+            '@type': 'City',
+            name: 'München'
+          },
+          brand: [
+            { '@type': 'Brand', name: 'DEKA' },
+            { '@type': 'Brand', name: 'Quanta System' },
+            { '@type': 'Brand', name: 'mTech Laser' }
+          ],
+          offers: {
+            '@type': 'Offer',
+            url: `${baseUrl}/${currentLang}/preise`,
+            priceCurrency: 'EUR',
+            description: isRu
+              ? 'Цены варьируются в зависимости от зоны обработки (лицо, ноги, спина и т.д.).'
+              : 'Preise variieren je nach Behandlungsareal (z.B. Gesicht, Beine, Rücken).',
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@type': 'BeautySalon',
+              name: 'Yuliia Cheporska Studio'
+            }
+          }
         },
         {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Services',
-          item: `${baseUrl}/${lang}/services`
+          '@type': 'HowTo',
+          name: isRu ? 'Как проходит лазерная процедура' : 'Ablauf Ihrer Laser-Behandlung',
+          inLanguage: isRu ? 'ru' : 'de',
+          step: [
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Консультация' : 'Beratung',
+              text: isRu
+                ? 'Индивидуальный анализ типа кожи для выбора между александритовым или диодным лазером.'
+                : 'Individuelle Analyse Ihres Hauttyps für die Wahl zwischen Alexandrit- oder Diodenlaser.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Подготовка' : 'Vorbereitung',
+              text: isRu
+                ? 'Зона обработки очищается; лазер mTech настраивается под структуру ваших волос.'
+                : 'Das Areal wird gereinigt; der mTech Laser wird auf Ihre Haarstruktur eingestellt.'
+            },
+            {
+              '@type': 'HowToStep',
+              name: isRu ? 'Лазерная процедура' : 'Laser-Behandlung',
+              text: isRu
+                ? 'Безопасное проведение эпиляции со встроенным охлаждением.'
+                : 'Sichere Durchführung der Haarentfernung mit integrierter Kühlung.'
+            }
+          ]
         },
         {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Laser-Haarentfernung',
-          item: `${baseUrl}/${lang}/laser-haarentfernung-muenchen`
+          '@type': 'FAQPage',
+          inLanguage: isRu ? 'ru' : 'de',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: isRu ? 'Как работает лазерная эпиляция?' : 'Wie funktioniert die Laser-Haarentfernung?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Лазер излучает свет, который поглощается меланином в волосе и преобразуется в тепло. Это тепло разрушает волосяные фолликулы навсегда.'
+                  : 'Der Laser gibt Licht ab, das vom Melanin im Haar absorbiert und in Wärme umgewandelt wird. Diese Wärme zerstört die Haarfollikel dauerhaft.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Процедура болезненна?' : 'Ist die Behandlung schmerzhaft?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Благодаря современной контактной системе охлаждения процедура практически безболезненна. Большинство клиентов ощущают лишь лёгкое покалывание.'
+                  : 'Dank modernster Kontaktkühlung ist die Behandlung sehr schmerzarm. Die meisten Kunden empfinden nur ein leichtes Prickeln.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Сколько сеансов необходимо?' : 'Wie viele Sitzungen sind notwendig?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Как правило, необходимо от 6 до 10 сеансов, так как удалить можно только волосы в фазе роста.'
+                  : 'In der Regel sind 6 bis 10 Sitzungen erforderlich, da nur Haare in der Wachstumsphase entfernt werden können.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Что нужно учесть до и после процедуры?' : 'Was muss ich vor und nach der Behandlung beachten?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Избегайте солнца и эпиляции за 4 недели до процедуры. Бритьё необходимо за 1-2 дня до сеанса.'
+                  : 'Vermeiden Sie 4 Wochen vorher Sonne und Epilation. Rasieren ist 1-2 Tage vorher notwendig.'
+              }
+            }
+          ]
         }
       ]
     });
-  }, []);
+  }, [currentLang]);
 
   const faqItems = [
     {
@@ -693,7 +787,7 @@ const LaserHairRemoval = () => {
               
               <div className="rounded-lg overflow-hidden shadow-card h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.7363!2d11.6034!3d48.1181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf3f8b5c4b5d%3A0x8c4b5c4b5c4b5c4b!2sElsässer%20Str.%2033%2C%2081667%20München!5e0!3m2!1sde!2sde!4v1620000000000!5m2!1sde!2sde"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

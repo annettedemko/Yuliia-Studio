@@ -32,14 +32,19 @@ const Home = () => {
     return language === 'ru' && ru ? ru : de;
   };
   useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
+      '@type': 'BeautySalon',
+      '@id': `${baseUrl}#business`,
       name: 'Yuliia Cheporska Studio',
-      image: 'https://www.munchen-beauty.de/logo2.jpg',
-      '@id': 'https://www.munchen-beauty.de',
-      url: 'https://www.munchen-beauty.de',
-      telephone: '+4915206067810',
+      url: `${baseUrl}/${currentLang}`,
+      logo: 'https://irp.cdn-website.com/b7720f6f/dms3rep/multi/IMG_8962.jpeg',
+      image: 'https://irp.cdn-website.com/b7720f6f/dms3rep/multi/IMG_8962.jpeg',
+      description: currentLang === 'ru'
+        ? 'Ваш экспертный салон лазерной эпиляции и аппаратной косметологии в Мюнхене-Хайдхаузен. Сертифицированные технологии и высочайшие стандарты безопасности.'
+        : 'Ihr Experten-Studio für Laser-Haarentfernung und apparative Kosmetik in München-Haidhausen. Zertifizierte Technologie und höchste Sicherheitsstandards.',
+      inLanguage: currentLang === 'ru' ? 'ru' : 'de',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Elsässer Straße 33',
@@ -49,18 +54,16 @@ const Home = () => {
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 48.1181,
-        longitude: 11.6034
+        latitude: 48.120969,
+        longitude: 11.654647
       },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '10:00',
-          closes: '20:00'
-        }
-      ],
-      priceRange: '€€'
+      telephone: '+4915206067810',
+      priceRange: '€€',
+      hasMap: 'https://www.google.com/maps?cid=11116671040407330782',
+      sameAs: [
+        'https://www.instagram.com/yuliia_cheporska_studio',
+        'https://www.tiktok.com/@yuliia_cheporska_studio'
+      ]
     });
 
     // Load subscriptions
@@ -76,7 +79,7 @@ const Home = () => {
     };
 
     loadSubscriptions();
-  }, []);
+  }, [currentLang]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -492,7 +495,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none z-10"></div>
 
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.7363!2d11.6034!3d48.1181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf3f8b5c4b5d%3A0x8c4b5c4b5c4b5c4b!2sElsässer%20Str.%2033%2C%2081667%20München!5e0!3m2!1sde!2sde!4v1620000000000!5m2!1sde!2sde"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
