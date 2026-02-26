@@ -128,7 +128,7 @@ const Navigation = () => {
               location.pathname.endsWith('/motus-ax') ||
               location.pathname.endsWith('/motus-pro') ||
               location.pathname.endsWith('/again-cos')) && (
-              <div className="border border-primary rounded-lg p-1.5 bg-white/5 backdrop-blur-sm">
+              <div className="border border-primary rounded-lg p-1.5 bg-white/5 backdrop-blur-sm overflow-hidden">
                 <img
                   src="/DEKA logo.png"
                   alt="DEKA Logo"

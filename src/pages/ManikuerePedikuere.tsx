@@ -643,17 +643,17 @@ const ManikuerePedikuere = () => {
 
               {/* Галерея изображений педикюра */}
               <div className="flex gap-4">
-                <div className="flex-1">
+                <div className="flex-1 overflow-hidden rounded-lg">
                   <img
                     src="/8.jpg"
                     alt={t('alt.nails.pedicure.main')}
                     width={1284}
                     height={1556}
                     loading="lazy"
-                    className="w-full h-80 object-cover rounded-lg shadow-xl"
+                    className="w-full h-80 object-cover shadow-xl"
                   />
                   </div>
-                <div className="flex-1">
+                <div className="flex-1 overflow-hidden rounded-lg">
                   <img
                     src="/16.jpg"
                     alt={t('alt.nails.pedicure.detail')}

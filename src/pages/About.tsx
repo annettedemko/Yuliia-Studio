@@ -158,24 +158,24 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
             {/* Галерея изображений */}
             <div className="flex gap-4">
-              <div className="flex-1">
+              <div className="flex-1 overflow-hidden rounded-lg">
                 <img
                   src="/IMG1.jpg"
                   alt={t('alt.about.yuliia')}
                   width={897}
                   height={1280}
                   loading="lazy"
-                  className="w-full h-96 object-cover rounded-lg shadow-elegant"
+                  className="w-full h-96 object-cover shadow-elegant"
                 />
               </div>
-              <div className="flex-1 mt-2">
+              <div className="flex-1 mt-2 overflow-hidden rounded-lg">
                 <img
                   src="/10.jpg"
                   alt={t('alt.about.studio')}
                   width={1284}
                   height={1468}
                   loading="lazy"
-                  className="w-full h-80 object-cover rounded-lg shadow-elegant"
+                  className="w-full h-80 object-cover shadow-elegant"
                   style={{ objectPosition: 'center 12%' }}
                 />
               </div>
