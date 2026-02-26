@@ -10,6 +10,24 @@ let scriptLoaded = false;
 let scriptLoading = false;
 let loadPromise: Promise<void> | null = null;
 
+/** Hide the default Altegio floating button (we use our own FloatingBookButton). */
+function hideDefaultButton(): void {
+  const btn = document.querySelector('.yButton') as HTMLElement | null;
+  if (btn) {
+    btn.style.setProperty('display', 'none', 'important');
+  }
+  // Also observe for late-created buttons
+  const observer = new MutationObserver(() => {
+    const el = document.querySelector('.yButton') as HTMLElement | null;
+    if (el && el.style.display !== 'none') {
+      el.style.setProperty('display', 'none', 'important');
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  // Stop observing after 5s to avoid permanent overhead
+  setTimeout(() => observer.disconnect(), 5000);
+}
+
 function loadScript(): Promise<void> {
   if (scriptLoaded && window.yWidget) {
     return Promise.resolve();
@@ -30,8 +48,11 @@ function loadScript(): Promise<void> {
     script.onload = () => {
       scriptLoaded = true;
       scriptLoading = false;
-      // Small delay to ensure widget initializes
-      setTimeout(resolve, 300);
+      // Small delay to ensure widget initializes, then hide its default button
+      setTimeout(() => {
+        hideDefaultButton();
+        resolve();
+      }, 300);
     };
 
     script.onerror = () => {
