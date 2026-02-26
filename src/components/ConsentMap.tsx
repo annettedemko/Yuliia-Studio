@@ -8,7 +8,7 @@ interface ConsentMapProps {
   height?: string;
 }
 
-const MAPS_EMBED_URL = 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde';
+const MAPS_EMBED_URL = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.5!2d11.654647!3d48.120969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf0c9d1be34d%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!5e0!3m2!1sde!2sde';
 
 /**
  * Google Maps with 2-click solution for GDPR compliance.
