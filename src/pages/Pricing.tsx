@@ -7,7 +7,9 @@ import { pricesService, subscriptionsService, categoriesService, type PriceCateg
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 import AGBNotice from '@/components/AGBNotice';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const Pricing = () => {
   const { language, t } = useLanguage();
@@ -74,6 +76,96 @@ const Pricing = () => {
 
     loadData();
   }, []);
+
+  useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
+    const isRu = currentLang === 'ru';
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}/preis#page`,
+          mainEntityOfPage: `${baseUrl}/${currentLang}/preis`,
+          name: isRu ? 'Цены и пакеты – Yuliia Cheporska Studio' : 'Preise & Pakete – Yuliia Cheporska Studio',
+          description: isRu
+            ? 'Прозрачные цены вкл. НДС на все услуги: лазерная эпиляция, RedTouch, Icoone®️, маникюр и педикюр.'
+            : 'Transparente Preise inkl. MwSt. für alle Leistungen: Laser-Haarentfernung, RedTouch, Icoone®️, Maniküre & Pediküre.',
+          inLanguage: isRu ? 'ru' : 'de',
+          provider: {
+            '@type': 'BeautySalon',
+            '@id': `${baseUrl}#business`,
+            name: 'Yuliia Cheporska Studio'
+          }
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: isRu ? 'Услуги и цены' : 'Leistungen & Preise',
+          description: isRu
+            ? 'Полный каталог услуг салона красоты Yuliia Cheporska Studio в Мюнхене'
+            : 'Vollständiger Leistungskatalog des Yuliia Cheporska Studios in München',
+          itemListElement: [
+            {
+              '@type': 'OfferCatalog',
+              name: isRu ? 'Лазерная эпиляция' : 'Laser-Haarentfernung',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: isRu ? 'Александритовый лазер' : 'Alexandrit-Laser',
+                    provider: { '@type': 'BeautySalon', '@id': `${baseUrl}#business` }
+                  },
+                  priceCurrency: 'EUR',
+                  availability: 'https://schema.org/InStock'
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: isRu ? 'Диодный лазер' : 'Diodenlaser',
+                    provider: { '@type': 'BeautySalon', '@id': `${baseUrl}#business` }
+                  },
+                  priceCurrency: 'EUR',
+                  availability: 'https://schema.org/InStock'
+                }
+              ]
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'iCoone Laser',
+                provider: { '@type': 'BeautySalon', '@id': `${baseUrl}#business` }
+              },
+              priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock'
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'RedTouch 675 nm',
+                provider: { '@type': 'BeautySalon', '@id': `${baseUrl}#business` }
+              },
+              priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock'
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: isRu ? 'Маникюр и педикюр' : 'Maniküre & Pediküre',
+                provider: { '@type': 'BeautySalon', '@id': `${baseUrl}#business` }
+              },
+              priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock'
+            }
+          ]
+        }
+      ]
+    });
+  }, [currentLang]);
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">{t('pricing.loading')}</div>;
@@ -244,7 +336,7 @@ const Pricing = () => {
                 titleStyles = 'text-gray-500';
                 buttonStyles = 'bg-gradient-to-r from-gray-300 to-gray-400 hover:from-gray-400 hover:to-gray-500 text-gray-800 border border-gray-400';
               } else if (pkg.name === 'Gold') {
-                cardStyles = 'border-yellow-500 border-2 shadow-2xl shadow-yellow-500/30 md:scale-105 hover:scale-110';
+                cardStyles = 'border-yellow-500 border-2 shadow-2xl shadow-yellow-500/30 md:scale-105 hover:md:scale-110';
                 titleStyles = 'text-yellow-600';
                 buttonStyles = 'bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-white animate-glow';
                 isPopular = true;
@@ -310,11 +402,7 @@ const Pricing = () => {
 
                       <Button
                         className={`w-full hover:scale-105 transition-all duration-300 shadow-lg ${buttonStyles}`}
-                        onClick={() => {
-                          if (window.yWidget) {
-                            window.yWidget.show(window.yWidget.href);
-                          }
-                        }}
+                        onClick={() => showBookingWidget()}
                       >
                         {t('pricing.button.book')}
                       </Button>
@@ -364,11 +452,7 @@ const Pricing = () => {
                   <Button
                     size="lg"
                     className="bg-rose-gold hover:bg-rose-gold-dark text-white shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => {
-                      if (window.yWidget) {
-                        window.yWidget.show(window.yWidget.href);
-                      }
-                    }}
+                    onClick={() => showBookingWidget()}
                   >
                     {t('pricing.button.book')}
                   </Button>
@@ -444,11 +528,7 @@ const Pricing = () => {
             <Button
               size="lg"
               className="bg-white text-black hover:bg-white/90"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               {t('pricing.cta.book')}
             </Button>

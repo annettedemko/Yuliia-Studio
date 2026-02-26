@@ -9,6 +9,8 @@ import { subscriptionsService } from '@/services/contentService';
 import type { SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Promotions } from '@/components/Promotions';
+import { showBookingWidget } from '@/lib/altegioWidget';
+import ConsentMap from '@/components/ConsentMap';
 // Изображения загружаются из папки public
 
 const Home = () => {
@@ -63,6 +65,14 @@ const Home = () => {
       sameAs: [
         'https://www.instagram.com/yuliia_cheporska_studio',
         'https://www.tiktok.com/@yuliia_cheporska_studio'
+      ],
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '10:00',
+          closes: '20:00'
+        }
       ]
     });
 
@@ -96,7 +106,7 @@ const Home = () => {
 
         {/* Hero Section */}
       <section
-        className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-fixed sm:bg-fixed"
+        className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-scroll md:bg-fixed"
         style={{
           backgroundImage: `url(/22.png)`,
         }}
@@ -123,11 +133,7 @@ const Home = () => {
           <Button
             size="lg"
             className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
-            onClick={() => {
-              if (window.yWidget) {
-                window.yWidget.show(window.yWidget.href);
-              }
-            }}
+            onClick={() => showBookingWidget()}
           >
             {t('home.hero.button')}
           </Button>
@@ -149,7 +155,8 @@ const Home = () => {
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/20.png"
-                      alt="Laser-Haarentfernung München"
+                      alt={t('alt.home.laser')}
+                      loading="lazy"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
                       style={{
                         objectPosition: '50% 5%',
@@ -178,7 +185,8 @@ const Home = () => {
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/deka2.2.jpeg"
-                      alt="RedTouch 675 nm München"
+                      alt={t('alt.home.redtouch')}
+                      loading="lazy"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -203,7 +211,8 @@ const Home = () => {
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/3.4.jpg"
-                      alt="Icoone®️-Behandlungen München"
+                      alt={t('alt.home.icoone')}
+                      loading="lazy"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                       style={{ objectPosition: 'center 25%' }}
                     />
@@ -229,7 +238,8 @@ const Home = () => {
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src="/11.jpg"
-                      alt="Maniküre & Pediküre München"
+                      alt={t('alt.home.nails')}
+                      loading="lazy"
                       className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -339,11 +349,7 @@ const Home = () => {
                         </div>
                         <Button
                           className={`w-full bg-gradient-to-r ${colors.gradient} ${pkg.name === 'Gold' ? 'text-white animate-glow' : pkg.name === 'Platin' ? 'text-white border border-slate-500' : 'text-gray-800 border border-gray-400'} hover:scale-105 transition-all duration-300 shadow-lg`}
-                          onClick={() => {
-                            if (window.yWidget) {
-                              window.yWidget.show(window.yWidget.href);
-                            }
-                          }}
+                          onClick={() => showBookingWidget()}
                         >
                           {t('home.hero.button')}
                         </Button>
@@ -490,21 +496,8 @@ const Home = () => {
               {/* Decorative frame */}
               <div className="absolute -inset-4 bg-gradient-to-r from-rose-gold/20 via-primary/20 to-rose-gold/20 rounded-2xl blur-sm opacity-75 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              <div className="relative rounded-2xl overflow-hidden shadow-elegant hover:shadow-rose transition-all duration-500 hover:scale-[1.02] card-tilt h-96">
-                {/* Glass overlay effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none z-10"></div>
-
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Kosmetikstudio München Haidhausen – Karte / Anfahrt"
-                  className="transition-all duration-500 hover:saturate-110"
-                ></iframe>
+              <div className="relative rounded-2xl overflow-hidden shadow-elegant hover:shadow-rose transition-all duration-500 hover:scale-[1.02] card-tilt">
+                <ConsentMap height="h-96" />
               </div>
 
               {/* Floating location pin animation */}
@@ -635,11 +628,7 @@ const Home = () => {
                     <Button
                       size="lg"
                       className="w-full bg-gradient-hero text-white border-none hover:scale-105 hover:shadow-lg transition-all duration-300 hover:animate-pulse"
-                      onClick={() => {
-                        if (window.yWidget) {
-                          window.yWidget.show(window.yWidget.href);
-                        }
-                      }}
+                      onClick={() => showBookingWidget()}
                     >
                       {t('home.hero.button')}
                     </Button>

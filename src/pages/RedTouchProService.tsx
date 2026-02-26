@@ -23,6 +23,7 @@ import { useEffect } from 'react';
 import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const RedTouchProService = () => {
   const { t } = useLanguage();
@@ -47,7 +48,8 @@ const RedTouchProService = () => {
       '@graph': [
         {
           '@type': 'Service',
-          '@id': `${baseUrl}/${currentLang}/redtouch-laser-muenchen#service`,
+          '@id': `${baseUrl}/redtouch-laser-muenchen#service`,
+          mainEntityOfPage: `${baseUrl}/${currentLang}/redtouch-laser-muenchen`,
           name: isRu
             ? 'RedTouch 675 нм Мюнхен — кожа и пигментация'
             : 'RedTouch 675 nm München – Hautbild & Pigment',
@@ -252,7 +254,7 @@ const RedTouchProService = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              Vorteile von RedTouch®️ in München-Haidhausen
+              {t('redtouch.benefits.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -261,9 +263,9 @@ const RedTouchProService = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">675 nm Wellenlänge</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('redtouch.benefits.wavelength.title')}</h3>
                       <p className="text-muted-foreground">
-                        Gezielte Kollagen-Ansprache für Hautverjüngung und Straffung – besonders effektiv bei Pigment und feinen Linien.
+                        {t('redtouch.benefits.wavelength.desc')}
                       </p>
                       </div>
                     </div>
@@ -275,9 +277,9 @@ const RedTouchProService = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Geringe Ausfallzeit</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('redtouch.benefits.downtime.title')}</h3>
                       <p className="text-muted-foreground">
-                        Nicht-ablativ: keine Abtragung der Haut, meist schnelle Rückkehr zum Alltag.
+                        {t('redtouch.benefits.downtime.desc')}
                       </p>
                       </div>
                     </div>
@@ -289,9 +291,9 @@ const RedTouchProService = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Für verschiedene Hauttypen</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('redtouch.benefits.skintypes.title')}</h3>
                       <p className="text-muted-foreground">
-                        Individuelle Behandlungsplanung nach Hauttyp und Behandlungsziel.
+                        {t('redtouch.benefits.skintypes.desc')}
                       </p>
                       </div>
                     </div>
@@ -303,9 +305,9 @@ const RedTouchProService = () => {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-primary mb-2">Zentrale Lage in Haidhausen</h3>
+                      <h3 className="font-bold text-primary mb-2">{t('redtouch.benefits.location.title')}</h3>
                       <p className="text-muted-foreground">
-                        Bequem erreichbar nahe Ostbahnhof – ideal für Berufstätige in München.
+                        {t('redtouch.benefits.location.desc')}
                       </p>
                       </div>
                     </div>
@@ -320,9 +322,9 @@ const RedTouchProService = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Revolutionäre Laser-Technologie</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.features.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Das RedTouchPro System nutzt eine einzigartige 675nm Wellenlänge für optimale Kollagenstimulation
+              {t('redtouch.features.subtitle')}
             </p>
             </div>
 
@@ -331,23 +333,24 @@ const RedTouchProService = () => {
               <div className="flex justify-center mb-6">
                 <img
                   src="/deka2.4.png"
-                  alt="RedTouch PRO Logo"
+                  alt={t('alt.redtouch.logo')}
+                  loading="lazy"
                   className="h-20 w-auto"
                 />
                 </div>
               <img
                 src="/deka2.png"
-                alt="RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hauptgerät"
+                alt={t('alt.redtouch.device')}
+                loading="lazy"
                 className="w-full h-auto rounded-lg shadow-elegant"
               />
               </div>
             <div className="space-y-6">
               <h3 className="text-3xl font-bold text-primary mb-6">
-                Modernste Technologie für Ihre Haut
+                {t('redtouch.technology.title')}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Das RedTouchPro System kombiniert fortschrittliche Lasertechnologie mit einem integrierten
-                Kühlsystem für maximale Sicherheit und Komfort während der Behandlung.
+                {t('redtouch.technology.description')}
               </p>
               <ul className="space-y-3">
                 {benefits.map((benefit, index) => (
@@ -366,19 +369,19 @@ const RedTouchProService = () => {
       <section className="py-16 bg-gradient-to-b from-accent/10 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsergebnisse</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.results.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Überzeugen Sie sich von den beeindruckenden Ergebnissen unserer RedTouchPro Behandlungen
+              {t('redtouch.results.subtitle')}
             </p>
             </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {[
-              { src: '/r1.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsergebnis 1' },
-              { src: '/r3.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Pigmentkorrektur' },
-              { src: '/r4.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hautverjüngung' },
-              { src: '/r5.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Kollagen-Stimulation' },
-              { src: '/r7.jpg', alt: 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsdetail' }
+              { src: '/r1.jpg', alt: t('redtouch.results.alt1') },
+              { src: '/r3.jpg', alt: t('redtouch.results.alt2') },
+              { src: '/r4.jpg', alt: t('redtouch.results.alt3') },
+              { src: '/r5.jpg', alt: t('redtouch.results.alt4') },
+              { src: '/r7.jpg', alt: t('redtouch.results.alt5') }
             ].map((image, index) => (
               <div key={index} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
                 <img
@@ -397,9 +400,9 @@ const RedTouchProService = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Das RedTouchPro Gerät</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.device.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Technische Perfektion in jedem Detail
+              {t('redtouch.device.subtitle')}
             </p>
             </div>
 
@@ -424,15 +427,15 @@ const RedTouchProService = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">Behandlungsbereiche</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.areas.title')}</h2>
               <p className="text-xl text-muted-foreground">
-                Vielseitige Anwendungsmöglichkeiten für optimale Ergebnisse
+                {t('redtouch.areas.subtitle')}
               </p>
               </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-primary mb-6">Hauptbehandlungsbereiche</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">{t('redtouch.areas.main')}</h3>
                 <ul className="space-y-4">
                   {treatmentAreas.map((area, index) => (
                     <li key={index} className="flex items-center">
@@ -444,13 +447,13 @@ const RedTouchProService = () => {
                 </div>
               <div>
                 <Card className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-4">Behandlungshinweise</h3>
+                  <h3 className="text-xl font-bold text-primary mb-4">{t('redtouch.treatment.title')}</h3>
                   <ul className="space-y-3 text-sm text-muted-foreground">
-                    <li>• Behandlungsdauer: 15 Minuten bis 1,5 Stunden je nach Bereich</li>
-                    <li>• Empfohlene Sitzungen: 3-6 Behandlungen für optimale Ergebnisse</li>
-                    <li>• Behandlungsintervall: 2-4 Wochen zwischen den Sitzungen</li>
-                    <li>• Keine Ausfallzeit oder Nebenwirkungen</li>
-                    <li>• Sofortige Rückkehr zum normalen Alltag möglich</li>
+                    <li>• {t('redtouch.treatment.duration')}</li>
+                    <li>• {t('redtouch.treatment.sessions')}</li>
+                    <li>• {t('redtouch.treatment.interval')}</li>
+                    <li>• {t('redtouch.treatment.downtime')}</li>
+                    <li>• {t('redtouch.treatment.return')}</li>
                   </ul>
                 </Card>
                 </div>
@@ -463,24 +466,19 @@ const RedTouchProService = () => {
       <section className="py-16 bg-gradient-hero text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
-            Bereit für eine RedTouchPro Behandlung?
+            {t('redtouch.cta.title')}
           </h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Entdecken Sie die revolutionäre RedTouchPro Technologie für Hautstraffung.
-            Vereinbaren Sie jetzt Ihren Beratungstermin!
+            {t('redtouch.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
               className="bg-gradient-to-r from-rose-gold to-pink-500 text-white hover:shadow-xl hover:scale-105 transition-all"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               <Phone className="w-5 h-5 mr-2" />
-              Termin vereinbaren
+              {t('redtouch.cta.book')}
             </Button>
             <Button
               size="lg"
@@ -489,11 +487,46 @@ const RedTouchProService = () => {
               asChild
             >
               <Link to={withLang("/preis#redtouchpro")}>
-                Preise ansehen
+                {t('redtouch.cta.prices')}
               </Link>
             </Button>
             </div>
           </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link to={withLang("/laser-haarentfernung-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.laser')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.laser.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/icoone-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.icoone')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.icoone.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/manikuere-pedikuere-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.nails')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.nails.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       </div>

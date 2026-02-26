@@ -105,6 +105,12 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
                   <p className="text-sm text-muted-foreground">
                     {t('cookies.settings.necessary.description')}
                   </p>
+                  <div className="mt-3 bg-accent/10 p-3 rounded text-xs text-muted-foreground space-y-1">
+                    <p><strong>{t('cookies.settings.cookie_name')}:</strong> cookie_consent</p>
+                    <p><strong>{t('cookies.settings.provider')}:</strong> {t('cookies.settings.this_website')}</p>
+                    <p><strong>{t('cookies.settings.duration')}:</strong> {t('cookies.settings.twelve_months')}</p>
+                    <p><strong>{t('cookies.settings.purpose_label')}:</strong> {t('cookies.settings.necessary.cookie_purpose')}</p>
+                  </div>
                 </div>
                 <div className="ml-4">
                   <div className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
@@ -134,7 +140,7 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
                 <div className="ml-4">
                   <button
                     onClick={() => setPreferences(prev => ({ ...prev, analytics: !prev.analytics }))}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                    className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${
                       preferences.analytics ? 'bg-rose-gold' : 'bg-muted'
                     }`}
                     role="switch"

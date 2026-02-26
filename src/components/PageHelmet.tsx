@@ -40,6 +40,9 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:locale" content={currentLang === 'de' ? 'de_DE' : 'ru_RU'} />
       <meta property="og:image" content="https://www.munchen-beauty.de/logo2.jpg" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:site_name" content="Yuliia Cheporska Studio" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -401,6 +401,16 @@ const translations = {
     'comparison.devices.diode.title': 'M-Tech Diodenlaser',
     'comparison.devices.diode.subtitle': '4-in-1 Wellenlängen - Universal System',
 
+    'comparison.devices.overlay.alex.title': 'DEKA Alexandrit System',
+    'comparison.devices.overlay.alex.subtitle': 'Premium Laser-Technologie',
+    'comparison.devices.overlay.treatment.title': 'Alexandrit Behandlung',
+    'comparison.devices.overlay.treatment.subtitle': 'Professionelle Anwendung',
+
+    'comparison.devices.overlay.alex.title': 'DEKA Alexandrit System',
+    'comparison.devices.overlay.alex.subtitle': 'Premium Laser-Technologie',
+    'comparison.devices.overlay.treatment.title': 'Alexandrit Behandlung',
+    'comparison.devices.overlay.treatment.subtitle': 'Professionelle Anwendung',
+
     'comparison.suitable.badge': 'Praxis-Leitfaden',
     'comparison.suitable.title': 'Welcher Laser passt zu wem?',
     'comparison.suitable.subtitle': 'Orientierungshilfe nach Hauttyp und Behandlungszone',
@@ -807,6 +817,10 @@ const translations = {
     'kontakt.hours.saturday': 'Sa: 10:00–18:00 Uhr',
     'kontakt.hours.sunday': 'So: Nach Vereinbarung',
     'kontakt.map.title': 'So finden Sie uns',
+    'map.consent.title': 'Google Maps',
+    'map.consent.description': 'Durch Laden der Karte werden Daten an Google übertragen. Weitere Informationen finden Sie in unserer Datenschutzerklärung.',
+    'map.consent.button': 'Karte laden',
+    'map.iframe.title': 'Yuliia Cheporska Studio München-Haidhausen Standort',
     'kontakt.transport.public.title': 'Mit ÖPNV',
     'kontakt.transport.public.sbahn': 'S-Bahn: Ostbahnhof (S1, S2, S4, S6, S8) – 5–7 Min. Fußweg',
     'kontakt.transport.public.tram': 'Tram: Linie 19 (Haltestelle Orleansplatz)',
@@ -1111,6 +1125,12 @@ const translations = {
     'redtouch.cta.book': 'Termin vereinbaren',
     'redtouch.cta.prices': 'Preise ansehen',
 
+    'redtouch.results.alt1': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsergebnis 1',
+    'redtouch.results.alt2': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Pigmentkorrektur',
+    'redtouch.results.alt3': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Hautverjüngung',
+    'redtouch.results.alt4': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Kollagen-Stimulation',
+    'redtouch.results.alt5': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen – Behandlungsdetail',
+
     // Physiq360 page translations
     'physiq360.hero.badge': 'DEKA Technologie',
     'physiq360.hero.title': 'PHYSIQ 360',
@@ -1297,8 +1317,8 @@ const translations = {
 
     // Impressum Page
     'impressum.title': 'Impressum',
-    'impressum.subtitle': 'Rechtliche Informationen nach § 5 TMG',
-    'impressum.tmg.title': 'Angaben gemäß § 5 TMG',
+    'impressum.subtitle': 'Rechtliche Informationen nach § 5 DDG',
+    'impressum.tmg.title': 'Angaben gemäß § 5 DDG',
     'impressum.company': 'Yuliia Cheporska Studio',
     'impressum.owner': 'Inhaberin: Yuliia Cheporska',
     'impressum.legal_form': 'Rechtsform:',
@@ -1326,7 +1346,7 @@ const translations = {
     'impressum.consumer.title': 'Verbraucher­streit­beilegung/Universal­schlichtungs­stelle',
     'impressum.consumer.description': 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
     'impressum.liability.content.title': 'Haftung für Inhalte',
-    'impressum.liability.content.p1': 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.',
+    'impressum.liability.content.p1': 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.',
     'impressum.liability.content.p2': 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.',
     'impressum.liability.links.title': 'Haftung für Links',
     'impressum.liability.links.p1': 'Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.',
@@ -1360,11 +1380,406 @@ const translations = {
     'cookies.settings.always_active': 'Immer aktiv',
     'cookies.settings.save': 'Speichern',
     'cookies.settings.info': 'Weitere Informationen finden Sie in unserer Datenschutzerklärung.',
+    'cookies.settings.cookie_name': 'Cookie-Name',
+    'cookies.settings.provider': 'Anbieter',
+    'cookies.settings.this_website': 'Diese Website',
+    'cookies.settings.duration': 'Laufzeit',
+    'cookies.settings.twelve_months': '12 Monate',
+    'cookies.settings.purpose_label': 'Zweck',
+    'cookies.settings.necessary.cookie_purpose': 'Speicherung Ihrer Cookie-Einwilligung',
 
     // AGB Notice
     'agb.notice.title': 'Hinweis',
     'agb.notice.text': 'Mit jeder Terminbuchung gelten unsere',
     'agb.notice.link': 'AGB',
+
+    // Datenschutz Page
+    'datenschutz.title': 'Datenschutzerklärung',
+    'datenschutz.subtitle': 'Informationen zum Schutz Ihrer persönlichen Daten',
+
+    // Section 1 - Datenschutz auf einen Blick
+    'datenschutz.section1.title': '1. Datenschutz auf einen Blick',
+    'datenschutz.section1.general.title': 'Allgemeine Hinweise',
+    'datenschutz.section1.general.p1': 'Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.',
+    'datenschutz.section1.collection.title': 'Datenerfassung auf unserer Website',
+    'datenschutz.section1.collection.who': 'Wer ist verantwortlich für die Datenerfassung auf dieser Website?',
+    'datenschutz.section1.collection.who.answer': 'Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.',
+    'datenschutz.section1.collection.how': 'Wie erfassen wir Ihre Daten?',
+    'datenschutz.section1.collection.how.answer1': 'Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.',
+    'datenschutz.section1.collection.how.answer2': 'Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie unsere Website betreten.',
+
+    // Section 2 - Verantwortliche Stelle
+    'datenschutz.section2.title': '2. Verantwortliche Stelle',
+    'datenschutz.section2.intro': 'Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:',
+    'datenschutz.section2.country': 'Deutschland',
+    'datenschutz.section2.phone': 'Telefon',
+    'datenschutz.section2.email': 'E-Mail',
+    'datenschutz.section2.explanation': 'Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.',
+
+    // Section 3 - Ihre Rechte
+    'datenschutz.section3.title': '3. Ihre Rechte gemäß DSGVO',
+    'datenschutz.section3.intro': 'Sie haben als betroffene Person folgende Rechte gegenüber uns in Bezug auf Ihre personenbezogenen Daten. Diese Rechte können Sie jederzeit geltend machen:',
+    'datenschutz.rights.access.title': 'Recht auf Auskunft (Art. 15 DSGVO)',
+    'datenschutz.rights.access.description': 'Sie haben das Recht, unentgeltlich Auskunft über die von uns verarbeiteten personenbezogenen Daten zu erhalten. Dies umfasst Informationen über die Verarbeitungszwecke, Kategorien der Daten, Empfänger, Speicherdauer und Ihre weiteren Rechte.',
+    'datenschutz.rights.rectification.title': 'Recht auf Berichtigung (Art. 16 DSGVO)',
+    'datenschutz.rights.rectification.description': 'Sie haben das Recht, die Berichtigung unrichtiger personenbezogener Daten zu verlangen. Unvollständige Daten können Sie vervollständigen lassen.',
+    'datenschutz.rights.deletion.title': 'Recht auf Löschung (Art. 17 DSGVO)',
+    'datenschutz.rights.deletion.description': 'Sie können die Löschung Ihrer personenbezogenen Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen und die Verarbeitung nicht mehr erforderlich ist.',
+    'datenschutz.rights.restriction.title': 'Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)',
+    'datenschutz.rights.restriction.description': 'Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen, wenn Sie die Richtigkeit der Daten bestreiten, die Verarbeitung unrechtmäßig ist oder wir die Daten nicht mehr benötigen.',
+    'datenschutz.rights.portability.title': 'Recht auf Datenübertragbarkeit (Art. 20 DSGVO)',
+    'datenschutz.rights.portability.description': 'Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und an einen anderen Verantwortlichen zu übermitteln.',
+    'datenschutz.rights.objection.title': 'Widerspruchsrecht (Art. 21 DSGVO)',
+    'datenschutz.rights.objection.description': 'Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten Widerspruch einzulegen, sofern die Verarbeitung auf Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) beruht.',
+    'datenschutz.rights.withdrawal.title': 'Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)',
+    'datenschutz.rights.withdrawal.description': 'Sofern die Verarbeitung auf Ihrer Einwilligung beruht, haben Sie das Recht, diese jederzeit mit Wirkung für die Zukunft zu widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.',
+    'datenschutz.rights.withdrawal.how': 'Wie können Sie Ihre Einwilligung widerrufen?',
+    'datenschutz.rights.withdrawal.cookie': 'Cookie-Einwilligung: über "Cookie-Einstellungen" im Footer',
+    'datenschutz.rights.withdrawal.email': 'Kontaktformular/E-Mail: formlose Mitteilung an Yulachip@icloud.com',
+    'datenschutz.rights.withdrawal.messenger': 'Messenger-Dienste: durch Löschen der Konversation und Abbruch der Kommunikation',
+    'datenschutz.rights.complaint.title': 'Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO)',
+    'datenschutz.rights.complaint.description': 'Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.',
+    'datenschutz.rights.complaint.authority': 'Zuständige Aufsichtsbehörde:',
+    'datenschutz.rights.contact': 'Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:',
+
+    // Section 4 - Datenerfassung auf unserer Website
+    'datenschutz.section4.title': '4. Datenerfassung auf unserer Website',
+    'datenschutz.section4.serverlog.title': 'Server-Log-Dateien',
+    'datenschutz.section4.serverlog.intro': 'Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:',
+    'datenschutz.section4.serverlog.item1': 'Browsertyp und Browserversion',
+    'datenschutz.section4.serverlog.item2': 'verwendetes Betriebssystem',
+    'datenschutz.section4.serverlog.item3': 'Referrer URL',
+    'datenschutz.section4.serverlog.item4': 'Hostname des zugreifenden Rechners',
+    'datenschutz.section4.serverlog.item5': 'Uhrzeit der Serveranfrage',
+    'datenschutz.section4.serverlog.item6': 'IP-Adresse',
+    'datenschutz.section4.serverlog.legal': 'Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website – hierzu müssen die Server-Log-Files erfasst werden.',
+
+    'datenschutz.section4.contact_form.title': 'Kontaktformular',
+    'datenschutz.section4.contact_form.p1': 'Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.',
+    'datenschutz.section4.contact_form.p2': 'Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt somit ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.',
+    'datenschutz.section4.contact_form.p3': 'Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.',
+
+    'datenschutz.section4.inquiry.title': 'Anfrage per E-Mail, Telefon oder Telefax',
+    'datenschutz.section4.inquiry.p1': 'Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.',
+    'datenschutz.section4.inquiry.p2': 'Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) und/oder auf unseren berechtigten Interessen (Art. 6 Abs. 1 lit. f DSGVO), da wir ein berechtigtes Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen haben.',
+
+    // Section 4 - Cookies
+    'datenschutz.section4.cookies.title': 'Cookies und Tracking-Technologien',
+    'datenschutz.section4.cookies.general.title': 'Allgemeine Hinweise zu Cookies',
+    'datenschutz.section4.cookies.general.p1': 'Unsere Website verwendet Cookies und vergleichbare Technologien. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden und bestimmte Informationen enthalten.',
+    'datenschutz.section4.cookies.legal.title': 'Rechtsgrundlage',
+    'datenschutz.section4.cookies.legal.p1': 'Die Verwendung von Cookies und vergleichbaren Technologien erfolgt ausschließlich nach Ihrer ausdrücklichen Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Nicht notwendige Cookies und Tracking-Technologien werden erst nach Ihrer aktiven Zustimmung über unser Cookie-Banner gesetzt.',
+    'datenschutz.section4.cookies.withdrawal.title': 'Widerruf Ihrer Einwilligung',
+    'datenschutz.section4.cookies.withdrawal.p1': 'Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie die Cookie-Einstellungen im Footer der Website aufrufen. Der Widerruf hat keinen Einfluss auf die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung.',
+    'datenschutz.section4.cookies.detail.title': 'Verwendete Cookies im Detail:',
+
+    'datenschutz.section4.cookies.necessary.title': '1. Notwendige Cookies',
+    'datenschutz.section4.cookies.necessary.name': 'Cookie-Name',
+    'datenschutz.section4.cookies.necessary.purpose': 'Zweck',
+    'datenschutz.section4.cookies.necessary.purpose.value': 'Speicherung Ihrer Cookie-Einwilligung',
+    'datenschutz.section4.cookies.necessary.duration': 'Laufzeit',
+    'datenschutz.section4.cookies.necessary.duration.value': '12 Monate',
+    'datenschutz.section4.cookies.necessary.legal': 'Rechtsgrundlage',
+    'datenschutz.section4.cookies.necessary.legal.value': 'Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Speicherung Ihrer Präferenzen)',
+
+    'datenschutz.section4.cookies.analytics.title': '2. Analytische Cookies (nur mit Ihrer Einwilligung)',
+    'datenschutz.section4.cookies.analytics.names': 'Cookie-Namen',
+    'datenschutz.section4.cookies.analytics.provider': 'Anbieter',
+    'datenschutz.section4.cookies.analytics.purpose': 'Zweck',
+    'datenschutz.section4.cookies.analytics.purpose.value': 'Statistische Auswertung der Website-Nutzung, Verbesserung unseres Angebots',
+    'datenschutz.section4.cookies.analytics.duration': 'Laufzeit',
+    'datenschutz.section4.cookies.analytics.duration.ga': '24 Monate',
+    'datenschutz.section4.cookies.analytics.duration.gid': '24 Stunden',
+    'datenschutz.section4.cookies.analytics.duration.gat': '1 Minute',
+    'datenschutz.section4.cookies.analytics.legal': 'Rechtsgrundlage',
+    'datenschutz.section4.cookies.analytics.legal.value': 'Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)',
+    'datenschutz.section4.cookies.analytics.transfer': 'Datenübertragung',
+    'datenschutz.section4.cookies.analytics.transfer.value': 'Daten können an Server von Google in den USA übertragen werden. Google ist nach dem EU-US Data Privacy Framework zertifiziert.',
+
+    // Section 4 - SSL/TLS
+    'datenschutz.section4.ssl.title': 'SSL- bzw. TLS-Verschlüsselung',
+    'datenschutz.section4.ssl.p1': 'Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.',
+    'datenschutz.section4.ssl.p2': 'Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden. Die Verschlüsselung erfolgt gemäß dem aktuellen Stand der Technik (TLS 1.3).',
+
+    // Section 5 - Soziale Medien
+    'datenschutz.section5.title': '5. Soziale Medien',
+    'datenschutz.section5.instagram.title': 'Instagram Plugin und Verlinkungen',
+    'datenschutz.section5.instagram.provider': 'Anbieter und Funktionsweise',
+    'datenschutz.section5.instagram.provider.value': 'Auf unseren Seiten sind Funktionen und Links zum Dienst Instagram eingebunden. Diese Funktionen werden angeboten durch Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland (Muttergesellschaft: Meta Platforms, Inc., USA).',
+    'datenschutz.section5.instagram.transfer': 'Datenübertragung beim Anklicken',
+    'datenschutz.section5.instagram.transfer.value': 'Beim Anklicken des Instagram-Buttons oder Instagram-Links erfolgt eine Übermittlung personenbezogener Daten an Meta. Wenn Sie in Ihrem Instagram-Account eingeloggt sind, kann Instagram den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Folgende Daten können dabei übertragen werden:',
+    'datenschutz.section5.instagram.data.ip': 'IP-Adresse',
+    'datenschutz.section5.instagram.data.browser': 'Browserinformationen',
+    'datenschutz.section5.instagram.data.time': 'Zeitpunkt des Besuchs',
+    'datenschutz.section5.instagram.data.referrer': 'Referrer-URL (unsere Website)',
+    'datenschutz.section5.instagram.thirdcountry': 'Datenübermittlung in Drittstaaten',
+    'datenschutz.section5.instagram.thirdcountry.value': 'Meta kann personenbezogene Daten auch in die USA und andere Drittstaaten übertragen. Meta Platforms, Inc. ist nach dem EU-US Data Privacy Framework zertifiziert.',
+    'datenschutz.section5.instagram.legal': 'Rechtsgrundlage',
+    'datenschutz.section5.instagram.legal.value': 'Die Verknüpfung mit Instagram erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Die Einwilligung gilt für den Zeitpunkt des Anklickens des Links.',
+    'datenschutz.section5.instagram.note': 'Hinweis',
+    'datenschutz.section5.instagram.note.value': 'Wir weisen darauf hin, dass wir als Anbieter der Seiten keine Kenntnis vom Inhalt der übermittelten Daten sowie deren Nutzung durch Instagram/Meta erhalten.',
+    'datenschutz.section5.instagram.info': 'Weitere Informationen',
+    'datenschutz.section5.instagram.info.label': 'Datenschutzerklärung von Instagram',
+
+    // Section 5 - TikTok
+    'datenschutz.section5.tiktok.title': 'TikTok Verlinkungen',
+    'datenschutz.section5.tiktok.provider': 'Anbieter und Funktionsweise',
+    'datenschutz.section5.tiktok.provider.value': 'Auf unserer Website befinden sich Links zum sozialen Netzwerk TikTok. Anbieter ist die TikTok Technology Limited, 10 Earlsfort Terrace, Dublin, D02 T380, Irland (für den EWR). Die Muttergesellschaft ist ByteDance Ltd. mit Sitz in Singapur und weiteren Niederlassungen weltweit.',
+    'datenschutz.section5.tiktok.transfer': 'Datenübertragung beim Anklicken',
+    'datenschutz.section5.tiktok.transfer.value': 'Beim Anklicken des TikTok-Links verlassen Sie unsere Website. TikTok kann dabei personenbezogene Daten (z. B. IP-Adresse, Browserinformationen, Zeitpunkt des Besuchs) verarbeiten. Daten können an Server in den USA, Singapur oder andere Drittstaaten übertragen werden.',
+    'datenschutz.section5.tiktok.legal': 'Rechtsgrundlage',
+    'datenschutz.section5.tiktok.legal.value': 'Die Verlinkung erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO durch das aktive Anklicken des Links.',
+    'datenschutz.section5.tiktok.info': 'Weitere Informationen',
+    'datenschutz.section5.tiktok.info.label': 'Datenschutzerklärung von TikTok',
+
+    // Section 6 - Plugins und Tools
+    'datenschutz.section6.title': '6. Plugins und Tools',
+    'datenschutz.section6.maps.title': 'Google Maps',
+    'datenschutz.section6.maps.provider': 'Anbieter und Funktionsweise',
+    'datenschutz.section6.maps.provider.value': 'Diese Seite nutzt den Kartendienst Google Maps zur Darstellung unseres Standortes. Anbieter ist die Google Ireland Limited („Google"), Gordon House, Barrow Street, Dublin 4, Irland.',
+    'datenschutz.section6.maps.transfer': 'Datenübertragung',
+    'datenschutz.section6.maps.transfer.value': 'Bei der Nutzung von Google Maps wird Ihre IP-Adresse an Google übertragen, um die Karte anzuzeigen. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert.',
+    'datenschutz.section6.maps.legal': 'Rechtsgrundlage',
+    'datenschutz.section6.maps.legal.value': 'Die Nutzung von Google Maps erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse daran, unseren Standort visuell darzustellen und Ihnen die Anfahrt zu erleichtern. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.',
+    'datenschutz.section6.maps.info': 'Weitere Informationen',
+    'datenschutz.section6.maps.info.label': 'Datenschutzerklärung von Google',
+
+    'datenschutz.section6.analytics.title': 'Google Analytics',
+    'datenschutz.section6.analytics.provider': 'Anbieter und Umfang der Datenverarbeitung',
+    'datenschutz.section6.analytics.provider.value': 'Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google").',
+    'datenschutz.section6.analytics.cookies_intro': 'Google Analytics verwendet Cookies (siehe oben: _ga, _gid, _gat), die eine Analyse der Benutzung der Website durch den Nutzer ermöglichen. Die durch die Cookies erzeugten Informationen über Ihre Benutzung dieser Website umfassen:',
+    'datenschutz.section6.analytics.data.ip': 'IP-Adresse (anonymisiert)',
+    'datenschutz.section6.analytics.data.device': 'Gerätetyp und Browserinformationen',
+    'datenschutz.section6.analytics.data.pages': 'Besuchte Seiten und Verweildauer',
+    'datenschutz.section6.analytics.data.referrer': 'Herkunft des Besuchers (Referrer)',
+    'datenschutz.section6.analytics.anonymization': 'IP-Anonymisierung',
+    'datenschutz.section6.analytics.anonymization.value': 'Die IP-Anonymisierung ist auf dieser Website aktiviert. Ihre IP-Adresse wird von Google bereits innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum gekürzt, bevor sie in Ausnahmefällen an Server von Google in den USA übertragen wird.',
+    'datenschutz.section6.analytics.thirdcountry': 'Datenübermittlung in Drittstaaten',
+    'datenschutz.section6.analytics.thirdcountry.value': 'Die durch Google Analytics erfassten Daten können an Server von Google in den USA übertragen werden. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert, wodurch ein angemessenes Datenschutzniveau gewährleistet wird',
+    'datenschutz.section6.analytics.legal': 'Rechtsgrundlage',
+    'datenschutz.section6.analytics.legal.value': 'Die Nutzung von Google Analytics erfolgt ausschließlich auf Grundlage Ihrer ausdrücklichen Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG.',
+    'datenschutz.section6.analytics.withdrawal': 'Widerruf und Speicherdauer',
+    'datenschutz.section6.analytics.withdrawal.value': 'Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft über die Cookie-Einstellungen im Footer widerrufen. Nach Widerruf werden alle Google Analytics Cookies gelöscht und keine weiteren Daten erfasst.',
+    'datenschutz.section6.analytics.storage': 'Die Speicherdauer der Daten beträgt bis zu 14 Monate.',
+    'datenschutz.section6.analytics.info': 'Weitere Informationen',
+    'datenschutz.section6.analytics.info.label': 'Datenschutzerklärung von Google',
+
+    'datenschutz.section6.searchconsole.title': 'Google Search Console',
+    'datenschutz.section6.searchconsole.p1': 'Diese Website nutzt Google Search Console, einen Webanalysedienst von Google, zur technischen Analyse und Optimierung der Website. Google Search Console setzt keine Cookies und verarbeitet ausschließlich anonymisierte und aggregierte Daten.',
+
+    'datenschutz.section6.ahrefs.title': 'Ahrefs',
+    'datenschutz.section6.ahrefs.p1': 'Zur Suchmaschinenoptimierung und technischen Analyse der Website wird das Tool Ahrefs (Ahrefs Pte. Ltd., Singapur) eingesetzt. Ahrefs verarbeitet technische Zugriffsdaten (z. B. IP-Adresse, User-Agent) zur Analyse der Website-Performance.',
+    'datenschutz.section6.ahrefs.p2': 'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Optimierung und Sicherheit der Website).',
+
+    // Section 7 - Eigene Dienste
+    'datenschutz.section7.title': '7. Eigene Dienste',
+    'datenschutz.section7.booking.title': 'Terminbuchung und Kundenverwaltung',
+    'datenschutz.section7.booking.intro': 'Zur Terminvereinbarung und Kundenverwaltung verarbeiten wir folgende personenbezogene Daten:',
+    'datenschutz.section7.booking.item1': 'Name und Vorname',
+    'datenschutz.section7.booking.item2': 'Telefonnummer',
+    'datenschutz.section7.booking.item3': 'E-Mail-Adresse',
+    'datenschutz.section7.booking.item4': 'Behandlungswünsche und -historie',
+    'datenschutz.section7.booking.item5': 'Terminzeiten',
+    'datenschutz.section7.booking.health.title': 'Behandlungswünsche und -historie',
+    'datenschutz.section7.booking.health.p1': 'Es werden keine medizinischen Diagnosen oder sensiblen Gesundheitsdaten im Sinne des Art. 9 DSGVO verarbeitet.',
+    'datenschutz.section7.booking.legal': 'Die Verarbeitung erfolgt zur Erfüllung des Vertrages mit Ihnen und zur Durchführung vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Die Daten werden für die Dauer der Geschäftsbeziehung sowie darüber hinaus zur Erfüllung gesetzlicher Aufbewahrungspflichten gespeichert.',
+
+    'datenschutz.section7.altegio.title': 'Online-Terminbuchung über ALTEGIO',
+    'datenschutz.section7.altegio.provider': 'Anbieter und Zweck',
+    'datenschutz.section7.altegio.provider.value': 'Die Online-Terminbuchung erfolgt über den externen Dienst ALTEGIO (Alteg.io). Bei der Nutzung des Buchungssystems werden personenbezogene Daten zum Zweck der Terminverwaltung und -organisation verarbeitet.',
+    'datenschutz.section7.altegio.data': 'Verarbeitete Daten',
+    'datenschutz.section7.altegio.data.item1': 'Name und Vorname',
+    'datenschutz.section7.altegio.data.item2': 'Telefonnummer',
+    'datenschutz.section7.altegio.data.item3': 'E-Mail-Adresse',
+    'datenschutz.section7.altegio.data.item4': 'Terminwünsche (Datum, Uhrzeit, gewünschte Behandlung)',
+    'datenschutz.section7.altegio.data.item5': 'Optional: Besondere Wünsche oder Anmerkungen',
+    'datenschutz.section7.altegio.legal': 'Rechtsgrundlage',
+    'datenschutz.section7.altegio.legal.value': 'Die Verarbeitung der Daten erfolgt zum Zweck der Terminverwaltung und -organisation auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).',
+    'datenschutz.section7.altegio.storage': 'Speicherdauer',
+    'datenschutz.section7.altegio.storage.value': 'Die Daten werden für die Dauer der Terminabwicklung sowie zur Erfüllung gesetzlicher Aufbewahrungspflichten gespeichert. Nach Ablauf der gesetzlichen Aufbewahrungsfristen werden die Daten gelöscht, sofern Sie nicht ausdrücklich einer weitergehenden Nutzung zugestimmt haben.',
+    'datenschutz.section7.altegio.processing': 'Auftragsverarbeitung',
+    'datenschutz.section7.altegio.processing.value': 'Die Datenverarbeitung erfolgt im Rahmen einer Auftragsverarbeitung gemäß Art. 28 DSGVO. ALTEGIO ist vertraglich verpflichtet, Ihre Daten nur auf unsere Weisung und unter Einhaltung der DSGVO zu verarbeiten.',
+    'datenschutz.section7.altegio.info': 'Weitere Informationen',
+    'datenschutz.section7.altegio.info.label': 'Datenschutzbestimmungen von ALTEGIO',
+
+    'datenschutz.section7.messenger.title': 'Kontakt über Messenger und Telefon',
+    'datenschutz.section7.messenger.general': 'Allgemeine Hinweise',
+    'datenschutz.section7.messenger.general.value': 'Diese Website enthält Verlinkungen zu externen Kommunikationsdiensten wie WhatsApp, Telegram sowie eine Telefonverbindung.',
+    'datenschutz.section7.messenger.whatsapp.provider': 'Anbieter: Meta Platforms Ireland Limited (Muttergesellschaft: Meta Platforms, Inc., USA)',
+    'datenschutz.section7.messenger.whatsapp.transfer': 'Beim Anklicken des WhatsApp-Links oder bei der Kontaktaufnahme über WhatsApp werden Daten an Meta übertragen. WhatsApp verarbeitet personenbezogene Daten (z. B. Telefonnummer, Nachrichteninhalte, Metadaten) auch auf Servern in den USA. Meta Platforms, Inc. ist nach dem EU-US Data Privacy Framework zertifiziert.',
+    'datenschutz.section7.messenger.whatsapp.info.label': 'Datenschutzerklärung',
+    'datenschutz.section7.messenger.telegram.provider': 'Anbieter: Telegram Messenger LLP / Telegram FZ-LLC, Dubai, VAE',
+    'datenschutz.section7.messenger.telegram.transfer': 'Telegram verarbeitet Daten auf Servern weltweit, einschließlich außerhalb der EU/EWR. Die Verarbeitung erfolgt nach den Datenschutzbestimmungen von Telegram.',
+    'datenschutz.section7.messenger.telegram.info.label': 'Datenschutzerklärung',
+    'datenschutz.section7.messenger.legal': 'Rechtsgrundlage',
+    'datenschutz.section7.messenger.legal.value': 'Die Nutzung dieser Kommunikationswege erfolgt freiwillig und auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Durch das Anklicken des jeweiligen Links willigen Sie in die Datenübertragung an den entsprechenden Dienst ein.',
+    'datenschutz.section7.messenger.phone': 'Telefon',
+    'datenschutz.section7.messenger.phone.value': 'Bei telefonischer Kontaktaufnahme werden Ihre Telefonnummer und Gesprächsinhalte zum Zweck der Bearbeitung Ihrer Anfrage verarbeitet (Art. 6 Abs. 1 lit. b DSGVO bzw. lit. f DSGVO).',
+
+    'datenschutz.section7.external.title': 'Externe Links und soziale Netzwerke',
+    'datenschutz.section7.external.p1': 'Unsere Website enthält Links zu externen Websites und sozialen Netzwerken (z. B. Instagram, TikTok, externe Partnerseiten).',
+    'datenschutz.section7.external.p2': 'Beim Anklicken solcher Links verlassen Sie unsere Website. Für die Verarbeitung personenbezogener Daten auf den verlinkten Seiten ist ausschließlich der jeweilige Betreiber verantwortlich.',
+
+    'datenschutz.section7.treatments.title': 'Behandlungstechnische Hinweise',
+    'datenschutz.section7.treatments.p1': 'Im Rahmen unserer Dienstleistungen (z. B. Maniküre, Pediküre, apparative Kosmetik, Behandlungen mit dem iCOONE® System sowie Laserbehandlungen mit Dioden-, Alexandrit- und RedTouch-Lasersystemen) werden keine personenbezogenen Gesundheitsdaten im Sinne des Art. 9 DSGVO automatisiert verarbeitet oder gespeichert.',
+    'datenschutz.section7.treatments.p2': 'Personenbezogene Daten werden ausschließlich zur Terminorganisation und Kundenkommunikation verwendet.',
+
+    // Section 8 - Auftragsverarbeitung
+    'datenschutz.section8.title': '8. Auftragsverarbeitung',
+    'datenschutz.section8.intro': 'Wir haben zu einem oder mehreren der oben genannten Zwecke Verträge über Auftragsverarbeitung mit folgenden Anbietern geschlossen:',
+    'datenschutz.section8.item1': 'Vercel Inc. (Website-Hosting, USA, DPF-zertifiziert)',
+    'datenschutz.section8.item2': 'Supabase Inc. (Datenbank-Backend, USA, DPF-zertifiziert)',
+    'datenschutz.section8.item3': 'E-Mail-Service-Provider',
+    'datenschutz.section8.item4': 'ALTEGIO (Terminbuchungssystem)',
+    'datenschutz.section8.item5': 'Google Ireland Limited (Google Analytics)',
+    'datenschutz.section8.obligation': 'Alle Auftragsverarbeiter sind vertraglich dazu verpflichtet, Ihre Daten nur auf unsere Weisung und unter Einhaltung der DSGVO zu verarbeiten.',
+
+    // Datenschutz Footer
+    'datenschutz.updated': 'Stand der Datenschutzerklärung',
+    'datenschutz.updated.date': 'Februar 2026',
+    'datenschutz.generator': 'Diese Datenschutzerklärung wurde individuell für diese Website erstellt.',
+
+    // AGB (Allgemeine Geschäftsbedingungen)
+    'agb.title': 'Allgemeine Geschäftsbedingungen (AGB)',
+    'agb.subtitle': 'Gültig für alle Dienstleistungen von Yuliia Cheporska Studio',
+
+    // AGB Section 1: Geltungsbereich
+    'agb.section1.title': '1. Geltungsbereich',
+    'agb.section1.p1': 'Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Dienstleistungen, die über die Website www.munchen-beauty.de angeboten werden, sowie für alle Terminvereinbarungen zwischen dem jeweiligen Studio / der jeweiligen Dienstleisterin (z. B. Yuliia Cheporska Studio) und ihren Kundinnen und Kunden.',
+    'agb.section1.p2': 'Abweichende Bedingungen der Kundinnen und Kunden finden keine Anwendung, es sei denn, ihrer Geltung wurde ausdrücklich schriftlich zugestimmt.',
+
+    // AGB Section 2: Leistungen
+    'agb.section2.title': '2. Leistungen',
+    'agb.section2.p1': 'Die angebotenen Dienstleistungen umfassen insbesondere kosmetische und ästhetische Behandlungen (z. B. Gesichts- und Körperbehandlungen, apparative Kosmetik, Laserbehandlungen, Permanent Make-up sowie weitere Beauty-Leistungen).',
+    'agb.section2.p2': 'Der genaue Leistungsumfang ergibt sich aus der jeweiligen Terminvereinbarung, der Leistungsbeschreibung auf der Website sowie der aktuellen Preisliste.',
+    'agb.section2.p3': 'Individuelle Behandlungspläne und Sonderkonditionen sind nach Absprache möglich.',
+
+    // AGB Section 3: Terminvereinbarung
+    'agb.section3.title': '3. Terminvereinbarung',
+    'agb.section3.p1': 'Termine können online (z. B. über externe Buchungssysteme), telefonisch, per E-Mail oder über Messenger-Dienste vereinbart werden.',
+    'agb.section3.p2': 'Ein verbindlicher Vertrag kommt zustande, sobald der Termin durch das Studio bestätigt wurde.',
+
+    // AGB Section 4: Zahlungsmodalitäten
+    'agb.section4.title': '4. Zahlungsmodalitäten',
+    'agb.section4.p1': 'Die Zahlung erfolgt grundsätzlich vor Ort nach der Behandlung, sofern nichts anderes vereinbart wurde.',
+    'agb.section4.p2': 'Folgende Zahlungsmethoden werden akzeptiert:',
+    'agb.section4.payment.cash': 'Barzahlung',
+    'agb.section4.payment.ec': 'EC-Karte',
+    'agb.section4.payment.credit': 'Kreditkarte',
+    'agb.section4.p3': 'Bei Jahresabonnements erfolgt die Abrechnung monatlich per vereinbarter Abbuchung.',
+    'agb.section4.p4': 'Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer, sofern nicht anders angegeben.',
+
+    // AGB Section 5: Stornierung und Terminabsagen
+    'agb.section5.title': '5. Stornierung und Terminabsagen',
+    'agb.section5.subtitle': 'Stornierung durch Kundinnen und Kunden',
+    'agb.section5.li1': 'Eine kostenlose Stornierung oder Terminverschiebung ist bis 24 Stunden vor dem vereinbarten Termin möglich.',
+    'agb.section5.li2': 'Bei einer Stornierung weniger als 24 Stunden vor dem Termin oder bei Nichterscheinen behalten wir uns vor, eine Ausfallpauschale in Höhe von 30 \u20AC zu berechnen, sofern kein geringerer Schaden nachgewiesen wird.',
+    'agb.section5.li3': 'Den Kundinnen und Kunden bleibt der Nachweis vorbehalten, dass kein oder ein geringerer Schaden entstanden ist.',
+    'agb.section5.p1': 'Bei Abonnements wird im Rahmen der vertraglich vereinbarten Bedingungen eine angemessene Flexibilität bei Terminverschiebungen gewährt.',
+
+    // AGB Section 6: Verspätung
+    'agb.section6.title': '6. Verspätung',
+    'agb.section6.p1': 'Bei einer Verspätung von mehr als 15 Minuten kann die Behandlungszeit entsprechend verkürzt werden. Ein Anspruch auf eine Preisreduzierung besteht in diesem Fall nicht.',
+
+    // AGB Section 7: Haftung
+    'agb.section7.title': '7. Haftung',
+    'agb.section7.p1': 'Die angebotenen Behandlungen werden nach bestem Wissen und Gewissen sowie nach dem aktuellen fachlichen Standard durchgeführt.',
+    'agb.section7.p2': 'Eine Garantie für ein bestimmtes Behandlungsergebnis kann nicht übernommen werden, da individuelle Reaktionen von Haut und Körper variieren können.',
+    'agb.section7.p3': 'Für Schäden haftet das Studio nur bei Vorsatz oder grober Fahrlässigkeit. Dies gilt nicht für Schäden aus der Verletzung von Leben, Körper oder Gesundheit. Die Haftung nach dem Produkthaftungsgesetz bleibt unberührt.',
+
+    // AGB Section 8: Mitwirkungspflichten
+    'agb.section8.title': '8. Mitwirkungspflichten der Kundinnen und Kunden',
+    'agb.section8.p1': 'Kundinnen und Kunden sind verpflichtet, vor der Behandlung wahrheitsgemäße Angaben zu gesundheitlichen Einschränkungen, Allergien, Vorerkrankungen oder sonstigen relevanten Umständen zu machen.',
+    'agb.section8.p2': 'Unterbleibt eine entsprechende Mitteilung, ist eine Haftung ausgeschlossen, soweit gesetzlich zulässig.',
+
+    // AGB Section 9: Datenschutz
+    'agb.section9.title': '9. Datenschutz',
+    'agb.section9.p1': 'Die Erhebung und Verarbeitung personenbezogener Daten erfolgt gemäß der geltenden Datenschutzerklärung auf www.munchen-beauty.de sowie den Bestimmungen der DSGVO.',
+
+    // AGB Section 10: Anwendbares Recht
+    'agb.section10.title': '10. Anwendbares Recht',
+    'agb.section10.p1': 'Es gilt das Recht der Bundesrepublik Deutschland.',
+
+    // AGB Section 11: Salvatorische Klausel
+    'agb.section11.title': '11. Salvatorische Klausel',
+    'agb.section11.p1': 'Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.',
+
+    // AGB Section 12: Widerrufsbelehrung
+    'agb.section12.title': '12. Widerrufsbelehrung',
+    'agb.section12.subtitle1': 'Widerrufsrecht',
+    'agb.section12.p1': 'Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses. Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Yuliia Cheporska Studio, Elsässer Straße 33, 81667 München, E-Mail: Yulachip@icloud.com) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.',
+    'agb.section12.subtitle2': 'Folgen des Widerrufs',
+    'agb.section12.p2': 'Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf des Vertrags bei uns eingegangen ist.',
+    'agb.section12.subtitle3': 'Vorzeitiges Erlöschen des Widerrufsrechts',
+    'agb.section12.p3': 'Das Widerrufsrecht erlischt vorzeitig, wenn wir die Dienstleistung vollständig erbracht haben und mit der Ausführung der Dienstleistung erst begonnen haben, nachdem Sie dazu Ihre ausdrückliche Zustimmung gegeben und gleichzeitig Ihre Kenntnis davon bestätigt haben, dass Sie Ihr Widerrufsrecht bei vollständiger Vertragserfüllung verlieren.',
+
+    // AGB Section 13: Minderjährige
+    'agb.section13.title': '13. Minderjährige',
+    'agb.section13.p1': 'Behandlungen für Minderjährige unter 18 Jahren erfordern die schriftliche Einwilligung eines Erziehungsberechtigten. Diese muss vor Beginn der Behandlung vorliegen.',
+
+    // AGB Section 14: Gutscheine
+    'agb.section14.title': '14. Gutscheine',
+    'agb.section14.p1': 'Geschenkgutscheine sind mindestens drei Jahre ab dem Ausstellungsdatum gültig (§ 807 BGB i.V.m. § 195 BGB). Der Gutscheinwert kann für alle angebotenen Dienstleistungen eingelöst werden. Eine Barauszahlung ist ausgeschlossen.',
+
+    // AGB Footer
+    'agb.updated': 'Stand:',
+    'agb.updated.date': 'Februar 2026',
+
+    // 404 Page
+    'notfound.title': 'Seite nicht gefunden',
+    'notfound.message': 'Die von Ihnen gesuchte Seite existiert leider nicht oder wurde verschoben.',
+    'notfound.home': 'Zur Startseite',
+    'notfound.services': 'Unsere Leistungen',
+    'notfound.contact': 'Kontakt',
+
+    // Image Alt Texts
+    'alt.home.laser': 'Laser-Haarentfernung München – Yuliia Cheporska Studio',
+    'alt.home.redtouch': 'RedTouch 675 nm Hautbehandlung München',
+    'alt.home.icoone': 'Icoone®️ Laser-Behandlung München',
+    'alt.home.nails': 'Maniküre & Pediküre München – Nagelstudio',
+    'alt.services.alexandrit': 'Alexandrit-Laser Haarentfernung München',
+    'alt.services.diode': 'Diodenlaser Haarentfernung München',
+    'alt.services.icoone': 'Icoone®️ Laser Körperbehandlung',
+    'alt.services.redtouch': 'RedTouch Pro Hautverjüngung',
+    'alt.services.nails': 'Professionelle Maniküre & Pediküre',
+    'alt.laser.alexandrit': 'Alexandrit Laser München – DEKA Technologie',
+    'alt.laser.diode': 'Diodenlaser Haarentfernung München – M-Tech',
+    'alt.comparison.hero': 'Laser-Haarentfernung Technologie München',
+    'alt.comparison.alexandrit': 'Alexandrit Laser München – Motus AX',
+    'alt.comparison.diode': 'Diodenlaser München – M-Tech System',
+    'alt.comparison.deka': 'Alexandrit Laser – DEKA Technologie',
+    'alt.comparison.treatment': 'Alexandrit Laser – Behandlung',
+    'alt.nails.manicure1': 'Maniküre München – Klassische Nagelpflege',
+    'alt.nails.manicure2': 'Maniküre München – Professionelle Pflege',
+    'alt.nails.manicure3': 'Maniküre München – Nail Design',
+    'alt.nails.design': 'Maniküre Design – Individuelle Gestaltung',
+    'alt.nails.manicure4': 'Maniküre München – Ergebnis',
+    'alt.nails.manicure5': 'Maniküre München – Detailarbeit',
+    'alt.nails.nailart': 'Nail Art München – Kreatives Design',
+    'alt.nails.manicure6': 'Maniküre München – Studio',
+    'alt.nails.gel': 'Gel-Nägel München – Langanhaltend',
+    'alt.nails.manicure7': 'Maniküre München – Feinschliff',
+    'alt.nails.pedicure.main': 'Pediküre München – Professionelle Fußpflege',
+    'alt.nails.pedicure.detail': 'Pediküre München – Detailbehandlung',
+    'alt.redtouch.logo': 'RedTouch PRO Logo – DEKA',
+    'alt.redtouch.device': 'RedTouch 675 nm – Kosmetikstudio München Haidhausen',
+    'alt.icoone.device': 'Icoone®️ Laser – Kosmetikstudio München Haidhausen',
+    'alt.icoone.room': 'Icoone®️ Behandlungsraum München',
+    'alt.icoone.handpiece': 'Icoone®️ Handstück Detail',
+    'alt.about.yuliia': 'Yuliia Cheporska – Kosmetikerin München',
+    'alt.about.studio': 'Studio Atmosphäre – Yuliia Cheporska München',
+
+    // Cross-service linking
+    'crosslink.title': 'Weitere Behandlungen entdecken',
+    'crosslink.laser': 'Laser-Haarentfernung',
+    'crosslink.laser.desc': 'Alexandrit & Diodenlaser für dauerhafte Haarentfernung.',
+    'crosslink.redtouch': 'RedTouch 675 nm',
+    'crosslink.redtouch.desc': 'Hautverjüngung, Pigmentkorrektur & Kollagenstimulation.',
+    'crosslink.icoone': 'Icoone®️ Laser',
+    'crosslink.icoone.desc': 'Bodyforming, Cellulite-Reduktion & Bindegewebestraffung.',
+    'crosslink.nails': 'Maniküre & Pediküre',
+    'crosslink.nails.desc': 'Klassisch, Gel, Nagelmodellage & medizinische Fußpflege.',
+    'crosslink.more': 'Mehr erfahren',
   },
   ru: {
     // Navigation
@@ -1754,6 +2169,11 @@ const translations = {
     'comparison.devices.diode.label': 'DIODENLASER',
     'comparison.devices.diode.title': 'M-Tech Diodenlaser',
     'comparison.devices.diode.subtitle': '4-in-1 Wellenlängen - Universal System',
+
+    'comparison.devices.overlay.alex.title': 'Система DEKA Александрит',
+    'comparison.devices.overlay.alex.subtitle': 'Премиум лазерные технологии',
+    'comparison.devices.overlay.treatment.title': 'Александритовая процедура',
+    'comparison.devices.overlay.treatment.subtitle': 'Профессиональное применение',
 
     'comparison.suitable.badge': 'Практическое руководство',
     'comparison.suitable.title': 'Какой лазер кому подходит?',
@@ -2161,6 +2581,10 @@ const translations = {
     'kontakt.hours.saturday': 'Сб: 10:00–18:00',
     'kontakt.hours.sunday': 'Вс: По договорённости',
     'kontakt.map.title': 'Как нас найти',
+    'map.consent.title': 'Google Maps',
+    'map.consent.description': 'При загрузке карты данные передаются в Google. Подробнее в нашей Политике конфиденциальности.',
+    'map.consent.button': 'Загрузить карту',
+    'map.iframe.title': 'Расположение студии Yuliia Cheporska в Мюнхене-Хайдхаузене',
     'kontakt.transport.public.title': 'Общественный транспорт',
     'kontakt.transport.public.sbahn': 'S-Bahn: Остбанхоф (S1, S2, S4, S6, S8) – 5–7 мин. пешком',
     'kontakt.transport.public.tram': 'Трамвай: Линия 19 (остановка Орлеансплац)',
@@ -2465,6 +2889,12 @@ const translations = {
     'redtouch.cta.book': 'Записаться на прием',
     'redtouch.cta.prices': 'Посмотреть цены',
 
+    'redtouch.results.alt1': 'RedTouch 675 нм — Косметический салон Мюнхен Хайдхаузен — Результат процедуры 1',
+    'redtouch.results.alt2': 'RedTouch 675 нм — Косметический салон Мюнхен Хайдхаузен — Коррекция пигментации',
+    'redtouch.results.alt3': 'RedTouch 675 нм — Косметический салон Мюнхен Хайдхаузен — Омоложение кожи',
+    'redtouch.results.alt4': 'RedTouch 675 нм — Косметический салон Мюнхен Хайдхаузен — Стимуляция коллагена',
+    'redtouch.results.alt5': 'RedTouch 675 нм — Косметический салон Мюнхен Хайдхаузен — Детали процедуры',
+
     // Physiq360 page translations
     'physiq360.hero.badge': 'Технология DEKA',
     'physiq360.hero.title': 'PHYSIQ 360',
@@ -2651,8 +3081,8 @@ const translations = {
 
     // Impressum Page
     'impressum.title': 'Impressum (Выходные данные)',
-    'impressum.subtitle': 'Юридическая информация согласно § 5 TMG',
-    'impressum.tmg.title': 'Данные согласно § 5 TMG',
+    'impressum.subtitle': 'Юридическая информация согласно § 5 DDG',
+    'impressum.tmg.title': 'Данные согласно § 5 DDG',
     'impressum.company': 'Yuliia Cheporska Studio',
     'impressum.owner': 'Владелец: Юлия Чепорска',
     'impressum.legal_form': 'Организационно-правовая форма:',
@@ -2680,7 +3110,7 @@ const translations = {
     'impressum.consumer.title': 'Урегулирование потребительских споров / Универсальная арбитражная служба',
     'impressum.consumer.description': 'Мы не готовы и не обязаны участвовать в процедурах урегулирования споров перед потребительской арбитражной службой.',
     'impressum.liability.content.title': 'Ответственность за контент',
-    'impressum.liability.content.p1': 'Как поставщик услуг мы несем ответственность за собственный контент на этих страницах в соответствии с § 7 абз.1 TMG согласно общим законам. Согласно §§ 8-10 TMG мы как поставщик услуг не обязаны контролировать переданную или сохраненную стороннюю информацию или искать обстоятельства, указывающие на незаконную деятельность.',
+    'impressum.liability.content.p1': 'Как поставщик услуг мы несем ответственность за собственный контент на этих страницах в соответствии с § 7 абз.1 DDG согласно общим законам. Согласно §§ 8-10 DDG мы как поставщик услуг не обязаны контролировать переданную или сохраненную стороннюю информацию или искать обстоятельства, указывающие на незаконную деятельность.',
     'impressum.liability.content.p2': 'Обязательства по удалению или блокировке использования информации в соответствии с общими законами остаются в силе. Однако ответственность в этом отношении возможна только с момента получения информации о конкретном нарушении закона. При обнаружении соответствующих нарушений закона мы незамедлительно удалим этот контент.',
     'impressum.liability.links.title': 'Ответственность за ссылки',
     'impressum.liability.links.p1': 'Наше предложение содержит ссылки на внешние веб-сайты третьих лиц, на содержание которых мы не имеем влияния. Поэтому мы не можем нести ответственность за этот сторонний контент. За содержание связанных страниц всегда отвечает соответствующий поставщик или оператор страниц. Связанные страницы были проверены на возможные нарушения закона на момент создания ссылки. Незаконный контент не был обнаружен на момент создания ссылки.',
@@ -2714,11 +3144,406 @@ const translations = {
     'cookies.settings.always_active': 'Всегда активно',
     'cookies.settings.save': 'Сохранить',
     'cookies.settings.info': 'Дополнительную информацию см. в нашей Политике конфиденциальности.',
+    'cookies.settings.cookie_name': 'Название cookie',
+    'cookies.settings.provider': 'Провайдер',
+    'cookies.settings.this_website': 'Этот веб-сайт',
+    'cookies.settings.duration': 'Срок действия',
+    'cookies.settings.twelve_months': '12 месяцев',
+    'cookies.settings.purpose_label': 'Назначение',
+    'cookies.settings.necessary.cookie_purpose': 'Сохранение вашего согласия на cookie',
 
     // AGB Notice
     'agb.notice.title': 'Примечание',
     'agb.notice.text': 'При каждом бронировании действуют наши',
     'agb.notice.link': 'Общие условия',
+
+    // Datenschutz Page
+    'datenschutz.title': 'Политика конфиденциальности',
+    'datenschutz.subtitle': 'Информация о защите ваших персональных данных',
+
+    // Section 1 - Обзор защиты данных
+    'datenschutz.section1.title': '1. Защита данных: краткий обзор',
+    'datenschutz.section1.general.title': 'Общие сведения',
+    'datenschutz.section1.general.p1': 'Нижеследующие указания дают простой обзор того, что происходит с вашими персональными данными при посещении нашего веб-сайта. Персональные данные — это все данные, по которым вас можно идентифицировать лично. Подробную информацию по теме защиты данных вы найдёте в настоящей политике конфиденциальности, приведённой ниже.',
+    'datenschutz.section1.collection.title': 'Сбор данных на нашем веб-сайте',
+    'datenschutz.section1.collection.who': 'Кто отвечает за сбор данных на этом веб-сайте?',
+    'datenschutz.section1.collection.who.answer': 'Обработка данных на этом веб-сайте осуществляется оператором сайта. Его контактные данные вы найдёте в разделе «Импрессум» данного сайта.',
+    'datenschutz.section1.collection.how': 'Как мы собираем ваши данные?',
+    'datenschutz.section1.collection.how.answer1': 'Ваши данные собираются, в частности, когда вы сами их сообщаете. Например, это могут быть данные, которые вы вводите в контактную форму.',
+    'datenschutz.section1.collection.how.answer2': 'Другие данные автоматически собираются нашими IT-системами при посещении веб-сайта. Это прежде всего технические данные (например, интернет-браузер, операционная система или время обращения к странице). Сбор этих данных происходит автоматически при входе на наш сайт.',
+
+    // Section 2 - Ответственное лицо
+    'datenschutz.section2.title': '2. Ответственное лицо',
+    'datenschutz.section2.intro': 'Ответственным за обработку данных на этом веб-сайте является:',
+    'datenschutz.section2.country': 'Германия',
+    'datenschutz.section2.phone': 'Телефон',
+    'datenschutz.section2.email': 'Эл. почта',
+    'datenschutz.section2.explanation': 'Ответственное лицо — это физическое или юридическое лицо, которое самостоятельно или совместно с другими определяет цели и средства обработки персональных данных (например, имён, адресов электронной почты и т. д.).',
+
+    // Section 3 - Ваши права
+    'datenschutz.section3.title': '3. Ваши права согласно DSGVO',
+    'datenschutz.section3.intro': 'Как субъект данных вы имеете следующие права в отношении ваших персональных данных. Вы можете реализовать эти права в любое время:',
+    'datenschutz.rights.access.title': 'Право на доступ к информации (ст. 15 DSGVO)',
+    'datenschutz.rights.access.description': 'Вы имеете право на бесплатное получение информации об обрабатываемых нами персональных данных. Это включает сведения о целях обработки, категориях данных, получателях, сроках хранения и ваших дополнительных правах.',
+    'datenschutz.rights.rectification.title': 'Право на исправление (ст. 16 DSGVO)',
+    'datenschutz.rights.rectification.description': 'Вы имеете право требовать исправления неточных персональных данных. Неполные данные могут быть дополнены.',
+    'datenschutz.rights.deletion.title': 'Право на удаление (ст. 17 DSGVO)',
+    'datenschutz.rights.deletion.description': 'Вы можете потребовать удаления ваших персональных данных, если не существует законных обязательств по их хранению и обработка более не является необходимой.',
+    'datenschutz.rights.restriction.title': 'Право на ограничение обработки (ст. 18 DSGVO)',
+    'datenschutz.rights.restriction.description': 'Вы имеете право требовать ограничения обработки ваших данных, если вы оспариваете точность данных, обработка является незаконной или мы больше не нуждаемся в этих данных.',
+    'datenschutz.rights.portability.title': 'Право на переносимость данных (ст. 20 DSGVO)',
+    'datenschutz.rights.portability.description': 'Вы имеете право получить касающиеся вас персональные данные в структурированном, общеупотребительном и машиночитаемом формате и передать их другому ответственному лицу.',
+    'datenschutz.rights.objection.title': 'Право на возражение (ст. 21 DSGVO)',
+    'datenschutz.rights.objection.description': 'Вы имеете право в любое время подать возражение против обработки касающихся вас персональных данных по причинам, связанным с вашей особой ситуацией, если обработка основана на ст. 6 абз. 1 лит. f DSGVO (законный интерес).',
+    'datenschutz.rights.withdrawal.title': 'Право на отзыв согласия (ст. 7 абз. 3 DSGVO)',
+    'datenschutz.rights.withdrawal.description': 'Если обработка основана на вашем согласии, вы имеете право отозвать его в любое время с действием на будущее. Законность обработки, осуществлённой до отзыва, остаётся при этом незатронутой.',
+    'datenschutz.rights.withdrawal.how': 'Как вы можете отозвать своё согласие?',
+    'datenschutz.rights.withdrawal.cookie': 'Согласие на cookie: через «Настройки cookie» в нижней части сайта',
+    'datenschutz.rights.withdrawal.email': 'Контактная форма/эл. почта: свободное уведомление на Yulachip@icloud.com',
+    'datenschutz.rights.withdrawal.messenger': 'Мессенджеры: путём удаления переписки и прекращения общения',
+    'datenschutz.rights.complaint.title': 'Право на подачу жалобы в надзорный орган (ст. 77 DSGVO)',
+    'datenschutz.rights.complaint.description': 'Вы имеете право подать жалобу в надзорный орган по защите данных на обработку ваших персональных данных.',
+    'datenschutz.rights.complaint.authority': 'Компетентный надзорный орган:',
+    'datenschutz.rights.contact': 'Для реализации ваших прав обращайтесь, пожалуйста, по адресу:',
+
+    // Section 4 - Сбор данных на нашем сайте
+    'datenschutz.section4.title': '4. Сбор данных на нашем веб-сайте',
+    'datenschutz.section4.serverlog.title': 'Серверные лог-файлы',
+    'datenschutz.section4.serverlog.intro': 'Провайдер сайта автоматически собирает и сохраняет информацию в так называемых серверных лог-файлах, которые ваш браузер автоматически передаёт нам. Это:',
+    'datenschutz.section4.serverlog.item1': 'Тип и версия браузера',
+    'datenschutz.section4.serverlog.item2': 'Используемая операционная система',
+    'datenschutz.section4.serverlog.item3': 'URL-адрес источника перехода (Referrer)',
+    'datenschutz.section4.serverlog.item4': 'Имя хоста обращающегося компьютера',
+    'datenschutz.section4.serverlog.item5': 'Время серверного запроса',
+    'datenschutz.section4.serverlog.item6': 'IP-адрес',
+    'datenschutz.section4.serverlog.legal': 'Объединение этих данных с другими источниками не производится. Сбор данных осуществляется на основании ст. 6 абз. 1 лит. f DSGVO. Оператор сайта имеет законный интерес в технически безошибочном отображении и оптимизации своего веб-сайта — для этого необходима запись серверных лог-файлов.',
+
+    'datenschutz.section4.contact_form.title': 'Контактная форма',
+    'datenschutz.section4.contact_form.p1': 'Если вы направляете нам запросы через контактную форму, ваши данные из формы запроса, включая указанные вами контактные данные, сохраняются у нас для обработки запроса и на случай дополнительных вопросов. Эти данные мы не передаём без вашего согласия.',
+    'datenschutz.section4.contact_form.p2': 'Обработка данных, введённых в контактную форму, осуществляется исключительно на основании вашего согласия (ст. 6 абз. 1 лит. a DSGVO). Вы можете отозвать это согласие в любое время. Для этого достаточно отправить нам неформальное сообщение по электронной почте. Законность обработки данных, произведённой до отзыва, остаётся незатронутой.',
+    'datenschutz.section4.contact_form.p3': 'Данные, введённые вами в контактную форму, хранятся у нас до тех пор, пока вы не потребуете их удаления, не отзовёте согласие на хранение или не отпадёт цель хранения данных (например, после завершения обработки вашего запроса). Обязательные законодательные положения — в частности, сроки хранения — остаются незатронутыми.',
+
+    'datenschutz.section4.inquiry.title': 'Запрос по электронной почте, телефону или факсу',
+    'datenschutz.section4.inquiry.p1': 'Если вы обращаетесь к нам по электронной почте, телефону или факсу, ваш запрос вместе со всеми вытекающими персональными данными (имя, запрос) сохраняется и обрабатывается нами с целью обработки вашего обращения. Эти данные мы не передаём без вашего согласия.',
+    'datenschutz.section4.inquiry.p2': 'Обработка этих данных осуществляется на основании ст. 6 абз. 1 лит. b DSGVO, если ваш запрос связан с исполнением договора или необходим для проведения преддоговорных мероприятий. Во всех остальных случаях обработка основана на вашем согласии (ст. 6 абз. 1 лит. a DSGVO) и/или на наших законных интересах (ст. 6 абз. 1 лит. f DSGVO), так как мы имеем законный интерес в эффективной обработке направленных нам запросов.',
+
+    // Section 4 - Cookies
+    'datenschutz.section4.cookies.title': 'Файлы cookie и технологии отслеживания',
+    'datenschutz.section4.cookies.general.title': 'Общие сведения о файлах cookie',
+    'datenschutz.section4.cookies.general.p1': 'Наш веб-сайт использует файлы cookie и сопоставимые технологии. Файлы cookie — это небольшие текстовые файлы, которые сохраняются на вашем устройстве и содержат определённую информацию.',
+    'datenschutz.section4.cookies.legal.title': 'Правовое основание',
+    'datenschutz.section4.cookies.legal.p1': 'Использование файлов cookie и сопоставимых технологий осуществляется исключительно после вашего явного согласия в соответствии со ст. 6 абз. 1 лит. a DSGVO и § 25 абз. 1 TDDDG. Необязательные cookie и технологии отслеживания устанавливаются только после вашего активного согласия через наш баннер cookie.',
+    'datenschutz.section4.cookies.withdrawal.title': 'Отзыв вашего согласия',
+    'datenschutz.section4.cookies.withdrawal.p1': 'Вы можете отозвать своё согласие в любое время с действием на будущее, обратившись к настройкам cookie в нижней части сайта. Отзыв не влияет на законность обработки, осуществлённой до этого момента.',
+    'datenschutz.section4.cookies.detail.title': 'Подробная информация об используемых cookie:',
+
+    'datenschutz.section4.cookies.necessary.title': '1. Необходимые cookie',
+    'datenschutz.section4.cookies.necessary.name': 'Название cookie',
+    'datenschutz.section4.cookies.necessary.purpose': 'Назначение',
+    'datenschutz.section4.cookies.necessary.purpose.value': 'Сохранение вашего согласия на использование cookie',
+    'datenschutz.section4.cookies.necessary.duration': 'Срок действия',
+    'datenschutz.section4.cookies.necessary.duration.value': '12 месяцев',
+    'datenschutz.section4.cookies.necessary.legal': 'Правовое основание',
+    'datenschutz.section4.cookies.necessary.legal.value': 'Ст. 6 абз. 1 лит. f DSGVO (законный интерес в сохранении ваших предпочтений)',
+
+    'datenschutz.section4.cookies.analytics.title': '2. Аналитические cookie (только с вашего согласия)',
+    'datenschutz.section4.cookies.analytics.names': 'Названия cookie',
+    'datenschutz.section4.cookies.analytics.provider': 'Поставщик',
+    'datenschutz.section4.cookies.analytics.purpose': 'Назначение',
+    'datenschutz.section4.cookies.analytics.purpose.value': 'Статистический анализ использования сайта, улучшение нашего предложения',
+    'datenschutz.section4.cookies.analytics.duration': 'Срок действия',
+    'datenschutz.section4.cookies.analytics.duration.ga': '24 месяца',
+    'datenschutz.section4.cookies.analytics.duration.gid': '24 часа',
+    'datenschutz.section4.cookies.analytics.duration.gat': '1 минута',
+    'datenschutz.section4.cookies.analytics.legal': 'Правовое основание',
+    'datenschutz.section4.cookies.analytics.legal.value': 'Ст. 6 абз. 1 лит. a DSGVO (согласие)',
+    'datenschutz.section4.cookies.analytics.transfer': 'Передача данных',
+    'datenschutz.section4.cookies.analytics.transfer.value': 'Данные могут передаваться на серверы Google в США. Google сертифицирован в рамках EU-US Data Privacy Framework.',
+
+    // Section 4 - SSL/TLS
+    'datenschutz.section4.ssl.title': 'SSL/TLS-шифрование',
+    'datenschutz.section4.ssl.p1': 'В целях безопасности и для защиты передачи конфиденциальной информации, например запросов, которые вы отправляете нам как оператору сайта, данный сайт использует SSL- или TLS-шифрование. Зашифрованное соединение вы можете определить по тому, что адресная строка браузера меняется с «http://» на «https://», а также по значку замка в строке браузера.',
+    'datenschutz.section4.ssl.p2': 'При активном SSL/TLS-шифровании данные, которые вы нам передаёте, не могут быть прочитаны третьими лицами. Шифрование осуществляется в соответствии с актуальным уровнем техники (TLS 1.3).',
+
+    // Section 5 - Социальные сети
+    'datenschutz.section5.title': '5. Социальные сети',
+    'datenschutz.section5.instagram.title': 'Плагин и ссылки Instagram',
+    'datenschutz.section5.instagram.provider': 'Поставщик и принцип работы',
+    'datenschutz.section5.instagram.provider.value': 'На наших страницах встроены функции и ссылки на сервис Instagram. Эти функции предоставляются компанией Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ирландия (материнская компания: Meta Platforms, Inc., США).',
+    'datenschutz.section5.instagram.transfer': 'Передача данных при нажатии',
+    'datenschutz.section5.instagram.transfer.value': 'При нажатии на кнопку или ссылку Instagram происходит передача персональных данных в Meta. Если вы вошли в свой аккаунт Instagram, Instagram может связать посещение наших страниц с вашей учётной записью. При этом могут передаваться следующие данные:',
+    'datenschutz.section5.instagram.data.ip': 'IP-адрес',
+    'datenschutz.section5.instagram.data.browser': 'Информация о браузере',
+    'datenschutz.section5.instagram.data.time': 'Время посещения',
+    'datenschutz.section5.instagram.data.referrer': 'URL-адрес источника (наш веб-сайт)',
+    'datenschutz.section5.instagram.thirdcountry': 'Передача данных в третьи страны',
+    'datenschutz.section5.instagram.thirdcountry.value': 'Meta может передавать персональные данные в США и другие третьи страны. Meta Platforms, Inc. сертифицирована в рамках EU-US Data Privacy Framework.',
+    'datenschutz.section5.instagram.legal': 'Правовое основание',
+    'datenschutz.section5.instagram.legal.value': 'Связь с Instagram осуществляется на основании вашего согласия в соответствии со ст. 6 абз. 1 лит. a DSGVO. Согласие действует на момент нажатия на ссылку.',
+    'datenschutz.section5.instagram.note': 'Примечание',
+    'datenschutz.section5.instagram.note.value': 'Обращаем ваше внимание, что мы как оператор сайта не имеем сведений о содержании передаваемых данных и их использовании Instagram/Meta.',
+    'datenschutz.section5.instagram.info': 'Дополнительная информация',
+    'datenschutz.section5.instagram.info.label': 'Политика конфиденциальности Instagram',
+
+    // Section 5 - TikTok
+    'datenschutz.section5.tiktok.title': 'Ссылки на TikTok',
+    'datenschutz.section5.tiktok.provider': 'Поставщик и принцип работы',
+    'datenschutz.section5.tiktok.provider.value': 'На нашем веб-сайте размещены ссылки на социальную сеть TikTok. Поставщик — TikTok Technology Limited, 10 Earlsfort Terrace, Dublin, D02 T380, Ирландия (для ЕЭЗ). Материнская компания — ByteDance Ltd. с штаб-квартирой в Сингапуре и офисами по всему миру.',
+    'datenschutz.section5.tiktok.transfer': 'Передача данных при нажатии',
+    'datenschutz.section5.tiktok.transfer.value': 'При нажатии на ссылку TikTok вы покидаете наш веб-сайт. TikTok может при этом обрабатывать персональные данные (например, IP-адрес, информацию о браузере, время посещения). Данные могут передаваться на серверы в США, Сингапур или другие третьи страны.',
+    'datenschutz.section5.tiktok.legal': 'Правовое основание',
+    'datenschutz.section5.tiktok.legal.value': 'Размещение ссылки осуществляется на основании вашего согласия в соответствии со ст. 6 абз. 1 лит. a DSGVO путём активного нажатия на ссылку.',
+    'datenschutz.section5.tiktok.info': 'Дополнительная информация',
+    'datenschutz.section5.tiktok.info.label': 'Политика конфиденциальности TikTok',
+
+    // Section 6 - Плагины и инструменты
+    'datenschutz.section6.title': '6. Плагины и инструменты',
+    'datenschutz.section6.maps.title': 'Google Maps',
+    'datenschutz.section6.maps.provider': 'Поставщик и принцип работы',
+    'datenschutz.section6.maps.provider.value': 'Этот сайт использует картографический сервис Google Maps для отображения нашего местоположения. Поставщик — Google Ireland Limited («Google»), Gordon House, Barrow Street, Dublin 4, Ирландия.',
+    'datenschutz.section6.maps.transfer': 'Передача данных',
+    'datenschutz.section6.maps.transfer.value': 'При использовании Google Maps ваш IP-адрес передаётся в Google для отображения карты. Эта информация, как правило, передаётся на сервер Google в США и сохраняется там. Оператор этого сайта не имеет влияния на эту передачу данных. Google LLC сертифицирована в рамках EU-US Data Privacy Framework.',
+    'datenschutz.section6.maps.legal': 'Правовое основание',
+    'datenschutz.section6.maps.legal.value': 'Использование Google Maps осуществляется на основании ст. 6 абз. 1 лит. f DSGVO. Мы имеем законный интерес в визуальном отображении нашего местоположения и облегчении проезда к нам. Если было запрошено соответствующее согласие, обработка осуществляется исключительно на основании ст. 6 абз. 1 лит. a DSGVO; согласие может быть отозвано в любое время.',
+    'datenschutz.section6.maps.info': 'Дополнительная информация',
+    'datenschutz.section6.maps.info.label': 'Политика конфиденциальности Google',
+
+    'datenschutz.section6.analytics.title': 'Google Analytics',
+    'datenschutz.section6.analytics.provider': 'Поставщик и объём обработки данных',
+    'datenschutz.section6.analytics.provider.value': 'Этот веб-сайт использует Google Analytics — сервис веб-аналитики компании Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ирландия («Google»).',
+    'datenschutz.section6.analytics.cookies_intro': 'Google Analytics использует файлы cookie (см. выше: _ga, _gid, _gat), позволяющие анализировать использование веб-сайта. Информация, генерируемая файлами cookie об использовании вами этого сайта, включает:',
+    'datenschutz.section6.analytics.data.ip': 'IP-адрес (анонимизированный)',
+    'datenschutz.section6.analytics.data.device': 'Тип устройства и информация о браузере',
+    'datenschutz.section6.analytics.data.pages': 'Посещённые страницы и длительность пребывания',
+    'datenschutz.section6.analytics.data.referrer': 'Источник перехода (Referrer)',
+    'datenschutz.section6.analytics.anonymization': 'Анонимизация IP-адреса',
+    'datenschutz.section6.analytics.anonymization.value': 'На этом веб-сайте активирована анонимизация IP-адреса. Ваш IP-адрес сокращается Google в пределах государств — членов Европейского Союза или других государств — участников Соглашения о Европейском экономическом пространстве, прежде чем в исключительных случаях передаётся на сервер Google в США.',
+    'datenschutz.section6.analytics.thirdcountry': 'Передача данных в третьи страны',
+    'datenschutz.section6.analytics.thirdcountry.value': 'Данные, собранные Google Analytics, могут передаваться на серверы Google в США. Google LLC сертифицирована в рамках EU-US Data Privacy Framework, что обеспечивает надлежащий уровень защиты данных',
+    'datenschutz.section6.analytics.legal': 'Правовое основание',
+    'datenschutz.section6.analytics.legal.value': 'Использование Google Analytics осуществляется исключительно на основании вашего явного согласия в соответствии со ст. 6 абз. 1 лит. a DSGVO и § 25 абз. 1 TDDDG.',
+    'datenschutz.section6.analytics.withdrawal': 'Отзыв согласия и срок хранения',
+    'datenschutz.section6.analytics.withdrawal.value': 'Вы можете отозвать своё согласие в любое время с действием на будущее через настройки cookie в нижней части сайта. После отзыва все cookie Google Analytics удаляются и дальнейший сбор данных прекращается.',
+    'datenschutz.section6.analytics.storage': 'Срок хранения данных составляет до 14 месяцев.',
+    'datenschutz.section6.analytics.info': 'Дополнительная информация',
+    'datenschutz.section6.analytics.info.label': 'Политика конфиденциальности Google',
+
+    'datenschutz.section6.searchconsole.title': 'Google Search Console',
+    'datenschutz.section6.searchconsole.p1': 'Этот веб-сайт использует Google Search Console — сервис веб-аналитики от Google для технического анализа и оптимизации сайта. Google Search Console не использует файлы cookie и обрабатывает исключительно анонимизированные и агрегированные данные.',
+
+    'datenschutz.section6.ahrefs.title': 'Ahrefs',
+    'datenschutz.section6.ahrefs.p1': 'Для поисковой оптимизации и технического анализа веб-сайта используется инструмент Ahrefs (Ahrefs Pte. Ltd., Сингапур). Ahrefs обрабатывает технические данные доступа (например, IP-адрес, User-Agent) для анализа производительности сайта.',
+    'datenschutz.section6.ahrefs.p2': 'Обработка осуществляется на основании ст. 6 абз. 1 лит. f DSGVO (законный интерес в оптимизации и безопасности веб-сайта).',
+
+    // Section 7 - Собственные сервисы
+    'datenschutz.section7.title': '7. Собственные сервисы',
+    'datenschutz.section7.booking.title': 'Запись на приём и управление клиентами',
+    'datenschutz.section7.booking.intro': 'Для записи на приём и управления клиентами мы обрабатываем следующие персональные данные:',
+    'datenschutz.section7.booking.item1': 'Имя и фамилия',
+    'datenschutz.section7.booking.item2': 'Номер телефона',
+    'datenschutz.section7.booking.item3': 'Адрес электронной почты',
+    'datenschutz.section7.booking.item4': 'Пожелания по процедурам и история процедур',
+    'datenschutz.section7.booking.item5': 'Время записи',
+    'datenschutz.section7.booking.health.title': 'Пожелания по процедурам и история процедур',
+    'datenschutz.section7.booking.health.p1': 'Медицинские диагнозы или конфиденциальные данные о состоянии здоровья в соответствии со ст. 9 DSGVO не обрабатываются.',
+    'datenschutz.section7.booking.legal': 'Обработка осуществляется в целях исполнения договора с вами и для проведения преддоговорных мероприятий на основании ст. 6 абз. 1 лит. b DSGVO. Данные хранятся в течение срока деловых отношений, а также сверх этого для исполнения законодательных обязательств по хранению.',
+
+    'datenschutz.section7.altegio.title': 'Онлайн-запись через ALTEGIO',
+    'datenschutz.section7.altegio.provider': 'Поставщик и назначение',
+    'datenschutz.section7.altegio.provider.value': 'Онлайн-запись осуществляется через внешний сервис ALTEGIO (Alteg.io). При использовании системы бронирования персональные данные обрабатываются в целях управления записями и их организации.',
+    'datenschutz.section7.altegio.data': 'Обрабатываемые данные',
+    'datenschutz.section7.altegio.data.item1': 'Имя и фамилия',
+    'datenschutz.section7.altegio.data.item2': 'Номер телефона',
+    'datenschutz.section7.altegio.data.item3': 'Адрес электронной почты',
+    'datenschutz.section7.altegio.data.item4': 'Пожелания по записи (дата, время, желаемая процедура)',
+    'datenschutz.section7.altegio.data.item5': 'По желанию: особые пожелания или примечания',
+    'datenschutz.section7.altegio.legal': 'Правовое основание',
+    'datenschutz.section7.altegio.legal.value': 'Обработка данных осуществляется в целях управления записями и их организации на основании ст. 6 абз. 1 лит. b DSGVO (исполнение договора или преддоговорные мероприятия).',
+    'datenschutz.section7.altegio.storage': 'Срок хранения',
+    'datenschutz.section7.altegio.storage.value': 'Данные хранятся в течение срока обработки записи, а также для исполнения законодательных обязательств по хранению. По истечении установленных законом сроков хранения данные удаляются, если вы не дали явного согласия на дальнейшее использование.',
+    'datenschutz.section7.altegio.processing': 'Обработка данных по поручению',
+    'datenschutz.section7.altegio.processing.value': 'Обработка данных осуществляется в рамках обработки по поручению в соответствии со ст. 28 DSGVO. ALTEGIO договорно обязан обрабатывать ваши данные только по нашему указанию и с соблюдением DSGVO.',
+    'datenschutz.section7.altegio.info': 'Дополнительная информация',
+    'datenschutz.section7.altegio.info.label': 'Политика конфиденциальности ALTEGIO',
+
+    'datenschutz.section7.messenger.title': 'Связь через мессенджеры и телефон',
+    'datenschutz.section7.messenger.general': 'Общие сведения',
+    'datenschutz.section7.messenger.general.value': 'Данный веб-сайт содержит ссылки на внешние коммуникационные сервисы, такие как WhatsApp, Telegram, а также телефонную связь.',
+    'datenschutz.section7.messenger.whatsapp.provider': 'Поставщик: Meta Platforms Ireland Limited (материнская компания: Meta Platforms, Inc., США)',
+    'datenschutz.section7.messenger.whatsapp.transfer': 'При нажатии на ссылку WhatsApp или при обращении через WhatsApp данные передаются в Meta. WhatsApp обрабатывает персональные данные (например, номер телефона, содержание сообщений, метаданные) в том числе на серверах в США. Meta Platforms, Inc. сертифицирована в рамках EU-US Data Privacy Framework.',
+    'datenschutz.section7.messenger.whatsapp.info.label': 'Политика конфиденциальности',
+    'datenschutz.section7.messenger.telegram.provider': 'Поставщик: Telegram Messenger LLP / Telegram FZ-LLC, Дубай, ОАЭ',
+    'datenschutz.section7.messenger.telegram.transfer': 'Telegram обрабатывает данные на серверах по всему миру, в том числе за пределами ЕС/ЕЭЗ. Обработка осуществляется в соответствии с политикой конфиденциальности Telegram.',
+    'datenschutz.section7.messenger.telegram.info.label': 'Политика конфиденциальности',
+    'datenschutz.section7.messenger.legal': 'Правовое основание',
+    'datenschutz.section7.messenger.legal.value': 'Использование этих каналов связи является добровольным и осуществляется на основании вашего согласия в соответствии со ст. 6 абз. 1 лит. a DSGVO. Нажимая на соответствующую ссылку, вы даёте согласие на передачу данных соответствующему сервису.',
+    'datenschutz.section7.messenger.phone': 'Телефон',
+    'datenschutz.section7.messenger.phone.value': 'При обращении по телефону ваш номер телефона и содержание разговора обрабатываются в целях обработки вашего запроса (ст. 6 абз. 1 лит. b DSGVO или лит. f DSGVO).',
+
+    'datenschutz.section7.external.title': 'Внешние ссылки и социальные сети',
+    'datenschutz.section7.external.p1': 'Наш веб-сайт содержит ссылки на внешние веб-сайты и социальные сети (например, Instagram, TikTok, сайты партнёров).',
+    'datenschutz.section7.external.p2': 'При нажатии на такие ссылки вы покидаете наш веб-сайт. За обработку персональных данных на связанных сайтах несёт ответственность исключительно их оператор.',
+
+    'datenschutz.section7.treatments.title': 'Технические примечания к процедурам',
+    'datenschutz.section7.treatments.p1': 'В рамках наших услуг (например, маникюр, педикюр, аппаратная косметология, процедуры с системой iCOONE®, а также лазерные процедуры с диодным, александритовым и RedTouch-лазерами) персональные данные о состоянии здоровья в соответствии со ст. 9 DSGVO автоматически не обрабатываются и не сохраняются.',
+    'datenschutz.section7.treatments.p2': 'Персональные данные используются исключительно для организации записей и коммуникации с клиентами.',
+
+    // Section 8 - Обработка по поручению
+    'datenschutz.section8.title': '8. Обработка данных по поручению',
+    'datenschutz.section8.intro': 'Мы заключили договоры об обработке данных по поручению с одним или несколькими из указанных ниже поставщиков для вышеуказанных целей:',
+    'datenschutz.section8.item1': 'Vercel Inc. (хостинг веб-сайта, США, DPF-сертификация)',
+    'datenschutz.section8.item2': 'Supabase Inc. (бэкенд базы данных, США, DPF-сертификация)',
+    'datenschutz.section8.item3': 'Поставщик услуг электронной почты',
+    'datenschutz.section8.item4': 'ALTEGIO (система бронирования)',
+    'datenschutz.section8.item5': 'Google Ireland Limited (Google Analytics)',
+    'datenschutz.section8.obligation': 'Все обработчики данных по поручению договорно обязаны обрабатывать ваши данные только по нашему указанию и с соблюдением DSGVO.',
+
+    // Datenschutz Footer
+    'datenschutz.updated': 'Дата обновления политики конфиденциальности',
+    'datenschutz.updated.date': 'Февраль 2026',
+    'datenschutz.generator': 'Настоящая политика конфиденциальности составлена индивидуально для данного веб-сайта.',
+
+    // AGB (Общие условия)
+    'agb.title': 'Общие условия (AGB)',
+    'agb.subtitle': 'Действительны для всех услуг Yuliia Cheporska Studio',
+
+    // AGB Section 1: Область применения
+    'agb.section1.title': '1. Область применения',
+    'agb.section1.p1': 'Настоящие Общие условия (AGB) действуют для всех услуг, предлагаемых на сайте www.munchen-beauty.de, а также для всех записей на приём между студией / исполнителем услуг (напр. Yuliia Cheporska Studio) и клиентами.',
+    'agb.section1.p2': 'Отклоняющиеся условия клиентов не применяются, если только их действие не было явно согласовано в письменной форме.',
+
+    // AGB Section 2: Услуги
+    'agb.section2.title': '2. Услуги',
+    'agb.section2.p1': 'Предлагаемые услуги включают, в частности, косметические и эстетические процедуры (напр. процедуры для лица и тела, аппаратная косметология, лазерные процедуры, перманентный макияж и другие бьюти-услуги).',
+    'agb.section2.p2': 'Точный объём услуг определяется соответствующей записью на приём, описанием услуг на сайте и актуальным прейскурантом.',
+    'agb.section2.p3': 'Индивидуальные планы процедур и специальные условия возможны по договорённости.',
+
+    // AGB Section 3: Запись на приём
+    'agb.section3.title': '3. Запись на приём',
+    'agb.section3.p1': 'Записаться на приём можно онлайн (напр. через внешние системы бронирования), по телефону, электронной почте или через мессенджеры.',
+    'agb.section3.p2': 'Обязательный договор заключается после подтверждения записи студией.',
+
+    // AGB Section 4: Условия оплаты
+    'agb.section4.title': '4. Условия оплаты',
+    'agb.section4.p1': 'Оплата производится, как правило, на месте после процедуры, если не согласовано иное.',
+    'agb.section4.p2': 'Принимаются следующие способы оплаты:',
+    'agb.section4.payment.cash': 'Наличные',
+    'agb.section4.payment.ec': 'EC-карта',
+    'agb.section4.payment.credit': 'Кредитная карта',
+    'agb.section4.p3': 'При годовых абонементах оплата производится ежемесячно согласованным списанием.',
+    'agb.section4.p4': 'Все цены указаны с учётом установленного законом налога на добавленную стоимость, если не указано иное.',
+
+    // AGB Section 5: Отмена и перенос записи
+    'agb.section5.title': '5. Отмена и перенос записи',
+    'agb.section5.subtitle': 'Отмена клиентами',
+    'agb.section5.li1': 'Бесплатная отмена или перенос записи возможны не позднее чем за 24 часа до назначенного времени.',
+    'agb.section5.li2': 'При отмене менее чем за 24 часа до приёма или при неявке мы оставляем за собой право взимать компенсацию в размере 30 \u20AC, если не доказан меньший ущерб.',
+    'agb.section5.li3': 'За клиентами сохраняется право доказать, что ущерб не возник или возник в меньшем размере.',
+    'agb.section5.p1': 'При абонементах предоставляется разумная гибкость при переносе записей в рамках договорных условий.',
+
+    // AGB Section 6: Опоздание
+    'agb.section6.title': '6. Опоздание',
+    'agb.section6.p1': 'При опоздании более чем на 15 минут время процедуры может быть соответственно сокращено. Право на снижение цены в этом случае отсутствует.',
+
+    // AGB Section 7: Ответственность
+    'agb.section7.title': '7. Ответственность',
+    'agb.section7.p1': 'Предлагаемые процедуры выполняются добросовестно и в соответствии с актуальными профессиональными стандартами.',
+    'agb.section7.p2': 'Гарантия определённого результата процедуры не может быть предоставлена, поскольку индивидуальные реакции кожи и организма могут различаться.',
+    'agb.section7.p3': 'Студия несёт ответственность за ущерб только при умысле или грубой небрежности. Это не распространяется на ущерб жизни, здоровью или телесной целостности. Ответственность по Закону об ответственности за продукцию остаётся без изменений.',
+
+    // AGB Section 8: Обязанности клиентов
+    'agb.section8.title': '8. Обязанности клиентов по содействию',
+    'agb.section8.p1': 'Клиенты обязаны до начала процедуры достоверно сообщить о состоянии здоровья, аллергиях, перенесённых заболеваниях или иных существенных обстоятельствах.',
+    'agb.section8.p2': 'При отсутствии соответствующего уведомления ответственность исключается в допустимых законом пределах.',
+
+    // AGB Section 9: Защита данных
+    'agb.section9.title': '9. Защита данных',
+    'agb.section9.p1': 'Сбор и обработка персональных данных осуществляется в соответствии с действующей Политикой конфиденциальности на www.munchen-beauty.de и положениями DSGVO.',
+
+    // AGB Section 10: Применимое право
+    'agb.section10.title': '10. Применимое право',
+    'agb.section10.p1': 'Применяется право Федеративной Республики Германия.',
+
+    // AGB Section 11: Сальваторная оговорка
+    'agb.section11.title': '11. Сальваторная оговорка',
+    'agb.section11.p1': 'Если отдельные положения настоящих Общих условий окажутся полностью или частично недействительными, это не влияет на действительность остальных положений.',
+
+    // AGB Section 12: Инструкция по отзыву
+    'agb.section12.title': '12. Инструкция по отзыву',
+    'agb.section12.subtitle1': 'Право на отзыв',
+    'agb.section12.p1': 'Вы имеете право в течение четырнадцати дней без указания причин отозвать этот договор. Срок отзыва составляет четырнадцать дней со дня заключения договора. Для осуществления права на отзыв вы должны уведомить нас (Yuliia Cheporska Studio, Elsässer Straße 33, 81667 München, E-Mail: Yulachip@icloud.com) посредством однозначного заявления (например, письмо по почте или электронная почта) о вашем решении отозвать этот договор.',
+    'agb.section12.subtitle2': 'Последствия отзыва',
+    'agb.section12.p2': 'Если вы отзовёте этот договор, мы обязаны вернуть вам все платежи, полученные от вас, незамедлительно и не позднее четырнадцати дней со дня получения нами уведомления о вашем отзыве.',
+    'agb.section12.subtitle3': 'Досрочное прекращение права на отзыв',
+    'agb.section12.p3': 'Право на отзыв прекращается досрочно, если мы полностью оказали услугу и начали оказание услуги только после того, как вы дали на это ваше явное согласие и одновременно подтвердили, что вы утрачиваете право на отзыв при полном исполнении договора.',
+
+    // AGB Section 13: Несовершеннолетние
+    'agb.section13.title': '13. Несовершеннолетние',
+    'agb.section13.p1': 'Процедуры для несовершеннолетних до 18 лет требуют письменного согласия законного представителя. Согласие должно быть предоставлено до начала процедуры.',
+
+    // AGB Section 14: Подарочные сертификаты
+    'agb.section14.title': '14. Подарочные сертификаты',
+    'agb.section14.p1': 'Подарочные сертификаты действительны минимум три года с даты выдачи (§ 807 BGB в связи с § 195 BGB). Стоимость сертификата может быть использована для любых предлагаемых услуг. Выплата наличными исключается.',
+
+    // AGB Footer
+    'agb.updated': 'По состоянию на:',
+    'agb.updated.date': 'Февраль 2026',
+
+    // 404 Page
+    'notfound.title': 'Страница не найдена',
+    'notfound.message': 'К сожалению, запрашиваемая страница не существует или была перемещена.',
+    'notfound.home': 'На главную',
+    'notfound.services': 'Наши услуги',
+    'notfound.contact': 'Контакты',
+
+    // Image Alt Texts
+    'alt.home.laser': 'Лазерная эпиляция Мюнхен – Студия Yuliia Cheporska',
+    'alt.home.redtouch': 'RedTouch 675 нм процедура для кожи Мюнхен',
+    'alt.home.icoone': 'Icoone®️ лазерная процедура Мюнхен',
+    'alt.home.nails': 'Маникюр и педикюр Мюнхен – Ногтевая студия',
+    'alt.services.alexandrit': 'Александритовый лазер эпиляция Мюнхен',
+    'alt.services.diode': 'Диодный лазер эпиляция Мюнхен',
+    'alt.services.icoone': 'Icoone®️ лазер для тела',
+    'alt.services.redtouch': 'RedTouch Pro омоложение кожи',
+    'alt.services.nails': 'Профессиональный маникюр и педикюр',
+    'alt.laser.alexandrit': 'Александритовый лазер Мюнхен – технология DEKA',
+    'alt.laser.diode': 'Диодный лазер эпиляция Мюнхен – M-Tech',
+    'alt.comparison.hero': 'Технология лазерной эпиляции Мюнхен',
+    'alt.comparison.alexandrit': 'Александритовый лазер Мюнхен – Motus AX',
+    'alt.comparison.diode': 'Диодный лазер Мюнхен – система M-Tech',
+    'alt.comparison.deka': 'Александритовый лазер – технология DEKA',
+    'alt.comparison.treatment': 'Александритовый лазер – процедура',
+    'alt.nails.manicure1': 'Маникюр Мюнхен – Классический уход за ногтями',
+    'alt.nails.manicure2': 'Маникюр Мюнхен – Профессиональный уход',
+    'alt.nails.manicure3': 'Маникюр Мюнхен – Дизайн ногтей',
+    'alt.nails.design': 'Дизайн маникюра – Индивидуальное оформление',
+    'alt.nails.manicure4': 'Маникюр Мюнхен – Результат',
+    'alt.nails.manicure5': 'Маникюр Мюнхен – Детальная работа',
+    'alt.nails.nailart': 'Нейл-арт Мюнхен – Креативный дизайн',
+    'alt.nails.manicure6': 'Маникюр Мюнхен – Студия',
+    'alt.nails.gel': 'Гель-лак Мюнхен – Долговременное покрытие',
+    'alt.nails.manicure7': 'Маникюр Мюнхен – Финишная обработка',
+    'alt.nails.pedicure.main': 'Педикюр Мюнхен – Профессиональный уход за ногами',
+    'alt.nails.pedicure.detail': 'Педикюр Мюнхен – Детальная процедура',
+    'alt.redtouch.logo': 'RedTouch PRO логотип – DEKA',
+    'alt.redtouch.device': 'RedTouch 675 нм – Косметический салон Мюнхен Хайдхаузен',
+    'alt.icoone.device': 'Icoone®️ лазер – Косметический салон Мюнхен Хайдхаузен',
+    'alt.icoone.room': 'Icoone®️ процедурный кабинет Мюнхен',
+    'alt.icoone.handpiece': 'Icoone®️ насадка детально',
+    'alt.about.yuliia': 'Юлия Чепорская – Косметолог Мюнхен',
+    'alt.about.studio': 'Атмосфера студии – Yuliia Cheporska Мюнхен',
+
+    // Cross-service linking
+    'crosslink.title': 'Другие процедуры',
+    'crosslink.laser': 'Лазерная эпиляция',
+    'crosslink.laser.desc': 'Александрит и диодный лазер для долговременного удаления волос.',
+    'crosslink.redtouch': 'RedTouch 675 нм',
+    'crosslink.redtouch.desc': 'Омоложение кожи, коррекция пигментации и стимуляция коллагена.',
+    'crosslink.icoone': 'Icoone®️ лазер',
+    'crosslink.icoone.desc': 'Коррекция фигуры, уменьшение целлюлита и укрепление тканей.',
+    'crosslink.nails': 'Маникюр и педикюр',
+    'crosslink.nails.desc': 'Классический, гель, наращивание и медицинский педикюр.',
+    'crosslink.more': 'Подробнее',
   }
 };
 

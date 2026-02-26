@@ -64,10 +64,10 @@ const CookieBanner = () => {
     <>
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 animate-in slide-in-from-bottom duration-500">
         <Card className="max-w-4xl mx-auto bg-background/95 backdrop-blur-sm border-2 border-rose-gold/20 shadow-2xl">
-          <div className="p-6 sm:p-8">
+          <div className="p-4 sm:p-6 md:p-8 max-h-[80vh] overflow-y-auto">
             <div className="flex items-start gap-4">
-              {/* Cookie Icon */}
-              <div className="flex-shrink-0 mt-1">
+              {/* Cookie Icon - hidden on mobile to save space */}
+              <div className="hidden sm:flex flex-shrink-0 mt-1">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-gold/20 to-primary/20 flex items-center justify-center">
                   <Cookie className="w-6 h-6 text-rose-gold" />
                 </div>
@@ -91,12 +91,12 @@ const CookieBanner = () => {
                   </p>
                 </div>
 
-                {/* Buttons - Equal weight and prominence */}
+                {/* Buttons - Equal weight and prominence (GDPR: both buttons must be visually equal) */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  {/* Accept All - Primary button */}
+                  {/* Accept All */}
                   <Button
                     onClick={handleAcceptAll}
-                    className="bg-gradient-to-r from-rose-gold to-primary hover:opacity-90 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
+                    className="bg-rose-gold/10 hover:bg-rose-gold/20 border-2 border-rose-gold text-foreground font-semibold shadow-lg hover:shadow-xl transition-all"
                   >
                     {t('cookies.accept')}
                   </Button>
@@ -104,7 +104,7 @@ const CookieBanner = () => {
                   {/* Reject/Necessary Only - Equal prominence */}
                   <Button
                     onClick={handleRejectAll}
-                    className="bg-background hover:bg-accent border-2 border-rose-gold/50 hover:border-rose-gold text-foreground font-semibold shadow-lg hover:shadow-xl transition-all"
+                    className="bg-background hover:bg-accent border-2 border-rose-gold text-foreground font-semibold shadow-lg hover:shadow-xl transition-all"
                   >
                     {t('cookies.necessary')}
                   </Button>

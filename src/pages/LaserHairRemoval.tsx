@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { PageHelmet } from '@/components/PageHelmet';
 import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { showBookingWidget } from '@/lib/altegioWidget';
+import ConsentMap from '@/components/ConsentMap';
 // Изображения загружаются из папки public
 
 const LaserHairRemoval = () => {
@@ -32,7 +34,8 @@ const LaserHairRemoval = () => {
       '@graph': [
         {
           '@type': 'Service',
-          '@id': `${baseUrl}/${currentLang}/laser-haarentfernung-muenchen#service`,
+          '@id': `${baseUrl}/laser-haarentfernung-muenchen#service`,
+          mainEntityOfPage: `${baseUrl}/${currentLang}/laser-haarentfernung-muenchen`,
           name: isRu
             ? 'Лазерная эпиляция в Мюнхене — навсегда'
             : 'Dauerhafte Laser-Haarentfernung München',
@@ -199,11 +202,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               {t('laser.hero.button')}
             </Button>
@@ -239,7 +238,8 @@ const LaserHairRemoval = () => {
                   <div className="relative">
                     <img
                       src="/17.png"
-                      alt="Alexandrit Laser München"
+                      alt={t('alt.laser.alexandrit')}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
@@ -284,7 +284,8 @@ const LaserHairRemoval = () => {
                   <div className="relative">
                     <img
                       src="/19.png"
-                      alt="Diodenlaser Haarentfernung München"
+                      alt={t('alt.laser.diode')}
+                      loading="lazy"
                       className="w-full h-full object-cover"
                       style={{
                         transform: 'scale(1.0)',
@@ -696,11 +697,7 @@ const LaserHairRemoval = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 {t('laser.pricing.consultation')}
               </Button>
@@ -785,18 +782,7 @@ const LaserHairRemoval = () => {
                 </Card>
               </div>
               
-              <div className="rounded-lg overflow-hidden shadow-card h-96">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Yuliia Cheporska Studio Location"
-                ></iframe>
-              </div>
+              <ConsentMap height="h-96" />
             </div>
           </div>
         </div>
@@ -828,6 +814,41 @@ const LaserHairRemoval = () => {
             </Card>
           </div>
 
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link to={withLang("/redtouch-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.redtouch')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.redtouch.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/icoone-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.icoone')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.icoone.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/manikuere-pedikuere-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.nails')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.nails.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

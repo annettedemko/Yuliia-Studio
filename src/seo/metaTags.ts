@@ -26,120 +26,130 @@ export const metaTags: Record<string, PageMeta> = {
   '/laser-haarentfernung-muenchen': {
     de: {
       title: 'Laser-Haarentfernung München | Alexandrit & Diodenlaser',
-      description: 'Laser Haarentfernung München: Alexandrit (755 nm) & Diodenlaser. Langanhaltende Reduktion, Kontaktkühlung, Ablauf & Zonen. Preise auf /preise.'
+      description: 'Laser-Haarentfernung München-Haidhausen: Alexandrit (755 nm) & Diodenlaser mit Kontaktkühlung. Langanhaltende Reduktion für alle Zonen. Ablauf, FAQ & Preise.'
     },
     ru: {
       title: 'Лазерная эпиляция Мюнхен | Александрит и диодный лазер',
-      description: 'Лазерная эпиляция Мюнхен: александрит (755 нм) и диодный лазер. Долговременное удаление волос, контактное охлаждение, этапы и зоны. Цены в /preis.'
+      description: 'Лазерная эпиляция Мюнхен-Хайдхаузен: александрит (755 нм) и диодный лазер с контактным охлаждением. Долговременное удаление волос для всех зон. Этапы, FAQ и цены.'
     }
   },
   '/alexandrit-gegen-diodenlaser': {
     de: {
       title: 'Alexandrit vs. Diodenlaser – Unterschiede & Einsatz',
-      description: 'Vergleich: Alexandrit vs. Diodenlaser – Wirkung, Komfort, Eignung je Haut/Haartyp, Sommer/Bräune, Sicherheit, Sitzungen. Praxis-FAQ & Empfehlungen.'
+      description: 'Vergleich Alexandrit vs. Diodenlaser: Wirkung, Komfort, Eignung nach Haut- und Haartyp, Sommer/Bräune, Sicherheit und Sitzungsanzahl. Praxis-FAQ & Empfehlungen.'
     },
     ru: {
       title: 'Александрит vs. диодный лазер – отличия и применение',
-      description: 'Сравнение: александрит vs. диодный лазер – действие, комфорт, подходящий тип кожи/волос, лето/загар, безопасность, сеансы. FAQ и рекомендации.'
+      description: 'Сравнение: александрит vs. диодный лазер – действие, комфорт, подходящий тип кожи и волос, лето/загар, безопасность, количество сеансов. FAQ и рекомендации.'
     }
   },
   '/preis': {
     de: {
-      title: 'Preise – Yuliia Cheporska Studio München',
-      description: 'Transparente Preise & Pakete: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Alle Zonen & Angebote im Überblick.'
+      title: 'Preise & Pakete – Yuliia Cheporska Studio München-Haidhausen',
+      description: 'Transparente Preise inkl. MwSt.: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Alle Zonen, Pakete und Abonnements im Überblick.'
     },
     ru: {
-      title: 'Цены – Студия Yuliia Cheporska Мюнхен',
-      description: 'Прозрачные цены и пакеты: лазерная эпиляция, RedTouch 675 нм, Icoone®️, маникюр и педикюр. Все зоны и предложения в обзоре.'
+      title: 'Цены и пакеты – Студия Yuliia Cheporska Мюнхен-Хайдхаузен',
+      description: 'Прозрачные цены вкл. НДС: лазерная эпиляция, RedTouch 675 нм, Icoone®️, маникюр и педикюр. Все зоны, пакеты и абонементы в обзоре. Запись онлайн.'
     }
   },
   '/services': {
     de: {
-      title: 'Leistungen – Laser, RedTouch, Icoone, Nägel | München',
-      description: 'Alle Leistungen im Überblick: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre. Jetzt passende Behandlung finden.'
+      title: 'Leistungen – Laser, RedTouch, Icoone & Nägel | München',
+      description: 'Alle Leistungen im Überblick: Laser-Haarentfernung (Alexandrit & Diodenlaser), RedTouch 675 nm Hautverjüngung, Icoone®️ Bodyforming, Maniküre & Pediküre München.'
     },
     ru: {
-      title: 'Услуги – лазер, RedTouch, Icoone, маникюр | Мюнхен',
-      description: 'Все услуги в обзоре: лазерная эпиляция, RedTouch 675 нм, Icoone®️, маникюр и педикюр. Найдите подходящую процедуру.'
+      title: 'Услуги – лазер, RedTouch, Icoone и маникюр | Мюнхен',
+      description: 'Все услуги в обзоре: лазерная эпиляция (александрит и диодный лазер), RedTouch 675 нм омоложение кожи, Icoone®️ коррекция фигуры, маникюр и педикюр Мюнхен.'
     }
   },
   '/about': {
     de: {
-      title: 'Über uns – Yuliia Cheporska Studio München',
-      description: 'Studio & Team in München-Haidhausen. Meist gut verträgliche Behandlungen dank Kontaktkühlung. Kontakt, Anfahrt & Öffnungszeiten.'
+      title: 'Über uns – Yuliia Cheporska Studio München-Haidhausen',
+      description: 'Ihr Beauty-Studio in München-Haidhausen nahe Ostbahnhof. Zertifizierte Lasertechnologie, individueller Ansatz, meist gut verträgliche Behandlungen. Team & Kontakt.'
     },
     ru: {
-      title: 'О нас – Студия Yuliia Cheporska Мюнхен',
-      description: 'Студия и команда в Мюнхене-Хайдхаузен. Обычно хорошо переносимые процедуры благодаря контактному охлаждению. Контакты, как добраться и часы работы.'
+      title: 'О нас – Студия Yuliia Cheporska в Мюнхене-Хайдхаузен',
+      description: 'Ваша студия красоты в Мюнхене-Хайдхаузен рядом с Остбанхоф. Сертифицированные лазерные технологии, индивидуальный подход, комфортные процедуры. Команда и контакты.'
     }
   },
   '/manikuere-pedikuere-muenchen': {
     de: {
-      title: 'Maniküre & Pediküre München | Yuliia Cheporska Studio',
-      description: 'Maniküre & Pediküre in München-Haidhausen: präzise Pflege, saubere Form, Hygiene; Lack/Gel nach Wunsch. Termin online buchen.'
+      title: 'Maniküre & Pediküre München-Haidhausen | Yuliia Cheporska',
+      description: 'Professionelle Maniküre & Pediküre in München-Haidhausen: Klassisch, Gel, Nagelmodellage, Nail Art, medizinische Fußpflege. Präzise Pflege & Hygiene. Termin online.'
     },
     ru: {
-      title: 'Маникюр и педикюр Мюнхен | Студия Yuliia Cheporska',
-      description: 'Маникюр и педикюр в Мюнхене-Хайдхаузен: точный уход, аккуратная форма, гигиена; лак/гель по желанию. Запись онлайн.'
+      title: 'Маникюр и педикюр Мюнхен-Хайдхаузен | Yuliia Cheporska',
+      description: 'Профессиональный маникюр и педикюр в Мюнхене-Хайдхаузен: классический, гель, наращивание, нейл-арт, медицинский педикюр. Точный уход и гигиена. Запись онлайн.'
     }
   },
   '/redtouch-laser-muenchen': {
     de: {
-      title: 'RedTouch 675 nm München – Hautbild & Pigment',
-      description: 'RedTouch München: 675 nm, nicht-ablativ – Hautstruktur, feine Linien, Akne-Narben & ausgewählte Pigmentthemen. Meist kaum Downtime.'
+      title: 'RedTouch 675 nm München | Hautverjüngung & Pigmentkorrektur',
+      description: 'RedTouch Laser München-Haidhausen: 675 nm, nicht-ablativ – Kollagenstimulation, Hautstruktur, feine Linien, Akne-Narben & Pigmentthemen. Kaum Ausfallzeit.'
     },
     ru: {
-      title: 'RedTouch 675 нм Мюнхен – состояние кожи и пигментация',
-      description: 'RedTouch Мюнхен: 675 нм, неабляционный – структура кожи, мелкие морщины, шрамы от акне и избранные проблемы с пигментацией. Практически без реабилитации.'
+      title: 'RedTouch 675 нм Мюнхен | Омоложение кожи и пигментация',
+      description: 'RedTouch лазер Мюнхен-Хайдхаузен: 675 нм, неабляционный – стимуляция коллагена, текстура кожи, мелкие морщины, шрамы от акне и пигментация. Без реабилитации.'
     }
   },
   '/icoone-laser-muenchen': {
     de: {
-      title: 'Icoone®️ München – Bindegewebe & Hautbild',
-      description: 'Icoone®️ München: wohltuende, mechanisch stimulierte Anwendungen für Bindegewebe & Hautbild. Planbar, ohne Downtime. Termin online.'
+      title: 'Icoone®️ Laser München | Bindegewebe, Cellulite & Hautbild',
+      description: 'Icoone®️ Laser München-Haidhausen: Roboderm®-Mikrostimulation für straffes Bindegewebe, Cellulite-Reduktion und glatteres Hautbild. Ohne Downtime. Termin online.'
     },
     ru: {
-      title: 'Icoone®️ Мюнхен – соединительная ткань и состояние кожи',
-      description: 'Icoone®️ Мюнхен: приятные, механически стимулированные процедуры для соединительной ткани и состояния кожи. Предсказуемо, без реабилитации. Запись онлайн.'
+      title: 'Icoone®️ лазер Мюнхен | Соединительная ткань и целлюлит',
+      description: 'Icoone®️ лазер Мюнхен-Хайдхаузен: Roboderm®-микростимуляция для упругой соединительной ткани, уменьшения целлюлита и гладкой кожи. Без реабилитации. Запись онлайн.'
     }
   },
   '/impressum': {
     de: {
-      title: 'Impressum – Yuliia Cheporska Studio München',
-      description: 'Anbieterkennzeichnung gemäß § 5 TMG: Anschrift, Kontakt und Verantwortliche des Studios in München-Haidhausen.'
+      title: 'Impressum – Yuliia Cheporska Studio | München-Haidhausen',
+      description: 'Anbieterkennzeichnung gemäß § 5 DDG: Yuliia Cheporska, Elsässer Str. 33, 81667 München. Kontaktdaten, Verantwortliche und rechtliche Hinweise.'
     },
     ru: {
-      title: 'Выходные данные – Студия Yuliia Cheporska Мюнхен',
-      description: 'Выходные данные согласно § 5 TMG: адрес, контакты и ответственные лица студии в Мюнхене-Хайдхаузен.'
+      title: 'Выходные данные – Студия Yuliia Cheporska | Мюнхен-Хайдхаузен',
+      description: 'Выходные данные согласно § 5 DDG: Юлия Чепорская, Elsässer Str. 33, 81667 Мюнхен. Контактные данные, ответственные лица и правовая информация.'
     }
   },
   '/datenschutzerklaerung': {
     de: {
       title: 'Datenschutzerklärung – Yuliia Cheporska Studio München',
-      description: 'Datenschutzerklärung: Zwecke, Rechtsgrundlagen, Speicherdauer und Rechte der Betroffenen im Yuliia Cheporska Studio München.'
+      description: 'Datenschutzerklärung gemäß DSGVO: Zwecke, Rechtsgrundlagen, Speicherdauer, Ihre Rechte als Betroffener. Yuliia Cheporska Studio München-Haidhausen.'
     },
     ru: {
       title: 'Политика конфиденциальности – Студия Yuliia Cheporska Мюнхен',
-      description: 'Политика конфиденциальности: цели, правовые основания, срок хранения данных и права субъектов данных в студии Yuliia Cheporska Мюнхен.'
+      description: 'Политика конфиденциальности согласно DSGVO: цели, правовые основания, срок хранения данных, ваши права. Студия Yuliia Cheporska Мюнхен-Хайдхаузен.'
+    }
+  },
+  '/agb': {
+    de: {
+      title: 'AGB – Allgemeine Geschäftsbedingungen | Yuliia Cheporska Studio',
+      description: 'Allgemeine Geschäftsbedingungen (AGB) inkl. Widerrufsbelehrung für Terminbuchungen. Yuliia Cheporska Studio München-Haidhausen.'
+    },
+    ru: {
+      title: 'Общие условия (AGB) | Студия Yuliia Cheporska Мюнхен',
+      description: 'Общие условия (AGB), включая инструкцию по отзыву для онлайн-бронирования. Студия Yuliia Cheporska Мюнхен-Хайдхаузен.'
     }
   },
   '/kontakt': {
     de: {
-      title: 'Kontakt – Yuliia Cheporska Studio München',
-      description: 'Kontaktieren Sie uns: Elsässer Str. 33, 81667 München. Telefon, E-Mail, Instagram. Öffnungszeiten & Anfahrt.'
+      title: 'Kontakt & Anfahrt – Yuliia Cheporska Studio München',
+      description: 'Kontaktieren Sie uns: Elsässer Str. 33, 81667 München-Haidhausen (nahe Ostbahnhof). Telefon, E-Mail, WhatsApp, Instagram. Öffnungszeiten & Anfahrt mit ÖPNV.'
     },
     ru: {
-      title: 'Контакты – Студия Yuliia Cheporska Мюнхен',
-      description: 'Свяжитесь с нами: Elsässer Str. 33, 81667 Мюнхен. Телефон, электронная почта, Instagram. Часы работы и как добраться.'
+      title: 'Контакты и как добраться – Студия Yuliia Cheporska Мюнхен',
+      description: 'Свяжитесь с нами: Elsässer Str. 33, 81667 Мюнхен-Хайдхаузен (рядом с Остбанхоф). Телефон, e-mail, WhatsApp, Instagram. Часы работы и как добраться.'
     }
   },
   '/deka-geraeteverkauf': {
     de: {
-      title: 'DEKA Laser Geräteverkauf München | Professionelle Lasersysteme',
+      title: 'DEKA Laser Geräteverkauf München | Professionelle Systeme',
       description: 'Professioneller Verkauf von DEKA Lasersystemen: Alexandrit, Dioden, Motus AX, RedTouch Pro. Beratung, Installation und Service für Beauty-Studios in München.'
     },
     ru: {
-      title: 'Продажа лазерного оборудования DEKA Мюнхен | Профессиональные системы',
+      title: 'Продажа лазерного оборудования DEKA Мюнхен | Профессионалам',
       description: 'Профессиональная продажа лазерных систем DEKA: александрит, диод, Motus AX, RedTouch Pro. Консультация, установка и обслуживание для салонов красоты в Мюнхене.'
     }
   },
@@ -156,51 +166,51 @@ export const metaTags: Record<string, PageMeta> = {
   '/motus-pro': {
     de: {
       title: 'Motus Pro Laser München | DEKA Haarentfernungssystem',
-      description: 'Motus Pro: Professionelles Alexandrit-Lasersystem von DEKA für dauerhafte Haarentfernung. Moveo-Technologie für schmerzfreie Behandlung.'
+      description: 'Motus Pro: Professionelles Alexandrit-Lasersystem von DEKA für dauerhafte Haarentfernung. Moveo-Technologie für schmerzfreie Behandlung aller Hauttypen.'
     },
     ru: {
-      title: 'Motus Pro лазер Мюнхен | Система эпиляции DEKA',
-      description: 'Motus Pro: Профессиональная александритовая лазерная система DEKA для долговременного удаления волос. Технология Moveo для безболезненной процедуры.'
+      title: 'Motus Pro лазер Мюнхен | Система DEKA для эпиляции',
+      description: 'Motus Pro: профессиональная александритовая лазерная система DEKA для долговременного удаления волос. Технология Moveo для безболезненной процедуры всех типов кожи.'
     }
   },
   '/motus-ax': {
     de: {
-      title: 'Motus AX Laser München | DEKA Alexandrit & Nd:YAG',
-      description: 'Motus AX: Dual-Wellenlängen Lasersystem (Alexandrit 755nm + Nd:YAG 1064nm) von DEKA. Für alle Hauttypen und ganzjährige Behandlung.'
+      title: 'Motus AX Laser München | DEKA Alexandrit & Nd:YAG System',
+      description: 'Motus AX: Dual-Wellenlängen Lasersystem (Alexandrit 755nm + Nd:YAG 1064nm) von DEKA. Für alle Hauttypen und ganzjährige Behandlung. Moveo-Technologie.'
     },
     ru: {
-      title: 'Motus AX лазер Мюнхен | DEKA александрит и Nd:YAG',
-      description: 'Motus AX: Двухволновая лазерная система (александрит 755нм + Nd:YAG 1064нм) от DEKA. Для всех типов кожи и круглогодичных процедур.'
+      title: 'Motus AX лазер Мюнхен | DEKA александрит и Nd:YAG система',
+      description: 'Motus AX: двухволновая лазерная система (александрит 755нм + Nd:YAG 1064нм) от DEKA. Для всех типов кожи и круглогодичных процедур. Технология Moveo.'
     }
   },
   '/physiq360': {
     de: {
-      title: 'Physiq360 München | DEKA Body Contouring System',
-      description: 'Physiq360: Innovatives Body-Contouring-System von DEKA. Elektromagnetische Muskelstimulation (STEP) für Körperformung und Muskelaufbau.'
+      title: 'Physiq360 München | DEKA Body Contouring & Muskelaufbau',
+      description: 'Physiq360: Innovatives Body-Contouring-System von DEKA. Elektromagnetische Muskelstimulation (STEP) für Körperformung und Muskelaufbau. Ohne Ausfallzeit.'
     },
     ru: {
-      title: 'Physiq360 Мюнхен | Система коррекции фигуры DEKA',
-      description: 'Physiq360: Инновационная система коррекции фигуры от DEKA. Электромагнитная стимуляция мышц (STEP) для формирования тела и наращивания мышц.'
+      title: 'Physiq360 Мюнхен | DEKA коррекция фигуры и укрепление мышц',
+      description: 'Physiq360: инновационная система коррекции фигуры от DEKA. Электромагнитная стимуляция мышц (STEP) для формирования тела и наращивания мышц. Без реабилитации.'
     }
   },
   '/again-cos': {
     de: {
-      title: 'Again Cosmetics München | DEKA Kosmetikprodukte',
-      description: 'Again Cosmetics: Professionelle Hautpflegeprodukte von DEKA. Ergänzende Pflege für optimale Behandlungsergebnisse.'
+      title: 'Again Cosmetics München | DEKA Professionelle Hautpflege',
+      description: 'Again Cosmetics: Professionelle Hautpflegeprodukte von DEKA für optimale Behandlungsergebnisse. Ergänzende Pflege nach Laser- und Hautbehandlungen.'
     },
     ru: {
-      title: 'Again Cosmetics Мюнхен | Косметика DEKA',
-      description: 'Again Cosmetics: Профессиональные средства по уходу за кожей от DEKA. Дополнительный уход для оптимальных результатов процедур.'
+      title: 'Again Cosmetics Мюнхен | Профессиональная косметика DEKA',
+      description: 'Again Cosmetics: профессиональные средства по уходу за кожей от DEKA для оптимальных результатов процедур. Дополнительный уход после лазерных процедур.'
     }
   },
   '/deka': {
     de: {
       title: 'DEKA Event München | Laser Demonstrations & Schulungen',
-      description: 'DEKA Event in München: Live-Demonstrationen von Lasersystemen, Schulungen und Beratung. Exklusive Einblicke in DEKA Technologie.'
+      description: 'DEKA Event in München: Live-Demonstrationen von Lasersystemen, Schulungen und Beratung. Exklusive Einblicke in DEKA Technologie für Beauty-Profis.'
     },
     ru: {
       title: 'DEKA Event Мюнхен | Демонстрация лазеров и обучение',
-      description: 'DEKA Event в Мюнхене: Live-демонстрации лазерных систем, обучение и консультации. Эксклюзивный взгляд на технологию DEKA.'
+      description: 'DEKA Event в Мюнхене: live-демонстрации лазерных систем, обучение и консультации. Эксклюзивный взгляд на технологию DEKA для профессионалов красоты.'
     }
   },
   '/deka-day': {

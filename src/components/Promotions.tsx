@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Clock
 } from 'lucide-react';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 // Icon mapping
 const iconMap: Record<string, any> = {
@@ -182,11 +183,7 @@ export const Promotions = () => {
                   <Button
                     className={`w-full ${colors.accent} text-white hover:opacity-90 transition-all group-hover:scale-105`}
                     size="lg"
-                    onClick={() => {
-                      if (window.yWidget) {
-                        window.yWidget.show(window.yWidget.href);
-                      }
-                    }}
+                    onClick={() => showBookingWidget()}
                   >
                     <Phone className="w-5 h-5" />
                     <span>{language === 'ru' ? 'Записаться' : 'Termin buchen'}</span>

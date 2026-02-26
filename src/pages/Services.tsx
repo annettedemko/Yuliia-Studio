@@ -2,9 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Instagram, Waves, CheckCircle } from 'lucide-react';
+import { useEffect } from 'react';
 import { PageHelmet } from '@/components/PageHelmet';
+import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AGBNotice from '@/components/AGBNotice';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -19,6 +22,49 @@ const Services = () => {
     if (path === '/') return langPrefix;
     return `${langPrefix}${path}`;
   };
+
+  useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
+    const isRu = currentLang === 'ru';
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${baseUrl}/services#page`,
+      mainEntityOfPage: `${baseUrl}/${currentLang}/services`,
+      name: isRu ? 'Услуги студии Yuliia Cheporska' : 'Leistungen – Yuliia Cheporska Studio',
+      description: isRu
+        ? 'Все услуги: лазерная эпиляция, RedTouch 675 нм, Icoone®️, маникюр и педикюр в Мюнхене-Хайдхаузен.'
+        : 'Alle Leistungen: Laser-Haarentfernung, RedTouch 675 nm, Icoone®️, Maniküre & Pediküre in München-Haidhausen.',
+      inLanguage: isRu ? 'ru' : 'de',
+      provider: {
+        '@type': 'BeautySalon',
+        '@id': `${baseUrl}#business`,
+        name: 'Yuliia Cheporska Studio'
+      },
+      hasPart: [
+        {
+          '@type': 'Service',
+          name: isRu ? 'Лазерная эпиляция' : 'Laser-Haarentfernung',
+          url: `${baseUrl}/${currentLang}/laser-haarentfernung-muenchen`
+        },
+        {
+          '@type': 'Service',
+          name: isRu ? 'RedTouch 675 нм' : 'RedTouch 675 nm',
+          url: `${baseUrl}/${currentLang}/redtouch-laser-muenchen`
+        },
+        {
+          '@type': 'Service',
+          name: 'Icoone®️ Laser',
+          url: `${baseUrl}/${currentLang}/icoone-laser-muenchen`
+        },
+        {
+          '@type': 'Service',
+          name: isRu ? 'Маникюр и педикюр' : 'Maniküre & Pediküre',
+          url: `${baseUrl}/${currentLang}/manikuere-pedikuere-muenchen`
+        }
+      ]
+    });
+  }, [currentLang]);
 
   return (
     <>
@@ -65,7 +111,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/17.png" alt="Motus AX Alexandrit-Laser" className="w-full h-full object-cover" />
+                  <img src="/17.png" alt={t('alt.services.alexandrit')} className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
@@ -73,7 +119,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center ml-[-8%]">
+                <div className="p-8 flex flex-col justify-center ml-0 lg:ml-[-8%]">
                   <h3 className="text-3xl font-bold text-primary mb-4">{t('services.motus.title')}</h3>
                   <p className="text-muted-foreground mb-6">
                     {t('services.motus.description')}
@@ -100,7 +146,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/2.jpeg" alt="M-Tech Diodenlaser"
+                  <img src="/2.jpeg" alt={t('alt.services.diode')} loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
@@ -146,7 +192,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/3.jpeg" alt="Icoone Laser"
+                  <img src="/3.jpeg" alt={t('alt.services.icoone')} loading="lazy"
                     className="w-full h-full object-cover"
                     style={{ transform: 'scale(0.85)', objectPosition: 'center' }}
                   />
@@ -186,7 +232,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/deka2.png" alt="RedTouchPro"
+                  <img src="/deka2.png" alt={t('alt.services.redtouch')} loading="lazy"
                     className="w-full h-full object-contain"
                     style={{ objectPosition: 'center' }}
                   />
@@ -256,7 +302,7 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="relative h-64 md:h-80 lg:h-full">
-                    <img src="/23.png" alt="Maniküre & Pediküre" className="w-full h-full object-cover" />
+                    <img src="/23.png" alt={t('alt.services.nails')} className="w-full h-full object-cover" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                     <div className="absolute top-4 right-4">
                       <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
@@ -366,11 +412,7 @@ const Services = () => {
             <Button
               size="lg"
               className="bg-white text-black hover:bg-white/90"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               {t('services.cta.book')}
             </Button>

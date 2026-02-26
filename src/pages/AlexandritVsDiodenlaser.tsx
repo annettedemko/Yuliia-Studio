@@ -7,6 +7,7 @@ import { PageHelmet } from '@/components/PageHelmet';
 import { setJsonLd } from '@/seo/seo';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const AlexandritVsDiodenlaser = () => {
   const { t } = useLanguage();
@@ -24,26 +25,96 @@ const AlexandritVsDiodenlaser = () => {
   };
 
   useEffect(() => {
+    const baseUrl = 'https://www.munchen-beauty.de';
+    const isRu = currentLang === 'ru';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Alexandrit vs. Diodenlaser: Was ist wann effektiver?',
-      author: {
-        '@type': 'Organization',
-        name: 'Yuliia Cheporska Studio'
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Yuliia Cheporska Studio',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://www.munchen-beauty.de/logo2.jpg'
+      '@graph': [
+        {
+          '@type': 'Article',
+          '@id': `${baseUrl}/alexandrit-gegen-diodenlaser#article`,
+          headline: isRu
+            ? 'Александритовый vs. диодный лазер: что и когда эффективнее?'
+            : 'Alexandrit vs. Diodenlaser: Was ist wann effektiver?',
+          inLanguage: isRu ? 'ru' : 'de',
+          mainEntityOfPage: `${baseUrl}/${currentLang}/alexandrit-gegen-diodenlaser`,
+          author: {
+            '@type': 'Organization',
+            name: 'Yuliia Cheporska Studio'
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Yuliia Cheporska Studio',
+            logo: {
+              '@type': 'ImageObject',
+              url: `${baseUrl}/logo2.jpg`
+            }
+          },
+          datePublished: '2025-01-15',
+          description: isRu
+            ? 'Понятное руководство: объясняем, как работают александритовый и диодный лазер, в чём их сильные стороны и как мы подбираем подходящий метод.'
+            : 'Verständlicher Leitfaden: Wir erklären, wie Alexandrit- und Diodenlaser funktionieren, wo ihre Stärken liegen und wie wir die passende Methode wählen.'
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': `${baseUrl}/alexandrit-gegen-diodenlaser#faq`,
+          inLanguage: isRu ? 'ru' : 'de',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: isRu ? 'Один метод принципиально лучше другого?' : 'Ist ein Verfahren grundsätzlich besser als das andere?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Нет. Обе системы эффективны. Мы выбираем лучший вариант для каждого человека и сеанса, основываясь на вашем типе кожи, цвете волос и зоне обработки.'
+                  : 'Nein. Beide Systeme sind wirksam. Wir wählen je nach Person und Sitzung die beste Option – basierend auf Ihrem Hauttyp, Haarfarbe und Zone.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Больно ли делать лазерную эпиляцию?' : 'Tut Laser-Haarentfernung weh?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Ощущения индивидуальны. Контактное охлаждение делает сеанс хорошо переносимым для большинства. Многие описывают это как легкое покалывание или теплое ощущение.'
+                  : 'Das Empfinden ist individuell. Die Kontaktkühlung macht die Sitzung für die meisten gut verträglich. Viele beschreiben ein leichtes Kribbeln oder Wärmegefühl.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Можно ли начинать летом?' : 'Kann ich im Sommer starten?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Да, с ограничениями: по возможности избегать солнца/загара; возможно консервативные настройки или перенос сеанса. Мы проконсультируем вас индивидуально о лучшей стратегии.'
+                  : 'Ja, mit Einschränkungen: Sonne/Bräune möglichst meiden; ggf. konservativere Einstellungen oder Terminverschiebung. Wir beraten Sie individuell zur besten Strategie.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Работает ли на очень тонких, седых или рыжих волосах?' : 'Funktioniert es bei sehr feinen / grauen / roten Haaren?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Для очень светлых/седых/рыжих волос эффективность ограничена (мало/нет пигмента). Мы обсудим альтернативы и реалистичные ожидания во время консультации.'
+                  : 'Bei sehr hellen/grauen/roten Haaren ist die Wirkung begrenzt (wenig/kein Pigment). Wir besprechen Alternativen und realistische Erwartungen im Beratungsgespräch.'
+              }
+            },
+            {
+              '@type': 'Question',
+              name: isRu ? 'Сколько сеансов мне понадобится?' : 'Wie viele Sitzungen brauche ich?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: isRu
+                  ? 'Обычно минимум 6, иногда больше. Интервалы 4–6 недель, в зависимости от зоны и динамики. Точное количество зависит от вашего типа волос, типа кожи и обрабатываемой зоны.'
+                  : 'Üblicherweise mindestens 6, manchmal mehr. Abstände 4–6 Wochen, je nach Zone und Dynamik. Die genaue Anzahl hängt von Ihrem Haartyp, Hauttyp und zu behandelnder Zone ab.'
+              }
+            }
+          ]
         }
-      },
-      datePublished: '2025-01-15',
-      description: 'Verständlicher Leitfaden: Wir erklären, wie Alexandrit- und Diodenlaser funktionieren, wo ihre Stärken liegen und wie wir die passende Methode wählen.'
+      ]
     });
-  }, []);
+  }, [currentLang]);
 
   return (
     <>
@@ -88,11 +159,7 @@ const AlexandritVsDiodenlaser = () => {
             <Button
               size="lg"
               className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               {t('comparison.hero.button.book')}
             </Button>
@@ -240,7 +307,8 @@ const AlexandritVsDiodenlaser = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all"></div>
               <img
                 src="/19.png"
-                alt="Laser Haarentfernung Technologie München"
+                alt={t('alt.comparison.hero')}
+                loading="lazy"
                 className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl relative z-10 border-4 border-white"
               />
             </div>
@@ -362,7 +430,8 @@ const AlexandritVsDiodenlaser = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <img
                     src="/deka3.1.jpeg"
-                    alt="Alexandrit Laser München - Motus AX"
+                    alt={t('alt.comparison.alexandrit')}
+                    loading="lazy"
                     className="w-full h-64 object-cover"
                     style={{ transform: 'scale(1.35)' }}
                   />
@@ -384,7 +453,8 @@ const AlexandritVsDiodenlaser = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <img
                     src="/19.png"
-                    alt="Diodenlaser Haarentfernung München - M-Tech"
+                    alt={t('alt.comparison.diode')}
+                    loading="lazy"
                     className="w-full h-64 object-cover"
                     style={{ objectPosition: 'center 10%' }}
                   />
@@ -471,13 +541,14 @@ const AlexandritVsDiodenlaser = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src="/deka3.2.jpeg"
-                    alt="Alexandrit Laser München - DEKA Technologie"
+                    alt={t('alt.comparison.deka')}
+                    loading="lazy"
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-bold text-lg">DEKA Alexandrit System</p>
-                    <p className="text-sm text-white/80">Premium Laser-Technologie</p>
+                    <p className="font-bold text-lg">{t('comparison.devices.overlay.alex.title')}</p>
+                    <p className="text-sm text-white/80">{t('comparison.devices.overlay.alex.subtitle')}</p>
                   </div>
                 </div>
               </Card>
@@ -486,13 +557,14 @@ const AlexandritVsDiodenlaser = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src="/deka3.3.jpeg"
-                    alt="Alexandrit Laser München - Behandlung"
+                    alt={t('alt.comparison.treatment')}
+                    loading="lazy"
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-bold text-lg">Alexandrit Behandlung</p>
-                    <p className="text-sm text-white/80">Professionelle Anwendung</p>
+                    <p className="font-bold text-lg">{t('comparison.devices.overlay.treatment.title')}</p>
+                    <p className="text-sm text-white/80">{t('comparison.devices.overlay.treatment.subtitle')}</p>
                   </div>
                 </div>
               </Card>
@@ -882,11 +954,7 @@ const AlexandritVsDiodenlaser = () => {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 text-lg px-8 py-6"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 {t('comparison.cta.button.book')}
               </Button>

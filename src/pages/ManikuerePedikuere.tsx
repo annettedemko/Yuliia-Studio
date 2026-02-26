@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import { showBookingWidget } from '@/lib/altegioWidget';
 // Изображения загружаются из папки public
 
 const ManikuerePedikuere = () => {
@@ -25,32 +26,63 @@ const ManikuerePedikuere = () => {
 
   useEffect(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    const lang = typeof window !== 'undefined' && window.location.pathname.startsWith('/ru') ? 'ru' : 'de';
+    const isRu = currentLang === 'ru';
     setJsonLd({
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
+      '@graph': [
         {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: `${baseUrl}/${lang}`
+          '@type': 'Service',
+          '@id': `${baseUrl}/manikuere-pedikuere-muenchen#service`,
+          mainEntityOfPage: `${baseUrl}/${currentLang}/manikuere-pedikuere-muenchen`,
+          name: isRu ? 'Маникюр и педикюр Мюнхен' : 'Maniküre & Pediküre München',
+          serviceType: isRu ? 'Ногтевой сервис' : 'Nagelservice',
+          description: isRu
+            ? 'Профессиональный маникюр и педикюр в Мюнхене-Хайдхаузен: классический, гель, наращивание, нейл-арт, медицинский педикюр.'
+            : 'Professionelle Maniküre & Pediküre in München-Haidhausen: Klassisch, Gel, Nagelmodellage, Nail Art, medizinische Fußpflege.',
+          inLanguage: isRu ? 'ru' : 'de',
+          provider: {
+            '@type': 'BeautySalon',
+            '@id': `${baseUrl}#business`,
+            name: 'Yuliia Cheporska Studio'
+          },
+          areaServed: {
+            '@type': 'City',
+            name: 'München'
+          },
+          offers: {
+            '@type': 'Offer',
+            url: `${baseUrl}/${currentLang}/preis#manicure`,
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock'
+          }
         },
         {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Services',
-          item: `${baseUrl}/${lang}/services`
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Maniküre & Pediküre München',
-          item: `${baseUrl}/${lang}/manikuere-pedikuere-muenchen`
+          '@type': 'BreadcrumbList',
+          inLanguage: isRu ? 'ru' : 'de',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: isRu ? 'Главная' : 'Home',
+              item: `${baseUrl}/${currentLang}`
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: isRu ? 'Услуги' : 'Services',
+              item: `${baseUrl}/${currentLang}/services`
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: isRu ? 'Маникюр и педикюр Мюнхен' : 'Maniküre & Pediküre München',
+              item: `${baseUrl}/${currentLang}/manikuere-pedikuere-muenchen`
+            }
+          ]
         }
       ]
     });
-  }, []);
+  }, [currentLang]);
   const manicureServices = [
     {
       icon: Hand,
@@ -173,11 +205,7 @@ const ManikuerePedikuere = () => {
           <Button
             size="lg"
             className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
-            onClick={() => {
-              if (window.yWidget) {
-                window.yWidget.show(window.yWidget.href);
-              }
-            }}
+            onClick={() => showBookingWidget()}
           >
             {t('nails.hero.button')}
           </Button>
@@ -306,11 +334,7 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 {t('nails.cta.book')}
               </Button>
@@ -372,11 +396,7 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/80 hover:to-primary text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 {t('nails.cta.book')}
               </Button>
@@ -397,54 +417,64 @@ const ManikuerePedikuere = () => {
                 <div className="space-y-4">
                   <img
                     src="/7.jpg"
-                    alt="Maniküre 1"
+                    alt={t('alt.nails.manicure1')}
+                    loading="lazy"
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/11.jpg"
-                    alt="Maniküre 2"
+                    alt={t('alt.nails.manicure2')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/13.jpg"
-                    alt="Maniküre 3"
+                    alt={t('alt.nails.manicure3')}
+                    loading="lazy"
                     className="w-full h-40 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/25.jpg"
-                    alt="Maniküre Design"
+                    alt={t('alt.nails.design')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   </div>
                 <div className="space-y-4 mt-8">
                   <img
                     src="/4.jpeg"
-                    alt="Maniküre 4"
+                    alt={t('alt.nails.manicure4')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/12.jpg"
-                    alt="Maniküre 5"
+                    alt={t('alt.nails.manicure5')}
+                    loading="lazy"
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/26.jpg"
-                    alt="Nail Art"
+                    alt={t('alt.nails.nailart')}
+                    loading="lazy"
                     className="w-full h-40 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/14.jpg"
-                    alt="Maniküre 6"
+                    alt={t('alt.nails.manicure6')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/27.jpg"
-                    alt="Gel Nägel"
+                    alt={t('alt.nails.gel')}
+                    loading="lazy"
                     className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/15.jpg"
-                    alt="Maniküre 7"
+                    alt={t('alt.nails.manicure7')}
+                    loading="lazy"
                     className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
                   </div>
@@ -596,14 +626,16 @@ const ManikuerePedikuere = () => {
                 <div className="flex-1">
                   <img
                     src="/8.jpg"
-                    alt="Pediküre Hauptbild"
+                    alt={t('alt.nails.pedicure.main')}
+                    loading="lazy"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
                   </div>
                 <div className="flex-1">
                   <img
                     src="/16.jpg"
-                    alt="Pediküre Detail"
+                    alt={t('alt.nails.pedicure.detail')}
+                    loading="lazy"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
                   </div>
@@ -626,11 +658,7 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 {t('nails.final-cta.book')}
               </Button>
@@ -697,6 +725,41 @@ const ManikuerePedikuere = () => {
               </div>
             </div>
           </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link to={withLang("/laser-haarentfernung-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.laser')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.laser.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/redtouch-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.redtouch')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.redtouch.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/icoone-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.icoone')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.icoone.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       </div>

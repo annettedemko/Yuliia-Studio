@@ -161,14 +161,16 @@ const About = () => {
               <div className="flex-1">
                 <img
                   src="/IMG1.jpg"
-                  alt="Yuliia Cheporska - Kosmetikerin"
+                  alt={t('alt.about.yuliia')}
+                  loading="lazy"
                   className="w-full h-96 object-cover rounded-lg shadow-elegant"
                 />
               </div>
               <div className="flex-1 mt-2">
                 <img
                   src="/10.jpg"
-                  alt="Studio Atmosphäre"
+                  alt={t('alt.about.studio')}
+                  loading="lazy"
                   className="w-full h-80 object-cover rounded-lg shadow-elegant"
                   style={{ objectPosition: 'center 12%' }}
                 />

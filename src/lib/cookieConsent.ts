@@ -6,6 +6,7 @@
 export type ConsentCategories = {
   necessary: boolean;
   analytics: boolean;
+  timestamp?: string;
 };
 
 export type ConsentValue = 'all' | 'necessary' | 'custom';
@@ -35,7 +36,7 @@ export function getConsentPreferences(): ConsentCategories | null {
 export function saveConsentPreferences(categories: ConsentCategories): void {
   if (typeof document === 'undefined') return;
 
-  const value = JSON.stringify(categories);
+  const value = JSON.stringify({ ...categories, timestamp: new Date().toISOString() });
   setCookie(CONSENT_COOKIE_NAME, value, CONSENT_EXPIRY_DAYS);
 
   // If analytics is disabled, remove analytics cookies

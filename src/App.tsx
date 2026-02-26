@@ -13,13 +13,14 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import CookieBanner from "./components/CookieBanner";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Loading component for Suspense fallback
 const PageLoader = () => (
   <div className="flex min-h-screen items-center justify-center">
     <div className="flex flex-col items-center gap-4">
       <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-      <p className="text-muted-foreground">Loading...</p>
     </div>
   </div>
 );
@@ -80,6 +81,7 @@ const App = () => (
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
               <Navigation />
               <main style={{ flex: 1 }}>
+                <ErrorBoundary>
                 <Suspense fallback={<PageLoader />}>
                   <Routes>
                   {/* Редирект с корня на /de */}
@@ -196,10 +198,12 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Suspense>
+                </ErrorBoundary>
               </main>
               <Footer />
             </div>
             <CookieBanner />
+            <SpeedInsights />
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>

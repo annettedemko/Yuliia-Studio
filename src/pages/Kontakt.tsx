@@ -7,6 +7,8 @@ import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import AGBNotice from '@/components/AGBNotice';
+import ConsentMap from '@/components/ConsentMap';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const Kontakt = () => {
   const { t } = useLanguage();
@@ -219,19 +221,8 @@ const Kontakt = () => {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">{t('kontakt.map.title')}</h2>
 
-            {/* Google Maps Embed */}
-            <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2662!2d11.654647!3d48.120969!3m2!1i1024!2i768!4f13.1!3m6!1m2!1s0x0%3A0x9a465969a059dfde!2sYuliia%20Cheporska%20Studio!3m2!1sde!2sde"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Yuliia Cheporska Studio München-Haidhausen Standort"
-              ></iframe>
-              </div>
+            {/* Google Maps with 2-click consent */}
+            <ConsentMap className="mb-8" />
 
             {/* Transport Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -324,11 +315,7 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 {t('kontakt.cta.book')}

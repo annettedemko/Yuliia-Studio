@@ -5,6 +5,7 @@ import { Menu, X, Phone, ChevronDown, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const Navigation = () => {
   const { t } = useLanguage();
@@ -274,11 +275,7 @@ const Navigation = () => {
                 variant="outline"
                 size="sm"
                 className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
-                onClick={() => {
-                  if (window.yWidget) {
-                    window.yWidget.show(window.yWidget.href);
-                  }
-                }}
+                onClick={() => showBookingWidget()}
               >
                 <Calendar className="w-3 h-3 mr-1" />
                 {t('nav.button.appointment')}
@@ -291,7 +288,8 @@ const Navigation = () => {
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2"
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -396,11 +394,7 @@ const Navigation = () => {
                   variant="outline"
                   size="lg"
                   className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
-                  onClick={() => {
-                    if (window.yWidget) {
-                      window.yWidget.show(window.yWidget.href);
-                    }
-                  }}
+                  onClick={() => showBookingWidget()}
                 >
                   <Calendar className="w-5 h-5 mr-2" />
                   {t('nav.button.book-appointment')}

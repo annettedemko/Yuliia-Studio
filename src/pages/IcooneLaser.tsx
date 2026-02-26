@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
+import { showBookingWidget } from '@/lib/altegioWidget';
 
 const IcooneLaser = () => {
   const { t } = useLanguage();
@@ -30,7 +31,8 @@ const IcooneLaser = () => {
       '@graph': [
         {
           '@type': 'Service',
-          '@id': `${baseUrl}/${currentLang}/icoone-laser-muenchen#service`,
+          '@id': `${baseUrl}/icoone-laser-muenchen#service`,
+          mainEntityOfPage: `${baseUrl}/${currentLang}/icoone-laser-muenchen`,
           name: isRu
             ? 'Icoone® Laser Мюнхен — соединительная ткань и кожа'
             : 'Icoone® Laser München – Bindegewebe & Hautbild',
@@ -226,11 +228,7 @@ const IcooneLaser = () => {
             <Button
               size="lg"
               className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
-              onClick={() => {
-                if (window.yWidget) {
-                  window.yWidget.show(window.yWidget.href);
-                }
-              }}
+              onClick={() => showBookingWidget()}
             >
               {t('icoone.hero.button.consultation')}
             </Button>
@@ -331,7 +329,8 @@ const IcooneLaser = () => {
               <div className="space-y-4">
                 <img
                   src="/3.jpeg"
-                  alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Hauptgerät"
+                  alt={t('alt.icoone.device')}
+                  loading="lazy"
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
                   style={{
                     transform: 'scale(0.6)',
@@ -341,7 +340,8 @@ const IcooneLaser = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <img
                     src="/3.9.jpg"
-                    alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Behandlungsraum"
+                    alt={t('alt.icoone.room')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
                       transform: 'scale(0.85)',
@@ -350,7 +350,8 @@ const IcooneLaser = () => {
                   />
                   <img
                     src="/3.10.jpg"
-                    alt="Icoone Behandlung – Kosmetikstudio München Haidhausen – Handstück Detail"
+                    alt={t('alt.icoone.handpiece')}
+                    loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
                       transform: 'scale(0.85)',
@@ -441,6 +442,41 @@ const IcooneLaser = () => {
             </p>
             </div>
           </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link to={withLang("/laser-haarentfernung-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.laser')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.laser.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/redtouch-laser-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.redtouch')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.redtouch.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+              <Link to={withLang("/manikuere-pedikuere-muenchen")} className="group">
+                <Card className="h-full hover:shadow-lg transition-all">
+                  <CardContent className="p-6">
+                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.nails')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('crosslink.nails.desc')}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       </div>
