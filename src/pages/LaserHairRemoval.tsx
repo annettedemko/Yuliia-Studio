@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link, useLocation } from 'react-router-dom';
-import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight } from 'lucide-react';
+import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { useEffect } from 'react';
 import { PageHelmet } from '@/components/PageHelmet';
 import { setJsonLd } from '@/seo/seo';
@@ -180,28 +180,29 @@ const LaserHairRemoval = () => {
 
         {/* Hero Section */}
       <section
-        className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
+        className="relative min-h-[55vh] md:min-h-[65vh] lg:h-[75vh] flex items-center justify-center text-white"
         style={{
           backgroundImage: `url(/HERO3.1.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-white"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(181,131,141,0.15),transparent_60%)]"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 tracking-tight">
             {t('laser.hero.title')}
           </h1>
-          <p className="text-xl md:text-2xl mb-4 text-white/95">
+          <p className="text-lg sm:text-xl md:text-2xl mb-3 text-white/95 font-light">
             {t('laser.hero.tagline')}
           </p>
-          <p className="text-lg md:text-xl mb-8 text-white/90">
+          <p className="text-base sm:text-lg md:text-xl mb-10 text-white/80">
             {t('laser.hero.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-rose-gold hover:bg-rose-gold-dark text-white border-none shadow-rose"
+              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8 font-semibold"
               onClick={() => showBookingWidget()}
             >
               {t('laser.hero.button')}
@@ -209,7 +210,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
+              className="bg-transparent border-2 border-white/50 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
               asChild
             >
               <Link to={withLang("/preis#alexandrit")}>
@@ -221,98 +222,104 @@ const LaserHairRemoval = () => {
       </section>
 
       {/* Technology Section */}
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('laser.tech.title')}</h2>
-              <p className="text-xl text-muted-foreground">
-                {t('laser.tech.subtitle')}
-              </p>
-            </div>
-            
-            {/* Alexandrit Laser */}
-            <div className="max-w-4xl mx-auto mb-8">
-              <Card className="overflow-hidden hover:shadow-card transition-all duration-300">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="relative">
-                    <img
-                      src="/17.png"
-                      alt={t('alt.laser.alexandrit')}
-                      width={6000}
-                      height={6000}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-                    <div className="absolute top-4 left-4">
-                      <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                        <Award className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-primary mb-4">{t('laser.alexandrit.title')}</h3>
-                    <p className="text-muted-foreground mb-4">
-                      {t('laser.alexandrit.desc')}
-                    </p>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• {t('laser.alexandrit.benefits.item1')}</li>
-                      <li>• {t('laser.alexandrit.benefits.item2')}</li>
-                      <li>• {t('laser.alexandrit.benefits.item3')}</li>
-                      <li>• {t('laser.alexandrit.benefits.item4')}</li>
-                    </ul>
-                  </div>
-                </div>
-              </Card>
+      <section className="relative py-20 bg-background overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-72 h-72 bg-rose-gold/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            {/* Premium section header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-rose-gold/10 border border-rose-gold/20 rounded-full px-4 py-1.5 mb-6">
+                <Sparkles className="w-4 h-4 text-rose-gold" />
+                <span className="text-sm font-medium text-rose-gold tracking-wide uppercase">{t('laser.tech.subtitle')}</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary">{t('laser.tech.title')}</h2>
+              <div className="mt-6 mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
             </div>
 
-            {/* Diodenlaser */}
-            <div className="max-w-4xl mx-auto mb-10">
-              <Card className="overflow-hidden hover:shadow-card transition-all duration-300">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-primary mb-4">{t('laser.diode.title')}</h3>
-                    <p className="text-muted-foreground mb-4">
-                      {t('laser.diode.desc')}
-                    </p>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• {t('laser.diode.benefits.item1')}</li>
-                      <li>• {t('laser.diode.benefits.item2')}</li>
-                      <li>• {t('laser.diode.benefits.item3')}</li>
-                      <li>• {t('laser.diode.benefits.item4')}</li>
-                    </ul>
-                  </div>
-                  <div className="relative">
-                    <img
-                      src="/19.png"
-                      alt={t('alt.laser.diode')}
-                      width={561}
-                      height={764}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                      style={{
-                        transform: 'scale(1.0)',
-                        objectPosition: 'center'
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-l from-black/20 to-transparent"></div>
-                    <div className="absolute top-4 right-4">
-                      <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
-                        <Shield className="w-6 h-6 text-white" />
-                      </div>
+            {/* Equal-height laser cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* Alexandrit Laser */}
+              <div className="group relative rounded-2xl overflow-hidden bg-white border border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 flex flex-col">
+                <div className="relative h-64 sm:h-72 overflow-hidden">
+                  <img
+                    src="/17.png"
+                    alt={t('alt.laser.alexandrit')}
+                    width={6000}
+                    height={6000}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30">
+                      <Award className="w-5 h-5 text-white" />
                     </div>
                   </div>
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">{t('laser.alexandrit.title')}</h3>
+                  </div>
                 </div>
-              </Card>
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                    {t('laser.alexandrit.desc')}
+                  </p>
+                  <ul className="space-y-3 text-sm text-muted-foreground mt-auto">
+                    {['item1', 'item2', 'item3', 'item4'].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <CheckCircle className="w-4 h-4 text-rose-gold flex-shrink-0 mt-0.5" />
+                        <span>{t(`laser.alexandrit.benefits.${item}`)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Diodenlaser */}
+              <div className="group relative rounded-2xl overflow-hidden bg-white border border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 flex flex-col">
+                <div className="relative h-64 sm:h-72 overflow-hidden">
+                  <img
+                    src="/19.png"
+                    alt={t('alt.laser.diode')}
+                    width={561}
+                    height={764}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30">
+                      <Shield className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-lg">{t('laser.diode.title')}</h3>
+                  </div>
+                </div>
+                <div className="p-6 sm:p-8 flex flex-col flex-1">
+                  <p className="text-muted-foreground mb-5 leading-relaxed">
+                    {t('laser.diode.desc')}
+                  </p>
+                  <ul className="space-y-3 text-sm text-muted-foreground mt-auto">
+                    {['item1', 'item2', 'item3', 'item4'].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <CheckCircle className="w-4 h-4 text-rose-gold flex-shrink-0 mt-0.5" />
+                        <span>{t(`laser.diode.benefits.${item}`)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
 
             {/* Comparison Link */}
-            <div className="text-center mt-8">
+            <div className="text-center">
               <Link to={withLang("/alexandrit-gegen-diodenlaser")}>
-                <Button variant="outline" size="lg" className="border-2 border-primary hover:bg-primary hover:text-white transition-all w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="group/btn border-2 border-primary/80 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto rounded-full px-8">
                   <span className="font-semibold text-sm sm:text-base">{t('laser.comparison.button')}</span>
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </Button>
               </Link>
             </div>
@@ -321,305 +328,198 @@ const LaserHairRemoval = () => {
       </section>
 
       {/* Why Multiple Sessions Section */}
-      <section className="py-12 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">{t('laser.sessions.title')}</h2>
-            <div className="text-center mb-12">
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">{t('laser.sessions.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent mb-6"></div>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t('laser.sessions.intro')}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">1</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {[
+                { num: '1', titleKey: 'laser.sessions.anagen.title', descKey: 'laser.sessions.anagen.desc' },
+                { num: '2', titleKey: 'laser.sessions.catagen.title', descKey: 'laser.sessions.catagen.desc' },
+                { num: '3', titleKey: 'laser.sessions.telogen.title', descKey: 'laser.sessions.telogen.desc' },
+              ].map((phase) => (
+                <div key={phase.num} className="group relative text-center rounded-2xl border border-border/50 bg-gradient-to-b from-white to-accent/20 p-8 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1">
+                  <div className="relative mx-auto mb-5 w-16 h-16">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-gold/20 to-primary/20 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div className="relative w-full h-full rounded-full bg-white border border-rose-gold/30 flex items-center justify-center shadow-sm">
+                      <span className="text-2xl font-bold bg-gradient-to-br from-primary to-rose-gold bg-clip-text text-transparent">{phase.num}</span>
+                    </div>
                   </div>
-                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.anagen.title')}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {t('laser.sessions.anagen.desc')}
+                  <h3 className="font-bold text-primary mb-3 text-lg">{t(phase.titleKey)}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {t(phase.descKey)}
                   </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">2</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.catagen.title')}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {t('laser.sessions.catagen.desc')}
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary">3</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-3">{t('laser.sessions.telogen.title')}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {t('laser.sessions.telogen.desc')}
-                  </p>
-                </CardContent>
-              </Card>
+                </div>
+              ))}
             </div>
 
-            <div className="text-center mt-12">
-              <Card className="max-w-2xl mx-auto">
-                <CardContent className="p-6">
-                  <h4 className="font-bold text-primary mb-4">{t('laser.sessions.plan.title')}</h4>
-                  <p className="text-muted-foreground">
-                    {t('laser.sessions.plan.desc')}
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-12 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.process.title')}</h2>
-
-            <div className="space-y-12">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div className="text-center">
-                  <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-rose-gold">1</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step1.title')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('laser.process.step1.desc')}</p>
-                </div>
-
-                <div className="text-center">
-                  <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-rose-gold">2</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step2.title')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('laser.process.step2.desc')}</p>
-                </div>
-
-                <div className="text-center">
-                  <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-rose-gold">3</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step3.title')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('laser.process.step3.desc')}</p>
-                </div>
-
-                <div className="text-center">
-                  <div className="bg-rose-gold/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-rose-gold">4</span>
-                  </div>
-                  <h3 className="font-bold text-primary mb-2">{t('laser.process.step4.title')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('laser.process.step4.desc')}</p>
-                </div>
+            <div className="text-center mt-14">
+              <div className="max-w-2xl mx-auto rounded-2xl border border-rose-gold/20 bg-gradient-to-br from-rose-gold/5 to-primary/5 p-8 shadow-card">
+                <Zap className="w-6 h-6 text-rose-gold mx-auto mb-4" />
+                <h4 className="font-bold text-primary mb-3 text-lg">{t('laser.sessions.plan.title')}</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  {t('laser.sessions.plan.desc')}
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Process Section */}
+      <section className="relative py-20 bg-gradient-to-b from-accent/30 to-accent/10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-gold/5 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.process.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { num: '01', titleKey: 'laser.process.step1.title', descKey: 'laser.process.step1.desc' },
+                { num: '02', titleKey: 'laser.process.step2.title', descKey: 'laser.process.step2.desc' },
+                { num: '03', titleKey: 'laser.process.step3.title', descKey: 'laser.process.step3.desc' },
+                { num: '04', titleKey: 'laser.process.step4.title', descKey: 'laser.process.step4.desc' },
+              ].map((step) => (
+                <div key={step.num} className="group relative text-center">
+                  <div className="rounded-2xl bg-white/80 backdrop-blur-sm border border-white/60 p-6 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 h-full">
+                    <span className="block text-3xl font-bold bg-gradient-to-br from-rose-gold to-rose-gold-dark bg-clip-text text-transparent mb-3 tracking-tight">{step.num}</span>
+                    <h3 className="font-bold text-primary mb-2">{t(step.titleKey)}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(step.descKey)}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Suitability & Contraindications */}
-      <section className="py-12">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.suitability.title')}</h2>
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.suitability.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-10">
-              <Card>
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">{t('laser.suitability.suitable.title')}</h3>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.suitable.item1')}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="rounded-2xl border border-rose-gold/20 bg-gradient-to-br from-white to-rose-gold/5 p-8 shadow-card hover:shadow-elegant transition-all duration-500">
+                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-6">{t('laser.suitability.suitable.title')}</h3>
+                <ul className="space-y-4 text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4', 'item5'].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle className="w-4.5 h-4.5 text-rose-gold flex-shrink-0 mt-0.5" />
+                      <span className="leading-relaxed">{t(`laser.suitability.suitable.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.suitable.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.suitable.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.suitable.item4')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-rose-gold rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.suitable.item5')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
 
-              <Card>
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-6">{t('laser.suitability.contraindications.title')}</h3>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.contraindications.item1')}
+              <div className="rounded-2xl border border-destructive/15 bg-gradient-to-br from-white to-destructive/5 p-8 shadow-card hover:shadow-elegant transition-all duration-500">
+                <h3 className="text-xl sm:text-2xl font-bold text-primary mb-6">{t('laser.suitability.contraindications.title')}</h3>
+                <ul className="space-y-4 text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4', 'item5'].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="w-4.5 h-4.5 rounded-full border-2 border-destructive/40 flex-shrink-0 mt-0.5"></div>
+                      <span className="leading-relaxed">{t(`laser.suitability.contraindications.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.contraindications.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.contraindications.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.contraindications.item4')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-destructive rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                      {t('laser.suitability.contraindications.item5')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Risks and Side Effects */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">{t('laser.risks.title')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.risks.common.title')}</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.common.item1')}
+            <div className="text-center mb-10 mt-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-4">{t('laser.risks.title')}</h3>
+              <div className="mx-auto w-16 h-0.5 bg-gradient-to-r from-transparent via-rose-gold/50 to-transparent"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+              <div className="rounded-2xl border border-amber-200/50 bg-gradient-to-br from-white to-amber-50/30 p-7 shadow-card">
+                <h4 className="text-lg font-bold text-primary mb-4">{t('laser.risks.common.title')}</h4>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4'].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{t(`laser.risks.common.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.common.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.common.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.common.item4')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
 
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.risks.rare.title')}</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.rare.item1')}
+              <div className="rounded-2xl border border-destructive/10 bg-gradient-to-br from-white to-destructive/5 p-7 shadow-card">
+                <h4 className="text-lg font-bold text-primary mb-4">{t('laser.risks.rare.title')}</h4>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4'].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <div className="w-1.5 h-1.5 bg-destructive/50 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{t(`laser.risks.rare.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.rare.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.rare.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-destructive rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.risks.rare.item4')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Preparation and Aftercare */}
-            <h3 className="text-3xl font-bold text-primary text-center mb-12">{t('laser.care.title')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.care.preparation.title')}</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.preparation.item1')}
+            <div className="text-center mb-10">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-4">{t('laser.care.title')}</h3>
+              <div className="mx-auto w-16 h-0.5 bg-gradient-to-r from-transparent via-rose-gold/50 to-transparent"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-white to-primary/5 p-7 shadow-card">
+                <h4 className="text-lg font-bold text-primary mb-4">{t('laser.care.preparation.title')}</h4>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4', 'item5'].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <div className="w-1.5 h-1.5 bg-primary/50 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{t(`laser.care.preparation.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.preparation.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.preparation.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.preparation.item4')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.preparation.item5')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
 
-              <Card>
-                <CardContent className="p-6">
-                  <h4 className="text-xl font-bold text-primary mb-4">{t('laser.care.aftercare.title')}</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.aftercare.item1')}
+              <div className="rounded-2xl border border-rose-gold/20 bg-gradient-to-br from-white to-rose-gold/5 p-7 shadow-card">
+                <h4 className="text-lg font-bold text-primary mb-4">{t('laser.care.aftercare.title')}</h4>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  {['item1', 'item2', 'item3', 'item4', 'item5'].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <div className="w-1.5 h-1.5 bg-rose-gold/60 rounded-full mt-2 flex-shrink-0"></div>
+                      <span className="leading-relaxed">{t(`laser.care.aftercare.${item}`)}</span>
                     </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.aftercare.item2')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.aftercare.item3')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.aftercare.item4')}
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mr-2 mt-2 flex-shrink-0"></div>
-                      {t('laser.care.aftercare.item5')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 bg-accent/20">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 bg-gradient-to-b from-accent/30 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.faq.title')}</h2>
-            
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.faq.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
+
             <Accordion type="single" collapsible className="space-y-4">
               {faqItems.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6">
-                  <AccordionTrigger className="text-left font-semibold text-primary hover:text-rose-gold">
+                <AccordionItem key={index} value={`item-${index}`} className="border border-border/60 rounded-2xl px-6 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-card transition-shadow duration-300">
+                  <AccordionTrigger className="text-left font-semibold text-primary hover:text-rose-gold transition-colors">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pt-4 pb-6">
+                  <AccordionContent className="text-muted-foreground pt-4 pb-6 leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -630,67 +530,47 @@ const LaserHairRemoval = () => {
       </section>
 
       {/* Why Us Section */}
-      <section className="py-12 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
-              {t('laser.why-us.title')}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item1')}
-                </p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item2')}
-                </p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item3')}
-                </p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item4')}
-                </p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item5')}
-                </p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-rose-gold flex-shrink-0 mt-1" />
-                <p className="text-lg text-muted-foreground">
-                  {t('laser.why-us.item6')}
-                </p>
-              </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+                {t('laser.why-us.title')}
+              </h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {['item1', 'item2', 'item3', 'item4', 'item5', 'item6'].map((item) => (
+                <div key={item} className="flex items-start gap-4 rounded-xl border border-border/40 bg-gradient-to-r from-white to-accent/10 p-5 shadow-sm hover:shadow-card transition-all duration-300">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-rose-gold to-rose-gold-dark flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t(`laser.why-us.${item}`)}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Pricing CTA */}
-      <section className="py-12 bg-gradient-to-b from-accent/10 to-white">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 to-rose-gold-dark/90"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_50%)]"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('laser.pricing.title')}</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">{t('laser.pricing.title')}</h2>
+            <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent mb-6"></div>
+            <p className="text-lg sm:text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
               {t('laser.pricing.description')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-gradient-hero text-white border-none shadow-rose"
+                className="bg-white text-primary border-none shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300 rounded-full px-8"
                 asChild
               >
                 <Link to={withLang("/preis")}>
@@ -701,6 +581,7 @@ const LaserHairRemoval = () => {
               <Button
                 size="lg"
                 variant="outline"
+                className="border-2 border-white/50 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
                 onClick={() => showBookingWidget()}
               >
                 {t('laser.pricing.consultation')}
@@ -711,10 +592,13 @@ const LaserHairRemoval = () => {
       </section>
 
       {/* Location Section */}
-      <section className="py-12 bg-accent/20">
+      <section className="py-20 bg-gradient-to-b from-accent/20 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('laser.location.title')}</h2>
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.location.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <div className="space-y-8">
@@ -793,64 +677,59 @@ const LaserHairRemoval = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-12">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-10">{t('laser.testimonials.title')}</h2>
+            <div className="text-center mb-14">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.testimonials.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
 
-            <Card className="max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-rose-gold fill-current" />
-                  ))}
-                </div>
-                <blockquote className="text-lg text-muted-foreground italic mb-6">
-                  "{t('laser.testimonials.quote')}"
-                </blockquote>
-                <div className="text-primary font-semibold">
-                  {t('laser.testimonials.name')}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {t('laser.testimonials.since')}
-                </div>
-              </CardContent>
-            </Card>
+            <div className="max-w-2xl mx-auto rounded-2xl border border-rose-gold/20 bg-gradient-to-br from-white to-rose-gold/5 p-10 shadow-card">
+              <div className="flex justify-center mb-5 gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 text-rose-gold fill-current" />
+                ))}
+              </div>
+              <blockquote className="text-lg text-muted-foreground italic mb-6 leading-relaxed">
+                &ldquo;{t('laser.testimonials.quote')}&rdquo;
+              </blockquote>
+              <div className="w-12 h-0.5 bg-gradient-to-r from-rose-gold to-primary mx-auto mb-4"></div>
+              <div className="text-primary font-semibold">
+                {t('laser.testimonials.name')}
+              </div>
+              <div className="text-sm text-muted-foreground mt-1">
+                {t('laser.testimonials.since')}
+              </div>
+            </div>
           </div>
-
         </div>
       </section>
 
       {/* Related Services */}
-      <section className="py-12 bg-white">
+      <section className="py-20 bg-accent/10">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">{t('crosslink.title')}</h2>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link to={withLang("/redtouch-laser-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.redtouch')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.redtouch.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-              <Link to={withLang("/icoone-laser-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.icoone')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.icoone.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-              <Link to={withLang("/manikuere-pedikuere-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.nails')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.nails.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              {[
+                { to: '/redtouch-laser-muenchen', title: 'crosslink.redtouch', desc: 'crosslink.redtouch.desc' },
+                { to: '/icoone-laser-muenchen', title: 'crosslink.icoone', desc: 'crosslink.icoone.desc' },
+                { to: '/manikuere-pedikuere-muenchen', title: 'crosslink.nails', desc: 'crosslink.nails.desc' },
+              ].map((link) => (
+                <Link key={link.to} to={withLang(link.to)} className="group">
+                  <div className="h-full rounded-2xl border border-border/50 bg-white p-6 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+                    <div className="flex items-center gap-2 mb-3">
+                      <ArrowRight className="w-4 h-4 text-rose-gold transition-transform duration-300 group-hover:translate-x-1" />
+                      <h3 className="font-bold text-primary group-hover:text-rose-gold transition-colors">{t(link.title)}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{t(link.desc)}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
