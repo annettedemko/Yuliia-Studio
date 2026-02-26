@@ -550,7 +550,7 @@ const Pricing = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
-              title="Instagram"
+              aria-label="Instagram"
             >
               <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
             </a>

@@ -289,7 +289,7 @@ const Navigation = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isOpen ? t('nav.aria.close_menu') : t('nav.aria.open_menu')}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

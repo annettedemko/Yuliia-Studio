@@ -308,6 +308,8 @@ const AlexandritVsDiodenlaser = () => {
               <img
                 src="/19.png"
                 alt={t('alt.comparison.hero')}
+                width={561}
+                height={764}
                 loading="lazy"
                 className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl relative z-10 border-4 border-white"
               />
@@ -431,6 +433,8 @@ const AlexandritVsDiodenlaser = () => {
                   <img
                     src="/deka3.1.jpeg"
                     alt={t('alt.comparison.alexandrit')}
+                    width={800}
+                    height={800}
                     loading="lazy"
                     className="w-full h-64 object-cover"
                     style={{ transform: 'scale(1.35)' }}
@@ -454,6 +458,8 @@ const AlexandritVsDiodenlaser = () => {
                   <img
                     src="/19.png"
                     alt={t('alt.comparison.diode')}
+                    width={561}
+                    height={764}
                     loading="lazy"
                     className="w-full h-64 object-cover"
                     style={{ objectPosition: 'center 10%' }}
@@ -542,6 +548,8 @@ const AlexandritVsDiodenlaser = () => {
                   <img
                     src="/deka3.2.jpeg"
                     alt={t('alt.comparison.deka')}
+                    width={800}
+                    height={390}
                     loading="lazy"
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -558,6 +566,8 @@ const AlexandritVsDiodenlaser = () => {
                   <img
                     src="/deka3.3.jpeg"
                     alt={t('alt.comparison.treatment')}
+                    width={800}
+                    height={390}
                     loading="lazy"
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                   />

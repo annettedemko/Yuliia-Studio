@@ -297,6 +297,8 @@ const translations = {
     'nav.button.call': 'Anrufen',
     'nav.button.appointment': 'Termin',
     'nav.button.book-appointment': 'Termin buchen',
+    'nav.aria.open_menu': 'Menü öffnen',
+    'nav.aria.close_menu': 'Menü schließen',
 
     // Footer
     'footer.studio.description': 'Professionelle Kosmetik-, Laser- und Wellnessbehandlungen in München',
@@ -2066,6 +2068,8 @@ const translations = {
     'nav.button.call': 'Позвонить',
     'nav.button.appointment': 'Запись',
     'nav.button.book-appointment': 'Записаться',
+    'nav.aria.open_menu': 'Открыть меню',
+    'nav.aria.close_menu': 'Закрыть меню',
 
     // Footer
     'footer.studio.description': 'Профессиональные косметологические, лазерные и велнес процедуры в Мюнхене',

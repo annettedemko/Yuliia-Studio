@@ -334,6 +334,8 @@ const RedTouchProService = () => {
                 <img
                   src="/deka2.4.png"
                   alt={t('alt.redtouch.logo')}
+                  width={1080}
+                  height={317}
                   loading="lazy"
                   className="h-20 w-auto"
                 />
@@ -341,6 +343,8 @@ const RedTouchProService = () => {
               <img
                 src="/deka2.png"
                 alt={t('alt.redtouch.device')}
+                width={525}
+                height={1200}
                 loading="lazy"
                 className="w-full h-auto rounded-lg shadow-elegant"
               />
@@ -387,6 +391,8 @@ const RedTouchProService = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
+                  width={600}
+                  height={400}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

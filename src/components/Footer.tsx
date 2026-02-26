@@ -74,7 +74,6 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-full transition-all duration-300 hover:scale-110"
-                  title="Instagram"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-4 h-4 text-white" />

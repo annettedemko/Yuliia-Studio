@@ -330,6 +330,8 @@ const IcooneLaser = () => {
                 <img
                   src="/3.jpeg"
                   alt={t('alt.icoone.device')}
+                  width={1500}
+                  height={1870}
                   loading="lazy"
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
                   style={{
@@ -341,6 +343,8 @@ const IcooneLaser = () => {
                   <img
                     src="/3.9.jpg"
                     alt={t('alt.icoone.room')}
+                    width={853}
+                    height={1280}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
@@ -351,6 +355,8 @@ const IcooneLaser = () => {
                   <img
                     src="/3.10.jpg"
                     alt={t('alt.icoone.handpiece')}
+                    width={853}
+                    height={1280}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     style={{
@@ -423,6 +429,8 @@ const IcooneLaser = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
+                    width={600}
+                    height={400}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

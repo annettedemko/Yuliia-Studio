@@ -162,6 +162,8 @@ const About = () => {
                 <img
                   src="/IMG1.jpg"
                   alt={t('alt.about.yuliia')}
+                  width={897}
+                  height={1280}
                   loading="lazy"
                   className="w-full h-96 object-cover rounded-lg shadow-elegant"
                 />
@@ -170,6 +172,8 @@ const About = () => {
                 <img
                   src="/10.jpg"
                   alt={t('alt.about.studio')}
+                  width={1284}
+                  height={1468}
                   loading="lazy"
                   className="w-full h-80 object-cover rounded-lg shadow-elegant"
                   style={{ objectPosition: 'center 12%' }}
@@ -280,6 +284,8 @@ const About = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
+                    width={600}
+                    height={400}
                     className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -363,7 +369,7 @@ const About = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
-                      title="Instagram"
+                      aria-label="Instagram"
                     >
                       <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
                     </a>

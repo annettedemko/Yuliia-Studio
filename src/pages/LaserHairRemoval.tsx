@@ -239,6 +239,8 @@ const LaserHairRemoval = () => {
                     <img
                       src="/17.png"
                       alt={t('alt.laser.alexandrit')}
+                      width={6000}
+                      height={6000}
                       loading="lazy"
                       className="w-full h-full object-cover"
                     />
@@ -285,6 +287,8 @@ const LaserHairRemoval = () => {
                     <img
                       src="/19.png"
                       alt={t('alt.laser.diode')}
+                      width={561}
+                      height={764}
                       loading="lazy"
                       className="w-full h-full object-cover"
                       style={{

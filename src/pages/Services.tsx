@@ -111,7 +111,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/17.png" alt={t('alt.services.alexandrit')} className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/17.png" alt={t('alt.services.alexandrit')} width={6000} height={6000} className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
@@ -146,7 +146,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/2.jpeg" alt={t('alt.services.diode')} loading="lazy"
+                  <img src="/2.jpeg" alt={t('alt.services.diode')} width={555} height={740} loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
@@ -192,7 +192,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/3.jpeg" alt={t('alt.services.icoone')} loading="lazy"
+                  <img src="/3.jpeg" alt={t('alt.services.icoone')} width={1500} height={1870} loading="lazy"
                     className="w-full h-full object-cover"
                     style={{ transform: 'scale(0.85)', objectPosition: 'center' }}
                   />
@@ -232,7 +232,7 @@ const Services = () => {
               <Card className="overflow-hidden min-h-[400px] md:min-h-[500px] lg:h-[561px] hover:shadow-xl transition-shadow duration-300 cursor-pointer">
               <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
                 <div className="relative h-64 md:h-80 lg:h-full">
-                  <img src="/deka2.png" alt={t('alt.services.redtouch')} loading="lazy"
+                  <img src="/deka2.png" alt={t('alt.services.redtouch')} width={525} height={1200} loading="lazy"
                     className="w-full h-full object-contain"
                     style={{ objectPosition: 'center' }}
                   />
@@ -302,7 +302,7 @@ const Services = () => {
                     </div>
                   </div>
                   <div className="relative h-64 md:h-80 lg:h-full">
-                    <img src="/23.png" alt={t('alt.services.nails')} className="w-full h-full object-cover" loading="lazy" />
+                    <img src="/23.png" alt={t('alt.services.nails')} width={557} height={594} className="w-full h-full object-cover" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                     <div className="absolute top-4 right-4">
                       <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full">
@@ -421,7 +421,7 @@ const Services = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-4 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
-              title="Instagram"
+              aria-label="Instagram"
             >
               <Instagram className="w-8 h-8 text-white group-hover:rotate-12 transition-transform" />
             </a>

@@ -418,24 +418,32 @@ const ManikuerePedikuere = () => {
                   <img
                     src="/7.jpg"
                     alt={t('alt.nails.manicure1')}
+                    width={1284}
+                    height={1579}
                     loading="lazy"
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/11.jpg"
                     alt={t('alt.nails.manicure2')}
+                    width={1198}
+                    height={1156}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/13.jpg"
                     alt={t('alt.nails.manicure3')}
+                    width={1284}
+                    height={1259}
                     loading="lazy"
                     className="w-full h-40 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/25.jpg"
                     alt={t('alt.nails.design')}
+                    width={960}
+                    height={1280}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
@@ -444,36 +452,48 @@ const ManikuerePedikuere = () => {
                   <img
                     src="/4.jpeg"
                     alt={t('alt.nails.manicure4')}
+                    width={560}
+                    height={560}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/12.jpg"
                     alt={t('alt.nails.manicure5')}
+                    width={1284}
+                    height={1252}
                     loading="lazy"
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/26.jpg"
                     alt={t('alt.nails.nailart')}
+                    width={960}
+                    height={1280}
                     loading="lazy"
                     className="w-full h-40 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/14.jpg"
                     alt={t('alt.nails.manicure6')}
+                    width={1284}
+                    height={1267}
                     loading="lazy"
                     className="w-full h-32 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/27.jpg"
                     alt={t('alt.nails.gel')}
+                    width={960}
+                    height={1280}
                     loading="lazy"
                     className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
                   <img
                     src="/15.jpg"
                     alt={t('alt.nails.manicure7')}
+                    width={1284}
+                    height={1245}
                     loading="lazy"
                     className="w-full h-24 object-cover rounded-lg shadow-lg"
                   />
@@ -627,6 +647,8 @@ const ManikuerePedikuere = () => {
                   <img
                     src="/8.jpg"
                     alt={t('alt.nails.pedicure.main')}
+                    width={1284}
+                    height={1556}
                     loading="lazy"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
@@ -635,6 +657,8 @@ const ManikuerePedikuere = () => {
                   <img
                     src="/16.jpg"
                     alt={t('alt.nails.pedicure.detail')}
+                    width={1269}
+                    height={1261}
                     loading="lazy"
                     className="w-full h-80 object-cover rounded-lg shadow-xl"
                   />
