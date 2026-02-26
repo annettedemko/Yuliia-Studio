@@ -883,4 +883,9 @@ All colors MUST be HSL for proper theming.
   .delay-400 { animation-delay: 0.4s; }
   .delay-600 { animation-delay: 0.6s; }
   .delay-800 { animation-delay: 0.8s; }
+
+  /* Hide default Altegio floating button — replaced by custom FloatingBookButton */
+  .yButton {
+    display: none !important;
+  }
 }

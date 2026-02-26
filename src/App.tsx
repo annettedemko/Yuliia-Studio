@@ -13,6 +13,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import CookieBanner from "./components/CookieBanner";
+import FloatingBookButton from "./components/FloatingBookButton";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
@@ -202,6 +203,7 @@ const App = () => (
               </main>
               <Footer />
             </div>
+            <FloatingBookButton />
             <CookieBanner />
             <SpeedInsights />
           </BrowserRouter>
