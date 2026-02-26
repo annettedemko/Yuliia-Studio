@@ -75,6 +75,7 @@ const Services = () => {
       link: '/laser-haarentfernung-muenchen',
       priceAnchor: '#alexandrit',
       learnMoreKey: 'services.motus.learn-more',
+      isEquipment: true,
     },
     {
       titleKey: 'services.diode.title',
@@ -87,6 +88,7 @@ const Services = () => {
       link: '/laser-haarentfernung-muenchen',
       priceAnchor: '#dioden',
       learnMoreKey: 'services.motus.learn-more',
+      isEquipment: true,
       benefits: {
         titleKey: 'services.diode.benefits.title',
         items: ['services.diode.benefits.efficiency', 'services.diode.benefits.cooling', 'services.diode.benefits.fast', 'services.diode.benefits.universal'],
@@ -103,6 +105,7 @@ const Services = () => {
       link: '/icoone-laser-muenchen',
       priceAnchor: '#icoone',
       learnMoreKey: 'common.learn-more',
+      isEquipment: true,
     },
     {
       titleKey: 'services.redtouch.title',
@@ -115,6 +118,7 @@ const Services = () => {
       link: '/redtouch-laser-muenchen',
       priceAnchor: '#redtouchpro',
       learnMoreKey: 'common.learn-more',
+      isEquipment: true,
       benefits: {
         titleKey: 'services.redtouch.areas.title',
         items: ['services.redtouch.areas.face', 'services.redtouch.areas.decollete', 'services.redtouch.areas.hands', 'services.redtouch.areas.special'],
@@ -192,20 +196,22 @@ const Services = () => {
                 <Link key={service.titleKey} to={withLang(service.link)} className="block group">
                   <div className="rounded-2xl overflow-hidden border border-border/40 bg-white shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1">
                     <div className={`grid grid-cols-1 lg:grid-cols-2 ${isReversed ? '' : ''}`}>
-                      {/* Image - always on left on desktop, but reversed for odd items */}
-                      <div className={`relative h-72 sm:h-80 lg:h-[420px] overflow-hidden ${isReversed ? 'lg:order-2' : ''}`}>
+                      {/* Image */}
+                      <div className={`relative h-72 sm:h-80 lg:h-[420px] overflow-hidden ${isReversed ? 'lg:order-2' : ''} ${service.isEquipment ? 'bg-gradient-to-br from-gray-50 to-gray-100' : ''}`}>
                         <img
                           src={service.imgSrc}
                           alt={t(service.imgAlt)}
                           width={service.imgW}
                           height={service.imgH}
                           loading="lazy"
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${service.isEquipment ? 'object-contain p-6' : 'object-cover'}`}
                         />
-                        <div className={`absolute inset-0 bg-gradient-to-${isReversed ? 'l' : 'r'} from-black/30 via-black/10 to-transparent`}></div>
+                        {!service.isEquipment && (
+                          <div className={`absolute inset-0 bg-gradient-to-${isReversed ? 'l' : 'r'} from-black/30 via-black/10 to-transparent`}></div>
+                        )}
                         <div className={`absolute top-5 ${isReversed ? 'right-5' : 'left-5'}`}>
-                          <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 shadow-lg">
-                            <Icon className="w-5 h-5 text-white" />
+                          <div className={`${service.isEquipment ? 'bg-primary/10 backdrop-blur-sm' : 'bg-white/20 backdrop-blur-md border border-white/30'} p-3 rounded-full shadow-lg`}>
+                            <Icon className={`w-5 h-5 ${service.isEquipment ? 'text-primary' : 'text-white'}`} />
                           </div>
                         </div>
                       </div>
