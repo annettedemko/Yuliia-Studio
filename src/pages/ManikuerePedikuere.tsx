@@ -344,7 +344,7 @@ const ManikuerePedikuere = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
+                      className="bg-rose-gold/10 border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white"
                       asChild
                     >
                       <Link to={withLang("/preis#manicure")}>
@@ -406,7 +406,7 @@ const ManikuerePedikuere = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-primary text-primary hover:bg-primary hover:text-white"
+                      className="bg-primary/10 border-primary text-primary hover:bg-primary hover:text-white"
                       asChild
                     >
                       <Link to={withLang("/preis#pedicure")}>
@@ -717,7 +717,7 @@ const ManikuerePedikuere = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10"
+                className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white/30 shadow-lg"
                 asChild
               >
                 <a

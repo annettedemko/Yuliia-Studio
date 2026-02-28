@@ -328,7 +328,7 @@ const LaserHairRemoval = () => {
             {/* Comparison Link */}
             <div className="text-center">
               <Link to={withLang("/alexandrit-gegen-diodenlaser")}>
-                <Button variant="outline" size="lg" className="group/btn border-2 border-primary/80 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto rounded-full px-8">
+                <Button variant="outline" size="lg" className="group/btn bg-primary/10 border-2 border-primary/80 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto rounded-full px-8">
                   <span className="font-semibold text-sm sm:text-base">{t('laser.comparison.button')}</span>
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </Button>
@@ -592,7 +592,7 @@ const LaserHairRemoval = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white/50 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+                className="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/30 hover:border-white transition-all duration-300 rounded-full px-8 shadow-lg"
                 onClick={() => showBookingWidget()}
               >
                 {t('laser.pricing.consultation')}

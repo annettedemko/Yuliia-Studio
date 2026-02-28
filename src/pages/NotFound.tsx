@@ -43,13 +43,13 @@ const NotFound = () => {
               {t('notfound.home')}
             </Link>
           </Button>
-          <Button asChild variant="outline" className="border-rose-gold/30 text-rose-gold hover:bg-rose-gold/10">
+          <Button asChild variant="outline" className="bg-rose-gold/10 border-rose-gold/30 text-rose-gold hover:bg-rose-gold/20">
             <Link to={withLang('/services')}>
               <Briefcase className="w-4 h-4 mr-2" />
               {t('notfound.services')}
             </Link>
           </Button>
-          <Button asChild variant="outline" className="border-muted hover:border-rose-gold/30">
+          <Button asChild variant="outline" className="bg-muted/10 border-muted hover:border-rose-gold/30 hover:bg-rose-gold/10">
             <Link to={withLang('/kontakt')}>
               <Phone className="w-4 h-4 mr-2" />
               {t('notfound.contact')}

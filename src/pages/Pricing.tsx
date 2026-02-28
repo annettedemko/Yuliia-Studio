@@ -459,7 +459,7 @@ const Pricing = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                    className="bg-primary/10 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
                     asChild
                   >
                     <Link to={getCategoryLandingPage(categoryGroup.category.code)}>

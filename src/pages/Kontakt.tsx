@@ -323,7 +323,7 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
+                className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary shadow-lg"
                 asChild
               >
                 <Link to={withLang("/services")}>
@@ -333,7 +333,7 @@ const Kontakt = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white hover:text-primary"
+                className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary shadow-lg"
                 asChild
               >
                 <Link to={withLang("/preis")}>

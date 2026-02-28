@@ -518,7 +518,7 @@ const RedTouchProService = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border-white/80 text-white hover:bg-white/10 backdrop-blur-sm"
+              className="bg-white/20 backdrop-blur-sm border-white/80 text-white hover:bg-white/30 shadow-lg"
               asChild
             >
               <Link to={withLang("/preis#redtouchpro")}>

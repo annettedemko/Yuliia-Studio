@@ -375,7 +375,7 @@ const AgainCos = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white bg-transparent hover:bg-white hover:text-[#5a2d2a] text-lg px-8 py-4"
+              className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-[#5a2d2a] text-lg px-8 py-4 shadow-lg"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">

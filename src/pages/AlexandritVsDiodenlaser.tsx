@@ -180,7 +180,7 @@ const AlexandritVsDiodenlaser = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-8 border-primary/30 hover:border-rose-gold hover:text-rose-gold hover:bg-rose-gold/5 transition-all duration-300"
+                  className="rounded-full px-8 bg-primary/5 border-primary/30 text-primary hover:border-rose-gold hover:text-rose-gold hover:bg-rose-gold/10 transition-all duration-300"
                   asChild
                 >
                   <Link to={withLang("/preis")}>
@@ -968,7 +968,7 @@ const AlexandritVsDiodenlaser = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all hover:scale-105 text-lg px-8 py-6"
+                className="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white hover:text-primary transition-all hover:scale-105 text-lg px-8 py-6 shadow-lg"
                 onClick={() => window.location.href = withLang('/laser-haarentfernung-muenchen')}
               >
                 {t('comparison.cta.button.info')}

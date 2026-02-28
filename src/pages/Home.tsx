@@ -645,7 +645,7 @@ const Home = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="w-full border-rose-gold/50 text-primary hover:bg-rose-gold hover:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                      className="w-full bg-rose-gold/10 border-rose-gold/50 text-primary hover:bg-rose-gold hover:text-white hover:scale-105 transition-all duration-300 hover:shadow-lg"
                       onClick={() => window.location.href = 'mailto:Yulachip@icloud.com'}
                     >
                       <Mail className="w-5 h-5 mr-2" />

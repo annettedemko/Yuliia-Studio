@@ -504,7 +504,7 @@ function ServiceCard({
                 <Button className="bg-gradient-hero text-white rounded-full px-6 hover:scale-105 hover:shadow-rose transition-all duration-300 ripple-effect">
                   {t(service.learnMoreKey)} <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Button>
-                <Button variant="outline" asChild className="rounded-full px-6 border-primary/30 hover:border-rose-gold hover:text-rose-gold hover:bg-rose-gold/5 transition-all duration-300">
+                <Button variant="outline" asChild className="rounded-full px-6 bg-primary/5 border-primary/30 text-primary hover:border-rose-gold hover:text-rose-gold hover:bg-rose-gold/10 transition-all duration-300">
                   <Link to={withLang(`/preis${service.priceAnchor}`)}>{t('services.motus.view-prices')}</Link>
                 </Button>
               </div>

@@ -448,7 +448,7 @@ const Physiq360 = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary text-primary bg-transparent hover:bg-primary hover:text-white text-lg px-8 py-4"
+              className="bg-primary/10 border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-4"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">

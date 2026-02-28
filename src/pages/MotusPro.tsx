@@ -447,7 +447,7 @@ const MotusPro = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
+                className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary text-lg px-8 py-4 shadow-lg"
                 asChild
               >
                 <a href="mailto:Yulachip@icloud.com">
@@ -459,7 +459,7 @@ const MotusPro = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white bg-transparent hover:bg-white hover:text-primary text-lg px-8 py-4"
+                className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary text-lg px-8 py-4 shadow-lg"
                 asChild
               >
                 <Link to={withLang("/deka-geraeteverkauf")}>
