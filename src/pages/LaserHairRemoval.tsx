@@ -187,7 +187,7 @@ const LaserHairRemoval = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="relative z-10 container mx-auto px-4 text-center pt-8 md:pt-0">
           <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
             <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Laser-Haarentfernung</span>
@@ -221,7 +221,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border border-white/40 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+              className="bg-white/20 backdrop-blur-sm border border-white/50 text-white hover:bg-white/30 hover:border-white transition-all duration-300 rounded-full px-8 shadow-lg"
               asChild
             >
               <Link to={withLang("/preis#alexandrit")}>
