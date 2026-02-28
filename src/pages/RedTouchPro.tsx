@@ -20,6 +20,7 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
 import { PageHelmet } from '@/components/PageHelmet';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 
 const RedTouchPro = () => {
@@ -136,6 +137,15 @@ const RedTouchPro = () => {
     }
   ];
 
+  const galleryRef = useScrollReveal({ threshold: 0.1 });
+  const techRef = useScrollReveal({ threshold: 0.1 });
+  const analysisRef = useScrollReveal({ threshold: 0.1 });
+  const deviceRef = useScrollReveal({ threshold: 0.1 });
+  const advantagesRef = useScrollReveal({ threshold: 0.1 });
+  const applicationsRef = useScrollReveal({ threshold: 0.1 });
+  const designRef = useScrollReveal({ threshold: 0.1 });
+  const ctaRef = useScrollReveal({ threshold: 0.1 });
+
   return (
     <>
       <PageHelmet />
@@ -197,7 +207,7 @@ const RedTouchPro = () => {
 
       {/* RedTouch Gallery Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={galleryRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.gallery.title')}</h2>
@@ -262,7 +272,7 @@ const RedTouchPro = () => {
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-rose-gold/10 rounded-full blur-lg animate-bounce delay-1000"></div>
           </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={techRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.tech.title')}</h2>
@@ -347,7 +357,7 @@ const RedTouchPro = () => {
 
       {/* Scientific Analysis Section */}
       <section className="py-10 bg-background relative overflow-hidden mt-0 lg:mt-[-160px]">
-        <div className="container mx-auto px-4">
+        <div ref={analysisRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.analysis.title')}</h2>
@@ -432,7 +442,7 @@ const RedTouchPro = () => {
 
       {/* Premium Device Showcase Section */}
       <section className="py-10 bg-gradient-to-b from-slate-50 to-white mt-0 lg:mt-[-30px]">
-        <div className="container mx-auto px-4">
+        <div ref={deviceRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.device.title')}</h2>
@@ -519,7 +529,7 @@ const RedTouchPro = () => {
 
       {/* Vorteile des RedTouch PRO */}
       <section className="py-8 bg-background mt-0 lg:mt-[-30px]">
-        <div className="container mx-auto px-4">
+        <div ref={advantagesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.advantages.title')}</h2>
@@ -545,7 +555,7 @@ const RedTouchPro = () => {
 
       {/* Anwendungsbereiche */}
       <section className="py-8 bg-accent/20 mt-0 lg:mt-[-30px]">
-        <div className="container mx-auto px-4">
+        <div ref={applicationsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.applications.title')}</h2>
@@ -571,7 +581,7 @@ const RedTouchPro = () => {
 
       {/* Design & Ergonomie */}
       <section className="py-8 pb-24 bg-background mt-0 lg:mt-[-30px]">
-        <div className="container mx-auto px-4">
+        <div ref={designRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.design.title')}</h2>
@@ -628,7 +638,7 @@ const RedTouchPro = () => {
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary to-primary text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div ref={ctaRef} className="container mx-auto px-4 text-center reveal reveal-up">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
             {t('redtouch.cta.title')}
           </h2>

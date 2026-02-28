@@ -992,4 +992,300 @@ All colors MUST be HSL for proper theming.
   .yButton {
     display: none !important;
   }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SCROLL REVEAL SYSTEM
+     Base classes: .reveal + direction variant
+     Triggered class: .revealed
+     Respects prefers-reduced-motion via JS hook
+  ═══════════════════════════════════════════════════════════════ */
+
+  .reveal {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Direction variants */
+  .reveal-up {
+    transform: translateY(40px);
+  }
+
+  .reveal-left {
+    transform: translateX(-40px);
+  }
+
+  .reveal-right {
+    transform: translateX(40px);
+  }
+
+  .reveal-scale {
+    transform: scale(0.92);
+  }
+
+  .reveal-blur {
+    transform: translateY(20px);
+    filter: blur(6px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-blur.revealed {
+    filter: blur(0);
+  }
+
+  /* Auto-staggered children */
+  .reveal-stagger.revealed > .reveal-child {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-child {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-stagger.revealed > .reveal-child:nth-child(1)  { transition-delay: 0.05s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(2)  { transition-delay: 0.10s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(3)  { transition-delay: 0.15s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(4)  { transition-delay: 0.20s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(5)  { transition-delay: 0.25s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(6)  { transition-delay: 0.30s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(7)  { transition-delay: 0.35s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(8)  { transition-delay: 0.40s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(9)  { transition-delay: 0.45s; }
+  .reveal-stagger.revealed > .reveal-child:nth-child(10) { transition-delay: 0.50s; }
+
+  /* Prefers reduced motion — instant show, no animation */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-child {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     HERO BLUR-SHARP EFFECT
+     Text appears from blurred to sharp with stagger
+  ═══════════════════════════════════════════════════════════════ */
+
+  @keyframes blur-sharp {
+    0% {
+      opacity: 0;
+      filter: blur(12px);
+      transform: translateY(16px) scale(0.97);
+    }
+    60% {
+      opacity: 1;
+      filter: blur(3px);
+      transform: translateY(4px) scale(0.99);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .hero-blur-sharp-1 { animation: blur-sharp 1s ease-out 0.1s both; }
+  .hero-blur-sharp-2 { animation: blur-sharp 1s ease-out 0.3s both; }
+  .hero-blur-sharp-3 { animation: blur-sharp 1s ease-out 0.5s both; }
+  .hero-blur-sharp-4 { animation: blur-sharp 1s ease-out 0.7s both; }
+
+  .hero-text-shadow {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(181, 131, 141, 0.15);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SPARKLE PARTICLES (CSS-only)
+     Tiny rose-gold dots that float upward in hero sections
+  ═══════════════════════════════════════════════════════════════ */
+
+  @keyframes sparkle-float {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0);
+    }
+    15% {
+      opacity: 1;
+      transform: translateY(-10px) scale(1);
+    }
+    85% {
+      opacity: 0.6;
+      transform: translateY(-80px) scale(0.7);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100px) scale(0);
+    }
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsl(var(--rose-gold)), transparent);
+    animation: sparkle-float 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .sparkle:nth-child(1) { left: 15%; bottom: 20%; animation-delay: 0s; animation-duration: 3.5s; }
+  .sparkle:nth-child(2) { left: 35%; bottom: 30%; animation-delay: 0.8s; animation-duration: 4.2s; }
+  .sparkle:nth-child(3) { left: 55%; bottom: 15%; animation-delay: 1.6s; animation-duration: 3.8s; }
+  .sparkle:nth-child(4) { left: 75%; bottom: 25%; animation-delay: 2.4s; animation-duration: 4.5s; }
+  .sparkle:nth-child(5) { left: 90%; bottom: 35%; animation-delay: 3.2s; animation-duration: 3.2s; }
+
+  /* ═══════════════════════════════════════════════════════════════
+     SPOTLIGHT CARD
+     Cursor-following radial gradient glow
+  ═══════════════════════════════════════════════════════════════ */
+
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsl(var(--rose-gold) / 0.12),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Disable spotlight on touch devices */
+  @media (hover: none) {
+    .spotlight-card::before {
+      display: none;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     CARD MICRO-INTERACTIONS
+  ═══════════════════════════════════════════════════════════════ */
+
+  /* Icon lifts and scales on parent hover */
+  .icon-hover-bounce {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  *:hover > .icon-hover-bounce,
+  .group:hover .icon-hover-bounce {
+    transform: translateY(-3px) scale(1.1);
+  }
+
+  /* Icon gets rose-gold glow on parent hover */
+  .icon-hover-glow {
+    transition: filter 0.4s ease;
+  }
+
+  *:hover > .icon-hover-glow,
+  .group:hover .icon-hover-glow {
+    filter: drop-shadow(0 0 8px hsl(var(--rose-gold) / 0.5));
+  }
+
+  /* Slower silk-smooth image zoom */
+  .img-silk-zoom {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .group:hover .img-silk-zoom {
+    transform: scale(1.08);
+  }
+
+  /* Clip-path image reveal on scroll */
+  .img-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .revealed .img-reveal,
+  .img-reveal.revealed {
+    clip-path: inset(0 0 0% 0);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     BUTTON ENHANCEMENTS
+  ═══════════════════════════════════════════════════════════════ */
+
+  /* Subtle pulsing glow on primary CTA buttons */
+  @keyframes cta-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 12px hsl(var(--rose-gold) / 0.25),
+        0 4px 16px hsl(var(--rose-gold) / 0.15);
+    }
+    50% {
+      box-shadow:
+        0 0 24px hsl(var(--rose-gold) / 0.4),
+        0 4px 24px hsl(var(--rose-gold) / 0.25);
+    }
+  }
+
+  .btn-cta-glow {
+    animation: cta-glow 2.5s ease-in-out infinite;
+  }
+
+  /* Springy arrow animation on "learn more" buttons */
+  .arrow-slide .arrow-icon {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .arrow-slide:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     FLOATING DECORATIVE ORBS
+     Organic drift replacing mechanical pulse/bounce
+  ═══════════════════════════════════════════════════════════════ */
+
+  @keyframes orb-drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(12px, -18px) scale(1.05); }
+    50%  { transform: translate(-8px, -10px) scale(0.97); }
+    75%  { transform: translate(6px, 8px) scale(1.03); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
+  .orb-rose {
+    background: radial-gradient(circle, hsl(var(--rose-gold) / 0.15), transparent 70%);
+    border-radius: 50%;
+    animation: orb-drift 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .orb-primary {
+    background: radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%);
+    border-radius: 50%;
+    animation: orb-drift 25s ease-in-out infinite reverse;
+    pointer-events: none;
+  }
 }
