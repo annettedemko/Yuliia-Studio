@@ -2,11 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Hand, Heart, Sparkles, Clock, Star, Scissors, Palette, CheckCircle } from 'lucide-react';
-import { useEffect } from 'react';
-import { setJsonLd } from '@/seo/seo';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 // Изображения загружаются из папки public
 
 const ManikuerePedikuere = () => {
@@ -24,10 +25,21 @@ const ManikuerePedikuere = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const servicesOverviewRef = useScrollReveal();
+  const manicureServicesRef = useScrollReveal();
+  const pedicureServicesRef = useScrollReveal();
+  const whyUsRef = useScrollReveal();
+  const processRef = useScrollReveal();
+  const careTipsRef = useScrollReveal();
+  const pedicureGalleryRef = useScrollReveal();
+  const pricingCtaRef = useScrollReveal();
+  const testimonialsRef = useScrollReveal();
+  const relatedServicesRef = useScrollReveal();
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -82,7 +94,7 @@ const ManikuerePedikuere = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
   const manicureServices = [
     {
@@ -181,6 +193,9 @@ const ManikuerePedikuere = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -241,7 +256,7 @@ const ManikuerePedikuere = () => {
 
       {/* Benefits Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={servicesOverviewRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               {t('nails.services.title')}
@@ -310,7 +325,7 @@ const ManikuerePedikuere = () => {
 
       {/* Maniküre Services */}
       <section className="pt-4 pb-12 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={manicureServicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('nails.manicure-services.title')}</h2>
@@ -372,7 +387,7 @@ const ManikuerePedikuere = () => {
 
       {/* Pediküre Services */}
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={pedicureServicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('nails.pedicure-services.title')}</h2>
@@ -434,7 +449,7 @@ const ManikuerePedikuere = () => {
 
       {/* Benefits Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={whyUsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.why.title')}</h2>
 
@@ -544,7 +559,7 @@ const ManikuerePedikuere = () => {
 
       {/* Process Section */}
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={processRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.process.title')}</h2>
 
@@ -565,7 +580,7 @@ const ManikuerePedikuere = () => {
 
       {/* Care Tips */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={careTipsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.tips.title')}</h2>
 
@@ -642,7 +657,7 @@ const ManikuerePedikuere = () => {
 
       {/* Pediküre Gallery Section */}
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={pedicureGalleryRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.gallery.title')}</h2>
 
@@ -698,7 +713,7 @@ const ManikuerePedikuere = () => {
 
       {/* Pricing & Booking CTA */}
       <section className="py-12 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4">
+        <div ref={pricingCtaRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('nails.final-cta.title')}</h2>
             <p className="text-xl mb-8 text-white/90">
@@ -735,7 +750,7 @@ const ManikuerePedikuere = () => {
 
       {/* Testimonials */}
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={testimonialsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">{t('nails.testimonials.title')}</h2>
 
@@ -780,7 +795,7 @@ const ManikuerePedikuere = () => {
 
       {/* Related Services */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={relatedServicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

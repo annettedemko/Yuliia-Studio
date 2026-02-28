@@ -1,33 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Zap, Heart, Hand, Waves, CheckCircle, Sparkles, Instagram, Star, Shield, Clock, MapPin, Award } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AGBNotice from '@/components/AGBNotice';
 import { showBookingWidget } from '@/lib/altegioWidget';
-
-/* ──────────────── Scroll-triggered animation hook ──────────────── */
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); obs.unobserve(el); } },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-
-  return { ref, isVisible };
-}
-
-
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -41,15 +21,15 @@ const Services = () => {
   };
 
   /* Section refs for scroll animations */
-  const heroSection = useInView(0.1);
-  const laserHeader = useInView(0.2);
-  const whyUsSection = useInView(0.1);
-  const quickLinksSection = useInView(0.2);
-  const ctaSection = useInView(0.15);
-  useEffect(() => {
+  const heroRef = useScrollReveal({ threshold: 0.1 });
+  const laserHeaderRef = useScrollReveal({ threshold: 0.2 });
+  const whyUsSectionRef = useScrollReveal({ threshold: 0.1 });
+  const quickLinksSectionRef = useScrollReveal({ threshold: 0.2 });
+  const ctaSectionRef = useScrollReveal({ threshold: 0.15 });
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       '@id': `${baseUrl}/services#page`,
@@ -86,7 +66,7 @@ const Services = () => {
           url: `${baseUrl}/${currentLang}/manikuere-pedikuere-muenchen`
         }
       ]
-    });
+    };
   }, [currentLang]);
 
   const services = [
@@ -171,12 +151,15 @@ const Services = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16">
 
       {/* ═══════════════ HERO SECTION ═══════════════ */}
       <section
-        ref={heroSection.ref}
-        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden"
+        ref={heroRef}
+        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden reveal reveal-up"
       >
         {/* Background image with slow cinematic zoom */}
         <div
@@ -223,16 +206,16 @@ const Services = () => {
       </section>
 
       {/* ═══════════════ LASER SECTION HEADER ═══════════════ */}
-      <section ref={laserHeader.ref} className="pt-20 pb-6 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 transition-all duration-800 ${laserHeader.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section className="pt-20 pb-6 bg-white">
+        <div ref={laserHeaderRef} className="container mx-auto px-4 text-center reveal reveal-up">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
             {t('services.laser.title')}
           </h2>
-          <div className={`mx-auto h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent mb-4 transition-all duration-1000 delay-200 ${laserHeader.isVisible ? 'w-24 opacity-100' : 'w-0 opacity-0'}`}></div>
-          <p className={`text-lg text-muted-foreground max-w-2xl mx-auto mb-8 transition-all duration-800 delay-300 ${laserHeader.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent mb-4"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
             {t('services.laser.subtitle')}
           </p>
-          <div className={`transition-all duration-700 delay-500 ${laserHeader.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+          <div>
             <Button asChild className="bg-gradient-hero text-white rounded-full px-8 hover:scale-105 hover:shadow-rose transition-all duration-300">
               <Link to={withLang('/laser-haarentfernung-muenchen')}>
                 {t('services.laser.learn-more')} <ArrowRight className="w-4 h-4 ml-2" />
@@ -260,30 +243,29 @@ const Services = () => {
       </section>
 
       {/* ═══════════════ WHY US SECTION ═══════════════ */}
-      <section ref={whyUsSection.ref} className="relative py-24 overflow-hidden">
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white via-accent/15 to-white"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-gold/5 rounded-full blur-3xl animate-float-2"></div>
         {/* Decorative dots */}
         <div className="absolute top-20 left-[10%] w-2 h-2 bg-rose-gold/20 rounded-full animate-float-3 hidden md:block"></div>
         <div className="absolute bottom-20 right-[10%] w-3 h-3 bg-primary/10 rounded-full animate-float-1 hidden md:block"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={whyUsSectionRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 transition-all duration-800 ${whyUsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
                 {t('services.why-us.title')}
               </h2>
-              <div className={`mx-auto h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent transition-all duration-1000 delay-200 ${whyUsSection.isVisible ? 'w-24 opacity-100' : 'w-0 opacity-0'}`}></div>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {whyUsItems.map((item, i) => {
+              {whyUsItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.key}
-                    className={`group flex items-start gap-4 rounded-2xl border border-border/40 bg-white/80 backdrop-blur-sm p-6 shadow-sm hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 ${item.colSpan ? 'md:col-span-2 max-w-xl mx-auto w-full' : ''} ${whyUsSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                    style={{ transitionDelay: `${300 + i * 120}ms` }}
+                    className={`group flex items-start gap-4 rounded-2xl border border-border/40 bg-white/80 backdrop-blur-sm p-6 shadow-sm hover:shadow-elegant hover:-translate-y-1 transition-all duration-500 ${item.colSpan ? 'md:col-span-2 max-w-xl mx-auto w-full' : ''}`}
                   >
                     <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-rose-gold to-rose-gold-dark flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:shadow-rose transition-all duration-300">
                       <Icon className="w-5 h-5 text-white" />
@@ -300,14 +282,14 @@ const Services = () => {
       </section>
 
       {/* ═══════════════ QUICK LINKS ═══════════════ */}
-      <section ref={quickLinksSection.ref} className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-white">
+        <div ref={quickLinksSectionRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4 transition-all duration-800 ${quickLinksSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
                 {t('services.all.title')}
               </h2>
-              <div className={`mx-auto h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent transition-all duration-1000 delay-200 ${quickLinksSection.isVisible ? 'w-24 opacity-100' : 'w-0 opacity-0'}`}></div>
+              <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-rose-gold to-transparent"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -316,14 +298,13 @@ const Services = () => {
                 { to: '/redtouch-laser-muenchen', label: 'services.all.redtouch', icon: Waves },
                 { to: '/icoone-laser-muenchen', label: 'services.all.icoone', icon: Heart },
                 { to: '/manikuere-pedikuere-muenchen', label: 'services.all.nails', icon: Hand },
-              ].map((link, i) => {
+              ].map((link) => {
                 const Icon = link.icon;
                 return (
                   <Link
                     key={link.to}
                     to={withLang(link.to)}
-                    className={`group block transition-all duration-700 ${quickLinksSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                    style={{ transitionDelay: `${400 + i * 100}ms` }}
+                    className="group block"
                   >
                     <div className="relative rounded-2xl border border-border/50 bg-gradient-to-br from-white to-accent/10 p-6 hover:shadow-elegant hover:-translate-y-2 transition-all duration-400 overflow-hidden">
                       {/* Hover glow */}
@@ -347,7 +328,7 @@ const Services = () => {
       </section>
 
       {/* ═══════════════ CTA SECTION ═══════════════ */}
-      <section ref={ctaSection.ref} className="relative py-24 overflow-hidden">
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/95 to-rose-gold-dark/90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.05),transparent_40%)]"></div>
@@ -358,15 +339,15 @@ const Services = () => {
         <div className="absolute top-1/2 left-[5%] w-3 h-3 bg-white/20 rounded-full animate-float-5 hidden md:block"></div>
         <div className="absolute top-[30%] right-[20%] w-2 h-2 bg-white/15 rounded-full animate-float-4 hidden md:block"></div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${ctaSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div ref={ctaSectionRef} className="container mx-auto px-4 text-center relative z-10 reveal reveal-up">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             {t('services.cta.title')}
           </h2>
-          <div className={`mx-auto h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent mb-6 transition-all duration-1200 delay-200 ${ctaSection.isVisible ? 'w-24 opacity-100' : 'w-0 opacity-0'}`}></div>
-          <p className={`text-lg sm:text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${ctaSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent mb-6"></div>
+          <p className="text-lg sm:text-xl text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
             {t('services.cta.subtitle')}
           </p>
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-500 ${ctaSection.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               size="lg"
               className="bg-white text-primary border-none shadow-xl hover:bg-white/90 hover:scale-105 hover:shadow-2xl transition-all duration-300 rounded-full px-8"
@@ -417,16 +398,15 @@ function ServiceCard({
   withLang: (path: string) => string;
   t: (key: string) => string;
 }) {
-  const { ref, isVisible } = useInView(0.12);
+  const cardRef = useScrollReveal({ threshold: 0.12 });
   const [imageLoaded, setImageLoaded] = useState(false);
   const Icon = service.icon;
   const isReversed = service.reversed || index % 2 !== 0;
 
   return (
     <div
-      ref={ref}
-      className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
-      style={{ transitionDelay: `${100}ms` }}
+      ref={cardRef}
+      className="reveal reveal-up"
     >
       <Link to={withLang(service.link)} className="block group">
         <div className="relative rounded-2xl overflow-hidden border border-border/40 bg-white shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-2">

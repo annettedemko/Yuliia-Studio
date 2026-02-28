@@ -2,16 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, MapPin, Mail, Instagram } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
 import { subscriptionsService } from '@/services/contentService';
 import type { SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Promotions } from '@/components/Promotions';
 import { showBookingWidget } from '@/lib/altegioWidget';
 import ConsentMap from '@/components/ConsentMap';
-// Изображения загружаются из папки public
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import SpotlightCard from '@/components/SpotlightCard';
+import SectionDivider from '@/components/SectionDivider';
 
 const Home = () => {
   const { t, language } = useLanguage();
@@ -33,9 +35,9 @@ const Home = () => {
   const getTranslated = (de: string, ru?: string) => {
     return language === 'ru' && ru ? ru : de;
   };
-  useEffect(() => {
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@type': 'BeautySalon',
       '@id': `${baseUrl}#business`,
@@ -60,7 +62,7 @@ const Home = () => {
         longitude: 11.654647
       },
       telephone: '+4915206067810',
-       email: 'Yulachip@icloud.com',
+      email: 'Yulachip@icloud.com',
       priceRange: '€€',
       hasMap: 'https://www.google.com/maps?cid=11116671040407330782',
       sameAs: [
@@ -75,8 +77,10 @@ const Home = () => {
           closes: '20:00'
         }
       ]
-    });
+    };
+  }, [currentLang]);
 
+  useEffect(() => {
     // Load subscriptions
     const loadSubscriptions = async () => {
       try {
@@ -100,9 +104,18 @@ const Home = () => {
     document.getElementById('subscriptions')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const servicesRef = useScrollReveal({ threshold: 0.1 });
+  const subscriptionsRef = useScrollReveal({ threshold: 0.1 });
+  const hoursRef = useScrollReveal({ threshold: 0.15 });
+  const mapRef = useScrollReveal({ threshold: 0.1 });
+  const contactRef = useScrollReveal({ threshold: 0.1 });
+
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16 bg-gradient-to-b from-white via-gray-50/30 to-white">{/* Add padding-top for fixed navigation */}
 
         {/* Hero Section */}
@@ -114,26 +127,27 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
 
-        {/* Animated particles - hidden on mobile for performance */}
+        {/* Sparkle particles - hidden on mobile for performance */}
         <div className="absolute inset-0 overflow-hidden hidden sm:block">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-rose-gold/30 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-3 h-3 bg-white/20 rounded-full animate-bounce delay-1000"></div>
-          <div className="absolute bottom-20 left-20 w-2 h-2 bg-rose-gold/40 rounded-full animate-ping delay-500"></div>
-          <div className="absolute bottom-40 right-10 w-1 h-1 bg-white/30 rounded-full animate-pulse delay-700"></div>
+          <div className="sparkle" />
+          <div className="sparkle" />
+          <div className="sparkle" />
+          <div className="sparkle" />
+          <div className="sparkle" />
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 animate-slide-up leading-tight">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 hero-blur-sharp-1 hero-text-shadow leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
               {t('home.hero.title')}
             </span>
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 animate-slide-up delay-300 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 text-white/90 hero-blur-sharp-2 leading-relaxed">
             {t('home.hero.subtitle')}
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-up delay-500 w-full sm:w-auto"
+            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 hero-blur-sharp-3 btn-cta-glow w-full sm:w-auto"
             onClick={() => showBookingWidget()}
           >
             {t('home.hero.button')}
@@ -141,15 +155,18 @@ const Home = () => {
         </div>
       </section>
 
+      <SectionDivider variant="curve" />
+
       {/* Services Section */}
       <section className="py-8 sm:py-12 bg-gradient-to-b from-white/90 to-white relative">
-        <div className="container mx-auto px-4">
+        <div ref={servicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">{t('home.services.title')}</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <Link to={withLang('/laser-haarentfernung-muenchen')} className="group">
+              <SpotlightCard className="h-full">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -160,7 +177,7 @@ const Home = () => {
                       width={1456}
                       height={816}
                       loading="lazy"
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover object-center img-silk-zoom"
                       style={{
                         objectPosition: '50% 5%',
                         transform: 'scale(1.0)'
@@ -179,9 +196,11 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
+              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/redtouch-laser-muenchen')} className="group">
+              <SpotlightCard className="h-full">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -192,7 +211,7 @@ const Home = () => {
                       width={800}
                       height={800}
                       loading="lazy"
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover img-silk-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -207,9 +226,11 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
+              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/icoone-laser-muenchen')} className="group">
+              <SpotlightCard className="h-full">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -220,7 +241,7 @@ const Home = () => {
                       width={853}
                       height={1280}
                       loading="lazy"
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover img-silk-zoom"
                       style={{ objectPosition: 'center 25%' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -236,9 +257,11 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
+              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/manikuere-pedikuere-muenchen')} className="group">
+              <SpotlightCard className="h-full">
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -249,7 +272,7 @@ const Home = () => {
                       width={1198}
                       height={1156}
                       loading="lazy"
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover img-silk-zoom"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -264,6 +287,7 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
+              </SpotlightCard>
             </Link>
           </div>
 
@@ -287,12 +311,12 @@ const Home = () => {
 
       {/* Subscription Packages */}
       <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Floating decorative elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/10 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float delay-1000"></div>
+        {/* Floating decorative orbs */}
+        <div className="absolute top-10 left-10 w-20 h-20 orb-rose blur-xl"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 orb-primary blur-xl"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-6 sm:mb-8 animate-slide-up">
+        <div ref={subscriptionsRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+          <div className="text-center mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-4">
               {t('home.subscriptions.title')}
             </h2>
@@ -387,15 +411,15 @@ const Home = () => {
 
       {/* Working Hours Section */}
       <section className="py-10 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Animated background elements */}
+        {/* Floating decorative orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-rose-gold/5 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 bg-primary/5 rounded-full animate-bounce delay-1000"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-r from-rose-gold/10 to-primary/10 rounded-full animate-float"></div>
+          <div className="absolute top-10 left-10 w-20 h-20 orb-rose"></div>
+          <div className="absolute bottom-20 right-20 w-32 h-32 orb-primary"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 orb-rose"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8 animate-slide-up">
+        <div ref={hoursRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+          <div className="text-center mb-8">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.hours.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient"></div>
           </div>
@@ -427,15 +451,14 @@ const Home = () => {
 
       {/* Map Section */}
       <section className="py-12 bg-transparent relative overflow-hidden mt-[2vh]">
-        {/* Floating geometric elements */}
+        {/* Floating decorative orbs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-6 h-6 border-2 border-rose-gold/30 rotate-45 animate-float"></div>
-          <div className="absolute bottom-32 right-16 w-8 h-8 border-2 border-primary/30 rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 right-10 w-4 h-16 bg-gradient-to-b from-rose-gold/20 to-transparent animate-bounce delay-500"></div>
+          <div className="absolute top-20 left-10 w-16 h-16 orb-rose"></div>
+          <div className="absolute bottom-32 right-16 w-20 h-20 orb-primary"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-8 animate-slide-up">
+        <div ref={mapRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+          <div className="text-center mb-8">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.map.title')}</h2>
             <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
 
@@ -524,16 +547,14 @@ const Home = () => {
 
       {/* Contact Section */}
       <section id="contact" className="py-8 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Dynamic floating elements */}
+        {/* Floating decorative orbs */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-br from-rose-gold/10 to-primary/10 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/3 w-24 h-24 bg-gradient-to-tr from-primary/10 to-rose-gold/10 rounded-full blur-lg animate-float"></div>
-          <div className="absolute top-1/2 left-10 w-4 h-4 bg-rose-gold/40 rounded-full animate-ping"></div>
-          <div className="absolute bottom-1/3 right-20 w-6 h-6 bg-primary/40 rotate-45 animate-spin-slow"></div>
+          <div className="absolute top-10 left-1/4 w-32 h-32 orb-rose blur-xl"></div>
+          <div className="absolute bottom-20 right-1/3 w-24 h-24 orb-primary blur-lg"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-6 animate-slide-up">
+        <div ref={contactRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+          <div className="text-center mb-6">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('home.contact.title')}</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-rose-gold to-primary mx-auto animate-gradient mb-6"></div>
             <p className="text-xl text-muted-foreground animate-slide-up delay-300">

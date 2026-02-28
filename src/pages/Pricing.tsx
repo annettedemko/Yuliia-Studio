@@ -1,15 +1,16 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Zap, Sparkles, Heart, Hand, Instagram, Waves, ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { pricesService, subscriptionsService, categoriesService, type PriceCategory } from '@/services/contentService';
 import type { ServicePrice, SubscriptionPackage } from '@/types/admin';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
 import AGBNotice from '@/components/AGBNotice';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const Pricing = () => {
   const { language, t } = useLanguage();
@@ -31,6 +32,12 @@ const Pricing = () => {
     return `${langPrefix}${path}`;
   };
 
+
+  const vatRef = useScrollReveal();
+  const agbRef = useScrollReveal();
+  const subscriptionsRef = useScrollReveal();
+  const infoRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
 
   // Helper: get translated text with fallback
   const getTranslated = (de: string, ru?: string) => {
@@ -77,10 +84,10 @@ const Pricing = () => {
     loadData();
   }, []);
 
-  useEffect(() => {
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -164,11 +171,19 @@ const Pricing = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">{t('pricing.loading')}</div>;
+    return (
+      <>
+        <PageHelmet />
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        </Helmet>
+        <div className="min-h-screen flex items-center justify-center">{t('pricing.loading')}</div>
+      </>
+    );
   }
 
   // Helper function to sort prices by numeric value
@@ -265,6 +280,9 @@ const Pricing = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
 
         {/* Hero Section */}
@@ -290,7 +308,7 @@ const Pricing = () => {
 
       {/* VAT Notice */}
       <section className="py-4 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={vatRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="bg-primary/10 border-2 border-primary rounded-lg py-4 px-6 text-center">
               <p className="text-base font-semibold text-primary">
@@ -303,7 +321,7 @@ const Pricing = () => {
 
       {/* AGB Notice */}
       <section className="py-6 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={agbRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <AGBNotice />
           </div>
@@ -312,7 +330,7 @@ const Pricing = () => {
 
       {/* Subscription Packages */}
       <section id="abonnements" className="pt-4 pb-12 bg-background scroll-mt-20">
-        <div className="container mx-auto px-4">
+        <div ref={subscriptionsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('pricing.subscriptions.title')}</h2>
             <p className="text-xl text-muted-foreground">
@@ -475,7 +493,7 @@ const Pricing = () => {
 
       {/* Important Information */}
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={infoRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <Card>
               <CardContent className="p-8">
@@ -517,7 +535,7 @@ const Pricing = () => {
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div ref={ctaRef} className="container mx-auto px-4 text-center reveal reveal-up">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             {t('pricing.cta.title')}
           </h2>

@@ -2,12 +2,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CheckCircle, Info, Zap, Shield, Sparkles, Target, Award, Star } from 'lucide-react';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const AlexandritVsDiodenlaser = () => {
   const { t } = useLanguage();
@@ -24,10 +25,22 @@ const AlexandritVsDiodenlaser = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  /* Scroll reveal refs for non-hero sections */
+  const overviewRef = useScrollReveal();
+  const howItWorksRef = useScrollReveal();
+  const devicesRef = useScrollReveal();
+  const suitableRef = useScrollReveal();
+  const zonesRef = useScrollReveal();
+  const sessionsRef = useScrollReveal();
+  const priceRef = useScrollReveal();
+  const safetyRef = useScrollReveal();
+  const faqRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -113,12 +126,15 @@ const AlexandritVsDiodenlaser = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
 
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16">
 
         {/* Hero Section */}
@@ -222,7 +238,7 @@ const AlexandritVsDiodenlaser = () => {
         <div className="absolute top-0 left-0 w-64 h-64 bg-rose-gold-light/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={overviewRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-block bg-gradient-to-r from-rose-gold to-primary p-1 rounded-full mb-4">
@@ -328,7 +344,7 @@ const AlexandritVsDiodenlaser = () => {
           <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={howItWorksRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full mb-4 shadow-lg">
@@ -379,7 +395,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* Gerätespezifischer Direktvergleich */}
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
+        <div ref={devicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-rose-gold/10 to-primary/10 px-6 py-3 rounded-full mb-4 border-2 border-gray-200">
@@ -518,7 +534,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* Welcher Laser passt zu wem */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        <div className="container mx-auto px-4">
+        <div ref={suitableRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-gold to-primary px-6 py-3 rounded-full mb-4 shadow-xl">
@@ -587,7 +603,7 @@ const AlexandritVsDiodenlaser = () => {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-light rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={zonesRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-white shadow-lg px-6 py-3 rounded-full mb-4 border-2 border-rose-gold/30">
@@ -670,7 +686,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* Sitzungen, Abstände & Erwartungen */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-rose-gold/5 to-primary/5">
-        <div className="container mx-auto px-4">
+        <div ref={sessionsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
@@ -717,7 +733,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* Warum ist Alexandrit teurer */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={priceRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-rose-gold/10 px-6 py-3 rounded-full mb-4 border-2 border-rose-gold/30">
@@ -784,7 +800,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* Sicherheit & Risiken */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4">
+        <div ref={safetyRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-4 border-2 border-primary/30">
@@ -880,7 +896,7 @@ const AlexandritVsDiodenlaser = () => {
 
       {/* FAQs */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={faqRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-4 border-2 border-primary/30">
@@ -942,7 +958,7 @@ const AlexandritVsDiodenlaser = () => {
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-rose-gold rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <div ref={ctaRef} className="container mx-auto px-4 text-center relative z-10 reveal reveal-up">
           <div className="max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/30">
               <Sparkles className="w-5 h-5" />

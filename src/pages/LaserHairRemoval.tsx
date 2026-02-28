@@ -3,12 +3,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Train, Car, Clock, Shield, Award, Star, Instagram, CheckCircle, ArrowRight, Sparkles, Zap } from 'lucide-react';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { showBookingWidget } from '@/lib/altegioWidget';
 import ConsentMap from '@/components/ConsentMap';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 // Изображения загружаются из папки public
 
 const LaserHairRemoval = () => {
@@ -26,10 +27,20 @@ const LaserHairRemoval = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const techRef = useScrollReveal({ threshold: 0.1 });
+  const phasesRef = useScrollReveal({ threshold: 0.1 });
+  const processRef = useScrollReveal({ threshold: 0.1 });
+  const whyUsRef = useScrollReveal({ threshold: 0.1 });
+  const faqRef = useScrollReveal({ threshold: 0.1 });
+  const testimonialsRef = useScrollReveal({ threshold: 0.1 });
+  const comparisonRef = useScrollReveal({ threshold: 0.1 });
+  const ctaRef = useScrollReveal({ threshold: 0.1 });
+  const mapRef = useScrollReveal({ threshold: 0.1 });
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -148,7 +159,7 @@ const LaserHairRemoval = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
 
   const faqItems = [
@@ -177,6 +188,9 @@ const LaserHairRemoval = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
 
         {/* Hero Section */}
@@ -238,7 +252,7 @@ const LaserHairRemoval = () => {
         <div className="absolute top-0 left-0 w-72 h-72 bg-rose-gold/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={techRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             {/* Premium section header */}
             <div className="text-center mb-16">
@@ -340,7 +354,7 @@ const LaserHairRemoval = () => {
 
       {/* Why Multiple Sessions Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={phasesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">{t('laser.sessions.title')}</h2>
@@ -387,7 +401,7 @@ const LaserHairRemoval = () => {
       {/* Process Section */}
       <section className="relative py-20 bg-gradient-to-b from-accent/30 to-accent/10 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-gold/5 rounded-full blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={processRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.process.title')}</h2>
@@ -416,7 +430,7 @@ const LaserHairRemoval = () => {
 
       {/* Suitability & Contraindications */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div ref={comparisonRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.suitability.title')}</h2>
@@ -517,7 +531,7 @@ const LaserHairRemoval = () => {
       {/* FAQ Section */}
       <section className="relative py-20 bg-gradient-to-b from-accent/30 to-white overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={faqRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.faq.title')}</h2>
@@ -542,7 +556,7 @@ const LaserHairRemoval = () => {
 
       {/* Why Us Section */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={whyUsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
@@ -570,7 +584,7 @@ const LaserHairRemoval = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/95 to-rose-gold-dark/90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_50%)]"></div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div ref={ctaRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">{t('laser.pricing.title')}</h2>
             <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-white/50 to-transparent mb-6"></div>
@@ -604,7 +618,7 @@ const LaserHairRemoval = () => {
 
       {/* Location Section */}
       <section className="py-20 bg-gradient-to-b from-accent/20 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div ref={mapRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.location.title')}</h2>
@@ -689,7 +703,7 @@ const LaserHairRemoval = () => {
 
       {/* Testimonials */}
       <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={testimonialsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto text-center">
             <div className="text-center mb-14">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">{t('laser.testimonials.title')}</h2>

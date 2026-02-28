@@ -19,11 +19,12 @@ import {
   Instagram,
   Waves
 } from 'lucide-react';
-import { useEffect } from 'react';
-import { setJsonLd } from '@/seo/seo';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const RedTouchProService = () => {
   const { t } = useLanguage();
@@ -40,10 +41,10 @@ const RedTouchProService = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -161,7 +162,7 @@ const RedTouchProService = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
   const deviceFeatures = [
     {
@@ -220,9 +221,20 @@ const RedTouchProService = () => {
     t('redtouch.areas.area6')
   ];
 
+  const benefitsRef = useScrollReveal({ threshold: 0.1 });
+  const featuresRef = useScrollReveal({ threshold: 0.1 });
+  const resultsRef = useScrollReveal({ threshold: 0.1 });
+  const deviceFeaturesRef = useScrollReveal({ threshold: 0.1 });
+  const areasRef = useScrollReveal({ threshold: 0.1 });
+  const ctaRef = useScrollReveal({ threshold: 0.1 });
+  const relatedRef = useScrollReveal({ threshold: 0.1 });
+
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -280,7 +292,7 @@ const RedTouchProService = () => {
 
       {/* Benefits Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={benefitsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               {t('redtouch.benefits.title')}
@@ -349,7 +361,7 @@ const RedTouchProService = () => {
 
       {/* Main Features Section */}
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={featuresRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.features.title')}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -400,7 +412,7 @@ const RedTouchProService = () => {
 
       {/* Before/After Gallery Section */}
       <section className="py-16 bg-gradient-to-b from-accent/10 to-white">
-        <div className="container mx-auto px-4">
+        <div ref={resultsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.results.title')}</h2>
             <p className="text-xl text-muted-foreground">
@@ -433,7 +445,7 @@ const RedTouchProService = () => {
 
       {/* Device Features */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={deviceFeaturesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.device.title')}</h2>
             <p className="text-xl text-muted-foreground">
@@ -459,7 +471,7 @@ const RedTouchProService = () => {
 
       {/* Behandlungsgebiete */}
       <section className="py-16 bg-gradient-to-b from-accent/5 to-white">
-        <div className="container mx-auto px-4">
+        <div ref={areasRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('redtouch.areas.title')}</h2>
@@ -499,7 +511,7 @@ const RedTouchProService = () => {
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
+        <div ref={ctaRef} className="container mx-auto px-4 text-center reveal reveal-up">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             {t('redtouch.cta.title')}
           </h2>
@@ -531,7 +543,7 @@ const RedTouchProService = () => {
 
       {/* Related Services */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={relatedRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

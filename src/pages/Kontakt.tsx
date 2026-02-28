@@ -2,13 +2,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Clock, Train, Car, Instagram, Calendar, MessageCircle, Send } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { setJsonLd } from '@/seo/seo';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import AGBNotice from '@/components/AGBNotice';
 import ConsentMap from '@/components/ConsentMap';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const Kontakt = () => {
   const { t } = useLanguage();
@@ -26,9 +27,13 @@ const Kontakt = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const contactCardsRef = useScrollReveal();
+  const mapRef = useScrollReveal();
+  const ctaRef = useScrollReveal();
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@type': 'BeautySalon',
       '@id': `${baseUrl}#business`,
@@ -99,12 +104,15 @@ const Kontakt = () => {
         'https://www.instagram.com/yuliia_cheporska_studio',
         'https://www.tiktok.com/@yuliia_cheporska_studio'
       ]
-    });
+    };
   }, [currentLang]);
 
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
@@ -125,7 +133,7 @@ const Kontakt = () => {
 
       {/* Contact Cards */}
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={contactCardsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
 
             {/* Adresse */}
@@ -217,7 +225,7 @@ const Kontakt = () => {
 
       {/* Map Section */}
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={mapRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-8">{t('kontakt.map.title')}</h2>
 
@@ -304,7 +312,7 @@ const Kontakt = () => {
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-primary via-primary-dark to-primary text-white">
-        <div className="container mx-auto px-4">
+        <div ref={ctaRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">{t('kontakt.cta.title')}</h2>
             <p className="text-xl mb-8 text-white/90">

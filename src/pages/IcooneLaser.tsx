@@ -2,11 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Heart, Sparkles, Target, Clock, Shield, Star, Instagram, CheckCircle } from 'lucide-react';
-import { useEffect } from 'react';
-import { setJsonLd } from '@/seo/seo';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const IcooneLaser = () => {
   const { t } = useLanguage();
@@ -23,10 +24,16 @@ const IcooneLaser = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const benefitsRef = useScrollReveal();
+  const whatIsRef = useScrollReveal();
+  const galleryRef = useScrollReveal();
+  const professionalRef = useScrollReveal();
+  const relatedServicesRef = useScrollReveal();
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
     const isRu = currentLang === 'ru';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@graph': [
         {
@@ -144,7 +151,7 @@ const IcooneLaser = () => {
           ]
         }
       ]
-    });
+    };
   }, [currentLang]);
   const benefits = [
     {
@@ -204,6 +211,9 @@ const IcooneLaser = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
     <div className="min-h-screen pt-16">
 
       <section
@@ -260,7 +270,7 @@ const IcooneLaser = () => {
 
       {/* Benefits Section */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={benefitsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary text-center mb-10">
               {t('icoone.benefits.section.title')}
@@ -328,7 +338,7 @@ const IcooneLaser = () => {
       </section>
 
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
+        <div ref={whatIsRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-6">{t('icoone.what.title')}</h2>
@@ -410,7 +420,7 @@ const IcooneLaser = () => {
 
       {/* Gallery Section */}
       <section className="py-16 bg-gradient-to-b from-accent/5 to-white">
-        <div className="container mx-auto px-4">
+        <div ref={galleryRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('icoone.gallery.title')}</h2>
@@ -450,7 +460,7 @@ const IcooneLaser = () => {
       </section>
 
       <section className="py-12 bg-accent/10">
-        <div className="container mx-auto px-4">
+        <div ref={professionalRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-6xl mx-auto text-center">
             <h3 className="text-3xl font-bold text-primary mb-6">{t('icoone.professional.title')}</h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
@@ -462,7 +472,7 @@ const IcooneLaser = () => {
 
       {/* Related Services */}
       <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
+        <div ref={relatedServicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

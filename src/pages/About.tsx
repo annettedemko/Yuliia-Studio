@@ -6,9 +6,10 @@ import { Label } from '@/components/ui/label';
 import { CheckCircle, Phone, Award, Users, Clock, Shield, Instagram, MapPin } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useEffect } from 'react';
+import { useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
-import { setJsonLd } from '@/seo/seo';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 // Изображения загружаются из папки public
 
@@ -27,9 +28,15 @@ const About = () => {
     return `${langPrefix}${path}`;
   };
 
-  useEffect(() => {
+  const aboutTextRef = useScrollReveal();
+  const servicesRef = useScrollReveal();
+  const advantagesRef = useScrollReveal();
+  const galleryRef = useScrollReveal();
+  const contactFormRef = useScrollReveal();
+
+  const jsonLd = useMemo(() => {
     const baseUrl = 'https://www.munchen-beauty.de';
-    setJsonLd({
+    return {
       '@context': 'https://schema.org',
       '@type': 'BeautySalon',
       '@id': `${baseUrl}#business`,
@@ -86,7 +93,7 @@ const About = () => {
         longitude: 11.654647
       },
       hasMap: 'https://www.google.com/maps?cid=11116671040407330782'
-    });
+    };
   }, [currentLang]);
 
   const scrollToContact = () => {
@@ -134,8 +141,11 @@ const About = () => {
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
     <div className="min-h-screen pt-16">{/* Add padding-top for fixed navigation */}
-      
+
       {/* Hero Section */}
       <section className="pt-16 pb-10 bg-gradient-to-b from-accent/20 to-background">
         <div className="container mx-auto px-4">
@@ -154,7 +164,7 @@ const About = () => {
 
       {/* Main Content */}
       <section className="py-10">
-        <div className="container mx-auto px-4">
+        <div ref={aboutTextRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
             {/* Галерея изображений */}
             <div className="flex gap-4">
@@ -210,7 +220,7 @@ const About = () => {
 
       {/* Services List */}
       <section className="py-10 bg-accent/20">
-        <div className="container mx-auto px-4">
+        <div ref={servicesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.services.title')}</h2>
             <p className="text-xl text-muted-foreground">
@@ -233,7 +243,7 @@ const About = () => {
 
       {/* Why Choose Us */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div ref={advantagesRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="text-center mb-10">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.advantages.title')}</h2>
             <p className="text-xl text-muted-foreground">
@@ -259,7 +269,7 @@ const About = () => {
 
       {/* Gallery Section */}
       <section className="py-16 bg-gradient-to-b from-accent/5 to-white">
-        <div className="container mx-auto px-4">
+        <div ref={galleryRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.gallery.title')}</h2>
@@ -299,7 +309,7 @@ const About = () => {
 
       {/* Contact Form */}
       <section id="contact-form" className="py-12 bg-accent/20">
-        <div className="container mx-auto px-4">
+        <div ref={contactFormRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">{t('about.contact.title')}</h2>
