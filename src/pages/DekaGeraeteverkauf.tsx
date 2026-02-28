@@ -68,7 +68,7 @@ const DekaGeraeteverkauf = () => {
         t('equipment.device.redtouch-pro.feature4'),
         t('equipment.device.redtouch-pro.feature5')
       ],
-      image: '/deka2.png'
+      image: '/53.png'
     },
     {
       id: 'again-cos',

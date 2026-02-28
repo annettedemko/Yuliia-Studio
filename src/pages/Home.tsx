@@ -60,6 +60,7 @@ const Home = () => {
         longitude: 11.654647
       },
       telephone: '+4915206067810',
+       email: 'Yulachip@icloud.com',
       priceRange: '€€',
       hasMap: 'https://www.google.com/maps?cid=11116671040407330782',
       sameAs: [
@@ -557,7 +558,7 @@ const Home = () => {
                       href="https://t.me/+4915206067810"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+                      className="bg-primary hover:bg-primary/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
                       aria-label="Telegram"
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -568,7 +569,7 @@ const Home = () => {
                       href="https://wa.me/4915206067810"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+                      className="bg-primary hover:bg-primary/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
                       aria-label="WhatsApp"
                     >
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -579,7 +580,7 @@ const Home = () => {
                       href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-2 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
+                      className="bg-primary hover:bg-primary/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
                       aria-label="Instagram"
                     >
                       <Instagram className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />

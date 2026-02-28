@@ -8,7 +8,7 @@ interface ConsentMapProps {
   height?: string;
 }
 
-const MAPS_EMBED_URL = 'https://www.google.com/maps/embed?origin=mfe&pb=!1m4!3m2!1m1!4s11116671040407330782!6i16!3m1!1sde!5m1!1sde';
+const MAPS_EMBED_URL = 'https://www.google.com/maps?q=Yuliia+Cheporska+Studio,+Elsässer+Straße+33,+81667+München&z=17&output=embed';
 
 /**
  * Google Maps with 2-click solution for GDPR compliance.

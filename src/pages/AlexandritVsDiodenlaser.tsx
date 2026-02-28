@@ -122,57 +122,96 @@ const AlexandritVsDiodenlaser = () => {
       <div className="min-h-screen pt-16">
 
         {/* Hero Section */}
-      <section
-        className="relative min-h-[85vh] sm:min-h-[70vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center text-white overflow-hidden"
-        style={{
-          backgroundImage: `url(/24.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        {/* Soft warm background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(15_60%_97%)] via-white to-[hsl(15_40%_96%)]"></div>
+        {/* Subtle glows */}
+        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-[hsl(15_50%_88%/0.2)] rounded-full blur-[120px]"></div>
+        <div className="absolute -bottom-32 -left-32 w-[350px] h-[350px] bg-[hsl(280_40%_90%/0.15)] rounded-full blur-[100px]"></div>
 
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        {/* Corner accents */}
+        <div className="absolute top-12 left-12 hidden lg:block">
+          <div className="w-16 h-px bg-gradient-to-r from-rose-gold/30 to-transparent"></div>
+          <div className="w-px h-16 bg-gradient-to-b from-rose-gold/30 to-transparent"></div>
+        </div>
+        <div className="absolute top-12 right-12 hidden lg:block">
+          <div className="w-16 h-px bg-gradient-to-l from-rose-gold/30 to-transparent ml-auto"></div>
+          <div className="w-px h-16 bg-gradient-to-b from-rose-gold/30 to-transparent ml-auto"></div>
+        </div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-4 border border-white/20">
-            <Sparkles className="w-4 h-4 text-yellow-300" />
-            <span className="text-sm font-medium">{t('comparison.hero.badge')}</span>
-            <Sparkles className="w-4 h-4 text-blue-300" />
-          </div>
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight px-2">
-            <span className="bg-gradient-to-r from-yellow-300 via-white to-blue-300 bg-clip-text text-transparent">
-              {t('comparison.hero.title.line1')}
-            </span>
-            <br />
-            <span className="text-white">{t('comparison.hero.title.line2')}</span>
-          </h1>
+            {/* Left — Content */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2.5 border border-rose-gold/15 rounded-full px-5 py-2 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/60"></span>
+                <span className="text-xs font-medium text-rose-gold/80 tracking-[0.2em] uppercase">{t('comparison.hero.badge')}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/60"></span>
+              </div>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed px-4">
-            {t('comparison.hero.description')}
-          </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-[1.1] tracking-tight">
+                <span className="text-primary">
+                  {t('comparison.hero.title.line1')}
+                </span>
+                <br />
+                <span className="gradient-text">{t('comparison.hero.title.line2')}</span>
+              </h1>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-2xl hover:shadow-rose-gold/50 transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
-              onClick={() => showBookingWidget()}
-            >
-              {t('comparison.hero.button.book')}
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105 w-full sm:w-auto text-base sm:text-lg py-6"
-              asChild
-            >
-              <Link to={withLang("/preis")}>
-                {t('comparison.hero.button.prices')}
-              </Link>
-            </Button>
+              <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                {t('comparison.hero.description')}
+              </p>
+
+              {/* Ornamental divider */}
+              <div className="flex items-center justify-center lg:justify-start gap-3 mb-8">
+                <div className="w-12 h-px bg-gradient-to-r from-rose-gold/40 to-transparent"></div>
+                <div className="w-1.5 h-1.5 rotate-45 border border-rose-gold/40"></div>
+                <div className="w-12 h-px bg-gradient-to-l from-rose-gold/40 to-transparent"></div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <Button
+                  size="lg"
+                  className="bg-gradient-hero text-white shadow-lg hover:shadow-rose hover:scale-105 transition-all duration-300 rounded-full px-8"
+                  onClick={() => showBookingWidget()}
+                >
+                  {t('comparison.hero.button.book')}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-8 border-primary/30 hover:border-rose-gold hover:text-rose-gold hover:bg-rose-gold/5 transition-all duration-300"
+                  asChild
+                >
+                  <Link to={withLang("/preis")}>
+                    {t('comparison.hero.button.prices')}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right — Device image */}
+            <div className="relative order-1 lg:order-2 flex justify-center">
+              {/* Soft glow behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-to-br from-rose-gold/8 via-primary/5 to-transparent rounded-full blur-3xl"></div>
+
+              {/* Image container */}
+              <div className="relative group">
+                <div className="relative rounded-2xl overflow-hidden bg-white shadow-elegant border border-rose-gold/10 transition-shadow duration-700 group-hover:shadow-rose">
+                  <img
+                    src="/24.png"
+                    alt={t('comparison.hero.title.line1')}
+                    width={600}
+                    height={500}
+                    loading="eager"
+                    className="w-full max-w-[440px] h-auto object-contain transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
+                  />
+                  {/* Subtle warm overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-rose-gold/3 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -180,15 +219,15 @@ const AlexandritVsDiodenlaser = () => {
       {/* Kurzüberblick */}
       <section className="py-20 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
         {/* Background decorations */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-100/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-100/30 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-rose-gold-light/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-block bg-gradient-to-r from-yellow-500 to-blue-500 p-1 rounded-full mb-4">
+              <div className="inline-block bg-gradient-to-r from-rose-gold to-primary p-1 rounded-full mb-4">
                 <div className="bg-white px-6 py-2 rounded-full">
-                  <span className="text-sm font-bold bg-gradient-to-r from-yellow-600 to-blue-600 bg-clip-text text-transparent">
+                  <span className="text-sm font-bold bg-gradient-to-r from-rose-gold-dark to-primary bg-clip-text text-transparent">
                     {t('comparison.overview.badge')}
                   </span>
                 </div>
@@ -196,7 +235,7 @@ const AlexandritVsDiodenlaser = () => {
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.overview.title')}
               </h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-rose-gold to-primary mx-auto rounded-full"></div>
             </div>
 
             <div className="space-y-4 mb-12">
@@ -213,16 +252,16 @@ const AlexandritVsDiodenlaser = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-transparent hover:border-yellow-500/50 transition-all duration-300 hover:shadow-xl group bg-gradient-to-br from-yellow-50/50 to-white">
+              <Card className="border-2 border-transparent hover:border-rose-gold/50 transition-all duration-300 hover:shadow-xl group bg-gradient-to-br from-rose-gold-light/50 to-white">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-yellow-500/20 p-3 rounded-full group-hover:scale-110 transition-transform">
-                      <Zap className="w-6 h-6 text-yellow-600" />
+                    <div className="bg-rose-gold/20 p-3 rounded-full group-hover:scale-110 transition-transform">
+                      <Zap className="w-6 h-6 text-rose-gold-dark" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <p className="font-bold text-yellow-700 text-lg">{t('comparison.overview.alexandrit.title')}</p>
-                        <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full font-semibold">{t('comparison.overview.alexandrit.badge')}</span>
+                        <p className="font-bold text-rose-gold-dark text-lg">{t('comparison.overview.alexandrit.title')}</p>
+                        <span className="bg-rose-gold text-white text-xs px-2 py-1 rounded-full font-semibold">{t('comparison.overview.alexandrit.badge')}</span>
                       </div>
                       <p className="text-muted-foreground leading-relaxed">
                         {t('comparison.overview.alexandrit.desc')}
@@ -232,16 +271,16 @@ const AlexandritVsDiodenlaser = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-transparent hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl group bg-gradient-to-br from-blue-50/50 to-white">
+              <Card className="border-2 border-transparent hover:border-primary/50 transition-all duration-300 hover:shadow-xl group bg-gradient-to-br from-primary-light/50 to-white">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-500/20 p-3 rounded-full group-hover:scale-110 transition-transform">
-                      <Zap className="w-6 h-6 text-blue-600" />
+                    <div className="bg-primary/20 p-3 rounded-full group-hover:scale-110 transition-transform">
+                      <Zap className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <p className="font-bold text-blue-700 text-lg">{t('comparison.overview.diode.title')}</p>
-                        <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-semibold">{t('comparison.overview.diode.badge')}</span>
+                        <p className="font-bold text-primary text-lg">{t('comparison.overview.diode.title')}</p>
+                        <span className="bg-primary text-white text-xs px-2 py-1 rounded-full font-semibold">{t('comparison.overview.diode.badge')}</span>
                       </div>
                       <p className="text-muted-foreground leading-relaxed">
                         {t('comparison.overview.diode.desc')}
@@ -251,14 +290,14 @@ const AlexandritVsDiodenlaser = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-orange-300 bg-gradient-to-br from-orange-50 to-orange-100/50 shadow-lg">
+              <Card className="border-2 border-rose-gold-dark/40 bg-gradient-to-br from-rose-gold-light/30 to-rose-gold-light/20 shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-orange-500/20 p-3 rounded-full">
-                      <Info className="w-6 h-6 text-orange-600" />
+                    <div className="bg-rose-gold-dark/20 p-3 rounded-full">
+                      <Info className="w-6 h-6 text-rose-gold-dark" />
                     </div>
                     <p className="text-muted-foreground flex-1 leading-relaxed">
-                      <span className="font-bold text-orange-800 text-lg block mb-1">{t('comparison.overview.warning.title')}</span>
+                      <span className="font-bold text-rose-gold-dark text-lg block mb-1">{t('comparison.overview.warning.title')}</span>
                       {t('comparison.overview.warning.text')}
                     </p>
                   </div>
@@ -285,8 +324,8 @@ const AlexandritVsDiodenlaser = () => {
       {/* Wie funktionieren die Laser */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-rose-gold/5 to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute top-20 left-20 w-32 h-32 bg-rose-gold/20 rounded-full blur-2xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-primary/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -299,19 +338,19 @@ const AlexandritVsDiodenlaser = () => {
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.how.title')}
               </h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-rose-gold to-primary mx-auto rounded-full"></div>
             </div>
 
             {/* Image */}
-            <div className="mb-10 relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all"></div>
+            <div className="mb-10 relative group flex justify-center">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-rose-gold/8 rounded-full blur-3xl"></div>
               <img
                 src="/19.png"
                 alt={t('alt.comparison.hero')}
                 width={561}
                 height={764}
                 loading="lazy"
-                className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl relative z-10 border-4 border-white"
+                className="w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto rounded-2xl shadow-elegant relative z-10 border border-rose-gold/10"
               />
             </div>
 
@@ -343,10 +382,10 @@ const AlexandritVsDiodenlaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500/10 to-blue-500/10 px-6 py-3 rounded-full mb-4 border-2 border-gray-200">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-rose-gold/10 to-primary/10 px-6 py-3 rounded-full mb-4 border-2 border-gray-200">
+                <div className="w-3 h-3 bg-rose-gold rounded-full"></div>
                 <span className="text-sm font-bold text-primary">{t('comparison.devices.badge')}</span>
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-primary rounded-full"></div>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.devices.title')}
@@ -365,13 +404,13 @@ const AlexandritVsDiodenlaser = () => {
                         <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider">
                           {t('comparison.devices.table.criterion')}
                         </th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-yellow-500/20">
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-rose-gold/20">
                           <div className="flex items-center gap-2">
                             <Star className="w-4 h-4" />
                             {t('comparison.devices.table.alexandrit')}
                           </div>
                         </th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-blue-500/20">
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase tracking-wider bg-primary/20">
                           <div className="flex items-center gap-2">
                             <Shield className="w-4 h-4" />
                             {t('comparison.devices.table.diode')}
@@ -382,28 +421,28 @@ const AlexandritVsDiodenlaser = () => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       <tr className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{t('comparison.devices.table.wavelength')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">{t('comparison.devices.table.wavelength.alex')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">{t('comparison.devices.table.wavelength.diode')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-rose-gold-light/50">{t('comparison.devices.table.wavelength.alex')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-primary-light/50">{t('comparison.devices.table.wavelength.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{t('comparison.devices.table.mode')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">{t('comparison.devices.table.mode.alex')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">{t('comparison.devices.table.mode.diode')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-rose-gold-light/50">{t('comparison.devices.table.mode.alex')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-primary-light/50">{t('comparison.devices.table.mode.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{t('comparison.devices.table.cooling')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">{t('comparison.devices.table.cooling.alex')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">{t('comparison.devices.table.cooling.diode')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-rose-gold-light/50">{t('comparison.devices.table.cooling.alex')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-primary-light/50">{t('comparison.devices.table.cooling.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{t('comparison.devices.table.skin')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">{t('comparison.devices.table.skin.alex')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">{t('comparison.devices.table.skin.diode')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-rose-gold-light/50">{t('comparison.devices.table.skin.alex')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-primary-light/50">{t('comparison.devices.table.skin.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap font-semibold text-gray-900">{t('comparison.devices.table.evidence')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-yellow-50/50">{t('comparison.devices.table.evidence.alex')}</td>
-                        <td className="px-6 py-4 text-sm text-gray-700 bg-blue-50/50">{t('comparison.devices.table.evidence.diode')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-rose-gold-light/50">{t('comparison.devices.table.evidence.alex')}</td>
+                        <td className="px-6 py-4 text-sm text-gray-700 bg-primary-light/50">{t('comparison.devices.table.evidence.diode')}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -411,14 +450,14 @@ const AlexandritVsDiodenlaser = () => {
               </div>
             </div>
 
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-lg mb-12">
+            <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary-light/50 to-white shadow-lg mb-12">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-blue-500/20 p-3 rounded-full">
-                    <Info className="w-6 h-6 text-blue-600" />
+                  <div className="bg-primary/20 p-3 rounded-full">
+                    <Info className="w-6 h-6 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    <span className="font-semibold text-blue-800 block mb-1">{t('comparison.devices.note.title')}</span>
+                    <span className="font-semibold text-primary block mb-1">{t('comparison.devices.note.title')}</span>
                     {t('comparison.devices.note.text')}
                   </p>
                 </div>
@@ -427,55 +466,51 @@ const AlexandritVsDiodenlaser = () => {
 
             {/* Device Images */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="group hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-yellow-500/50 overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant border border-rose-gold/30">
+                <div className="relative bg-gradient-to-b from-rose-gold/5 to-white">
                   <img
-                    src="/deka3.1.jpeg"
+                    src="/50.png"
                     alt={t('alt.comparison.alexandrit')}
                     width={800}
-                    height={800}
+                    height={600}
                     loading="lazy"
-                    className="w-full h-64 object-cover"
-                    style={{ transform: 'scale(1.35)' }}
+                    className="w-full h-72 object-contain p-4"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">{t('comparison.devices.alexandrit.label')}</span>
+                    <span className="bg-rose-gold/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold">{t('comparison.devices.alexandrit.label')}</span>
                   </div>
                 </div>
-                <CardContent className="p-6 bg-gradient-to-br from-yellow-50/50 to-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Star className="w-5 h-5 text-yellow-600" />
+                <div className="p-5 bg-gradient-to-br from-rose-gold-light/40 to-white border-t border-rose-gold-light">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Star className="w-4 h-4 text-rose-gold-dark" />
                     <p className="font-bold text-primary">{t('comparison.devices.alexandrit.title')}</p>
                   </div>
                   <p className="text-sm text-muted-foreground">{t('comparison.devices.alexandrit.subtitle')}</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="group hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-blue-500/50 overflow-hidden">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="rounded-2xl overflow-hidden shadow-elegant border border-primary/30">
+                <div className="relative bg-gradient-to-b from-rose-gold/5 to-white">
                   <img
-                    src="/19.png"
+                    src="/51.png"
                     alt={t('alt.comparison.diode')}
-                    width={561}
-                    height={764}
+                    width={800}
+                    height={600}
                     loading="lazy"
-                    className="w-full h-64 object-cover"
-                    style={{ objectPosition: 'center 10%' }}
+                    className="w-full h-72 object-contain p-4"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">{t('comparison.devices.diode.label')}</span>
+                    <span className="bg-primary/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-bold">{t('comparison.devices.diode.label')}</span>
                   </div>
                 </div>
-                <CardContent className="p-6 bg-gradient-to-br from-blue-50/50 to-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-5 h-5 text-blue-600" />
+                <div className="p-5 bg-gradient-to-br from-primary-light/40 to-white border-t border-primary-light">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <Shield className="w-4 h-4 text-primary" />
                     <p className="font-bold text-primary">{t('comparison.devices.diode.title')}</p>
                   </div>
                   <p className="text-sm text-muted-foreground">{t('comparison.devices.diode.subtitle')}</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -486,7 +521,7 @@ const AlexandritVsDiodenlaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-blue-500 px-6 py-3 rounded-full mb-4 shadow-xl">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-gold to-primary px-6 py-3 rounded-full mb-4 shadow-xl">
                 <Target className="w-5 h-5 text-white" />
                 <span className="text-sm font-bold text-white">{t('comparison.suitable.badge')}</span>
               </div>
@@ -505,35 +540,35 @@ const AlexandritVsDiodenlaser = () => {
                     <thead className="bg-gradient-to-r from-rose-gold via-primary to-rose-gold">
                       <tr>
                         <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase">{t('comparison.suitable.table.criterion')}</th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-yellow-500/20">{t('comparison.suitable.table.alexandrit')}</th>
-                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-blue-500/20">{t('comparison.suitable.table.diode')}</th>
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-rose-gold/20">{t('comparison.suitable.table.alexandrit')}</th>
+                        <th scope="col" className="py-4 px-6 text-left text-sm font-bold text-white uppercase bg-primary/20">{t('comparison.suitable.table.diode')}</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       <tr className="hover:bg-gray-50">
                         <td className="px-6 py-4 font-semibold text-gray-900">{t('comparison.suitable.table.skin')}</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">{t('comparison.suitable.table.skin.alex')}</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">{t('comparison.suitable.table.skin.diode')}</td>
+                        <td className="px-6 py-4 text-sm bg-rose-gold-light/50">{t('comparison.suitable.table.skin.alex')}</td>
+                        <td className="px-6 py-4 text-sm bg-primary-light/50">{t('comparison.suitable.table.skin.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
                         <td className="px-6 py-4 font-semibold text-gray-900">{t('comparison.suitable.table.hair')}</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">{t('comparison.suitable.table.hair.alex')}</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">{t('comparison.suitable.table.hair.diode')}</td>
+                        <td className="px-6 py-4 text-sm bg-rose-gold-light/50">{t('comparison.suitable.table.hair.alex')}</td>
+                        <td className="px-6 py-4 text-sm bg-primary-light/50">{t('comparison.suitable.table.hair.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
                         <td className="px-6 py-4 font-semibold text-gray-900">{t('comparison.suitable.table.comfort')}</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">{t('comparison.suitable.table.comfort.alex')}</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">{t('comparison.suitable.table.comfort.diode')}</td>
+                        <td className="px-6 py-4 text-sm bg-rose-gold-light/50">{t('comparison.suitable.table.comfort.alex')}</td>
+                        <td className="px-6 py-4 text-sm bg-primary-light/50">{t('comparison.suitable.table.comfort.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
                         <td className="px-6 py-4 font-semibold text-gray-900">{t('comparison.suitable.table.speed')}</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">{t('comparison.suitable.table.speed.alex')}</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">{t('comparison.suitable.table.speed.diode')}</td>
+                        <td className="px-6 py-4 text-sm bg-rose-gold-light/50">{t('comparison.suitable.table.speed.alex')}</td>
+                        <td className="px-6 py-4 text-sm bg-primary-light/50">{t('comparison.suitable.table.speed.diode')}</td>
                       </tr>
                       <tr className="hover:bg-gray-50">
                         <td className="px-6 py-4 font-semibold text-gray-900">{t('comparison.suitable.table.safety')}</td>
-                        <td className="px-6 py-4 text-sm bg-yellow-50/50">{t('comparison.suitable.table.safety.alex')}</td>
-                        <td className="px-6 py-4 text-sm bg-blue-50/50">{t('comparison.suitable.table.safety.diode')}</td>
+                        <td className="px-6 py-4 text-sm bg-rose-gold-light/50">{t('comparison.suitable.table.safety.alex')}</td>
+                        <td className="px-6 py-4 text-sm bg-primary-light/50">{t('comparison.suitable.table.safety.diode')}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -541,44 +576,6 @@ const AlexandritVsDiodenlaser = () => {
               </div>
             </div>
 
-            {/* Additional Images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="group hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-yellow-500/50">
-                <div className="relative overflow-hidden">
-                  <img
-                    src="/deka3.2.jpeg"
-                    alt={t('alt.comparison.deka')}
-                    width={800}
-                    height={390}
-                    loading="lazy"
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-bold text-lg">{t('comparison.devices.overlay.alex.title')}</p>
-                    <p className="text-sm text-white/80">{t('comparison.devices.overlay.alex.subtitle')}</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="group hover:shadow-2xl transition-all overflow-hidden border-2 border-transparent hover:border-yellow-500/50">
-                <div className="relative overflow-hidden">
-                  <img
-                    src="/deka3.3.jpeg"
-                    alt={t('alt.comparison.treatment')}
-                    width={800}
-                    height={390}
-                    loading="lazy"
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-bold text-lg">{t('comparison.devices.overlay.treatment.title')}</p>
-                    <p className="text-sm text-white/80">{t('comparison.devices.overlay.treatment.subtitle')}</p>
-                  </div>
-                </div>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
@@ -586,8 +583,8 @@ const AlexandritVsDiodenlaser = () => {
       {/* Zonen-Empfehlungen */}
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-gold-light rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-light rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -600,7 +597,7 @@ const AlexandritVsDiodenlaser = () => {
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.zones.title')}
               </h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 via-rose-gold to-blue-500 mx-auto rounded-full"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-rose-gold to-primary mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -642,23 +639,23 @@ const AlexandritVsDiodenlaser = () => {
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className={`p-2 rounded-full ${item.alexBest ? 'bg-yellow-500/20' : 'bg-blue-500/20'}`}>
-                        <Target className={`w-5 h-5 ${item.alexBest ? 'text-yellow-600' : 'text-blue-600'}`} />
+                      <div className={`p-2 rounded-full ${item.alexBest ? 'bg-rose-gold/20' : 'bg-primary/20'}`}>
+                        <Target className={`w-5 h-5 ${item.alexBest ? 'text-rose-gold-dark' : 'text-primary'}`} />
                       </div>
                       <h3 className="text-xl font-bold text-primary flex-1">{item.zone}</h3>
                     </div>
                     <div className="space-y-4">
-                      <div className="bg-yellow-50/50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <div className="bg-rose-gold-light/50 p-4 rounded-lg border-l-4 border-rose-gold">
                         <div className="flex items-center gap-2 mb-1">
-                          <Star className="w-4 h-4 text-yellow-600" />
-                          <p className="text-sm font-bold text-yellow-700">{t('comparison.zones.alexandrit.label')}</p>
+                          <Star className="w-4 h-4 text-rose-gold-dark" />
+                          <p className="text-sm font-bold text-rose-gold-dark">{t('comparison.zones.alexandrit.label')}</p>
                         </div>
                         <p className="text-sm text-gray-700">{item.alex}</p>
                       </div>
-                      <div className="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-500">
+                      <div className="bg-primary-light/50 p-4 rounded-lg border-l-4 border-primary">
                         <div className="flex items-center gap-2 mb-1">
-                          <Shield className="w-4 h-4 text-blue-600" />
-                          <p className="text-sm font-bold text-blue-700">{t('comparison.zones.diode.label')}</p>
+                          <Shield className="w-4 h-4 text-primary" />
+                          <p className="text-sm font-bold text-primary">{t('comparison.zones.diode.label')}</p>
                         </div>
                         <p className="text-sm text-gray-700">{item.diode}</p>
                       </div>
@@ -723,9 +720,9 @@ const AlexandritVsDiodenlaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-yellow-500/10 px-6 py-3 rounded-full mb-4 border-2 border-yellow-500/30">
-                <Award className="w-5 h-5 text-yellow-600" />
-                <span className="text-sm font-bold text-yellow-700">{t('comparison.price.badge')}</span>
+              <div className="inline-flex items-center gap-2 bg-rose-gold/10 px-6 py-3 rounded-full mb-4 border-2 border-rose-gold/30">
+                <Award className="w-5 h-5 text-rose-gold-dark" />
+                <span className="text-sm font-bold text-rose-gold-dark">{t('comparison.price.badge')}</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.price.title')}
@@ -750,14 +747,14 @@ const AlexandritVsDiodenlaser = () => {
                   color: 'yellow'
                 }
               ].map((item, index) => (
-                <Card key={index} className="border-2 border-transparent hover:border-yellow-500/50 transition-all hover:shadow-lg group">
+                <Card key={index} className="border-2 border-transparent hover:border-rose-gold/50 transition-all hover:shadow-lg group">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-yellow-500/20 p-3 rounded-full group-hover:scale-110 transition-transform">
-                        <Star className="w-5 h-5 text-yellow-600" />
+                      <div className="bg-rose-gold/20 p-3 rounded-full group-hover:scale-110 transition-transform">
+                        <Star className="w-5 h-5 text-rose-gold-dark" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-yellow-700 mb-2 text-lg">{item.title}</h3>
+                        <h3 className="font-bold text-rose-gold-dark mb-2 text-lg">{item.title}</h3>
                         <p className="text-muted-foreground leading-relaxed">{item.text}</p>
                       </div>
                     </div>
@@ -765,14 +762,14 @@ const AlexandritVsDiodenlaser = () => {
                 </Card>
               ))}
 
-              <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300 shadow-lg">
+              <Card className="bg-gradient-to-br from-rose-gold-light/50 to-rose-gold-light/30 border-2 border-rose-gold shadow-lg">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
-                    <div className="bg-yellow-500/30 p-3 rounded-full">
-                      <Info className="w-6 h-6 text-yellow-700" />
+                    <div className="bg-rose-gold/30 p-3 rounded-full">
+                      <Info className="w-6 h-6 text-rose-gold-dark" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-yellow-800 mb-2 text-lg">{t('comparison.price.note.title')}</h3>
+                      <h3 className="font-bold text-rose-gold-dark mb-2 text-lg">{t('comparison.price.note.title')}</h3>
                       <p className="text-gray-700 leading-relaxed">
                         {t('comparison.price.note.desc')}
                       </p>
@@ -790,9 +787,9 @@ const AlexandritVsDiodenlaser = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-green-500/10 px-6 py-3 rounded-full mb-4 border-2 border-green-500/30">
-                <Shield className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-bold text-green-700">{t('comparison.safety.badge')}</span>
+              <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full mb-4 border-2 border-primary/30">
+                <Shield className="w-5 h-5 text-primary" />
+                <span className="text-sm font-bold text-primary">{t('comparison.safety.badge')}</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
                 {t('comparison.safety.title')}
@@ -800,14 +797,14 @@ const AlexandritVsDiodenlaser = () => {
             </div>
 
             <div className="space-y-4">
-              <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50/50 to-white hover:shadow-lg transition-all">
+              <Card className="border-2 border-primary/30 bg-gradient-to-br from-primary-light/30 to-white hover:shadow-lg transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-green-500/20 p-3 rounded-full">
-                      <Shield className="w-6 h-6 text-green-600" />
+                    <div className="bg-primary/20 p-3 rounded-full">
+                      <Shield className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-green-700 mb-2 text-lg">{t('comparison.safety.common.title')}</h3>
+                      <h3 className="font-bold text-primary mb-2 text-lg">{t('comparison.safety.common.title')}</h3>
                       <p className="text-muted-foreground leading-relaxed">
                         {t('comparison.safety.common.desc')}
                       </p>
@@ -816,14 +813,14 @@ const AlexandritVsDiodenlaser = () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50/50 to-white hover:shadow-lg transition-all">
+              <Card className="border-2 border-rose-gold-dark/30 bg-gradient-to-br from-rose-gold-light/30 to-white hover:shadow-lg transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-orange-500/20 p-3 rounded-full">
-                      <Info className="w-6 h-6 text-orange-600" />
+                    <div className="bg-rose-gold-dark/20 p-3 rounded-full">
+                      <Info className="w-6 h-6 text-rose-gold-dark" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-orange-700 mb-2 text-lg">{t('comparison.safety.rare.title')}</h3>
+                      <h3 className="font-bold text-rose-gold-dark mb-2 text-lg">{t('comparison.safety.rare.title')}</h3>
                       <p className="text-muted-foreground leading-relaxed">
                         {t('comparison.safety.rare.desc')}
                       </p>
@@ -942,7 +939,7 @@ const AlexandritVsDiodenlaser = () => {
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-yellow-300 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-rose-gold rounded-full blur-3xl"></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">

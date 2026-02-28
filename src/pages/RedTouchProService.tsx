@@ -63,6 +63,7 @@ const RedTouchProService = () => {
             ? 'Специализированная лазерная процедура RedTouch (675 нм) в Мюнхене для стимуляции коллагена, омоложения кожи и лечения пигментных пятен.'
             : 'Spezialisierte RedTouch Laserbehandlung (675 nm) in München zur Kollagenstimulation, Hautverjüngung und Behandlung von Pigmentflecken.',
           inLanguage: isRu ? 'ru' : 'de',
+          image: `${baseUrl}/deka2.4.png`,
           areaServed: {
             '@type': 'City',
             name: 'München'
@@ -226,27 +227,55 @@ const RedTouchProService = () => {
 
       {/* Hero Section */}
       <section
-        className="relative pt-24 pb-16"
-        style={{
-          backgroundImage: `url(/deka2.4.png)`,
-          backgroundSize: '60%',
-          backgroundPosition: '20% center'
-        }}
+        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-white"></div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8">
-              {t('redtouch.hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-4">
-              {t('redtouch.hero.subtitle')}
-            </p>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              {t('redtouch.hero.description')}
-            </p>
-            </div>
+        <div className="absolute inset-0 animate-hero-zoom" style={{ backgroundImage: 'url(/55.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+            <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">RedTouch 675 nm</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
           </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] hero-stagger-2">
+            {t('redtouch.hero.title')}
+          </h1>
+          <p className="text-base sm:text-lg text-white/90 font-light mb-3 hero-stagger-3">
+            {t('redtouch.hero.subtitle')}
+          </p>
+          <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8 hero-stagger-3">
+            {t('redtouch.hero.description')}
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mb-8 hero-stagger-4">
+            <div className="animate-line-expand h-px bg-gradient-to-r from-transparent to-white/40"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-white/40"></div>
+            <div className="animate-line-expand h-px bg-gradient-to-l from-transparent to-white/40"></div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center hero-stagger-5">
+            <Button
+              size="lg"
+              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8"
+              onClick={() => showBookingWidget()}
+            >
+              {t('redtouch.hero.button.consultation')}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border border-white/40 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+              asChild
+            >
+              <Link to={withLang("/preis#redtouchpro")}>
+                {t('service.button.prices')}
+              </Link>
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Benefits Section */}
@@ -341,7 +370,7 @@ const RedTouchProService = () => {
                 />
                 </div>
               <img
-                src="/deka2.png"
+                src="/53.png"
                 alt={t('alt.redtouch.device')}
                 width={525}
                 height={1200}
@@ -480,7 +509,7 @@ const RedTouchProService = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-rose-gold to-pink-500 text-white hover:shadow-xl hover:scale-105 transition-all"
+              className="bg-gradient-to-r from-rose-gold to-rose-gold-dark text-white hover:shadow-xl hover:scale-105 transition-all"
               onClick={() => showBookingWidget()}
             >
               <Phone className="w-5 h-5 mr-2" />

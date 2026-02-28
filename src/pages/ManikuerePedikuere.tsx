@@ -40,6 +40,7 @@ const ManikuerePedikuere = () => {
             ? 'Профессиональный маникюр и педикюр в Мюнхене-Хайдхаузен: классический, гель, наращивание, нейл-арт, медицинский педикюр.'
             : 'Professionelle Maniküre & Pediküre in München-Haidhausen: Klassisch, Gel, Nagelmodellage, Nail Art, medizinische Fußpflege.',
           inLanguage: isRu ? 'ru' : 'de',
+          image: `${baseUrl}/7.jpg`,
           provider: {
             '@type': 'BeautySalon',
             '@id': `${baseUrl}#business`,
@@ -183,33 +184,59 @@ const ManikuerePedikuere = () => {
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
-      <section
-        className="relative min-h-[50vh] md:min-h-[60vh] lg:h-[70vh] flex items-center justify-center text-white"
-        style={{
-          backgroundImage: `url(/11.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-white/30 via-white/60 to-white"></div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
+      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden">
+        {/* Background with slow cinematic zoom */}
+        <div
+          className="absolute inset-0 animate-hero-zoom"
+          style={{ backgroundImage: 'url(/26.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        ></div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-white"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+            <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Nail Care</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] hero-stagger-2">
             {t('nails.hero.title')}
           </h1>
-          <p className="text-xl md:text-2xl mb-4 text-white/95">
+          <p className="text-base sm:text-lg text-white/90 font-light mb-3 hero-stagger-3">
             {t('nails.hero.subtitle')}
           </p>
-          <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8 hero-stagger-4">
             {t('nails.hero.description')}
           </p>
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90 border-none shadow-lg"
-            onClick={() => showBookingWidget()}
-          >
-            {t('nails.hero.button')}
-          </Button>
+
+          <div className="flex items-center justify-center gap-3 mb-8 hero-stagger-5">
+            <div className="h-px bg-gradient-to-r from-transparent to-white/40 animate-line-expand"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-white/40"></div>
+            <div className="h-px bg-gradient-to-l from-transparent to-white/40 animate-line-expand"></div>
           </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center hero-stagger-6">
+            <Button
+              size="lg"
+              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8"
+              onClick={() => showBookingWidget()}
+            >
+              {t('nails.hero.button')}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border border-white/40 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+              asChild
+            >
+              <Link to={withLang("/preis#manicure")}>
+                {t('service.button.prices')}
+              </Link>
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* Benefits Section */}

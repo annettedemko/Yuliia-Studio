@@ -232,7 +232,7 @@ const DekaAnna = () => {
               <img src="/deka1.png" alt="Motus PRO" className="w-32 lg:w-44 h-auto hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="animate-float-2 flex items-center justify-center self-end pb-32">
-              <img src="/deka2.png" alt="RedTouch PRO" className="w-64 lg:w-88 h-auto hover:opacity-100 transition-opacity duration-500" />
+              <img src="/53.png" alt="RedTouch PRO" className="w-64 lg:w-88 h-auto hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="animate-float-3 flex items-center justify-center">
               <img src="/deka3.png" alt="Motus AX" className="w-72 lg:w-96 h-auto hover:opacity-100 transition-opacity duration-500" />
@@ -252,7 +252,7 @@ const DekaAnna = () => {
               <img src="/deka1.png" alt="Motus PRO" className="w-20 xs:w-24 sm:w-32 h-auto opacity-70 hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="col-start-3 animate-float-2 flex items-center justify-center overflow-visible">
-              <img src="/deka2.png" alt="RedTouch PRO" className="w-32 xs:w-48 sm:w-64 h-auto opacity-70 hover:opacity-100 transition-opacity duration-500" />
+              <img src="/53.png" alt="RedTouch PRO" className="w-32 xs:w-48 sm:w-64 h-auto opacity-70 hover:opacity-100 transition-opacity duration-500" />
             </div>
             <div className="col-start-5 animate-float-3 flex items-center justify-center overflow-visible">
               <img src="/deka3.png" alt="Motus AX" className="w-40 xs:w-56 sm:w-72 h-auto opacity-70 hover:opacity-100 transition-opacity duration-500" />
@@ -738,7 +738,7 @@ const DekaAnna = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
               {[
                 { name: 'Motus PRO', src: '/deka1.png', alt: 'Motus PRO', link: '/motus-pro' },
-                { name: 'RedTouch PRO', src: '/deka2.png', alt: 'RedTouch PRO', link: '/redtouch-pro' },
+                { name: 'RedTouch PRO', src: '/53.png', alt: 'RedTouch PRO', link: '/redtouch-pro' },
                 { name: 'Motus AX', src: '/deka3.png', alt: 'Motus AX', link: '/motus-ax' },
                 { name: 'PHYSIQ 360', src: '/deka4.png', alt: 'PHYSIQ 360', link: '/physiq360' },
                 { name: 'Again cos', src: '/deka5.png', alt: 'Again cos', link: '/again-cos' }

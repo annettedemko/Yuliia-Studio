@@ -49,6 +49,7 @@ const LaserHairRemoval = () => {
             ? 'Профессиональная лазерная эпиляция александритовым и диодным лазером в салоне Yuliia Cheporska Studio, Мюнхен-Хайдхаузен.'
             : 'Professionelle Laser-Haarentfernung mit Alexandrit- und Diodenlaser-Technologie im Yuliia Cheporska Studio München-Haidhausen.',
           inLanguage: isRu ? 'ru' : 'de',
+          image: `${baseUrl}/50.png`,
           areaServed: {
             '@type': 'City',
             name: 'München'
@@ -180,29 +181,39 @@ const LaserHairRemoval = () => {
 
         {/* Hero Section */}
       <section
-        className="relative min-h-[55vh] md:min-h-[65vh] lg:h-[75vh] flex items-center justify-center text-white"
-        style={{
-          backgroundImage: `url(/HERO3.1.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-white"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(181,131,141,0.15),transparent_60%)]"></div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 tracking-tight">
+        <div className="absolute inset-0 animate-hero-zoom" style={{ backgroundImage: 'url(/HERO3.1.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+            <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Laser-Haarentfernung</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] hero-stagger-2">
             {t('laser.hero.title')}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-3 text-white/95 font-light">
+          <p className="text-base sm:text-lg text-white/90 font-light mb-3 hero-stagger-3">
             {t('laser.hero.tagline')}
           </p>
-          <p className="text-base sm:text-lg md:text-xl mb-10 text-white/80">
+          <p className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto mb-8 hero-stagger-3">
             {t('laser.hero.description')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="flex items-center justify-center gap-3 mb-8 hero-stagger-4">
+            <div className="animate-line-expand h-px bg-gradient-to-r from-transparent to-white/40"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-white/40"></div>
+            <div className="animate-line-expand h-px bg-gradient-to-l from-transparent to-white/40"></div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center hero-stagger-5">
             <Button
               size="lg"
-              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8 font-semibold"
+              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8"
               onClick={() => showBookingWidget()}
             >
               {t('laser.hero.button')}
@@ -210,7 +221,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-transparent border-2 border-white/50 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+              className="bg-transparent border border-white/40 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
               asChild
             >
               <Link to={withLang("/preis#alexandrit")}>
@@ -245,10 +256,10 @@ const LaserHairRemoval = () => {
               <div className="group relative rounded-2xl overflow-hidden bg-white border border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 flex flex-col">
                 <div className="relative h-64 sm:h-72 overflow-hidden">
                   <img
-                    src="/17.png"
+                    src="/50.png"
                     alt={t('alt.laser.alexandrit')}
-                    width={6000}
-                    height={6000}
+                    width={1536}
+                    height={1024}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -281,7 +292,7 @@ const LaserHairRemoval = () => {
               <div className="group relative rounded-2xl overflow-hidden bg-white border border-border/50 shadow-card hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 flex flex-col">
                 <div className="relative h-64 sm:h-72 overflow-hidden">
                   <img
-                    src="/19.png"
+                    src="/51.png"
                     alt={t('alt.laser.diode')}
                     width={561}
                     height={764}
@@ -444,12 +455,12 @@ const LaserHairRemoval = () => {
               <div className="mx-auto w-16 h-0.5 bg-gradient-to-r from-transparent via-rose-gold/50 to-transparent"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
-              <div className="rounded-2xl border border-amber-200/50 bg-gradient-to-br from-white to-amber-50/30 p-7 shadow-card">
+              <div className="rounded-2xl border border-rose-gold/30 bg-gradient-to-br from-white to-rose-gold-light/20 p-7 shadow-card">
                 <h4 className="text-lg font-bold text-primary mb-4">{t('laser.risks.common.title')}</h4>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   {['item1', 'item2', 'item3', 'item4'].map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
-                      <div className="w-1.5 h-1.5 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-1.5 h-1.5 bg-rose-gold rounded-full mt-2 flex-shrink-0"></div>
                       <span className="leading-relaxed">{t(`laser.risks.common.${item}`)}</span>
                     </li>
                   ))}

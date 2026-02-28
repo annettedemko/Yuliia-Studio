@@ -164,7 +164,7 @@ const Kontakt = () => {
                   href="https://wa.me/4915206067810"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm text-green-600 hover:text-green-700 transition-colors"
+                  className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
                 >
                   <MessageCircle className="w-4 h-4 mr-1" />
                   {t('kontakt.whatsapp')}
@@ -183,7 +183,7 @@ const Kontakt = () => {
                   href="https://t.me/+4915206067810"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-sm text-blue-600 hover:text-blue-700 transition-colors mb-2"
+                  className="block text-sm text-primary hover:text-primary/80 transition-colors mb-2"
                 >
                   <Send className="w-4 h-4 inline mr-1" />
                   {t('kontakt.telegram.open')}
@@ -349,7 +349,7 @@ const Kontakt = () => {
                 href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110"
+                className="inline-flex bg-primary hover:bg-primary/90 p-3 rounded-full transition-all duration-300 hover:scale-110"
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6 text-white" />

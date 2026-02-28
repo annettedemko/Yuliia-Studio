@@ -142,68 +142,57 @@ const RedTouchPro = () => {
     <div className="min-h-screen pt-16 overflow-x-hidden">
 
       {/* Hero Section */}
-      <section className="py-20 bg-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 h-auto lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl bg-white">
-              <div className="relative overflow-hidden">
-                <img
-                  src="/deka2.png"
-                  alt="RedTouch PRO"
-                  className="w-full h-full object-contain hover:scale-110 transition-transform duration-700"
-                  style={{
-                    transform: 'scale(1.15)',
-                    objectPosition: 'center top'
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-transparent"></div>
-                <div className="absolute top-4 left-4">
-                  <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-red-600 font-semibold text-sm">{t('redtouch.hero.badge')}</span>
-                    </div>
-                  </div>
-                </div>
-              <div className="p-8 lg:p-12 flex flex-col justify-center relative">
-                <div className="absolute top-4 right-4">
-                  <img
-                    src="/DEKA logo.png"
-                    alt="DEKA Logo"
-                    className="h-12 md:h-14 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                    style={{
-                      filter: 'brightness(1.2) saturate(1.1)',
-                    }}
-                  />
-                  </div>
+      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden">
+        {/* Background with slow cinematic zoom */}
+        <div
+          className="absolute inset-0 animate-hero-zoom"
+          style={{ backgroundImage: 'url(/55.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        ></div>
 
-                <div className="mb-6 mt-8">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-primary mb-4 animate-slide-up">
-                    <span className="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-                      RedTouch PRO
-                    </span>
-                  </h1>
-                  <p className="text-xl md:text-2xl text-red-700 font-medium mb-6 animate-slide-up" style={{animationDelay: '200ms'}}>
-                    {t('redtouch.hero.subtitle')}
-                  </p>
-                  </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
 
-                <div className="flex justify-start animate-slide-up" style={{animationDelay: '400ms'}}>
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-red-600 to-red-700 text-white hover:shadow-lg text-lg px-8 py-4"
-                    onClick={() => {
-                      if (window.yWidget) {
-                        window.yWidget.show(window.yWidget.href);
-                      }
-                    }}
-                  >
-                    <Phone className="w-5 h-5 mr-2" />
-                    {t('redtouch.hero.button.consultation')}
-                  </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
+            <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">{t('redtouch.hero.badge')}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
           </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1] hero-stagger-2">
+            RedTouch PRO
+          </h1>
+          <p className="text-base sm:text-lg text-white/90 font-light mb-3 hero-stagger-3">
+            {t('redtouch.hero.subtitle')}
+          </p>
+
+          <div className="flex items-center justify-center gap-3 mb-8 hero-stagger-4">
+            <div className="h-px bg-gradient-to-r from-transparent to-white/40 animate-line-expand"></div>
+            <div className="w-1.5 h-1.5 rotate-45 border border-white/40"></div>
+            <div className="h-px bg-gradient-to-l from-transparent to-white/40 animate-line-expand"></div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center hero-stagger-5">
+            <Button
+              size="lg"
+              className="bg-white/90 backdrop-blur-sm text-primary border-none shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 rounded-full px-8"
+              onClick={() => showBookingWidget()}
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              {t('redtouch.hero.button.consultation')}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border border-white/40 text-white hover:bg-white/15 hover:border-white transition-all duration-300 rounded-full px-8"
+              asChild
+            >
+              <Link to={withLang("/preis#redtouchpro")}>
+                {t('service.button.prices')}
+              </Link>
+            </Button>
+          </div>
+        </div>
       </section>
 
       {/* RedTouch Gallery Section */}
@@ -212,7 +201,7 @@ const RedTouchPro = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.gallery.title')}</h2>
-              <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
+              <div className="w-40 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-8"></div>
               </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -220,9 +209,9 @@ const RedTouchPro = () => {
               <div className="md:col-span-2 relative group animate-slide-up">
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                   <img
-                    src="/deka2.png"
+                    src="/53.png"
                     alt="RedTouch PRO - Professionelles Hautverjüngungsgerät"
-                    className="w-full h-[500px] object-contain bg-gradient-to-br from-blue-50 to-white p-8 group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[500px] object-contain bg-gradient-to-br from-primary-light/30 to-white p-8 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
@@ -266,9 +255,9 @@ const RedTouchPro = () => {
       </section>
 
       {/* Revolutionary Technology Section with Floating Features */}
-      <section id="technology" className="pt-12 pb-0 bg-gradient-to-br from-blue-50 via-background to-primary/5 relative overflow-hidden">
+      <section id="technology" className="pt-12 pb-0 bg-gradient-to-br from-primary-light/30 via-background to-primary/5 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-10 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-primary/10 rounded-full blur-2xl animate-float"></div>
           <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-rose-gold/10 rounded-full blur-lg animate-bounce delay-1000"></div>
           </div>
@@ -277,7 +266,7 @@ const RedTouchPro = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-8 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.tech.title')}</h2>
-              <div className="w-40 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-8"></div>
+              <div className="w-40 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-8"></div>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 {t('redtouch.tech.subtitle')}
               </p>
@@ -290,21 +279,21 @@ const RedTouchPro = () => {
                 {deviceFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-red-50/50 backdrop-blur-sm border-2 border-red-100 hover:border-red-300 animate-slide-up"
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-rose-gold-light/20 backdrop-blur-sm border-2 border-rose-gold-light hover:border-rose-gold animate-slide-up"
                     style={{animationDelay: `${index * 200}ms`}}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                          <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
+                        <div className="bg-gradient-to-br from-rose-gold/20 to-rose-gold-dark/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-rose-gold-dark group-hover:text-rose-gold transition-colors" />
                           </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-rose-gold-dark transition-colors">{t(feature.titleKey)}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
                           </div>
                         </div>
                       {/* Animated border bottom */}
-                      <div className="mt-3 h-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div className="mt-3 h-1 bg-gradient-to-r from-rose-gold to-rose-gold-dark rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
@@ -314,16 +303,16 @@ const RedTouchPro = () => {
               <div className="lg:col-span-6 text-center">
                 <div className="relative inline-block animate-slide-up delay-300">
                   <img
-                    src="/deka2.png"
+                    src="/53.png"
                     alt="RedTouch PRO - Das ultimative Hautverjüngungsgerät"
                     className="w-full max-w-md mx-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 scale-100 lg:scale-75 translate-y-0 lg:-translate-y-[20%]"
                   />
 
                   {/* Floating tech particles */}
-                  <div className="absolute top-10 right-10 w-3 h-3 bg-red-400 rounded-full animate-pulse opacity-70"></div>
-                  <div className="absolute bottom-12 left-12 w-2 h-2 bg-pink-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
-                  <div className="absolute top-1/3 left-8 w-1 h-1 bg-red-300 rounded-full animate-ping delay-500 opacity-80"></div>
-                  <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-pink-600 rounded-full animate-pulse delay-700 opacity-75"></div>
+                  <div className="absolute top-10 right-10 w-3 h-3 bg-rose-gold rounded-full animate-pulse opacity-70"></div>
+                  <div className="absolute bottom-12 left-12 w-2 h-2 bg-rose-gold-dark rounded-full animate-bounce delay-1000 opacity-60"></div>
+                  <div className="absolute top-1/3 left-8 w-1 h-1 bg-rose-gold-light rounded-full animate-ping delay-500 opacity-80"></div>
+                  <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-rose-gold-dark rounded-full animate-pulse delay-700 opacity-75"></div>
                   </div>
                 </div>
 
@@ -332,21 +321,21 @@ const RedTouchPro = () => {
                 {deviceFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-red-50/50 backdrop-blur-sm border-2 border-red-100 hover:border-red-300 animate-slide-up"
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-rose-gold-light/20 backdrop-blur-sm border-2 border-rose-gold-light hover:border-rose-gold animate-slide-up"
                     style={{animationDelay: `${(index + 3) * 200}ms`}}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                          <feature.icon className="w-6 h-6 text-red-600 group-hover:text-pink-600 transition-colors" />
+                        <div className="bg-gradient-to-br from-rose-gold/20 to-rose-gold-dark/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-rose-gold-dark group-hover:text-rose-gold transition-colors" />
                           </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-red-600 transition-colors">{t(feature.titleKey)}</h3>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-rose-gold-dark transition-colors">{t(feature.titleKey)}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{t(feature.descKey)}</p>
                           </div>
                         </div>
                       {/* Animated border bottom */}
-                      <div className="mt-3 h-1 bg-gradient-to-r from-red-500 to-pink-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div className="mt-3 h-1 bg-gradient-to-r from-rose-gold to-rose-gold-dark rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
@@ -362,7 +351,7 @@ const RedTouchPro = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.analysis.title')}</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">{t('redtouch.analysis.subtitle')}</p>
               </div>
 
@@ -447,7 +436,7 @@ const RedTouchPro = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-6 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-6">{t('redtouch.device.title')}</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto mb-6"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto mb-6"></div>
               <p className="text-xl text-muted-foreground">
                 {t('redtouch.device.subtitle')}
               </p>
@@ -457,7 +446,7 @@ const RedTouchPro = () => {
             <div className="flex justify-center animate-slide-up delay-300">
               <div className="relative group">
                 {/* Glowing background effect */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-primary/30 to-blue-500/20 rounded-3xl blur-lg group-hover:blur-xl transition-all duration-500 opacity-75 group-hover:opacity-100"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-primary/30 to-primary/20 rounded-3xl blur-lg group-hover:blur-xl transition-all duration-500 opacity-75 group-hover:opacity-100"></div>
 
                 {/* Main device card */}
                 <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden group-hover:shadow-3xl transition-all duration-500 w-full max-w-[600px] h-auto min-h-[320px] lg:h-[480px]">
@@ -471,17 +460,17 @@ const RedTouchPro = () => {
                     {/* Device image container */}
                     <div className="relative mb-4 lg:mb-6 group-hover:scale-105 transition-transform duration-500">
                       <img
-                        src="/deka2.png"
+                        src="/53.png"
                         alt="RedTouch PRO - Premium DEKA Device"
                         className="w-48 h-48 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
                       />
                       {/* Subtle glow around device */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-primary/10 rounded-full blur-2xl scale-110"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-light/300/10 to-primary/10 rounded-full blur-2xl scale-110"></div>
                       </div>
 
                     {/* Device name and badge */}
                     <div className="text-center">
-                      <div className="inline-flex items-center bg-gradient-to-r from-blue-500 to-primary px-4 py-2 rounded-full mb-4">
+                      <div className="inline-flex items-center bg-gradient-to-r from-primary-light/300 to-primary px-4 py-2 rounded-full mb-4">
                         <Star className="w-4 h-4 text-white mr-2" />
                         <span className="text-white font-semibold text-sm">{t('redtouch.device.badge')}</span>
                         </div>
@@ -491,9 +480,9 @@ const RedTouchPro = () => {
                     </div>
 
                   {/* Floating sparkle effects */}
-                  <div className="absolute top-6 right-6 w-2 h-2 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+                  <div className="absolute top-6 right-6 w-2 h-2 bg-primary/60 rounded-full animate-pulse opacity-60"></div>
                   <div className="absolute bottom-8 left-8 w-1 h-1 bg-primary rounded-full animate-bounce delay-1000 opacity-40"></div>
-                  <div className="absolute top-1/3 left-6 w-1 h-1 bg-blue-300 rounded-full animate-ping delay-500 opacity-50"></div>
+                  <div className="absolute top-1/3 left-6 w-1 h-1 bg-primary/40 rounded-full animate-ping delay-500 opacity-50"></div>
                   </div>
                 </div>
               </div>
@@ -501,16 +490,16 @@ const RedTouchPro = () => {
             {/* Technical specifications below */}
             <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-up delay-500">
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-6 h-6 text-primary" />
                   </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec1.title')}</h4>
                 <p className="text-gray-600 text-sm">{t('redtouch.device.spec1.desc')}</p>
                 </div>
 
               <div className="text-center p-6 bg-white/50 rounded-xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-6 h-6 text-green-600" />
+                <div className="w-12 h-12 bg-rose-gold-light rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-6 h-6 text-rose-gold-dark" />
                   </div>
                 <h4 className="font-semibold text-gray-800 mb-2">{t('redtouch.device.spec2.title')}</h4>
                 <p className="text-gray-600 text-sm">{t('redtouch.device.spec2.desc')}</p>
@@ -534,15 +523,15 @@ const RedTouchPro = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.advantages.title')}</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient"></div>
               </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {advantages.map((advantage, index) => (
                 <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-slide-up" style={{animationDelay: `${index * 100}ms`}}>
                   <CardContent className="p-6">
-                    <div className="bg-blue-500/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <advantage.icon className="w-8 h-8 text-blue-500" />
+                    <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <advantage.icon className="w-8 h-8 text-primary" />
                       </div>
                     <h3 className="text-lg font-bold text-primary mb-3">{t(advantage.titleKey)}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{t(advantage.descKey)}</p>
@@ -560,7 +549,7 @@ const RedTouchPro = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.applications.title')}</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient mb-6"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient mb-6"></div>
               <p className="text-xl text-muted-foreground">
                 {t('redtouch.applications.subtitle')}
               </p>
@@ -569,8 +558,8 @@ const RedTouchPro = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {applications.map((applicationKey, index) => (
                 <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-card hover:shadow-lg transition-shadow animate-slide-up" style={{animationDelay: `${index * 100}ms`}}>
-                  <div className="bg-blue-500/10 p-2 rounded-full">
-                    <CheckCircle className="w-5 h-5 text-blue-500" />
+                  <div className="bg-primary/10 p-2 rounded-full">
+                    <CheckCircle className="w-5 h-5 text-primary" />
                     </div>
                   <span className="text-primary font-medium">{t(applicationKey)}</span>
                   </div>
@@ -586,7 +575,7 @@ const RedTouchPro = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-10 animate-slide-up">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold gradient-text mb-4">{t('redtouch.design.title')}</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-primary to-blue-500 mx-auto animate-gradient"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-rose-gold via-primary to-rose-gold mx-auto animate-gradient"></div>
               </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -619,11 +608,11 @@ const RedTouchPro = () => {
               <div className="animate-slide-up delay-300">
                 <div className="relative">
                   <img
-                    src="/deka2.png"
+                    src="/53.png"
                     alt="RedTouch PRO Design"
-                    className="w-full h-96 object-contain bg-gradient-to-br from-blue-50 to-primary/5 rounded-2xl shadow-elegant p-8"
+                    className="w-full h-96 object-contain bg-gradient-to-br from-primary-light/30 to-primary/5 rounded-2xl shadow-elegant p-8"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary-light/300/10 to-transparent rounded-2xl"></div>
 
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
@@ -638,7 +627,7 @@ const RedTouchPro = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-600 to-primary text-white">
+      <section className="py-12 bg-gradient-to-r from-primary to-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
             {t('redtouch.cta.title')}
