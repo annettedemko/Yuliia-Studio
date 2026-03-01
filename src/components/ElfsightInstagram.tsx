@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getConsentPreferences, type ConsentCategories } from '@/lib/cookieConsent';
 
 const ELFSIGHT_APP_ID = '5ae99363-feb3-4a1f-9d1e-16cb0c5f2a6b';
-const ELFSIGHT_SCRIPT_SRC = 'https://static.elfsight.com/platform/platform.js';
+const ELFSIGHT_SCRIPT_SRC = 'https://elfsightcdn.com/platform.js';
 
 /**
  * Elfsight Instagram Feed with cookie consent integration for GDPR compliance.
