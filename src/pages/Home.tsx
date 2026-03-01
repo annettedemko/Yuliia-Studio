@@ -127,33 +127,37 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/20"></div>
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12 pb-16 sm:pb-12">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-6 sm:py-12 pb-14 sm:pb-12">
           {/* Google Rating Badge */}
-          <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1.5 mb-5 hero-blur-sharp-1">
+          <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1.5 mb-4 sm:mb-5 hero-blur-sharp-1">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
             ))}
             <span className="text-white/90 text-xs font-medium ml-1">5.0 {t('home.trust.google')}</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-5 hero-blur-sharp-1 hero-text-shadow leading-tight">
+          {/* Short title on mobile, full on sm+ */}
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-5 hero-blur-sharp-1 hero-text-shadow leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
-              {t('home.hero.title')}
+              <span className="sm:hidden">{t('home.hero.title.mobile')}</span>
+              <span className="hidden sm:inline">{t('home.hero.title')}</span>
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-3 sm:mb-4 text-white/90 hero-blur-sharp-2 leading-relaxed max-w-2xl mx-auto">
-            {t('home.hero.subtitle')}
+          {/* Short subtitle on mobile, full on sm+ */}
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-4 text-white/90 hero-blur-sharp-2 leading-relaxed max-w-2xl mx-auto">
+            <span className="sm:hidden">{t('home.hero.subtitle.mobile')}</span>
+            <span className="hidden sm:inline">{t('home.hero.subtitle')}</span>
           </p>
 
-          {/* Location Line */}
-          <p className="flex items-center justify-center gap-1.5 text-white/70 text-xs sm:text-sm mb-5 sm:mb-6 hero-blur-sharp-2">
+          {/* Location Line — hidden on mobile, shown in trust bar instead */}
+          <p className="hidden sm:flex items-center justify-center gap-1.5 text-white/70 text-xs sm:text-sm mb-5 sm:mb-6 hero-blur-sharp-2">
             <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
             {t('home.hero.location')}
           </p>
 
-          {/* Service Quick-Link Pills */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 hero-blur-sharp-3">
+          {/* Service Quick-Link Pills — hidden on mobile, shown on sm+ */}
+          <div className="hidden sm:flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 hero-blur-sharp-3">
             <Link to={withLang('/laser-haarentfernung-muenchen')} className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-white text-xs sm:text-sm transition-all duration-300">
               <Zap className="w-3.5 h-3.5" />
               {t('home.hero.service.laser')}
@@ -172,7 +176,7 @@ const Home = () => {
             </Link>
           </div>
 
-          {/* Two CTAs */}
+          {/* CTA — single button on mobile, two on sm+ */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 hero-blur-sharp-3">
             <Button
               size="lg"
@@ -185,7 +189,7 @@ const Home = () => {
               size="lg"
               asChild
               variant="outline"
-              className="border-white/40 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto min-h-[48px]"
+              className="hidden sm:inline-flex border-white/40 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto min-h-[48px]"
             >
               <Link to={withLang('/services')}>
                 {t('home.hero.button2')}

@@ -162,7 +162,9 @@ const translations = {
 
     // Home Page
     'home.hero.title': 'Yuliia Cheporska Studio – Laser- & Apparatekosmetik München-Haidhausen',
+    'home.hero.title.mobile': 'Yuliia Cheporska Studio',
     'home.hero.subtitle': 'Zertifizierte Laser- und Apparatekosmetik im Herzen von München-Haidhausen. Sichtbare Ergebnisse ab der ersten Sitzung.',
+    'home.hero.subtitle.mobile': 'Laser- & Apparatekosmetik in München-Haidhausen',
     'home.hero.button': 'Termin buchen',
     'home.hero.button2': 'Alle Leistungen',
     'home.hero.location': 'Yuliia Cheporska Studio · München-Haidhausen · Elsässer Str. 33',
@@ -1969,7 +1971,9 @@ const translations = {
 
     // Home Page
     'home.hero.title': 'Yuliia Cheporska Studio – Лазерная и аппаратная косметология Мюнхен-Хайдхаузен',
+    'home.hero.title.mobile': 'Yuliia Cheporska Studio',
     'home.hero.subtitle': 'Сертифицированная лазерная и аппаратная косметология в самом сердце Мюнхен-Хайдхаузена. Видимые результаты уже после первого сеанса.',
+    'home.hero.subtitle.mobile': 'Лазерная и аппаратная косметология в Мюнхен-Хайдхаузене',
     'home.hero.button': 'Записаться',
     'home.hero.button2': 'Все услуги',
     'home.hero.location': 'Yuliia Cheporska Studio · Мюнхен-Хайдхаузен · Эльзессер штр. 33',
