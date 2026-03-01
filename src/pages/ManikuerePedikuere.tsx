@@ -209,7 +209,7 @@ const ManikuerePedikuere = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-white"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center pt-8 md:pt-0">
+        <div className="relative z-10 container mx-auto px-4 text-center pt-8 pb-12 md:pt-0 md:pb-0">
           <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
             <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Nail Care</span>
