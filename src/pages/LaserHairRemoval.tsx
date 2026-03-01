@@ -235,7 +235,7 @@ const LaserHairRemoval = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/20 backdrop-blur-sm border border-white/50 text-white hover:bg-white/30 hover:border-white transition-all duration-300 rounded-full px-8 shadow-lg"
+              className="bg-white/90 backdrop-blur-sm border border-white/50 text-black hover:bg-white transition-all duration-300 rounded-full px-8 shadow-lg"
               asChild
             >
               <Link to={withLang("/preis#alexandrit")}>
