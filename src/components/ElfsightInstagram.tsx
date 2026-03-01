@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Instagram } from 'lucide-react';
+import { Instagram, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getConsentPreferences, type ConsentCategories } from '@/lib/cookieConsent';
 
 const ELFSIGHT_APP_ID = '5ae99363-feb3-4a1f-9d1e-16cb0c5f2a6b';
-const ELFSIGHT_SCRIPT_SRC = 'https://elfsightcdn.com/platform.js';
+const ELFSIGHT_SCRIPT_SRC = 'https://static.elfsight.com/platform/platform.js';
 
 /**
  * Elfsight Instagram Feed with cookie consent integration for GDPR compliance.
@@ -15,9 +15,11 @@ const ELFSIGHT_SCRIPT_SRC = 'https://elfsightcdn.com/platform.js';
 const ElfsightInstagram = () => {
   const { t } = useLanguage();
   const scriptLoadedRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [showWidget, setShowWidget] = useState(() => {
     return getConsentPreferences()?.externalMedia === true;
   });
+  const [widgetReady, setWidgetReady] = useState(false);
 
   const loadElfsightScript = useCallback(() => {
     if (scriptLoadedRef.current) return;
@@ -28,7 +30,7 @@ const ElfsightInstagram = () => {
     const script = document.createElement('script');
     script.src = ELFSIGHT_SCRIPT_SRC;
     script.async = true;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
     scriptLoadedRef.current = true;
   }, []);
 
@@ -38,6 +40,7 @@ const ElfsightInstagram = () => {
       setShowWidget(true);
     } else {
       setShowWidget(false);
+      setWidgetReady(false);
     }
   }, []);
 
@@ -52,12 +55,48 @@ const ElfsightInstagram = () => {
     }
   }, [showWidget, loadElfsightScript]);
 
+  // Watch for Elfsight to populate the widget container
+  useEffect(() => {
+    if (!showWidget || widgetReady) return;
+
+    const observer = new MutationObserver(() => {
+      if (containerRef.current && containerRef.current.childElementCount > 0) {
+        setWidgetReady(true);
+        observer.disconnect();
+      }
+    });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current, { childList: true, subtree: true });
+    }
+
+    // Fallback: mark ready after 8s even if observer didn't fire
+    const timeout = setTimeout(() => {
+      setWidgetReady(true);
+      observer.disconnect();
+    }, 8000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+  }, [showWidget, widgetReady]);
+
   if (showWidget) {
     return (
-      <div
-        className={`elfsight-app-${ELFSIGHT_APP_ID}`}
-        data-elfsight-app-lazy
-      />
+      <div className="relative min-h-[200px]">
+        {/* Loading indicator shown until Elfsight populates the div */}
+        {!widgetReady && (
+          <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
+            <Loader2 className="w-8 h-8 animate-spin text-rose-gold mb-3" />
+            <p className="text-sm">Instagram wird geladen…</p>
+          </div>
+        )}
+        <div
+          ref={containerRef}
+          className={`elfsight-app-${ELFSIGHT_APP_ID}`}
+        />
+      </div>
     );
   }
 
