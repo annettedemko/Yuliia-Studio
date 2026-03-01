@@ -1389,6 +1389,11 @@ const translations = {
     'cookies.settings.twelve_months': '12 Monate',
     'cookies.settings.purpose_label': 'Zweck',
     'cookies.settings.necessary.cookie_purpose': 'Speicherung Ihrer Cookie-Einwilligung',
+    'cookies.settings.marketing.title': 'Marketing',
+    'cookies.settings.marketing.description': 'Diese Cookies werden verwendet, um Ihnen relevante Werbung anzuzeigen. Sie ermöglichen die Messung der Wirksamkeit von Werbekampagnen und helfen uns, unser Angebot für Sie zu optimieren.',
+    'cookies.settings.marketing.details': 'Cookies: Google Ads (_gcl_au, _gcl_aw, _gac_*). Diese Daten werden zur Conversion-Messung und Remarketing verwendet.',
+    'cookies.settings.marketing.cookie_duration': '90 Tage',
+    'cookies.settings.marketing.cookie_purpose': 'Conversion-Tracking und Anzeigenpersonalisierung',
 
     // AGB Notice
     'agb.notice.title': 'Hinweis',
@@ -3155,6 +3160,11 @@ const translations = {
     'cookies.settings.twelve_months': '12 месяцев',
     'cookies.settings.purpose_label': 'Назначение',
     'cookies.settings.necessary.cookie_purpose': 'Сохранение вашего согласия на cookie',
+    'cookies.settings.marketing.title': 'Маркетинг',
+    'cookies.settings.marketing.description': 'Эти файлы cookie используются для показа вам релевантной рекламы. Они позволяют измерять эффективность рекламных кампаний и помогают нам оптимизировать наше предложение для вас.',
+    'cookies.settings.marketing.details': 'Cookies: Google Ads (_gcl_au, _gcl_aw, _gac_*). Эти данные используются для отслеживания конверсий и ремаркетинга.',
+    'cookies.settings.marketing.cookie_duration': '90 дней',
+    'cookies.settings.marketing.cookie_purpose': 'Отслеживание конверсий и персонализация рекламы',
 
     // AGB Notice
     'agb.notice.title': 'Примечание',

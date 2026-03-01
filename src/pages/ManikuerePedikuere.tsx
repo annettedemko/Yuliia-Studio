@@ -199,7 +199,7 @@ const ManikuerePedikuere = () => {
     <div className="min-h-screen pt-16">
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-start justify-center overflow-hidden">
         {/* Background with slow cinematic zoom */}
         <div
           className="absolute inset-0 animate-hero-zoom"
@@ -209,7 +209,7 @@ const ManikuerePedikuere = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-white"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center pt-8 pb-12 md:pt-0 md:pb-0">
+        <div className="relative z-10 container mx-auto px-4 text-center pt-[10vh] pb-12 md:pt-[10vh] md:pb-0">
           <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
             <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Nail Care</span>
@@ -799,30 +799,23 @@ const ManikuerePedikuere = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">{t('crosslink.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link to={withLang("/laser-haarentfernung-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.laser')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.laser.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-              <Link to={withLang("/redtouch-laser-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.redtouch')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.redtouch.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-              <Link to={withLang("/icoone-laser-muenchen")} className="group">
-                <Card className="h-full hover:shadow-lg transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t('crosslink.icoone')}</h3>
-                    <p className="text-sm text-muted-foreground">{t('crosslink.icoone.desc')}</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              {[
+                { to: '/laser-haarentfernung-muenchen', title: 'crosslink.laser', desc: 'crosslink.laser.desc', img: '/50.png' },
+                { to: '/redtouch-laser-muenchen', title: 'crosslink.redtouch', desc: 'crosslink.redtouch.desc', img: '/55.png' },
+                { to: '/icoone-laser-muenchen', title: 'crosslink.icoone', desc: 'crosslink.icoone.desc', img: '/52.png' },
+              ].map((link) => (
+                <Link key={link.to} to={withLang(link.to)} className="group">
+                  <Card className="h-full overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-500">
+                    <div className="h-40 overflow-hidden">
+                      <img src={link.img} alt={t(link.title)} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    </div>
+                    <CardContent className="p-5">
+                      <h3 className="font-bold text-primary mb-2 group-hover:text-rose-gold transition-colors">{t(link.title)}</h3>
+                      <p className="text-sm text-muted-foreground">{t(link.desc)}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

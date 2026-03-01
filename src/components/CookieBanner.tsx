@@ -9,7 +9,7 @@ import {
   hasConsent,
   acceptAllCookies,
   acceptNecessaryCookies,
-  initializeAnalytics
+  initializeGTM
 } from '@/lib/cookieConsent';
 
 const CookieBanner = () => {
@@ -23,20 +23,19 @@ const CookieBanner = () => {
   const langPrefix = `/${currentLang}`;
 
   useEffect(() => {
-    // Check if user has already made a consent choice
+    // Always initialize GTM early — it sets consent defaults to "denied"
+    // and only grants signals if the user has already consented.
+    initializeGTM();
+
     if (!hasConsent()) {
       // Small delay before showing banner for better UX
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
-    } else {
-      // User has made a choice, initialize analytics if consented
-      initializeAnalytics();
     }
   }, []);
 
   const handleAcceptAll = () => {
     acceptAllCookies();
-    initializeAnalytics();
     setIsVisible(false);
   };
 
@@ -54,7 +53,6 @@ const CookieBanner = () => {
     // If user saved preferences in settings, hide banner
     if (hasConsent()) {
       setIsVisible(false);
-      initializeAnalytics();
     }
   };
 

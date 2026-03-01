@@ -12,7 +12,6 @@ import { Promotions } from '@/components/Promotions';
 import { showBookingWidget } from '@/lib/altegioWidget';
 import ConsentMap from '@/components/ConsentMap';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import SpotlightCard from '@/components/SpotlightCard';
 import SectionDivider from '@/components/SectionDivider';
 
 const Home = () => {
@@ -127,15 +126,6 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 via-transparent to-white"></div>
 
-        {/* Sparkle particles - hidden on mobile for performance */}
-        <div className="absolute inset-0 overflow-hidden hidden sm:block">
-          <div className="sparkle" />
-          <div className="sparkle" />
-          <div className="sparkle" />
-          <div className="sparkle" />
-          <div className="sparkle" />
-        </div>
-
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 hero-blur-sharp-1 hero-text-shadow leading-tight">
             <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
@@ -147,7 +137,7 @@ const Home = () => {
           </p>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 hero-blur-sharp-3 btn-cta-glow w-full sm:w-auto"
+            className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 hero-blur-sharp-3 w-full sm:w-auto"
             onClick={() => showBookingWidget()}
           >
             {t('home.hero.button')}
@@ -166,7 +156,7 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <Link to={withLang('/laser-haarentfernung-muenchen')} className="group">
-              <SpotlightCard className="h-full">
+
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -196,11 +186,10 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
-              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/redtouch-laser-muenchen')} className="group">
-              <SpotlightCard className="h-full">
+
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -226,11 +215,10 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
-              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/icoone-laser-muenchen')} className="group">
-              <SpotlightCard className="h-full">
+
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -257,11 +245,10 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
-              </SpotlightCard>
             </Link>
 
             <Link to={withLang('/manikuere-pedikuere-muenchen')} className="group">
-              <SpotlightCard className="h-full">
+
               <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <CardContent className="p-0 relative z-10">
@@ -287,7 +274,6 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>
-              </SpotlightCard>
             </Link>
           </div>
 
@@ -311,9 +297,6 @@ const Home = () => {
 
       {/* Subscription Packages */}
       <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Floating decorative orbs */}
-        <div className="absolute top-10 left-10 w-20 h-20 orb-rose blur-xl"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 orb-primary blur-xl"></div>
 
         <div ref={subscriptionsRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="text-center mb-6 sm:mb-8">
@@ -411,12 +394,6 @@ const Home = () => {
 
       {/* Working Hours Section */}
       <section className="py-10 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Floating decorative orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-20 h-20 orb-rose"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 orb-primary"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 orb-rose"></div>
-        </div>
 
         <div ref={hoursRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="text-center mb-8">
@@ -451,11 +428,6 @@ const Home = () => {
 
       {/* Map Section */}
       <section className="py-12 bg-transparent relative overflow-hidden mt-[2vh]">
-        {/* Floating decorative orbs */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 left-10 w-16 h-16 orb-rose"></div>
-          <div className="absolute bottom-32 right-16 w-20 h-20 orb-primary"></div>
-        </div>
 
         <div ref={mapRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="text-center mb-8">
@@ -547,11 +519,6 @@ const Home = () => {
 
       {/* Contact Section */}
       <section id="contact" className="py-8 bg-transparent relative overflow-hidden mt-[5vh]">
-        {/* Floating decorative orbs */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-1/4 w-32 h-32 orb-rose blur-xl"></div>
-          <div className="absolute bottom-20 right-1/3 w-24 h-24 orb-primary blur-lg"></div>
-        </div>
 
         <div ref={contactRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
           <div className="text-center mb-6">

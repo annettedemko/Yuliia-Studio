@@ -24,7 +24,7 @@ const Footer = () => {
   const isHomePage = location.pathname === langPrefix || location.pathname === '/';
 
   return (
-    <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'mt-[9vh]' : ''}`}>
+    <footer className={`bg-primary text-primary-foreground ${isHomePage ? 'mt-[9vh]' : ''}`} style={{ boxShadow: '0 50vh 0 50vh hsl(280 50% 25%)' }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Studio Info */}

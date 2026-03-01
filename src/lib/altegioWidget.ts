@@ -5,10 +5,12 @@
  */
 
 const ALTEGIO_SCRIPT_URL = 'https://w1408290.alteg.io/widgetJS';
+const ALTEGIO_ORIGIN = 'https://w1408290.alteg.io';
 
 let scriptLoaded = false;
 let scriptLoading = false;
 let loadPromise: Promise<void> | null = null;
+let postMessageListenerAdded = false;
 
 /** Hide the default Altegio floating button (we use our own FloatingBookButton). */
 function hideDefaultButton(): void {
@@ -26,6 +28,35 @@ function hideDefaultButton(): void {
   observer.observe(document.body, { childList: true, subtree: true });
   // Stop observing after 5s to avoid permanent overhead
   setTimeout(() => observer.disconnect(), 5000);
+}
+
+/**
+ * Add a speculative postMessage listener for Altegio iframe events.
+ * The Altegio widget may send events we can use for conversion tracking.
+ */
+function addPostMessageListener(): void {
+  if (postMessageListenerAdded) return;
+  postMessageListenerAdded = true;
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== ALTEGIO_ORIGIN) return;
+
+    console.log('[Altegio postMessage]', event.data);
+
+    // Try to parse if string
+    const data = typeof event.data === 'string'
+      ? (() => { try { return JSON.parse(event.data); } catch { return null; } })()
+      : event.data;
+
+    // If we discover a booking-completed event, push to dataLayer
+    if (data && (data.event === 'booked' || data.type === 'booked')) {
+      window.dataLayer?.push({
+        event: 'altegio_booked',
+        event_category: 'booking',
+        event_label: 'completed',
+      });
+    }
+  });
 }
 
 function loadScript(): Promise<void> {
@@ -72,6 +103,18 @@ function loadScript(): Promise<void> {
  * Dynamically loads the script on first call.
  */
 export async function showBookingWidget(): Promise<void> {
+  // Push micro-conversion event to dataLayer (book_click)
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'book_click',
+      event_category: 'booking',
+      event_label: window.location.pathname,
+    });
+  }
+
+  // Set up postMessage listener to discover any Altegio iframe events
+  addPostMessageListener();
+
   try {
     await loadScript();
     if (window.yWidget) {

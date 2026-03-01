@@ -195,13 +195,13 @@ const LaserHairRemoval = () => {
 
         {/* Hero Section */}
       <section
-        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[50vh] md:min-h-[55vh] lg:h-[65vh] flex items-start justify-center overflow-hidden"
       >
         <div className="absolute inset-0 animate-hero-zoom" style={{ backgroundImage: 'url(/HERO3.1.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,hsl(15_45%_65%/0.12),transparent_60%)]"></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center pt-8 pb-12 md:pt-0 md:pb-0">
+        <div className="relative z-10 container mx-auto px-4 text-center pt-[10vh] pb-12 md:pt-[10vh] md:pb-0">
           <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8 hero-stagger-1">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-gold/80"></span>
             <span className="text-xs font-medium text-white/90 tracking-[0.2em] uppercase">Laser-Haarentfernung</span>
@@ -741,17 +741,22 @@ const LaserHairRemoval = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { to: '/redtouch-laser-muenchen', title: 'crosslink.redtouch', desc: 'crosslink.redtouch.desc' },
-                { to: '/icoone-laser-muenchen', title: 'crosslink.icoone', desc: 'crosslink.icoone.desc' },
-                { to: '/manikuere-pedikuere-muenchen', title: 'crosslink.nails', desc: 'crosslink.nails.desc' },
+                { to: '/redtouch-laser-muenchen', title: 'crosslink.redtouch', desc: 'crosslink.redtouch.desc', img: '/55.png' },
+                { to: '/icoone-laser-muenchen', title: 'crosslink.icoone', desc: 'crosslink.icoone.desc', img: '/52.png' },
+                { to: '/manikuere-pedikuere-muenchen', title: 'crosslink.nails', desc: 'crosslink.nails.desc', img: '/7.jpg' },
               ].map((link) => (
                 <Link key={link.to} to={withLang(link.to)} className="group">
-                  <div className="h-full rounded-2xl border border-border/50 bg-white p-6 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
-                    <div className="flex items-center gap-2 mb-3">
-                      <ArrowRight className="w-4 h-4 text-rose-gold transition-transform duration-300 group-hover:translate-x-1" />
-                      <h3 className="font-bold text-primary group-hover:text-rose-gold transition-colors">{t(link.title)}</h3>
+                  <div className="h-full rounded-2xl border border-border/50 bg-white overflow-hidden shadow-card hover:shadow-elegant hover:-translate-y-1 transition-all duration-500">
+                    <div className="h-40 overflow-hidden">
+                      <img src={link.img} alt={t(link.title)} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{t(link.desc)}</p>
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <ArrowRight className="w-4 h-4 text-rose-gold transition-transform duration-300 group-hover:translate-x-1" />
+                        <h3 className="font-bold text-primary group-hover:text-rose-gold transition-colors">{t(link.title)}</h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{t(link.desc)}</p>
+                    </div>
                   </div>
                 </Link>
               ))}
