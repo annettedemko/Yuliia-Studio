@@ -10,6 +10,7 @@ import { useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import ElfsightInstagram from '@/components/ElfsightInstagram';
 
 // Изображения загружаются из папки public
 
@@ -32,6 +33,7 @@ const About = () => {
   const servicesRef = useScrollReveal();
   const advantagesRef = useScrollReveal();
   const galleryRef = useScrollReveal();
+  const instagramRef = useScrollReveal();
   const contactFormRef = useScrollReveal();
 
   const jsonLd = useMemo(() => {
@@ -307,8 +309,23 @@ const About = () => {
       </section>
 
 
+      {/* Instagram Feed */}
+      <section className="py-12 sm:py-16 bg-accent/20">
+        <div ref={instagramRef} className="container mx-auto px-4 reveal reveal-up">
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
+              {t('instagram.section.title')}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {t('instagram.section.subtitle')}
+            </p>
+          </div>
+          <ElfsightInstagram />
+        </div>
+      </section>
+
       {/* Contact Form */}
-      <section id="contact-form" className="py-12 bg-accent/20">
+      <section id="contact-form" className="py-12">
         <div ref={contactFormRef} className="container mx-auto px-4 reveal reveal-up">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">

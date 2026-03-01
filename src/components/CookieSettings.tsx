@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Cookie, Shield, BarChart, Megaphone } from 'lucide-react';
+import { X, Cookie, Shield, BarChart, Megaphone, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -22,6 +22,7 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
     necessary: true,
     analytics: false,
     marketing: false,
+    externalMedia: false,
   });
 
   useEffect(() => {
@@ -31,11 +32,12 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
       if (current) {
         setPreferences(current);
       } else {
-        // No consent yet - ensure analytics + marketing are OFF by default
+        // No consent yet - ensure analytics + marketing + externalMedia are OFF by default
         setPreferences({
           necessary: true,
           analytics: false,
           marketing: false,
+          externalMedia: false,
         });
       }
     }
@@ -193,6 +195,46 @@ const CookieSettings = ({ isOpen, onClose }: CookieSettingsProps) => {
                     <span
                       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
                         preferences.marketing ? 'translate-x-6' : 'translate-x-1'
+                      }`}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* External Media */}
+            <div className="border border-border rounded-lg p-4 bg-background">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Globe className="w-5 h-5 text-rose-gold" />
+                    <h3 className="font-semibold text-primary">
+                      {t('cookies.settings.externalMedia.title')}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {t('cookies.settings.externalMedia.description')}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t('cookies.settings.externalMedia.details')}
+                  </p>
+                  <div className="mt-3 bg-accent/10 p-3 rounded text-xs text-muted-foreground space-y-1">
+                    <p><strong>{t('cookies.settings.provider')}:</strong> Google Maps, Elfsight</p>
+                    <p><strong>{t('cookies.settings.duration')}:</strong> {t('cookies.settings.externalMedia.cookie_duration')}</p>
+                    <p><strong>{t('cookies.settings.purpose_label')}:</strong> {t('cookies.settings.externalMedia.cookie_purpose')}</p>
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <button
+                    onClick={() => setPreferences(prev => ({ ...prev, externalMedia: !prev.externalMedia }))}
+                    className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors ${
+                      preferences.externalMedia ? 'bg-rose-gold' : 'bg-muted'
+                    }`}
+                    role="switch"
+                    aria-checked={preferences.externalMedia}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        preferences.externalMedia ? 'translate-x-6' : 'translate-x-1'
                       }`}
                     />
                   </button>

@@ -8,6 +8,7 @@ export type ConsentCategories = {
   necessary: boolean;
   analytics: boolean;
   marketing: boolean;
+  externalMedia: boolean;
   timestamp?: string;
 };
 
@@ -30,6 +31,10 @@ export function getConsentPreferences(): ConsentCategories | null {
     // Migrate old consent without marketing field
     if (typeof parsed.marketing === 'undefined') {
       parsed.marketing = false;
+    }
+    // Migrate old consent without externalMedia field
+    if (typeof parsed.externalMedia === 'undefined') {
+      parsed.externalMedia = false;
     }
     return parsed;
   } catch {
@@ -71,6 +76,7 @@ export function acceptAllCookies(): void {
     necessary: true,
     analytics: true,
     marketing: true,
+    externalMedia: true,
   });
 }
 
@@ -82,6 +88,7 @@ export function acceptNecessaryCookies(): void {
     necessary: true,
     analytics: false,
     marketing: false,
+    externalMedia: false,
   });
 
   removeAnalyticsCookies();
@@ -109,6 +116,14 @@ export function isAnalyticsEnabled(): boolean {
 export function isMarketingEnabled(): boolean {
   const preferences = getConsentPreferences();
   return preferences?.marketing ?? false;
+}
+
+/**
+ * Check if external media (Google Maps, Instagram widget, etc.) is enabled
+ */
+export function isExternalMediaEnabled(): boolean {
+  const preferences = getConsentPreferences();
+  return preferences?.externalMedia ?? false;
 }
 
 /**

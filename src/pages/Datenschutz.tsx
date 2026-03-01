@@ -310,6 +310,21 @@ const Datenschutz = () => {
 
                       <p>{t('datenschutz.section6.ahrefs.p2')}</p>
                       </div>
+
+                    <h3 className="text-xl font-semibold text-primary mb-3 mt-6">{t('datenschutz.section6.elfsight.title')}</h3>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p><strong>{t('datenschutz.section6.elfsight.provider')}:</strong></p>
+                      <p>{t('datenschutz.section6.elfsight.provider.value')}</p>
+
+                      <p><strong>{t('datenschutz.section6.elfsight.transfer')}:</strong></p>
+                      <p>{t('datenschutz.section6.elfsight.transfer.value')}</p>
+
+                      <p><strong>{t('datenschutz.section6.elfsight.legal')}:</strong></p>
+                      <p>{t('datenschutz.section6.elfsight.legal.value')}</p>
+
+                      <p><strong>{t('datenschutz.section6.elfsight.info')}:</strong></p>
+                      <p>{t('datenschutz.section6.elfsight.info.label')}: <a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-rose-gold hover:underline">https://elfsight.com/privacy-policy/</a></p>
+                      </div>
                     </div>
 
                   <div>

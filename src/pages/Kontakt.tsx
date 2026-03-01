@@ -10,6 +10,7 @@ import AGBNotice from '@/components/AGBNotice';
 import ConsentMap from '@/components/ConsentMap';
 import { showBookingWidget } from '@/lib/altegioWidget';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import ElfsightInstagram from '@/components/ElfsightInstagram';
 
 const Kontakt = () => {
   const { t } = useLanguage();
@@ -29,6 +30,7 @@ const Kontakt = () => {
 
   const contactCardsRef = useScrollReveal();
   const mapRef = useScrollReveal();
+  const instagramRef = useScrollReveal();
   const ctaRef = useScrollReveal();
 
   const jsonLd = useMemo(() => {
@@ -308,6 +310,21 @@ const Kontakt = () => {
               </div>
             </div>
           </div>
+      </section>
+
+      {/* Instagram Feed */}
+      <section className="py-12 sm:py-16">
+        <div ref={instagramRef} className="container mx-auto px-4 reveal reveal-up">
+          <div className="text-center mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
+              {t('instagram.section.title')}
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {t('instagram.section.subtitle')}
+            </p>
+          </div>
+          <ElfsightInstagram />
+        </div>
       </section>
 
       {/* CTA Section */}
