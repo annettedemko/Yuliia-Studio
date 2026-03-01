@@ -21,7 +21,7 @@ const LanguageSwitcher: React.FC = () => {
         onClick={() => handleLanguageChange('de')}
         className="h-8 px-3 text-xs font-medium"
       >
-        🇩🇪 DE
+        DE
       </Button>
       <Button
         variant={language === 'ru' ? 'default' : 'outline'}
@@ -29,7 +29,7 @@ const LanguageSwitcher: React.FC = () => {
         onClick={() => handleLanguageChange('ru')}
         className="h-8 px-3 text-xs font-medium"
       >
-        🇷🇺 RU
+        RU
       </Button>
     </div>
   );
