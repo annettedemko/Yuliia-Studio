@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 interface ScrollRevealOptions {
   threshold?: number;
@@ -11,32 +11,40 @@ export function useScrollReveal({
   rootMargin = '0px 0px -60px 0px',
   triggerOnce = true,
 }: ScrollRevealOptions = {}) {
-  const ref = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  const ref = useCallback(
+    (el: HTMLDivElement | null) => {
+      // Cleanup previous observer
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
 
-    // Respect prefers-reduced-motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      el.classList.add('revealed');
-      return;
-    }
+      if (!el) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('revealed');
-          if (triggerOnce) observer.unobserve(el);
-        }
-      },
-      { threshold, rootMargin }
-    );
+      // Respect prefers-reduced-motion
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        el.classList.add('revealed');
+        return;
+      }
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [threshold, rootMargin, triggerOnce]);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.classList.add('revealed');
+            if (triggerOnce) observer.unobserve(el);
+          }
+        },
+        { threshold, rootMargin }
+      );
+
+      observer.observe(el);
+      observerRef.current = observer;
+    },
+    [threshold, rootMargin, triggerOnce]
+  );
 
   return ref;
 }
