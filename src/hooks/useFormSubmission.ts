@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { formService, type FormSubmissionCreate } from '@/services/formService'
+import { pushToDataLayer } from '@/lib/cookieConsent'
 
 interface UseFormSubmissionOptions {
   onSuccess?: () => void
@@ -41,6 +42,7 @@ export function useFormSubmission(page: FormSubmissionCreate['page'], options: U
 
       if (result) {
         setSubmitSuccess(true)
+        pushToDataLayer('generate_lead', { event_category: 'form', event_label: page })
         options.onSuccess?.()
 
         // Clear form success state after 5 seconds

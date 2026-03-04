@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CookieSettings from './CookieSettings';
+import { pushToDataLayer } from '@/lib/cookieConsent';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -46,6 +47,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+                  onClick={() => pushToDataLayer('maps_click', { event_category: 'contact', event_label: 'footer' })}
                 >
                   Elsässer Straße 33, 81667 München
                 </a>
@@ -55,6 +57,7 @@ const Footer = () => {
                 <a
                   href="tel:+4915206067810"
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+                  onClick={() => pushToDataLayer('phone_click', { event_category: 'contact', event_label: 'footer' })}
                 >
                   +49 152 06067810
                 </a>
@@ -64,6 +67,7 @@ const Footer = () => {
                 <a
                   href="mailto:Yulachip@icloud.com"
                   className="text-sm text-primary-foreground/80 hover:text-rose-gold transition-colors"
+                  onClick={() => pushToDataLayer('email_click', { event_category: 'contact', event_label: 'footer' })}
                 >
                   Yulachip@icloud.com
                 </a>

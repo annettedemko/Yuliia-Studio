@@ -9,6 +9,7 @@ import { PageHelmet } from '@/components/PageHelmet';
 import AGBNotice from '@/components/AGBNotice';
 import ConsentMap from '@/components/ConsentMap';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { pushToDataLayer } from '@/lib/cookieConsent';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import ElfsightInstagram from '@/components/ElfsightInstagram';
 
@@ -166,7 +167,7 @@ const Kontakt = () => {
                   </div>
                 <h3 className="text-xl font-bold text-primary mb-3">{t('kontakt.phone.title')}</h3>
                 <p className="text-muted-foreground mb-2">
-                  <a href="tel:+4915206067810" className="hover:text-rose-gold transition-colors">
+                  <a href="tel:+4915206067810" className="hover:text-rose-gold transition-colors" onClick={() => pushToDataLayer('phone_click', { event_category: 'contact', event_label: 'kontakt' })}>
                     +49 152 06067810
                   </a>
                 </p>
@@ -175,6 +176,7 @@ const Kontakt = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+                  onClick={() => pushToDataLayer('whatsapp_click', { event_category: 'contact', event_label: 'kontakt' })}
                 >
                   <MessageCircle className="w-4 h-4 mr-1" />
                   {t('kontakt.whatsapp')}
@@ -194,6 +196,7 @@ const Kontakt = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-sm text-primary hover:text-primary/80 transition-colors mb-2"
+                  onClick={() => pushToDataLayer('telegram_click', { event_category: 'contact', event_label: 'kontakt' })}
                 >
                   <Send className="w-4 h-4 inline mr-1" />
                   {t('kontakt.telegram.open')}
@@ -201,6 +204,7 @@ const Kontakt = () => {
                 <a
                   href="mailto:Yulachip@icloud.com"
                   className="block text-sm text-muted-foreground hover:text-rose-gold transition-colors"
+                  onClick={() => pushToDataLayer('email_click', { event_category: 'contact', event_label: 'kontakt' })}
                 >
                   <Mail className="w-4 h-4 inline mr-1" />
                   Yulachip@icloud.com

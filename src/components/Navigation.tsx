@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { showBookingWidget } from '@/lib/altegioWidget';
+import { pushToDataLayer } from '@/lib/cookieConsent';
 
 const Navigation = () => {
   const { t } = useLanguage();
@@ -266,7 +267,7 @@ const Navigation = () => {
                 className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white transition-colors h-8 px-3 text-xs"
                 asChild
               >
-                <a href="tel:+4915206067810">
+                <a href="tel:+4915206067810" onClick={() => pushToDataLayer('phone_click', { event_category: 'contact', event_label: 'nav_desktop' })}>
                   <Phone className="w-3 h-3 mr-1" />
                   {t('nav.button.call')}
                 </a>
@@ -385,7 +386,7 @@ const Navigation = () => {
                   className="border-rose-gold text-rose-gold hover:bg-rose-gold hover:text-white w-full py-4 text-base font-medium transition-colors"
                   asChild
                 >
-                  <a href="tel:+4915206067810">
+                  <a href="tel:+4915206067810" onClick={() => pushToDataLayer('phone_click', { event_category: 'contact', event_label: 'nav_mobile' })}>
                     <Phone className="w-5 h-5 mr-2" />
                     {t('nav.button.call')}
                   </a>
