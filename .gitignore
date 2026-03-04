@@ -105,3 +105,4 @@ bun.lockb
 
 # Test HTML files
 test-*.html
+.vercel
