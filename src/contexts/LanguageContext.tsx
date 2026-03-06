@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type Language = 'de' | 'ru';
 
@@ -252,6 +253,16 @@ const translations = {
     'about.advantages.location-desc': 'Elsässer Straße 33, perfekte Anbindung mit ÖPNV',
     'about.gallery.title': 'Moderne Studio-Atmosphäre im Herzen von München-Haidhausen',
     'about.gallery.subtitle': 'Entdecken Sie unsere moderne und einladende Atmosphäre',
+    'about.gallery.alt.s1': 'Kosmetikstudio München Haidhausen – Empfangsbereich',
+    'about.gallery.alt.s2': 'Kosmetikstudio München Haidhausen – Behandlungsraum Laser',
+    'about.gallery.alt.s3': 'Kosmetikstudio München Haidhausen – Wartebereich',
+    'about.gallery.alt.s4': 'Kosmetikstudio München Haidhausen – Maniküre Bereich',
+    'about.gallery.alt.s5': 'Kosmetikstudio München Haidhausen – Pediküre Station',
+    'about.gallery.alt.uns1': 'Yuliia Cheporska Studio München – Innenansicht Eingang',
+    'about.gallery.alt.uns2': 'Yuliia Cheporska Studio München – DEKA Laser Geräte',
+    'about.gallery.alt.uns3': 'Yuliia Cheporska Studio München – Behandlungsliege',
+    'about.gallery.alt.uns4': 'Yuliia Cheporska Studio München – Kosmetikgeräte',
+    'about.gallery.alt.uns5': 'Yuliia Cheporska Studio München – Relaxbereich',
     'about.contact.title': 'Kontaktieren Sie uns',
     'about.contact.subtitle': 'Haben Sie Fragen oder möchten einen Termin vereinbaren? Schreiben Sie uns!',
     'about.form.name': 'Name',
@@ -1137,7 +1148,7 @@ const translations = {
     'redtouch.treatment.title': 'Behandlungshinweise',
     'redtouch.treatment.duration': 'Behandlungsdauer: 15 Minuten bis 1,5 Stunden je nach Bereich',
     'redtouch.treatment.sessions': 'Empfohlene Sitzungen: 3-6 Behandlungen für optimale Ergebnisse',
-    'redtouch.treatment.interval': 'Behandlungsintervall: 2-4 Wochen zwischen den Sitzungen',
+    'redtouch.treatment.interval': 'Behandlungsintervall: 4 Wochen zwischen den Sitzungen',
     'redtouch.treatment.downtime': 'Keine Ausfallzeit oder Nebenwirkungen',
     'redtouch.treatment.return': 'Sofortige Rückkehr zum normalen Alltag nach der Behandlung',
 
@@ -2061,6 +2072,16 @@ const translations = {
     'about.advantages.location-desc': 'Эльзессер штрассе 33, отличная транспортная доступность',
     'about.gallery.title': 'Современная атмосфера студии в сердце Мюнхена-Хайдхаузен',
     'about.gallery.subtitle': 'Откройте для себя нашу современную и гостеприимную атмосферу',
+    'about.gallery.alt.s1': 'Косметологическая студия Мюнхен Хайдхаузен – зона ресепшн',
+    'about.gallery.alt.s2': 'Косметологическая студия Мюнхен Хайдхаузен – лазерный кабинет',
+    'about.gallery.alt.s3': 'Косметологическая студия Мюнхен Хайдхаузен – зона ожидания',
+    'about.gallery.alt.s4': 'Косметологическая студия Мюнхен Хайдхаузен – зона маникюра',
+    'about.gallery.alt.s5': 'Косметологическая студия Мюнхен Хайдхаузен – зона педикюра',
+    'about.gallery.alt.uns1': 'Yuliia Cheporska Studio Мюнхен – вход в студию',
+    'about.gallery.alt.uns2': 'Yuliia Cheporska Studio Мюнхен – лазерное оборудование DEKA',
+    'about.gallery.alt.uns3': 'Yuliia Cheporska Studio Мюнхен – процедурная кушетка',
+    'about.gallery.alt.uns4': 'Yuliia Cheporska Studio Мюнхен – косметологическое оборудование',
+    'about.gallery.alt.uns5': 'Yuliia Cheporska Studio Мюнхен – зона отдыха',
     'about.contact.title': 'Свяжитесь с нами',
     'about.contact.subtitle': 'У вас есть вопросы или хотите записаться на прием? Напишите нам!',
     'about.form.name': 'Имя',
@@ -2941,7 +2962,7 @@ const translations = {
     'redtouch.treatment.title': 'Указания по процедуре',
     'redtouch.treatment.duration': 'Длительность процедуры: От 15 минут до 1,5 часов в зависимости от зоны',
     'redtouch.treatment.sessions': 'Рекомендуемые сеансы: 3-6 процедур для оптимальных результатов',
-    'redtouch.treatment.interval': 'Интервал процедур: 2-4 недели между сеансами',
+    'redtouch.treatment.interval': 'Интервал процедур: 4 недели между сеансами',
     'redtouch.treatment.downtime': 'Без периода восстановления или побочных эффектов',
     'redtouch.treatment.return': 'Можно вернуться к обычной жизни сразу после процедуры',
 
@@ -3628,56 +3649,35 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Определяем язык из URL (SSR-safe)
-  const getLanguageFromURL = (): Language => {
-    // SSR-safe check
-    if (typeof window === 'undefined') {
-      return 'de'; // default for SSR
+  // Use react-router location — works in both SSR (StaticRouter) and client (BrowserRouter)
+  const location = useLocation();
+
+  // Determine language from router pathname (SSR-safe)
+  const langFromURL = useMemo((): Language => {
+    if (location.pathname.startsWith('/ru')) return 'ru';
+    if (location.pathname.startsWith('/de')) return 'de';
+
+    // Fallback: check localStorage (client-side only)
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('language') as Language;
+        if (saved === 'de' || saved === 'ru') return saved;
+      } catch {
+        // localStorage not available
+      }
     }
 
-    const pathname = window.location.pathname;
-    if (pathname.startsWith('/ru')) return 'ru';
-    if (pathname.startsWith('/de')) return 'de';
+    return 'de';
+  }, [location.pathname]);
 
-    // Fallback: проверяем localStorage
-    try {
-      const savedLanguage = localStorage.getItem('language') as Language;
-      if (savedLanguage && (savedLanguage === 'de' || savedLanguage === 'ru')) {
-        return savedLanguage;
-      }
-    } catch {
-      // localStorage not available
+  const [language, setLanguage] = useState<Language>(langFromURL);
+
+  // Sync language when URL changes (navigation)
+  useEffect(() => {
+    if (langFromURL !== language) {
+      setLanguage(langFromURL);
     }
-
-    return 'de'; // default
-  };
-
-  const [language, setLanguage] = useState<Language>('de');
-
-  // Update language from URL on mount (client-side only)
-  useEffect(() => {
-    setLanguage(getLanguageFromURL());
-  }, []);
-
-  useEffect(() => {
-    // SSR-safe check
-    if (typeof window === 'undefined') return;
-
-    // Синхронизируем язык при изменении URL
-    const updateLanguageFromURL = () => {
-      const newLang = getLanguageFromURL();
-      if (newLang !== language) {
-        setLanguage(newLang);
-      }
-    };
-
-    // Слушаем изменения истории браузера
-    window.addEventListener('popstate', updateLanguageFromURL);
-
-    return () => {
-      window.removeEventListener('popstate', updateLanguageFromURL);
-    };
-  }, [language]);
+  }, [langFromURL]);
 
   const handleSetLanguage = (lang: Language) => {
     // SSR-safe check
