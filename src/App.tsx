@@ -67,7 +67,6 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <LanguageProvider>
           <TooltipProvider>
             <Toaster />
             <Sonner />
@@ -77,6 +76,7 @@ const App = () => (
               v7_relativeSplatPath: true,
             }}
           >
+          <LanguageProvider>
             <HreflangTags />
             <ScrollToTop />
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -206,9 +206,9 @@ const App = () => (
             <FloatingBookButton />
             <CookieBanner />
             <SpeedInsights />
+          </LanguageProvider>
           </BrowserRouter>
         </TooltipProvider>
-      </LanguageProvider>
     </AuthProvider>
   </QueryClientProvider>
   </HelmetProvider>

@@ -4,7 +4,7 @@
   <!-- Главная страница - редирект на /de -->
   <url>
     <loc>https://www.munchen-beauty.de/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -14,122 +14,135 @@
   <!-- Главная страница - Немецкий -->
   <url>
     <loc>https://www.munchen-beauty.de/de</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/" />
   </url>
 
   <!-- Основные публичные страницы - Немецкий -->
   <url>
     <loc>https://www.munchen-beauty.de/de/services</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/services" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/services" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/about</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/about" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/about" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/preis</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/preis" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/preis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/preis" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/kontakt</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/kontakt" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/kontakt" />
   </url>
 
   <!-- Страницы услуг (высокий приоритет для SEO) - Немецкий -->
   <url>
     <loc>https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/icoone-laser-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/icoone-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/redtouch-laser-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
   </url>
 
   <!-- Юридические страницы - Немецкий -->
   <url>
     <loc>https://www.munchen-beauty.de/de/impressum</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/impressum" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/impressum" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/datenschutzerklaerung</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/datenschutzerklaerung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/de/agb</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/agb" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/agb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/agb" />
   </url>
 
   <!-- ==================== РУССКИЕ СТРАНИЦЫ (/ru) ==================== -->
@@ -137,122 +150,135 @@
   <!-- Главная страница - Русский -->
   <url>
     <loc>https://www.munchen-beauty.de/ru</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/" />
   </url>
 
   <!-- Основные публичные страницы - Русский -->
   <url>
     <loc>https://www.munchen-beauty.de/ru/services</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/services" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/services" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/about</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/about" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/about" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/preis</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/preis" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/preis" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/preis" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/kontakt</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/kontakt" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/kontakt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/kontakt" />
   </url>
 
   <!-- Страницы услуг - Русский -->
   <url>
     <loc>https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/laser-haarentfernung-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/laser-haarentfernung-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/alexandrit-gegen-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/alexandrit-gegen-diodenlaser" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/icoone-laser-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/icoone-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/icoone-laser-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/redtouch-laser-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/redtouch-laser-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/redtouch-laser-muenchen" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/manikuere-pedikuere-muenchen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/manikuere-pedikuere-muenchen" />
   </url>
 
   <!-- Юридические страницы - Русский -->
   <url>
     <loc>https://www.munchen-beauty.de/ru/impressum</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/impressum" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/impressum" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/datenschutzerklaerung</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/datenschutzerklaerung" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/datenschutzerklaerung" />
   </url>
 
   <url>
     <loc>https://www.munchen-beauty.de/ru/agb</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/agb" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/agb" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/agb" />
   </url>
 
 </urlset>

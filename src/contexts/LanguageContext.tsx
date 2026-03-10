@@ -431,11 +431,6 @@ const translations = {
     'comparison.devices.overlay.treatment.title': 'Alexandrit Behandlung',
     'comparison.devices.overlay.treatment.subtitle': 'Professionelle Anwendung',
 
-    'comparison.devices.overlay.alex.title': 'DEKA Alexandrit System',
-    'comparison.devices.overlay.alex.subtitle': 'Premium Laser-Technologie',
-    'comparison.devices.overlay.treatment.title': 'Alexandrit Behandlung',
-    'comparison.devices.overlay.treatment.subtitle': 'Professionelle Anwendung',
-
     'comparison.suitable.badge': 'Praxis-Leitfaden',
     'comparison.suitable.title': 'Welcher Laser passt zu wem?',
     'comparison.suitable.subtitle': 'Orientierungshilfe nach Hauttyp und Behandlungszone',

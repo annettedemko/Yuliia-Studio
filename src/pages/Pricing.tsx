@@ -181,7 +181,14 @@ const Pricing = () => {
         <Helmet>
           <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         </Helmet>
-        <div className="min-h-screen flex items-center justify-center">{t('pricing.loading')}</div>
+        <div className="min-h-screen pt-16">
+          <section className="pt-24 pb-16">
+            <div className="container mx-auto px-4 text-center">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">{t('pricing.hero.title')}</h1>
+            </div>
+          </section>
+          <div className="flex items-center justify-center py-20">{t('pricing.loading')}</div>
+        </div>
       </>
     );
   }

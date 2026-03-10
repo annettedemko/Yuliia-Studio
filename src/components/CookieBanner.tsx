@@ -9,7 +9,8 @@ import {
   hasConsent,
   acceptAllCookies,
   acceptNecessaryCookies,
-  initializeGTM
+  initializeGTM,
+  initializeGA4
 } from '@/lib/cookieConsent';
 
 const CookieBanner = () => {
@@ -23,9 +24,10 @@ const CookieBanner = () => {
   const langPrefix = `/${currentLang}`;
 
   useEffect(() => {
-    // Always initialize GTM early — it sets consent defaults to "denied"
-    // and only grants signals if the user has already consented.
+    // Always initialize GTM + GA4 early — consent defaults are set to "denied"
+    // and only granted if the user has already consented.
     initializeGTM();
+    initializeGA4();
 
     if (!hasConsent()) {
       // Small delay before showing banner for better UX

@@ -190,6 +190,42 @@ export function initializeGTM(): void {
 }
 
 /**
+ * Initialize GA4 directly via gtag.js.
+ * Uses the same dataLayer/gtag as GTM. Consent Mode v2 defaults are already
+ * set by initializeGTM(), so GA4 won't track until the user grants consent.
+ */
+export function initializeGA4(): void {
+  if (typeof window === 'undefined') return;
+
+  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+  if (!measurementId) return;
+  if (window._ga4Loaded) return;
+
+  // Ensure dataLayer + gtag exist (in case called before initializeGTM)
+  window.dataLayer = window.dataLayer || [];
+  if (!window.gtag) {
+    window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments);
+    };
+  }
+
+  // Load gtag.js script
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  document.head.appendChild(script);
+
+  // Configure GA4
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId, {
+    send_page_view: true,
+  });
+
+  window._ga4Loaded = true;
+}
+
+/**
  * Update Google Consent Mode signals based on user preferences.
  */
 function updateConsentState(prefs: ConsentCategories): void {
@@ -204,12 +240,17 @@ function updateConsentState(prefs: ConsentCategories): void {
 }
 
 /**
- * Push a custom event to the GTM dataLayer.
+ * Push a custom event to both the GTM dataLayer and GA4 (via gtag).
  */
 export function pushToDataLayer(event: string, params?: Record<string, string>): void {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
+
+  // Also send directly to GA4 so events arrive even without GTM triggers
+  if (window.gtag && window._ga4Loaded) {
+    window.gtag('event', event, params);
+  }
 }
 
 // ---------------------------------------------------------------------------

@@ -23,6 +23,7 @@ import RedTouchProService from './pages/RedTouchProService';
 import Pricing from './pages/Pricing';
 import Impressum from './pages/Impressum';
 import Datenschutz from './pages/Datenschutz';
+import AGB from './pages/AGB';
 import Kontakt from './pages/Kontakt';
 import NotFound from './pages/NotFound';
 
@@ -44,9 +45,9 @@ export function render(url: string): RenderResult {
     <HelmetProvider context={helmetContext}>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <LanguageProvider>
             <TooltipProvider>
               <StaticRouter location={url}>
+          <LanguageProvider>
                 <HreflangTags />
                 <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
                   <Navigation />
@@ -69,6 +70,7 @@ export function render(url: string): RenderResult {
                         <Route path="impressum" element={<Impressum />} />
                         <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                         <Route path="preis" element={<Pricing />} />
+                        <Route path="agb" element={<AGB />} />
                       </Route>
 
                       {/* Russian routes /ru/* */}
@@ -85,6 +87,7 @@ export function render(url: string): RenderResult {
                         <Route path="impressum" element={<Impressum />} />
                         <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                         <Route path="preis" element={<Pricing />} />
+                        <Route path="agb" element={<AGB />} />
                       </Route>
 
                       {/* 404 */}
@@ -93,9 +96,9 @@ export function render(url: string): RenderResult {
                   </main>
                   <Footer />
                 </div>
+          </LanguageProvider>
               </StaticRouter>
             </TooltipProvider>
-          </LanguageProvider>
         </AuthProvider>
       </QueryClientProvider>
     </HelmetProvider>

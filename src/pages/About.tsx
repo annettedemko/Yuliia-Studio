@@ -281,16 +281,16 @@ const About = () => {
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { src: '/s1.jpg', alt: 'Kosmetikstudio München Haidhausen – Empfangsbereich' },
-                { src: '/s2.jpg', alt: 'Kosmetikstudio München Haidhausen – Behandlungsraum Laser' },
-                { src: '/s3.jpg', alt: 'Kosmetikstudio München Haidhausen – Wartebereich' },
-                { src: '/s4.jpg', alt: 'Kosmetikstudio München Haidhausen – Maniküre Bereich' },
-                { src: '/s5.jpg', alt: 'Kosmetikstudio München Haidhausen – Pediküre Station' },
-                { src: '/uns1.jpg', alt: 'Yuliia Cheporska Studio München – Innenansicht Eingang' },
-                { src: '/uns2.jpg', alt: 'Yuliia Cheporska Studio München – DEKA Laser Geräte' },
-                { src: '/uns3.jpg', alt: 'Yuliia Cheporska Studio München – Behandlungsliege' },
-                { src: '/uns4.jpg', alt: 'Yuliia Cheporska Studio München – Kosmetikgeräte' },
-                { src: '/uns5.jpg', alt: 'Yuliia Cheporska Studio München – Relaxbereich' }
+                { src: '/s1.jpg', alt: t('about.gallery.alt.s1') },
+                { src: '/s2.jpg', alt: t('about.gallery.alt.s2') },
+                { src: '/s3.jpg', alt: t('about.gallery.alt.s3') },
+                { src: '/s4.jpg', alt: t('about.gallery.alt.s4') },
+                { src: '/s5.jpg', alt: t('about.gallery.alt.s5') },
+                { src: '/uns1.jpg', alt: t('about.gallery.alt.uns1') },
+                { src: '/uns2.jpg', alt: t('about.gallery.alt.uns2') },
+                { src: '/uns3.jpg', alt: t('about.gallery.alt.uns3') },
+                { src: '/uns4.jpg', alt: t('about.gallery.alt.uns4') },
+                { src: '/uns5.jpg', alt: t('about.gallery.alt.uns5') }
               ].map((image, index) => (
                 <div key={index} className={`group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ${image.className || ''}`}>
                   <img

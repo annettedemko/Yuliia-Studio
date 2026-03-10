@@ -4,6 +4,8 @@
  * instead of loading it on every page load for GDPR compliance.
  */
 
+import { pushToDataLayer } from '@/lib/cookieConsent';
+
 const ALTEGIO_SCRIPT_URL = 'https://w1408290.alteg.io/widgetJS';
 const ALTEGIO_ORIGIN = 'https://w1408290.alteg.io';
 
@@ -103,14 +105,11 @@ function loadScript(): Promise<void> {
  * Dynamically loads the script on first call.
  */
 export async function showBookingWidget(): Promise<void> {
-  // Push micro-conversion event to dataLayer (book_click)
-  if (typeof window !== 'undefined' && window.dataLayer) {
-    window.dataLayer.push({
-      event: 'book_click',
-      event_category: 'booking',
-      event_label: window.location.pathname,
-    });
-  }
+  // Push booking click event to both GTM dataLayer and GA4
+  pushToDataLayer('booking_click', {
+    event_category: 'booking',
+    event_label: window.location.pathname,
+  });
 
   // Set up postMessage listener to discover any Altegio iframe events
   addPostMessageListener();

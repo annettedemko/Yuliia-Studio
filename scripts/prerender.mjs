@@ -22,6 +22,7 @@ const staticRoutes = {
     '/de/impressum',
     '/de/datenschutzerklaerung',
     '/de/preis',
+    '/de/agb',
   ],
   ru: [
     '/ru',
@@ -36,6 +37,7 @@ const staticRoutes = {
     '/ru/impressum',
     '/ru/datenschutzerklaerung',
     '/ru/preis',
+    '/ru/agb',
   ]
 };
 
