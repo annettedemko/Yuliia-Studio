@@ -47,7 +47,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           price_data: {
             currency: 'eur',
             product_data: {
-              name: lang === 'ru' ? 'Доставка (Германия, Австрия, Швейцария)' : 'Versand (Deutschland, Österreich, Schweiz)',
+              name: lang === 'ru' ? 'Доставка (Германия)' : 'Versand (Deutschland)',
             },
             unit_amount: 600, // 6.00 EUR in cents
           },
@@ -55,7 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         },
       ],
       shipping_address_collection: {
-        allowed_countries: ['DE', 'AT', 'CH'],
+        allowed_countries: ['DE'],
       },
       custom_text: {
         submit: {

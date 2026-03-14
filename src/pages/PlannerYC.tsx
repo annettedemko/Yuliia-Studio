@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck, ExternalLink, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 
 const plannerImages = [
   { src: '/planner/IMG_4694-web.jpg', alt: 'alt.planner.holding' },
@@ -379,10 +379,13 @@ const PlannerYC = () => {
                       <span className="text-4xl font-bold text-primary">{t('home.planner.price')}</span>
                       <span className="text-sm text-muted-foreground">{t('home.planner.price.info')}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                       <Truck className="w-4 h-4" />
-                      {t('home.planner.shipping')}
+                      {t('planner.shipping.de')}
                     </div>
+                    <p className="text-xs text-muted-foreground mb-4 pl-6">
+                      {t('planner.shipping.international')}
+                    </p>
                     <div className="text-xs text-muted-foreground mb-5 space-y-0.5">
                       <div>{t('planner.price.net')}</div>
                       <div>{t('planner.price.vat')}</div>
@@ -390,6 +393,32 @@ const PlannerYC = () => {
                     </div>
 
                     <OrderButton />
+
+                    {/* International shipping — WhatsApp */}
+                    <div className="mt-4 pt-4 border-t border-rose-gold/10">
+                      <p className="text-xs text-muted-foreground text-center mb-2">
+                        {t('planner.shipping.outside-de')}
+                      </p>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full border-green-500/30 text-green-700 hover:bg-green-50 hover:border-green-500/50"
+                        asChild
+                      >
+                        <a
+                          href={`https://wa.me/4915206067810?text=${encodeURIComponent(
+                            currentLang === 'ru'
+                              ? 'Здравствуйте! Хочу заказать Planner YC с доставкой за пределы Германии.'
+                              : 'Hallo! Ich möchte den Planner YC mit Versand außerhalb Deutschlands bestellen.'
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="w-4 h-4 mr-1.5" />
+                          {t('planner.shipping.whatsapp')}
+                        </a>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
@@ -560,7 +589,7 @@ const PlannerYC = () => {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground flex items-center gap-1">
                       <Truck className="w-3.5 h-3.5" />
-                      {currentLang === 'ru' ? 'Доставка' : 'Versand'}
+                      {currentLang === 'ru' ? 'Доставка (Германия)' : 'Versand (Deutschland)'}
                     </span>
                     <span>6,00 €</span>
                   </div>
@@ -571,6 +600,32 @@ const PlannerYC = () => {
                 </div>
 
                 <OrderButton />
+
+                {/* International shipping — WhatsApp */}
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <p className="text-xs text-muted-foreground text-center mb-2">
+                    {t('planner.shipping.outside-de')}
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full border-green-500/30 text-green-700 hover:bg-green-50 hover:border-green-500/50"
+                    asChild
+                  >
+                    <a
+                      href={`https://wa.me/4915206067810?text=${encodeURIComponent(
+                        currentLang === 'ru'
+                          ? 'Здравствуйте! Хочу заказать Planner YC с доставкой за пределы Германии.'
+                          : 'Hallo! Ich möchte den Planner YC mit Versand außerhalb Deutschlands bestellen.'
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-1.5" />
+                      {t('planner.shipping.whatsapp')}
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

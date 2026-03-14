@@ -1835,7 +1835,7 @@ const translations = {
     'home.planner.description': 'Ordnung in den Gedanken. Prioritäten setzen. Sich auf die Ziele zubewegen — ruhig und systematisch.',
     'home.planner.price': '24,90 €',
     'home.planner.price.info': 'inkl. 19 % MwSt.',
-    'home.planner.shipping': 'zzgl. 6,00 € Versand',
+    'home.planner.shipping': 'zzgl. 6,00 € Versand (Deutschland)',
     'home.planner.cta': 'Jetzt bestellen',
     'home.planner.more': 'Mehr erfahren',
 
@@ -1873,8 +1873,8 @@ const translations = {
     'planner.price.net': '20,92 € netto',
     'planner.price.vat': '3,98 € MwSt. (19 %)',
     'planner.price.brutto': '24,90 € brutto',
-    'planner.price.shipping': 'Versandkosten: 6,00 €',
-    'planner.price.total': 'Gesamtpreis: 30,90 € inkl. Versand',
+    'planner.price.shipping': 'Versand (Deutschland): 6,00 €',
+    'planner.price.total': 'Gesamtpreis: 30,90 € inkl. Versand (DE)',
     'planner.price.cta': 'Zahlungspflichtig bestellen',
 
     'planner.legal.order-info': 'Mit Ihrer Bestellung akzeptieren Sie unsere',
@@ -1883,7 +1883,12 @@ const translations = {
     'planner.legal.datenschutz': 'Datenschutzerklärung',
     'planner.legal.acknowledge': 'und nehmen die',
     'planner.legal.widerruf': 'Widerrufsbelehrung',
-    'planner.legal.stripe-info': 'Sichere Bezahlung über Stripe. Versand nach DE, AT, CH.',
+    'planner.legal.stripe-info': 'Sichere Bezahlung über Stripe.',
+
+    'planner.shipping.de': 'Versand innerhalb Deutschlands: 6,00 €',
+    'planner.shipping.international': 'Versand ins Ausland auf Anfrage.',
+    'planner.shipping.outside-de': 'Versand außerhalb Deutschlands? Schreiben Sie uns:',
+    'planner.shipping.whatsapp': 'Per WhatsApp anfragen',
 
     'planner.gallery.title': 'Einblicke in den Planner',
 
@@ -3717,7 +3722,7 @@ const translations = {
     'home.planner.description': 'Порядок в мыслях. Расставить приоритеты. Двигаться к целям — спокойно и системно.',
     'home.planner.price': '24,90 €',
     'home.planner.price.info': 'вкл. 19 % НДС',
-    'home.planner.shipping': '+ 6,00 € доставка',
+    'home.planner.shipping': '+ 6,00 € доставка (Германия)',
     'home.planner.cta': 'Заказать',
     'home.planner.more': 'Подробнее',
 
@@ -3755,8 +3760,8 @@ const translations = {
     'planner.price.net': '20,92 € нетто',
     'planner.price.vat': '3,98 € НДС (19 %)',
     'planner.price.brutto': '24,90 € брутто',
-    'planner.price.shipping': 'Доставка: 6,00 €',
-    'planner.price.total': 'Итого: 30,90 € с доставкой',
+    'planner.price.shipping': 'Доставка (Германия): 6,00 €',
+    'planner.price.total': 'Итого: 30,90 € с доставкой по Германии',
     'planner.price.cta': 'Заказать с обязательством оплаты',
 
     'planner.legal.order-info': 'Оформляя заказ, вы принимаете наши',
@@ -3765,7 +3770,12 @@ const translations = {
     'planner.legal.datenschutz': 'Политику конфиденциальности',
     'planner.legal.acknowledge': 'и принимаете к сведению',
     'planner.legal.widerruf': 'Инструкцию по отзыву',
-    'planner.legal.stripe-info': 'Безопасная оплата через Stripe. Доставка в DE, AT, CH.',
+    'planner.legal.stripe-info': 'Безопасная оплата через Stripe.',
+
+    'planner.shipping.de': 'Доставка по Германии: 6,00 €',
+    'planner.shipping.international': 'Доставка за пределы Германии — по запросу.',
+    'planner.shipping.outside-de': 'Доставка за пределы Германии? Напишите нам:',
+    'planner.shipping.whatsapp': 'Написать в WhatsApp',
 
     'planner.gallery.title': 'Загляни внутрь планера',
 
