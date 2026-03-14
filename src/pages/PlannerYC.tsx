@@ -32,8 +32,10 @@ const Lightbox = ({
   onChange: (idx: number) => void;
   t: (key: string) => string;
 }) => {
+  const backdropRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const isSwiping = useRef(false);
 
   const goPrev = useCallback(() => {
     onChange(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
@@ -60,9 +62,14 @@ const Lightbox = ({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = e.touches[0].clientX;
+    isSwiping.current = false;
   };
   const handleTouchMove = (e: React.TouchEvent) => {
     touchEndX.current = e.touches[0].clientX;
+    if (Math.abs(touchStartX.current - touchEndX.current) > 10) {
+      isSwiping.current = true;
+    }
   };
   const handleTouchEnd = () => {
     const diff = touchStartX.current - touchEndX.current;
@@ -72,22 +79,38 @@ const Lightbox = ({
     }
   };
 
+  // Close only when clicking the dark backdrop itself, not children
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === backdropRef.current) {
+      onClose();
+    }
+  };
+
+  // Close on tap (mobile) — only on backdrop, and only if not swiping
+  const handleBackdropTouchEnd = (e: React.TouchEvent) => {
+    if (e.target === backdropRef.current && !isSwiping.current) {
+      onClose();
+    }
+  };
+
   return (
     <div
+      ref={backdropRef}
       className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
-      onClick={onClose}
+      onClick={handleBackdropClick}
+      onTouchEnd={handleBackdropTouchEnd}
     >
       {/* Close button */}
       <button
-        className="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-light z-20 w-12 h-12 flex items-center justify-center"
-        onClick={onClose}
+        className="absolute top-4 right-4 text-white/70 hover:text-white z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm transition-all"
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
         aria-label="Close"
       >
-        &times;
+        <span className="text-3xl leading-none">&times;</span>
       </button>
 
       {/* Counter */}
-      <div className="absolute top-5 left-5 text-white/60 text-sm z-20">
+      <div className="absolute top-5 left-5 text-white/60 text-sm z-20 pointer-events-none">
         {currentIndex + 1} / {images.length}
       </div>
 
@@ -109,10 +132,9 @@ const Lightbox = ({
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Image */}
+      {/* Image — swipe zone */}
       <div
-        className="max-w-[90vw] max-h-[85vh] flex items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
+        className="max-w-[90vw] max-h-[85vh] flex items-center justify-center pointer-events-auto"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -120,7 +142,7 @@ const Lightbox = ({
         <img
           src={images[currentIndex].src}
           alt={t(images[currentIndex].alt)}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg select-none"
+          className="max-w-full max-h-[85vh] object-contain rounded-lg select-none pointer-events-none"
           draggable={false}
         />
       </div>
