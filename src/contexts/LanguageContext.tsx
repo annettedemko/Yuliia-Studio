@@ -1874,7 +1874,15 @@ const translations = {
     'planner.price.brutto': '24,90 € brutto',
     'planner.price.shipping': 'Versandkosten: 6,00 €',
     'planner.price.total': 'Gesamtpreis: 30,90 € inkl. Versand',
-    'planner.price.cta': 'Jetzt bestellen',
+    'planner.price.cta': 'Zahlungspflichtig bestellen',
+
+    'planner.legal.order-info': 'Mit Ihrer Bestellung akzeptieren Sie unsere',
+    'planner.legal.agb': 'AGB',
+    'planner.legal.and': 'und',
+    'planner.legal.datenschutz': 'Datenschutzerklärung',
+    'planner.legal.acknowledge': 'und nehmen die',
+    'planner.legal.widerruf': 'Widerrufsbelehrung',
+    'planner.legal.stripe-info': 'Sichere Bezahlung über Stripe. Versand nach DE, AT, CH.',
 
     'planner.gallery.title': 'Einblicke in den Planner',
 
@@ -3747,7 +3755,15 @@ const translations = {
     'planner.price.brutto': '24,90 € брутто',
     'planner.price.shipping': 'Доставка: 6,00 €',
     'planner.price.total': 'Итого: 30,90 € с доставкой',
-    'planner.price.cta': 'Заказать сейчас',
+    'planner.price.cta': 'Заказать с обязательством оплаты',
+
+    'planner.legal.order-info': 'Оформляя заказ, вы принимаете наши',
+    'planner.legal.agb': 'Общие условия (AGB)',
+    'planner.legal.and': 'и',
+    'planner.legal.datenschutz': 'Политику конфиденциальности',
+    'planner.legal.acknowledge': 'и принимаете к сведению',
+    'planner.legal.widerruf': 'Инструкцию по отзыву',
+    'planner.legal.stripe-info': 'Безопасная оплата через Stripe. Доставка в DE, AT, CH.',
 
     'planner.gallery.title': 'Загляни внутрь планера',
 

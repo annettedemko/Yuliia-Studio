@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck } from 'lucide-react';
+import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck, ExternalLink } from 'lucide-react';
 
 const plannerImages = [
   { src: '/planner/IMG_4694-web.jpg', alt: 'alt.planner.holding' },
@@ -25,8 +25,10 @@ const PlannerYC = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
 
   const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
+  const langPrefix = `/${currentLang}`;
 
   const isSuccess = searchParams.get('success') === 'true';
   const isCanceled = searchParams.get('canceled') === 'true';
@@ -40,6 +42,7 @@ const PlannerYC = () => {
 
   const handleCheckout = async () => {
     setIsLoading(true);
+    setCheckoutError('');
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -49,9 +52,20 @@ const PlannerYC = () => {
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
+      } else {
+        setCheckoutError(
+          currentLang === 'ru'
+            ? 'Ошибка при создании заказа. Пожалуйста, попробуйте позже.'
+            : 'Fehler beim Erstellen der Bestellung. Bitte versuchen Sie es später erneut.'
+        );
       }
     } catch (error) {
       console.error('Checkout error:', error);
+      setCheckoutError(
+        currentLang === 'ru'
+          ? 'Ошибка соединения. Пожалуйста, проверьте интернет и попробуйте снова.'
+          : 'Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -90,6 +104,49 @@ const PlannerYC = () => {
       },
     },
   }), [currentLang]);
+
+  /* Reusable order button block (§312j Abs. 3 BGB compliant) */
+  const OrderButton = () => (
+    <div>
+      <Button
+        size="lg"
+        className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base py-6"
+        onClick={handleCheckout}
+        disabled={isLoading}
+      >
+        <ShoppingBag className="w-5 h-5 mr-2" />
+        {isLoading
+          ? (currentLang === 'ru' ? 'Загрузка...' : 'Laden...')
+          : t('planner.price.cta')}
+      </Button>
+
+      {checkoutError && (
+        <p className="text-sm text-red-600 text-center mt-2">{checkoutError}</p>
+      )}
+
+      {/* §312j BGB — Legal links before order (Widerrufsbelehrung, AGB, Datenschutz) */}
+      <div className="text-xs text-center text-muted-foreground mt-3 leading-relaxed">
+        <p>
+          {t('planner.legal.order-info')}{' '}
+          <Link to={`${langPrefix}/agb`} className="underline hover:text-foreground">
+            {t('planner.legal.agb')}
+          </Link>
+          {' '}{t('planner.legal.and')}{' '}
+          <Link to={`${langPrefix}/datenschutzerklaerung`} className="underline hover:text-foreground">
+            {t('planner.legal.datenschutz')}
+          </Link>
+          {' '}{t('planner.legal.acknowledge')}{' '}
+          <Link to={`${langPrefix}/agb#widerruf`} className="underline hover:text-foreground">
+            {t('planner.legal.widerruf')}
+          </Link>.
+        </p>
+        <p className="mt-1.5 flex items-center justify-center gap-1">
+          <ExternalLink className="w-3 h-3" />
+          {t('planner.legal.stripe-info')}
+        </p>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -200,17 +257,8 @@ const PlannerYC = () => {
                       <div>{t('planner.price.vat')}</div>
                       <div className="font-semibold text-foreground pt-1">{t('planner.price.total')}</div>
                     </div>
-                    <Button
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base py-6"
-                      onClick={handleCheckout}
-                      disabled={isLoading}
-                    >
-                      <ShoppingBag className="w-5 h-5 mr-2" />
-                      {isLoading
-                        ? (currentLang === 'ru' ? 'Загрузка...' : 'Laden...')
-                        : t('planner.price.cta')}
-                    </Button>
+
+                    <OrderButton />
                   </CardContent>
                 </Card>
               </div>
@@ -371,7 +419,7 @@ const PlannerYC = () => {
                     <span>{t('planner.price.net')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">MwSt.</span>
+                    <span className="text-muted-foreground">{currentLang === 'ru' ? 'НДС (19 %)' : 'MwSt. (19 %)'}</span>
                     <span>{t('planner.price.vat')}</span>
                   </div>
                   <div className="border-t pt-1.5 flex justify-between font-medium">
@@ -386,28 +434,12 @@ const PlannerYC = () => {
                     <span>6,00 €</span>
                   </div>
                   <div className="border-t pt-1.5 flex justify-between font-bold text-primary text-base">
-                    <span>{currentLang === 'ru' ? 'Итого' : 'Gesamt'}</span>
+                    <span>{currentLang === 'ru' ? 'Итого с доставкой' : 'Gesamtpreis inkl. Versand'}</span>
                     <span>30,90 €</span>
                   </div>
                 </div>
 
-                <Button
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-lg py-6"
-                  onClick={handleCheckout}
-                  disabled={isLoading}
-                >
-                  <ShoppingBag className="w-5 h-5 mr-2" />
-                  {isLoading
-                    ? (currentLang === 'ru' ? 'Загрузка...' : 'Laden...')
-                    : t('planner.price.cta')}
-                </Button>
-
-                <p className="text-xs text-center text-muted-foreground mt-4">
-                  {currentLang === 'ru'
-                    ? 'Безопасная оплата через Stripe. Доставка по Германии, Австрии и Швейцарии.'
-                    : 'Sichere Bezahlung über Stripe. Versand nach Deutschland, Österreich und Schweiz.'}
-                </p>
+                <OrderButton />
               </CardContent>
             </Card>
           </div>
