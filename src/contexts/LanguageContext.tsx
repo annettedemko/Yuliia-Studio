@@ -1826,6 +1826,65 @@ const translations = {
     'crosslink.nails': 'Maniküre & Pediküre',
     'crosslink.nails.desc': 'Klassisch, Gel, Nagelmodellage & medizinische Fußpflege.',
     'crosslink.more': 'Mehr erfahren',
+
+    // Planner YC
+    'home.planner.badge': 'NEU IM SHOP',
+    'home.planner.title': 'Planner YC',
+    'home.planner.subtitle': 'Dein Planer, der deinen Alltag verändert',
+    'home.planner.description': 'Ordnung in den Gedanken. Prioritäten setzen. Sich auf die Ziele zubewegen — ruhig und systematisch.',
+    'home.planner.price': '24,90 €',
+    'home.planner.price.info': 'inkl. 19 % MwSt.',
+    'home.planner.shipping': 'zzgl. 6,00 € Versand',
+    'home.planner.cta': 'Jetzt bestellen',
+    'home.planner.more': 'Mehr erfahren',
+
+    'planner.hero.title': 'Planner YC — Beginne dein Leben zu steuern',
+    'planner.hero.subtitle': 'Plane. Handle. Erreiche.',
+    'planner.hero.badge': 'By Yuliia Cheporska',
+
+    'planner.intro.question': 'Wie oft hast du dir gesagt: „Ab Montag wird alles anders"?',
+    'planner.intro.more.focus': 'Mehr Fokus.',
+    'planner.intro.more.discipline': 'Mehr Disziplin.',
+    'planner.intro.more.results': 'Mehr Ergebnisse.',
+    'planner.intro.chaos': 'Aber zwischen Ideen und Realität taucht immer Chaos auf: Aufgaben im Kopf, Notizen im Handy, Gedanken überall verstreut.',
+    'planner.intro.purpose': 'Der Planner YC wurde genau dafür geschaffen — damit du wieder Kontrolle über deine Zeit und dein Leben bekommst.',
+
+    'planner.what.title': 'Das ist nicht nur ein Notizbuch',
+    'planner.what.description': 'Das ist ein Raum, in dem Ziele entstehen, Pläne Form annehmen und Bewegung beginnt.',
+    'planner.what.morning': 'Du öffnest ihn morgens — und verstehst sofort:',
+    'planner.what.point1': 'was heute wichtig ist,',
+    'planner.what.point2': 'was dich deinen Zielen näherbringt,',
+    'planner.what.point3': 'und wohin du wirklich gehst.',
+    'planner.what.clarity': 'Keine Überforderung. Nur Klarheit, Fokus und Bewegung.',
+
+    'planner.features.title': 'Jede Seite hilft dir:',
+    'planner.features.1': 'Prioritäten setzen',
+    'planner.features.2': 'Aufgaben strukturieren',
+    'planner.features.3': 'Fortschritte sehen',
+    'planner.features.4': 'Ruhig und systematisch auf deine Ziele zugehen',
+
+    'planner.who.title': 'Für wen ist dieser Planer?',
+    'planner.who.description': 'Für alle, die nicht nur träumen, sondern erreichen wollen.',
+    'planner.who.result': 'Und das Beste? In ein paar Monaten öffnest du ihn und merkst: Alles, worüber du einmal nur geschrieben hast — ist deine Realität geworden.',
+
+    'planner.price.title': 'Bestelle deinen Planner YC',
+    'planner.price.product': 'Planner YC',
+    'planner.price.net': '20,92 € netto',
+    'planner.price.vat': '3,98 € MwSt. (19 %)',
+    'planner.price.brutto': '24,90 € brutto',
+    'planner.price.shipping': 'Versandkosten: 6,00 €',
+    'planner.price.total': 'Gesamtpreis: 30,90 € inkl. Versand',
+    'planner.price.cta': 'Jetzt bestellen',
+
+    'planner.gallery.title': 'Einblicke in den Planner',
+
+    'alt.planner.cover': 'Planner YC Cover – Plane. Erreiche.',
+    'alt.planner.flowers': 'Planner YC mit Blumen – stilvolles Design',
+    'alt.planner.pen': 'Planner YC mit Stift – minimalistisch',
+    'alt.planner.inside': 'Planner YC Innenseiten – Kontakte und Einführung',
+    'alt.planner.hand': 'Planner YC in der Hand – kreatives Hintergrund',
+    'alt.planner.roses': 'Planner YC mit Rosen – Tagesplanung',
+    'alt.planner.holding': 'Planner YC in der Hand – elegant und stilvoll',
   },
   ru: {
     // Navigation
@@ -3640,6 +3699,65 @@ const translations = {
     'crosslink.nails': 'Маникюр и педикюр',
     'crosslink.nails.desc': 'Классический, гель, наращивание и медицинский педикюр.',
     'crosslink.more': 'Подробнее',
+
+    // Planner YC
+    'home.planner.badge': 'НОВИНКА',
+    'home.planner.title': 'Планер YC',
+    'home.planner.subtitle': 'Планер, который меняет твой день',
+    'home.planner.description': 'Порядок в мыслях. Расставить приоритеты. Двигаться к целям — спокойно и системно.',
+    'home.planner.price': '24,90 €',
+    'home.planner.price.info': 'вкл. 19 % НДС',
+    'home.planner.shipping': '+ 6,00 € доставка',
+    'home.planner.cta': 'Заказать',
+    'home.planner.more': 'Подробнее',
+
+    'planner.hero.title': 'Планер YC — начни управлять своей жизнью',
+    'planner.hero.subtitle': 'Планируй. Действуй. Достигай.',
+    'planner.hero.badge': 'By Yuliia Cheporska',
+
+    'planner.intro.question': 'Сколько раз ты обещала себе: «С понедельника начну всё делать по-другому»?',
+    'planner.intro.more.focus': 'Больше фокуса.',
+    'planner.intro.more.discipline': 'Больше дисциплины.',
+    'planner.intro.more.results': 'Больше результатов.',
+    'planner.intro.chaos': 'Но между идеями и реальной жизнью всегда появляется хаос: задачи в голове, заметки в телефоне, мысли разбросаны везде.',
+    'planner.intro.purpose': 'Планер YC создан именно для того, чтобы вернуть тебе контроль над своим временем и своей жизнью.',
+
+    'planner.what.title': 'Это не просто блокнот',
+    'planner.what.description': 'Это пространство, где рождаются цели, появляются планы и начинается движение вперёд.',
+    'planner.what.morning': 'Ты открываешь его утром — и сразу понимаешь:',
+    'planner.what.point1': 'что важно сегодня,',
+    'planner.what.point2': 'что приближает тебя к твоим целям,',
+    'planner.what.point3': 'и куда ты на самом деле идёшь.',
+    'planner.what.clarity': 'Никакой перегруженности. Только ясность, фокус и движение.',
+
+    'planner.features.title': 'Каждая страница помогает тебе:',
+    'planner.features.1': 'Расставить приоритеты',
+    'planner.features.2': 'Структурировать задачи',
+    'planner.features.3': 'Видеть прогресс',
+    'planner.features.4': 'Двигаться к своим целям спокойно и системно',
+
+    'planner.who.title': 'Для кого этот планер?',
+    'planner.who.description': 'Этот планер выбирают те, кто не хочет просто мечтать — а хочет достигать.',
+    'planner.who.result': 'И знаешь что самое приятное? Когда через несколько месяцев ты открываешь его и понимаешь: всё, о чём ты когда-то только писала — стало твоей реальностью.',
+
+    'planner.price.title': 'Закажи свой Планер YC',
+    'planner.price.product': 'Планер YC',
+    'planner.price.net': '20,92 € нетто',
+    'planner.price.vat': '3,98 € НДС (19 %)',
+    'planner.price.brutto': '24,90 € брутто',
+    'planner.price.shipping': 'Доставка: 6,00 €',
+    'planner.price.total': 'Итого: 30,90 € с доставкой',
+    'planner.price.cta': 'Заказать сейчас',
+
+    'planner.gallery.title': 'Загляни внутрь планера',
+
+    'alt.planner.cover': 'Планер YC обложка – Планируй. Достигай.',
+    'alt.planner.flowers': 'Планер YC с цветами – стильный дизайн',
+    'alt.planner.pen': 'Планер YC с ручкой – минималистичный',
+    'alt.planner.inside': 'Планер YC внутри – контакты и вступление',
+    'alt.planner.hand': 'Планер YC в руке – креативный фон',
+    'alt.planner.roses': 'Планер YC с розами – ежедневное планирование',
+    'alt.planner.holding': 'Планер YC в руке – элегантный и стильный',
   }
 };
 

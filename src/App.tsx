@@ -43,6 +43,7 @@ const RedTouchProService = lazy(() => import("./pages/RedTouchProService"));
 // const Physiq360 = lazy(() => import("./pages/Physiq360"));
 // const AgainCos = lazy(() => import("./pages/AgainCos"));
 const Pricing = lazy(() => import("./pages/Pricing"));
+const PlannerYC = lazy(() => import("./pages/PlannerYC"));
 // const Deka = lazy(() => import("./pages/Deka"));
 // const DekaDay = lazy(() => import("./pages/DekaDay"));
 // const DekaAnna = lazy(() => import("./pages/DekaAnna"));
@@ -142,6 +143,7 @@ const App = () => (
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                     <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
+                    <Route path="planner-yc" element={<PlannerYC />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />
@@ -175,6 +177,7 @@ const App = () => (
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                     <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
+                    <Route path="planner-yc" element={<PlannerYC />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />

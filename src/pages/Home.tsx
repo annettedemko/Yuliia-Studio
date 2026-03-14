@@ -378,6 +378,69 @@ const Home = () => {
       {/* Promotions Section */}
       <Promotions />
 
+      {/* Planner YC Section */}
+      <section className="py-12 sm:py-16 bg-gradient-to-b from-rose-50/40 via-white to-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-rose-gold/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-2">
+            <div className="inline-flex items-center gap-1.5 bg-rose-gold/10 text-rose-gold-dark rounded-full px-3 py-1 text-xs font-semibold tracking-wide mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              {t('home.planner.badge')}
+            </div>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Link to={withLang('/planner-yc')} className="group block">
+              <Card className="overflow-hidden border-rose-gold/15 hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-1">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src="/planner/IMG_4694-web.jpg"
+                      alt={t('alt.planner.holding')}
+                      className="w-full h-64 sm:h-80 md:h-full object-cover img-silk-zoom"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/20 md:to-white/40"></div>
+                  </div>
+
+                  {/* Content */}
+                  <CardContent className="p-6 sm:p-8 md:p-10 flex flex-col justify-center bg-gradient-to-br from-white to-rose-50/30">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2 group-hover:text-rose-gold-dark transition-colors duration-300">
+                      {t('home.planner.title')}
+                    </h2>
+                    <p className="text-base sm:text-lg text-foreground/70 italic mb-4">
+                      {t('home.planner.subtitle')}
+                    </p>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
+                      {t('home.planner.description')}
+                    </p>
+
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="text-3xl font-bold text-primary">{t('home.planner.price')}</span>
+                      <span className="text-sm text-muted-foreground">{t('home.planner.price.info')}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-6">{t('home.planner.shipping')}</p>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white shadow-lg hover:shadow-xl transform group-hover:scale-105 transition-all duration-300"
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2" />
+                        {t('home.planner.more')}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Subscription Packages */}
       <section id="subscriptions" className="py-12 bg-transparent relative overflow-hidden mt-[5vh]">
 

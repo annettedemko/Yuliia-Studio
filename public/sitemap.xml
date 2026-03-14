@@ -145,6 +145,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/agb" />
   </url>
 
+  <url>
+    <loc>https://www.munchen-beauty.de/de/planner-yc</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/planner-yc" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/planner-yc" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/planner-yc" />
+  </url>
+
   <!-- ==================== РУССКИЕ СТРАНИЦЫ (/ru) ==================== -->
 
   <!-- Главная страница - Русский -->
@@ -279,6 +289,16 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/agb" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/agb" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/agb" />
+  </url>
+
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/planner-yc</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/planner-yc" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/planner-yc" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/planner-yc" />
   </url>
 
 </urlset>

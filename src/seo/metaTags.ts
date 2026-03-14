@@ -203,6 +203,16 @@ export const metaTags: Record<string, PageMeta> = {
       description: 'Again Cosmetics: профессиональные средства по уходу за кожей от DEKA для оптимальных результатов процедур. Дополнительный уход после лазерных процедур.'
     }
   },
+  '/planner-yc': {
+    de: {
+      title: 'Planner YC – Dein Planer für Ziele & Fokus | Yuliia Cheporska',
+      description: 'Planner YC by Yuliia Cheporska: Stilvoll, minimalistisch & effektiv. Prioritäten setzen, Aufgaben strukturieren, Ziele erreichen. 24,90 € inkl. MwSt. Jetzt bestellen.'
+    },
+    ru: {
+      title: 'Планер YC – Твой планер для целей и фокуса | Yuliia Cheporska',
+      description: 'Планер YC от Yuliia Cheporska: стильный, минималистичный и эффективный. Расставь приоритеты, структурируй задачи, достигай целей. 24,90 € вкл. НДС. Закажи сейчас.'
+    }
+  },
   '/deka': {
     de: {
       title: 'DEKA Event München | Laser Demonstrations & Schulungen',

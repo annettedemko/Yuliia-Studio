@@ -23,6 +23,7 @@ const staticRoutes = {
     '/de/datenschutzerklaerung',
     '/de/preis',
     '/de/agb',
+    '/de/planner-yc',
   ],
   ru: [
     '/ru',
@@ -38,6 +39,7 @@ const staticRoutes = {
     '/ru/datenschutzerklaerung',
     '/ru/preis',
     '/ru/agb',
+    '/ru/planner-yc',
   ]
 };
 
