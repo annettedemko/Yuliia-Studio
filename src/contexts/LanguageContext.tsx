@@ -20,6 +20,7 @@ const translations = {
     'nav.services': 'Leistungen',
     'nav.pricing': 'Preise',
     'nav.contact': 'Kontakt',
+    'nav.planner': 'Planner YC',
 
     // DEKA Page
     'deka.title': 'DEKA Technologien',
@@ -1901,6 +1902,7 @@ const translations = {
     'nav.services': 'Услуги',
     'nav.pricing': 'Цены',
     'nav.contact': 'Контакты',
+    'nav.planner': 'Планер YC',
 
     // DEKA Page
     'deka.title': 'Технологии DEKA',

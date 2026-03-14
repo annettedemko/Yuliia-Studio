@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PageHelmet } from '@/components/PageHelmet';
@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck, ExternalLink } from 'lucide-react';
+import { ShoppingBag, Sparkles, Target, ListChecks, TrendingUp, CheckCircle, Package, Truck, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const plannerImages = [
   { src: '/planner/IMG_4694-web.jpg', alt: 'alt.planner.holding' },
@@ -17,6 +17,137 @@ const plannerImages = [
   { src: '/planner/IMG_4224-web.jpg', alt: 'alt.planner.hand' },
   { src: '/planner/IMG_4693-web.jpg', alt: 'alt.planner.roses' },
 ];
+
+/* ─── Lightbox component with keyboard + touch swipe ─── */
+const Lightbox = ({
+  images,
+  currentIndex,
+  onClose,
+  onChange,
+  t,
+}: {
+  images: { src: string; alt: string }[];
+  currentIndex: number;
+  onClose: () => void;
+  onChange: (idx: number) => void;
+  t: (key: string) => string;
+}) => {
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const goPrev = useCallback(() => {
+    onChange(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
+  }, [currentIndex, images.length, onChange]);
+
+  const goNext = useCallback(() => {
+    onChange(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
+  }, [currentIndex, images.length, onChange]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [onClose, goPrev, goNext]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        className="absolute top-4 right-4 text-white/70 hover:text-white text-4xl font-light z-20 w-12 h-12 flex items-center justify-center"
+        onClick={onClose}
+        aria-label="Close"
+      >
+        &times;
+      </button>
+
+      {/* Counter */}
+      <div className="absolute top-5 left-5 text-white/60 text-sm z-20">
+        {currentIndex + 1} / {images.length}
+      </div>
+
+      {/* Prev Arrow */}
+      <button
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center text-white transition-all"
+        onClick={(e) => { e.stopPropagation(); goPrev(); }}
+        aria-label="Previous"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      {/* Next Arrow */}
+      <button
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-sm flex items-center justify-center text-white transition-all"
+        onClick={(e) => { e.stopPropagation(); goNext(); }}
+        aria-label="Next"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Image */}
+      <div
+        className="max-w-[90vw] max-h-[85vh] flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <img
+          src={images[currentIndex].src}
+          alt={t(images[currentIndex].alt)}
+          className="max-w-full max-h-[85vh] object-contain rounded-lg select-none"
+          draggable={false}
+        />
+      </div>
+
+      {/* Thumbnail strip */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/40 backdrop-blur-sm rounded-full px-3 py-2 z-20">
+        {images.map((img, idx) => (
+          <button
+            key={idx}
+            onClick={(e) => { e.stopPropagation(); onChange(idx); }}
+            className={`rounded-md overflow-hidden transition-all duration-200 ${
+              currentIndex === idx
+                ? 'ring-2 ring-white scale-110'
+                : 'opacity-50 hover:opacity-80'
+            }`}
+          >
+            <img
+              src={img.src}
+              alt=""
+              className="w-10 h-10 sm:w-12 sm:h-12 object-cover"
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const PlannerYC = () => {
   const { t } = useLanguage();
@@ -446,36 +577,15 @@ const PlannerYC = () => {
         </section>
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox with keyboard + swipe */}
       {lightboxOpen && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setLightboxOpen(false)}
-        >
-          <button
-            className="absolute top-4 right-4 text-white/80 hover:text-white text-4xl font-light z-10"
-            onClick={() => setLightboxOpen(false)}
-          >
-            &times;
-          </button>
-          <img
-            src={plannerImages[selectedImage].src}
-            alt={t(plannerImages[selectedImage].alt)}
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-            {plannerImages.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  selectedImage === idx ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+        <Lightbox
+          images={plannerImages}
+          currentIndex={selectedImage}
+          onClose={() => setLightboxOpen(false)}
+          onChange={setSelectedImage}
+          t={t}
+        />
       )}
     </>
   );

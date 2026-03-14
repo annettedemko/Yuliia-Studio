@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, ChevronDown, Calendar } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Calendar, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -156,6 +156,21 @@ const Navigation = () => {
                 {t(item.labelKey)}
               </Link>
             ))}
+
+            {/* Planner YC */}
+            <Link
+              to={withLang('/planner-yc')}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
+                isActive('/planner-yc') ? "text-rose-gold" : "text-foreground"
+              )}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              {t('nav.planner')}
+              <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                {currentLang === 'ru' ? 'NEW' : 'NEU'}
+              </span>
+            </Link>
 
             {/* Leistungen Dropdown */}
             <div
@@ -315,6 +330,22 @@ const Navigation = () => {
                   {t(item.labelKey)}
                 </Link>
               ))}
+
+              {/* Planner YC - Mobile */}
+              <Link
+                to={withLang('/planner-yc')}
+                className={cn(
+                  "text-base font-medium transition-colors hover:text-rose-gold py-2 px-4 rounded-lg text-center flex items-center justify-center gap-2",
+                  isActive('/planner-yc') ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                <BookOpen className="w-4 h-4" />
+                {t('nav.planner')}
+                <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                  {currentLang === 'ru' ? 'NEW' : 'NEU'}
+                </span>
+              </Link>
 
               {/* Leistungen Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">
