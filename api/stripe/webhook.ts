@@ -56,6 +56,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       break;
     }
 
+    case 'payment_intent.succeeded': {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log('💰 Payment intent succeeded:', {
+        id: paymentIntent.id,
+        amount: paymentIntent.amount,
+        currency: paymentIntent.currency,
+        receiptEmail: paymentIntent.receipt_email,
+      });
+      break;
+    }
+
+    case 'payment_intent.payment_failed': {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log('❌ Payment failed:', {
+        id: paymentIntent.id,
+        error: paymentIntent.last_payment_error?.message,
+      });
+      break;
+    }
+
     case 'checkout.session.expired': {
       const session = event.data.object as Stripe.Checkout.Session;
       console.log('⏰ Checkout session expired:', session.id);
