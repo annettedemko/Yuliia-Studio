@@ -147,6 +147,27 @@ const AGB = () => {
                       </div>
                     </div>
 
+                  <div id="online-shop">
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{t('agb.shop.title')}</h2>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>{t('agb.shop.p1')}</p>
+                      <p>{t('agb.shop.p2')}</p>
+                      <p>{t('agb.shop.p3')}</p>
+                      <p>{t('agb.shop.p4')}</p>
+                      </div>
+                    </div>
+
+                  <div id="widerruf">
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{t('agb.widerruf.title')}</h2>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>{t('agb.widerruf.p1')}</p>
+                      <p>{t('agb.widerruf.p2')}</p>
+                      <p>{t('agb.widerruf.p3')}</p>
+                      <p>{t('agb.widerruf.p4')}</p>
+                      <p>{t('agb.widerruf.p5')}</p>
+                      </div>
+                    </div>
+
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{t('agb.section14.title')}</h2>
                     <div className="space-y-4 text-muted-foreground">

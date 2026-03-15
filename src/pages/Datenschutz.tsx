@@ -412,6 +412,23 @@ const Datenschutz = () => {
                     </div>
 
                   <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{t('datenschutz.stripe.title')}</h2>
+                    <div className="space-y-4 text-muted-foreground">
+                      <p>{t('datenschutz.stripe.p1')}</p>
+                      <p>{t('datenschutz.stripe.p2')}</p>
+                      <p><strong>{t('datenschutz.stripe.data.title')}</strong></p>
+                      <ul className="list-disc list-inside ml-4 space-y-1">
+                        <li>{t('datenschutz.stripe.data.item1')}</li>
+                        <li>{t('datenschutz.stripe.data.item2')}</li>
+                        <li>{t('datenschutz.stripe.data.item3')}</li>
+                        <li>{t('datenschutz.stripe.data.item4')}</li>
+                      </ul>
+                      <p>{t('datenschutz.stripe.legal')}</p>
+                      <p>{t('datenschutz.stripe.privacy')}</p>
+                      </div>
+                    </div>
+
+                  <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{t('datenschutz.section8.title')}</h2>
                     <div className="space-y-4 text-muted-foreground">
                       <p>{t('datenschutz.section8.intro')}</p>
@@ -421,6 +438,7 @@ const Datenschutz = () => {
                         <li>{t('datenschutz.section8.item3')}</li>
                         <li>{t('datenschutz.section8.item4')}</li>
                         <li>{t('datenschutz.section8.item5')}</li>
+                        <li>{t('datenschutz.section8.item6')}</li>
                       </ul>
                       <p>{t('datenschutz.section8.obligation')}</p>
                       </div>

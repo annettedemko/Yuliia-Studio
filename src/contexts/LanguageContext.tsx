@@ -1679,7 +1679,20 @@ const translations = {
     'datenschutz.section8.item3': 'E-Mail-Service-Provider',
     'datenschutz.section8.item4': 'ALTEGIO (Terminbuchungssystem)',
     'datenschutz.section8.item5': 'Google Ireland Limited (Google Analytics)',
+    'datenschutz.section8.item6': 'Stripe, Inc. (Zahlungsabwicklung, USA, DPF-zertifiziert)',
     'datenschutz.section8.obligation': 'Alle Auftragsverarbeiter sind vertraglich dazu verpflichtet, Ihre Daten nur auf unsere Weisung und unter Einhaltung der DSGVO zu verarbeiten.',
+
+    // Stripe Datenschutz
+    'datenschutz.stripe.title': 'Zahlungsabwicklung über Stripe',
+    'datenschutz.stripe.p1': 'Für die Abwicklung von Online-Zahlungen in unserem Shop nutzen wir den Dienst Stripe (Stripe, Inc., 354 Oyster Point Blvd, South San Francisco, CA 94080, USA). Stripe ist unter dem EU-US Data Privacy Framework (DPF) zertifiziert.',
+    'datenschutz.stripe.p2': 'Beim Kauf eines Produkts werden Sie zur Zahlungsseite von Stripe weitergeleitet (Stripe Checkout). Die Zahlungsdaten werden ausschließlich von Stripe verarbeitet und zu keinem Zeitpunkt auf unseren Servern gespeichert.',
+    'datenschutz.stripe.data.title': 'Von Stripe verarbeitete Daten:',
+    'datenschutz.stripe.data.item1': 'Zahlungsdaten (Kreditkartennummer, Ablaufdatum, CVC)',
+    'datenschutz.stripe.data.item2': 'Name und E-Mail-Adresse',
+    'datenschutz.stripe.data.item3': 'Lieferadresse',
+    'datenschutz.stripe.data.item4': 'IP-Adresse und Geräteinformationen (zur Betrugsprävention)',
+    'datenschutz.stripe.legal': 'Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Die Verarbeitung ist zur Durchführung des Kaufvertrags erforderlich.',
+    'datenschutz.stripe.privacy': 'Datenschutzerklärung von Stripe: https://stripe.com/de/privacy. Stripe speichert Ihre Zahlungsdaten gemäß den PCI DSS-Standards.',
 
     // Datenschutz Footer
     'datenschutz.updated': 'Stand der Datenschutzerklärung',
@@ -1765,7 +1778,22 @@ const translations = {
     'agb.section13.p1': 'Behandlungen für Minderjährige unter 18 Jahren erfordern die schriftliche Einwilligung eines Erziehungsberechtigten. Diese muss vor Beginn der Behandlung vorliegen.',
 
     // AGB Section 14: Gutscheine
-    'agb.section14.title': '14. Gutscheine',
+    // Online-Shop & Stripe
+    'agb.shop.title': '14. Online-Shop und Zahlungsabwicklung',
+    'agb.shop.p1': 'Über unseren Online-Shop können physische Produkte (z. B. Planner YC) erworben werden. Alle angegebenen Preise sind Endpreise und enthalten die gesetzliche Umsatzsteuer (§ 1 PAngV). Versandkosten werden gesondert ausgewiesen.',
+    'agb.shop.p2': 'Die Zahlungsabwicklung erfolgt über den Zahlungsdienstleister Stripe, Inc. (354 Oyster Point Blvd, South San Francisco, CA 94080, USA). Beim Bestellvorgang werden Sie zur sicheren Zahlungsseite von Stripe weitergeleitet. Ihre Zahlungsdaten werden ausschließlich von Stripe verarbeitet und nicht auf unseren Servern gespeichert.',
+    'agb.shop.p3': 'Ein Kaufvertrag kommt zustande, wenn Sie die Bestellung durch Klicken auf die Schaltfläche „Zahlungspflichtig bestellen" abschließen und die Zahlung bei Stripe erfolgreich durchgeführt wird.',
+    'agb.shop.p4': 'Der Versand erfolgt innerhalb Deutschlands. Für Lieferungen außerhalb Deutschlands kontaktieren Sie uns bitte vorab per WhatsApp oder E-Mail.',
+
+    // Widerrufsbelehrung
+    'agb.widerruf.title': '15. Widerrufsbelehrung für Online-Käufe',
+    'agb.widerruf.p1': 'Verbraucher haben bei Fernabsatzverträgen (Online-Käufe) ein 14-tägiges Widerrufsrecht gemäß §§ 312g, 355 BGB.',
+    'agb.widerruf.p2': 'Widerrufsrecht: Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Ware in Besitz genommen haben.',
+    'agb.widerruf.p3': 'Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Yuliia Cheporska, Elsässer Str. 33, 81667 München, E-Mail: Yulachip@icloud.com) mittels einer eindeutigen Erklärung (z. B. E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.',
+    'agb.widerruf.p4': 'Folgen des Widerrufs: Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Die Rückzahlung erfolgt über dasselbe Zahlungsmittel (Stripe).',
+    'agb.widerruf.p5': 'Sie tragen die unmittelbaren Kosten der Rücksendung der Ware. Sie müssen die Ware unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf unterrichten, an uns zurücksenden.',
+
+    'agb.section14.title': '16. Gutscheine',
     'agb.section14.p1': 'Geschenkgutscheine sind mindestens drei Jahre ab dem Ausstellungsdatum gültig (§ 807 BGB i.V.m. § 195 BGB). Der Gutscheinwert kann für alle angebotenen Dienstleistungen eingelöst werden. Eine Barauszahlung ist ausgeschlossen.',
 
     // AGB Footer
@@ -3566,7 +3594,20 @@ const translations = {
     'datenschutz.section8.item3': 'Поставщик услуг электронной почты',
     'datenschutz.section8.item4': 'ALTEGIO (система бронирования)',
     'datenschutz.section8.item5': 'Google Ireland Limited (Google Analytics)',
+    'datenschutz.section8.item6': 'Stripe, Inc. (обработка платежей, США, DPF-сертификация)',
     'datenschutz.section8.obligation': 'Все обработчики данных по поручению договорно обязаны обрабатывать ваши данные только по нашему указанию и с соблюдением DSGVO.',
+
+    // Stripe Datenschutz
+    'datenschutz.stripe.title': 'Обработка платежей через Stripe',
+    'datenschutz.stripe.p1': 'Для обработки онлайн-платежей в нашем магазине мы используем сервис Stripe (Stripe, Inc., 354 Oyster Point Blvd, South San Francisco, CA 94080, США). Stripe сертифицирован в рамках EU-US Data Privacy Framework (DPF).',
+    'datenschutz.stripe.p2': 'При покупке товара вы будете перенаправлены на платёжную страницу Stripe (Stripe Checkout). Платёжные данные обрабатываются исключительно Stripe и никогда не сохраняются на наших серверах.',
+    'datenschutz.stripe.data.title': 'Данные, обрабатываемые Stripe:',
+    'datenschutz.stripe.data.item1': 'Платёжные данные (номер карты, срок действия, CVC)',
+    'datenschutz.stripe.data.item2': 'Имя и адрес электронной почты',
+    'datenschutz.stripe.data.item3': 'Адрес доставки',
+    'datenschutz.stripe.data.item4': 'IP-адрес и информация об устройстве (для предотвращения мошенничества)',
+    'datenschutz.stripe.legal': 'Правовое основание: ст. 6 абз. 1 лит. b DSGVO (исполнение договора). Обработка необходима для выполнения договора купли-продажи.',
+    'datenschutz.stripe.privacy': 'Политика конфиденциальности Stripe: https://stripe.com/de/privacy. Stripe хранит ваши платёжные данные в соответствии со стандартами PCI DSS.',
 
     // Datenschutz Footer
     'datenschutz.updated': 'Дата обновления политики конфиденциальности',
@@ -3652,7 +3693,22 @@ const translations = {
     'agb.section13.p1': 'Процедуры для несовершеннолетних до 18 лет требуют письменного согласия законного представителя. Согласие должно быть предоставлено до начала процедуры.',
 
     // AGB Section 14: Подарочные сертификаты
-    'agb.section14.title': '14. Подарочные сертификаты',
+    // Online-Shop & Stripe
+    'agb.shop.title': '14. Интернет-магазин и обработка платежей',
+    'agb.shop.p1': 'Через наш интернет-магазин можно приобрести физические товары (например, Планер YC). Все указанные цены являются конечными и включают законный НДС (§ 1 PAngV). Стоимость доставки указывается отдельно.',
+    'agb.shop.p2': 'Обработка платежей осуществляется через платёжный сервис Stripe, Inc. (354 Oyster Point Blvd, South San Francisco, CA 94080, США). При оформлении заказа вы будете перенаправлены на безопасную платёжную страницу Stripe. Ваши платёжные данные обрабатываются исключительно Stripe и не сохраняются на наших серверах.',
+    'agb.shop.p3': 'Договор купли-продажи заключается, когда вы завершаете заказ нажатием кнопки «Заказать с обязательством оплаты» и платёж успешно проведён через Stripe.',
+    'agb.shop.p4': 'Доставка осуществляется по территории Германии. Для доставки за пределы Германии свяжитесь с нами заранее через WhatsApp или электронную почту.',
+
+    // Widerrufsbelehrung
+    'agb.widerruf.title': '15. Инструкция по отзыву для онлайн-покупок',
+    'agb.widerruf.p1': 'Потребители имеют 14-дневное право отзыва при дистанционных договорах (онлайн-покупки) согласно §§ 312g, 355 BGB.',
+    'agb.widerruf.p2': 'Право отзыва: Вы имеете право в течение четырнадцати дней отказаться от данного договора без указания причин. Срок отзыва составляет четырнадцать дней со дня, когда вы или указанное вами третье лицо, не являющееся перевозчиком, вступили во владение товаром.',
+    'agb.widerruf.p3': 'Для осуществления права отзыва вы должны уведомить нас (Yuliia Cheporska, Elsässer Str. 33, 81667 München, E-Mail: Yulachip@icloud.com) посредством однозначного заявления (например, по электронной почте) о вашем решении отказаться от данного договора.',
+    'agb.widerruf.p4': 'Последствия отзыва: В случае отзыва мы обязаны вернуть вам все полученные от вас платежи, включая стоимость доставки, незамедлительно и не позднее четырнадцати дней со дня получения вашего уведомления об отзыве. Возврат осуществляется тем же платёжным средством (Stripe).',
+    'agb.widerruf.p5': 'Вы несёте прямые расходы по возврату товара. Вы обязаны отправить товар незамедлительно и в любом случае не позднее четырнадцати дней со дня уведомления нас об отзыве.',
+
+    'agb.section14.title': '16. Подарочные сертификаты',
     'agb.section14.p1': 'Подарочные сертификаты действительны минимум три года с даты выдачи (§ 807 BGB в связи с § 195 BGB). Стоимость сертификата может быть использована для любых предлагаемых услуг. Выплата наличными исключается.',
 
     // AGB Footer
