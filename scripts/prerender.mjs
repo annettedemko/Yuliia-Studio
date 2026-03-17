@@ -24,6 +24,11 @@ const staticRoutes = {
     '/de/preis',
     '/de/agb',
     '/de/planner-yc',
+    '/de/natrix-geraete',
+    '/de/natrix-diodenlaser',
+    '/de/natrix-ipl',
+    '/de/natrix-spheresculpt',
+    '/de/natrix-rf-microneedling',
   ],
   ru: [
     '/ru',
@@ -40,6 +45,11 @@ const staticRoutes = {
     '/ru/preis',
     '/ru/agb',
     '/ru/planner-yc',
+    '/ru/natrix-geraete',
+    '/ru/natrix-diodenlaser',
+    '/ru/natrix-ipl',
+    '/ru/natrix-spheresculpt',
+    '/ru/natrix-rf-microneedling',
   ]
 };
 

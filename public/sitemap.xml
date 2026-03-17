@@ -125,6 +125,53 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/planner-yc" />
   </url>
 
+  <!-- Natrix Geräte - Немецкий -->
+  <url>
+    <loc>https://www.munchen-beauty.de/de/natrix-geraete</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-geraete" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-geraete" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-geraete" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/de/natrix-diodenlaser</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-diodenlaser" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/de/natrix-ipl</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-ipl" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-ipl" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-ipl" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/de/natrix-spheresculpt</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-spheresculpt" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-spheresculpt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-spheresculpt" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/de/natrix-rf-microneedling</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-rf-microneedling" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-rf-microneedling" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-rf-microneedling" />
+  </url>
+
   <!-- Юридические страницы - Немецкий -->
   <url>
     <loc>https://www.munchen-beauty.de/de/impressum</loc>
@@ -270,6 +317,53 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/planner-yc" />
     <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/planner-yc" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/planner-yc" />
+  </url>
+
+  <!-- Natrix Geräte - Русский -->
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/natrix-geraete</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-geraete" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-geraete" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-geraete" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/natrix-diodenlaser</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-diodenlaser" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-diodenlaser" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/natrix-ipl</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-ipl" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-ipl" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-ipl" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/natrix-spheresculpt</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-spheresculpt" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-spheresculpt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-spheresculpt" />
+  </url>
+  <url>
+    <loc>https://www.munchen-beauty.de/ru/natrix-rf-microneedling</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.munchen-beauty.de/de/natrix-rf-microneedling" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.munchen-beauty.de/ru/natrix-rf-microneedling" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.munchen-beauty.de/de/natrix-rf-microneedling" />
   </url>
 
   <!-- Юридические страницы - Русский -->

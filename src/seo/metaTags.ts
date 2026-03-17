@@ -203,6 +203,56 @@ export const metaTags: Record<string, PageMeta> = {
       description: 'Again Cosmetics: профессиональные средства по уходу за кожей от DEKA для оптимальных результатов процедур. Дополнительный уход после лазерных процедур.'
     }
   },
+  '/natrix-geraete': {
+    de: {
+      title: 'Natrix Med Geräteverkauf | Professionelle Kosmetikgeräte München',
+      description: 'Professionelle Natrix Med Geräte für Beauty-Studios: Diodenlaser, IPL-Plattform, SphereSculpt, RF Microneedling. Beratung und Verkauf in München.'
+    },
+    ru: {
+      title: 'Продажа оборудования Natrix Med | Профессиональная косметология Мюнхен',
+      description: 'Профессиональное оборудование Natrix Med для салонов красоты: диодный лазер, IPL-платформа, SphereSculpt, RF микронидлинг. Консультация и продажа в Мюнхене.'
+    }
+  },
+  '/natrix-diodenlaser': {
+    de: {
+      title: 'Natrix Med Diodenlaser 808 nm | 3000 W Dual-Handstück',
+      description: 'Natrix Med Diodenlaser: 808 nm, 3000 W, Dual-Handstück (1600W + 1000W), deutsche LIMO-Linsen, 360° Peltier-Kühlung, OLED-Touchscreen. Für Beauty-Profis.'
+    },
+    ru: {
+      title: 'Natrix Med диодный лазер 808 нм | 3000 Вт, двойная рукоятка',
+      description: 'Natrix Med диодный лазер: 808 нм, 3000 Вт, двойная рукоятка (1600+1000 Вт), немецкие линзы LIMO, охлаждение Пельтье 360°, OLED-экран. Для профессионалов.'
+    }
+  },
+  '/natrix-ipl': {
+    de: {
+      title: 'Natrix Med IPL-Plattform | Haarentfernung & Hautverjüngung',
+      description: 'Natrix Med IPL: 480–950 nm, 3000 W, SR/VR/HR-Modi, Silberreflektor, Saphirkristall, Triple-Kühlung. Für Haarentfernung, Pigment- und Gefäßtherapie.'
+    },
+    ru: {
+      title: 'Natrix Med IPL-платформа | Удаление волос и омоложение',
+      description: 'Natrix Med IPL: 480–950 нм, 3000 Вт, режимы SR/VR/HR, серебряный отражатель, сапфировый кристалл, тройное охлаждение. Удаление волос, пигментация, сосуды.'
+    }
+  },
+  '/natrix-spheresculpt': {
+    de: {
+      title: 'Natrix Med SphereSculpt | Körperkonturierung & Lymphdrainage',
+      description: 'Natrix Med SphereSculpt: Vibrations-Therapie für Körperkonturierung, Lymphdrainage, Hautstraffung. Gesichts- und Körperbehandlung. Geräuscharm (<49 dB).'
+    },
+    ru: {
+      title: 'Natrix Med SphereSculpt | Коррекция контуров и лимфодренаж',
+      description: 'Natrix Med SphereSculpt: вибрационная терапия для коррекции контуров тела, лимфодренажа, подтяжки кожи. Лицо и тело. Тихая работа (<49 дБ).'
+    }
+  },
+  '/natrix-rf-microneedling': {
+    de: {
+      title: 'Natrix Med RF Microneedling | Facelifting & Hautverjüngung',
+      description: 'Natrix Med RF Microneedling: Fraktioniertes RF, Microneedling + Thermagical, 5/8 MHz, goldene Nadeln, Kühlhandstück. Lifting, Falten, Narben, Akne.'
+    },
+    ru: {
+      title: 'Natrix Med RF микронидлинг | Подтяжка лица и омоложение',
+      description: 'Natrix Med RF микронидлинг: фракционный RF, микронидлинг + термагический, 5/8 МГц, золотые иглы, охлаждающая ручка. Лифтинг, морщины, шрамы, акне.'
+    }
+  },
   '/planner-yc': {
     de: {
       title: 'Planner YC – Dein Planer für Ziele & Fokus | Yuliia Cheporska',

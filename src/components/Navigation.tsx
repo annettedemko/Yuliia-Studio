@@ -44,12 +44,11 @@ const Navigation = () => {
     { href: '/manikuere-pedikuere-muenchen', labelKey: 'nav.services.nails' },
   ];
 
-  const dekaDevices = [
-    { href: '/physiq360', labelKey: 'nav.deka.physiq' },
-    { href: '/motus-ax', labelKey: 'nav.deka.motus-ax' },
-    { href: '/motus-pro', labelKey: 'nav.deka.motus-pro' },
-    { href: '/redtouch-pro', labelKey: 'nav.deka.redtouch' },
-    { href: '/again-cos', labelKey: 'nav.deka.again' },
+  const natrixDevices = [
+    { href: '/natrix-diodenlaser', labelKey: 'nav.natrix.diodenlaser' },
+    { href: '/natrix-ipl', labelKey: 'nav.natrix.ipl' },
+    { href: '/natrix-spheresculpt', labelKey: 'nav.natrix.spheresculpt' },
+    { href: '/natrix-rf-microneedling', labelKey: 'nav.natrix.rf' },
   ];
 
   const handleDropdownEnter = () => {
@@ -224,22 +223,22 @@ const Navigation = () => {
               )}
             </div>
 
-            {/* DEKA Geräte Dropdown - TEMPORARILY HIDDEN */}
-            {/* <div
+            {/* Natrix Geräte Dropdown */}
+            <div
               className="relative"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
             >
               <Link
-                to={withLang('/deka-geraeteverkauf')}
+                to={withLang('/natrix-geraete')}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
-                  (isActive('/deka-geraeteverkauf') ||
-                   dekaDevices.some(device => isActive(device.href)))
+                  (isActive('/natrix-geraete') ||
+                   natrixDevices.some(device => isActive(device.href)))
                     ? "text-rose-gold" : "text-foreground"
                 )}
               >
-                {t('nav.deka')}
+                {t('nav.natrix')}
                 <ChevronDown className={cn(
                   "w-4 h-4 transition-transform duration-200",
                   dekaDropdownOpen ? "rotate-180" : ""
@@ -248,18 +247,18 @@ const Navigation = () => {
 
               {dekaDropdownOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
                   <Link
-                    to={withLang('/deka-geraeteverkauf')}
+                    to={withLang('/natrix-geraete')}
                     className="block px-4 py-2 text-sm text-foreground hover:bg-rose-gold/10 hover:text-rose-gold transition-colors"
                   >
-                    {t('nav.deka.all')}
+                    {t('nav.natrix.all')}
                   </Link>
                   <div className="border-t border-gray-100 my-1"></div>
-                  {dekaDevices.map((device) => (
+                  {natrixDevices.map((device) => (
                     <Link
                       key={device.href}
                       to={withLang(device.href)}
@@ -273,7 +272,7 @@ const Navigation = () => {
                   ))}
                 </div>
               )}
-            </div> */}
+            </div>
             <div className="hidden md:flex items-center space-x-2">
               <LanguageSwitcher />
               <Button
@@ -378,22 +377,22 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* DEKA Geräte Section for Mobile - TEMPORARILY HIDDEN */}
-              {/* <div className="border-t border-gray-200 pt-6 mt-4">
+              {/* Natrix Geräte Section for Mobile */}
+              <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
-                  to={withLang('/deka-geraeteverkauf')}
+                  to={withLang('/natrix-geraete')}
                   className={cn(
                     "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
-                    (isActive('/deka-geraeteverkauf') ||
-                     dekaDevices.some(device => isActive(device.href)))
+                    (isActive('/natrix-geraete') ||
+                     natrixDevices.some(device => isActive(device.href)))
                       ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
-                  {t('nav.deka')}
+                  {t('nav.natrix')}
                 </Link>
                 <div className="flex flex-col space-y-3 pl-4">
-                  {dekaDevices.map((device) => (
+                  {natrixDevices.map((device) => (
                     <Link
                       key={device.href}
                       to={withLang(device.href)}
@@ -407,7 +406,7 @@ const Navigation = () => {
                     </Link>
                   ))}
                 </div>
-              </div> */}
+              </div>
 
               {/* Contact Buttons - Make them larger and more prominent */}
               <div className="flex flex-col space-y-3 mt-6">

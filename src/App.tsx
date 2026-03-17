@@ -44,6 +44,11 @@ const RedTouchProService = lazy(() => import("./pages/RedTouchProService"));
 // const AgainCos = lazy(() => import("./pages/AgainCos"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const PlannerYC = lazy(() => import("./pages/PlannerYC"));
+const NatrixGeraete = lazy(() => import("./pages/NatrixGeraete"));
+const NatrixDiodenlaser = lazy(() => import("./pages/NatrixDiodenlaser"));
+const NatrixIPL = lazy(() => import("./pages/NatrixIPL"));
+const NatrixSphereSculpt = lazy(() => import("./pages/NatrixSphereSculpt"));
+const NatrixRFMicroneedling = lazy(() => import("./pages/NatrixRFMicroneedling"));
 // const Deka = lazy(() => import("./pages/Deka"));
 // const DekaDay = lazy(() => import("./pages/DekaDay"));
 // const DekaAnna = lazy(() => import("./pages/DekaAnna"));
@@ -144,12 +149,12 @@ const App = () => (
                     <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
                     <Route path="planner-yc" element={<PlannerYC />} />
-                    {/* <Route path="deka" element={<Deka />} />
-                    <Route path="DEKA" element={<Deka />} />
-                    <Route path="deka-day" element={<DekaDay />} />
-                    <Route path="deka-anna" element={<DekaAnna />} />
-                    <Route path="deka-lera" element={<DekaLera />} />
-                    <Route path="deka-liudmila" element={<DekaLiudmila />} /> */}
+                    <Route path="natrix-geraete" element={<NatrixGeraete />} />
+                    <Route path="natrix-diodenlaser" element={<NatrixDiodenlaser />} />
+                    <Route path="natrix-ipl" element={<NatrixIPL />} />
+                    <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
+                    <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
+                    {/* DEKA routes - REPLACED BY NATRIX */}
                     <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
                     <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
                     <Route path="redtouchpro" element={<Navigate to="redtouch-laser-muenchen" replace />} />
@@ -165,19 +170,17 @@ const App = () => (
                     <Route path="icoone-laser-muenchen" element={<IcooneLaser />} />
                     <Route path="manikuere-pedikuere-muenchen" element={<ManikuerePedikuere />} />
                     <Route path="redtouch-laser-muenchen" element={<RedTouchProService />} />
-                    {/* DEKA routes - TEMPORARILY HIDDEN */}
-                    {/* <Route path="deka-geraeteverkauf" element={<DekaGeraeteverkauf />} />
-                    <Route path="redtouch-pro" element={<RedTouchPro />} />
-                    <Route path="motus-pro" element={<MotusPro />} />
-                    <Route path="motus-ax" element={<MotusAX />} />
-                    <Route path="physiq360" element={<Physiq360 />} />
-                    <Route path="again-cos" element={<AgainCos />} /> */}
                     <Route path="kontakt" element={<Kontakt />} />
                     <Route path="impressum" element={<Impressum />} />
                     <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                     <Route path="agb" element={<AGB />} />
                     <Route path="preis" element={<Pricing />} />
                     <Route path="planner-yc" element={<PlannerYC />} />
+                    <Route path="natrix-geraete" element={<NatrixGeraete />} />
+                    <Route path="natrix-diodenlaser" element={<NatrixDiodenlaser />} />
+                    <Route path="natrix-ipl" element={<NatrixIPL />} />
+                    <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
+                    <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />
