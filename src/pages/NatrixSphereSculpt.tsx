@@ -24,6 +24,7 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixSphereSculpt = () => {
   const { t } = useLanguage();
@@ -160,9 +161,7 @@ const NatrixSphereSculpt = () => {
                     asChild
                   >
                     <a
-                      href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20SphereSculpt"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#anfrage"
                     >
                       <MessageCircle className="w-5 h-5 mr-2" />
                       {t('natrix.sphere.hero.cta.whatsapp')}
@@ -379,59 +378,12 @@ const NatrixSphereSculpt = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 relative">
+        {/* Contact Form Section */}
+        <section id="anfrage" className="py-20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(197,165,114,0.08),transparent_60%)]"></div>
-          <div ref={ctaRef} className="relative z-10 container mx-auto px-4 text-center reveal reveal-up">
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-[#C5A572] to-[#E8D5B5] bg-clip-text text-transparent">
-                  {t('natrix.sphere.cta.title')}
-                </span>
-              </h2>
-              <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
-                {t('natrix.sphere.cta.subtitle')}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <Button
-                  size="lg"
-                  className="bg-[#C5A572] text-black hover:bg-[#D4B88A] rounded-full px-10 py-6 text-lg font-semibold"
-                  asChild
-                >
-                  <a
-                    href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20SphereSculpt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#C5A572]/50 text-[#C5A572] hover:bg-[#C5A572]/10 rounded-full px-10 py-6 text-lg"
-                  asChild
-                >
-                  <a href="mailto:Yulachip@icloud.com">
-                    <Mail className="w-5 h-5 mr-2" />
-                    E-Mail
-                  </a>
-                </Button>
-              </div>
-
-              <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#C5A572]" />
-                  <span>{t('natrix.sphere.cta.b2b')}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#C5A572]" />
-                  <span>{t('natrix.sphere.cta.consultation')}</span>
-                </div>
-              </div>
+          <div ref={ctaRef} className="relative z-10 container mx-auto px-4 reveal reveal-up">
+            <div className="max-w-xl mx-auto">
+              <NatrixContactForm device="SphereSculpt" />
             </div>
           </div>
         </section>

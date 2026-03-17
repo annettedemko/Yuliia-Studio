@@ -1969,6 +1969,23 @@ const translations = {
     'natrix.overview.cta.whatsapp': 'WhatsApp Anfrage',
     'natrix.overview.cta.email': 'E-Mail schreiben',
 
+    // Natrix Contact Form (DE)
+    'natrix.form.title': 'Unverbindliche Anfrage',
+    'natrix.form.subtitle': 'Erhalten Sie ein individuelles Angebot — wir melden uns innerhalb von 24 Stunden.',
+    'natrix.form.name': 'Name',
+    'natrix.form.name.placeholder': 'Ihr vollständiger Name',
+    'natrix.form.phone': 'Telefon',
+    'natrix.form.phone.placeholder': '+49 ...',
+    'natrix.form.email': 'E-Mail',
+    'natrix.form.email.placeholder': 'ihre@email.de',
+    'natrix.form.submit': 'Anfrage senden',
+    'natrix.form.sending': 'Wird gesendet...',
+    'natrix.form.error': 'Fehler beim Senden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
+    'natrix.form.success.title': 'Anfrage gesendet!',
+    'natrix.form.success.text': 'Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.',
+    'natrix.form.privacy': 'Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu.',
+    'natrix.price.onRequest': 'Preis auf Anfrage',
+
     // Natrix Diodenlaser
     'natrix.diodenlaser.hero.title': 'Natrix Med Diodenlaser',
     'natrix.diodenlaser.hero.subtitle': 'Professioneller Dual-Handstück-Diodenlaser mit 3000 W Gesamtleistung für die dauerhafte Haarentfernung aller Hauttypen.',
@@ -4259,6 +4276,23 @@ const translations = {
     'natrix.overview.cta.subtitle': 'Свяжитесь с нами для бесплатной консультации, живой демонстрации или получения индивидуального предложения.',
     'natrix.overview.cta.whatsapp': 'Запрос через WhatsApp',
     'natrix.overview.cta.email': 'Написать e-mail',
+
+    // Natrix Contact Form (RU)
+    'natrix.form.title': 'Запрос без обязательств',
+    'natrix.form.subtitle': 'Получите индивидуальное предложение — мы свяжемся с вами в течение 24 часов.',
+    'natrix.form.name': 'Имя',
+    'natrix.form.name.placeholder': 'Ваше полное имя',
+    'natrix.form.phone': 'Телефон',
+    'natrix.form.phone.placeholder': '+49 ...',
+    'natrix.form.email': 'E-Mail',
+    'natrix.form.email.placeholder': 'your@email.de',
+    'natrix.form.submit': 'Отправить запрос',
+    'natrix.form.sending': 'Отправка...',
+    'natrix.form.error': 'Ошибка отправки. Попробуйте ещё раз или свяжитесь с нами напрямую.',
+    'natrix.form.success.title': 'Запрос отправлен!',
+    'natrix.form.success.text': 'Спасибо! Мы свяжемся с вами в течение 24 часов.',
+    'natrix.form.privacy': 'Отправляя форму, вы соглашаетесь с нашей политикой конфиденциальности.',
+    'natrix.price.onRequest': 'Цена по запросу',
 
     // Natrix Diodenlaser
     'natrix.diodenlaser.hero.title': 'Natrix Med Диодный лазер',

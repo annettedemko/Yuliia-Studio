@@ -20,6 +20,7 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixRFMicroneedling = () => {
   const { t } = useLanguage();
@@ -162,9 +163,7 @@ const NatrixRFMicroneedling = () => {
                 asChild
               >
                 <a
-                  href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20RF%20Microneedling"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#anfrage"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
                   {t('natrix.rf.hero.cta.whatsapp')}
@@ -403,53 +402,11 @@ const NatrixRFMicroneedling = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-black to-zinc-950 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#C5A572]/20 rounded-full blur-3xl"></div>
-          </div>
-
-          <div ref={ctaRef} className="container mx-auto px-4 text-center relative z-10 reveal reveal-up">
-            <div className="max-w-2xl mx-auto">
-              <Award className="w-10 h-10 text-[#C5A572] mx-auto mb-6" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                {t('natrix.rf.cta.title')}
-              </h2>
-              <p className="text-lg text-white/60 mb-10">
-                {t('natrix.rf.cta.subtitle')}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-[#C5A572] text-black hover:bg-[#d4b882] rounded-full px-10 py-6 text-base font-semibold"
-                  asChild
-                >
-                  <a
-                    href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20RF%20Microneedling"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#C5A572]/50 text-[#C5A572] hover:bg-[#C5A572]/10 rounded-full px-10 py-6 text-base bg-transparent"
-                  asChild
-                >
-                  <a href="mailto:Yulachip@icloud.com">
-                    <Mail className="w-5 h-5 mr-2" />
-                    E-Mail
-                  </a>
-                </Button>
-              </div>
-
-              <p className="text-xs text-white/30 mt-8">
-                {t('natrix.rf.cta.note')}
-              </p>
+        {/* Contact Form Section */}
+        <section id="anfrage" className="py-16 md:py-20 bg-gradient-to-b from-black to-zinc-950 relative overflow-hidden">
+          <div ref={ctaRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+            <div className="max-w-xl mx-auto">
+              <NatrixContactForm device="RF Microneedling" />
             </div>
           </div>
         </section>

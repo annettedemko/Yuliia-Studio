@@ -17,6 +17,7 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixDiodenlaser = () => {
   const { t } = useLanguage();
@@ -152,9 +153,7 @@ const NatrixDiodenlaser = () => {
                   asChild
                 >
                   <a
-                    href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20Diodenlaser"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#anfrage"
                   >
                     <MessageCircle className="w-5 h-5 mr-2" />
                     {t('natrix.diodenlaser.hero.cta')}
@@ -344,67 +343,11 @@ const NatrixDiodenlaser = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.08)_0%,_transparent_50%)]" />
-
-        {/* Decorative line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5A572]/30 to-transparent" />
-
+      {/* Contact Form Section */}
+      <section id="anfrage" className="py-20 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] relative overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('natrix.diodenlaser.cta.title')}
-            </h2>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              {t('natrix.diodenlaser.cta.subtitle')}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button
-                size="lg"
-                className="bg-[#C5A572] text-black hover:bg-[#d4b682] text-lg px-8 py-4 font-semibold"
-                asChild
-              >
-                <a
-                  href="https://wa.me/4915206067810?text=Anfrage%20Natrix%20Diodenlaser"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('natrix.diodenlaser.cta.whatsapp')}
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#C5A572]/30 text-[#C5A572] hover:bg-[#C5A572]/10 hover:border-[#C5A572]/50 text-lg px-8 py-4"
-                asChild
-              >
-                <a href="mailto:Yulachip@icloud.com">
-                  <Mail className="w-5 h-5 mr-2" />
-                  {t('natrix.diodenlaser.cta.email')}
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-500 text-sm">
-              <a
-                href="tel:+4915206067810"
-                className="flex items-center gap-2 hover:text-[#C5A572] transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                +49 152 0606 7810
-              </a>
-              <a
-                href="mailto:Yulachip@icloud.com"
-                className="flex items-center gap-2 hover:text-[#C5A572] transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                Yulachip@icloud.com
-              </a>
-            </div>
+          <div className="max-w-xl mx-auto">
+            <NatrixContactForm device="Diodenlaser 808 nm" />
           </div>
         </div>
       </section>

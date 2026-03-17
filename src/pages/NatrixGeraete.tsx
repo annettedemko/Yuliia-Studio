@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import {
@@ -7,19 +6,18 @@ import {
   Shield,
   Headphones,
   Gem,
-  Mail,
-  MessageCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import SectionDivider from '@/components/SectionDivider';
+import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixGeraete = () => {
   const { t, language } = useLanguage();
   const devicesRef = useScrollReveal({ threshold: 0.1 });
   const whyRef = useScrollReveal({ threshold: 0.1 });
-  const ctaRef = useScrollReveal({ threshold: 0.1 });
+  const formRef = useScrollReveal({ threshold: 0.1 });
 
   const langPrefix = `/${language}`;
 
@@ -115,29 +113,13 @@ const NatrixGeraete = () => {
               {t('natrix.overview.hero.subtitle')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 min-h-[48px]"
-                asChild
-              >
-                <a href="https://wa.me/4915206067810" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('natrix.overview.hero.cta')}
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/40 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 min-h-[48px]"
-                asChild
-              >
-                <a href="#devices">
-                  {t('natrix.overview.hero.viewDevices')}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-            </div>
+            <a
+              href="#anfrage"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-md font-semibold min-h-[48px]"
+            >
+              {t('natrix.overview.hero.cta')}
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </section>
 
@@ -176,6 +158,11 @@ const NatrixGeraete = () => {
                         <div className="absolute top-4 left-4">
                           <span className="bg-rose-gold/90 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-md">
                             Natrix Med
+                          </span>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-primary/90 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
+                            {t('natrix.price.onRequest')}
                           </span>
                         </div>
                       </div>
@@ -238,43 +225,11 @@ const NatrixGeraete = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 sm:py-20 bg-gradient-to-b from-primary to-primary/95 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-64 h-64 bg-rose-gold/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-80 h-80 bg-rose-gold/10 rounded-full blur-3xl" />
-          </div>
-
-          <div ref={ctaRef} className="container mx-auto px-4 text-center relative z-10 reveal reveal-up">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('natrix.overview.cta.title')}
-            </h2>
-            <p className="text-base sm:text-lg text-white/80 mb-10 max-w-2xl mx-auto">
-              {t('natrix.overview.cta.subtitle')}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base px-8 py-6 min-h-[48px]"
-                asChild
-              >
-                <a href="https://wa.me/4915206067810" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('natrix.overview.cta.whatsapp')}
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/40 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-sm sm:text-base px-8 py-6 min-h-[48px]"
-                asChild
-              >
-                <a href="mailto:Yulachip@icloud.com">
-                  <Mail className="w-5 h-5 mr-2" />
-                  {t('natrix.overview.cta.email')}
-                </a>
-              </Button>
+        {/* Contact Form Section */}
+        <section id="anfrage" className="py-12 sm:py-20 bg-gradient-to-b from-white to-gray-50/50 relative">
+          <div ref={formRef} className="container mx-auto px-4 reveal reveal-up">
+            <div className="max-w-xl mx-auto">
+              <NatrixContactForm />
             </div>
           </div>
         </section>
