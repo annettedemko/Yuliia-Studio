@@ -120,7 +120,7 @@ const NatrixIPL = () => {
           <div
             className="absolute inset-0 animate-hero-zoom opacity-60"
             style={{
-              backgroundImage: 'url(/Natrix/natrix-ipl.jpg)',
+              backgroundImage: 'url(/Natrix/n4.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -318,7 +318,7 @@ const NatrixIPL = () => {
                 <div className="lg:col-span-4 text-center flex items-center justify-center">
                   <div className="relative inline-block">
                     <img
-                      src="/Natrix/natrix-ipl.jpg"
+                      src="/Natrix/n4.png"
                       alt={t('natrix.ipl.alt.device')}
                       className="w-full max-w-sm mx-auto object-contain rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700"
                     />

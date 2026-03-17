@@ -111,7 +111,7 @@ const NatrixRFMicroneedling = () => {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: 'url(/Natrix/natrix-rf.jpg)',
+              backgroundImage: 'url(/Natrix/n3.png)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

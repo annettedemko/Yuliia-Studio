@@ -176,7 +176,7 @@ const NatrixDiodenlaser = () => {
             <div className="relative animate-slide-up" style={{ animationDelay: '300ms' }}>
               <div className="absolute -inset-4 bg-gradient-to-r from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-3xl blur-3xl" />
               <img
-                src="/Natrix/natrix-diodenlaser.jpg"
+                src="/Natrix/n1.png"
                 alt={t('natrix.diodenlaser.hero.imageAlt')}
                 className="w-full h-auto object-contain rounded-2xl relative z-10"
                 loading="eager"

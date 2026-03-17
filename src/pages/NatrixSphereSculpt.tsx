@@ -186,7 +186,7 @@ const NatrixSphereSculpt = () => {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#C5A572]/10 via-transparent to-transparent rounded-3xl blur-2xl"></div>
                   <img
-                    src="/Natrix/natrix-spheresculpt.jpg"
+                    src="/Natrix/n2.png"
                     alt={t('natrix.sphere.hero.alt')}
                     className="relative w-full max-w-md lg:max-w-lg object-contain rounded-2xl"
                   />
