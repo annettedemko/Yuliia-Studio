@@ -46,6 +46,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   params.append('line_items[1][quantity]', '1');
 
   params.append('shipping_address_collection[allowed_countries][]', 'DE');
+  params.append('phone_number_collection[enabled]', 'true');
+  params.append('billing_address_collection', 'required');
 
   params.append('custom_text[submit][message]',
     lang === 'ru'
