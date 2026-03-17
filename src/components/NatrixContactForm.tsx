@@ -30,18 +30,21 @@ const NatrixContactForm = ({ device, className = '' }: NatrixContactFormProps) =
 
     try {
       // Send email via FormSubmit.co (free, no API key needed)
-      const emailData = new FormData();
-      emailData.append('name', formData.name);
-      emailData.append('phone', formData.phone);
-      emailData.append('email', formData.email);
-      if (device) emailData.append('Gerät', device);
-      emailData.append('_subject', `Natrix Med Anfrage: ${device || 'Allgemein'} — ${formData.name}`);
-      emailData.append('_template', 'table');
-      emailData.append('_captcha', 'false');
-
       const response = await fetch('https://formsubmit.co/ajax/Yulachip@icloud.com', {
         method: 'POST',
-        body: emailData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          ...(device ? { 'Gerät': device } : {}),
+          _subject: `Natrix Med Anfrage: ${device || 'Allgemein'} — ${formData.name}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
       });
 
       if (!response.ok) throw new Error('Email failed');
