@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Award,
@@ -15,17 +15,10 @@ import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const NatrixGeraete = () => {
-  const { t } = useLanguage();
-  const location = useLocation();
+  const { t, language } = useLanguage();
   const scrollRef = useScrollReveal();
 
-  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
-  const langPrefix = `/${currentLang}`;
-
-  const withLang = (path: string) => {
-    if (path === '/') return langPrefix;
-    return `${langPrefix}${path}`;
-  };
+  const langPrefix = `/${language}`;
 
   const devices = [
     {
@@ -158,7 +151,7 @@ const NatrixGeraete = () => {
             {devices.map((device) => (
               <Link
                 key={device.id}
-                to={withLang(device.link)}
+                to={`${langPrefix}${device.link}`}
                 className="group block"
               >
                 <Card className="overflow-hidden bg-gray-900 border-gray-800 hover:border-[#C5A572]/50 transition-all duration-500 hover:shadow-2xl hover:shadow-[#C5A572]/10 hover:-translate-y-1 h-full">

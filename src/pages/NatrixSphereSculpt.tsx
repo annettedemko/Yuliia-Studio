@@ -1,8 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useLocation } from 'react-router-dom';
 import {
-  ArrowRight,
   Mail,
   MessageCircle,
   Zap,
@@ -29,15 +27,6 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const NatrixSphereSculpt = () => {
   const { t } = useLanguage();
-  const location = useLocation();
-
-  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
-  const langPrefix = `/${currentLang}`;
-
-  const withLang = (path: string) => {
-    if (path === '/') return langPrefix;
-    return `${langPrefix}${path}`;
-  };
 
   const bodyApplications = [
     { icon: Target, key: 'natrix.sphere.body.app.contouring' },

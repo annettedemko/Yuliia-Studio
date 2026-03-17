@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link, useLocation } from 'react-router-dom';
 import {
   Zap,
   Target,
@@ -21,16 +20,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const NatrixDiodenlaser = () => {
   const { t } = useLanguage();
-  const location = useLocation();
   const revealRef = useScrollReveal();
-
-  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
-  const langPrefix = `/${currentLang}`;
-
-  const withLang = (path: string) => {
-    if (path === '/') return langPrefix;
-    return `${langPrefix}${path}`;
-  };
 
   const heroHighlights = [
     { value: '3000W', label: t('natrix.diodenlaser.hero.highlight1') },

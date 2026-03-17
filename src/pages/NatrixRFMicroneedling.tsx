@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useLocation } from 'react-router-dom';
 import {
   Zap,
   Shield,
@@ -24,15 +23,6 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const NatrixRFMicroneedling = () => {
   const { t } = useLanguage();
-  const location = useLocation();
-
-  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
-  const langPrefix = `/${currentLang}`;
-
-  const withLang = (path: string) => {
-    if (path === '/') return langPrefix;
-    return `${langPrefix}${path}`;
-  };
 
   const heroRef = useScrollReveal({ threshold: 0.1 });
   const microneedlingRef = useScrollReveal({ threshold: 0.1 });

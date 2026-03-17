@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useLocation } from 'react-router-dom';
 import {
   Zap,
   Target,
@@ -9,11 +8,9 @@ import {
   CheckCircle,
   Monitor,
   Sparkles,
-  Activity,
   Thermometer,
   Sun,
   Heart,
-  Droplets,
   Clock,
   Gauge,
   Mail
@@ -26,15 +23,6 @@ const GOLD = '#C5A572';
 
 const NatrixIPL = () => {
   const { t } = useLanguage();
-  const location = useLocation();
-
-  const currentLang = location.pathname.startsWith('/ru') ? 'ru' : 'de';
-  const langPrefix = `/${currentLang}`;
-
-  const withLang = (path: string) => {
-    if (path === '/') return langPrefix;
-    return `${langPrefix}${path}`;
-  };
 
   const treatmentModes = [
     {
