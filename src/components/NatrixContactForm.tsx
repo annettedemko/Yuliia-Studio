@@ -29,16 +29,46 @@ const NatrixContactForm = ({ device, className = '' }: NatrixContactFormProps) =
     setSubmitError(null);
 
     try {
-      const response = await fetch('/api/natrix-contact', {
+      // Send email via FormSubmit.co (free, no API key needed)
+      const emailData = new FormData();
+      emailData.append('name', formData.name);
+      emailData.append('phone', formData.phone);
+      emailData.append('email', formData.email);
+      if (device) emailData.append('Gerät', device);
+      emailData.append('_subject', `Natrix Med Anfrage: ${device || 'Allgemein'} — ${formData.name}`);
+      emailData.append('_template', 'table');
+      emailData.append('_captcha', 'false');
+
+      const response = await fetch('https://formsubmit.co/ajax/Yulachip@icloud.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          device: device || undefined,
-        }),
+        body: emailData,
       });
 
-      if (!response.ok) throw new Error('Request failed');
+      if (!response.ok) throw new Error('Email failed');
+
+      // Also save to Supabase for admin dashboard
+      try {
+        const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM';
+        await fetch(`${SUPABASE_URL}/rest/v1/form_submissions`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            message: device ? `Gerät: ${device}` : null,
+            page: 'natrix',
+            owner: 'Yulia',
+          }),
+        });
+      } catch {
+        // Supabase save is secondary — don't fail the form
+      }
 
       setSubmitSuccess(true);
       setFormData({ name: '', phone: '', email: '' });
