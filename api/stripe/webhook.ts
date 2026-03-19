@@ -20,8 +20,13 @@ function verifyStripeSignature(payload: Buffer, sig: string, secret: string): bo
   if (!timestamp || !signature) return false;
 
   const signedPayload = `${timestamp}.${payload.toString('utf8')}`;
-  const expected = crypto.createHmac('sha256', secret).update(signedPayload).digest('hex');
-  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+  const expectedBuf = Buffer.from(
+    crypto.createHmac('sha256', secret).update(signedPayload).digest('hex')
+  );
+  const signatureBuf = Buffer.from(signature);
+
+  if (expectedBuf.length !== signatureBuf.length) return false;
+  return crypto.timingSafeEqual(expectedBuf, signatureBuf);
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
