@@ -125,7 +125,7 @@ const NatrixSphereSculpt = () => {
       <PageHelmet />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] bg-[#0a0a0a] flex items-center overflow-hidden pt-16">
+      <section className="relative min-h-[80vh] bg-[#0a0a0a] flex items-center overflow-hidden pt-24 sm:pt-20">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,165,114,0.08)_0%,_transparent_60%)]" />
