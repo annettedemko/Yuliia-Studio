@@ -10,8 +10,9 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import SectionDivider from '@/components/SectionDivider';
 import NatrixContactForm from '@/components/NatrixContactForm';
+
+const GOLD = '#C5A572';
 
 const NatrixGeraete = () => {
   const { t, language } = useLanguage();
@@ -27,7 +28,7 @@ const NatrixGeraete = () => {
       titleKey: 'natrix.overview.device.diodenlaser.title',
       subtitleKey: 'natrix.overview.device.diodenlaser.subtitle',
       descKey: 'natrix.overview.device.diodenlaser.desc',
-      image: '/Natrix/n1-1.png',
+      image: '/Natrix/diod dark.png',
       link: '/natrix-diodenlaser',
     },
     {
@@ -35,7 +36,7 @@ const NatrixGeraete = () => {
       titleKey: 'natrix.overview.device.ipl.title',
       subtitleKey: 'natrix.overview.device.ipl.subtitle',
       descKey: 'natrix.overview.device.ipl.desc',
-      image: '/Natrix/n4.png',
+      image: '/Natrix/ipl dark.png',
       link: '/natrix-ipl',
     },
     {
@@ -43,7 +44,7 @@ const NatrixGeraete = () => {
       titleKey: 'natrix.overview.device.spheresculpt.title',
       subtitleKey: 'natrix.overview.device.spheresculpt.subtitle',
       descKey: 'natrix.overview.device.spheresculpt.desc',
-      image: '/Natrix/n2-2.png',
+      image: '/Natrix/sphere dark.png',
       link: '/natrix-spheresculpt',
     },
     {
@@ -51,7 +52,7 @@ const NatrixGeraete = () => {
       titleKey: 'natrix.overview.device.rf.title',
       subtitleKey: 'natrix.overview.device.rf.subtitle',
       descKey: 'natrix.overview.device.rf.desc',
-      image: '/Natrix/n3.png',
+      image: '/Natrix/rf dark.png',
       link: '/natrix-rf-microneedling',
     },
   ];
@@ -82,40 +83,52 @@ const NatrixGeraete = () => {
   return (
     <>
       <PageHelmet />
-      <div className="min-h-screen pt-16 bg-gradient-to-b from-white via-gray-50/30 to-white">
+      <div className="min-h-screen pt-16 bg-[#0a0a0a] text-white">
 
         {/* Hero Section */}
         <section
-          className="relative min-h-[55vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-white overflow-hidden bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/Natrix/n1-1.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 30%',
-          }}
+          className="relative min-h-[55vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30" />
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent" />
+          <div
+            className="absolute inset-0 animate-hero-zoom opacity-50"
+            style={{
+              backgroundImage: 'url(/Natrix/diod dark.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 30%',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#0a0a0a]" />
+          <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 40%, ${GOLD}12, transparent 60%)` }} />
 
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4 py-8 sm:py-12">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <span className="text-rose-gold text-sm font-medium tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-5 py-2 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD }} />
+              <span className="text-xs font-medium tracking-[0.2em] uppercase" style={{ color: GOLD }}>
                 Natrix Med
               </span>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD }} />
             </div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
-              <span className="bg-gradient-to-r from-white via-rose-gold/90 to-white bg-clip-text text-transparent">
+              <span style={{ color: GOLD }}>
                 {t('natrix.overview.hero.title')}
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
               {t('natrix.overview.hero.subtitle')}
             </p>
 
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px w-16 sm:w-24" style={{ background: `linear-gradient(to right, transparent, ${GOLD}60)` }} />
+              <div className="w-1.5 h-1.5 rotate-45 border" style={{ borderColor: `${GOLD}60` }} />
+              <div className="h-px w-16 sm:w-24" style={{ background: `linear-gradient(to left, transparent, ${GOLD}60)` }} />
+            </div>
+
             <a
               href="#anfrage"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-gold to-rose-gold-dark hover:from-rose-gold-dark hover:to-rose-gold text-white border-none shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-md font-semibold min-h-[48px]"
+              className="inline-flex items-center gap-2 text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold min-h-[48px] transition-all duration-300 hover:scale-105 shadow-lg"
+              style={{ backgroundColor: GOLD, color: '#000' }}
             >
               {t('natrix.overview.hero.cta')}
               <ArrowRight className="w-4 h-4" />
@@ -123,16 +136,17 @@ const NatrixGeraete = () => {
           </div>
         </section>
 
-        <SectionDivider variant="curve" />
-
         {/* Devices Grid Section */}
-        <section id="devices" className="py-10 sm:py-16 bg-gradient-to-b from-white/90 to-white relative">
-          <div ref={devicesRef} className="container mx-auto px-4 reveal reveal-up">
-            <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
+        <section id="devices" className="py-16 sm:py-20 relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.04)_0%,_transparent_70%)]" />
+
+          <div ref={devicesRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 {t('natrix.overview.devices.title')}
               </h2>
-              <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
+              <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
                 {t('natrix.overview.devices.subtitle')}
               </p>
             </div>
@@ -144,45 +158,45 @@ const NatrixGeraete = () => {
                   to={`${langPrefix}${device.link}`}
                   className="group block"
                 >
-                  <Card className="hover:shadow-2xl hover:shadow-rose-gold/20 transition-all duration-500 hover:-translate-y-2 relative overflow-hidden h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <CardContent className="p-0 relative z-10">
-                      <div className="relative overflow-hidden rounded-t-lg bg-gradient-to-b from-gray-50 to-gray-100">
-                        <img
-                          src={device.image}
-                          alt={t(device.titleKey)}
-                          className="w-full h-56 sm:h-64 md:h-72 object-contain p-4 img-silk-zoom"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        <div className="absolute top-4 left-4">
-                          <span className="bg-rose-gold/90 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-md">
-                            Natrix Med
-                          </span>
-                        </div>
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-primary/90 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-md">
-                            {t('natrix.price.onRequest')}
-                          </span>
-                        </div>
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 hover:border-[#C5A572]/40 bg-[#111111] hover:bg-[#161616] transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#C5A572]/10 h-full">
+                    {/* Image */}
+                    <div className="relative overflow-hidden bg-black">
+                      <img
+                        src={device.image}
+                        alt={t(device.titleKey)}
+                        className="w-full h-56 sm:h-64 md:h-72 object-contain p-6 group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-md" style={{ backgroundColor: `${GOLD}cc`, color: '#000' }}>
+                          Natrix Med
+                        </span>
                       </div>
-                      <div className="p-6 bg-gradient-to-b from-white to-gray-50/50 group-hover:from-rose-gold/5 group-hover:to-white transition-all duration-300">
-                        <h3 className="text-xl font-bold text-primary mb-1 group-hover:text-rose-gold transition-colors">
-                          {t(device.titleKey)}
-                        </h3>
-                        <p className="text-rose-gold text-sm font-medium mb-3">
-                          {t(device.subtitleKey)}
-                        </p>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 group-hover:text-foreground transition-colors duration-300">
-                          {t(device.descKey)}
-                        </p>
-                        <div className="flex items-center text-rose-gold text-sm font-medium group-hover:gap-2 transition-all">
-                          {t('natrix.overview.devices.learnMore')}
-                          <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-white/10 backdrop-blur-sm text-white/80 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10">
+                          {t('natrix.price.onRequest')}
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+
+                    {/* Text */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#C5A572] transition-colors">
+                        {t(device.titleKey)}
+                      </h3>
+                      <p className="text-sm font-medium mb-3" style={{ color: GOLD }}>
+                        {t(device.subtitleKey)}
+                      </p>
+                      <p className="text-gray-400 text-sm leading-relaxed mb-4 group-hover:text-gray-300 transition-colors duration-300">
+                        {t(device.descKey)}
+                      </p>
+                      <div className="flex items-center text-sm font-medium group-hover:gap-2 transition-all" style={{ color: GOLD }}>
+                        {t('natrix.overview.devices.learnMore')}
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -190,44 +204,47 @@ const NatrixGeraete = () => {
         </section>
 
         {/* Why Natrix Section */}
-        <section className="py-10 sm:py-16 bg-gradient-to-b from-gray-50/50 to-white relative">
-          <div ref={whyRef} className="container mx-auto px-4 reveal reveal-up">
-            <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-4">
+        <section className="py-16 sm:py-20 bg-[#111111] relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,165,114,0.05)_0%,_transparent_50%)]" />
+
+          <div ref={whyRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 {t('natrix.overview.why.title')}
               </h2>
-              <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
+              <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
                 {t('natrix.overview.why.subtitle')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {advantages.map((adv, index) => (
-                <Card
+                <div
                   key={index}
-                  className="hover:shadow-xl hover:shadow-rose-gold/10 transition-all duration-500 hover:-translate-y-1 text-center group relative overflow-hidden"
+                  className="group text-center p-8 rounded-2xl border border-white/10 bg-[#0a0a0a] hover:border-[#C5A572]/30 hover:bg-[#161616] transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-rose-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <CardContent className="p-8 relative z-10">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-rose-gold/15 to-rose-gold/5 flex items-center justify-center mx-auto mb-5 group-hover:from-rose-gold/25 group-hover:to-rose-gold/10 transition-all duration-300">
-                      <adv.icon className="w-8 h-8 text-rose-gold" />
-                    </div>
-                    <h3 className="text-lg font-bold text-primary mb-3 group-hover:text-rose-gold transition-colors">
-                      {t(adv.titleKey)}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {t(adv.descKey)}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5 transition-all duration-300"
+                    style={{ background: `linear-gradient(135deg, ${GOLD}20, ${GOLD}08)` }}
+                  >
+                    <adv.icon className="w-8 h-8" style={{ color: GOLD }} />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#C5A572] transition-colors">
+                    {t(adv.titleKey)}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {t(adv.descKey)}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Contact Form Section */}
-        <section id="anfrage" className="py-12 sm:py-20 bg-gradient-to-b from-white to-gray-50/50 relative">
-          <div ref={formRef} className="container mx-auto px-4 reveal reveal-up">
+        <section id="anfrage" className="py-12 sm:py-20 bg-[#0a0a0a] relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(197,165,114,0.04)_0%,_transparent_60%)]" />
+          <div ref={formRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
             <div className="max-w-xl mx-auto">
               <NatrixContactForm />
             </div>

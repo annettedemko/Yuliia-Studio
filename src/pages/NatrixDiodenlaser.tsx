@@ -5,14 +5,12 @@ import {
   Target,
   Shield,
   CheckCircle,
-  Phone,
   Mail,
   Snowflake,
   Monitor,
   Gem,
   Cpu,
   Layers,
-  MessageCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
@@ -105,36 +103,50 @@ const NatrixDiodenlaser = () => {
       <PageHelmet />
 
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-16">
+      <section className="relative min-h-[80vh] bg-[#0a0a0a] flex items-center overflow-hidden pt-16">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,165,114,0.08)_0%,_transparent_60%)]" />
 
-        {/* Decorative elements */}
+        {/* Decorative floating gold dots */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-32 left-10 w-2 h-2 bg-[#C5A572]/30 rounded-full animate-pulse" />
-          <div className="absolute top-48 right-24 w-3 h-3 bg-[#C5A572]/20 rounded-full animate-bounce delay-1000" />
-          <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-[#C5A572]/25 rounded-full animate-pulse delay-500" />
+          <div className="absolute top-48 right-24 w-3 h-3 bg-[#C5A572]/20 rounded-full animate-pulse" style={{ animationDelay: '1000ms' }} />
+          <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-[#C5A572]/25 rounded-full animate-pulse" style={{ animationDelay: '500ms' }} />
+          <div className="absolute top-64 left-1/3 w-1 h-1 bg-[#C5A572]/20 rounded-full animate-pulse" style={{ animationDelay: '1500ms' }} />
+          <div className="absolute bottom-60 right-1/3 w-2 h-2 bg-[#C5A572]/15 rounded-full animate-pulse" style={{ animationDelay: '2000ms' }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text content */}
-            <div className="animate-slide-up">
-              <div className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-4 py-2 mb-6">
+            {/* LEFT: Text content */}
+            <div>
+              <div
+                className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-4 py-2 mb-6 animate-slide-up"
+                style={{ animationDelay: '0ms' }}
+              >
                 <span className="text-[#C5A572] text-sm font-medium">Natrix Med</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up"
+                style={{ animationDelay: '100ms' }}
+              >
                 {t('natrix.diodenlaser.hero.title')}
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl">
+              <p
+                className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl animate-slide-up"
+                style={{ animationDelay: '200ms' }}
+              >
                 {t('natrix.diodenlaser.hero.subtitle')}
               </p>
 
               {/* Key highlights */}
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div
+                className="flex flex-wrap gap-4 mb-8 animate-slide-up"
+                style={{ animationDelay: '300ms' }}
+              >
                 {heroHighlights.map((item, index) => (
                   <div
                     key={index}
@@ -146,16 +158,17 @@ const NatrixDiodenlaser = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div
+                className="flex flex-col sm:flex-row gap-4 animate-slide-up"
+                style={{ animationDelay: '400ms' }}
+              >
                 <Button
                   size="lg"
-                  className="bg-[#C5A572] text-black hover:bg-[#d4b682] text-lg px-8 py-4 font-semibold"
+                  className="bg-[#C5A572] text-black hover:bg-[#d4b682] hover:scale-105 transition-all duration-300 text-lg px-8 py-4 font-semibold"
                   asChild
                 >
-                  <a
-                    href="#anfrage"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
+                  <a href="#anfrage">
+                    <Mail className="w-5 h-5 mr-2" />
                     {t('natrix.diodenlaser.hero.cta')}
                   </a>
                 </Button>
@@ -172,13 +185,16 @@ const NatrixDiodenlaser = () => {
               </div>
             </div>
 
-            {/* Device image */}
-            <div className="relative animate-slide-up" style={{ animationDelay: '300ms' }}>
+            {/* RIGHT: Device image */}
+            <div
+              className="relative animate-slide-up"
+              style={{ animationDelay: '500ms' }}
+            >
               <div className="absolute -inset-4 bg-gradient-to-r from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-3xl blur-3xl" />
               <img
-                src="/Natrix/n1.png"
+                src="/Natrix/diod dark.png"
                 alt={t('natrix.diodenlaser.hero.imageAlt')}
-                className="w-full h-auto object-contain rounded-2xl relative z-10"
+                className="w-full h-auto object-contain rounded-2xl relative z-10 bg-[#1a1a1a] hover:scale-105 transition-transform duration-700"
                 loading="eager"
               />
             </div>
@@ -206,11 +222,11 @@ const NatrixDiodenlaser = () => {
               {technologyFeatures.map((feature, index) => (
                 <Card
                   key={index}
-                  className="bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#C5A572]/30 transition-all duration-500 hover:-translate-y-1 group"
+                  className="bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#C5A572]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#C5A572]/5 group"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <CardContent className="p-6">
-                    <div className="bg-[#C5A572]/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#C5A572]/20 transition-colors duration-300">
+                    <div className="bg-[#C5A572]/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#C5A572]/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                       <feature.icon className="w-7 h-7 text-[#C5A572]" />
                     </div>
                     <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#C5A572] transition-colors">
@@ -219,11 +235,24 @@ const NatrixDiodenlaser = () => {
                     <p className="text-gray-400 text-sm leading-relaxed">
                       {feature.description}
                     </p>
+                    <div className="mt-4 h-0.5 bg-gradient-to-r from-[#C5A572] to-[#C5A572]/30 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                   </CardContent>
                 </Card>
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Device Showcase - Light Version */}
+      <section className="py-0 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <img
+            src="/Natrix/diod light.png"
+            alt={t('natrix.diodenlaser.hero.imageAlt')}
+            className="w-full object-contain"
+            loading="lazy"
+          />
         </div>
       </section>
 
@@ -302,7 +331,7 @@ const NatrixDiodenlaser = () => {
                   {applications.map((area, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-colors"
+                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 hover:bg-[#1a1a1a]/80 transition-all duration-300"
                     >
                       <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
                       <span className="text-gray-300 text-sm">{area}</span>
@@ -321,7 +350,7 @@ const NatrixDiodenlaser = () => {
                   {skinTypes.map((type, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-colors"
+                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 hover:bg-[#1a1a1a]/80 transition-all duration-300"
                     >
                       <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
                       <span className="text-gray-300 text-sm">{type}</span>

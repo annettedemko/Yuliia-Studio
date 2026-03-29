@@ -1,19 +1,15 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
+  Mail,
   Zap,
   Shield,
   Target,
   CheckCircle,
-  Monitor,
   Sparkles,
-  Award,
-  Mail,
-  MessageCircle,
   Thermometer,
   Layers,
   Cpu,
-  Gauge,
   ScanLine,
   Snowflake,
 } from 'lucide-react';
@@ -24,395 +20,371 @@ import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixRFMicroneedling = () => {
   const { t } = useLanguage();
+  const revealRef = useScrollReveal();
 
-  const heroRef = useScrollReveal({ threshold: 0.1 });
-  const microneedlingRef = useScrollReveal({ threshold: 0.1 });
-  const thermagicalRef = useScrollReveal({ threshold: 0.1 });
-  const technologyRef = useScrollReveal({ threshold: 0.1 });
-  const specsRef = useScrollReveal({ threshold: 0.1 });
-  const ctaRef = useScrollReveal({ threshold: 0.1 });
-
-  const applications = [
-    'natrix.rf.applications.lifting',
-    'natrix.rf.applications.tightening',
-    'natrix.rf.applications.wrinkles',
-    'natrix.rf.applications.pores',
-    'natrix.rf.applications.acne-scars',
-    'natrix.rf.applications.scars',
-    'natrix.rf.applications.stretch-marks',
-  ];
-
-  const cartridges = [
-    { pins: '10', key: 'natrix.rf.cartridge.10' },
-    { pins: '25', key: 'natrix.rf.cartridge.25' },
-    { pins: '36', key: 'natrix.rf.cartridge.36' },
-    { pins: '49', key: 'natrix.rf.cartridge.49' },
-    { pins: '64', key: 'natrix.rf.cartridge.64' },
-  ];
-
-  const thermagicalTips = [
-    { size: '5x5 mm', key: 'natrix.rf.tip.5' },
-    { size: '10x10 mm', key: 'natrix.rf.tip.10' },
-    { size: '20x20 mm', key: 'natrix.rf.tip.20' },
-    { size: '40x40 mm', key: 'natrix.rf.tip.40' },
+  const heroHighlights = [
+    { value: '5/8 MHz', label: t('natrix.rf.hero.highlight.freq') },
+    { value: '10–64', label: t('natrix.rf.hero.highlight.pins') },
+    { value: '400W', label: t('natrix.rf.hero.highlight.power') },
   ];
 
   const technologyFeatures = [
     {
       icon: Sparkles,
-      titleKey: 'natrix.rf.tech.gold-needles.title',
-      descKey: 'natrix.rf.tech.gold-needles.desc',
+      title: t('natrix.rf.tech.gold-needles.title'),
+      description: t('natrix.rf.tech.gold-needles.desc'),
     },
     {
       icon: Zap,
-      titleKey: 'natrix.rf.tech.dual-freq.title',
-      descKey: 'natrix.rf.tech.dual-freq.desc',
+      title: t('natrix.rf.tech.dual-freq.title'),
+      description: t('natrix.rf.tech.dual-freq.desc'),
     },
     {
       icon: Snowflake,
-      titleKey: 'natrix.rf.tech.cooling.title',
-      descKey: 'natrix.rf.tech.cooling.desc',
+      title: t('natrix.rf.tech.cooling.title'),
+      description: t('natrix.rf.tech.cooling.desc'),
     },
     {
       icon: Cpu,
-      titleKey: 'natrix.rf.tech.motor.title',
-      descKey: 'natrix.rf.tech.motor.desc',
+      title: t('natrix.rf.tech.motor.title'),
+      description: t('natrix.rf.tech.motor.desc'),
     },
     {
       icon: ScanLine,
-      titleKey: 'natrix.rf.tech.id-chip.title',
-      descKey: 'natrix.rf.tech.id-chip.desc',
+      title: t('natrix.rf.tech.id-chip.title'),
+      description: t('natrix.rf.tech.id-chip.desc'),
     },
     {
       icon: Shield,
-      titleKey: 'natrix.rf.tech.nanofilter.title',
-      descKey: 'natrix.rf.tech.nanofilter.desc',
+      title: t('natrix.rf.tech.nanofilter.title'),
+      description: t('natrix.rf.tech.nanofilter.desc'),
     },
   ];
 
   const specs = [
-    { labelKey: 'natrix.rf.spec.frequency', value: '5 MHz / 8 MHz' },
-    { labelKey: 'natrix.rf.spec.power', value: '400 W' },
-    { labelKey: 'natrix.rf.spec.depth', value: '0.1 – 4 mm' },
-    { labelKey: 'natrix.rf.spec.needle-diameter', value: '0.18 mm' },
-    { labelKey: 'natrix.rf.spec.pulse-micro', value: '250 – 600 ms' },
-    { labelKey: 'natrix.rf.spec.pulse-therma', value: '1000 – 3000 ms' },
-    { labelKey: 'natrix.rf.spec.display', value: '15.6"' },
-    { labelKey: 'natrix.rf.spec.voltage', value: 'AC 220V/110V' },
+    { label: t('natrix.rf.spec.frequency'), value: '5 MHz / 8 MHz' },
+    { label: t('natrix.rf.spec.power'), value: '400 W' },
+    { label: t('natrix.rf.spec.depth'), value: '0.1 – 4 mm' },
+    { label: t('natrix.rf.spec.needle-diameter'), value: '0.18 mm' },
+    { label: t('natrix.rf.spec.pulse-micro'), value: '250 – 600 ms' },
+    { label: t('natrix.rf.spec.pulse-therma'), value: '1000 – 3000 ms' },
+    { label: t('natrix.rf.spec.display'), value: '15.6"' },
+    { label: t('natrix.rf.spec.voltage'), value: 'AC 220V/110V' },
+  ];
+
+  const applications = [
+    t('natrix.rf.applications.lifting'),
+    t('natrix.rf.applications.tightening'),
+    t('natrix.rf.applications.wrinkles'),
+    t('natrix.rf.applications.pores'),
+    t('natrix.rf.applications.acne-scars'),
+    t('natrix.rf.applications.scars'),
+    t('natrix.rf.applications.stretch-marks'),
+  ];
+
+  const cartridges = [
+    { pins: '10', desc: t('natrix.rf.cartridge.10') },
+    { pins: '25', desc: t('natrix.rf.cartridge.25') },
+    { pins: '36', desc: t('natrix.rf.cartridge.36') },
+    { pins: '49', desc: t('natrix.rf.cartridge.49') },
+    { pins: '64', desc: t('natrix.rf.cartridge.64') },
+  ];
+
+  const thermagicalTips = [
+    { size: '5x5 mm', desc: t('natrix.rf.tip.5') },
+    { size: '10x10 mm', desc: t('natrix.rf.tip.10') },
+    { size: '20x20 mm', desc: t('natrix.rf.tip.20') },
+    { size: '40x40 mm', desc: t('natrix.rf.tip.40') },
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-[#0a0a0a]">
       <PageHelmet />
-      <div className="min-h-screen pt-16 overflow-x-hidden bg-black">
 
-        {/* Hero Section - Dark */}
-        <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: 'url(/Natrix/n3.png)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(197,165,114,0.1),transparent_60%)]"></div>
+      {/* Hero Section */}
+      <section className="relative min-h-[80vh] bg-[#0a0a0a] flex items-center overflow-hidden pt-16">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,165,114,0.08)_0%,_transparent_60%)]" />
 
-          <div ref={heroRef} className="relative z-10 container mx-auto px-4 text-center reveal reveal-up">
-            <div className="inline-flex items-center gap-2.5 bg-white/5 backdrop-blur-md border border-[#C5A572]/30 rounded-full px-5 py-2 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A572]"></span>
-              <span className="text-xs font-medium text-[#C5A572] tracking-[0.2em] uppercase">
-                {t('natrix.rf.hero.badge')}
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A572]"></span>
-            </div>
+        {/* Decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-32 left-10 w-2 h-2 bg-[#C5A572]/30 rounded-full animate-pulse" />
+          <div className="absolute top-48 right-24 w-3 h-3 bg-[#C5A572]/20 rounded-full animate-pulse" style={{ animationDelay: '1000ms' }} />
+          <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-[#C5A572]/25 rounded-full animate-pulse" style={{ animationDelay: '500ms' }} />
+          <div className="absolute top-64 left-1/3 w-1 h-1 bg-[#C5A572]/20 rounded-full animate-pulse" style={{ animationDelay: '1500ms' }} />
+          <div className="absolute bottom-60 right-1/3 w-2.5 h-2.5 bg-[#C5A572]/15 rounded-full animate-pulse" style={{ animationDelay: '2000ms' }} />
+        </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-[1.1]">
-              <span className="text-[#C5A572]">Natrix Med</span>
-              <br />
-              RF Microneedling
-            </h1>
-
-            <p className="text-base sm:text-lg md:text-xl text-white/80 font-light mb-6 max-w-2xl mx-auto">
-              {t('natrix.rf.hero.subtitle')}
-            </p>
-
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#C5A572]/60"></div>
-              <div className="w-1.5 h-1.5 rotate-45 border border-[#C5A572]/60"></div>
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#C5A572]/60"></div>
-            </div>
-
-            {/* Applications tags */}
-            <div className="flex flex-wrap justify-center gap-2 mb-10 max-w-3xl mx-auto">
-              {applications.map((appKey, index) => (
-                <span
-                  key={index}
-                  className="text-xs text-white/70 border border-white/10 bg-white/5 backdrop-blur-sm rounded-full px-3 py-1.5"
-                >
-                  {t(appKey)}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                size="lg"
-                className="bg-[#C5A572] text-black hover:bg-[#d4b882] rounded-full px-8 font-semibold"
-                asChild
-              >
-                <a
-                  href="#anfrage"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('natrix.rf.hero.cta.whatsapp')}
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#C5A572]/50 text-[#C5A572] hover:bg-[#C5A572]/10 rounded-full px-8 bg-transparent"
-                asChild
-              >
-                <a href="mailto:Yulachip@icloud.com">
-                  <Mail className="w-5 h-5 mr-2" />
-                  {t('natrix.rf.hero.cta.email')}
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Microneedling RF Handpiece Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-[#C5A572]/10 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-48 h-48 bg-[#C5A572]/5 rounded-full blur-2xl"></div>
-          </div>
-
-          <div ref={microneedlingRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <Target className="w-5 h-5 text-[#C5A572]" />
-                  <span className="text-sm text-[#C5A572] tracking-[0.15em] uppercase font-medium">
-                    {t('natrix.rf.micro.label')}
-                  </span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  {t('natrix.rf.micro.title')}
-                </h2>
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6"></div>
-                <p className="text-lg text-white/60 max-w-3xl mx-auto">
-                  {t('natrix.rf.micro.desc')}
-                </p>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text content */}
+            <div className="animate-slide-up">
+              <div className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-4 py-2 mb-6" style={{ animationDelay: '100ms' }}>
+                <span className="text-[#C5A572] text-sm font-medium">Natrix Med</span>
               </div>
 
-              {/* Cartridge grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-10">
-                {cartridges.map((cartridge, index) => (
-                  <Card
-                    key={index}
-                    className="bg-zinc-900/80 border border-[#C5A572]/20 hover:border-[#C5A572]/50 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <CardContent className="p-4 text-center">
-                      <div className="text-2xl font-bold text-[#C5A572] mb-1">{cartridge.pins}</div>
-                      <div className="text-xs text-white/50 uppercase tracking-wider">{t('natrix.rf.pins')}</div>
-                      <div className="text-xs text-white/40 mt-2">{t(cartridge.key)}</div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                {t('natrix.rf.hero.title')}
+              </h1>
 
-              {/* Key features */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Sparkles className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.micro.feat.gold.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.micro.feat.gold.desc')}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Layers className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.micro.feat.insulation.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.micro.feat.insulation.desc')}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Gauge className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.micro.feat.depth.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.micro.feat.depth.desc')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              <p className="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed max-w-xl" style={{ animationDelay: '200ms' }}>
+                {t('natrix.rf.hero.subtitle')}
+              </p>
 
-        {/* Thermagical RF Handpiece Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden">
-          <div className="absolute inset-0 opacity-15">
-            <div className="absolute top-1/3 right-10 w-40 h-40 bg-[#C5A572]/10 rounded-full blur-2xl"></div>
-          </div>
-
-          <div ref={thermagicalRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <Thermometer className="w-5 h-5 text-[#C5A572]" />
-                  <span className="text-sm text-[#C5A572] tracking-[0.15em] uppercase font-medium">
-                    {t('natrix.rf.therma.label')}
-                  </span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  {t('natrix.rf.therma.title')}
-                </h2>
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6"></div>
-                <p className="text-lg text-white/60 max-w-3xl mx-auto">
-                  {t('natrix.rf.therma.desc')}
-                </p>
-              </div>
-
-              {/* Tips grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                {thermagicalTips.map((tip, index) => (
-                  <Card
-                    key={index}
-                    className="bg-zinc-900/80 border border-[#C5A572]/20 hover:border-[#C5A572]/50 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <CardContent className="p-5 text-center">
-                      <div className="text-xl font-bold text-[#C5A572] mb-1">{tip.size}</div>
-                      <div className="text-xs text-white/40 mt-1">{t(tip.key)}</div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Thermagical advantages */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Shield className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.therma.feat.noninvasive.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.therma.feat.noninvasive.desc')}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Target className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.therma.feat.lifting.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.therma.feat.lifting.desc')}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-4 bg-zinc-900/50 rounded-xl border border-white/5">
-                  <Zap className="w-5 h-5 text-[#C5A572] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-sm font-semibold text-white mb-1">{t('natrix.rf.therma.feat.fat.title')}</h4>
-                    <p className="text-xs text-white/50">{t('natrix.rf.therma.feat.fat.desc')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technology Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-black to-zinc-950 relative overflow-hidden">
-          <div ref={technologyRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  {t('natrix.rf.tech.title')}
-                </h2>
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6"></div>
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                  {t('natrix.rf.tech.subtitle')}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {technologyFeatures.map((feature, index) => (
-                  <Card
-                    key={index}
-                    className="bg-zinc-900/60 border border-[#C5A572]/10 hover:border-[#C5A572]/40 transition-all duration-500 hover:-translate-y-2 group"
-                  >
-                    <CardContent className="p-6">
-                      <div className="bg-[#C5A572]/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#C5A572]/20 transition-colors">
-                        <feature.icon className="w-6 h-6 text-[#C5A572]" />
-                      </div>
-                      <h3 className="text-base font-bold text-white mb-2 group-hover:text-[#C5A572] transition-colors">
-                        {t(feature.titleKey)}
-                      </h3>
-                      <p className="text-sm text-white/50 leading-relaxed">{t(feature.descKey)}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Specifications Table */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-zinc-950 to-black">
-          <div ref={specsRef} className="container mx-auto px-4 reveal reveal-up">
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  {t('natrix.rf.specs.title')}
-                </h2>
-                <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto"></div>
-              </div>
-
-              <div className="border border-[#C5A572]/20 rounded-2xl overflow-hidden">
-                {specs.map((spec, index) => (
+              {/* Key highlights */}
+              <div className="flex flex-wrap gap-4 mb-8">
+                {heroHighlights.map((item, index) => (
                   <div
                     key={index}
-                    className={`flex items-center justify-between px-6 py-4 ${
-                      index % 2 === 0 ? 'bg-zinc-900/40' : 'bg-zinc-900/20'
-                    } ${index < specs.length - 1 ? 'border-b border-white/5' : ''}`}
+                    className="bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-xl px-5 py-3 text-center animate-slide-up"
+                    style={{ animationDelay: `${300 + index * 100}ms` }}
                   >
-                    <span className="text-sm text-white/60">{t(spec.labelKey)}</span>
-                    <span className="text-sm font-semibold text-[#C5A572]">{spec.value}</span>
+                    <div className="text-2xl font-bold text-[#C5A572]">{item.value}</div>
+                    <div className="text-xs text-gray-400 mt-1">{item.label}</div>
                   </div>
                 ))}
               </div>
 
-              {/* Additional specs */}
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 p-4 bg-zinc-900/40 rounded-xl border border-white/5">
-                  <Monitor className="w-5 h-5 text-[#C5A572] flex-shrink-0" />
-                  <div>
-                    <span className="text-xs text-white/40 block">{t('natrix.rf.specs.display-label')}</span>
-                    <span className="text-sm text-white font-medium">15.6" Touchscreen</span>
+              <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '600ms' }}>
+                <Button
+                  size="lg"
+                  className="bg-[#C5A572] text-black hover:bg-[#d4b682] hover:scale-105 transition-all duration-300 text-lg px-8 py-4 font-semibold"
+                  asChild
+                >
+                  <a href="#anfrage">
+                    <Mail className="w-5 h-5 mr-2" />
+                    {t('natrix.rf.hero.cta.whatsapp')}
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#C5A572]/30 text-[#C5A572] hover:bg-[#C5A572]/10 hover:border-[#C5A572]/50 text-lg px-8 py-4"
+                  asChild
+                >
+                  <a href="#specs">
+                    {t('natrix.rf.hero.cta.specs')}
+                  </a>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: Device image */}
+            <div className="relative animate-slide-up" style={{ animationDelay: '400ms' }}>
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-3xl blur-3xl" />
+              <img
+                src="/Natrix/rf dark.png"
+                alt="Natrix Med RF Microneedling"
+                className="w-full h-auto object-contain rounded-2xl relative z-10 bg-[#1a1a1a] hover:scale-105 transition-transform duration-700"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Section */}
+      <section className="py-20 bg-[#111111] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(197,165,114,0.05)_0%,_transparent_50%)]" />
+
+        <div className="container mx-auto px-4 relative z-10" ref={revealRef}>
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                {t('natrix.rf.tech.title')}
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                {t('natrix.rf.tech.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {technologyFeatures.map((feature, index) => (
+                <Card
+                  key={index}
+                  className="bg-[#1a1a1a] border border-[#2a2a2a] hover:border-[#C5A572]/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#C5A572]/5 group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <CardContent className="p-6">
+                    <div className="bg-[#C5A572]/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#C5A572]/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                      <feature.icon className="w-7 h-7 text-[#C5A572]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#C5A572] transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                    <div className="mt-4 h-0.5 bg-gradient-to-r from-[#C5A572] to-[#C5A572]/30 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Device Showcase - Light Version */}
+      <section className="py-0 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <img
+            src="/Natrix/rf light.png"
+            alt="Natrix Med RF Microneedling"
+            className="w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      {/* Specifications Table */}
+      <section id="specs" className="py-20 bg-[#0a0a0a] relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(197,165,114,0.04)_0%,_transparent_50%)]" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                {t('natrix.rf.specs.title')}
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
+            </div>
+
+            <div className="overflow-x-auto rounded-xl border border-[#2a2a2a]">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-[#C5A572]/10 border-b border-[#2a2a2a]">
+                    <th className="text-left text-[#C5A572] font-semibold py-4 px-6 text-sm uppercase tracking-wider">
+                      {t('natrix.rf.specs.parameter')}
+                    </th>
+                    <th className="text-left text-[#C5A572] font-semibold py-4 px-6 text-sm uppercase tracking-wider">
+                      {t('natrix.rf.specs.value')}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {specs.map((spec, index) => (
+                    <tr
+                      key={index}
+                      className={`border-b border-[#1a1a1a] ${
+                        index % 2 === 0 ? 'bg-[#111111]' : 'bg-[#0f0f0f]'
+                      } hover:bg-[#C5A572]/5 transition-colors`}
+                    >
+                      <td className="py-3.5 px-6 text-gray-300 text-sm font-medium">
+                        {spec.label}
+                      </td>
+                      <td className="py-3.5 px-6 text-white text-sm">
+                        {spec.value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
+      <section className="py-20 bg-[#111111] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.05)_0%,_transparent_60%)]" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                {t('natrix.rf.applications.title')}
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
+              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                {t('natrix.rf.applications.subtitle')}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Left: Applications checklist */}
+              <div>
+                <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
+                  <Target className="w-5 h-5" />
+                  {t('natrix.rf.micro.title')}
+                </h3>
+                <div className="space-y-3 mb-6">
+                  {applications.map((app, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
+                    >
+                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
+                      <span className="text-gray-300 text-sm">{app}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">{t('natrix.rf.pins')}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {cartridges.map((cartridge, index) => (
+                      <div
+                        key={index}
+                        className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-2 text-center hover:border-[#C5A572]/30 transition-all duration-300"
+                      >
+                        <span className="text-[#C5A572] font-bold text-sm">{cartridge.pins}</span>
+                        <span className="text-gray-500 text-xs ml-1">{t('natrix.rf.pins')}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-zinc-900/40 rounded-xl border border-white/5">
-                  <CheckCircle className="w-5 h-5 text-[#C5A572] flex-shrink-0" />
-                  <div>
-                    <span className="text-xs text-white/40 block">{t('natrix.rf.specs.detection-label')}</span>
-                    <span className="text-sm text-white font-medium">{t('natrix.rf.specs.auto-id')}</span>
-                  </div>
+              </div>
+
+              {/* Right: Thermagical Tips */}
+              <div>
+                <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
+                  <Thermometer className="w-5 h-5" />
+                  {t('natrix.rf.therma.title')}
+                </h3>
+                <div className="space-y-3 mb-6">
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {t('natrix.rf.therma.desc')}
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {thermagicalTips.map((tip, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
+                    >
+                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
+                      <div>
+                        <span className="text-[#C5A572] font-semibold text-sm">{tip.size}</span>
+                        <span className="text-gray-400 text-xs ml-2">{tip.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 bg-[#C5A572]/5 border border-[#C5A572]/20 rounded-xl p-5">
+                  <p className="text-[#C5A572] text-sm font-medium mb-1">
+                    {t('natrix.rf.therma.feat.noninvasive.title')}
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    {t('natrix.rf.therma.feat.noninvasive.desc')}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact Form Section */}
-        <section id="anfrage" className="py-16 md:py-20 bg-gradient-to-b from-black to-zinc-950 relative overflow-hidden">
-          <div ref={ctaRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-xl mx-auto">
-              <NatrixContactForm device="RF Microneedling" />
-            </div>
+      {/* Contact Form Section */}
+      <section id="anfrage" className="py-20 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-xl mx-auto">
+            <NatrixContactForm device="RF Microneedling" />
           </div>
-        </section>
-
-      </div>
-    </>
+        </div>
+      </section>
+    </div>
   );
 };
 
