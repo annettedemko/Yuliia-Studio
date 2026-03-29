@@ -346,37 +346,6 @@ const Navigation = () => {
                 </span>
               </Link>
 
-              {/* Leistungen Section for Mobile */}
-              <div className="border-t border-gray-200 pt-6 mt-4">
-                <Link
-                  to={withLang('/services')}
-                  className={cn(
-                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
-                    (isActive('/services') ||
-                     services.some(service => isActive(service.href)))
-                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
-                  )}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {t('nav.services')}
-                </Link>
-                <div className="flex flex-col space-y-3 pl-4">
-                  {services.map((service) => (
-                    <Link
-                      key={service.href}
-                      to={withLang(service.href)}
-                      className={cn(
-                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
-                        isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
-                      )}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {t(service.labelKey)}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
               {/* Natrix Geräte Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
@@ -403,6 +372,37 @@ const Navigation = () => {
                       onClick={() => setIsOpen(false)}
                     >
                       {t(device.labelKey)}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Leistungen Section for Mobile */}
+              <div className="border-t border-gray-200 pt-6 mt-4">
+                <Link
+                  to={withLang('/services')}
+                  className={cn(
+                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
+                    (isActive('/services') ||
+                     services.some(service => isActive(service.href)))
+                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t('nav.services')}
+                </Link>
+                <div className="flex flex-col space-y-3 pl-4">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      to={withLang(service.href)}
+                      className={cn(
+                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
+                        isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
+                      )}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {t(service.labelKey)}
                     </Link>
                   ))}
                 </div>
