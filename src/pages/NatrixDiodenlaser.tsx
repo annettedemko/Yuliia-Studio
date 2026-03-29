@@ -122,10 +122,10 @@ const NatrixDiodenlaser = () => {
             {/* LEFT: Text content */}
             <div>
               <div
-                className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-4 py-2 mb-6 animate-slide-up"
+                className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-6 animate-slide-up whitespace-nowrap"
                 style={{ animationDelay: '0ms' }}
               >
-                <span className="text-[#C5A572] text-sm font-medium">Natrix Med</span>
+                <span className="text-[#C5A572] text-xs sm:text-sm font-medium">Natrix Med</span>
               </div>
 
               <h1

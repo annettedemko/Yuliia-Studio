@@ -132,18 +132,17 @@ const NatrixIPL = () => {
             {/* LEFT: Text content */}
             <div>
               <div
-                className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-4 py-2 mb-6 animate-slide-up"
+                className="inline-flex items-center gap-2 bg-[#C5A572]/10 border border-[#C5A572]/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-6 animate-slide-up whitespace-nowrap"
                 style={{ animationDelay: '0ms' }}
               >
-                <span className="text-[#C5A572] text-sm font-medium">Natrix Med</span>
+                <span className="text-[#C5A572] text-xs sm:text-sm font-medium">Natrix Med</span>
               </div>
 
               <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up"
                 style={{ animationDelay: '100ms' }}
               >
-                <span className="text-[#C5A572]">Natrix Med</span>{' '}
-                <span className="text-white">IPL-Plattform</span>
+                {t('natrix.ipl.hero.title')}
               </h1>
 
               <p
@@ -180,7 +179,7 @@ const NatrixIPL = () => {
                 >
                   <a href="#anfrage">
                     <Mail className="w-5 h-5 mr-2" />
-                    {t('natrix.ipl.hero.cta')}
+                    {t('natrix.ipl.hero.cta.whatsapp')}
                   </a>
                 </Button>
                 <Button
@@ -190,7 +189,7 @@ const NatrixIPL = () => {
                   asChild
                 >
                   <a href="#specs">
-                    {t('natrix.ipl.hero.cta.email')}
+                    {t('natrix.ipl.hero.specs')}
                   </a>
                 </Button>
               </div>
