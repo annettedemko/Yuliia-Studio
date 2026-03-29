@@ -351,22 +351,22 @@ const Navigation = () => {
                 <Link
                   to={withLang('/natrix-geraete')}
                   className={cn(
-                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
+                    "text-xs font-semibold uppercase tracking-widest block mb-3 py-1 px-4 text-center transition-colors",
                     (isActive('/natrix-geraete') ||
                      natrixDevices.some(device => isActive(device.href)))
-                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                      ? "text-rose-gold" : "text-muted-foreground"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
                   {t('nav.natrix')}
                 </Link>
-                <div className="flex flex-col space-y-3 pl-4">
+                <div className="flex flex-col space-y-1">
                   {natrixDevices.map((device) => (
                     <Link
                       key={device.href}
                       to={withLang(device.href)}
                       className={cn(
-                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
+                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
                       )}
                       onClick={() => setIsOpen(false)}
@@ -382,22 +382,22 @@ const Navigation = () => {
                 <Link
                   to={withLang('/services')}
                   className={cn(
-                    "text-base font-medium transition-colors hover:text-rose-gold block mb-4 py-2 px-4 rounded-lg text-center",
+                    "text-xs font-semibold uppercase tracking-widest block mb-3 py-1 px-4 text-center transition-colors",
                     (isActive('/services') ||
                      services.some(service => isActive(service.href)))
-                      ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                      ? "text-rose-gold" : "text-muted-foreground"
                   )}
                   onClick={() => setIsOpen(false)}
                 >
                   {t('nav.services')}
                 </Link>
-                <div className="flex flex-col space-y-3 pl-4">
+                <div className="flex flex-col space-y-1">
                   {services.map((service) => (
                     <Link
                       key={service.href}
                       to={withLang(service.href)}
                       className={cn(
-                        "text-sm transition-colors hover:text-rose-gold py-2 px-3 rounded-md",
+                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center",
                         isActive(service.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
                       )}
                       onClick={() => setIsOpen(false)}
