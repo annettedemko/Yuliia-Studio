@@ -310,106 +310,132 @@ const NatrixSphereSculpt = () => {
         </div>
       </section>
 
-      {/* Applications Section */}
-      <section className="py-20 bg-[#111111] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.05)_0%,_transparent_60%)]" />
+      {/* Handpieces Showcase Section */}
+      <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+        {/* Ambient background effects */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(197,165,114,0.06)_0%,_transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(197,165,114,0.04)_0%,_transparent_50%)]" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+            <div className="text-center mb-20">
+              <span className="inline-block text-[#C5A572] text-xs font-semibold uppercase tracking-[0.3em] mb-4">
                 {t('natrix.sphere.body.title')}
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 {t('natrix.sphere.body.subtitle')}
-              </p>
+              </h2>
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Body Applications */}
-              <div>
-                <div className="relative rounded-2xl overflow-hidden mb-8 bg-[#1a1a1a] border border-[#2a2a2a]">
+            {/* Body Handpiece */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-32">
+              {/* Image */}
+              <div className="relative group order-1">
+                <div className="absolute -inset-8 bg-gradient-to-br from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute -inset-1 bg-gradient-to-br from-[#C5A572]/20 to-[#C5A572]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-[#C5A572]/10 group-hover:border-[#C5A572]/30 transition-all duration-500">
                   <img
-                    src="/Natrix/сфера тело.png"
+                    src="/Natrix/сфера тело 1.png"
                     alt={t('natrix.sphere.handpiece.body.alt')}
-                    className="w-full h-auto object-contain mx-auto max-w-[280px] p-6"
+                    className="w-full h-auto object-contain p-8 sm:p-12 max-h-[500px] mx-auto group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {t('natrix.sphere.handpiece.body.desc')}
-                    </p>
-                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
-                  <Layers className="w-5 h-5" />
-                  {t('natrix.sphere.body.areas.title')}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              </div>
+
+              {/* Content */}
+              <div className="order-2">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-[#C5A572]/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                    <Layers className="w-6 h-6 text-[#C5A572]" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                    {t('natrix.sphere.body.areas.title')}
+                  </h3>
+                </div>
+
+                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                  {t('natrix.sphere.handpiece.body.desc')}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
                   {bodyAreas.map((area, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
+                      className="flex items-center gap-3 bg-[#111111] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#C5A572]/20 hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
                     >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{t(area)}</span>
+                      <CheckCircle className="w-4 h-4 text-[#C5A572]/60 group-hover/item:text-[#C5A572] flex-shrink-0 transition-colors" />
+                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(area)}</span>
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-1 gap-3">
+                <div className="space-y-2">
                   {bodyApplications.map((app, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
                     >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{t(app.key)}</span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C5A572]/40 group-hover/item:bg-[#C5A572] transition-colors" />
+                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(app.key)}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Face Handpiece */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+              {/* Content - left on desktop */}
+              <div className="order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="bg-[#C5A572]/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                    <Sparkles className="w-6 h-6 text-[#C5A572]" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                    {t('natrix.sphere.face.areas.title')}
+                  </h3>
+                </div>
+
+                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
+                  {t('natrix.sphere.handpiece.face.desc')}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
+                  {faceAreas.map((area, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 bg-[#111111] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#C5A572]/20 hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
+                    >
+                      <CheckCircle className="w-4 h-4 text-[#C5A572]/60 group-hover/item:text-[#C5A572] flex-shrink-0 transition-colors" />
+                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(area)}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  {faceApplications.map((app, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
+                    >
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C5A572]/40 group-hover/item:bg-[#C5A572] transition-colors" />
+                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(app.key)}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Face Applications */}
-              <div>
-                <div className="relative rounded-2xl overflow-hidden mb-8 bg-[#1a1a1a] border border-[#2a2a2a]">
+              {/* Image - right on desktop */}
+              <div className="relative group order-1 lg:order-2">
+                <div className="absolute -inset-8 bg-gradient-to-bl from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute -inset-1 bg-gradient-to-bl from-[#C5A572]/20 to-[#C5A572]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-[#C5A572]/10 group-hover:border-[#C5A572]/30 transition-all duration-500">
                   <img
                     src="/Natrix/сфера лицо.png"
                     alt={t('natrix.sphere.handpiece.face.alt')}
-                    className="w-full h-auto object-contain mx-auto max-w-[280px] p-6"
+                    className="w-full h-auto object-contain p-8 sm:p-12 max-h-[500px] mx-auto group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {t('natrix.sphere.handpiece.face.desc')}
-                    </p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
-                  <Shield className="w-5 h-5" />
-                  {t('natrix.sphere.face.areas.title')}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                  {faceAreas.map((area, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
-                    >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{t(area)}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-1 gap-3">
-                  {faceApplications.map((app, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 hover:border-[#C5A572]/30 transition-all duration-300"
-                    >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572] flex-shrink-0" />
-                      <span className="text-gray-300 text-sm">{t(app.key)}</span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
