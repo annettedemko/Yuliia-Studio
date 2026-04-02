@@ -329,6 +329,19 @@ const NatrixSphereSculpt = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Body Applications */}
               <div>
+                <div className="relative rounded-2xl overflow-hidden mb-8 bg-[#1a1a1a] border border-[#2a2a2a]">
+                  <img
+                    src="/Natrix/сфера тело.png"
+                    alt={t('natrix.sphere.handpiece.body.alt')}
+                    className="w-full h-auto object-contain mx-auto max-w-[280px] p-6"
+                    loading="lazy"
+                  />
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {t('natrix.sphere.handpiece.body.desc')}
+                    </p>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
                   <Layers className="w-5 h-5" />
                   {t('natrix.sphere.body.areas.title')}
@@ -359,6 +372,19 @@ const NatrixSphereSculpt = () => {
 
               {/* Face Applications */}
               <div>
+                <div className="relative rounded-2xl overflow-hidden mb-8 bg-[#1a1a1a] border border-[#2a2a2a]">
+                  <img
+                    src="/Natrix/сфера лицо.png"
+                    alt={t('natrix.sphere.handpiece.face.alt')}
+                    className="w-full h-auto object-contain mx-auto max-w-[280px] p-6"
+                    loading="lazy"
+                  />
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {t('natrix.sphere.handpiece.face.desc')}
+                    </p>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-[#C5A572] mb-6 flex items-center gap-2">
                   <Shield className="w-5 h-5" />
                   {t('natrix.sphere.face.areas.title')}
