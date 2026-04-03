@@ -18,7 +18,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixDiodenlaser = () => {
-  const { t } = useLanguage();
+  const { t, currentLang } = useLanguage();
   const revealRef = useScrollReveal();
 
   const heroHighlights = [
@@ -253,6 +253,24 @@ const NatrixDiodenlaser = () => {
             className="w-full object-contain"
             loading="lazy"
           />
+        </div>
+      </section>
+
+      {/* Handpiece Technology Infographic */}
+      <section className="relative py-16 sm:py-24 bg-[#0d0d0d] overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.05)_0%,_transparent_60%)]" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A572]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A572]/20 to-transparent" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <img
+              src={`/Natrix/ДИОД ${currentLang}.png`}
+              alt={t('natrix.diodenlaser.tech.title')}
+              className="w-full h-auto object-contain rounded-xl"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
