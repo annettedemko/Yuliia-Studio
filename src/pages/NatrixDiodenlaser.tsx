@@ -18,7 +18,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import NatrixContactForm from '@/components/NatrixContactForm';
 
 const NatrixDiodenlaser = () => {
-  const { t, currentLang } = useLanguage();
+  const { t, language } = useLanguage();
   const revealRef = useScrollReveal();
 
   const heroHighlights = [
@@ -265,13 +265,13 @@ const NatrixDiodenlaser = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto space-y-12 sm:space-y-20">
             <img
-              src={`/Natrix/diod-info-${currentLang}.png`}
+              src={`/Natrix/diod-info-${language}.png`}
               alt={t('natrix.diodenlaser.tech.title')}
               className="w-full h-auto object-contain rounded-xl"
               loading="lazy"
             />
             <img
-              src={`/Natrix/diod-detail-${currentLang}.png`}
+              src={`/Natrix/diod-detail-${language}.png`}
               alt={t('natrix.diodenlaser.tech.subtitle')}
               className="w-full h-auto object-contain rounded-xl"
               loading="lazy"
