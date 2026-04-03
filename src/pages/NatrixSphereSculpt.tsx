@@ -423,12 +423,12 @@ const NatrixSphereSculpt = () => {
             {/* Image — right on desktop */}
             <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end group">
               {/* Glow ring */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] rounded-full border border-[#C5A572]/10 group-hover:border-[#C5A572]/25 group-hover:scale-110 transition-all duration-1000" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] rounded-full bg-[#C5A572]/[0.04] group-hover:bg-[#C5A572]/[0.08] blur-3xl transition-all duration-1000" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[520px] sm:h-[520px] rounded-full border border-[#C5A572]/10 group-hover:border-[#C5A572]/25 group-hover:scale-110 transition-all duration-1000" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[440px] sm:h-[440px] rounded-full bg-[#C5A572]/[0.04] group-hover:bg-[#C5A572]/[0.08] blur-3xl transition-all duration-1000" />
               <img
                 src="/Natrix/сфера лицо.png"
                 alt={t('natrix.sphere.handpiece.face.alt')}
-                className="relative z-10 w-[280px] sm:w-[350px] lg:w-[400px] h-auto object-contain drop-shadow-[0_0_60px_rgba(197,165,114,0.15)] group-hover:scale-105 group-hover:drop-shadow-[0_0_80px_rgba(197,165,114,0.25)] transition-all duration-700"
+                className="relative z-10 w-[340px] sm:w-[440px] lg:w-[500px] h-auto object-contain drop-shadow-[0_0_60px_rgba(197,165,114,0.15)] group-hover:scale-105 group-hover:drop-shadow-[0_0_80px_rgba(197,165,114,0.25)] transition-all duration-700"
                 loading="lazy"
               />
             </div>
