@@ -263,10 +263,16 @@ const NatrixDiodenlaser = () => {
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#C5A572]/20 to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto space-y-12 sm:space-y-20">
             <img
               src={`/Natrix/ДИОД ${currentLang}.png`}
               alt={t('natrix.diodenlaser.tech.title')}
+              className="w-full h-auto object-contain rounded-xl"
+              loading="lazy"
+            />
+            <img
+              src={`/Natrix/диод 2 ${currentLang}.png`}
+              alt={t('natrix.diodenlaser.tech.subtitle')}
               className="w-full h-auto object-contain rounded-xl"
               loading="lazy"
             />
