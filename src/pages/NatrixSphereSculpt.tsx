@@ -310,134 +310,127 @@ const NatrixSphereSculpt = () => {
         </div>
       </section>
 
-      {/* Handpieces Showcase Section */}
-      <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
-        {/* Ambient background effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(197,165,114,0.06)_0%,_transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(197,165,114,0.04)_0%,_transparent_50%)]" />
+      {/* ── Body Handpiece — Full-screen cinematic ── */}
+      <section className="relative min-h-screen bg-[#080808] overflow-hidden flex items-center">
+        {/* Animated gold orb background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(197,165,114,0.08)_0%,_transparent_70%)] animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#C5A572]/[0.03] to-transparent" />
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="inline-block text-[#C5A572] text-xs font-semibold uppercase tracking-[0.3em] mb-4">
-                {t('natrix.sphere.body.title')}
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                {t('natrix.sphere.body.subtitle')}
+        <div className="container mx-auto px-4 relative z-10 py-20">
+          {/* Section label */}
+          <div className="text-center mb-6 lg:mb-0 lg:text-left">
+            <span className="inline-block text-[#C5A572]/60 text-[11px] font-medium uppercase tracking-[0.4em] mb-3">
+              SphereSculpt
+            </span>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
+            {/* Image — dominant, centered */}
+            <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-start group">
+              {/* Glow ring behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] rounded-full border border-[#C5A572]/10 group-hover:border-[#C5A572]/25 group-hover:scale-110 transition-all duration-1000" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] rounded-full bg-[#C5A572]/[0.04] group-hover:bg-[#C5A572]/[0.08] blur-3xl transition-all duration-1000" />
+              <img
+                src="/Natrix/сфера тело 1.png"
+                alt={t('natrix.sphere.handpiece.body.alt')}
+                className="relative z-10 w-[300px] sm:w-[380px] lg:w-[420px] h-auto object-contain drop-shadow-[0_0_60px_rgba(197,165,114,0.15)] group-hover:scale-105 group-hover:drop-shadow-[0_0_80px_rgba(197,165,114,0.25)] transition-all duration-700"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Text content */}
+            <div className="w-full lg:w-1/2 lg:pl-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-[1.1]">
+                {t('natrix.sphere.body.areas.title')}
               </h2>
-              <div className="w-32 h-px bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto" />
-            </div>
+              <div className="w-16 h-[2px] bg-gradient-to-r from-[#C5A572] to-transparent mb-8" />
 
-            {/* Body Handpiece */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-32">
-              {/* Image */}
-              <div className="relative group order-1">
-                <div className="absolute -inset-8 bg-gradient-to-br from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute -inset-1 bg-gradient-to-br from-[#C5A572]/20 to-[#C5A572]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-[#C5A572]/10 group-hover:border-[#C5A572]/30 transition-all duration-500">
-                  <img
-                    src="/Natrix/сфера тело 1.png"
-                    alt={t('natrix.sphere.handpiece.body.alt')}
-                    className="w-full h-auto object-contain p-8 sm:p-12 max-h-[500px] mx-auto group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                </div>
+              <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
+                {t('natrix.sphere.handpiece.body.desc')}
+              </p>
+
+              {/* Features as elegant glassmorphism pills */}
+              <div className="flex flex-wrap gap-2.5 mb-10">
+                {bodyAreas.map((area, index) => (
+                  <span
+                    key={index}
+                    className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-full px-4 py-2 text-sm text-gray-300 hover:bg-[#C5A572]/10 hover:border-[#C5A572]/20 hover:text-white transition-all duration-300 cursor-default"
+                  >
+                    {t(area)}
+                  </span>
+                ))}
               </div>
 
-              {/* Content */}
-              <div className="order-2">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-[#C5A572]/10 w-12 h-12 rounded-xl flex items-center justify-center">
-                    <Layers className="w-6 h-6 text-[#C5A572]" />
+              {/* Benefits with animated line */}
+              <div className="space-y-4">
+                {bodyApplications.map((app, index) => (
+                  <div key={index} className="flex items-center gap-4 group/item">
+                    <div className="w-8 h-[1px] bg-[#C5A572]/20 group-hover/item:bg-[#C5A572] group-hover/item:w-12 transition-all duration-500" />
+                    <span className="text-gray-500 text-sm group-hover/item:text-white transition-colors duration-300">{t(app.key)}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                    {t('natrix.sphere.body.areas.title')}
-                  </h3>
-                </div>
-
-                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
-                  {t('natrix.sphere.handpiece.body.desc')}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                  {bodyAreas.map((area, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 bg-[#111111] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#C5A572]/20 hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
-                    >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572]/60 group-hover/item:text-[#C5A572] flex-shrink-0 transition-colors" />
-                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(area)}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  {bodyApplications.map((app, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C5A572]/40 group-hover/item:bg-[#C5A572] transition-colors" />
-                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(app.key)}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Face Handpiece */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              {/* Content - left on desktop */}
-              <div className="order-2 lg:order-1">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-[#C5A572]/10 w-12 h-12 rounded-xl flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-[#C5A572]" />
+      {/* ── Face Handpiece — Full-screen cinematic (reversed) ── */}
+      <section className="relative min-h-screen bg-[#0a0a0a] overflow-hidden flex items-center">
+        {/* Ambient light */}
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(197,165,114,0.06)_0%,_transparent_70%)] animate-pulse" style={{ animationDuration: '5s' }} />
+        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#C5A572]/[0.02] to-transparent" />
+
+        <div className="container mx-auto px-4 relative z-10 py-20">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-0">
+            {/* Text content — left on desktop */}
+            <div className="w-full lg:w-1/2 lg:pr-12">
+              <span className="inline-block text-[#C5A572]/60 text-[11px] font-medium uppercase tracking-[0.4em] mb-3">
+                SphereSculpt
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-[1.1]">
+                {t('natrix.sphere.face.areas.title')}
+              </h2>
+              <div className="w-16 h-[2px] bg-gradient-to-r from-[#C5A572] to-transparent mb-8" />
+
+              <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-md">
+                {t('natrix.sphere.handpiece.face.desc')}
+              </p>
+
+              {/* Features as glassmorphism pills */}
+              <div className="flex flex-wrap gap-2.5 mb-10">
+                {faceAreas.map((area, index) => (
+                  <span
+                    key={index}
+                    className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-full px-4 py-2 text-sm text-gray-300 hover:bg-[#C5A572]/10 hover:border-[#C5A572]/20 hover:text-white transition-all duration-300 cursor-default"
+                  >
+                    {t(area)}
+                  </span>
+                ))}
+              </div>
+
+              {/* Benefits with animated line */}
+              <div className="space-y-4">
+                {faceApplications.map((app, index) => (
+                  <div key={index} className="flex items-center gap-4 group/item">
+                    <div className="w-8 h-[1px] bg-[#C5A572]/20 group-hover/item:bg-[#C5A572] group-hover/item:w-12 transition-all duration-500" />
+                    <span className="text-gray-500 text-sm group-hover/item:text-white transition-colors duration-300">{t(app.key)}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white">
-                    {t('natrix.sphere.face.areas.title')}
-                  </h3>
-                </div>
-
-                <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-lg">
-                  {t('natrix.sphere.handpiece.face.desc')}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                  {faceAreas.map((area, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 bg-[#111111] border border-[#1a1a1a] rounded-lg px-4 py-3 hover:border-[#C5A572]/20 hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
-                    >
-                      <CheckCircle className="w-4 h-4 text-[#C5A572]/60 group-hover/item:text-[#C5A572] flex-shrink-0 transition-colors" />
-                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(area)}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  {faceApplications.map((app, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-[#C5A572]/5 transition-all duration-300 group/item"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C5A572]/40 group-hover/item:bg-[#C5A572] transition-colors" />
-                      <span className="text-gray-400 text-sm group-hover/item:text-gray-200 transition-colors">{t(app.key)}</span>
-                    </div>
-                  ))}
-                </div>
+                ))}
               </div>
+            </div>
 
-              {/* Image - right on desktop */}
-              <div className="relative group order-1 lg:order-2">
-                <div className="absolute -inset-8 bg-gradient-to-bl from-[#C5A572]/10 via-transparent to-[#C5A572]/5 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute -inset-1 bg-gradient-to-bl from-[#C5A572]/20 to-[#C5A572]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-[#C5A572]/10 group-hover:border-[#C5A572]/30 transition-all duration-500">
-                  <img
-                    src="/Natrix/сфера лицо.png"
-                    alt={t('natrix.sphere.handpiece.face.alt')}
-                    className="w-full h-auto object-contain p-8 sm:p-12 max-h-[500px] mx-auto group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
+            {/* Image — right on desktop */}
+            <div className="relative w-full lg:w-1/2 flex justify-center lg:justify-end group">
+              {/* Glow ring */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] rounded-full border border-[#C5A572]/10 group-hover:border-[#C5A572]/25 group-hover:scale-110 transition-all duration-1000" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[350px] sm:h-[350px] rounded-full bg-[#C5A572]/[0.04] group-hover:bg-[#C5A572]/[0.08] blur-3xl transition-all duration-1000" />
+              <img
+                src="/Natrix/сфера лицо.png"
+                alt={t('natrix.sphere.handpiece.face.alt')}
+                className="relative z-10 w-[280px] sm:w-[350px] lg:w-[400px] h-auto object-contain drop-shadow-[0_0_60px_rgba(197,165,114,0.15)] group-hover:scale-105 group-hover:drop-shadow-[0_0_80px_rgba(197,165,114,0.25)] transition-all duration-700"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
