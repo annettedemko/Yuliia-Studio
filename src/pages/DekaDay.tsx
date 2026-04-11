@@ -319,7 +319,7 @@ const DekaDay = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/20 border-white/50 text-white hover:bg-white/30 text-sm sm:text-base md:text-lg lg:text-xl py-4 sm:py-5 md:py-6 lg:py-7 px-6 sm:px-8 md:px-10 lg:px-12 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-105 w-full sm:w-auto shadow-lg"
+                className="bg-white text-primary border-white hover:bg-white/90 text-sm sm:text-base md:text-lg lg:text-xl py-4 sm:py-5 md:py-6 lg:py-7 px-6 sm:px-8 md:px-10 lg:px-12 rounded-full transition-all duration-300 hover:scale-105 w-full sm:w-auto shadow-lg"
                 onClick={() => {
                   const benefitsSection = document.querySelector('#benefits-section');
                   benefitsSection?.scrollIntoView({ behavior: 'smooth' });

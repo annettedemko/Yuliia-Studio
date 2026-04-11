@@ -15,7 +15,8 @@ import {
   Monitor,
   Sparkles,
   Award,
-  Clock
+  Clock,
+  Instagram
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect } from 'react';
@@ -637,18 +638,25 @@ const RedTouchPro = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-gradient-to-r from-primary to-primary text-white">
-        <div ref={ctaRef} className="container mx-auto px-4 text-center reveal reveal-up">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 animate-slide-up">
+      <section className="py-16 bg-gradient-to-r from-primary via-primary to-primary text-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-rose-gold/10 rounded-full blur-xl animate-float delay-1000"></div>
+        </div>
+
+        <div ref={ctaRef} className="container mx-auto px-4 text-center relative z-10 reveal reveal-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             {t('redtouch.cta.title')}
           </h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto animate-slide-up delay-200">
+          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             {t('redtouch.cta.subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-white/90"
+              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4"
               onClick={() => {
                 if (window.yWidget) {
                   window.yWidget.show(window.yWidget.href);
@@ -658,14 +666,43 @@ const RedTouchPro = () => {
               <Phone className="w-5 h-5 mr-2" />
               {t('redtouch.cta.book')}
             </Button>
-            <Button size="lg" variant="outline" className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white/30 shadow-lg" asChild>
+            <Button size="lg" variant="outline" className="bg-white text-primary border-white hover:bg-white/90 text-lg px-8 py-4 shadow-lg" asChild>
               <a href="mailto:Yulachip@icloud.com">
                 <Mail className="w-5 h-5 mr-2" />
                 {t('contact.send-email')}
               </a>
             </Button>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-white/20">
+            <div className="flex items-center justify-center space-x-6">
+              <div className="text-center">
+                <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
+                <p className="text-sm text-white/80">DEKA Certified</p>
+              </div>
+              <div className="text-center">
+                <Shield className="w-8 h-8 text-green-300 mx-auto mb-2" />
+                <p className="text-sm text-white/80">CE-zertifiziert</p>
+              </div>
+              <div className="text-center">
+                <Star className="w-8 h-8 text-rose-gold mx-auto mb-2" />
+                <p className="text-sm text-white/80">Premium Quality</p>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <a
+                href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />
+              </a>
             </div>
           </div>
+        </div>
       </section>
 
       </div>

@@ -167,21 +167,21 @@ const AgainCos = () => {
                 {keyFeatures.slice(0, 3).map((feature, index) => (
                   <Card
                     key={index}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-green-50/50 backdrop-blur-sm border-2 border-green-100 hover:border-green-300 animate-slide-up"
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-teal-50/50 backdrop-blur-sm border-2 border-teal-100 hover:border-teal-300 animate-slide-up"
                     style={{animationDelay: `${index * 200}ms`}}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                          <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
+                        <div className="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-teal-600 group-hover:text-cyan-600 transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-green-600 transition-colors">{feature.title}</h3>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-teal-600 transition-colors">{feature.title}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
                         </div>
                       </div>
                       {/* Animated border bottom */}
-                      <div className="mt-3 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div className="mt-3 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
@@ -201,10 +201,10 @@ const AgainCos = () => {
                   />
 
                   {/* Floating tech particles */}
-                  <div className="absolute top-10 right-10 w-3 h-3 bg-green-400 rounded-full animate-pulse opacity-70"></div>
-                  <div className="absolute bottom-12 left-12 w-2 h-2 bg-emerald-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
-                  <div className="absolute top-1/3 left-8 w-1 h-1 bg-green-300 rounded-full animate-ping delay-500 opacity-80"></div>
-                  <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-emerald-600 rounded-full animate-pulse delay-700 opacity-75"></div>
+                  <div className="absolute top-10 right-10 w-3 h-3 bg-teal-400 rounded-full animate-pulse opacity-70"></div>
+                  <div className="absolute bottom-12 left-12 w-2 h-2 bg-cyan-500 rounded-full animate-bounce delay-1000 opacity-60"></div>
+                  <div className="absolute top-1/3 left-8 w-1 h-1 bg-teal-300 rounded-full animate-ping delay-500 opacity-80"></div>
+                  <div className="absolute bottom-1/3 right-12 w-2 h-2 bg-cyan-600 rounded-full animate-pulse delay-700 opacity-75"></div>
                 </div>
               </div>
 
@@ -213,21 +213,21 @@ const AgainCos = () => {
                 {keyFeatures.slice(3, 6).map((feature, index) => (
                   <Card
                     key={index + 3}
-                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-green-50/50 backdrop-blur-sm border-2 border-green-100 hover:border-green-300 animate-slide-up"
+                    className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 bg-gradient-to-br from-white via-white/95 to-teal-50/50 backdrop-blur-sm border-2 border-teal-100 hover:border-teal-300 animate-slide-up"
                     style={{animationDelay: `${(index + 3) * 200}ms`}}
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                          <feature.icon className="w-6 h-6 text-green-600 group-hover:text-emerald-600 transition-colors" />
+                        <div className="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                          <feature.icon className="w-6 h-6 text-teal-600 group-hover:text-cyan-600 transition-colors" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-green-600 transition-colors">{feature.title}</h3>
+                          <h3 className="text-sm font-bold text-primary mb-2 group-hover:text-teal-600 transition-colors">{feature.title}</h3>
                           <p className="text-xs text-muted-foreground leading-tight">{feature.description}</p>
                         </div>
                       </div>
                       {/* Animated border bottom */}
-                      <div className="mt-3 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                      <div className="mt-3 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                     </CardContent>
                   </Card>
                 ))}
@@ -344,11 +344,11 @@ const AgainCos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-[#5a2d2a] via-[#4a1d1a] to-[#5a2d2a] text-white relative overflow-hidden mb-0">
+      <section className="py-16 bg-gradient-to-r from-teal-900 via-cyan-900 to-teal-900 text-white relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl animate-float"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-rose-gold/10 rounded-full blur-xl animate-float delay-1000"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-teal-300/10 rounded-full blur-xl animate-float delay-1000"></div>
         </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -362,7 +362,7 @@ const AgainCos = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-[#5a2d2a] hover:bg-white/90 text-lg px-8 py-4"
+              className="bg-white text-teal-900 hover:bg-white/90 text-lg px-8 py-4"
               onClick={() => {
                 if (window.yWidget) {
                   window.yWidget.show(window.yWidget.href);
@@ -375,7 +375,7 @@ const AgainCos = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-[#5a2d2a] text-lg px-8 py-4 shadow-lg"
+              className="bg-white text-primary border-white hover:bg-white/90 text-lg px-8 py-4 shadow-lg"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">
@@ -385,7 +385,7 @@ const AgainCos = () => {
             </Button>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-white/20">
+          <div className="mt-8 pt-8 border-t border-white/20">
             <div className="flex items-center justify-center space-x-6">
               <div className="text-center">
                 <Award className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
@@ -401,12 +401,12 @@ const AgainCos = () => {
               </div>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-6">
               <a
                 href="https://www.instagram.com/yuliia_cheporska_studio?igsh=b2oyaHJnNWNrazNt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex bg-gradient-to-br from-pink-500 to-orange-600 hover:from-pink-600 hover:to-orange-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
+                className="inline-flex bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg group"
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6 text-white group-hover:rotate-12 transition-transform" />

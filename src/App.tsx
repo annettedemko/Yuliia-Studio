@@ -49,6 +49,7 @@ const NatrixDiodenlaser = lazy(() => import("./pages/NatrixDiodenlaser"));
 const NatrixIPL = lazy(() => import("./pages/NatrixIPL"));
 const NatrixSphereSculpt = lazy(() => import("./pages/NatrixSphereSculpt"));
 const NatrixRFMicroneedling = lazy(() => import("./pages/NatrixRFMicroneedling"));
+const NatrixConference = lazy(() => import("./pages/NatrixConference"));
 // const Deka = lazy(() => import("./pages/Deka"));
 // const DekaDay = lazy(() => import("./pages/DekaDay"));
 // const DekaAnna = lazy(() => import("./pages/DekaAnna"));
@@ -154,6 +155,7 @@ const App = () => (
                     <Route path="natrix-ipl" element={<NatrixIPL />} />
                     <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
                     <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
+                    <Route path="natrix-conference" element={<NatrixConference />} />
                     {/* DEKA routes - REPLACED BY NATRIX */}
                     <Route path="icoone-laser" element={<Navigate to="icoone-laser-muenchen" replace />} />
                     <Route path="manikuere-pedikuere" element={<Navigate to="manikuere-pedikuere-muenchen" replace />} />
@@ -181,6 +183,7 @@ const App = () => (
                     <Route path="natrix-ipl" element={<NatrixIPL />} />
                     <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
                     <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
+                    <Route path="natrix-conference" element={<NatrixConference />} />
                     {/* <Route path="deka" element={<Deka />} />
                     <Route path="DEKA" element={<Deka />} />
                     <Route path="deka-day" element={<DekaDay />} />

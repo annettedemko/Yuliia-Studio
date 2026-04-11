@@ -758,7 +758,7 @@ const AdminDashboard = () => {
         <Card className="mb-8" id="events-section">
           <CardHeader>
             <div className="flex justify-between items-center">
-              <CardTitle>Управление событиями</CardTitle>
+              <CardTitle>Управление мероприятиями</CardTitle>
               <div className="flex gap-2">
                 <Button
                   onClick={() => setIsCreating('event')}
@@ -767,7 +767,7 @@ const AdminDashboard = () => {
                   className="flex items-center gap-2"
                 >
                   <Plus className="w-4 h-4" />
-                  Новое событие
+                  + Новое мероприятие
                 </Button>
               </div>
             </div>
@@ -796,15 +796,18 @@ const AdminDashboard = () => {
                       <div className="flex justify-between items-start mb-2">
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <h4 className="font-semibold text-lg">{event.title}</h4>
+                            <h4 className="font-semibold text-lg">{parseBilingual(event.title).de}</h4>
                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                               event.is_published
                                 ? 'bg-green-100 text-green-800'
                                 : 'bg-gray-100 text-gray-800'
                             }`}>
-                              {event.is_published ? '✓ Veröffentlicht' : 'Entwurf'}
+                              {event.is_published ? '✓ Опубликовано' : 'Черновик'}
                             </span>
                           </div>
+                          {parseBilingual(event.title).ru && (
+                            <p className="text-sm text-blue-600 mb-1">RU: {parseBilingual(event.title).ru}</p>
+                          )}
                           <p className="text-muted-foreground">
                             {event.date && new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
@@ -814,10 +817,15 @@ const AdminDashboard = () => {
                             {event.time && ` • ${event.time}`}
                           </p>
                           <p className="text-sm text-muted-foreground mt-1">
-                            {event.location} - {event.address}
+                            {event.location} — {event.address}
                           </p>
                           {event.description && (
-                            <p className="text-sm text-muted-foreground mt-2">{event.description}</p>
+                            <div className="text-sm text-muted-foreground mt-2">
+                              <p>{parseBilingual(event.description).de}</p>
+                              {parseBilingual(event.description).ru && (
+                                <p className="text-blue-600 mt-1">RU: {parseBilingual(event.description).ru}</p>
+                              )}
+                            </div>
                           )}
                         </div>
                         <div className="flex gap-2">
@@ -1279,6 +1287,19 @@ const SubscriptionEditor = ({
   );
 };
 
+// Helper: parse bilingual field "DE|||RU" → { de, ru }
+const parseBilingual = (value: string | null): { de: string; ru: string } => {
+  if (!value) return { de: '', ru: '' };
+  const parts = value.split('|||');
+  return { de: parts[0] || '', ru: parts[1] || '' };
+};
+
+// Helper: combine bilingual → "DE|||RU" (omit separator if no RU)
+const combineBilingual = (de: string, ru: string): string => {
+  if (!ru.trim()) return de;
+  return `${de}|||${ru}`;
+};
+
 // Event Editor Component
 const EventEditor = ({
   event,
@@ -1289,45 +1310,63 @@ const EventEditor = ({
   onSave: (event: Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at'>) => void;
   onCancel: () => void;
 }) => {
-  const [formData, setFormData] = useState<Omit<SupabaseEvent, 'id' | 'created_at' | 'updated_at'>>(
-    event ? {
-      title: event.title,
-      date: event.date || '',
-      time: event.time || '',
-      location: event.location || '',
-      address: event.address || '',
-      description: event.description || '',
-      is_published: event.is_published ?? true
-    } : {
-      title: '',
-      date: '',
-      time: '',
-      location: '',
-      address: '',
-      description: '',
-      is_published: true
-    }
-  );
+  const titleParts = parseBilingual(event?.title || '');
+  const descParts = parseBilingual(event?.description || '');
+
+  const [formData, setFormData] = useState({
+    titleDe: titleParts.de,
+    titleRu: titleParts.ru,
+    date: event?.date || '',
+    time: event?.time || '',
+    location: event?.location || '',
+    address: event?.address || '',
+    descriptionDe: descParts.de,
+    descriptionRu: descParts.ru,
+    is_published: event?.is_published ?? true
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+    onSave({
+      title: combineBilingual(formData.titleDe, formData.titleRu),
+      date: formData.date,
+      time: formData.time,
+      location: formData.location,
+      address: formData.address,
+      description: combineBilingual(formData.descriptionDe, formData.descriptionRu),
+      is_published: formData.is_published
+    });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded-lg bg-white">
+      {/* Название / Title */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="title">Titel</Label>
+          <Label htmlFor="titleDe">Название (DE) *</Label>
           <Input
-            id="title"
-            value={formData.title}
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            id="titleDe"
+            value={formData.titleDe}
+            onChange={(e) => setFormData({ ...formData, titleDe: e.target.value })}
+            placeholder="Natrix Med Konferenz"
             required
           />
         </div>
         <div>
-          <Label htmlFor="date">Datum</Label>
+          <Label htmlFor="titleRu">Название (RU)</Label>
+          <Input
+            id="titleRu"
+            value={formData.titleRu}
+            onChange={(e) => setFormData({ ...formData, titleRu: e.target.value })}
+            placeholder="Конференция Natrix Med"
+          />
+        </div>
+      </div>
+
+      {/* Дата, время, место */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <Label htmlFor="date">Дата *</Label>
           <Input
             id="date"
             type="date"
@@ -1337,44 +1376,59 @@ const EventEditor = ({
           />
         </div>
         <div>
-          <Label htmlFor="time">Zeit (optional)</Label>
+          <Label htmlFor="time">Время</Label>
           <Input
             id="time"
             value={formData.time || ''}
             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-            placeholder="z.B. 18-19.10"
+            placeholder="12:00"
           />
         </div>
         <div>
-          <Label htmlFor="location">Ort</Label>
+          <Label htmlFor="location">Место</Label>
           <Input
             id="location"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+            placeholder="München"
             required
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="address">Adresse</Label>
+        <Label htmlFor="address">Адрес</Label>
         <Input
           id="address"
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+          placeholder="Stahlgruberring 32, 81829 München"
           required
         />
       </div>
 
-      <div>
-        <Label htmlFor="description">Beschreibung (optional)</Label>
-        <Textarea
-          id="description"
-          value={formData.description || ''}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-          rows={3}
-          placeholder="Zusätzliche Informationen zur Veranstaltung"
-        />
+      {/* Описание DE/RU */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="descriptionDe">Описание (DE)</Label>
+          <Textarea
+            id="descriptionDe"
+            value={formData.descriptionDe}
+            onChange={(e) => setFormData({ ...formData, descriptionDe: e.target.value })}
+            rows={3}
+            placeholder="Beschreibung der Veranstaltung"
+          />
+        </div>
+        <div>
+          <Label htmlFor="descriptionRu">Описание (RU)</Label>
+          <Textarea
+            id="descriptionRu"
+            value={formData.descriptionRu}
+            onChange={(e) => setFormData({ ...formData, descriptionRu: e.target.value })}
+            rows={3}
+            placeholder="Описание мероприятия"
+          />
+        </div>
       </div>
 
       <div className="flex items-center space-x-2">
@@ -1386,18 +1440,18 @@ const EventEditor = ({
           className="w-4 h-4 text-rose-gold bg-gray-100 border-gray-300 rounded focus:ring-rose-gold focus:ring-2"
         />
         <Label htmlFor="is_published" className="cursor-pointer">
-          Veröffentlicht (sichtbar auf der Website)
+          Опубликовано (видно на сайте)
         </Label>
       </div>
 
       <div className="flex gap-2">
         <Button type="submit" size="sm">
           <Save className="w-4 h-4 mr-2" />
-          Speichern
+          Сохранить
         </Button>
         <Button type="button" variant="outline" size="sm" onClick={onCancel}>
           <X className="w-4 h-4 mr-2" />
-          Abbrechen
+          Отмена
         </Button>
       </div>
     </form>

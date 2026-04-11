@@ -184,7 +184,7 @@ const DekaGeraeteverkauf = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary text-lg px-8 py-4 shadow-lg"
+              className="bg-white text-primary border-white hover:bg-white/90 text-lg px-8 py-4 shadow-lg"
               asChild
             >
               <a href="#devices">
@@ -374,7 +374,7 @@ const DekaGeraeteverkauf = () => {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary text-lg px-8 py-4 shadow-lg"
+              className="bg-white text-primary border-white hover:bg-white/90 text-lg px-8 py-4 shadow-lg"
               asChild
             >
               <a href="mailto:Yulachip@icloud.com">

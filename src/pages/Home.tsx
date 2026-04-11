@@ -190,7 +190,7 @@ const Home = () => {
               size="lg"
               asChild
               variant="outline"
-              className="hidden sm:inline-flex border-white/40 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/60 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto min-h-[48px]"
+              className="hidden sm:inline-flex bg-white text-primary border-white hover:bg-white/90 transition-all duration-300 text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-6 w-full sm:w-auto min-h-[48px] shadow-lg"
             >
               <Link to={withLang('/services')}>
                 {t('home.hero.button2')}

@@ -42,8 +42,8 @@ export function FormSubmissionsManager() {
   const getEventInfo = (message: string | null) => {
     if (!message || !message.includes('Veranstaltung:')) return null
 
-    // Parse new format: "Veranstaltung: DEKA Beauty Day am 2025-10-05 um 18:00"
-    const match = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{4}-\d{2}-\d{2})\s+um\s+(.+)/)
+    // Parse format: "Veranstaltung: Title am 2025-10-05 um 18:00" or "... um 18:00 | Eingeladen von: ..."
+    const match = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{4}-\d{2}-\d{2})\s+um\s+([^|]+)/)
     if (match) {
       const [, title, date, time] = match
       return {
@@ -109,6 +109,10 @@ export function FormSubmissionsManager() {
         return 'DEKA Day Anna'
       case 'deka':
         return 'DEKA'
+      case 'natrix-conference':
+        return 'Natrix Konferenz 26.04'
+      case 'natrix':
+        return 'Natrix Anfrage'
       case 'about':
         return 'Über uns'
       case 'home':
@@ -248,6 +252,9 @@ export function FormSubmissionsManager() {
                           {(() => {
                             const eventInfo = getEventInfo(submission.message)
                             if (eventInfo) {
+                              // Extract referrer info if present
+                              const referrerMatch = submission.message?.match(/Eingeladen von:\s*(.+)$/);
+                              const referrer = referrerMatch ? referrerMatch[1].trim() : null;
                               return (
                                 <div>
                                   <div className="text-sm font-medium text-gray-700 mb-1">Выбранное мероприятие:</div>
@@ -260,6 +267,12 @@ export function FormSubmissionsManager() {
                                       {eventInfo.date} • {eventInfo.time}
                                     </div>
                                   </div>
+                                  {referrer && referrer !== '—' && (
+                                    <div className="text-sm mt-2 bg-amber-50 p-2 rounded border-l-4 border-amber-400">
+                                      <span className="font-medium text-amber-800">Пригласил:</span>{' '}
+                                      <span className="text-amber-700">{referrer}</span>
+                                    </div>
+                                  )}
                                 </div>
                               )
                             } else {

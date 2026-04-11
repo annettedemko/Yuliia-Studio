@@ -984,7 +984,7 @@ const AlexandritVsDiodenlaser = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white/20 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white hover:text-primary transition-all hover:scale-105 text-lg px-8 py-6 shadow-lg"
+                className="bg-white text-primary border-white hover:bg-white/90 transition-all hover:scale-105 text-lg px-8 py-6 shadow-lg"
                 onClick={() => window.location.href = withLang('/laser-haarentfernung-muenchen')}
               >
                 {t('comparison.cta.button.info')}
