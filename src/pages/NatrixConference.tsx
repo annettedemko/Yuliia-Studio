@@ -70,6 +70,8 @@ const NatrixConference = () => {
           _subject: `Natrix Konferenz 26.04 Registrierung: ${fullName}`,
           _template: 'table',
           _captcha: 'false',
+          _replyto: formData.email,
+          _autoresponse: `Hallo ${formData.firstName}!\n\nVielen Dank für Ihre Registrierung zur Business-Konferenz NATRIX MED und MARKETING!\n\n📅 Datum: 26. April 2026\n🕛 Uhrzeit: 12:00\n📍 Ort: München, Stahlgruberring 32, 81829\n\nWir freuen uns auf Sie!\n\n---\n\nПривет, ${formData.firstName}!\n\nСпасибо за регистрацию на бизнес-конференцию NATRIX MED и МАРКЕТИНГ!\n\n📅 Дата: 26 апреля 2026\n🕛 Время: 12:00\n📍 Место: Мюнхен, Stahlgruberring 32, 81829\n\nЖдём вас!\n\nNatrix Med Team`,
         }),
       });
 
