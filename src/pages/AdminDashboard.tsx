@@ -22,7 +22,8 @@ import {
   Clock,
   Calendar,
   Users,
-  Sparkles
+  Sparkles,
+  Download
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -752,94 +753,6 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
 
-        {/* Conference Registrations */}
-        <Card className="mb-8" id="conference-section">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5" />
-                Заявки на конференцию Natrix
-                {conferenceSubmissions.length > 0 && (
-                  <span className="bg-amber-100 text-amber-800 text-sm font-bold px-2.5 py-0.5 rounded-full">
-                    {conferenceSubmissions.length}
-                  </span>
-                )}
-              </CardTitle>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={loadData}
-              >
-                Обновить
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            {conferenceSubmissions.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                Пока нет заявок на конференцию
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {conferenceSubmissions.map((sub, index) => {
-                  const referrerMatch = sub.message?.match(/Eingeladen von:\s*(.+)$/);
-                  const referrer = referrerMatch ? referrerMatch[1].trim() : null;
-                  return (
-                    <div key={sub.id} className="border rounded-lg p-4 hover:shadow-sm transition-shadow">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-2">
-                            <span className="text-xs font-bold bg-gray-100 text-gray-600 rounded-full w-7 h-7 flex items-center justify-center">
-                              {index + 1}
-                            </span>
-                            <h4 className="font-semibold text-lg">{sub.name}</h4>
-                          </div>
-                          <div className="ml-10 space-y-1.5">
-                            <div className="flex items-center gap-2 text-sm">
-                              <span className="text-gray-400">📞</span>
-                              <a href={`tel:${sub.phone}`} className="text-blue-600 hover:underline">{sub.phone}</a>
-                            </div>
-                            {sub.email && (
-                              <div className="flex items-center gap-2 text-sm">
-                                <span className="text-gray-400">✉️</span>
-                                <a href={`mailto:${sub.email}`} className="text-blue-600 hover:underline">{sub.email}</a>
-                              </div>
-                            )}
-                            {referrer && referrer !== '—' && (
-                              <div className="flex items-center gap-2 text-sm">
-                                <span className="text-gray-400">👤</span>
-                                <span className="text-amber-700">Пригласил: <strong>{referrer}</strong></span>
-                              </div>
-                            )}
-                            <div className="text-xs text-gray-400 mt-1">
-                              {new Date(sub.created_at).toLocaleDateString('de-DE', {
-                                day: '2-digit', month: '2-digit', year: 'numeric',
-                                hour: '2-digit', minute: '2-digit'
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={async () => {
-                            if (!confirm('Удалить эту заявку?')) return;
-                            await formService.deleteSubmission(sub.id);
-                            setConferenceSubmissions(prev => prev.filter(s => s.id !== sub.id));
-                          }}
-                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
         {/* Events Management */}
         <Card className="mb-8" id="events-section">
           <CardHeader>
@@ -936,6 +849,127 @@ const AdminDashboard = () => {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Conference Registrations */}
+        <Card className="mb-8" id="conference-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Заявки на конференцию Natrix
+                {conferenceSubmissions.length > 0 && (
+                  <span className="bg-amber-100 text-amber-800 text-sm font-bold px-2.5 py-0.5 rounded-full">
+                    {conferenceSubmissions.length}
+                  </span>
+                )}
+              </CardTitle>
+              <div className="flex gap-2">
+                {conferenceSubmissions.length > 0 && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2"
+                    onClick={() => {
+                      const header = ['#', 'Имя', 'Телефон', 'Email', 'Пригласил', 'Дата регистрации'];
+                      const rows = conferenceSubmissions.map((sub, i) => {
+                        const ref = sub.message?.match(/Eingeladen von:\s*(.+)$/);
+                        const referrer = ref ? ref[1].trim() : '';
+                        const date = new Date(sub.created_at).toLocaleDateString('de-DE', {
+                          day: '2-digit', month: '2-digit', year: 'numeric',
+                          hour: '2-digit', minute: '2-digit'
+                        });
+                        return [i + 1, sub.name, sub.phone, sub.email || '', referrer === '—' ? '' : referrer, date];
+                      });
+                      const tsv = [header, ...rows].map(r => r.join('\t')).join('\n');
+                      const BOM = '\uFEFF';
+                      const blob = new Blob([BOM + tsv], { type: 'application/vnd.ms-excel;charset=utf-8' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `natrix-konferenz-registrierungen-${new Date().toISOString().split('T')[0]}.xls`;
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    }}
+                  >
+                    <Download className="w-4 h-4" />
+                    Excel
+                  </Button>
+                )}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={loadData}
+                >
+                  Обновить
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {conferenceSubmissions.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                Пока нет заявок на конференцию
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {conferenceSubmissions.map((sub, index) => {
+                  const referrerMatch = sub.message?.match(/Eingeladen von:\s*(.+)$/);
+                  const referrer = referrerMatch ? referrerMatch[1].trim() : null;
+                  return (
+                    <div key={sub.id} className="border rounded-lg p-4 hover:shadow-sm transition-shadow">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-xs font-bold bg-gray-100 text-gray-600 rounded-full w-7 h-7 flex items-center justify-center">
+                              {index + 1}
+                            </span>
+                            <h4 className="font-semibold text-lg">{sub.name}</h4>
+                          </div>
+                          <div className="ml-10 space-y-1.5">
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="text-gray-400">📞</span>
+                              <a href={`tel:${sub.phone}`} className="text-blue-600 hover:underline">{sub.phone}</a>
+                            </div>
+                            {sub.email && (
+                              <div className="flex items-center gap-2 text-sm">
+                                <span className="text-gray-400">✉️</span>
+                                <a href={`mailto:${sub.email}`} className="text-blue-600 hover:underline">{sub.email}</a>
+                              </div>
+                            )}
+                            {referrer && referrer !== '—' && (
+                              <div className="flex items-center gap-2 text-sm">
+                                <span className="text-gray-400">👤</span>
+                                <span className="text-amber-700">Пригласил: <strong>{referrer}</strong></span>
+                              </div>
+                            )}
+                            <div className="text-xs text-gray-400 mt-1">
+                              {new Date(sub.created_at).toLocaleDateString('de-DE', {
+                                day: '2-digit', month: '2-digit', year: 'numeric',
+                                hour: '2-digit', minute: '2-digit'
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={async () => {
+                            if (!confirm('Удалить эту заявку?')) return;
+                            await formService.deleteSubmission(sub.id);
+                            setConferenceSubmissions(prev => prev.filter(s => s.id !== sub.id));
+                          }}
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </CardContent>
         </Card>
 
