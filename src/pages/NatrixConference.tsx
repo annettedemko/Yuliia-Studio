@@ -27,7 +27,10 @@ const GOLD = '#C5A572';
 const GOLD_DARK = '#A8884E';
 
 const NatrixConference = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const heroImage = language === 'de'
+    ? '/Natrix/natrix-konferenz-muenchen-2026-de.png'
+    : '/Natrix/natrix-med-business-konferenz-muenchen-2026.jpg';
   const heroRef = useScrollReveal({ threshold: 0.1 });
   const speakersRef = useScrollReveal({ threshold: 0.1 });
   const programRef = useScrollReveal({ threshold: 0.1 });
@@ -147,7 +150,7 @@ const NatrixConference = () => {
               {/* Poster */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C5A572]/20 mb-8 sm:mb-10 max-w-2xl mx-auto">
                 <img
-                  src="/Natrix/natrix-med-business-konferenz-muenchen-2026.jpg"
+                  src={heroImage}
                   alt={t('natrix.conference.heroAlt')}
                   className="w-full h-auto"
                   loading="eager"
