@@ -43,6 +43,7 @@ import {
 } from '@/utils/supabaseEventsAPI';
 import type { Event as SupabaseEvent } from '@/utils/supabaseEventsAPI';
 import { ServicePrice, SubscriptionPackage, Promotion } from '@/types/admin';
+import { formService, type FormSubmission } from '@/services/formService';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const AdminDashboard = () => {
   const [categories, setCategories] = useState<PriceCategory[]>([]);
   const [supabaseEvents, setSupabaseEvents] = useState<SupabaseEvent[]>([]);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
+  const [conferenceSubmissions, setConferenceSubmissions] = useState<FormSubmission[]>([]);
   const [editingPrice, setEditingPrice] = useState<ServicePrice | null>(null);
   const [editingSubscription, setEditingSubscription] = useState<SubscriptionPackage | null>(null);
   const [editingEvent, setEditingEvent] = useState<SupabaseEvent | null>(null);
@@ -130,25 +132,21 @@ const AdminDashboard = () => {
     try {
       // Load all data from Supabase
       // For admin panel, load ALL categories (not just published ones)
-      const [pricesData, subscriptionsData, categoriesData, eventsData, promotionsData] = await Promise.all([
+      const [pricesData, subscriptionsData, categoriesData, eventsData, promotionsData, allSubmissions] = await Promise.all([
         pricesService.getAll(),
         subscriptionsService.getAll(),
         categoriesService.getAll(false), // false = get all categories, including unpublished
         getEvents(),
-        promotionsService.getAll()
+        promotionsService.getAll(),
+        formService.getAllSubmissions()
       ]);
-
-      console.log('Loaded prices:', pricesData);
-      console.log('Loaded subscriptions:', subscriptionsData);
-      console.log('Loaded categories:', categoriesData);
-      console.log('Loaded events:', eventsData);
-      console.log('Loaded promotions:', promotionsData);
 
       setPrices(pricesData);
       setSubscriptions(subscriptionsData);
       setCategories(categoriesData);
       setSupabaseEvents(eventsData);
       setPromotions(promotionsData);
+      setConferenceSubmissions(allSubmissions.filter(s => s.page === 'natrix-conference'));
     } catch (error) {
       console.error('Error loading data:', error);
     } finally {
@@ -751,6 +749,94 @@ const AdminDashboard = () => {
                 </div>
               ))}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Conference Registrations */}
+        <Card className="mb-8" id="conference-section">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <CardTitle className="flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Заявки на конференцию Natrix
+                {conferenceSubmissions.length > 0 && (
+                  <span className="bg-amber-100 text-amber-800 text-sm font-bold px-2.5 py-0.5 rounded-full">
+                    {conferenceSubmissions.length}
+                  </span>
+                )}
+              </CardTitle>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={loadData}
+              >
+                Обновить
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {conferenceSubmissions.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                Пока нет заявок на конференцию
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {conferenceSubmissions.map((sub, index) => {
+                  const referrerMatch = sub.message?.match(/Eingeladen von:\s*(.+)$/);
+                  const referrer = referrerMatch ? referrerMatch[1].trim() : null;
+                  return (
+                    <div key={sub.id} className="border rounded-lg p-4 hover:shadow-sm transition-shadow">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <span className="text-xs font-bold bg-gray-100 text-gray-600 rounded-full w-7 h-7 flex items-center justify-center">
+                              {index + 1}
+                            </span>
+                            <h4 className="font-semibold text-lg">{sub.name}</h4>
+                          </div>
+                          <div className="ml-10 space-y-1.5">
+                            <div className="flex items-center gap-2 text-sm">
+                              <span className="text-gray-400">📞</span>
+                              <a href={`tel:${sub.phone}`} className="text-blue-600 hover:underline">{sub.phone}</a>
+                            </div>
+                            {sub.email && (
+                              <div className="flex items-center gap-2 text-sm">
+                                <span className="text-gray-400">✉️</span>
+                                <a href={`mailto:${sub.email}`} className="text-blue-600 hover:underline">{sub.email}</a>
+                              </div>
+                            )}
+                            {referrer && referrer !== '—' && (
+                              <div className="flex items-center gap-2 text-sm">
+                                <span className="text-gray-400">👤</span>
+                                <span className="text-amber-700">Пригласил: <strong>{referrer}</strong></span>
+                              </div>
+                            )}
+                            <div className="text-xs text-gray-400 mt-1">
+                              {new Date(sub.created_at).toLocaleDateString('de-DE', {
+                                day: '2-digit', month: '2-digit', year: 'numeric',
+                                hour: '2-digit', minute: '2-digit'
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={async () => {
+                            if (!confirm('Удалить эту заявку?')) return;
+                            await formService.deleteSubmission(sub.id);
+                            setConferenceSubmissions(prev => prev.filter(s => s.id !== sub.id));
+                          }}
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </CardContent>
         </Card>
 
