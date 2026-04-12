@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -57,28 +58,36 @@ const NatrixConference = () => {
 
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
 
+    const EMAILJS_SERVICE_ID = 'service_la15uhg';
+    const EMAILJS_TEMPLATE_CONFIRM = 'template_5lq6fsa';
+    const EMAILJS_TEMPLATE_ADMIN = 'template_gkvztfi';
+    const EMAILJS_PUBLIC_KEY = 'KUlrBxaQk6SXqaLdB';
+
     try {
-      const emailResponse = await fetch('https://formsubmit.co/ajax/Yulachip@icloud.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+      // Send confirmation email to the registrant (DE + RU)
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_CONFIRM,
+        {
+          to_email: formData.email,
+          first_name: formData.firstName,
+          full_name: fullName,
         },
-        body: JSON.stringify({
-          name: fullName,
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+
+      // Send notification to admin (Yulia)
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ADMIN,
+        {
+          full_name: fullName,
           phone: formData.phone,
           email: formData.email,
-          'Veranstaltung': 'Natrix Med Konferenz — 26.04.2026, 12:00, München',
-          'Eingeladen von': formData.referrer || '—',
-          _subject: `Natrix Konferenz 26.04 Registrierung: ${fullName}`,
-          _template: 'table',
-          _captcha: 'false',
-          _replyto: formData.email,
-          _autoresponse: `Hallo ${formData.firstName}!\n\nVielen Dank für Ihre Registrierung zur Business-Konferenz NATRIX MED und MARKETING!\n\n📅 Datum: 26. April 2026\n🕛 Uhrzeit: 12:00\n📍 Ort: München, Stahlgruberring 32, 81829\n\nWir freuen uns auf Sie!\n\n---\n\nПривет, ${formData.firstName}!\n\nСпасибо за регистрацию на бизнес-конференцию NATRIX MED и МАРКЕТИНГ!\n\n📅 Дата: 26 апреля 2026\n🕛 Время: 12:00\n📍 Место: Мюнхен, Stahlgruberring 32, 81829\n\nЖдём вас!\n\nNatrix Med Team`,
-        }),
-      });
-
-      if (!emailResponse.ok) throw new Error('Email failed');
+          referrer: formData.referrer || '—',
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
 
       try {
         const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co';
