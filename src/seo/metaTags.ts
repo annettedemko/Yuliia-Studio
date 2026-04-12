@@ -5,6 +5,7 @@
 export interface MetaTag {
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface PageMeta {
@@ -205,52 +206,74 @@ export const metaTags: Record<string, PageMeta> = {
   },
   '/natrix-geraete': {
     de: {
-      title: 'Natrix Med Geräteverkauf | Professionelle Kosmetikgeräte München',
-      description: 'Professionelle Natrix Med Geräte für Beauty-Studios: Diodenlaser, IPL-Plattform, SphereSculpt, RF Microneedling. Beratung und Verkauf in München.'
+      title: 'Natrix Med Geräteverkauf München | Diodenlaser, IPL, RF, SphereSculpt',
+      description: 'Professionelle Natrix Med Geräte für Beauty-Studios und Kliniken: 808 nm Diodenlaser, IPL, SphereSculpt, RF Microneedling. B2B-Verkauf, Schulung & Support in München.',
+      image: '/Natrix/diod dark.png'
     },
     ru: {
-      title: 'Продажа оборудования Natrix Med | Профессиональная косметология Мюнхен',
-      description: 'Профессиональное оборудование Natrix Med для салонов красоты: диодный лазер, IPL-платформа, SphereSculpt, RF микронидлинг. Консультация и продажа в Мюнхене.'
+      title: 'Оборудование Natrix Med Мюнхен | Диодный лазер, IPL, RF, SphereSculpt',
+      description: 'Профессиональное оборудование Natrix Med для салонов и клиник: диодный лазер 808 нм, IPL, SphereSculpt, RF микронидлинг. B2B-продажа, обучение и поддержка в Мюнхене.',
+      image: '/Natrix/diod dark.png'
     }
   },
   '/natrix-diodenlaser': {
     de: {
-      title: 'Natrix Med Diodenlaser 808 nm | 3000 W Dual-Handstück',
-      description: 'Natrix Med Diodenlaser: 808 nm, 3000 W, Dual-Handstück (1600W + 1000W), deutsche LIMO-Linsen, 360° Peltier-Kühlung, OLED-Touchscreen. Für Beauty-Profis.'
+      title: 'Natrix Med Diodenlaser 808 nm kaufen | 3000 W Dual-Handstück',
+      description: 'Diodenlaser Natrix Med 808 nm: 3000 W, Dual-Handstück (1600+1000 W), deutsche LIMO-Linsen, 360° Peltier-Kühlung, OLED-Touchscreen. Dauerhafte Haarentfernung für Profis. Kaufen in München.',
+      image: '/Natrix/diod dark.png'
     },
     ru: {
-      title: 'Natrix Med диодный лазер 808 нм | 3000 Вт, двойная рукоятка',
-      description: 'Natrix Med диодный лазер: 808 нм, 3000 Вт, двойная рукоятка (1600+1000 Вт), немецкие линзы LIMO, охлаждение Пельтье 360°, OLED-экран. Для профессионалов.'
+      title: 'Диодный лазер Natrix Med 808 нм купить | 3000 Вт, 2 рукоятки',
+      description: 'Диодный лазер Natrix Med 808 нм: 3000 Вт, двойная рукоятка (1600+1000 Вт), немецкие линзы LIMO, охлаждение Пельтье 360°, OLED-экран. Перманентная эпиляция для профи. Покупка в Мюнхене.',
+      image: '/Natrix/diod dark.png'
     }
   },
   '/natrix-ipl': {
     de: {
-      title: 'Natrix Med IPL-Plattform | Haarentfernung & Hautverjüngung',
-      description: 'Natrix Med IPL: 480–950 nm, 3000 W, SR/VR/HR-Modi, Silberreflektor, Saphirkristall, Triple-Kühlung. Für Haarentfernung, Pigment- und Gefäßtherapie.'
+      title: 'Natrix Med IPL-Plattform kaufen | Haarentfernung, SR, VR, HR',
+      description: 'IPL-Plattform Natrix Med: 480–950 nm, 3000 W, SR/VR/HR-Modi, Silberreflektor, Saphirkristall, Triple-Kühlung. Haarentfernung, Pigment-, Gefäßtherapie. Kaufen in München.',
+      image: '/Natrix/ipl dark.png'
     },
     ru: {
-      title: 'Natrix Med IPL-платформа | Удаление волос и омоложение',
-      description: 'Natrix Med IPL: 480–950 нм, 3000 Вт, режимы SR/VR/HR, серебряный отражатель, сапфировый кристалл, тройное охлаждение. Удаление волос, пигментация, сосуды.'
+      title: 'IPL-платформа Natrix Med купить | Удаление волос SR, VR, HR',
+      description: 'IPL Natrix Med: 480–950 нм, 3000 Вт, режимы SR/VR/HR, серебряный отражатель, сапфировый кристалл, тройное охлаждение. Эпиляция, пигмент, сосуды. Покупка в Мюнхене.',
+      image: '/Natrix/ipl dark.png'
     }
   },
   '/natrix-spheresculpt': {
     de: {
-      title: 'Natrix Med SphereSculpt | Körperkonturierung & Lymphdrainage',
-      description: 'Natrix Med SphereSculpt: Vibrations-Therapie für Körperkonturierung, Lymphdrainage, Hautstraffung. Gesichts- und Körperbehandlung. Geräuscharm (<49 dB).'
+      title: 'Natrix Med SphereSculpt kaufen | Körperkonturierung, Lymphdrainage',
+      description: 'SphereSculpt Natrix Med: Vibrations-Therapie für Körperkonturierung, Lymphdrainage, Gesichts-Lifting. Zwei Handstücke, leiser Betrieb <49 dB. Kaufen in München.',
+      image: '/Natrix/sphere dark.png'
     },
     ru: {
-      title: 'Natrix Med SphereSculpt | Коррекция контуров и лимфодренаж',
-      description: 'Natrix Med SphereSculpt: вибрационная терапия для коррекции контуров тела, лимфодренажа, подтяжки кожи. Лицо и тело. Тихая работа (<49 дБ).'
+      title: 'SphereSculpt Natrix Med купить | Контуринг тела, лимфодренаж',
+      description: 'SphereSculpt Natrix Med: вибрационная терапия для коррекции контуров тела, лимфодренажа и лифтинга лица. Две насадки, тихая работа <49 дБ. Покупка в Мюнхене.',
+      image: '/Natrix/sphere dark.png'
     }
   },
   '/natrix-rf-microneedling': {
     de: {
-      title: 'Natrix Med RF Microneedling | Facelifting & Hautverjüngung',
-      description: 'Natrix Med RF Microneedling: Fraktioniertes RF, Microneedling + Thermagical, 5/8 MHz, goldene Nadeln, Kühlhandstück. Lifting, Falten, Narben, Akne.'
+      title: 'Natrix Med RF Microneedling kaufen | Fraktioniertes RF, Goldnadeln',
+      description: 'RF Microneedling Natrix Med: Fraktioniertes RF + Microneedling, 5/8 MHz, 24K-Goldnadeln, Kühlhandstück. Face-Lifting, Falten, Narben, Akne. Kaufen in München.',
+      image: '/Natrix/rf dark.png'
     },
     ru: {
-      title: 'Natrix Med RF микронидлинг | Подтяжка лица и омоложение',
-      description: 'Natrix Med RF микронидлинг: фракционный RF, микронидлинг + термагический, 5/8 МГц, золотые иглы, охлаждающая ручка. Лифтинг, морщины, шрамы, акне.'
+      title: 'RF микронидлинг Natrix Med купить | Фракционный RF, золотые иглы',
+      description: 'RF микронидлинг Natrix Med: фракционный RF + микронидлинг, 5/8 МГц, золотые иглы 24К, охлаждающая ручка. Лифтинг, морщины, шрамы, акне. Покупка в Мюнхене.',
+      image: '/Natrix/rf dark.png'
+    }
+  },
+  '/natrix-conference': {
+    de: {
+      title: 'Natrix Med Konferenz 26.04 München | Geräte, Marketing & 5 Referenten',
+      description: 'Geschäftskonferenz NATRIX MED am 26. April in München: Vorstellung neuer Natrix Med Geräte, Marketing-Strategien für Beauty-Studios, Selvert Thermal Kosmetik. 5 Referenten. Plätze begrenzt — jetzt registrieren!',
+      image: '/Natrix/natrix-konferenz-muenchen-2026-de.png'
+    },
+    ru: {
+      title: 'Бизнес-конференция Natrix Med 26.04 Мюнхен | Оборудование и маркетинг',
+      description: 'Бизнес-конференция NATRIX MED 26 апреля в Мюнхене: презентация нового оборудования Natrix Med, маркетинговые стратегии для бьюти-студий, косметика Selvert Thermal. 5 спикеров. Мест ограничено — регистрируйтесь!',
+      image: '/Natrix/natrix-med-business-konferenz-muenchen-2026.jpg'
     }
   },
   '/planner-yc': {

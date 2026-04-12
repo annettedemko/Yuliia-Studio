@@ -19,7 +19,8 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
   const currentLang = pathname.startsWith('/ru') ? 'ru' : 'de';
 
   // Get meta tags for this page and language
-  const { title, description } = getMetaTags(pathname, currentLang);
+  const meta = getMetaTags(pathname, currentLang);
+  const { title, description } = meta;
 
   // Get base URL
   const baseUrl = 'https://www.munchen-beauty.de';
@@ -27,6 +28,11 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
   // Get path without language prefix for canonical URL
   const pathWithoutLang = pathname.replace(/^\/(de|ru)/, '') || '/';
   const canonicalUrl = `${baseUrl}/${currentLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+
+  // Page-specific image (for social sharing) falls back to studio logo
+  const pageImage = meta.image
+    ? (meta.image.startsWith('http') ? meta.image : `${baseUrl}${meta.image}`)
+    : `${baseUrl}/logo2.jpg`;
 
   return (
     <Helmet>
@@ -39,7 +45,9 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:locale" content={currentLang === 'de' ? 'de_DE' : 'ru_RU'} />
-      <meta property="og:image" content="https://www.munchen-beauty.de/logo2.jpg" />
+      <meta property="og:image" content={pageImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="Yuliia Cheporska Studio" />
 
       {/* Twitter */}
@@ -47,7 +55,7 @@ export const PageHelmet = ({ pagePath }: PageHelmetProps) => {
       <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://www.munchen-beauty.de/logo2.jpg" />
+      <meta name="twitter:image" content={pageImage} />
 
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />

@@ -27,6 +27,7 @@ const translations = {
     'nav.natrix.ipl': 'IPL-Plattform',
     'nav.natrix.spheresculpt': 'SphereSculpt',
     'nav.natrix.rf': 'RF Microneedling',
+    'nav.natrix.conference': 'Konferenz 26.04',
 
     // DEKA Page
     'deka.title': 'DEKA Technologien',
@@ -2404,6 +2405,7 @@ const translations = {
     'nav.natrix.ipl': 'IPL-платформа',
     'nav.natrix.spheresculpt': 'SphereSculpt',
     'nav.natrix.rf': 'RF микронидлинг',
+    'nav.natrix.conference': 'Конференция 26.04',
 
     // DEKA Page
     'deka.title': 'Технологии DEKA',

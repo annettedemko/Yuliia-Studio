@@ -49,6 +49,7 @@ const Navigation = () => {
     { href: '/natrix-ipl', labelKey: 'nav.natrix.ipl' },
     { href: '/natrix-spheresculpt', labelKey: 'nav.natrix.spheresculpt' },
     { href: '/natrix-rf-microneedling', labelKey: 'nav.natrix.rf' },
+    { href: '/natrix-conference', labelKey: 'nav.natrix.conference', isNew: true },
   ];
 
   const handleDropdownEnter = () => {
@@ -263,11 +264,16 @@ const Navigation = () => {
                       key={device.href}
                       to={withLang(device.href)}
                       className={cn(
-                        "block px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
+                        "flex items-center justify-between gap-2 px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
                       )}
                     >
-                      {t(device.labelKey)}
+                      <span>{t(device.labelKey)}</span>
+                      {device.isNew && (
+                        <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                          {currentLang === 'ru' ? 'NEW' : 'NEU'}
+                        </span>
+                      )}
                     </Link>
                   ))}
                 </div>
@@ -366,12 +372,17 @@ const Navigation = () => {
                       key={device.href}
                       to={withLang(device.href)}
                       className={cn(
-                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center",
+                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center inline-flex items-center justify-center gap-2",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
                       )}
                       onClick={() => setIsOpen(false)}
                     >
-                      {t(device.labelKey)}
+                      <span>{t(device.labelKey)}</span>
+                      {device.isNew && (
+                        <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                          {currentLang === 'ru' ? 'NEW' : 'NEU'}
+                        </span>
+                      )}
                     </Link>
                   ))}
                 </div>
