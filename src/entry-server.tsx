@@ -26,6 +26,13 @@ import Datenschutz from './pages/Datenschutz';
 import AGB from './pages/AGB';
 import Kontakt from './pages/Kontakt';
 import NotFound from './pages/NotFound';
+import PlannerYC from './pages/PlannerYC';
+import NatrixGeraete from './pages/NatrixGeraete';
+import NatrixDiodenlaser from './pages/NatrixDiodenlaser';
+import NatrixIPL from './pages/NatrixIPL';
+import NatrixSphereSculpt from './pages/NatrixSphereSculpt';
+import NatrixRFMicroneedling from './pages/NatrixRFMicroneedling';
+import NatrixConference from './pages/NatrixConference';
 
 interface RenderResult {
   html: string;
@@ -71,6 +78,13 @@ export function render(url: string): RenderResult {
                         <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                         <Route path="preis" element={<Pricing />} />
                         <Route path="agb" element={<AGB />} />
+                        <Route path="planner-yc" element={<PlannerYC />} />
+                        <Route path="natrix-geraete" element={<NatrixGeraete />} />
+                        <Route path="natrix-diodenlaser" element={<NatrixDiodenlaser />} />
+                        <Route path="natrix-ipl" element={<NatrixIPL />} />
+                        <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
+                        <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
+                        <Route path="natrix-conference" element={<NatrixConference />} />
                       </Route>
 
                       {/* Russian routes /ru/* */}
@@ -88,6 +102,13 @@ export function render(url: string): RenderResult {
                         <Route path="datenschutzerklaerung" element={<Datenschutz />} />
                         <Route path="preis" element={<Pricing />} />
                         <Route path="agb" element={<AGB />} />
+                        <Route path="planner-yc" element={<PlannerYC />} />
+                        <Route path="natrix-geraete" element={<NatrixGeraete />} />
+                        <Route path="natrix-diodenlaser" element={<NatrixDiodenlaser />} />
+                        <Route path="natrix-ipl" element={<NatrixIPL />} />
+                        <Route path="natrix-spheresculpt" element={<NatrixSphereSculpt />} />
+                        <Route path="natrix-rf-microneedling" element={<NatrixRFMicroneedling />} />
+                        <Route path="natrix-conference" element={<NatrixConference />} />
                       </Route>
 
                       {/* 404 */}
