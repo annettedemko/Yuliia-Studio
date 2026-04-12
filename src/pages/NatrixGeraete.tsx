@@ -7,6 +7,7 @@ import {
   Headphones,
   Gem,
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PageHelmet } from '@/components/PageHelmet';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -80,9 +81,77 @@ const NatrixGeraete = () => {
     },
   ];
 
+  const seoKeywords = language === 'de' ? [
+    'Natrix Med', 'Natrix Med Deutschland', 'Natrix Med München',
+    'Natrix Med Diodenlaser', 'Natrix Med IPL', 'Natrix Med RF Microneedling',
+    'Natrix Med SphereSculpt', 'Natrix Med kaufen', 'Natrix Med Geräte',
+    'Natrix Kosmetikgeräte', 'Natrix Beauty Equipment', 'Natrix B2B',
+    'Diodenlaser 808 nm Natrix', 'Laser Haarentfernung Gerät',
+    'IPL Gerät kaufen Deutschland', 'RF Microneedling Gerät',
+    'Kosmetikstudio Ausstattung', 'Natrix Med Schulung',
+  ] : [
+    'Natrix Med', 'Natrix Med Германия', 'Natrix Med Мюнхен',
+    'Natrix Med диодный лазер', 'Natrix Med IPL', 'Natrix Med RF микронидлинг',
+    'Natrix Med SphereSculpt', 'Natrix Med купить', 'Natrix Med оборудование',
+    'Natrix косметологическое оборудование', 'Natrix аппараты', 'Natrix B2B',
+    'Диодный лазер 808 нм Natrix', 'Аппарат для лазерной эпиляции',
+    'IPL аппарат купить', 'RF микронидлинг аппарат',
+    'Оборудование для косметологии', 'Natrix Med обучение',
+  ];
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://www.munchen-beauty.de/#natrix-med-dealer',
+        name: 'Natrix Med',
+        alternateName: ['Natrix Med Deutschland', 'Natrix Med München'],
+        url: `https://www.munchen-beauty.de/${language}/natrix-geraete`,
+        logo: 'https://www.munchen-beauty.de/Natrix/diod dark.png',
+        description: language === 'de'
+          ? 'Natrix Med — professionelle Kosmetikgeräte: Diodenlaser, IPL, RF Microneedling, SphereSculpt. Verkauf, Schulung und Support in München.'
+          : 'Natrix Med — профессиональное косметологическое оборудование: диодный лазер, IPL, RF микронидлинг, SphereSculpt. Продажа, обучение и поддержка в Мюнхене.',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'München',
+          addressRegion: 'Bayern',
+          postalCode: '81667',
+          addressCountry: 'DE',
+        },
+      },
+      {
+        '@type': 'ItemList',
+        name: language === 'de' ? 'Natrix Med Geräte' : 'Оборудование Natrix Med',
+        itemListElement: devices.map((device, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: {
+            '@type': 'Product',
+            name: t(device.titleKey),
+            description: t(device.descKey),
+            brand: { '@type': 'Brand', name: 'Natrix Med' },
+            image: `https://www.munchen-beauty.de${device.image}`,
+            url: `https://www.munchen-beauty.de/${language}${device.link}`,
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'EUR',
+              availability: 'https://schema.org/InStock',
+              seller: { '@type': 'Organization', name: 'Natrix Med' },
+            },
+          },
+        })),
+      },
+    ],
+  };
+
   return (
     <>
       <PageHelmet />
+      <Helmet>
+        <meta name="keywords" content={seoKeywords.join(', ')} />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <div className="min-h-screen pt-16 bg-[#0a0a0a] text-white">
 
         {/* Hero Section */}
@@ -199,6 +268,39 @@ const NatrixGeraete = () => {
                   </div>
                 </Link>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SEO Keyword Tags Section */}
+        <section className="py-10 sm:py-14 relative border-t border-white/5">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+                  Natrix Med
+                </p>
+                <h2 className="text-xl sm:text-2xl font-bold text-white/90 mt-2">
+                  {language === 'de'
+                    ? 'Natrix Med — Ihr Partner für professionelle Kosmetikgeräte in Deutschland'
+                    : 'Natrix Med — ваш партнёр по профессиональному косметологическому оборудованию в Германии'}
+                </h2>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2">
+                {seoKeywords.map((kw) => (
+                  <span
+                    key={kw}
+                    className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-300 hover:border-[#C5A572]/30 hover:text-white transition-colors"
+                  >
+                    {kw}
+                  </span>
+                ))}
+              </div>
+              <p className="text-center text-gray-500 text-sm mt-6 max-w-3xl mx-auto leading-relaxed">
+                {language === 'de'
+                  ? 'Suchen Sie Natrix Med Geräte in Deutschland? Wir sind autorisierter Partner: Natrix Med Diodenlaser 808 nm, Natrix Med IPL, Natrix Med RF Microneedling und Natrix Med SphereSculpt — mit Beratung, Schulung und Service in München.'
+                  : 'Ищете оборудование Natrix Med в Германии? Мы — официальный партнёр: диодный лазер Natrix Med 808 нм, IPL-платформа Natrix Med, RF микронидлинг Natrix Med и SphereSculpt Natrix Med — с консультацией, обучением и сервисом в Мюнхене.'}
+              </p>
             </div>
           </div>
         </section>
