@@ -29,6 +29,7 @@ const staticRoutes = {
     '/de/natrix-ipl',
     '/de/natrix-spheresculpt',
     '/de/natrix-rf-microneedling',
+    '/de/natrix-conference',
   ],
   ru: [
     '/ru',
@@ -50,6 +51,7 @@ const staticRoutes = {
     '/ru/natrix-ipl',
     '/ru/natrix-spheresculpt',
     '/ru/natrix-rf-microneedling',
+    '/ru/natrix-conference',
   ]
 };
 
