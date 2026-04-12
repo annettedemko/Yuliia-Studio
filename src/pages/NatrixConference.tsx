@@ -64,31 +64,7 @@ const NatrixConference = () => {
     const EMAILJS_PUBLIC_KEY = 'KUlrBxaQk6SXqaLdB';
 
     try {
-      // Send confirmation email to the registrant (DE + RU)
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_CONFIRM,
-        {
-          to_email: formData.email,
-          first_name: formData.firstName,
-          full_name: fullName,
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
-
-      // Send notification to admin (Yulia)
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ADMIN,
-        {
-          full_name: fullName,
-          phone: formData.phone,
-          email: formData.email,
-          referrer: formData.referrer || '—',
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
-
+      // Save to Supabase FIRST (so registration is never lost even if email fails)
       try {
         const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM';
@@ -108,14 +84,48 @@ const NatrixConference = () => {
             owner: 'Yulia',
           }),
         });
-      } catch {
-        // Supabase is secondary
+      } catch (err) {
+        console.error('Supabase save failed:', err);
+      }
+
+      // Send confirmation email to the registrant (DE + RU)
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_CONFIRM,
+          {
+            to_email: formData.email,
+            first_name: formData.firstName,
+            full_name: fullName,
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      } catch (err) {
+        console.error('EmailJS (confirm to registrant) failed:', err);
+      }
+
+      // Send notification to admin (Yulia)
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ADMIN,
+          {
+            full_name: fullName,
+            phone: formData.phone,
+            email: formData.email,
+            referrer: formData.referrer || '—',
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        );
+      } catch (err) {
+        console.error('EmailJS (admin notification) failed:', err);
       }
 
       setSubmitSuccess(true);
       setFormData({ firstName: '', lastName: '', phone: '', email: '', referrer: '' });
       setTimeout(() => setSubmitSuccess(false), 10000);
-    } catch {
+    } catch (err) {
+      console.error('Registration failed:', err);
       setSubmitError(t('natrix.conference.form.error'));
     } finally {
       setIsSubmitting(false);
