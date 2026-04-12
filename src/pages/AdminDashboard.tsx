@@ -1081,62 +1081,6 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
 
-        {/* Client Management Links for Admin */}
-        {userRole === 'admin' && (
-          <Card className="mb-8" id="clients-section">
-            <CardHeader>
-              <CardTitle>Управление клиентами</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/yulia-clients')}
-                >
-                  <Users className="w-6 h-6 text-blue-500" />
-                  <div className="text-left">
-                    <div className="font-semibold">Клиенты Юлии</div>
-                    <div className="text-sm text-muted-foreground">Управление клиентами Юлии</div>
-                  </div>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/natalia-clients')}
-                >
-                  <Users className="w-6 h-6 text-purple-500" />
-                  <div className="text-left">
-                    <div className="font-semibold">Клиенты Натальи</div>
-                    <div className="text-sm text-muted-foreground">Управление клиентами Натальи</div>
-                  </div>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/lera-clients')}
-                >
-                  <Users className="w-6 h-6 text-green-500" />
-                  <div className="text-left">
-                    <div className="font-semibold">Клиенты Леры</div>
-                    <div className="text-sm text-muted-foreground">Управление клиентами Леры</div>
-                  </div>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-2 h-16"
-                  onClick={() => navigate('/admin/liudmila-clients')}
-                >
-                  <Users className="w-6 h-6 text-orange-500" />
-                  <div className="text-left">
-                    <div className="font-semibold">Клиенты Людмилы</div>
-                    <div className="text-sm text-muted-foreground">Управление клиентами Людмилы</div>
-                  </div>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        )}
       </div>
     </div>
   );
