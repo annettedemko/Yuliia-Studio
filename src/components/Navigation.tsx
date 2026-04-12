@@ -49,7 +49,6 @@ const Navigation = () => {
     { href: '/natrix-ipl', labelKey: 'nav.natrix.ipl' },
     { href: '/natrix-spheresculpt', labelKey: 'nav.natrix.spheresculpt' },
     { href: '/natrix-rf-microneedling', labelKey: 'nav.natrix.rf' },
-    { href: '/natrix-conference', labelKey: 'nav.natrix.conference', isNew: true },
   ];
 
   const handleDropdownEnter = () => {
@@ -264,21 +263,32 @@ const Navigation = () => {
                       key={device.href}
                       to={withLang(device.href)}
                       className={cn(
-                        "flex items-center justify-between gap-2 px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
+                        "block px-4 py-2 text-sm transition-colors hover:bg-rose-gold/10 hover:text-rose-gold",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-foreground"
                       )}
                     >
-                      <span>{t(device.labelKey)}</span>
-                      {device.isNew && (
-                        <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                          {currentLang === 'ru' ? 'NEW' : 'NEU'}
-                        </span>
-                      )}
+                      {t(device.labelKey)}
                     </Link>
                   ))}
                 </div>
               )}
             </div>
+
+            {/* Events / Мероприятия */}
+            <Link
+              to={withLang('/natrix-conference')}
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-rose-gold flex items-center gap-1",
+                isActive('/natrix-conference') ? "text-rose-gold" : "text-foreground"
+              )}
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              {t('nav.events')}
+              <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                {currentLang === 'ru' ? 'NEW' : 'NEU'}
+              </span>
+            </Link>
+
             <div className="hidden md:flex items-center space-x-2">
               <LanguageSwitcher />
               <Button
@@ -352,6 +362,22 @@ const Navigation = () => {
                 </span>
               </Link>
 
+              {/* Events - Mobile */}
+              <Link
+                to={withLang('/natrix-conference')}
+                className={cn(
+                  "text-base font-medium transition-colors hover:text-rose-gold py-2 px-4 rounded-lg text-center flex items-center justify-center gap-2",
+                  isActive('/natrix-conference') ? "text-rose-gold bg-rose-gold/10" : "text-foreground"
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                <Calendar className="w-4 h-4" />
+                {t('nav.events')}
+                <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                  {currentLang === 'ru' ? 'NEW' : 'NEU'}
+                </span>
+              </Link>
+
               {/* Natrix Geräte Section for Mobile */}
               <div className="border-t border-gray-200 pt-6 mt-4">
                 <Link
@@ -372,17 +398,12 @@ const Navigation = () => {
                       key={device.href}
                       to={withLang(device.href)}
                       className={cn(
-                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center inline-flex items-center justify-center gap-2",
+                        "text-sm transition-colors hover:text-rose-gold py-2.5 px-4 rounded-lg text-center",
                         isActive(device.href) ? "text-rose-gold bg-rose-gold/5" : "text-muted-foreground"
                       )}
                       onClick={() => setIsOpen(false)}
                     >
-                      <span>{t(device.labelKey)}</span>
-                      {device.isNew && (
-                        <span className="bg-rose-gold/15 text-rose-gold text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                          {currentLang === 'ru' ? 'NEW' : 'NEU'}
-                        </span>
-                      )}
+                      {t(device.labelKey)}
                     </Link>
                   ))}
                 </div>
