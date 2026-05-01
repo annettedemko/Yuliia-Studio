@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
+import { eventsService } from '@/services/contentService';
+import type { Event } from '@/types/admin';
 import {
   CalendarDays,
   Clock,
@@ -35,6 +37,39 @@ const NatrixConference = () => {
   const programRef = useScrollReveal({ threshold: 0.1 });
   const audienceRef = useScrollReveal({ threshold: 0.1 });
   const formRef = useScrollReveal({ threshold: 0.1 });
+
+  const [natrixEvent, setNatrixEvent] = useState<Event | null>(null);
+
+  useEffect(() => {
+    const loadEvent = async () => {
+      try {
+        const events = await eventsService.getUpcoming();
+        const found = events.find(e =>
+          e.title.toLowerCase().includes('natrix') ||
+          (e.title_ru && e.title_ru.toLowerCase().includes('natrix'))
+        );
+        if (found) setNatrixEvent(found);
+      } catch (err) {
+        console.error('Failed to load Natrix event:', err);
+      }
+    };
+    loadEvent();
+  }, []);
+
+  // Use event data from admin if available, otherwise fall back to translations
+  const eventTitle = natrixEvent
+    ? (language === 'ru' && natrixEvent.title_ru ? natrixEvent.title_ru : natrixEvent.title)
+    : t('natrix.conference.title');
+  const eventDescription = natrixEvent
+    ? (language === 'ru' && natrixEvent.description_ru ? natrixEvent.description_ru : natrixEvent.description || t('natrix.conference.subtitle'))
+    : t('natrix.conference.subtitle');
+  const eventDate = natrixEvent?.date
+    ? new Date(natrixEvent.date).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })
+    : t('natrix.conference.date');
+  const eventTime = natrixEvent?.time || t('natrix.conference.time');
+  const eventLocation = natrixEvent?.location && natrixEvent?.address
+    ? `${natrixEvent.location}, ${natrixEvent.address}`
+    : natrixEvent?.location || t('natrix.conference.location');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -77,7 +112,7 @@ const NatrixConference = () => {
             name: fullName,
             phone: formData.phone,
             email: formData.email,
-            message: `Veranstaltung: Natrix Med Konferenz am 2026-04-26 um 12:00 | Eingeladen von: ${formData.referrer || '—'}`,
+            message: `Veranstaltung: ${natrixEvent?.title || 'Natrix Med Konferenz'} am ${eventDate} um ${eventTime} | Eingeladen von: ${formData.referrer || '—'}`,
             page: 'natrix-conference',
             owner: 'Yulia',
           }),
@@ -178,10 +213,10 @@ const NatrixConference = () => {
               {/* Title under poster */}
               <div className="text-center mb-8 sm:mb-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                  <span style={{ color: GOLD }}>{t('natrix.conference.title')}</span>
+                  <span style={{ color: GOLD }}>{eventTitle}</span>
                 </h1>
                 <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-                  {t('natrix.conference.subtitle')}
+                  {eventDescription}
                 </p>
               </div>
 
@@ -191,21 +226,21 @@ const NatrixConference = () => {
                   <CalendarDays className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
                   <div>
                     <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Datum / Дата</div>
-                    <div className="font-bold text-white text-lg">{t('natrix.conference.date')}</div>
+                    <div className="font-bold text-white text-lg">{eventDate}</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl px-5 py-5">
                   <Clock className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
                   <div>
                     <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Zeit / Время</div>
-                    <div className="font-bold text-white text-lg">{t('natrix.conference.time')}</div>
+                    <div className="font-bold text-white text-lg">{eventTime}</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl px-5 py-5">
                   <MapPin className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
                   <div>
                     <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Ort / Место</div>
-                    <div className="font-bold text-white text-sm leading-snug">{t('natrix.conference.location')}</div>
+                    <div className="font-bold text-white text-sm leading-snug">{eventLocation}</div>
                   </div>
                 </div>
               </div>
@@ -455,17 +490,17 @@ const NatrixConference = () => {
                 <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-2xl px-8 py-6">
                   <div className="flex items-center gap-2.5">
                     <CalendarDays className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold">{t('natrix.conference.date')}</span>
+                    <span className="text-white font-semibold">{eventDate}</span>
                   </div>
                   <div className="hidden sm:block w-px h-6 bg-white/10" />
                   <div className="flex items-center gap-2.5">
                     <Clock className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold">{t('natrix.conference.time')}</span>
+                    <span className="text-white font-semibold">{eventTime}</span>
                   </div>
                   <div className="hidden sm:block w-px h-6 bg-white/10" />
                   <div className="flex items-center gap-2.5">
                     <MapPin className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold text-sm">{t('natrix.conference.location')}</span>
+                    <span className="text-white font-semibold text-sm">{eventLocation}</span>
                   </div>
                 </div>
               </div>
