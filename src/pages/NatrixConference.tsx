@@ -9,7 +9,6 @@ import {
   CalendarDays,
   Clock,
   MapPin,
-  Users,
   CheckCircle,
   Loader2,
   AlertCircle,
@@ -26,8 +25,6 @@ const NatrixConference = () => {
   const { t, language } = useLanguage();
   const heroRef = useScrollReveal({ threshold: 0.1 });
   const eventsRef = useScrollReveal({ threshold: 0.1 });
-  const speakersRef = useScrollReveal({ threshold: 0.1 });
-  const audienceRef = useScrollReveal({ threshold: 0.1 });
   const formRef = useScrollReveal({ threshold: 0.1 });
 
   const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
@@ -284,47 +281,6 @@ const NatrixConference = () => {
                 </p>
               </div>
             )}
-          </div>
-        </section>
-
-        {/* ═══════════════════ SPEAKERS ═══════════════════ */}
-        <section className="py-12 sm:py-16 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(197,165,114,0.06)_0%,_transparent_60%)]" />
-          <div ref={speakersRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2 mb-6">
-                <Users className="w-4 h-4" style={{ color: GOLD }} />
-                <span className="text-sm font-semibold" style={{ color: GOLD }}>{t('natrix.conference.speakers.count')}</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                {t('natrix.conference.speakers.title')}
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-6" />
-              <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
-                {t('natrix.conference.speakers.desc')}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════ AUDIENCE ═══════════════════ */}
-        <section className="py-12 sm:py-16 relative">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(197,165,114,0.06)_0%,_transparent_60%)]" />
-          <div ref={audienceRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
-                {t('natrix.conference.audience.title')}
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-8" />
-              <p className="text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
-                {t('natrix.conference.audience.desc')}
-              </p>
-              <div className="bg-gradient-to-r from-[#C5A572]/10 via-[#C5A572]/20 to-[#C5A572]/10 border border-[#C5A572]/30 rounded-xl p-6 sm:p-8">
-                <p className="text-white text-base sm:text-lg font-medium leading-relaxed italic">
-                  &laquo;{t('natrix.conference.result')}&raquo;
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
