@@ -33,40 +33,25 @@ const NatrixConference = () => {
   const { t, language } = useLanguage();
   const heroImage = '/IMG_6510.png';
   const heroRef = useScrollReveal({ threshold: 0.1 });
+  const eventsRef = useScrollReveal({ threshold: 0.1 });
   const speakersRef = useScrollReveal({ threshold: 0.1 });
   const programRef = useScrollReveal({ threshold: 0.1 });
   const audienceRef = useScrollReveal({ threshold: 0.1 });
   const formRef = useScrollReveal({ threshold: 0.1 });
 
-  const [natrixEvent, setNatrixEvent] = useState<Event | null>(null);
+  const [upcomingEvents, setUpcomingEvents] = useState<Event[]>([]);
 
   useEffect(() => {
-    const loadEvent = async () => {
+    const loadEvents = async () => {
       try {
         const events = await eventsService.getUpcoming();
-        // Use the first upcoming published event for this page
-        if (events.length > 0) setNatrixEvent(events[0]);
+        setUpcomingEvents(events);
       } catch (err) {
-        console.error('Failed to load event:', err);
+        console.error('Failed to load events:', err);
       }
     };
-    loadEvent();
+    loadEvents();
   }, []);
-
-  // Use event data from admin if available, otherwise fall back to translations
-  const eventTitle = natrixEvent
-    ? (language === 'ru' && natrixEvent.title_ru ? natrixEvent.title_ru : natrixEvent.title)
-    : t('natrix.conference.title');
-  const eventDescription = natrixEvent
-    ? (language === 'ru' && natrixEvent.description_ru ? natrixEvent.description_ru : natrixEvent.description || t('natrix.conference.subtitle'))
-    : t('natrix.conference.subtitle');
-  const eventDate = natrixEvent?.date
-    ? new Date(natrixEvent.date).toLocaleDateString(language === 'ru' ? 'ru-RU' : 'de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })
-    : t('natrix.conference.date');
-  const eventTime = natrixEvent?.time || t('natrix.conference.time');
-  const eventLocation = natrixEvent?.location && natrixEvent?.address
-    ? `${natrixEvent.location}, ${natrixEvent.address}`
-    : natrixEvent?.location || t('natrix.conference.location');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -74,10 +59,20 @@ const NatrixConference = () => {
     phone: '',
     email: '',
     referrer: '',
+    selectedEvent: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const getEventLabel = (event: Event): string => {
+    const title = language === 'ru' && event.title_ru ? event.title_ru : event.title;
+    const date = new Date(event.date).toLocaleDateString(
+      language === 'ru' ? 'ru-RU' : 'de-DE',
+      { day: '2-digit', month: '2-digit', year: 'numeric' }
+    );
+    return `${title} — ${date}${event.time ? ` (${event.time})` : ''}`;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,6 +82,10 @@ const NatrixConference = () => {
     setSubmitError(null);
 
     const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const selectedEventObj = upcomingEvents.find(e => e.id === formData.selectedEvent);
+    const eventLabel = selectedEventObj
+      ? `${selectedEventObj.title} am ${new Date(selectedEventObj.date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })} um ${selectedEventObj.time || '—'}`
+      : 'Natrix Med Konferenz';
 
     const EMAILJS_SERVICE_ID = 'service_la15uhg';
     const EMAILJS_TEMPLATE_CONFIRM = 'template_5lq6fsa';
@@ -109,7 +108,7 @@ const NatrixConference = () => {
             name: fullName,
             phone: formData.phone,
             email: formData.email,
-            message: `Veranstaltung: ${natrixEvent?.title || 'Natrix Med Konferenz'} am ${eventDate} um ${eventTime} | Eingeladen von: ${formData.referrer || '—'}`,
+            message: `Veranstaltung: ${eventLabel} | Eingeladen von: ${formData.referrer || '—'}`,
             page: 'natrix-conference',
             owner: 'Yulia',
           }),
@@ -144,6 +143,7 @@ const NatrixConference = () => {
             phone: formData.phone,
             email: formData.email,
             referrer: formData.referrer || '—',
+            event: eventLabel,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );
@@ -152,7 +152,7 @@ const NatrixConference = () => {
       }
 
       setSubmitSuccess(true);
-      setFormData({ firstName: '', lastName: '', phone: '', email: '', referrer: '' });
+      setFormData({ firstName: '', lastName: '', phone: '', email: '', referrer: '', selectedEvent: '' });
       setTimeout(() => setSubmitSuccess(false), 10000);
     } catch (err) {
       console.error('Registration failed:', err);
@@ -210,36 +210,11 @@ const NatrixConference = () => {
               {/* Title under poster */}
               <div className="text-center mb-8 sm:mb-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                  <span style={{ color: GOLD }}>{eventTitle}</span>
+                  <span style={{ color: GOLD }}>{t('natrix.conference.title')}</span>
                 </h1>
                 <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
-                  {eventDescription}
+                  {t('natrix.conference.subtitle')}
                 </p>
-              </div>
-
-              {/* Date / Time / Location cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
-                <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl px-5 py-5">
-                  <CalendarDays className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Datum / Дата</div>
-                    <div className="font-bold text-white text-lg">{eventDate}</div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl px-5 py-5">
-                  <Clock className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Zeit / Время</div>
-                    <div className="font-bold text-white text-lg">{eventTime}</div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl px-5 py-5">
-                  <MapPin className="w-7 h-7 flex-shrink-0" style={{ color: GOLD }} />
-                  <div>
-                    <div className="text-[10px] text-white/40 uppercase tracking-widest font-medium">Ort / Место</div>
-                    <div className="font-bold text-white text-sm leading-snug">{eventLocation}</div>
-                  </div>
-                </div>
               </div>
 
               {/* CTA arrow */}
@@ -254,6 +229,74 @@ const NatrixConference = () => {
                 </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════ UPCOMING EVENTS ═══════════════════ */}
+        <section className="py-12 sm:py-16 bg-[#111111] relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(197,165,114,0.06)_0%,_transparent_60%)]" />
+          <div ref={eventsRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
+            <div className="text-center mb-10 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                {t('natrix.conference.events.title')}
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto mb-4" />
+              <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+                {t('natrix.conference.events.subtitle')}
+              </p>
+            </div>
+
+            {upcomingEvents.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto">
+                {upcomingEvents.map((event) => (
+                  <div
+                    key={event.id}
+                    className="group p-5 sm:p-6 rounded-2xl border border-[#C5A572]/20 bg-white/5 backdrop-blur-md hover:border-[#C5A572]/50 hover:bg-white/10 transition-all duration-300"
+                  >
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3" style={{ color: GOLD }}>
+                      {language === 'ru' && event.title_ru ? event.title_ru : event.title}
+                    </h3>
+
+                    <div className="space-y-2 mb-3">
+                      <div className="flex items-center gap-2.5 text-gray-300">
+                        <CalendarDays className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
+                        <span className="text-sm sm:text-base font-medium">
+                          {new Date(event.date).toLocaleDateString(
+                            language === 'ru' ? 'ru-RU' : 'de-DE',
+                            { day: '2-digit', month: '2-digit', year: 'numeric' }
+                          )}
+                          {event.time && ` (${event.time})`}
+                        </span>
+                      </div>
+
+                      {event.location && (
+                        <div className="flex items-start gap-2.5 text-gray-300">
+                          <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+                          <div>
+                            <span className="text-sm sm:text-base font-medium">{event.location}</span>
+                            {event.address && (
+                              <span className="text-sm text-gray-500 block">{event.address}</span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {(event.description || event.description_ru) && (
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {language === 'ru' && event.description_ru ? event.description_ru : event.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center">
+                <p className="text-gray-400 text-base sm:text-lg bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-xl p-6 max-w-lg mx-auto">
+                  {t('natrix.conference.events.noEvents')}
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
@@ -434,6 +477,29 @@ const NatrixConference = () => {
                         />
                       </div>
 
+                      {/* Event selector */}
+                      {upcomingEvents.length > 0 && (
+                        <div>
+                          <label htmlFor="conf-selectedEvent" className="block text-sm font-medium text-gray-300 mb-1.5">
+                            {t('natrix.conference.form.selectEvent')} *
+                          </label>
+                          <select
+                            id="conf-selectedEvent"
+                            value={formData.selectedEvent}
+                            onChange={(e) => setFormData({ ...formData, selectedEvent: e.target.value })}
+                            required
+                            className="w-full h-12 px-3 rounded-md bg-white/5 border border-white/10 text-white focus:border-[#C5A572] focus:outline-none focus:ring-1 focus:ring-[#C5A572] transition-colors"
+                          >
+                            <option value="">{t('natrix.conference.form.selectEvent.placeholder')}</option>
+                            {upcomingEvents.map((event) => (
+                              <option key={event.id} value={event.id}>
+                                {getEventLabel(event)}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
                       <div>
                         <label htmlFor="conf-referrer" className="block text-sm font-medium text-gray-300 mb-1.5">
                           {t('natrix.conference.form.referrer')}
@@ -481,26 +547,6 @@ const NatrixConference = () => {
                   </CardContent>
                 </Card>
               )}
-
-              {/* Date reminder at the bottom */}
-              <div className="mt-10 text-center">
-                <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 bg-white/5 backdrop-blur-md border border-[#C5A572]/20 rounded-2xl px-8 py-6">
-                  <div className="flex items-center gap-2.5">
-                    <CalendarDays className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold">{eventDate}</span>
-                  </div>
-                  <div className="hidden sm:block w-px h-6 bg-white/10" />
-                  <div className="flex items-center gap-2.5">
-                    <Clock className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold">{eventTime}</span>
-                  </div>
-                  <div className="hidden sm:block w-px h-6 bg-white/10" />
-                  <div className="flex items-center gap-2.5">
-                    <MapPin className="w-5 h-5" style={{ color: GOLD }} />
-                    <span className="text-white font-semibold text-sm">{eventLocation}</span>
-                  </div>
-                </div>
-              </div>
 
             </div>
           </div>
