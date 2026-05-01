@@ -1399,6 +1399,7 @@ const EventEditor = ({
     address: event?.address || '',
     descriptionDe: descParts.de,
     descriptionRu: descParts.ru,
+    image_url: event?.image_url || '',
     is_published: event?.is_published ?? true
   });
 
@@ -1411,6 +1412,7 @@ const EventEditor = ({
       location: formData.location,
       address: formData.address,
       description: combineBilingual(formData.descriptionDe, formData.descriptionRu),
+      image_url: formData.image_url || null,
       is_published: formData.is_published
     });
   };
@@ -1506,6 +1508,27 @@ const EventEditor = ({
             placeholder="Описание мероприятия"
           />
         </div>
+      </div>
+
+      {/* URL изображения */}
+      <div>
+        <Label htmlFor="image_url">URL изображения (афиша)</Label>
+        <Input
+          id="image_url"
+          value={formData.image_url}
+          onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+          placeholder="/IMG_6510.png или https://..."
+        />
+        {formData.image_url && (
+          <div className="mt-2 relative">
+            <img
+              src={formData.image_url}
+              alt="Превью"
+              className="w-40 h-auto rounded-lg border object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+            />
+          </div>
+        )}
       </div>
 
       <div className="flex items-center space-x-2">

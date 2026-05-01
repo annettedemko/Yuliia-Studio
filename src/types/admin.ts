@@ -39,6 +39,7 @@ export interface Event {
   address: string;
   description?: string;
   description_ru?: string;
+  image_url?: string;
 }
 
 export interface Client {

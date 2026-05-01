@@ -24,6 +24,7 @@ const parseEventFromDB = (item: any): Event => {
     address: item.address || undefined,
     description: descParts.de || undefined,
     description_ru: descParts.ru || undefined,
+    image_url: item.image_url || undefined,
   };
 };
 

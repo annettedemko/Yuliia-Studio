@@ -247,46 +247,63 @@ const NatrixConference = () => {
             </div>
 
             {upcomingEvents.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-4xl mx-auto">
+              <div className="space-y-8 sm:space-y-10 max-w-3xl mx-auto">
                 {upcomingEvents.map((event) => (
                   <div
                     key={event.id}
-                    className="group p-5 sm:p-6 rounded-2xl border border-[#C5A572]/20 bg-white/5 backdrop-blur-md hover:border-[#C5A572]/50 hover:bg-white/10 transition-all duration-300"
+                    className="group rounded-2xl border border-[#C5A572]/20 bg-white/5 backdrop-blur-md overflow-hidden hover:border-[#C5A572]/50 hover:bg-white/10 transition-all duration-300"
                   >
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3" style={{ color: GOLD }}>
-                      {language === 'ru' && event.title_ru ? event.title_ru : event.title}
-                    </h3>
+                    {/* Афиша — изображение */}
+                    {event.image_url && (
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={event.image_url}
+                          alt={language === 'ru' && event.title_ru ? event.title_ru : event.title}
+                          className="w-full h-auto object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />
+                      </div>
+                    )}
 
-                    <div className="space-y-2 mb-3">
-                      <div className="flex items-center gap-2.5 text-gray-300">
-                        <CalendarDays className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
-                        <span className="text-sm sm:text-base font-medium">
-                          {new Date(event.date).toLocaleDateString(
-                            language === 'ru' ? 'ru-RU' : 'de-DE',
-                            { day: '2-digit', month: '2-digit', year: 'numeric' }
-                          )}
-                          {event.time && ` (${event.time})`}
-                        </span>
+                    {/* Контент */}
+                    <div className="p-5 sm:p-6">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: GOLD }}>
+                        {language === 'ru' && event.title_ru ? event.title_ru : event.title}
+                      </h3>
+
+                      <div className="flex flex-wrap gap-4 mb-4">
+                        <div className="flex items-center gap-2 text-gray-300">
+                          <CalendarDays className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
+                          <span className="text-sm sm:text-base font-medium">
+                            {new Date(event.date).toLocaleDateString(
+                              language === 'ru' ? 'ru-RU' : 'de-DE',
+                              { day: '2-digit', month: '2-digit', year: 'numeric' }
+                            )}
+                          </span>
+                        </div>
+                        {event.time && (
+                          <div className="flex items-center gap-2 text-gray-300">
+                            <Clock className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
+                            <span className="text-sm sm:text-base font-medium">{event.time}</span>
+                          </div>
+                        )}
+                        {event.location && (
+                          <div className="flex items-center gap-2 text-gray-300">
+                            <MapPin className="w-4 h-4 flex-shrink-0" style={{ color: GOLD }} />
+                            <span className="text-sm sm:text-base font-medium">
+                              {event.location}{event.address ? `, ${event.address}` : ''}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      {event.location && (
-                        <div className="flex items-start gap-2.5 text-gray-300">
-                          <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
-                          <div>
-                            <span className="text-sm sm:text-base font-medium">{event.location}</span>
-                            {event.address && (
-                              <span className="text-sm text-gray-500 block">{event.address}</span>
-                            )}
-                          </div>
-                        </div>
+                      {(event.description || event.description_ru) && (
+                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                          {language === 'ru' && event.description_ru ? event.description_ru : event.description}
+                        </p>
                       )}
                     </div>
-
-                    {(event.description || event.description_ru) && (
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {language === 'ru' && event.description_ru ? event.description_ru : event.description}
-                      </p>
-                    )}
                   </div>
                 ))}
               </div>
