@@ -320,14 +320,6 @@ const NatrixConference = () => {
           <div ref={formRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
             <div className="max-w-xl mx-auto">
 
-              {/* Seats counter */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-full px-5 py-2.5 animate-pulse">
-                  <span className="w-2 h-2 rounded-full bg-red-500" />
-                  <span className="text-red-400 text-sm font-semibold">{t('natrix.conference.seats')}</span>
-                </div>
-              </div>
-
               {submitSuccess ? (
                 <Card className="border-green-500/30 bg-green-500/10 backdrop-blur-sm">
                   <CardContent className="p-8 text-center">
