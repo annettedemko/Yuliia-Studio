@@ -29,9 +29,7 @@ const GOLD_DARK = '#A8884E';
 
 const NatrixConference = () => {
   const { t, language } = useLanguage();
-  const heroImage = language === 'de'
-    ? '/Natrix/natrix-konferenz-muenchen-2026-de.jpg'
-    : '/Natrix/natrix-med-business-konferenz-muenchen-2026.jpg';
+  const heroImage = '/IMG_6510.png';
   const heroRef = useScrollReveal({ threshold: 0.1 });
   const speakersRef = useScrollReveal({ threshold: 0.1 });
   const programRef = useScrollReveal({ threshold: 0.1 });
