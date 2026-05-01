@@ -107,6 +107,9 @@ const NatrixConference = () => {
 
       // Send confirmation email to the registrant (DE + RU)
       try {
+        const zoomLink = selectedEventObj?.date === '2026-05-05'
+          ? 'https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1'
+          : '';
         await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_CONFIRM,
@@ -114,6 +117,8 @@ const NatrixConference = () => {
             to_email: formData.email,
             first_name: formData.firstName,
             full_name: fullName,
+            event: eventLabel,
+            zoom_link: zoomLink,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );
