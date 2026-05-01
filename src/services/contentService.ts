@@ -4,6 +4,29 @@ import type { ServicePrice, SubscriptionPackage, Event, Promotion } from '@/type
 const SUPABASE_URL = 'https://knmompemjlboqzwcycwe.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtubW9tcGVtamxib3F6d2N5Y3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTUzNjQsImV4cCI6MjA3NDM3MTM2NH0.j4db0ohPVgWLHUGF_Cdd1v33j7ggj375_FTpaizr8gM'
 
+// Parse bilingual "DE|||RU" format from DB into separate fields
+const parseBilingualField = (value: string | null): { de: string; ru: string } => {
+  if (!value) return { de: '', ru: '' };
+  const parts = value.split('|||');
+  return { de: parts[0] || '', ru: parts[1] || '' };
+};
+
+const parseEventFromDB = (item: any): Event => {
+  const titleParts = parseBilingualField(item.title);
+  const descParts = parseBilingualField(item.description);
+  return {
+    id: item.id,
+    title: titleParts.de,
+    title_ru: titleParts.ru || undefined,
+    date: item.date || '',
+    time: item.time || undefined,
+    location: item.location || undefined,
+    address: item.address || undefined,
+    description: descParts.de || undefined,
+    description_ru: descParts.ru || undefined,
+  };
+};
+
 // Helper to get auth token - ALWAYS use ANON_KEY
 // The Supabase client handles session automatically, we just need ANON_KEY for REST API
 const getAuthToken = (): string => {
@@ -692,17 +715,7 @@ export const eventsService = {
       const data = await response.json();
       console.log('🔍 Events: Found events:', data?.length || 0);
 
-      return data.map((item: any) => ({
-        id: item.id,
-        title: item.title,
-        title_ru: item.title_ru || undefined,
-        date: item.date || '',
-        time: item.time || undefined,
-        location: item.location || undefined,
-        address: item.address || undefined,
-        description: item.description || undefined,
-        description_ru: item.description_ru || undefined
-      }));
+      return data.map((item: any) => parseEventFromDB(item));
     } catch (error) {
       console.error('Events: Exception:', error);
       return [];
@@ -736,17 +749,7 @@ export const eventsService = {
       const data = await response.json();
       console.log('🔍 Events: Found upcoming events:', data?.length || 0, data);
 
-      return data.map((item: any) => ({
-        id: item.id,
-        title: item.title,
-        title_ru: item.title_ru || undefined,
-        date: item.date || '',
-        time: item.time || undefined,
-        location: item.location || undefined,
-        address: item.address || undefined,
-        description: item.description || undefined,
-        description_ru: item.description_ru || undefined
-      }));
+      return data.map((item: any) => parseEventFromDB(item));
     } catch (error) {
       console.error('Events: Exception:', error);
       return [];

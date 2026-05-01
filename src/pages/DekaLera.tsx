@@ -450,6 +450,16 @@ const DekaLera = () => {
             </p>
           </div>
 
+          {/* Natrix Med Event Banner */}
+          <div className="max-w-3xl mx-auto mb-10 sm:mb-12">
+            <img
+              src="/IMG_6510.png"
+              alt={currentLang === 'ru' ? 'Natrix Med — маркетинг и открытие бизнеса, 5 мая 19:00' : 'Natrix Med — Marketing und Geschäftseröffnung, 5. Mai 19:00'}
+              className="w-full h-auto rounded-2xl shadow-2xl border border-rose-gold/30"
+              loading="lazy"
+            />
+          </div>
+
           {/* Premium Photo Gallery - Light with Click to Open */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-12 max-w-4xl mx-auto">
             {galleryImages.map((image, index) => (
@@ -533,7 +543,7 @@ const DekaLera = () => {
                         <Calendar className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg sm:text-xl font-bold text-primary mb-2 sm:mb-3">{event.title}</h4>
+                        <h4 className="text-lg sm:text-xl font-bold text-primary mb-2 sm:mb-3">{currentLang === 'ru' && event.title_ru ? event.title_ru : event.title}</h4>
                         <div className="flex items-center gap-2 text-muted-foreground mb-2">
                           <Calendar className="w-4 h-4" />
                           <span className="text-sm sm:text-base">
@@ -559,8 +569,8 @@ const DekaLera = () => {
                             </a>
                           </div>
                         </div>
-                        {event.description && (
-                          <p className="text-xs sm:text-sm text-muted-foreground mt-3 leading-relaxed">{event.description}</p>
+                        {(event.description || event.description_ru) && (
+                          <p className="text-xs sm:text-sm text-muted-foreground mt-3 leading-relaxed">{currentLang === 'ru' && event.description_ru ? event.description_ru : event.description}</p>
                         )}
                       </div>
                     </div>
@@ -665,7 +675,7 @@ const DekaLera = () => {
                         <option value="">{t('events.select-placeholder')}</option>
                         {upcomingEvents.map((event) => (
                           <option key={event.id} value={event.id}>
-                            {event.title} - {new Date(event.date).toLocaleDateString('de-DE', {
+                            {currentLang === 'ru' && event.title_ru ? event.title_ru : event.title} - {new Date(event.date).toLocaleDateString('de-DE', {
                               day: '2-digit',
                               month: '2-digit',
                               year: 'numeric'

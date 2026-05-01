@@ -217,14 +217,27 @@ const AdminDashboard = () => {
   };
 
   const handleSaveEvent = async (event: SupabaseEvent) => {
-    if (editingEvent && editingEvent.id) {
-      await updateSupabaseEvent(editingEvent.id, event);
-    } else {
-      await createSupabaseEvent(event);
+    try {
+      let result;
+      if (editingEvent && editingEvent.id) {
+        console.log('Updating event:', editingEvent.id, event);
+        result = await updateSupabaseEvent(editingEvent.id, event);
+      } else {
+        console.log('Creating event:', event);
+        result = await createSupabaseEvent(event);
+      }
+      if (!result) {
+        alert('Fehler beim Speichern der Veranstaltung. Bitte versuchen Sie es erneut.');
+        return;
+      }
+      console.log('Event saved successfully:', result);
+      setEditingEvent(null);
+      setIsCreating(null);
+      await loadData();
+    } catch (error) {
+      console.error('Error saving event:', error);
+      alert('Fehler beim Speichern der Veranstaltung: ' + (error instanceof Error ? error.message : 'Unbekannter Fehler'));
     }
-    setEditingEvent(null);
-    setIsCreating(null);
-    await loadData();
   };
 
   const handleDeleteEvent = async (id: string) => {
