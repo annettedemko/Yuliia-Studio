@@ -13,13 +13,6 @@ import {
   CheckCircle,
   Loader2,
   AlertCircle,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Gift,
-  Megaphone,
-  BarChart3,
-  Lightbulb,
   ArrowDown,
 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -31,11 +24,9 @@ const GOLD_DARK = '#A8884E';
 
 const NatrixConference = () => {
   const { t, language } = useLanguage();
-  const heroImage = '/IMG_6510.png';
   const heroRef = useScrollReveal({ threshold: 0.1 });
   const eventsRef = useScrollReveal({ threshold: 0.1 });
   const speakersRef = useScrollReveal({ threshold: 0.1 });
-  const programRef = useScrollReveal({ threshold: 0.1 });
   const audienceRef = useScrollReveal({ threshold: 0.1 });
   const formRef = useScrollReveal({ threshold: 0.1 });
 
@@ -162,16 +153,6 @@ const NatrixConference = () => {
     }
   };
 
-  const programItems = [
-    { icon: Sparkles, key: 'natrix.conference.program.1' },
-    { icon: BarChart3, key: 'natrix.conference.program.2' },
-    { icon: TrendingUp, key: 'natrix.conference.program.3' },
-    { icon: Megaphone, key: 'natrix.conference.program.4' },
-    { icon: Gift, key: 'natrix.conference.program.5' },
-    { icon: Target, key: 'natrix.conference.program.6' },
-    { icon: Lightbulb, key: 'natrix.conference.program.7' },
-  ];
-
   return (
     <>
       <PageHelmet />
@@ -196,18 +177,7 @@ const NatrixConference = () => {
                 </div>
               </div>
 
-              {/* Poster */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C5A572]/20 mb-8 sm:mb-10 max-w-2xl mx-auto">
-                <img
-                  src={heroImage}
-                  alt={t('natrix.conference.heroAlt')}
-                  className="w-full h-auto"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent" />
-              </div>
-
-              {/* Title under poster */}
+              {/* Title */}
               <div className="text-center mb-8 sm:mb-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                   <span style={{ color: GOLD }}>{t('natrix.conference.title')}</span>
@@ -333,39 +303,6 @@ const NatrixConference = () => {
               <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
                 {t('natrix.conference.speakers.desc')}
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════ PROGRAM ═══════════════════ */}
-        <section className="py-12 sm:py-16 bg-[#111111] relative">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(197,165,114,0.05)_0%,_transparent_50%)]" />
-
-          <div ref={programRef} className="container mx-auto px-4 relative z-10 reveal reveal-up">
-            <div className="text-center mb-10 sm:mb-14">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                {t('natrix.conference.program.title')}
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A572] to-transparent mx-auto" />
-            </div>
-
-            <div className="max-w-3xl mx-auto space-y-4">
-              {programItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="group flex items-start gap-4 p-5 rounded-xl border border-white/10 bg-[#0a0a0a] hover:border-[#C5A572]/30 hover:bg-[#161616] transition-all duration-300"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ background: `linear-gradient(135deg, ${GOLD}25, ${GOLD}10)` }}
-                  >
-                    <item.icon className="w-5 h-5" style={{ color: GOLD }} />
-                  </div>
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed group-hover:text-white transition-colors">
-                    {t(item.key)}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
