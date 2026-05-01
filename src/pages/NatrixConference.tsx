@@ -110,6 +110,22 @@ const NatrixConference = () => {
         const zoomLink = selectedEventObj?.date === '2026-05-05'
           ? 'https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1'
           : '';
+        const eventTitle = selectedEventObj
+          ? selectedEventObj.title.split('|||')[0]
+          : 'Natrix Med';
+        const eventTitleRu = selectedEventObj
+          ? (selectedEventObj.title.split('|||')[1] || selectedEventObj.title.split('|||')[0])
+          : 'Natrix Med';
+        const eventDate = selectedEventObj
+          ? new Date(selectedEventObj.date).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' })
+          : '';
+        const eventDateRu = selectedEventObj
+          ? new Date(selectedEventObj.date).toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' })
+          : '';
+        const eventTime = selectedEventObj?.time || '';
+        const eventLocation = selectedEventObj
+          ? `${selectedEventObj.location || ''}${selectedEventObj.address ? ', ' + selectedEventObj.address : ''}`
+          : '';
         await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_CONFIRM,
@@ -117,7 +133,12 @@ const NatrixConference = () => {
             to_email: formData.email,
             first_name: formData.firstName,
             full_name: fullName,
-            event: eventLabel,
+            event_title: eventTitle,
+            event_title_ru: eventTitleRu,
+            event_date: eventDate,
+            event_date_ru: eventDateRu,
+            event_time: eventTime,
+            event_location: eventLocation,
             zoom_link: zoomLink,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
