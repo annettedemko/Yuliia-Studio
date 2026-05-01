@@ -11,7 +11,7 @@ const FloatingBookButton = () => {
   const { t } = useLanguage();
   const location = useLocation();
 
-  if (location.pathname.startsWith('/admin')) {
+  if (location.pathname.startsWith('/admin') || location.pathname.includes('/natrix-conference')) {
     return null;
   }
 

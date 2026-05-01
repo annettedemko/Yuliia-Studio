@@ -302,15 +302,17 @@ const Navigation = () => {
                   {t('nav.button.call')}
                 </a>
               </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
-                onClick={() => showBookingWidget()}
-              >
-                <Calendar className="w-3 h-3 mr-1" />
-                {t('nav.button.appointment')}
-              </Button>
+              {!location.pathname.includes('/natrix-conference') && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="bg-gradient-hero text-white border-none hover:opacity-90 h-8 px-3 text-xs"
+                  onClick={() => showBookingWidget()}
+                >
+                  <Calendar className="w-3 h-3 mr-1" />
+                  {t('nav.button.appointment')}
+                </Button>
+              )}
             </div>
           </div>
 
@@ -453,15 +455,17 @@ const Navigation = () => {
                     {t('nav.button.call')}
                   </a>
                 </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
-                  onClick={() => showBookingWidget()}
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  {t('nav.button.book-appointment')}
-                </Button>
+                {!location.pathname.includes('/natrix-conference') && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="bg-gradient-hero text-white border-none w-full py-4 text-base font-medium"
+                    onClick={() => showBookingWidget()}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    {t('nav.button.book-appointment')}
+                  </Button>
+                )}
               </div>
             </div>
           </div>
