@@ -157,7 +157,10 @@ const NatrixConference = () => {
             phone: formData.phone,
             email: formData.email,
             referrer: formData.referrer || '—',
-            event: eventLabel,
+            event_title: eventTitle,
+            event_date: eventDate,
+            event_time: eventTime,
+            event_location: eventLocation,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );

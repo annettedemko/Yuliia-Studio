@@ -42,26 +42,34 @@ export function FormSubmissionsManager() {
   const getEventInfo = (message: string | null) => {
     if (!message || !message.includes('Veranstaltung:')) return null
 
-    // Parse format: "Veranstaltung: Title am 2025-10-05 um 18:00" or "... um 18:00 | Eingeladen von: ..."
-    const match = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{4}-\d{2}-\d{2})\s+um\s+([^|]+)/)
-    if (match) {
-      const [, title, date, time] = match
-      return {
-        title: title.trim(),
-        date: date.trim(),
-        time: time.trim()
-      }
+    // Format 1: "Veranstaltung: Title am 05.05.2026 um 19:00 | Eingeladen von: ..."
+    const match1 = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{2}\.\d{2}\.\d{4})\s+um\s+([^|]+)/)
+    if (match1) {
+      const [, title, date, time] = match1
+      // Convert DD.MM.YYYY to YYYY-MM-DD for sorting
+      const [d, m, y] = date.trim().split('.')
+      return { title: title.trim(), date: `${y}-${m}-${d}`, time: time.trim() }
     }
 
-    // Fallback to old format - try to find event by ID
-    const eventId = message.replace('Veranstaltung: ', '').trim()
-    const event = events.find(e => e.id === eventId)
-    if (event) {
-      return {
-        title: event.title,
-        date: event.date,
-        time: event.time
-      }
+    // Format 2: "Veranstaltung: Title am 2025-10-05 um 18:00"
+    const match2 = message.match(/Veranstaltung:\s*(.+)\s+am\s+(\d{4}-\d{2}-\d{2})\s+um\s+([^|]+)/)
+    if (match2) {
+      const [, title, date, time] = match2
+      return { title: title.trim(), date: date.trim(), time: time.trim() }
+    }
+
+    // Format 3: "Veranstaltung: Title — Date (Time) | ..."
+    const match3 = message.match(/Veranstaltung:\s*(.+?)\s*[—–-]\s*(\d{2}\.\d{2}\.\d{4})\s*\(([^)]+)\)/)
+    if (match3) {
+      const [, title, date, time] = match3
+      const [d, m, y] = date.trim().split('.')
+      return { title: title.trim(), date: `${y}-${m}-${d}`, time: time.trim() }
+    }
+
+    // Format 4: plain "Veranstaltung: Title | Eingeladen von: ..."
+    const match4 = message.match(/Veranstaltung:\s*([^|]+)/)
+    if (match4) {
+      return { title: match4[1].trim(), date: '', time: '' }
     }
 
     return null
@@ -110,7 +118,7 @@ export function FormSubmissionsManager() {
       case 'deka':
         return 'DEKA'
       case 'natrix-conference':
-        return 'Natrix Konferenz 26.04'
+        return 'Natrix Med'
       case 'natrix':
         return 'Natrix Anfrage'
       case 'about':
