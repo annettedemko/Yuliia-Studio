@@ -295,7 +295,7 @@ const NatrixConference = () => {
                       </div>
 
                       {(event.description || event.description_ru) && (
-                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                        <p className="text-sm sm:text-base text-gray-400 leading-relaxed whitespace-pre-line">
                           {language === 'ru' && event.description_ru ? event.description_ru : event.description}
                         </p>
                       )}
