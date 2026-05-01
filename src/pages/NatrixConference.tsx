@@ -44,13 +44,10 @@ const NatrixConference = () => {
     const loadEvent = async () => {
       try {
         const events = await eventsService.getUpcoming();
-        const found = events.find(e =>
-          e.title.toLowerCase().includes('natrix') ||
-          (e.title_ru && e.title_ru.toLowerCase().includes('natrix'))
-        );
-        if (found) setNatrixEvent(found);
+        // Use the first upcoming published event for this page
+        if (events.length > 0) setNatrixEvent(events[0]);
       } catch (err) {
-        console.error('Failed to load Natrix event:', err);
+        console.error('Failed to load event:', err);
       }
     };
     loadEvent();
