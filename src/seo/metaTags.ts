@@ -266,14 +266,14 @@ export const metaTags: Record<string, PageMeta> = {
   },
   '/natrix-conference': {
     de: {
-      title: 'Natrix Med Konferenz 26.04 München | Geräte, Marketing & 5 Referenten',
-      description: 'Geschäftskonferenz NATRIX MED am 26. April in München: Vorstellung neuer Natrix Med Geräte, Marketing-Strategien für Beauty-Studios, Selvert Thermal Kosmetik. 5 Referenten. Plätze begrenzt — jetzt registrieren!',
-      image: '/Natrix/natrix-konferenz-muenchen-2026-de.jpg'
+      title: 'Natrix Med Events | Webinare & Konferenzen für Beauty-Business',
+      description: 'Natrix Med Veranstaltungen: Webinare und Konferenzen für Beauty-Profis. Marketing-Strategien, Business-Aufbau, Gerätevorstellungen und Finanzberatung. Jetzt registrieren!',
+      image: '/logo2.jpg'
     },
     ru: {
-      title: 'Бизнес-конференция Natrix Med 26.04 Мюнхен | Оборудование и маркетинг',
-      description: 'Бизнес-конференция NATRIX MED 26 апреля в Мюнхене: презентация нового оборудования Natrix Med, маркетинговые стратегии для бьюти-студий, косметика Selvert Thermal. 5 спикеров. Мест ограничено — регистрируйтесь!',
-      image: '/Natrix/natrix-med-business-konferenz-muenchen-2026.jpg'
+      title: 'Natrix Med Events | Вебинары и конференции для бьюти-бизнеса',
+      description: 'Мероприятия Natrix Med: вебинары и конференции для профессионалов красоты. Маркетинг, построение бизнеса, презентации оборудования и финансовые консультации. Регистрируйтесь!',
+      image: '/logo2.jpg'
     }
   },
   '/planner-yc': {
