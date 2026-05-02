@@ -105,46 +105,38 @@ const NatrixConference = () => {
         console.error('Supabase save failed:', err);
       }
 
-      // Send confirmation email to the registrant (DE + RU)
+      // Send confirmation email to the registrant
       try {
         const isZoomEvent = selectedEventObj?.date === '2026-05-05';
-        const zoomLinkRu = isZoomEvent
-          ? `Подключиться к встрече можно по ссылке:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nТакже рекомендуем присоединиться к нашему WhatsApp-сообществу 👇\nтам мы делимся полезной информацией о развитии бьюти-бизнеса, работе с аппаратами и возможностях роста ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli`
-          : '';
-        const zoomLinkDe = isZoomEvent
-          ? `Zoom-Link zum Beitritt:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nTreten Sie auch unserer WhatsApp-Community bei 👇\nDort teilen wir nützliche Informationen über Beauty-Business, Geräte und Wachstumsmöglichkeiten ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli`
-          : '';
-        const eventTitle = selectedEventObj
-          ? selectedEventObj.title.split('|||')[0]
-          : 'Natrix Med';
-        const eventTitleRu = selectedEventObj
-          ? (selectedEventObj.title.split('|||')[1] || selectedEventObj.title.split('|||')[0])
-          : 'Natrix Med';
-        const eventDate = selectedEventObj
-          ? new Date(selectedEventObj.date).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' })
-          : '';
-        const eventDateRu = selectedEventObj
-          ? new Date(selectedEventObj.date).toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' })
-          : '';
         const eventTime = selectedEventObj?.time || '';
-        const eventLocation = selectedEventObj
-          ? `${selectedEventObj.location || ''}${selectedEventObj.address ? ', ' + selectedEventObj.address : ''}`
+        const eventDateShort = selectedEventObj
+          ? `${new Date(selectedEventObj.date).getDate()}.${String(new Date(selectedEventObj.date).getMonth() + 1).padStart(2, '0')}`
           : '';
+
+        let messageRu: string;
+        let messageDe: string;
+
+        if (isZoomEvent) {
+          messageRu = `Здравствуйте 💕\n\nВы зарегистрировались на наш Zoom-семинар, и мы будем рады видеть вас среди участников!\n\n📅 Дата: ${eventDateShort}\n🕖 Время: ${eventTime}\n\nПодключиться к встрече можно по ссылке:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nТакже рекомендуем присоединиться к нашему WhatsApp-сообществу 👇\nтам мы делимся полезной информацией о развитии бьюти-бизнеса, работе с аппаратами и возможностях роста ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli\n\nБудем рады встрече 🤝`;
+          messageDe = `Hallo 💕\n\nSie haben sich für unser Zoom-Seminar registriert, und wir freuen uns, Sie als Teilnehmer begrüßen zu dürfen!\n\n📅 Datum: ${eventDateShort}\n🕖 Uhrzeit: ${eventTime} Uhr\n\nZoom-Link zum Beitritt:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nTreten Sie auch unserer WhatsApp-Community bei 👇\nDort teilen wir nützliche Informationen über Beauty-Business, Geräte und Wachstumsmöglichkeiten ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli\n\nWir freuen uns auf Sie 🤝`;
+        } else {
+          const eventTitle = selectedEventObj ? selectedEventObj.title.split('|||')[0] : 'Natrix Med';
+          const eventTitleRu = selectedEventObj ? (selectedEventObj.title.split('|||')[1] || eventTitle) : 'Natrix Med';
+          const eventLocation = selectedEventObj
+            ? `${selectedEventObj.location || ''}${selectedEventObj.address ? ', ' + selectedEventObj.address : ''}`
+            : '';
+          messageRu = `Здравствуйте 💕\n\nСпасибо за регистрацию!\n\n✨ ${eventTitleRu}\n\n📅 Дата: ${eventDateShort}\n🕐 Время: ${eventTime}\n📍 Место: ${eventLocation}\n\nБудем рады встрече 🤝\n\nС уважением,\nКоманда Natrix Med\nhttps://www.munchen-beauty.de`;
+          messageDe = `Hallo 💕\n\nVielen Dank für Ihre Registrierung!\n\n✨ ${eventTitle}\n\n📅 Datum: ${eventDateShort}\n🕐 Uhrzeit: ${eventTime} Uhr\n📍 Ort: ${eventLocation}\n\nWir freuen uns auf Sie 🤝\n\nMit freundlichen Grüßen,\nNatrix Med Team\nhttps://www.munchen-beauty.de`;
+        }
+
         await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_CONFIRM,
           {
             to_email: formData.email,
             first_name: formData.firstName,
-            full_name: fullName,
-            event_title: eventTitle,
-            event_title_ru: eventTitleRu,
-            event_date: eventDate,
-            event_date_ru: eventDateRu,
-            event_time: eventTime,
-            event_location: eventLocation,
-            zoom_link: zoomLinkDe,
-            zoom_link_ru: zoomLinkRu,
+            message_ru: messageRu,
+            message_de: messageDe,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );
