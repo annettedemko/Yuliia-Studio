@@ -107,8 +107,12 @@ const NatrixConference = () => {
 
       // Send confirmation email to the registrant (DE + RU)
       try {
-        const zoomLink = selectedEventObj?.date === '2026-05-05'
-          ? 'https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1'
+        const isZoomEvent = selectedEventObj?.date === '2026-05-05';
+        const zoomLinkRu = isZoomEvent
+          ? `Подключиться к встрече можно по ссылке:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nТакже рекомендуем присоединиться к нашему WhatsApp-сообществу 👇\nтам мы делимся полезной информацией о развитии бьюти-бизнеса, работе с аппаратами и возможностях роста ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli`
+          : '';
+        const zoomLinkDe = isZoomEvent
+          ? `Zoom-Link zum Beitritt:\n🔗 https://us06web.zoom.us/j/86544422074?pwd=0VslhKgEby12shPcGjaaGFacsT8Sfr.1\n\nTreten Sie auch unserer WhatsApp-Community bei 👇\nDort teilen wir nützliche Informationen über Beauty-Business, Geräte und Wachstumsmöglichkeiten ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli`
           : '';
         const eventTitle = selectedEventObj
           ? selectedEventObj.title.split('|||')[0]
@@ -139,7 +143,8 @@ const NatrixConference = () => {
             event_date_ru: eventDateRu,
             event_time: eventTime,
             event_location: eventLocation,
-            zoom_link: zoomLink,
+            zoom_link: zoomLinkDe,
+            zoom_link_ru: zoomLinkRu,
           },
           { publicKey: EMAILJS_PUBLIC_KEY }
         );
