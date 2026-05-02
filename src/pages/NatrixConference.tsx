@@ -125,8 +125,8 @@ const NatrixConference = () => {
           const eventLocation = selectedEventObj
             ? `${selectedEventObj.location || ''}${selectedEventObj.address ? ', ' + selectedEventObj.address : ''}`
             : '';
-          messageRu = `Здравствуйте 💕\n\nСпасибо за регистрацию!\n\n✨ ${eventTitleRu}\n\n📅 Дата: ${eventDateShort}\n🕐 Время: ${eventTime}\n📍 Место: ${eventLocation}\n\nБудем рады встрече 🤝\n\nС уважением,\nКоманда Natrix Med\nhttps://www.munchen-beauty.de`;
-          messageDe = `Hallo 💕\n\nVielen Dank für Ihre Registrierung!\n\n✨ ${eventTitle}\n\n📅 Datum: ${eventDateShort}\n🕐 Uhrzeit: ${eventTime} Uhr\n📍 Ort: ${eventLocation}\n\nWir freuen uns auf Sie 🤝\n\nMit freundlichen Grüßen,\nNatrix Med Team\nhttps://www.munchen-beauty.de`;
+          messageRu = `Здравствуйте 💕\n\nСпасибо за регистрацию!\n\n✨ ${eventTitleRu}\n\n📅 Дата: ${eventDateShort}\n🕐 Время: ${eventTime}\n📍 Место: ${eventLocation}\n\nТакже рекомендуем присоединиться к нашему WhatsApp-сообществу 👇\nтам мы делимся полезной информацией о развитии бьюти-бизнеса, работе с аппаратами и возможностях роста ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli\n\nБудем рады встрече 🤝\n\nС уважением,\nКоманда Natrix Med\nhttps://www.munchen-beauty.de`;
+          messageDe = `Hallo 💕\n\nVielen Dank für Ihre Registrierung!\n\n✨ ${eventTitle}\n\n📅 Datum: ${eventDateShort}\n🕐 Uhrzeit: ${eventTime} Uhr\n📍 Ort: ${eventLocation}\n\nTreten Sie auch unserer WhatsApp-Community bei 👇\nDort teilen wir nützliche Informationen über Beauty-Business, Geräte und Wachstumsmöglichkeiten ✅\n🔗 https://chat.whatsapp.com/DpIIqQQ1cKGBOfVNmbiDXS?mode=hqctcli\n\nWir freuen uns auf Sie 🤝\n\nMit freundlichen Grüßen,\nNatrix Med Team\nhttps://www.munchen-beauty.de`;
         }
 
         await emailjs.send(
